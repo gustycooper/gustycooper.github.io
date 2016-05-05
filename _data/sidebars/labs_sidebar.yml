@@ -1,0 +1,65 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+
+entries:
+- title: Labs
+  product: Labs
+  version: 0.0
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage/
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage/
+      output: pdf
+      type: frontmatter
+
+  - title: Labs
+    output: web, pdf
+    folderitems:
+    - title: Labs
+      url: /labs_landing_page/
+      output: web
+
+  - title: Lab 1
+    output: web, pdf
+
+    folderitems:
+    - title: Labs - First Program
+      url: /labs_lab01_01/
+      output: web, pdf
+      
+    - title: Labs - Second Program
+      url: /labs_lab01_02/
+      output: web, pdf
+      
+  - title: Lab 2
+    output: web, pdf
+
+    folderitems:
+    - title: Labs - String Program
+      url: /labs_lab02_01/
+      output: web, pdf
+      
+    - title: Labs - MyString Class
+      url: /labs_lab02_02/
+      output: web, pdf
+      
+  - title: Lab 3
+    output: web, pdf
+
+    folderitems:
+    - title: Labs - Java Expressions in Codepad
+      url: /labs_lab03_01/
+      output: web, pdf
+      
+    - title: Labs - Split the Bill
+      url: /labs_lab03_02/
+      output: web, pdf
+      

@@ -1,0 +1,29 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  levels: one
+  folders:
+
+  - title: CPSC 220 Groupings
+    output: web
+    folderitems:
+    - title: Home
+      url: /
+      output: web
+    - title: News
+      url: /news/
+      output: web
+    - title: CPSC 220
+      url: /mydoc_introduction/
+      output: web
+    - title: Syllabus
+      url: /p1_landing_page/
+      output: web
+    - title: References
+      url: /p2_landing_page/
+      output: web
+    - title: Labs
+      url: /labs_landing_page/
+      output: web
+

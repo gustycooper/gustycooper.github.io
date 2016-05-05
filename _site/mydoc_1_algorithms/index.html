@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This describes algorithms">
+<meta name="keywords" content="getting_started,  java, algorithms, design">
+<title>Algorithms  | UMW CPSC 220</title>
+<link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/gustycooper.github.io/css/modern-business.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/customstyles.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/gustycooper.github.io/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/gustycooper.github.io/js/toc.js"></script>
+<script src="/gustycooper.github.io/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/gustycooper.github.io/images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.com/gustycooper.github.io/feed.xml">
+
+
+
+
+ 
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="/gustycooper.github.io/">&nbsp;<span class="projectTitle"> CPSC 220</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/gustycooper.github.io/news/">News</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course Artifacts<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/gustycooper.github.io//">CPSC 220</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p1_landing_page/">Syllabus</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/labs_landing_page/">Labs</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p2_landing_page/">References</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll/" target="_blank">Jeykyll Doc Theme 5.0</a></li>
+                        
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">fa-codes</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<!-- Send feedback function -->
+<script>
+function SendLinkByMail(href) {
+var subject= "UMW CPSC 220 feedback";
+var body = "I have some feedback about the Algorithms page: ";
+body += window.location.href;
+body += "";
+var uri = "mailto:gusty@umw.edu?subject=";
+uri += encodeURIComponent(subject);
+uri += "&body=";
+uri += encodeURIComponent(body);
+window.location.href = uri;
+}
+</script>
+
+<li><a href="javascript:(function()%7BSendLinkByMail()%3B%7D)()%3B" target="_blank"><i class="fa fa-envelope-o"></i> Feedback</a></li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/gustycooper.github.io/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/gustycooper.github.io/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Algorithms">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">CPSC 220 0.0</li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Start Here</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/">Let's Get started</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_0_examples/">Example Authoring</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Introduction</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="/gustycooper.github.io/mydoc_1_algorithms/">Algorithms</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_supported_features/">Supported features</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_about/">About the theme author</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_support/">Support</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Simple Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Expressions</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Control Flow</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_control_flow/">Control Flow</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Classes and Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Arrays and ArrayLists</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_6_arrays_arraylists/">Arrays and ArrayLists</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Graphics</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Packages, Interfaces, ADTs</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Recursion, Searching, Sorting</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_recursion/">Recursion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_searching/">Searching</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_sorting/">Sorting</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Reference Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_meta_language/">Meta Language</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_string_manipulation/">String Manipulation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_i_o/">Input / Output</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_passing_parameters/">Passing Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_exceptions/">Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_random_numbers/">Random Numbers</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Tag archives</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Tag archive pages</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_content_types/">Content types pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Algorithms</h1>
+</div>
+
+<div class="post-content">
+
+   
+    <div class="summary">This describes algorithms</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/edit/reviews/mydoc_1_algorithms/" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h2 id="algorithm-introduction-eck-32">Algorithm Introduction (Eck 3.2)</h2>
+
+<p>An algorithm is a sequence of steps that solves a problem.  We will also say that an algorithm has to terminate.  If an algorithm does not terminate, it cannot solve a problem.</p>
+
+<p>We will create the steps of our algorithms using the following basic control structures.
+* Sequential – perform the operation of a step and move to the next step
+* Conditional – perform a test on some condition which determines which sequence of steps to execute
+* Loop – execute a sequence of steps in a repetitive iteration</p>
+
+<p>As we will soon discover, the most used sequential operation in programming is the assignment statement that assigns the value of some expression to a variable.</p>
+
+<p>Suppose that you are about to purchase a car, and I tell you the following.
+* One car costs $20,000.00 and gets 20mpg.
+* Another car costs $30,000.00 and gets 30mpg.</p>
+
+<p>If I ask you are to construct an algorithm in your brain that determines which of the cars you want to purchase, do you have enough information to construct an algorithm in your brain?  In this case you are trying to make a decision and your probably need some other parameters such as how much money you make each year, how far you plan to drive the car, and what percentage of you income you can afford to spend on operating your car.  For example, if you plan to drive your car 25,000 miles per year, gas will cost $3.50 per gallon, and you want to spend less that $3000 per year in gas; you could create some algorithm to help you decide which car to purchase.  You could compute the cost per year of each car and make a decision based on the lesser cost.  The algorithm may look like the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>For each car compute
+   gas cost = miles driven / mpg * price per gal
+total cost = purchase price + gas cost
+if total cost car 1 &lt; total cost car 2
+   buy car 1
+else
+   buy car 2
+</code></pre>
+</div>
+
+<p>The message from this discussion is that you need to specify enough information to create an algorithm.</p>
+
+<p>The preceding algorithm is called pseudo code because it resembles code of some programming language, but it is not precise enough for a compiler to translate into machine code.  We can execute the algorithm in our brain.</p>
+
+<p>The following subsections describe various algorithms.  The lego-based algorithms are renditions of those from a Udacity course.</p>
+
+<h3 id="algorithm-pseudo-code-ordering-legos">Algorithm (Pseudo-code: ordering legos)</h3>
+
+<p>For this algorithm, I give you a sequence of legos that are as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>b y b y b y
+</code></pre>
+</div>
+
+<p>The challenge is to create an algorithm that results in the legos ordered such that the blue legos first followed by the yellow legos.  The following is the solution.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>b b b y y y
+</code></pre>
+</div>
+
+<p>One algorithm that works for this particular case is the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>   Move to first y b and swap them
+</code></pre>
+</div>
+
+<p>The resulting steps of applying this algorithm are the following.</p>
+
+<ol>
+  <li>b y b y b y</li>
+  <li>b b y y b y</li>
+  <li>b b y b y y</li>
+  <li>b b b y y y</li>
+</ol>
+
+<h3 id="algorithm-pseudo-code-cost-of-shopping">Algorithm (Pseudo-code: cost of shopping)</h3>
+
+<p>For this exercise, you are purchasing two items in a coffee shop.  You will keep a running total of the cost of your items.  The pseudo-code to compute this total is as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>item prices are Coffee 4.85 and Scone 3.25
+cost = 0
+for each item
+   tax = item price * 0.08
+   tip = item price * 0.10
+   cost = cost + item price + tax + tip
+print cost in your brain
+</code></pre>
+</div>
+
+<h3 id="algorithm-pseudo-code-3n1-eck-322">Algorithm (Pseudo-code: 3N+1) (Eck 3.2.2)</h3>
+
+<p>David Eck describes the 3N+1 algorithm in our textbook.  He develops the algorithm, including the code.  We will simply examine the pseudo code as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>n = 10
+while n &gt; 1
+  print n
+  if n is even
+    n = n / 2
+  else
+    n = 3 * n + 1
+</code></pre>
+</div>
+
+<h3 id="algorithm-pseudo-code-legos-with-rules">Algorithm (Pseudo-code: Legos with Rules)</h3>
+
+<p>This example forces you to construct an algorithm with a specific set of rules, which are sort of like what computers do when you have to use assemble language.  The rules that you have to use in your algorithm are the following.  As you continue in your study of computer science, you will encounter Turing machines, which have simplified rules like these that process a tape of information.  In our case the tape of information is a sequence of yellow and blue legos.</p>
+
+<ul>
+  <li>Move your eyesight one space to the right</li>
+  <li>Move your eyesight one space to the left</li>
+  <li>Move your eyesight all the way to the right</li>
+  <li>Move your eyesight all the way to the left</li>
+</ul>
+
+<p>You can still use ifs and loops in your solution, but the sequential steps have to be one of the rules.  You are to use the rules to construct an algorithm that will find the first pair of legos that are ordered y b.  The initial input of legos is the follows.</p>
+
+<p>b b b y y b b</p>
+
+<p>The algorithm for finding the first pair ordered y b is given by the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>move your eyes all the way to the left
+while the pair y b is not found do the following
+  if the piece you are looking at is blue
+    move your eyesight one space right
+  else if the piece to the right is blue
+    stop you found it
+  else if the piece to the right is yellow
+    move your eyesight one space right
+</code></pre>
+</div>
+
+<h3 id="not-an-algorithm-pseudo-code-lego-swapping">Not An Algorithm (Pseudo-code: Lego swapping)</h3>
+
+<p>This example is one that is not an algorithm because it does not terminate.  Termination is also a criteria of Turing machines, which define a concept of computable.  This algorithm attempts to order a sequence of yellow and blue legos such that such that they are ordered with one color first followed by the other color</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>while the legos are not in order
+   locate first pair of nonmatching legos
+   swap them
+</code></pre>
+</div>
+
+<p>This algorithm will work on some input.  For example, it will work on the following.</p>
+
+<p>y y b y b b</p>
+
+<p>However, if you attempt the algorithm on the sequence y b y b, it never terminates.  The first two steps (which are repeated forever) are given as follows.</p>
+
+<ol>
+  <li>b y y b</li>
+  <li>y b y b</li>
+</ol>
+
+<h3 id="algorithm-pseudo-code-lego-doorway">Algorithm (Pseudo-code: Lego Doorway)</h3>
+
+<p>If you own a house construction company, you probably have an algorithm for building a house.  You know how to study the plans, order the materials, and assemble them in a specific order.  This is particularly true when you have built the same house several times.  This example builds a doorframe with legos.  In this example, there are two kinds of legos: 1 is 8x2, the other is 2x2</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>place an 8x2 lego horizontally
+stick a 2x2 lego on top of the left end of the 8x2 lego
+repeat 3 times
+  stick a 2x2 lego on top of the previous lego
+stick a 2x2 lego on top of the right end of the 8x2 lego
+repeat 3 times
+  stick a 2x2 lego on top of the previous lego
+place on 8x2 lego on top
+</code></pre>
+</div>
+
+
+
+<div class="tags">
+    
+    <b>Tags: </b>
+    
+    
+    
+    <a href="/gustycooper.github.io/tag_getting_started" class="btn btn-default navbar-btn cursorNorm" role="button">getting_started</a>
+    
+    
+    
+</div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 University of Mary Washington, Gusty Cooper. All rights reserved. <br />
+<p>Page last updated:</span> May 1, 2016<br/> Site last generated: May 5, 2016 <br />
+<p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Java String Manipulation">
+<meta name="keywords" content="string manipulation,  string methods">
+<title>Java String Manipulation  | UMW CPSC 220</title>
+<link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/gustycooper.github.io/css/modern-business.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/customstyles.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/gustycooper.github.io/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/gustycooper.github.io/js/toc.js"></script>
+<script src="/gustycooper.github.io/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/gustycooper.github.io/images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.com/gustycooper.github.io/feed.xml">
+
+
+
+
+ 
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="/gustycooper.github.io/">&nbsp;<span class="projectTitle"> CPSC 220</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/gustycooper.github.io/news/">News</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course Artifacts<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/gustycooper.github.io//">CPSC 220</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p1_landing_page/">Syllabus</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/labs_landing_page/">Labs</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p2_landing_page/">References</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll/" target="_blank">Jeykyll Doc Theme 5.0</a></li>
+                        
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">fa-codes</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<!-- Send feedback function -->
+<script>
+function SendLinkByMail(href) {
+var subject= "UMW CPSC 220 feedback";
+var body = "I have some feedback about the Java String Manipulation page: ";
+body += window.location.href;
+body += "";
+var uri = "mailto:gusty@umw.edu?subject=";
+uri += encodeURIComponent(subject);
+uri += "&body=";
+uri += encodeURIComponent(body);
+window.location.href = uri;
+}
+</script>
+
+<li><a href="javascript:(function()%7BSendLinkByMail()%3B%7D)()%3B" target="_blank"><i class="fa fa-envelope-o"></i> Feedback</a></li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/gustycooper.github.io/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/gustycooper.github.io/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Java String Manipulation">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">CPSC 220 0.0</li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Start Here</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/">Let's Get started</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_0_examples/">Example Authoring</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Introduction</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms/">Algorithms</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_supported_features/">Supported features</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_about/">About the theme author</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_support/">Support</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Simple Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Expressions</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Control Flow</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_control_flow/">Control Flow</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Classes and Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Arrays and ArrayLists</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_6_arrays_arraylists/">Arrays and ArrayLists</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Graphics</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Packages, Interfaces, ADTs</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Recursion, Searching, Sorting</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_recursion/">Recursion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_searching/">Searching</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_sorting/">Sorting</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Reference Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_meta_language/">Meta Language</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="/gustycooper.github.io/mydoc_A_string_manipulation/">String Manipulation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_i_o/">Input / Output</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_passing_parameters/">Passing Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_exceptions/">Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_random_numbers/">Random Numbers</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Tag archives</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Tag archive pages</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_content_types/">Content types pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Java String Manipulation</h1>
+</div>
+
+<div class="post-content">
+
+   
+    <div class="summary">Java String Manipulation</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/edit/reviews/mydoc_A_string_manipulation/" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h2 id="appendix-b-java-string-manipulation">Appendix B: Java String Manipulation</h2>
+
+<p>The following subsections describe various tips when using Java Strings.</p>
+
+<h2 id="b1-java-strings-are-objects">B.1 Java Strings are Objects</h2>
+<p>Remember the Java Strings are objects.  Java provides simplified notations for working with strings.  For example, you can declare and assign as follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>              <span class="c1">// Nice notation</span>
+<span class="n">String</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="err">“</span><span class="n">Cooper</span><span class="err">”</span><span class="o">);</span> <span class="c1">// using a String constructor</span>
+</code></pre>
+</div>
+
+<h2 id="b2-string-equality">B.2 String Equality</h2>
+
+<p>Since Strings are objects, a variable of type String is a reference to the object.  This means you must test for equality of strings using the equals method and not the equality operator (==).   Java will allow you to use the == operator, but you are comparing memory addresses and not the contents of the string.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">b</span> <span class="o">=</span> <span class="err">“</span><span class="n">Cooper</span><span class="err">”</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">c</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">bCorrect</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+<span class="kt">boolean</span> <span class="n">bIncorrect</span> <span class="o">=</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h2 id="b3-converting-strings-to-numbers">B.3 Converting Strings to Numbers</h2>
+
+<p>Integer x = Integer.valueOf(str);
+// or
+int y = Integer.parseInt(str);</p>
+
+<p>There is a slight difference between these methods:
+* valueOf returns new instance of java.lang.Integer
+* parseInt returns primitive int.</p>
+
+<p>The same is for all cases: Short.valueOf, Short. parseShort, Long.valueOf, Long.parseLong, etc.
+## B.4 Converting Numbers to Strings</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">42</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">5.4</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="err">“”</span> <span class="o">+</span> <span class="n">i</span><span class="o">;</span> <span class="c1">// concatenate i to an empty String</span>
+<span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</code></pre>
+</div>
+
+<h2 id="b5-splitting-a-string">B.5 Splitting a String</h2>
+
+<p>The following code snippet demonstrates how to split a string of comma separated numbers into a String array, and then how to convert the numbers into an int array.  The String split() method returns a String[].</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">sampleString</span> <span class="o">=</span> <span class="s">"101,203,405"</span><span class="o">;</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">stringArray</span> <span class="o">=</span> <span class="n">sampleString</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">);</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">intArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">stringArray</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stringArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+   <span class="n">String</span> <span class="n">numberAsString</span> <span class="o">=</span> <span class="n">stringArray</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+   <span class="n">intArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">numberAsString</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Number of integers: "</span> <span class="o">+</span> <span class="n">intArray</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The integers are:"</span><span class="o">);</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">number</span> <span class="o">:</span> <span class="n">intArray</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="n">String</span> <span class="n">commaSeparated</span> <span class="o">=</span> <span class="s">"item1 , item2 , item3"</span><span class="o">;</span>
+<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">items</span> <span class="o">=</span> 
+<span class="k">new</span>  <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">commaSeparated</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">)));</span>
+</code></pre>
+</div>
+
+<h2 id="b6-some-string-methods">B.6 Some String Methods</h2>
+
+<p>The link to all String methods is the following.
+https://docs.oracle.com/javase/8/docs/api/java/lang/String.html</p>
+
+<p>In the following examples, s1 is a variable of type String
+* s1.equals(s2) returns boolean– true if s1 and s2 contain the same sequence of characters, and returns false otherwise.
+* s1.equalsIgnoreCase(s2) returns boolean  like equals but ignores case.   “cat”.equals(“Cat”) is false, while “cat”.equalsIgnoreCase(“Cat”) is true.
+* s1.length(), returns the number of characters in s1.
+* s1.charAt(N), returns char – the Nth character in the string where s1.charAt(0) is 1st, s1.charAt(1) is 2nd, and so on. The las position is s1.length() - 1.  “cat”.charAt(1) is ’a’.  An error occurs if the value of the parameter is less than zero or is greater than or equal to s1.length().
+* s1.substring(N,M), returns String, which is the characters of s1 in positions N through M-1, and the character in position M is not included. The subroutine s1.substring(N) returns the substring of s1 consisting of characters starting at position N up until the end of the string.
+* s1.indexOf(s2) returns integer. If String s2 occurs is substring of s1, then the returned value is the starting position of that substring. Otherwise, the returned value is -1. You can also use s1.indexOf(ch) to search for a char, ch, in s1. To find the first occurrence of x at or after position N, you can use s1.indexOf(x,N). To find the last occurrence of x in s1, use s1.lastIndexOf(x).
+* s1.compareTo(s2) is an integer-valued function that compares the two strings. If the strings are equal, the value returned is zero. If s1 is less than s2, the value returned is a number less than zero, and if s1 is greater than s2, the value returned is some number greater than zero. (If both of the strings consist entirely of lower case letters, or if they consist entirely of upper case letters, then “less than” and “greater than” refer to alphabetical order. Otherwise, the ordering is more complicated.)
+* s1.toUpperCase() returns String – returns a new string that is the uppercase of to s1,.  “Cat”.toUpperCase() is the string “CAT”.  s1.toLowerCase() is the lowercase equivalent.
+* s1.trim() returns String – returns a new string that is s1 with non-printing characters such as spaces and tabs trimmed from the beginning and from the end of the string.   “  fred “.trim() is the string “fred” </p>
+
+
+
+<div class="tags">
+    
+    <b>Tags: </b>
+    
+    
+    
+    
+    
+</div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 University of Mary Washington, Gusty Cooper. All rights reserved. <br />
+<p>Page last updated:</span> May 1, 2016<br/> Site last generated: May 5, 2016 <br />
+<p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: References
+  product: References
+  version: 0.0
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+
+    folderitems:
+    - title:
+      url: /titlepage/
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage/
+      output: pdf
+      type: frontmatter
+
+  - title: References
+    output: web, pdf
+    folderitems:
+
+    - title: References Home
+      url: /p2_landing_page/
+      output: web
+
+    - title: Jekyll Doc Theme 5.0
+      external_url: http://idratherbewriting.com/documentation-theme-jekyll/
+      output: web
+
+    - title: Javanotes 7.0
+      external_url: http://math.hws.edu/javanotes/index.html
+      output: web
+

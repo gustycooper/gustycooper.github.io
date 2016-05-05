@@ -1,0 +1,597 @@
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+:
+  title: "Let's Get started"
+  url: /gustycooper.github.io/
+  link: <a href="/gustycooper.github.io/">Let's Get started</a>
+
+
+ 
+mydoc_0_examples:
+  title: "Example Authoring"
+  url: /gustycooper.github.io/mydoc_0_examples/
+  link: <a href="/gustycooper.github.io/mydoc_0_examples/">Example Authoring</a>
+
+
+
+
+ 
+mydoc_1_computer_basics:
+  title: "Computer Basics"
+  url: /gustycooper.github.io/mydoc_1_computer_basics/
+  link: <a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a>
+
+
+ 
+mydoc_1_primitive_types:
+  title: "Primitive Types"
+  url: /gustycooper.github.io/mydoc_1_primitive_types/
+  link: <a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a>
+
+
+ 
+mydoc_1_algorithms:
+  title: "Algorithms"
+  url: /gustycooper.github.io/mydoc_1_algorithms/
+  link: <a href="/gustycooper.github.io/mydoc_1_algorithms/">Algorithms</a>
+
+
+ 
+mydoc_1_algorithms_programming:
+  title: "Algorithms, Programming"
+  url: /gustycooper.github.io/mydoc_1_algorithms_programming/
+  link: <a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a>
+
+
+ 
+mydoc_supported_features:
+  title: "Supported features"
+  url: /gustycooper.github.io/mydoc_supported_features/
+  link: <a href="/gustycooper.github.io/mydoc_supported_features/">Supported features</a>
+
+
+ 
+mydoc_about:
+  title: "About the theme author"
+  url: /gustycooper.github.io/mydoc_about/
+  link: <a href="/gustycooper.github.io/mydoc_about/">About the theme author</a>
+
+
+ 
+mydoc_support:
+  title: "Support"
+  url: /gustycooper.github.io/mydoc_support/
+  link: <a href="/gustycooper.github.io/mydoc_support/">Support</a>
+
+
+
+
+ 
+mydoc_2_simple_objects:
+  title: "Simple Objects"
+  url: /gustycooper.github.io/mydoc_2_simple_objects/
+  link: <a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a>
+
+
+
+
+ 
+mydoc_3_expressions:
+  title: "Expressions"
+  url: /gustycooper.github.io/mydoc_3_expressions/
+  link: <a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a>
+
+
+
+
+ 
+mydoc_4_control_flow:
+  title: "Control Flow"
+  url: /gustycooper.github.io/mydoc_4_control_flow/
+  link: <a href="/gustycooper.github.io/mydoc_4_control_flow/">Control Flow</a>
+
+
+
+
+ 
+mydoc_5_classes_objects:
+  title: "Classes and Objects"
+  url: /gustycooper.github.io/mydoc_5_classes_objects/
+  link: <a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a>
+
+
+
+
+ 
+mydoc_6_arrays_arraylists:
+  title: "Arrays and ArrayLists"
+  url: /gustycooper.github.io/mydoc_6_arrays_arraylists/
+  link: <a href="/gustycooper.github.io/mydoc_6_arrays_arraylists/">Arrays and ArrayLists</a>
+
+
+
+
+ 
+mydoc_7_graphics:
+  title: "Graphics"
+  url: /gustycooper.github.io/mydoc_7_graphics/
+  link: <a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a>
+
+
+
+
+ 
+mydoc_8_packages_ADT:
+  title: "Packages, Interfaces, ADTs"
+  url: /gustycooper.github.io/mydoc_8_packages_ADT/
+  link: <a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a>
+
+
+
+
+ 
+mydoc_9_recursion:
+  title: "Recursion"
+  url: /gustycooper.github.io/mydoc_9_recursion/
+  link: <a href="/gustycooper.github.io/mydoc_9_recursion/">Recursion</a>
+
+
+ 
+mydoc_9_searching:
+  title: "Searching"
+  url: /gustycooper.github.io/mydoc_9_searching/
+  link: <a href="/gustycooper.github.io/mydoc_9_searching/">Searching</a>
+
+
+ 
+mydoc_9_sorting:
+  title: "Sorting"
+  url: /gustycooper.github.io/mydoc_9_sorting/
+  link: <a href="/gustycooper.github.io/mydoc_9_sorting/">Sorting</a>
+
+
+
+
+ 
+mydoc_A_meta_language:
+  title: "Meta Language"
+  url: /gustycooper.github.io/mydoc_A_meta_language/
+  link: <a href="/gustycooper.github.io/mydoc_A_meta_language/">Meta Language</a>
+
+
+ 
+mydoc_A_string_manipulation:
+  title: "String Manipulation"
+  url: /gustycooper.github.io/mydoc_A_string_manipulation/
+  link: <a href="/gustycooper.github.io/mydoc_A_string_manipulation/">String Manipulation</a>
+
+
+ 
+mydoc_A_i_o:
+  title: "Input / Output"
+  url: /gustycooper.github.io/mydoc_A_i_o/
+  link: <a href="/gustycooper.github.io/mydoc_A_i_o/">Input / Output</a>
+
+
+ 
+mydoc_A_passing_parameters:
+  title: "Passing Parameters"
+  url: /gustycooper.github.io/mydoc_A_passing_parameters/
+  link: <a href="/gustycooper.github.io/mydoc_A_passing_parameters/">Passing Parameters</a>
+
+
+ 
+mydoc_A_exceptions:
+  title: "Exceptions"
+  url: /gustycooper.github.io/mydoc_A_exceptions/
+  link: <a href="/gustycooper.github.io/mydoc_A_exceptions/">Exceptions</a>
+
+
+ 
+mydoc_A_random_numbers:
+  title: "Random Numbers"
+  url: /gustycooper.github.io/mydoc_A_random_numbers/
+  link: <a href="/gustycooper.github.io/mydoc_A_random_numbers/">Random Numbers</a>
+
+
+
+
+ 
+mydoc_tag_archives_overview:
+  title: "Tag archives overview"
+  url: /gustycooper.github.io/mydoc_tag_archives_overview/
+  link: <a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a>
+
+
+ 
+tag_formatting:
+  title: "Formatting pages"
+  url: /gustycooper.github.io/tag_formatting/
+  link: <a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a>
+
+ 
+tag_navigation:
+  title: "Navigation pages"
+  url: /gustycooper.github.io/tag_navigation/
+  link: <a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a>
+
+ 
+tag_content_types:
+  title: "Content types pages"
+  url: /gustycooper.github.io/tag_content_types/
+  link: <a href="/gustycooper.github.io/tag_content_types/">Content types pages</a>
+
+ 
+tag_publishing:
+  title: "Publishing pages"
+  url: /gustycooper.github.io/tag_publishing/
+  link: <a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a>
+
+ 
+tag_special_layouts:
+  title: "Special layout pages"
+  url: /gustycooper.github.io/tag_special_layouts/
+  link: <a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a>
+
+ 
+tag_collaboration:
+  title: "Collaboration pages"
+  url: /gustycooper.github.io/tag_collaboration/
+  link: <a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a>
+
+ 
+tag_troubleshooting:
+  title: "Troubleshooting pages"
+  url: /gustycooper.github.io/tag_troubleshooting/
+  link: <a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a>
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+p1_landing_page:
+  title: "Inspirations"
+  url: /gustycooper.github.io/p1_landing_page/
+  link: <a href="/gustycooper.github.io/p1_landing_page/">Inspirations</a>
+
+
+ 
+p1_course_description:
+  title: "Course Description"
+  url: /gustycooper.github.io/p1_course_description/
+  link: <a href="/gustycooper.github.io/p1_course_description/">Course Description</a>
+
+
+ 
+p1_honor_code:
+  title: "Honor Code"
+  url: /gustycooper.github.io/p1_honor_code/
+  link: <a href="/gustycooper.github.io/p1_honor_code/">Honor Code</a>
+
+
+ 
+p1_textbook:
+  title: "Textbook"
+  url: /gustycooper.github.io/p1_textbook/
+  link: <a href="/gustycooper.github.io/p1_textbook/">Textbook</a>
+
+
+ 
+p1_responsibilities:
+  title: "Your Responsibilities"
+  url: /gustycooper.github.io/p1_responsibilities/
+  link: <a href="/gustycooper.github.io/p1_responsibilities/">Your Responsibilities</a>
+
+
+ 
+p1_disabilities:
+  title: "Students with Disabilities"
+  url: /gustycooper.github.io/p1_disabilities/
+  link: <a href="/gustycooper.github.io/p1_disabilities/">Students with Disabilities</a>
+
+
+
+
+ 
+p1_labs:
+  title: "Laboratory Assignments"
+  url: /gustycooper.github.io/p1_labs/
+  link: <a href="/gustycooper.github.io/p1_labs/">Laboratory Assignments</a>
+
+
+ 
+p1_projects:
+  title: "Programming Projects"
+  url: /gustycooper.github.io/p1_projects/
+  link: <a href="/gustycooper.github.io/p1_projects/">Programming Projects</a>
+
+
+ 
+p1_team_assignments:
+  title: "Team Assignments"
+  url: /gustycooper.github.io/p1_team_assignments/
+  link: <a href="/gustycooper.github.io/p1_team_assignments/">Team Assignments</a>
+
+
+ 
+p1_exams:
+  title: "Examinations"
+  url: /gustycooper.github.io/p1_exams/
+  link: <a href="/gustycooper.github.io/p1_exams/">Examinations</a>
+
+
+
+
+ 
+p1_grade_determination:
+  title: "Grade Determination"
+  url: /gustycooper.github.io/p1_grade_determination/
+  link: <a href="/gustycooper.github.io/p1_grade_determination/">Grade Determination</a>
+
+
+ 
+p1_midsemester_grades:
+  title: "Midsemester Grades"
+  url: /gustycooper.github.io/p1_midsemester_grades/
+  link: <a href="/gustycooper.github.io/p1_midsemester_grades/">Midsemester Grades</a>
+
+
+
+
+ 
+p1_course_agreement:
+  title: "Course Agreement"
+  url: /gustycooper.github.io/p1_course_agreement/
+  link: <a href="/gustycooper.github.io/p1_course_agreement/">Course Agreement</a>
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+p2_landing_page:
+  title: "References Home"
+  url: /gustycooper.github.io/p2_landing_page/
+  link: <a href="/gustycooper.github.io/p2_landing_page/">References Home</a>
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+labs_landing_page:
+  title: "Labs"
+  url: /gustycooper.github.io/labs_landing_page/
+  link: <a href="/gustycooper.github.io/labs_landing_page/">Labs</a>
+
+
+
+
+ 
+labs_lab01_01:
+  title: "Labs - First Program"
+  url: /gustycooper.github.io/labs_lab01_01/
+  link: <a href="/gustycooper.github.io/labs_lab01_01/">Labs - First Program</a>
+
+
+ 
+labs_lab01_02:
+  title: "Labs - Second Program"
+  url: /gustycooper.github.io/labs_lab01_02/
+  link: <a href="/gustycooper.github.io/labs_lab01_02/">Labs - Second Program</a>
+
+
+
+
+ 
+labs_lab02_01:
+  title: "Labs - String Program"
+  url: /gustycooper.github.io/labs_lab02_01/
+  link: <a href="/gustycooper.github.io/labs_lab02_01/">Labs - String Program</a>
+
+
+ 
+labs_lab02_02:
+  title: "Labs - MyString Class"
+  url: /gustycooper.github.io/labs_lab02_02/
+  link: <a href="/gustycooper.github.io/labs_lab02_02/">Labs - MyString Class</a>
+
+
+
+
+ 
+labs_lab03_01:
+  title: "Labs - Java Expressions in Codepad"
+  url: /gustycooper.github.io/labs_lab03_01/
+  link: <a href="/gustycooper.github.io/labs_lab03_01/">Labs - Java Expressions in Codepad</a>
+
+
+ 
+labs_lab03_02:
+  title: "Labs - Split the Bill"
+  url: /gustycooper.github.io/labs_lab03_02/
+  link: <a href="/gustycooper.github.io/labs_lab03_02/">Labs - Split the Bill</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+news:
+  title: "News"
+  url: "news"
+  link: "<a href='/news/'>News</a>"
+
+
+
+
+
+
+
+
+:
+  title: "CPSC 220"
+  url: ""
+  link: "<a href='//'>CPSC 220</a>"
+
+
+
+p1_landing_page:
+  title: "Syllabus"
+  url: "p1_landing_page"
+  link: "<a href='/p1_landing_page/'>Syllabus</a>"
+
+
+
+labs_landing_page:
+  title: "Labs"
+  url: "labs_landing_page"
+  link: "<a href='/labs_landing_page/'>Labs</a>"
+
+
+
+p2_landing_page:
+  title: "References"
+  url: "p2_landing_page"
+  link: "<a href='/p2_landing_page/'>References</a>"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+news:
+  title: "News"
+  url: "news"
+  link: "<a href='/news/'>News</a>"
+
+
+
+
+
+
+
+
+:
+  title: "CPSC 220"
+  url: ""
+  link: "<a href='//'>CPSC 220</a>"
+
+
+
+p1_landing_page:
+  title: "Syllabus"
+  url: "p1_landing_page"
+  link: "<a href='/p1_landing_page/'>Syllabus</a>"
+
+
+
+labs_landing_page:
+  title: "Labs"
+  url: "labs_landing_page"
+  link: "<a href='/labs_landing_page/'>Labs</a>"
+
+
+
+p2_landing_page:
+  title: "References"
+  url: "p2_landing_page"
+  link: "<a href='/p2_landing_page/'>References</a>"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This describes algorithms and programming">
+<meta name="keywords" content="getting_started,  java, algorithms, design, programming">
+<title>Algorithms and Programming  | UMW CPSC 220</title>
+<link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/gustycooper.github.io/css/modern-business.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/customstyles.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/gustycooper.github.io/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/gustycooper.github.io/js/toc.js"></script>
+<script src="/gustycooper.github.io/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/gustycooper.github.io/images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.com/gustycooper.github.io/feed.xml">
+
+
+
+
+ 
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="/gustycooper.github.io/">&nbsp;<span class="projectTitle"> CPSC 220</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/gustycooper.github.io/news/">News</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course Artifacts<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/gustycooper.github.io//">CPSC 220</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p1_landing_page/">Syllabus</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/labs_landing_page/">Labs</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p2_landing_page/">References</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll/" target="_blank">Jeykyll Doc Theme 5.0</a></li>
+                        
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">fa-codes</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<!-- Send feedback function -->
+<script>
+function SendLinkByMail(href) {
+var subject= "UMW CPSC 220 feedback";
+var body = "I have some feedback about the Algorithms and Programming page: ";
+body += window.location.href;
+body += "";
+var uri = "mailto:gusty@umw.edu?subject=";
+uri += encodeURIComponent(subject);
+uri += "&body=";
+uri += encodeURIComponent(body);
+window.location.href = uri;
+}
+</script>
+
+<li><a href="javascript:(function()%7BSendLinkByMail()%3B%7D)()%3B" target="_blank"><i class="fa fa-envelope-o"></i> Feedback</a></li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/gustycooper.github.io/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/gustycooper.github.io/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Algorithms and Programming">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">CPSC 220 0.0</li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Start Here</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/">Let's Get started</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_0_examples/">Example Authoring</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Introduction</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms/">Algorithms</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_supported_features/">Supported features</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_about/">About the theme author</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_support/">Support</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Simple Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Expressions</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Control Flow</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_control_flow/">Control Flow</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Classes and Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Arrays and ArrayLists</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_6_arrays_arraylists/">Arrays and ArrayLists</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Graphics</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Packages, Interfaces, ADTs</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Recursion, Searching, Sorting</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_recursion/">Recursion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_searching/">Searching</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_sorting/">Sorting</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Reference Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_meta_language/">Meta Language</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_string_manipulation/">String Manipulation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_i_o/">Input / Output</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_passing_parameters/">Passing Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_exceptions/">Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_random_numbers/">Random Numbers</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Tag archives</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Tag archive pages</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_content_types/">Content types pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Algorithms and Programming</h1>
+</div>
+
+<div class="post-content">
+
+   
+    <div class="summary">This describes algorithms and programming</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/edit/reviews/mydoc_1_algorithms_programming/" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h2 id="programming">Programming</h2>
+
+<p>Writing a program is primarily creating algorithms and data structures.  In fact you can purchase a book published in 1976 by Niklaus Wirth (the creator of the programming language Pascal) that is titled, Algorithms + Data Structures = Programs.  At this point the only data structures we know are the Java elementary data types, but we will learn others and how to create our own.   Creating the algorithms for programs is similar to that in BBDT.14.  We will use the same control flows; however, we have to be more precise and understand the syntax of the programming language, which is Java for us.</p>
+
+<p>There are two basic types of knowledge – knowledge what and knowledge how.  Knowledge what is just facts that you stick in your brain.  For example, you know the world is round and that the U.S. dropped the first atomic bomb on Hiroshima.  Knowledge how is knowing how to do things.  For example, you know how to ride a bicycle and how to cook a hamburger.   Programming involves both types of knowledge.  The knowledge we want to establish in this class is knowledge how – we want to learn how to write programs.  We will learn knowledge what with respect to Java and its intricacies, but the knowledge how we learn will be applicable to any programming language.</p>
+
+<p>We will update the basics of programming to involve the following aspects.</p>
+
+<ul>
+  <li>Programming language syntax
+    <ul>
+      <li>This is knowledge what</li>
+      <li>The syntax is tedious and you have to understand it.</li>
+    </ul>
+  </li>
+  <li>Creating an algorithm and its data structures that solves a problem
+    <ul>
+      <li>This is knowledge how</li>
+      <li>This is the semantics or meaning of our program.</li>
+      <li>This is creative that gets better the more you practice.</li>
+      <li>This is the part we really want to learn this semester, and we have lots of labs and projects on which to practice</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="types-of-programming-errors">Types of Programming Errors</h2>
+
+<p>We will encounter two types of errors in our programming.</p>
+
+<ul>
+  <li>Syntax – missing semicolon, missing {
+    <ul>
+      <li>These are compile time errors.  For BlueJ, you have to select the Compile button.  For Netbeans, these will be shown as you create code.</li>
+      <li>These are easy to discover.</li>
+    </ul>
+  </li>
+  <li>Semantics – Code does not do what it is supposed to do.
+    <ul>
+      <li>These are runtime errors.</li>
+      <li>These can be difficult to discover.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="programming--input-and-output">Programming – Input and Output</h2>
+
+<p>Another way to think about programs is input and output.  A program will accept some input data, perform its algorithm, and generate output data.  The computer diagram in Figure BBDT-2 shows input and output as two primary boxes.  The program executes on the CPU transforming the input into output.</p>
+
+<h2 id="programming--data-structures-and-variables">Programming – Data Structures and Variables</h2>
+
+<p>We have constructed a model of programming where our program will consist of the following.</p>
+
+<ul>
+  <li>Input – there will be some input to our program.</li>
+  <li>Data Structures – our program will represent the input as some data in the form of structures.  Our program will also create various intermediate forms of data in the form of structures.  At this point we do not have a clear picture of these data structures; however, you can envision the simplest of data structures, which is just a variable that is one of the Java elementary data types.  Later we will learn how variables can be more complex data structures.</li>
+  <li>Algorithms – our program will have various algorithms that transform data from one format to another.</li>
+  <li>Output – our program will generate some output based upon the input and our algorithms and data structures.</li>
+</ul>
+
+<h2 id="programming--literals-and-variables">Programming – Literals and Variables</h2>
+
+<p>A literal is something that you know its value upon examination.  For example, the numbers 1, 3.14159, 10000, and 512.12 are literals.</p>
+
+<p>We will study strings, which also have literals – examples are “Gusty” and “This is a String Literal.”</p>
+
+<p>Variables are names that we assign values to.  See next section for declaring variables of elementary data types.</p>
+
+<h2 id="programming--declaring-variables-of-elementary-data-types">Programming – Declaring Variables of Elementary Data Types</h2>
+
+<p>We have learned that Java elementary data types fit in specific memory locations.  For example, an int will fit in 4 consecutive bytes.  When we declare a variable of these types, we are allocating memory for that variable.  The contents of that variable are stored in the memory locations allocated to the variable.  The meta-language for declaring variables is the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;type-name&gt; &lt;variable-name-or-names&gt;;
+</code></pre>
+</div>
+
+<p>where &lt;type-name&gt; is <code class="highlighter-rouge">byte</code>, <code class="highlighter-rouge">short</code>, <code class="highlighter-rouge">char</code>, <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">long</code>, <code class="highlighter-rouge">float</code>, or <code class="highlighter-rouge">double</code>.  A variable name must begin with a letter and followed by letters, numbers, and underscore.  The following are some example declarations.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">firstInitial</span><span class="o">,</span> <span class="n">middleInitial</span><span class="o">,</span> <span class="n">lastInitial</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">principal</span><span class="o">;</span>    <span class="c1">// Amount of money invested.</span>
+<span class="kt">double</span> <span class="n">interestRate</span><span class="o">;</span> <span class="c1">// Rate as a decimal, not percentage.</span>
+</code></pre>
+</div>
+
+<p>You can also assign a value with the declaration.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">myPi</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h2 id="camelcase">camelCase</h2>
+
+<p>You will notice the style of naming variables where they begin with a lowercase letter with an uppercase letter helping you read the variable (i.e., interestRate).  This style of naming is referred to as camelCase, and it is quite popular in object-oriented programming.  You could alternatively use the underscore (_) to help read (i.e, interest_rate).</p>
+
+<h2 id="declaring-variables-memory-types-and-values">Declaring Variables, Memory, Types, and Values</h2>
+
+<p>In Java each variable is declared to be a specific type.  A variable is a memory location that has been given a name so you can reference it.  The variable contains a specific value, which must the specified type.  Your program will manipulate (either access or change) the value of the variable.</p>
+
+<h2 id="programming--java-is-a-strongly-typed-language">Programming – Java is a Strongly Typed Language</h2>
+
+<p>All variables in Java will be a specific type, for example int or double.  Once you have a variable of a specific type, you cannot change the type – for example an int variable will always be an int.  Sometimes you have to convert from one type to another, and there are some cases where Java will automatically perform the type conversion.  For example, if you mix int and double in expressions, Java will automatically convert the int to a double.  This makes sense intuitively.  In other cases, Java will not make the conversion; however, you can tell Java to perform the conversion.  Suppose I have the following two variables defined.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>We know that an int is four-bytes long while a byte is just a single byte, which means the set of values for the variable number is much larger that the set of values for the variable bb.  This means the following assignment is illegal in Java.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">bb</span> <span class="o">=</span> <span class="n">number</span><span class="o">;</span> <span class="c1">// illegal assignment</span>
+</code></pre>
+</div>
+
+<p>However, we know that the current value in number is 4, which fits into a byte.  We can perform the following cast to make the assignment legal.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">bb</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">number</span><span class="o">;</span> <span class="c1">// legal assignment with (byte) cast</span>
+</code></pre>
+</div>
+
+<p>An example of casting a double to a int is shown as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">myPi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span>
+<span class="n">number</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">myPi</span><span class="o">;</span> <span class="c1">// assigns 3 to number</span>
+</code></pre>
+</div>
+
+<h2 id="software-development-process">Software Development Process</h2>
+
+<p>Programming is typically done within the context of a software development process.  A software develop process can be thought of as an algorithm for creating programs.  I will often refer to this process as ASDIDM, where this is an acronym for the following sequence of steps that solves the problem of creating programs.</p>
+
+<ul>
+  <li>Analyze – understand the problem</li>
+  <li>Specify – state what the problem is.  This captures the requirements of the software.  This is usually accomplished using text that the programmer and the end-user can read and agree upon.  Large software development organizations will have specialized requirements management tools.</li>
+  <li>Design – create how the problem is solved.  This captures the high-level algorithms of the software.  We will use pseudo code similar to that show in section BBDT.13. (Eck 4.6)</li>
+  <li>Implement – create the code. This step will be our main focus.  Sometimes the design is detailed enough that the code can (somewhat) easily be created from the design.  At other times, the design captures the overall ideas leaving more effort to create the code.</li>
+  <li>Debug – test the code.  We can divide this step into two activities.  One is creating test cases and running the test cases.  Sometimes the test cases do not work.  When this happens we can perform the second activity, which is debugging the code to see why the test case did not work.  The term debug originated when computers were large machines with relays.  A moth got stuck in a relay causing the program to run incorrectly.  The program was debugged.</li>
+  <li>Maintain – correct problems and add new capabilities to the code.  The maintain step is usually accomplished by performing a new iteration of ASDIDM, where you fix bugs in your software and/or add new capabilities.</li>
+</ul>
+
+<p>This class will focus on programming, which primarily involves design, implement, and debug/test.  I will provide you with problems, which can be considered the specifications.  You will have to design your program, create the code, and test your code to make sure it satisfies the specified requirements.</p>
+
+<h3 id="functional-decomposition-development">Functional Decomposition Development</h3>
+
+<p>XXX</p>
+
+<h3 id="object-oriented-development">Object-oriented Development</h3>
+
+<p>XXX
+We will discuss this in more detail during week 5.</p>
+
+<h3 id="agile-software-development">Agile Software Development</h3>
+
+<p>XXX</p>
+
+<h2 id="creating-programs--editors-and-ide-eck-26httpmathhwsedujavanotesc2s6html">Creating Programs – Editors and IDE (<a href="http://math.hws.edu/javanotes/c2/s6.html">Eck 2.6</a>)</h2>
+
+<p>We will write Java programs or Java code.  Java code is simply a text file so you can use just about any text editor create the code.  For example, I sometime use VIM, and old, but trustworthy, UNIX editor.  When using VIM, I can compile my Java code by using the javac compiler from my UNIX command shell.  I can then run the resulting byte code using the java byte-code interpreter from my UNIX command shell.</p>
+
+<p>We will use an Interactive Development Environment to create and run our Java code.  We will begin with BlueJ, which is a simple IDE.  I think BlueJ will allow you to more easily become familiar with objects.  In week 5 we will begin using Netbeans, which is more complex.  Netbeans has many features – I do not know how to use all of the features.</p>
+
+<h2 id="jvm-jdk-and-jre-eck-26httpmathhwsedujavanotesc2s6html">JVM, JDK, and JRE (<a href="http://math.hws.edu/javanotes/c2/s6.html">Eck 2.6</a>)</h2>
+
+<p>JVM, JDK, and JRE area often mentioned when discussing Java.  They can be confusing at first, and I sometimes still get them confused.  You can always look them up.
+* JVM – Java Virtual Machine.  This is the code that executes the Java Byte Code.  You can think of Java Byte Code as Java specific assembly language.  The JVM is like a virtual computer that knows how to execute the Java Byte Code.
+* JRE – Java Runtime Environment.  The JRE includes the JVM as well as the various libraries that come with Java and you will need to execute your Java byte code.
+* JDK – Java Development Kit.  The JDK includes the JRE as well as the development tools such as the Java compiler and Java debugger.</p>
+
+<p>We will use Java Standard Edition Development Kit 8.</p>
+
+<h2 id="java-syntax--an-introduction">Java Syntax – An Introduction</h2>
+
+<p>Java syntax can be a bit confusing at first, as it has strategically placed semicolons, curly brackets, and parentheses.
+* Semicolon – a single statement is terminated with a semicolon.  For example an assignment statement,
+x = 3.0;
+* Curly braces – a block of statements is enclosed by curly braces {}.  The closing curly brace is not terminated by a semicolon.  For example the simple class and main function show curly braces.
+public class HelloWorld {
+   public static void main(String[] args) {
+      System.out.println(“Hello World!”);
+   }
+}
+* Parentheses are used in expressions to force a specific expression evaluation; however, parentheses are also used to enclose the controlling expressions of conditionals and loops.  For example, the following if statement shows parentheses, curly braces, and semicolons</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>There are other syntax rules such as operators in expressions, keywords for if statements, keywords for loops, etc.  We will tackle these as we move forward.</p>
+
+<p>The spacing in Java does not make any difference.  The previous if statement can be coded as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">;}</span> <span class="k">else</span> <span class="o">{</span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">;}</span>
+</code></pre>
+</div>
+
+<p>You should establish a good programming style that makes your code easy to read.</p>
+
+<h2 id="output-to-the-standard-output-stream">Output to the Standard Output Stream</h2>
+
+<p>For our first program, we will need to write output to the Java standard output stream, which in BlueJ will be a window called the BlueJ Terminal Window.  A terminal window is a text-based window for interacting with UNIX or LINUX.  Sometimes, I may call the standard output stream the system console.  The standard output stream is already open, and you do not have to import anything to access the method.  There are two methods that we will use which are the following.
+* System.out.print(data) – this prints data to the current line on the terminal, leaving the terminal on that line.
+* System.out.println(data) – this prints data to the current line on the terminal and puts a line feed afterwards, advancing the terminal to the next line</p>
+
+<p>The data will be converted to a printable format.  If you have several variables to print you have to “concatenate” them.  The following is an example.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Num</span> <span class="mi">1</span> <span class="n">is</span> <span class="err">“</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="err">“</span> <span class="n">and</span> <span class="n">num</span> <span class="mi">2</span> <span class="n">is</span> <span class="err">“</span> <span class="o">+</span> <span class="mf">3.14</span> <span class="o">+</span> <span class="err">“</span><span class="o">.</span><span class="err">”</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h2 id="java-blocks-sequence-of-assignment-statements">Java Blocks, Sequence of Assignment Statements</h2>
+
+<p>The most used statement in programming is an assignment statement.  We have already used it in several of the preceding sections.  The following are some example Java assignment statements.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span>        
+<span class="n">i</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>      
+<span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>  <span class="c1">// declares l and assigns it a value</span>
+</code></pre>
+</div>
+
+<p>In Java the meta-language for an assignment is the following.</p>
+
+<p>&lt;variable&gt; = &lt;expression&gt;;</p>
+
+<p>In the previous examples, <expression> was a simple numeric literal.  We will study expressions in more detail shortly.  The third example combines the declaration of a variable with an assignment statement.</expression></p>
+
+<p>In Java we can create a block of statements by enclosing them between { and }.  The following is a block of the preceding statements.  You should notice that there are no semicolons after { or }.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">{</span>
+   <span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span>        
+   <span class="n">i</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>      
+   <span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>  <span class="c1">// declares l and assigns it a value</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>We will use a block of statements in our first Java program.  We will use a block of statements many times throughout this course.</p>
+
+<p>We will learn that the assignment operator (=) is just like other operators, and it can be mixed into complex expressions; however, undersanding the semantics of when using assignment in an expression can be difficult.  You are best served by using simple assignment statements.</p>
+
+<h2 id="first-java-program-eck-21">First Java Program (Eck 2.1)</h2>
+
+<p>Our fist Java program will simply manipulate the elementary Java data types and print some information to the output console.  Every program in Java must be in a class.  We will learn more about classes next week.  The name of the file and class must match.  For the most part the IDE will ensure this for you.  You first program will look something like the following, which is a classic hello world program.  More details are provided in Lab 1.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Hello</span> <span class="n">World</span><span class="o">!</span><span class="err">”</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="computer-science">Computer Science</h2>
+
+<p>Computer science can mean several things.  You may think of computer science as writing programs, establishing networks, putting various workstations on the networks, creating websites, creating databases, removing malware from computers, or any combination of these things.</p>
+
+<p>A more theoretical definition of computer science is studying what can be computed.  By computed we can construct an algorithm (and its accompanying data structures) that will execute its sequence of steps and terminate when finished.  We know that we can write computer programs to perform computations, but computer scientists also use abstract machines to determine computability.  A Turing Machine – named for its creator Alan Turing who had the movie Imitation Game created about him – is an example abstract machine.  The following is a question about the 3N+1 Algorithm discussed earlier.</p>
+
+<p>Will the algorithm for 3N+1 terminate for all possible initial values of N?</p>
+
+<p>We know it terminates for everything tried, but we have not answered the general question.</p>
+
+<p>For this class, we will consider computer science to be <strong>designing, analyzing, and evaluating algorithms and their accompanying data structure</strong>.</p>
+
+
+<div class="tags">
+    
+    <b>Tags: </b>
+    
+    
+    
+    <a href="/gustycooper.github.io/tag_getting_started" class="btn btn-default navbar-btn cursorNorm" role="button">getting_started</a>
+    
+    
+    
+</div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 University of Mary Washington, Gusty Cooper. All rights reserved. <br />
+<p>Page last updated:</span> May 1, 2016<br/> Site last generated: May 5, 2016 <br />
+<p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+</body>
+
+</html>

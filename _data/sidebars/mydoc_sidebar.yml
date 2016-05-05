@@ -1,0 +1,209 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: CPSC 220
+  version: 0.0
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage/
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage/
+      output: pdf
+      type: frontmatter
+
+  - title: Start Here
+    output: web, pdf
+    folderitems:
+
+    - title: Let's Get started
+      url: /
+      type: homepage
+      output: web, pdf
+
+    - title: Example Authoring
+      url: /mydoc_0_examples/
+      output: web, pdf
+
+  - title: Introduction
+    output: web, pdf
+    folderitems:
+
+    - title: Computer Basics
+      url: /mydoc_1_computer_basics/
+      output: web, pdf
+
+    - title: Primitive Types
+      url: /mydoc_1_primitive_types/
+      output: web, pdf
+
+    - title: Algorithms
+      url: /mydoc_1_algorithms/
+      output: web, pdf
+
+    - title: Algorithms, Programming
+      url: /mydoc_1_algorithms_programming/
+      output: web, pdf
+
+    - title: Supported features
+      url: /mydoc_supported_features/
+      output: web, pdf
+
+    - title: About the theme author
+      url: /mydoc_about/
+      output: web, pdf
+
+    - title: Support
+      url: /mydoc_support/
+      output: web, pdf
+
+  - title: Simple Objects
+    output: web, pdf
+    folderitems:
+
+    - title: Simple Objects
+      url: /mydoc_2_simple_objects/
+      output: web, pdf
+
+  - title: Expressions
+    output: web, pdf
+    
+    folderitems:
+    - title: Expressions
+      url: /mydoc_3_expressions/
+      output: web, pdf
+
+  - title: Control Flow
+    output: web, pdf
+    
+    folderitems:
+    - title: Control Flow
+      url: /mydoc_4_control_flow/
+      output: web, pdf
+
+  - title: Classes and Objects
+    output: web, pdf
+    
+    folderitems:
+    - title: Classes and Objects
+      url: /mydoc_5_classes_objects/
+      output: web, pdf
+
+  - title: Arrays and ArrayLists
+    output: web, pdf
+    
+    folderitems:
+    - title: Arrays and ArrayLists
+      url: /mydoc_6_arrays_arraylists/
+      output: web, pdf
+
+  - title: Graphics
+    output: web, pdf
+    
+    folderitems:
+    - title: Graphics
+      url: /mydoc_7_graphics/
+      output: web, pdf
+
+  - title: Packages, Interfaces, ADTs
+    output: web, pdf
+    
+    folderitems:
+
+    - title: Packages, Interfaces, ADTs
+      url: /mydoc_8_packages_ADT/
+      output: web, pdf
+
+  - title: Recursion, Searching, Sorting
+    output: web, pdf
+    
+    folderitems:
+
+    - title: Recursion
+      url: /mydoc_9_recursion/
+      output: web, pdf
+
+    - title: Searching
+      url: /mydoc_9_searching/
+      output: web, pdf
+
+    - title: Sorting
+      url: /mydoc_9_sorting/
+      output: web, pdf
+
+  - title: Reference Information
+    output: web, pdf
+    
+    folderitems:
+
+    - title: Meta Language
+      url: /mydoc_A_meta_language/
+      output: web, pdf
+
+    - title: String Manipulation
+      url: /mydoc_A_string_manipulation/
+      output: web, pdf
+
+    - title: Input / Output
+      url: /mydoc_A_i_o/
+      output: web, pdf
+
+    - title: Passing Parameters
+      url: /mydoc_A_passing_parameters/
+      output: web, pdf
+
+    - title: Exceptions
+      url: /mydoc_A_exceptions/
+      output: web, pdf
+
+    - title: Random Numbers
+      url: /mydoc_A_random_numbers/
+      output: web, pdf
+
+  - title: Tag archives
+    output: web
+    folderitems:
+
+    - title: Tag archives overview
+      url: /mydoc_tag_archives_overview/
+      output: web
+
+      subfolders:
+      - title: Tag archive pages
+        output: web
+        subfolderitems:
+
+        - title: Formatting pages
+          url: /tag_formatting/
+          output: web
+
+        - title: Navigation pages
+          url: /tag_navigation/
+          output: web
+
+        - title: Content types pages
+          url: /tag_content_types/
+          output: web
+
+        - title: Publishing pages
+          url: /tag_publishing/
+          output: web
+
+        - title: Special layout pages
+          url: /tag_special_layouts/
+          output: web
+
+        - title: Collaboration pages
+          url: /tag_collaboration/
+          output: web
+
+        - title: Troubleshooting pages
+          url: /tag_troubleshooting/
+          output: web

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Lab 1, First Program">
+<meta name="keywords" content=" first program">
+<title>First Program (Labs - Lab 1)  | UMW CPSC 220</title>
+<link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/gustycooper.github.io/css/modern-business.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/customstyles.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/gustycooper.github.io/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/gustycooper.github.io/js/toc.js"></script>
+<script src="/gustycooper.github.io/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/gustycooper.github.io/images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.com/gustycooper.github.io/feed.xml">
+
+
+
+
+ 
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="/gustycooper.github.io/">&nbsp;<span class="projectTitle"> CPSC 220</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/gustycooper.github.io/news/">News</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course Artifacts<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/gustycooper.github.io//">CPSC 220</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p1_landing_page/">Syllabus</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/labs_landing_page/">Labs</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p2_landing_page/">References</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll/" target="_blank">Jeykyll Doc Theme 5.0</a></li>
+                        
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">fa-codes</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<!-- Send feedback function -->
+<script>
+function SendLinkByMail(href) {
+var subject= "UMW CPSC 220 feedback";
+var body = "I have some feedback about the First Program (Labs - Lab 1) page: ";
+body += window.location.href;
+body += "";
+var uri = "mailto:gusty@umw.edu?subject=";
+uri += encodeURIComponent(subject);
+uri += "&body=";
+uri += encodeURIComponent(body);
+window.location.href = uri;
+}
+</script>
+
+<li><a href="javascript:(function()%7BSendLinkByMail()%3B%7D)()%3B" target="_blank"><i class="fa fa-envelope-o"></i> Feedback</a></li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/gustycooper.github.io/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/gustycooper.github.io/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="First Program (Labs - Lab 1)">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Labs 0.0</li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Labs</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_landing_page/">Labs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Lab 1</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab01_01/">Labs - First Program</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab01_02/">Labs - Second Program</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Lab 2</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_01/">Labs - String Program</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_02/">Labs - MyString Class</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Lab 3</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="/gustycooper.github.io/labs_lab03_01/">Labs - Java Expressions in Codepad</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_02/">Labs - Split the Bill</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">First Program (Labs - Lab 1)</h1>
+</div>
+
+<div class="post-content">
+
+   
+    <div class="summary">Lab 1, First Program</div>
+   
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/edit/reviews/labs_lab03_01/" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h2 id="create-java-expressions--10-points">Create Java Expressions – 10 Points</h2>
+<p><strong>Points</strong>: Understand this entire section for 10 points.  If you do not understand Java expressions, this section provides you with the opportunity to practice in the BlueJ Codepad.  The BlueJ Codepad is a nice tool that I use to experiment with Java features.  If you understand Java expressions, then proceed to the next section.</p>
+
+<p>Expressions are a central component of programming.  You will use expressions on the right-hand side of an assignment statement, controlling if statements, controlling switch statements, controlling loop statements, as actual parameters, and as the return expression.  You have to master expressions to be a good programmer.  For the most part, expressions are intuitive; however, mixing types can be tricky, Boolean expressions require careful thought, and Java has several fancy operators such as ++, +=, *=, and ? :.  The more you practice creating expressions, the better programmer you will be.</p>
+
+<p>Use the BlueJ Codepad window to create arithmetic expressions so that you understand how operators and types interact.  When creating statements in the BlueJ Codepad, the semicolon, which terminates Java statements, can be inserted or omitted.  When a statement in the BlueJ Codepad does not have a semicolon the BlueJ Codepad will display the results.  Consider the following several example statements as entered into the BlueJ Codepad with and without semicolons.  The font colors are indicative of the font colors in BlueJ Codepad.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">ten</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="n">x</span>
+<span class="mf">3.141592653589793</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+<span class="n">ten</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="mi">11</span>   <span class="o">(</span><span class="kt">int</span><span class="o">)</span>
+<span class="kt">double</span> <span class="n">y</span><span class="o">;</span>
+<span class="nl">Note:</span> <span class="n">Codepad</span> <span class="n">variables</span> <span class="n">are</span> <span class="n">automatically</span> <span class="n">initialized</span>
+ <span class="n">in</span> <span class="n">the</span> <span class="n">same</span> <span class="n">way</span> <span class="n">as</span> <span class="n">instance</span> <span class="n">fields</span><span class="o">.</span>
+<span class="n">y</span>
+<span class="mf">0.0</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="mf">13.141592653589793</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">300</span><span class="o">;</span>
+<span class="nl">Error:</span> <span class="n">incompatible</span> <span class="nl">types:</span> <span class="n">possible</span> <span class="n">lossy</span> <span class="n">conversion</span> <span class="n">from</span> <span class="kt">int</span> <span class="n">to</span> <span class="kt">byte</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">128</span><span class="o">;</span>
+<span class="nl">Error:</span> <span class="n">incompatible</span> <span class="nl">types:</span> <span class="n">possible</span> <span class="n">lossy</span> <span class="n">conversion</span> <span class="n">from</span> <span class="kt">int</span> <span class="n">to</span> <span class="kt">byte</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">127</span><span class="o">;</span>  <span class="c1">// finally</span>
+<span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">300</span><span class="o">;</span>
+<span class="n">bb</span>
+<span class="mi">44</span>   <span class="o">(</span><span class="kt">byte</span><span class="o">)</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">255</span>
+<span class="o">-</span><span class="mi">1</span>   <span class="o">(</span><span class="kt">byte</span><span class="o">)</span>
+<span class="kt">boolean</span> <span class="n">myBool</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="o">;</span>
+<span class="n">myBool</span>
+<span class="nf">true</span>   <span class="p">(</span><span class="kt">boolean</span><span class="o">)</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">5.0</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">dd</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">e</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">?</span> <span class="mf">20.0</span> <span class="o">:</span> <span class="mf">25.0</span><span class="o">;</span>
+<span class="n">e</span>
+<span class="mf">20.0</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+</code></pre>
+</div>
+
+<p>I have provided a list of expressions that you should enter into the BlueJ Codepad, but you should experiment with your own expressions.  Be sure to notice which of the following is terminated with a semicolon and enter them as such.  I will ask you to evaluate expressions on tests.  The following are words from David Eck’s book describing Java operators.</p>
+
+<p>Here is a listing of the operators discussed in this section, listed in order from highest precedence (evaluated first) to lowest precedence (evaluated last):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descriptions</th>
+      <th>Operators</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Unary operators</td>
+      <td>++, –, !, unary -, unary +, type-cast</td>
+    </tr>
+    <tr>
+      <td>Multiplication and division</td>
+      <td>*,  /,  %</td>
+    </tr>
+    <tr>
+      <td>Addition and subtraction</td>
+      <td>+,  -</td>
+    </tr>
+    <tr>
+      <td>Relational operators</td>
+      <td>&lt;,  &gt;,  &lt;=,  &gt;=</td>
+    </tr>
+    <tr>
+      <td>Equality and inequality</td>
+      <td>==,  !=</td>
+    </tr>
+    <tr>
+      <td>Boolean and</td>
+      <td>&amp;&amp;</td>
+    </tr>
+    <tr>
+      <td>Boolean or</td>
+      <td>||</td>
+    </tr>
+    <tr>
+      <td>Conditional operator</td>
+      <td>?:</td>
+    </tr>
+    <tr>
+      <td>Assignment operators</td>
+      <td>=,  +=,  -=,  *=,  /=,  %=</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Operators on the same line have the same precedence. When operators of the same precedence are strung together in the absence of parentheses, unary operators and assignment operators are evaluated right-to-left, while the remaining operators are evaluated left-to-right. For example, A<em>B/C means (A</em>B)/C, while A=B=C means A=(B=C).</p>
+
+<p>The following are examples of expression evaluation questions I will ask on tests.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">24</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.123</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">5</span><span class="o">;</span>               <span class="c1">// What is the value of j?</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">5</span><span class="o">;</span>            <span class="c1">// What is the value of d? </span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mf">5.0</span><span class="o">;</span>                 <span class="c1">// What is the value of d?</span>
+<span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">false</span><span class="o">;</span>   <span class="c1">// What is the value of b?</span>
+<span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">||</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span>      <span class="c1">// What is the value of c?</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span>                   <span class="c1">// What is the value of c?</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="mi">20</span> <span class="o">:</span> <span class="mi">21</span><span class="o">;</span>         <span class="c1">// What is the value of d?</span>
+<span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="o">+</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">6</span><span class="o">;</span>          <span class="c1">// What is the value of y</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">3</span><span class="o">;</span>                   <span class="c1">// What is the value of i?  </span>
+                             <span class="c1">// Maybe this statement is illegal.</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="mi">25</span><span class="o">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">;</span>       <span class="c1">// What is the value of d?</span>
+</code></pre>
+</div>
+
+<p>As you work through the above and following expressions, you should practice evaluating them so that you know the answers and are prepared for our tests.  Be sure to create expressions that use all of the Java operators.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">oneMillion</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">mystery</span> <span class="o">=</span> <span class="n">oneMillion</span> <span class="o">*</span> <span class="n">oneMillion</span><span class="o">;</span> <span class="c1">// -727379968</span>
+<span class="n">oneMillion</span> <span class="c1">// 1000000</span>
+<span class="n">mystery</span> <span class="c1">// -727379968</span>
+<span class="kt">double</span> <span class="n">unitPrice</span> <span class="o">=</span> <span class="mf">4.35</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">totalPrice</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">unitPrice</span><span class="o">;</span> <span class="c1">// 434.999999999999994</span>
+<span class="n">oneMillion</span><span class="o">++</span> <span class="c1">// post increment, displays 1000000</span>
+<span class="n">oneMillion</span>   <span class="c1">// 1000001</span>
+<span class="o">++</span><span class="n">oneMillion</span> <span class="c1">// pre increment, displays 1000002</span>
+<span class="n">oneMillion</span>   <span class="c1">// 1000002</span>
+<span class="n">oneMillion</span><span class="o">--</span> <span class="c1">// post decrement, displays 1000002</span>
+<span class="n">oneMillion</span>   <span class="c1">// 1000001</span>
+<span class="o">--</span><span class="n">oneMillion</span> <span class="c1">// pre decrement, displays 1000000</span>
+<span class="n">oneMillion</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">// 1000001</span>
+<span class="n">oneMillion</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1">// 1000000</span>
+<span class="n">oneMillion</span><span class="o">*</span><span class="n">oneMillion</span>  <span class="c1">// -727379968</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="n">d</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span> <span class="c1">// incompatible types</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">d</span><span class="o">;</span>
+<span class="n">i</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">--</span>
+<span class="n">i</span>
+<span class="n">i</span> <span class="o">=</span> <span class="o">--</span><span class="n">i</span>
+<span class="n">i</span>
+<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">10</span> <span class="c1">// a legal but confusing statement</span>
+<span class="n">i</span>
+<span class="n">j</span>
+<span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="o">;</span>
+<span class="n">b</span>
+<span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="n">b</span>
+<span class="kc">false</span> <span class="o">||</span> <span class="n">b</span>
+<span class="o">!</span><span class="n">b</span>
+</code></pre>
+</div>
+
+
+
+<div class="tags">
+    
+</div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 University of Mary Washington, Gusty Cooper. All rights reserved. <br />
+ Site last generated: May 5, 2016 <br />
+<p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+</body>
+
+</html>

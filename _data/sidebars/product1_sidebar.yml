@@ -1,0 +1,88 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+
+entries:
+- title: Sidebar
+  product: Syllabus
+  version: 0.0
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage/
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage/
+      output: pdf
+      type: frontmatter
+
+  - title: Syllabus General Info
+    output: web, pdf
+    folderitems:
+    - title: Inspirations
+      url: /p1_landing_page/
+      output: web
+
+    - title: Course Description
+      url: /p1_course_description/
+      output: web, pdf
+      
+    - title: Honor Code
+      url: /p1_honor_code/
+      output: web, pdf
+      
+    - title: Textbook
+      url: /p1_textbook/
+      output: web, pdf
+      
+    - title: Your Responsibilities
+      url: /p1_responsibilities/
+      output: web, pdf
+      
+    - title: Students with Disabilities
+      url: /p1_disabilities/
+      output: web, pdf
+
+  - title: Syllabus Assignments
+    output: web, pdf
+
+    folderitems:
+    - title: Laboratory Assignments
+      url: /p1_labs/
+      output: web, pdf
+    
+    - title: Programming Projects
+      url: /p1_projects/
+      output: web, pdf
+    
+    - title: Team Assignments
+      url: /p1_team_assignments/
+      output: web, pdf
+    
+    - title: Examinations
+      url: /p1_exams/
+      output: web, pdf
+
+  - title: Syllabus Grades
+    output: web, pdf
+
+    folderitems:
+    - title: Grade Determination
+      url: /p1_grade_determination/
+      output: web, pdf
+    
+    - title: Midsemester Grades
+      url: /p1_midsemester_grades/
+      output: web, pdf
+
+  - title: Syllabus Course Agreement
+    output: web, pdf
+
+    folderitems:
+    - title: Course Agreement
+      url: /p1_course_agreement/
+      output: web, pdf

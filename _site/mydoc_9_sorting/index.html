@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sorting">
+<meta name="keywords" content="sorting,  sorting">
+<title>Sorting  | UMW CPSC 220</title>
+<link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/gustycooper.github.io/css/modern-business.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/customstyles.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/gustycooper.github.io/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/gustycooper.github.io/js/toc.js"></script>
+<script src="/gustycooper.github.io/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/gustycooper.github.io/images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.com/gustycooper.github.io/feed.xml">
+
+
+
+
+ 
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="/gustycooper.github.io/">&nbsp;<span class="projectTitle"> CPSC 220</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/gustycooper.github.io/news/">News</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course Artifacts<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/gustycooper.github.io//">CPSC 220</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p1_landing_page/">Syllabus</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/labs_landing_page/">Labs</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p2_landing_page/">References</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll/" target="_blank">Jeykyll Doc Theme 5.0</a></li>
+                        
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">fa-codes</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<!-- Send feedback function -->
+<script>
+function SendLinkByMail(href) {
+var subject= "UMW CPSC 220 feedback";
+var body = "I have some feedback about the Sorting page: ";
+body += window.location.href;
+body += "";
+var uri = "mailto:gusty@umw.edu?subject=";
+uri += encodeURIComponent(subject);
+uri += "&body=";
+uri += encodeURIComponent(body);
+window.location.href = uri;
+}
+</script>
+
+<li><a href="javascript:(function()%7BSendLinkByMail()%3B%7D)()%3B" target="_blank"><i class="fa fa-envelope-o"></i> Feedback</a></li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/gustycooper.github.io/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/gustycooper.github.io/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Sorting">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">CPSC 220 0.0</li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Start Here</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/">Let's Get started</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_0_examples/">Example Authoring</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Introduction</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms/">Algorithms</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_supported_features/">Supported features</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_about/">About the theme author</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_support/">Support</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Simple Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Expressions</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Control Flow</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_control_flow/">Control Flow</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Classes and Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Arrays and ArrayLists</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_6_arrays_arraylists/">Arrays and ArrayLists</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Graphics</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Packages, Interfaces, ADTs</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Recursion, Searching, Sorting</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_recursion/">Recursion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_searching/">Searching</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="/gustycooper.github.io/mydoc_9_sorting/">Sorting</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Reference Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_meta_language/">Meta Language</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_string_manipulation/">String Manipulation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_i_o/">Input / Output</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_passing_parameters/">Passing Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_exceptions/">Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_random_numbers/">Random Numbers</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Tag archives</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Tag archive pages</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_content_types/">Content types pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Sorting</h1>
+</div>
+
+<div class="post-content">
+
+   
+    <div class="summary">Sorting</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/edit/reviews/mydoc_9_sorting/" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h2 id="sorting">Sorting</h2>
+<p>We will examine three sorting algorithms – bubble, insertion, and selection.</p>
+
+<h2 id="sort11-bubble-sort-introduction">SORT.1.1 Bubble Sort Introduction</h2>
+
+<p>Bubble sort repetitively compares adjacent pairs and swap if necessary.
+* Step through the array, swapping adjacent pairs if they are not in order.  You compare element j and element j+1.  This means that on this iteration, you will step up to the next to last element of the array.  At the end of this step through the array, the largest element will be at the end.
+* Step through the array, swapping adjacent pairs if they are not in order.  You compare element j and element j+1.  You know the last element is the largest so you can loop one less time that in the previous step through the array.  At the end of this step through the array, the last two elements of the array will be largest two elements of the array and they will be in correct order.
+* Continue stepping through the array until the array elements are in order.</p>
+
+<p>The above algorithm will be two loops, one nested within the other.  If the array size is 10, the outer loop will iterate 9 times, and the upper bound of the inner loop will decrease by one (first loop from 0 to 8, second loop from 0 to 7, etc.).  The following code demonstrates a bubble sort of an integer array.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">bubbleSortIntArray</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">++</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+                <span class="c1">// swap a[j] and a[j+1]</span>
+                <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="sort12-bubble-sort-optimization">SORT.1.2 Bubble Sort Optimization</h2>
+
+<p>What happens when call bubbleSortIntArray() with an array that is already sorted?  The algorithm will iterate through the arrays without ever performing a swap.  If our inner loop does not perform a swap, the array a is in order.  We can add a little optimization to our bubbleSortIntArray() by breaking out of the outer loop if the inner loop does not perform a sway.   The code for this is as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">bubbleSortIntArray</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">swapped</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">++</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+                <span class="c1">// swap a[j] and a[j+1]</span>
+                <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+                <span class="n">swapped</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">swapped</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>This optimization is rather clever, but in general did this optimization really help?  Our algorithm will be faster on arrays that are already sorted or partially sorted, but on unsorted arrays our algorithm is still takes just as many steps.  I</p>
+
+<h2 id="sort13-introduction-to-big-o">SORT.1.3 Introduction to Big O</h2>
+
+<p>Describe Big O in terms of Bubble Sort</p>
+
+<h2 id="sort2-selection-sort">SORT.2 Selection Sort</h2>
+
+<p>Selection sort finds the smallest element and puts it in the correct position.
+* Step through the array, find the smallest element and put it in the first position of the array.  At the end of this iteration, you will have the smallest element in the first position of your array.  Notice you did not swap adjacent elements as you did in the bubble sort.  Of course you will have to perform compares to locate the smallest, but you will remember the position that has the smallest and at the end you will swap the element in that position with the first element. 
+* Repeat the previous step until all of the elements are ordered from smallest to largest.</p>
+
+<p>The above algorithm will be two loops, one nested within the other.  If the array size is 10, the outer loop will iterate 9 times.  On the first iteration of the inner loop will, it will begin at the first element because it may be the smallest.  Each subsequent iteration of the inner loop will begin incrementally into the array because the previous iteration placed the smallest in its correct position. To find the smallest means you to have to assume the first element is the smallest.  See our Lab on Arrays where we first studied finding the smallest in an array.  The code is given by the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">[</span><span class="n">min</span><span class="o">])</span> <span class="o">{</span> <span class="c1">// found smaller</span>
+                <span class="n">min</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="c1">// swap a[i] and a[min]</span>
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">min</span><span class="o">];</span>
+        <span class="n">a</span><span class="o">[</span><span class="n">min</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span> 
+</code></pre>
+</div>
+
+<h2 id="sort3-insertion-sort">SORT.3 Insertion Sort</h2>
+
+<p>Insertion sort maintains a sorted sub-array and repetitively inserts new elements into it.
+* Take the first element as a sorted sub-array.
+* Insert the second element into the sorted sub-array (shift elements if needed).
+* Insert the third element into the sorted sub-array.
+* Repeat until all elements are inserted.</p>
+
+<p>The code is given by the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">--)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">tmp</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="o">];</span> <span class="c1">// shift sorted to right</span>
+        <span class="o">}</span>
+        <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span> <span class="c1">// insert current ele</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="p">(</span><span class="n">Comparable</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">--)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">less</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]))</span> <span class="o">{</span>
+                <span class="c1">// exchange a[j] and a[j-1]</span>
+                <span class="n">exch</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+
+
+<div class="tags">
+    
+    <b>Tags: </b>
+    
+    
+    
+    
+    
+</div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 University of Mary Washington, Gusty Cooper. All rights reserved. <br />
+<p>Page last updated:</span> May 1, 2016<br/> Site last generated: May 5, 2016 <br />
+<p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+</body>
+
+</html>

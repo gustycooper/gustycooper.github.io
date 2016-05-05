@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="First Introduction to Classes and Objects">
+<meta name="keywords" content="objects,  objects, simple objects">
+<title>Simple Objects  | UMW CPSC 220</title>
+<link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/gustycooper.github.io/css/modern-business.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/customstyles.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/gustycooper.github.io/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/gustycooper.github.io/js/toc.js"></script>
+<script src="/gustycooper.github.io/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/gustycooper.github.io/images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.com/gustycooper.github.io/feed.xml">
+
+
+
+
+ 
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="/gustycooper.github.io/">&nbsp;<span class="projectTitle"> CPSC 220</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/gustycooper.github.io/news/">News</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course Artifacts<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/gustycooper.github.io//">CPSC 220</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p1_landing_page/">Syllabus</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/labs_landing_page/">Labs</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p2_landing_page/">References</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll/" target="_blank">Jeykyll Doc Theme 5.0</a></li>
+                        
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">fa-codes</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<!-- Send feedback function -->
+<script>
+function SendLinkByMail(href) {
+var subject= "UMW CPSC 220 feedback";
+var body = "I have some feedback about the Simple Objects page: ";
+body += window.location.href;
+body += "";
+var uri = "mailto:gusty@umw.edu?subject=";
+uri += encodeURIComponent(subject);
+uri += "&body=";
+uri += encodeURIComponent(body);
+window.location.href = uri;
+}
+</script>
+
+<li><a href="javascript:(function()%7BSendLinkByMail()%3B%7D)()%3B" target="_blank"><i class="fa fa-envelope-o"></i> Feedback</a></li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/gustycooper.github.io/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/gustycooper.github.io/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Simple Objects">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">CPSC 220 0.0</li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Start Here</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/">Let's Get started</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_0_examples/">Example Authoring</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Introduction</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms/">Algorithms</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_supported_features/">Supported features</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_about/">About the theme author</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_support/">Support</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Simple Objects</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Expressions</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Control Flow</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_control_flow/">Control Flow</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Classes and Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Arrays and ArrayLists</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_6_arrays_arraylists/">Arrays and ArrayLists</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Graphics</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Packages, Interfaces, ADTs</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Recursion, Searching, Sorting</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_recursion/">Recursion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_searching/">Searching</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_sorting/">Sorting</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Reference Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_meta_language/">Meta Language</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_string_manipulation/">String Manipulation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_i_o/">Input / Output</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_passing_parameters/">Passing Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_exceptions/">Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_random_numbers/">Random Numbers</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Tag archives</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Tag archive pages</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_content_types/">Content types pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Simple Objects</h1>
+</div>
+
+<div class="post-content">
+
+   
+    <div class="summary">First Introduction to Classes and Objects</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/edit/reviews/mydoc_2_simple_objects/" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h2 id="simple-objects--an-introduction">Simple Objects – An Introduction</h2>
+
+<p>Since everything in Java is contained in classes, which are used to create objects, we will study objects right from the start of our class.  Our approach is to understand how we can create our own data types using a Java class, and then use the class to construct objects.  These data types are in addition to the Java primitive Java data types.  Just as an primitive data type has a set of values and set of operations, our data types will have a set of values and a set of operations.  The values will be stored in instance variable and the operations will be performed by instance methods.  We will also learn that Java Strings are a class.  In order to study Java classes and objects first, we will study variable declarations, simple assignment statements, method definitions, method returns, and calling methods.</p>
+
+<p>Objects and object-oriented programming are somewhat of a natural way of thinking about and dissecting a problem.  The world is full of objects, objects align with our way of thinking, objects have attributes (or properties), and we often use objects to do work for us.  We can think of people as an object.  Everyone has shared set of properties – name, age, height, weight, etc.  Each person will have his or her own values for these properties.  We also have ways of getting those properties from others.  For example, when we first meet we may ask someone to provide us with his or her name.  Let’s consider the weather app on our phone as an object.  We use the weather app to get work done for us – namely to see what today’s weather will be.  We do not care how the weather app knows what today’s weather will be (maybe it is just random), but we use the information.    To summarize, objects have properties, objects do work for us, and objects have methods that allow us to interact with their properties and examine their work.</p>
+
+<p>We will create objects in our programs, and these program objects will have properties and methods.  Before we can create objects, we will have to create classes, which are objects with common behavior.  You can think of a generic person as a class and the person Gusty as an object of type person.  We will define Java classes, which will be like a data type, and we will use the Java classes to declare variables, which will be objects of the particular type.</p>
+
+<h2 id="so1-types-eck-222">SO.1 Types (Eck 2.2.2)</h2>
+
+<p>We have already studied the Java primitive types.  The main objective of this week is to learn how we can create our own types.</p>
+
+<h2 id="so2-literals-eck-223-224">SO.2 Literals (Eck 2.2.3, 2.2.4)</h2>
+
+<p>A literal is something that you know its value upon examination.  For example, the numbers 1, 3.14159, 10000, and 512.12 are literals.</p>
+
+<p>We will study strings, which also have literals – examples are “Gusty” and “This is a String Literal.”</p>
+
+<h2 id="so3-identifiers-and-keywords">SO.3 Identifiers and Keywords</h2>
+
+<p>We are going to manipulate data, and we have to give our data names, which will be the name of the variable.  Likewise we have to give our classes and our methods names.  An identifier is the Java term for names.  An identifier is a sequence of one or more characters.  The first character of an identifier must be a letter, a dollar sign ($), or and underscore (_).  The first character cannot be a number.  Subsequence characters can be letter, $, _, or numbers.  Uppercase and lowercase characters are different so the identifiers X and x are two different identifiers.  For the most part, you can select identifiers as needed, but Java has reserved identifiers, which are key words.  For example, class, if, and while are keywords.<br />
+SO.4 Declaring Variables (Eck 2.2.5)
+In Java all variables must be declared to be a specific type.  The meta-language for declaring variables is the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;type-name&gt; &lt;variable-name-or-names&gt;;
+</code></pre>
+</div>
+
+<p>where ‘’‘<type-name>''' is byte, short, char, int, long, float, or double.  We will learn to define our own types, which can be a '''<type-name>'''.  A variable name must begin with a letter and followed by letters, numbers, and underscore.  The following are some example declarations.</type-name></type-name></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">firstInitial</span><span class="o">,</span> <span class="n">middleInitial</span><span class="o">,</span> <span class="n">lastInitial</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">principal</span><span class="o">;</span>    <span class="c1">// Amount of money invested.</span>
+<span class="kt">double</span> <span class="n">interestRate</span><span class="o">;</span> <span class="c1">// Rate as a decimal, not percentage.</span>
+</code></pre>
+</div>
+
+<p>You can also assign a value with the declaration.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">myPi</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h2 id="so5-assignment-statement-statements-and-blocks">SO.5 Assignment Statement, Statements, and Blocks</h2>
+
+<p>The most used statement in programming is an assignment statement.  We have already used it in several of the preceding sections.  The following are some example Java assignment statements.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span>        
+<span class="n">i</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>      
+<span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>  <span class="c1">// declares l and assigns it a value</span>
+</code></pre>
+</div>
+
+<p>In Java the meta-language for an assignment is the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;variable&gt; = &lt;expression&gt;;
+</code></pre>
+</div>
+
+<p>We will learn the details of Java <expression> w, but at this point you should realize that the <expression> must evaluate to the same type as the <variable> because Java is a strongly typed language.</variable></expression></expression></p>
+
+<p>As we will learn when studying expressions, the assignment operator (=) is just like other operators, but it is always best to use it as an simple assignment statement.</p>
+
+<p>We will soon study all of the Java statements such as the if-statement, the while-statement, the do-while statement, and the switch-statement.  All of these statements will be terminated by a semicolon (;). In Java we can create a block of statements by enclosing a sequence of statements them between { and }.  The following is a block of the preceding statements.  You should notice that there are no semicolons after { or }.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">{</span>
+   <span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span>        
+   <span class="n">i</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>      
+   <span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>  <span class="c1">// declares l and assigns it a value</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="so6-defining-a-class-and-declaring-an-object-of-the-type-class-eck-232">SO.6 Defining a Class and Declaring an Object of the Type Class (Eck 2.3.2)</h2>
+
+<p>The first step is to demonstrate the mechanics of defining a data type in a class and then declaring a variable of that type.  All code in Java must be in a class.  The name of the file and class must match.  Since we are using an IDE for our programming, for the most part the IDE will ensure the file name and class name match.  The following example demonstrates defining a data type Person and then declaring a variable of type Person.   In this introductory example of declaring a variable of type Person, all of the details have been omitted.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+<span class="err">…</span>
+<span class="o">}</span>
+
+<span class="n">Person</span> <span class="n">p</span><span class="o">;</span> <span class="c1">// declares a variable p of type Person</span>
+</code></pre>
+</div>
+
+<p>You should notice we have declared a variable of type Person just like we declared variable of type int, float, double, etc.  We are simply following the meta-language of a variable declaration.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;type-name&gt; &lt;variable-name-or-names&gt;;
+</code></pre>
+</div>
+
+<p>Before you can declare a variable of type Person, you have to define the class Person.  The above example omitted the details of the class definition.  The meta-language for defining a Java class is the following.  Note the following meta-language shows a public static void main() method within the class.  You should recall we did this in our first program.  We will have a public static void main() in many of our programs, but we will not always have a main()  The example we are creating for class Person will not have a main().  We will discuss static methods shortly.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="err">&lt;</span><span class="nc">class</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">{</span>
+	<span class="o">&lt;</span><span class="n">optional</span><span class="o">-</span><span class="n">variable</span><span class="o">-</span><span class="n">declarations</span><span class="o">-</span><span class="n">and</span><span class="o">-</span><span class="n">methods</span><span class="o">&gt;</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span> 
+	<span class="o">}</span>
+	<span class="o">&lt;</span><span class="n">optional</span><span class="o">-</span><span class="n">variable</span><span class="o">-</span><span class="n">declarations</span><span class="o">-</span><span class="n">and</span><span class="o">-</span><span class="n">methods</span><span class="o">&gt;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="so7-subroutines-methods-and-functions">SO.7 Subroutines, Methods, and Functions</h2>
+
+<p>Before we can fill in the details of our definition of class Person, we have to understand the mechanisms of subroutines, methods, and functions.  The words subroutine, method, and function are (almost) three ways of saying the same thing; however, David Eck makes a difference between them.  David Eck uses subroutine as the generic term for callable sequence of instructions.  Some computation that is useful is packaged such that you can call it whenever you want to perform that computation.  David uses the term function to mean a subroutine that returns a value.  For example, the following sequence of statements declares the variable x and y, assigns the square root of 9.0 to the variable x, and then assigned x times 3.0 to the variable y.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sqrt</span><span class="o">(</span><span class="mf">9.0</span><span class="o">);</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>In this example sqrt() is a function because it returns the square root of 9.0.  The term method is popular in object-oriented programming languages, where method is another word for subroutine, function, procedure, etc.  Java uses the term method so all subroutines, functions, procedures, etc. are methods.  I will mostly use the terms method and function, and I will use them interchangeably.</p>
+
+<p>You should envision your code executing as sequentially stepping through each statement in your method.  Methods / functions are called.  The second statement in the above example calls the sqrt() method (or function), and assigns its return value to the variable x.  When you encounter a method call, your code temporarily leaves the current sequence of code and jumps to the code contained in the method. The code in the method is executed and then flow of control returns to the statement following the method call.  The following is a diagram of this flow of control.</p>
+
+<p>Figure SO-11 Calling a Method</p>
+
+<h2 id="so8-methods-parameters--and-returning-values-eck-43-44">SO.8 Methods, Parameters , and Returning Values (Eck 4.3, 4.4)</h2>
+
+<p>The idea with a method is that you bottle up useful functionality so that you can call it whenever needed.  As you can see from the sqrt() example, methods have two attributes.</p>
+
+<ol>
+  <li>Methods have parameters, which are also called arguments.</li>
+  <li>Methods return.  Methods may return a value or they may simply return.</li>
+</ol>
+
+<p>The following code snippet shows two example methods.  The multiply() method that accepts two arguments argument and returns a value.  The printGusty() method does not have arguments and does not return a value; however, it does call the multiply() method.  You should notice that an argument declaration is similar to a variable declaration where you provide a type and an argument name.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="nf">multiply</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="o">,</span> <span class="kt">double</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kt">void</span> <span class="nf">printGusty</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Gusty</span><span class="err">”</span> <span class="o">+</span> <span class="n">multiply</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The meta-language for method definitions is given by the following.  We will discuss modifiers momentarily.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;modifiers&gt; &lt;return-type&gt; &lt;method-name&gt; ( &lt;parameter-list&gt; ) {    
+    &lt;statements&gt;
+}
+&lt;modifiers&gt; 
+   public – method may be called from objects or outside of the class
+   static – method exists independent of an object
+&lt;return-type&gt;
+   any Java type
+&lt;parameter-list&gt; 
+   &lt;type-name&gt; &lt;parameter-name&gt;, …, &lt;type-name&gt; &lt;parameter-name&gt;
+</code></pre>
+</div>
+
+<p>We will learn more <statements> in the near future.  For now we know assignment statements and method call statements.</statements></p>
+
+<h2 id="so9-back-to-classes-defining-declaring-variables-and-constructing-objects">SO.9 Back to Classes: Defining, Declaring Variables and Constructing Objects</h2>
+
+<p>We now return to our Person class from Section SO.6.  This time we will introduce two methods to our class.  One is a special method called a constructor and the other is a method called a getter or accessor.  We first show you the code, and then we will show you how to use it.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>  <span class="c1">// variable to store the age of a person</span>
+
+   <span class="n">Person</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>   <span class="c1">// constructor</span>
+      <span class="n">age</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="n">getAge</span><span class="o">()</span> <span class="o">{</span>  <span class="c1">// getter</span>
+      <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>From SO.6, we know we can declare a variable p of type Person as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Person p;
+</code></pre>
+</div>
+
+<p>The above declaration creates a reference to an object of type Person.  A Person is different than an primitive Java type.  We can add, subtract, multiply, etc. variables of the primitive Java types.  We cannot add, subtract, multiply, etc. variables of type Person.  What can we do with variables of type Person?  For this example we can do two things.</p>
+
+<ol>
+  <li>We can construct a Person, providing the age of the person when we construct it.  This is done with the method <code class="highlighter-rouge">Person()</code>.</li>
+  <li>We can get the age of a Person.  This is done with the method getAge().</li>
+</ol>
+
+<p>An important concept to grasp is the declaration Person p creates a reference to what can be an object of type Person.  At this point, we still do not have an object of type Person.  We have allocated memory that can contain a reference to an object of type Person.  In order to allocate an object of type Person, we have to use the new operator and the Person constructor as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="mi">22</span><span class="o">);</span> <span class="c1">// p references a Person object for a 22 year old</span>
+</code></pre>
+</div>
+
+<p>At this point, the variable p (of type Person) references an object of type Person, and we can use the object in p to do work for us in our programs.  We cannot do much work, because our class does not provide much functionality, but we can do the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">pAge</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">();</span>
+</code></pre>
+</div>
+
+<p>There are a lot of things happening in this simple example.  Let’s take some time to understand all that is happening.</p>
+
+<ol>
+  <li>We have defined a class Person, which is a new type that we can use to declare variables.  Recall the meta-language for declaring variables is the following.</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;type-name&gt; &lt;variable-name-or-names&gt;;
+</code></pre>
+</div>
+
+<p>Back in section BBDT.15.5 ‘’‘<type-name>''' had to be byte, short, int, etc.  Now we are showing we can use our class Person as a '''<type-name>''' as follows.</type-name></type-name></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">p</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<ol>
+  <li>Our class Person declares one instance variable, age.  Our introductory discussion used the term property to describe attributes that all objects of a particular type share, but Java uses the term instance variable.  We can use either.  You should notice that we used the modifier private in the declaration of the variable age.  Private means that when users declare variables of type Person, they cannot access the instance variable age.  You know that variables of type Person have an age, but you have to use the getter, getAge(), to get the value.  You are not allowed to directly access the instance variable age.</li>
+  <li>Our class Person declares one method, getAge().  You should notice that we used the modifier public in the declaration of the method getAge().  Public means that when users declare variables of type Person, they can access the method getAge().</li>
+  <li>Numbers 2 and 3 get at a fundamental aspect of classes.  You design a class with parts other programmers can see in order to use the class in their code and parts they cannot see.  The parts they cannot see is how you internally implement your class’ algorithms.  You want to programmers to use you class as you desire.  In this case, we do not allow programmers to access the instance variable age directly.  We could allow user’s to access age by declaring it as follows.</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>This would allow a user to perform the following.</p>
+
+<p>Person p = new Person(22);
+p.age = 50; // access p’s instance variable</p>
+
+<ol>
+  <li>You should realize that instance variables are unique for each object.  This means the following two Person variables each have an age instance variable.</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">youngPerson</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="mi">22</span><span class="o">);</span>
+<span class="n">Person</span> <span class="n">seniorCitizen</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="mi">92</span><span class="o">);</span>
+
+<span class="n">Of</span> <span class="n">course</span> <span class="k">this</span> <span class="n">makes</span> <span class="n">perfect</span> <span class="n">sense</span> <span class="n">because</span> <span class="n">youngPerson</span> <span class="n">and</span> <span class="n">seniorCitizen</span>  <span class="n">have</span> <span class="n">different</span> <span class="n">ages</span><span class="o">.</span>
+<span class="mi">6</span><span class="o">.</span> <span class="n">Let</span><span class="err">’</span><span class="n">s</span> <span class="k">return</span> <span class="n">to</span> <span class="n">the</span> <span class="n">act</span> <span class="n">of</span> <span class="n">declaring</span> <span class="n">a</span> <span class="n">variable</span> <span class="n">p</span> <span class="n">of</span> <span class="n">type</span> <span class="n">Person</span><span class="o">,</span> <span class="n">which</span> <span class="n">follows</span> <span class="n">the</span> <span class="n">same</span> <span class="n">syntax</span> <span class="n">as</span> <span class="n">declaring</span> <span class="n">a</span> <span class="n">variable</span> <span class="n">of</span> <span class="n">type</span> <span class="kt">int</span><span class="o">.</span>  <span class="n">The</span> <span class="n">declaration</span>
+
+<span class="o">{%</span> <span class="n">raw</span> <span class="o">%}</span>
+<span class="err">```</span><span class="n">java</span>
+<span class="n">Person</span> <span class="n">p</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>allocates enough memory to hold a reference to a Person object.  A reference is Java’s way of saying a pointer to a Person object.  Both a reference and a pointer mean that the variable p will contain an address and that address will be where the Person object is allocated in memory.  When you first declare a Person p you do not have a Person object.  You simply have memory with a null pointer – it is not pointing to anything.
+7. Java’s new operator allocates memory for the Person object and calls the corresponding constructor to fill that memory with the appropriate values.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="mi">22</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>The above allocates memory for a Person and calls the constructor Person(int a) that puts 22 into the age instance variable.<br />
+8. The following figure demonstrates the ideas discussed in numbers 6 and 7.  Realize the memory addresses are illustrative.</p>
+
+<p>Figure SO-12 Object Declaration, Construction and Memory
+9. From number 5 you learned that every object of type Person has its own instance variable age.  This allows us to create lots of Person objects and assign their unique age to them.  You may think that every object of type Person has unique methods.  They sort of do and sort of don’t.  A method is code that does not have to be duplicated so we can create one instance of the code.  Each Person object has to reference the method so that both p.getAge() and q.getAge() call the same code that is accessed from two objects.
+10. As you can see from this simple example, Java allows us to define our own types.  We do this using a Java class, into which we place instance variables, constructors, and methods.  We then use the class declare variables of type class.  We then use the constructor to construct an object.  Of course we can do both in the same statement shown as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="mi">22</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h2 id="so10-java-class-naming-conventions">SO.10 Java Class Naming Conventions</h2>
+
+<p>Java’s convention for naming a class is to capitalize the class name, which we did for the Person class.  The file name for the class must match the class name so in the previous example, the file would have been Person.java.  Normally, you will not have to worry with file names because the IDE’s help keep them straight.</p>
+
+<p>Follow the Java class naming conventions on your labs and projects.</p>
+
+<h2 id="so11-java-strings-eck-233">SO.11 Java Strings (Eck 2.3.3)</h2>
+
+<p>In computer programming a string is a collection of readable characters.  For example, “This document is our handout” is a string literal.  String variables are variables that hold strings.  Strings and variables of type String are (probably) the most used literals and data types in programming.  I suppose that if you are creating a mathematical model, numbers may outnumber strings.</p>
+
+<h2 id="so111-java-strings-are-objects-eck-233">SO.11.1 Java Strings are Objects (Eck 2.3.3)</h2>
+
+<p>In Java the type String is a Java class, which means that variables of type String are objects.  This means that (1) Strings are references and (2) Strings have instance variables and methods.  A string instance variable is simply the literal string that is stored in it.  When you use a String variable name, you access the instance string.  String methods will do such things as extract substrings, capitalize, and compare equality.  Java has included some nice syntactical short cuts for assigning strings.  Consider the following two String variable declarations and initial assignments.  The both declare a variable of type String assign the string literal “Gusty” to the variable.  The second one is much simpler and what you will always encounter/use.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">name1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"Gusty"</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">name2</span> <span class="o">=</span> <span class="s">"Gusty"</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h2 id="so112-java-string-equality">SO.11.2 Java String Equality</h2>
+
+<p>The fact that Strings are objects means that they follow the same pattern as shown in Figure SO-11.  Declaring a String variable allocates memory that contains a reference to the String object.  The first impact of this is how you compare two strings for equality.  The Java equality operator is ==, and if I have two variables i and j of type int, their memory locations contain their actual values so I can compare them as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">i</span> <span class="o">==</span> <span class="n">j</span>
+</code></pre>
+</div>
+
+<p>For the two above Strings name1 and name2, their memory locations contain a reference to their values.  In other words, their memory locations contain an address of their values.  The means that the following comparison</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">name1</span> <span class="o">==</span> <span class="n">name2</span>
+</code></pre>
+</div>
+
+<p>is comparing two addresses.  Sometimes this works and provides the result you are expecting – for example true for name1 == name2 because they both reference “Gusty”; however, Java does not guarantee it will work.  When it does work you are simply lucky.  The correct way to compare two Strings for equality is to use the equalTo() method, which is shown as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">name1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">name2</span><span class="o">)</span>
+</code></pre>
+</div>
+
+<h2 id="so113-java-strings-and-concatenation">SO.11.3 Java Strings and Concatenation</h2>
+
+<p>Java uses the + operator to concatenate strings.  Concatenate means to stick two strings together.  The following is a simple example.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"Gusty"</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="s">"Cooper"</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>Of course the above example is illustrative, but rather silly because I could have easily done the following</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"Gusty Cooper"</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>The better use is when you have a variable or two variables and you concatenate them together.  I will use the String variable t from above along with a couple of other String variables to demonstrate.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">u</span> <span class="o">=</span> <span class="err">“</span><span class="n">is</span> <span class="n">teaching</span> <span class="n">CPSC</span><span class="o">-</span><span class="mi">220</span><span class="o">.</span><span class="err">”</span>
+<span class="n">String</span> <span class="n">v</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="err">“</span> <span class="err">“</span> <span class="n">u</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>We will also learn that Java provides toString() conversion methods for most of the language types and objects.  This will allow us to use string concatenation as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">22</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"Gusty is "</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span> <span class="err">“</span> <span class="n">years</span> <span class="n">old</span><span class="err">”</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h2 id="so114-java-string-methods">SO.11.4 Java String Methods</h2>
+
+<p>The following are some of the Java String methods.  In the following examples, s1 and s2 are variables of type String</p>
+
+<ul>
+  <li>s1.equals(s2) returns boolean– true if s1 and s2 contain the same sequence of characters, and returns false otherwise.</li>
+  <li>s1.equalsIgnoreCase(s2) returns boolean  like equals but ignores case.   “cat”.equals(“Cat”) is false, while “cat”.equalsIgnoreCase(“Cat”) is true.</li>
+  <li>s1.length(), returns the number of characters in s1.</li>
+  <li>s1.charAt(N), returns char – the Nth character in the string where s1.charAt(0) is 1st, s1.charAt(1) is 2nd, and so on. The las position is s1.length() - 1.  “cat”.charAt(1) is ’a’.  An error occurs if the value of the parameter is less than zero or is greater than or equal to s1.length().</li>
+  <li>s1.substring(N,M), returns String, which is the characters of s1 in positions N through M-1, and the character in position M is not included. The subroutine s1.substring(N) returns the substring of s1 consisting of characters starting at position N up until the end of the string.</li>
+  <li>s1.indexOf(s2) returns integer. If String s2 occurs is substring of s1, then the returned value is the starting position of that substring. Otherwise, the returned value is -1. You can also use s1.indexOf(ch) to search for a char, ch, in s1. To find the first occurrence of x at or after position N, you can use s1.indexOf(x,N). To find the last occurrence of x in s1, use s1.lastIndexOf(x).</li>
+  <li>s1.compareTo(s2) is an integer-valued function that compares the two strings. If the strings are equal, the value returned is zero. If s1 is less than s2, the value returned is a number less than zero, and if s1 is greater than s2, the value returned is some number greater than zero. (If both of the strings consist entirely of lower case letters, or if they consist entirely of upper case letters, then “less than” and “greater than” refer to alphabetical order. Otherwise, the ordering is more complicated.)</li>
+  <li>s1.toUpperCase() returns String – returns a new string that is the uppercase of to s1,.  “Cat”.toUpperCase() is the string “CAT”.  s1.toLowerCase() is the lowercase equivalent.</li>
+  <li>s1.trim() returns String – returns a new string that is s1 with non-printing characters such as spaces and tabs trimmed from the beginning and from the end of the string.   “  fred “.trim() is the string “fred”</li>
+</ul>
+
+<h2 id="so115-new-java-strings-are-created-more-than-you-may-think">SO.11.5 New Java Strings Are Created More Than You May Think</h2>
+
+<p>Consider the following statements manipulating Strings.</p>
+
+<ol>
+  <li>String s = “A string”;</li>
+  <li>s = “B string”;</li>
+  <li>String t = s.toUpperCase();</li>
+  <li>s = t.substring(0,1);</li>
+</ol>
+
+<p>Java will create the following strings: “A string”, “B string”, “A STRING”, and “B”.  Key concepts to remember are the following.
+* When the assignment statement in 2 is executed, the string “A string” is lost in memory.  Eventually, the Java garbage collector will return that memory for reuse.
+* The s.toUpperCase() in statement 3 does not change the value of s.  This computes a new string which is returned and assigned to t.
+* The t.subString(0,1) also computes a new string (“B”) that is assigned to s.</p>
+
+<h2 id="so116-java-strings-are-immutable">SO.11.6 Java Strings are Immutable</h2>
+
+<p>Java Strings are immutable.  The term immutable means cannot be changed; however, we can do the following, which looks like we are changing a String.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="err">“</span><span class="n">I</span> <span class="n">am</span> <span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="err">“</span><span class="n">I</span> <span class="n">am</span> <span class="n">also</span> <span class="n">Cooper</span><span class="err">”</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>Since Strings are objects, the variable s is a reference to the object.  We can change the address the s references, but we have not changed the original String “I am Gusty”.  We have simply changed s so that it references a new string.  This can be seen in the following diagram.</p>
+
+<p>Figure SO-13 Strings Are Immutable</p>
+
+<h2 id="so12-java-scanner-for-interactive-input">SO.12 Java Scanner for Interactive Input</h2>
+
+<p>I find Java input/output to be complicated.  This section describes the basics for reading interactive input from the user with a Java Scanner.  David Eck provides a TextIO package, which may have some advantages, but Scanner is part of Java so if you stay with it, you do not need an external package.  Walmart has scanners that read bar codes.  We will read text from users with the Java Scanner.  A Scanner is not automatically available to use (like you can call System.out.println without doing anything).  You have to import a Scanner from the java.util package.  The following example shows a basic use of a Scanner to read the age of a user.   You will notice that a Scanner is a class that is used to create Scanner objects.  In this example, we connect our Scanner object to System.in, which is the terminal.  You should be aware that the code has to be in some method (perhaps main()).  I am simply showing the specific lines of code that you can use to create a Scanner and read from the terminal window.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="n">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span> <span class="c1">// Construct a Scanner</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"How old are you? "</span><span class="o">);</span> <span class="c1">// prompt with print, not prinln</span>
+<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="err">“</span><span class="n">Ender</span> <span class="n">a</span> <span class="kt">double</span><span class="o">:</span> <span class="err">“</span><span class="o">);</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
+
+<span class="n">We</span> <span class="n">will</span> <span class="n">learn</span> <span class="n">more</span> <span class="n">about</span> <span class="n">Scanners</span><span class="o">,</span> <span class="n">but</span> <span class="k">this</span> <span class="n">is</span> <span class="n">enough</span> <span class="k">for</span> <span class="n">our</span> <span class="n">current</span> <span class="n">projects</span><span class="o">.</span>
+
+<span class="err">##</span> <span class="n">SO</span><span class="o">.</span><span class="mi">13</span> <span class="n">Formatted</span> <span class="n">Output</span> <span class="o">(</span><span class="n">Eck</span> <span class="mf">2.4</span><span class="o">.</span><span class="mi">1</span><span class="o">)</span>
+
+<span class="n">Section</span> <span class="mf">2.4</span><span class="o">.</span><span class="mi">1</span> <span class="n">of</span> <span class="n">David</span> <span class="n">Eck</span><span class="err">’</span><span class="n">s</span> <span class="n">book</span> <span class="n">does</span> <span class="n">a</span> <span class="n">fine</span> <span class="n">job</span> <span class="n">explaining</span> <span class="n">formatted</span> <span class="n">output</span><span class="o">.</span>  <span class="n">We</span> <span class="n">will</span> <span class="n">not</span> <span class="k">do</span> <span class="n">much</span> <span class="n">with</span> <span class="n">formatted</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">in</span> <span class="n">our</span> <span class="n">labs</span><span class="o">,</span> <span class="n">but</span> <span class="n">we</span> <span class="n">will</span> <span class="n">examine</span> <span class="n">it</span> <span class="n">again</span> <span class="n">on</span> <span class="n">our</span> <span class="k">return</span> <span class="n">trip</span> <span class="n">to</span> <span class="n">objects</span><span class="o">.</span>
+
+<span class="err">##</span> <span class="n">SO</span><span class="o">.</span><span class="mi">14</span> <span class="n">Java</span> <span class="n">Comments</span> <span class="n">and</span> <span class="n">JavaDoc</span> <span class="o">(</span><span class="n">Eck</span> <span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">)</span>
+
+<span class="n">Java</span><span class="o">,</span> <span class="n">like</span> <span class="n">all</span> <span class="n">programming</span> <span class="n">languages</span><span class="o">,</span> <span class="n">allows</span> <span class="n">you</span> <span class="n">to</span> <span class="n">place</span> <span class="n">comments</span> <span class="n">in</span> <span class="n">your</span> <span class="n">code</span><span class="o">.</span>  <span class="n">The</span> <span class="n">comments</span> <span class="n">should</span> <span class="n">explain</span> <span class="n">your</span> <span class="n">code</span><span class="o">.</span>  <span class="n">You</span> <span class="n">should</span> <span class="n">develop</span> <span class="n">a</span> <span class="n">coding</span> <span class="n">style</span> <span class="n">that</span> <span class="n">allows</span> <span class="n">people</span> <span class="n">to</span> <span class="n">understand</span> <span class="n">the</span> <span class="n">vast</span> <span class="n">portion</span> <span class="n">of</span> <span class="n">you</span> <span class="n">code</span> <span class="n">by</span> <span class="n">simply</span> <span class="n">reading</span> <span class="n">the</span> <span class="n">code</span><span class="o">.</span>  <span class="n">You</span> <span class="n">can</span> <span class="k">do</span> <span class="k">this</span> <span class="n">be</span> <span class="n">selecting</span> <span class="n">meaning</span> <span class="n">variable</span> <span class="n">names</span> <span class="n">and</span> <span class="n">programming</span> <span class="n">in</span> <span class="n">simple</span><span class="o">,</span> <span class="n">easy</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">understand</span> <span class="n">control</span> <span class="n">structures</span><span class="o">.</span>  <span class="n">Donald</span> <span class="n">Knuth</span> <span class="o">(</span><span class="n">a</span> <span class="n">famous</span> <span class="n">computer</span> <span class="n">scientist</span><span class="o">)</span> <span class="n">coined</span> <span class="n">a</span> <span class="n">phrase</span> <span class="err">–</span> <span class="n">literate</span> <span class="n">programming</span> <span class="err">–</span> <span class="n">to</span> <span class="n">mean</span> <span class="n">programs</span> <span class="n">are</span> <span class="n">intended</span> <span class="n">to</span> <span class="n">be</span> <span class="n">read</span> <span class="n">by</span> <span class="n">other</span> <span class="n">programmers</span> <span class="n">as</span> <span class="n">well</span> <span class="n">as</span> <span class="n">executed</span> <span class="n">by</span> <span class="n">computers</span><span class="o">.</span>  <span class="n">Literate</span> <span class="n">programs</span> <span class="n">are</span> <span class="n">especially</span> <span class="n">important</span> <span class="n">in</span> <span class="n">the</span> <span class="n">maintenance</span> <span class="n">phase</span> <span class="n">of</span> <span class="n">software</span> <span class="n">development</span><span class="o">.</span>  <span class="n">When</span> <span class="n">creating</span> <span class="n">good</span><span class="o">,</span> <span class="n">readable</span> <span class="n">programs</span><span class="o">,</span> <span class="n">there</span> <span class="n">will</span> <span class="n">be</span> <span class="n">large</span> <span class="n">portions</span> <span class="n">of</span> <span class="n">code</span> <span class="n">that</span> <span class="k">do</span> <span class="n">not</span> <span class="n">need</span> <span class="n">superfluous</span> <span class="n">comments</span><span class="o">.</span>  <span class="n">Consider</span> <span class="n">the</span> <span class="n">following</span> <span class="n">example</span> <span class="n">of</span> <span class="n">a</span> <span class="n">superfluous</span> <span class="n">comment</span><span class="o">.</span>
+
+<span class="o">{%</span> <span class="n">raw</span> <span class="o">%}</span>
+<span class="err">```</span><span class="n">java</span>
+<span class="n">personsAge</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span> <span class="c1">// set the persons age to 23</span>
+</code></pre>
+</div>
+
+<p>However, there are important aspects that should be documented.  Java has added several commenting keywords that that allow a readable document to be generated from these comments.  These readable documents can be read using browsers and IDEs.  Both BlueJ and NetBeans show JavaDoc in nice, readable formats.  NetBeans does a really nice job.  These readable comments are the building blocks of JavaDoc.  Before describing the JavaDoc keywords, let’s first examine the two types of comments in Java.<br />
+* Single line comment – These comments continue to the end of the current line.  The above example, repeated here is a single line comment.
+personsAge = 23; // set the persons age to 23
+* Multi line comment – These comments begin with /* and continue until a balancing <em>/ is encountered.  There can be as many lines between the /</em> and */ as desired.  The JavaDoc keywords appear in these multi line comments.</p>
+
+<p>One of the best uses of documentation is to document the user interface of a class.  This will define how to construct an object and how to use the methods of an object. The following shows multiline comments that include JavaDoc keywords for the author of a class, the purpose of a method, the values of the methods formal parameters, and the return values of the method.  I have omitted the code for the methods.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/**
+ * Twitter helps create twitter posts
+ * 
+ * @author Gusty
+ * @version 6/24/15
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Twitter</span> <span class="o">{</span>
+    <span class="cm">/**
+     * returns the number of vowels.
+     * @param word the post whose vowels need to be removed.
+     * @return number of vowels in word
+     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">numVowels</span><span class="o">(</span><span class="n">String</span> <span class="n">word</span><span class="o">)</span> <span class="o">{</span> <span class="err">…</span> <span class="o">}</span>
+    <span class="cm">/**
+     * Shortens longPost by removing vowels.
+     * @param longPost the post whose vowels need to be removed.
+     * @return longPost without the vowels
+     */</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">noVowels</span><span class="o">(</span><span class="n">String</span> <span class="n">longPost</span><span class="o">)</span> <span class="o">{</span> <span class="err">…</span> <span class="o">}</span>
+    
+    <span class="cm">/**
+     * Returns a post backwards to hide its contents.
+     * @param post the post to be reversed.
+     * @return the reverse of post
+     */</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">reverse</span><span class="o">(</span><span class="n">String</span> <span class="n">post</span><span class="o">)</span> <span class="o">{</span> <span class="err">…</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>In BlueJ, this JavaDoc can be viewed as the following.  Note, I have only captured some of the actual JavaDoc.</p>
+
+<p>Figure SO-14 JavaDoc Example</p>
+
+<h2 id="so15-coding-standards">SO.15 Coding Standards</h2>
+
+<p>You should know at this time that the spacing in Java does not matter.  You should establish your coding standards that make your code easier to read.  We will discuss coding standards more when we cover the various Java statements.  For now, I will show you an alternative style for the code in SO.9.  See if you can spot the difference.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> 
+<span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>  <span class="c1">// variable to store the age of a person</span>
+
+   <span class="n">Person</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span>     <span class="c1">// constructor</span>
+   <span class="o">{</span>   
+      <span class="n">age</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">int</span> <span class="n">getAge</span><span class="o">()</span>  <span class="c1">// getter</span>
+   <span class="o">{</span>
+      <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+
+
+<div class="tags">
+    
+    <b>Tags: </b>
+    
+    
+    
+    
+    
+</div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 University of Mary Washington, Gusty Cooper. All rights reserved. <br />
+<p>Page last updated:</span> May 1, 2016<br/> Site last generated: May 5, 2016 <br />
+<p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+</body>
+
+</html>

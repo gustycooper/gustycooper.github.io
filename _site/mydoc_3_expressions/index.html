@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This describes Java expressions">
+<meta name="keywords" content="expressions,  expression, expressions, numeric expressions, relation expressions, boolean expressions">
+<title>Expressions  | UMW CPSC 220</title>
+<link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/gustycooper.github.io/css/modern-business.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/customstyles.css">
+<link rel="stylesheet" href="/gustycooper.github.io/css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/gustycooper.github.io/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/gustycooper.github.io/js/toc.js"></script>
+<script src="/gustycooper.github.io/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/gustycooper.github.io/images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.com/gustycooper.github.io/feed.xml">
+
+
+
+
+ 
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="/gustycooper.github.io/">&nbsp;<span class="projectTitle"> CPSC 220</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/gustycooper.github.io/news/">News</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course Artifacts<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/gustycooper.github.io//">CPSC 220</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p1_landing_page/">Syllabus</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/labs_landing_page/">Labs</a></li>
+                        
+                        
+                        
+                        <li><a href="/gustycooper.github.io/p2_landing_page/">References</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll/" target="_blank">Jeykyll Doc Theme 5.0</a></li>
+                        
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">fa-codes</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<!-- Send feedback function -->
+<script>
+function SendLinkByMail(href) {
+var subject= "UMW CPSC 220 feedback";
+var body = "I have some feedback about the Expressions page: ";
+body += window.location.href;
+body += "";
+var uri = "mailto:gusty@umw.edu?subject=";
+uri += encodeURIComponent(subject);
+uri += "&body=";
+uri += encodeURIComponent(body);
+window.location.href = uri;
+}
+</script>
+
+<li><a href="javascript:(function()%7BSendLinkByMail()%3B%7D)()%3B" target="_blank"><i class="fa fa-envelope-o"></i> Feedback</a></li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="/gustycooper.github.io/js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: '/gustycooper.github.io/search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Expressions">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">CPSC 220 0.0</li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Start Here</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/">Let's Get started</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_0_examples/">Example Authoring</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Introduction</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms/">Algorithms</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_supported_features/">Supported features</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_about/">About the theme author</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_support/">Support</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Simple Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Expressions</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Control Flow</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_control_flow/">Control Flow</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Classes and Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Arrays and ArrayLists</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_6_arrays_arraylists/">Arrays and ArrayLists</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Graphics</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Packages, Interfaces, ADTs</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Recursion, Searching, Sorting</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_recursion/">Recursion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_searching/">Searching</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_sorting/">Sorting</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Reference Information</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_meta_language/">Meta Language</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_string_manipulation/">String Manipulation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_i_o/">Input / Output</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_passing_parameters/">Passing Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_exceptions/">Exceptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_random_numbers/">Random Numbers</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Tag archives</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Tag archive pages</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_content_types/">Content types pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Expressions</h1>
+</div>
+
+<div class="post-content">
+
+   
+    <div class="summary">This describes Java expressions</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/edit/reviews/mydoc_3_expressions/" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h2 id="expressions-eck-25">Expressions (Eck 2.5)</h2>
+<p>Expressions are fairly straightforward.  Everyone should already be fairly proficient with creating expressions.  Section 2.5 in David Eck’s book provides a nice overview of Java expressions.  This section repeats some of David’s words and adds a few tips.  David’s words are shown in italics.</p>
+
+<h2 id="exp1-expression-introduction">EXP.1 Expression Introduction</h2>
+
+<p>A list of expression attributes.
+* The basic building blocks of expressions are literals (such as 674, 3.14, true, and ‘X’), variables, and function calls.  A function call is a method that returns a value.  For example, Math.cos(0) is a function call that returns 1.0.<br />
+* An expression is a piece of program code that computes a value. 
+* An expression can be a literal, a variable, a function call, or several of these things combined with operators such as + and &gt;. 
+* The value of an expression can be assigned to a variable, used as a parameter in a method call, or combined with other values into a more complicated expression.
+* Expressions are also used in if statements, loops, and switch statements.
+* Expressions are evaluated.  Expressions evaluate to a specific type.  The resulting type of an expression is usually obvious.  For example, if you add two integers, the result will be an integer.  When used with the assignment operator, the right-hand expression must evaluate to the type of the variable on the left-hand side.
+* Java evaluates the expression in accordance with operator precedence to compute the value.  The Java operator precedence is shown in the next section.</p>
+
+<h2 id="exp2-operator-precedence">EXP.2 Operator Precedence</h2>
+
+<p>If you use several operators in one expression, and if you don’t use parentheses to explicitly indicate the order of evaluation, then you have to worry about the precedence rules that determine the order of evaluation. (Advice: don’t confuse yourself or the reader of your program; use parentheses liberally.)</p>
+
+<p>I wholeheartedly agree with David’s advice.</p>
+
+<p>Here is a listing of the operators discussed in this section, listed in order from highest precedence (evaluated first) to lowest precedence (evaluated last):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Operators</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Unary operators</td>
+      <td>++, –, !, unary -, unary +, type-cast</td>
+    </tr>
+    <tr>
+      <td>Multiplication and division</td>
+      <td>*,  /,  %</td>
+    </tr>
+    <tr>
+      <td>Addition and subtraction</td>
+      <td>+,  -</td>
+    </tr>
+    <tr>
+      <td>Relational operators</td>
+      <td>&lt;,  &gt;,  &lt;=,  &gt;=</td>
+    </tr>
+    <tr>
+      <td>Equality and inequality</td>
+      <td>:      ==,  !=</td>
+    </tr>
+    <tr>
+      <td>Boolean and</td>
+      <td>: &amp;&amp;</td>
+    </tr>
+    <tr>
+      <td>Boolean or</td>
+      <td>||</td>
+    </tr>
+    <tr>
+      <td>Conditional operator</td>
+      <td>?:</td>
+    </tr>
+    <tr>
+      <td>Assignment operators</td>
+      <td>=,  +=,  -=,  *=,  /=,  %=</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Operators on the same line have the same precedence. When operators of the same precedence are strung together in the absence of parentheses, unary operators and assignment operators are evaluated right-to-left, while the remaining operators are evaluated left-to-right. For example, A<em>B/C means (A</em>B)/C, while A=B=C means A=(B=C).</p>
+
+<h2 id="exp3-numbers--overflow">EXP.3 Numbers – Overflow</h2>
+
+<p>The following is an interesting Java expression that provides a surprising result due to integer overflow.  Java’s largest positive int is 231-1, which is 2147483647.  You can see this using Integer.MAX_VALUE constant.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">oneMillion</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">mystery</span> <span class="o">=</span> <span class="n">oneMillion</span> <span class="o">*</span> <span class="n">oneMillion</span><span class="o">;</span> <span class="c1">// -727379968</span>
+<span class="kt">int</span> <span class="n">maxInt</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span> <span class="c1">// 2147483647</span>
+</code></pre>
+</div>
+
+<p>There are a couple of ways of fixing this.  One is to use long instead of int.  The Long.MAX_VALUE is 263-1, which is 9223372036854775807 – a rather large number.  You could also use double instead of int.  The Double.MAX_VALUE is
+1.7976931348623157E308.  For floating point numbers, you have to realize there is limited precision.</p>
+
+<p>This example demonstrates that you should be careful in selecting the types of your variables.</p>
+
+<p>Consider that the world has an estimated 3 trillion trees.  If you wrote a program that counted trees, you could not use an int – you would have to use a long.</p>
+
+<h2 id="exp4-floating-point-has-limited-precision">EXP.4 Floating point has limited precision</h2>
+
+<p>We demonstrated that floating-point numbers are not exact in BBDT.12.  The following is another example that demonstrates that floating-point numbers have limited precision.  This example is one computing the cost of items.  After examining this example, you should be careful writing programs that manipulate costs.  Maybe even using int to represent pennies.  Accountants may get angry when they audit your company and your program has computed the wrong balance.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">unitPrice</span> <span class="o">=</span> <span class="mf">4.35</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">totalPrice</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">unitPrice</span> <span class="c1">// 434.999999999999994</span>
+<span class="c1">// binary to decimal: no exact representation for 4.35</span>
+<span class="c1">// similar to 10/3 is 3.3333333...</span>
+<span class="c1">// floating point numbers are fuzzy</span>
+</code></pre>
+</div>
+
+<h2 id="exp5-integer-division--and-remainder--operators">EXP.5 Integer Division (/) and Remainder (%) Operators</h2>
+
+<p>You should note that an int / int results in an int, where the fractional part of the result is discarded.  This type of division is sometimes called goes-into because it provide how many times a number goes into another.  Integer division has an counterpart that provides the remander, which is Java is the % operator.  Consider two ints and two doubles as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="n">j</span><span class="o">;</span>  <span class="c1">// k is 2 (num of times 2 goes-into 5)</span>
+<span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="n">j</span><span class="o">;</span>  <span class="c1">// l is 1 (remainder of 5/2)</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">f</span> <span class="o">=</span> <span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">;</span> <span class="c1">// f is 2.5</span>
+</code></pre>
+</div>
+
+<h2 id="exp51-converting-an-int-to-a-base">EXP.5.1 Converting An Int to a Base</h2>
+
+<p>During week one we discussed converting numbers to particular bases.  The following code uses integer division and remainder to perform the conversion.  We will study the while loop next week.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.lang.StringBuilder</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">string</span> <span class="nf">convert</span><span class="p">(</span><span class="kt">int</span> <span class="n">Number</span><span class="o">,</span> <span class="kt">int</span> <span class="n">Base</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">answer</span> <span class="o">=</span> <span class="err">“”</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">Number</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="n">Number</span> <span class="o">%</span> <span class="n">Base</span>      <span class="c1">// modulo</span>
+        <span class="n">Number</span> <span class="o">=</span> <span class="n">Number</span> <span class="o">/</span> <span class="n">Base</span> <span class="c1">// integer division</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">+</span> <span class="n">digit</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">(</span><span class="n">answer</span><span class="o">).</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+</code></pre>
+</div>
+
+<h2 id="exp52-integer-arithmetic-to-manipulate-rgb">EXP.5.2 Integer Arithmetic to Manipulate RGB</h2>
+
+<p>The example shows how to use integer division to manipulate Red, Green, and Blue values such that they become more discreet.  For example, we want to reduce the range of a number from 0 to 255 to be from 0 to 5.  For examples 256 becomes 1 and 257 becomes 2.  The algorithm to manipulate a specific value is the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">value</span> <span class="o">=</span> <span class="o">(</span><span class="n">value</span> <span class="o">*</span> <span class="mi">6</span><span class="o">)</span> <span class="o">/</span> <span class="mi">256</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>The class to manipulate the three colors is the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Color</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">red</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">green</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">blue</span><span class="o">;</span>
+
+  <span class="cm">/**
+   * Uses only valued 0, 51, 102, 153, 204, 255 for RGB
+   */</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="n">reduce</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="o">(</span><span class="n">red</span> <span class="o">*</span> <span class="mi">6</span><span class="o">)</span> <span class="o">/</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">51</span><span class="o">;</span> 
+    <span class="n">blue</span> <span class="o">=</span> <span class="o">(</span><span class="n">blue</span> <span class="o">*</span> <span class="mi">6</span><span class="o">)</span> <span class="o">/</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">51</span><span class="o">;</span>
+    <span class="n">green</span> <span class="o">=</span> <span class="o">(</span><span class="n">green</span> <span class="o">*</span> <span class="mi">6</span><span class="o">)</span> <span class="o">/</span> <span class="mi">256</span> <span class="o">*</span> <span class="mi">51</span><span class="o">;</span>
+    
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="exp6-assignment-operators">EXP.6 Assignment Operators</h2>
+
+<p>One thing to remember is that assignment is an operator, not a statement.  This means that Java allows you to include assignments in expressions as follows.  The precedence of the assignment operator is low and it groups from right to left.  I suggest you use the assignment operator as an assignment statement.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i1</span><span class="o">,</span><span class="n">i2</span><span class="o">,</span><span class="n">i3</span><span class="o">;</span>
+<span class="n">i1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">i3</span> <span class="o">=</span> <span class="n">i1</span><span class="o">;</span> <span class="c1">// after this i1, i2, i3 contain 1</span>
+<span class="n">i3</span> <span class="o">=</span> <span class="o">(</span><span class="n">i1</span> <span class="o">=</span> <span class="n">i3</span><span class="o">)</span> <span class="o">+</span> <span class="n">i2</span><span class="o">;</span>  <span class="c1">// after this i3 contains 2, i1,i2 contain 1</span>
+</code></pre>
+</div>
+
+<p>Adding some value to a variable is a common action in programming.  Java has a special assignment statement that provides a short cut for this technique.  David Eck’s book describes this shortcut as follows.</p>
+
+<p>Getting back to assignment statements, Java has several variations on the assignment operator, which exist to save typing. For example, “A += B” is defined to be the same as “A = A + B”. Every operator in Java that applies to two operands, except for the relational operators, gives rise to a similar assignment operator. For example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">-=</span> <span class="n">y</span><span class="o">;</span>     <span class="c1">// same as:   x = x - y;</span>
+<span class="n">x</span> <span class="o">*=</span> <span class="n">y</span><span class="o">;</span>     <span class="c1">// same as:   x = x * y;</span>
+<span class="n">x</span> <span class="o">/=</span> <span class="n">y</span><span class="o">;</span>     <span class="c1">// same as:   x = x / y;</span>
+<span class="n">x</span> <span class="o">%=</span> <span class="n">y</span><span class="o">;</span>     <span class="c1">// same as:   x = x % y;</span>
+<span class="n">q</span> <span class="o">&amp;&amp;=</span> <span class="n">p</span><span class="o">;</span>    <span class="c1">// same as:   q = q &amp;&amp; p;  (for booleans q and p)</span>
+
+<span class="err">##</span> <span class="n">EXP</span><span class="o">.</span><span class="mi">7</span> <span class="n">Increment</span> <span class="n">and</span> <span class="n">Decrement</span> <span class="n">Operators</span>
+
+<span class="n">Adding</span> <span class="mi">1</span> <span class="n">or</span> <span class="n">subtracting</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">a</span> <span class="n">variable</span> <span class="n">is</span> <span class="n">a</span> <span class="n">common</span> <span class="n">action</span> <span class="n">in</span> <span class="n">programming</span><span class="o">.</span>  <span class="n">Java</span> <span class="n">has</span> <span class="n">a</span> <span class="n">shortcut</span> <span class="k">for</span> <span class="n">doing</span> <span class="k">this</span><span class="o">.</span>  <span class="n">You</span> <span class="n">will</span> <span class="n">use</span> <span class="k">this</span> <span class="n">shortcut</span> <span class="n">quite</span> <span class="n">often</span> <span class="n">in</span> <span class="k">for</span> <span class="n">loops</span><span class="o">.</span>
+
+<span class="o">{%</span> <span class="n">raw</span> <span class="o">%}</span>
+<span class="err">```</span><span class="n">java</span>
+<span class="n">x</span><span class="o">++;</span> <span class="c1">// same as x = x + 1</span>
+<span class="n">x</span><span class="o">--;</span> <span class="c1">// same as x = x -1</span>
+</code></pre>
+</div>
+
+<h2 id="exp8-expressions-with-side-effects">EXP.8 Expressions with Side Effects</h2>
+
+<p>Most of the time expressions simply evaluate to a value; however, sometimes expressions have side effects.  The term side effect means the expression changes the value of some variable.  A simple assignment statement (which is really an assignment expression) such as the following has side effects.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">i1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+<span class="n">In</span> <span class="k">this</span> <span class="k">case</span> <span class="n">the</span> <span class="n">side</span> <span class="n">effect</span> <span class="n">is</span> <span class="n">obvious</span><span class="o">.</span>  <span class="n">Likewise</span> <span class="n">the</span> <span class="n">following</span> <span class="n">expressions</span> <span class="n">have</span> <span class="n">clearly</span> <span class="n">defined</span> <span class="n">side</span> <span class="n">effects</span><span class="o">.</span>
+
+<span class="o">{%</span> <span class="n">raw</span> <span class="o">%}</span>
+<span class="err">```</span><span class="n">java</span>
+<span class="n">x</span><span class="o">++</span>
+<span class="n">y</span><span class="o">--</span>
+<span class="n">x</span> <span class="o">-=</span> <span class="n">y</span><span class="o">;</span>     <span class="c1">// same as:   x = x - y;</span>
+<span class="n">x</span> <span class="o">*=</span> <span class="n">y</span><span class="o">;</span>     <span class="c1">// same as:   x = x * y;</span>
+<span class="n">x</span> <span class="o">/=</span> <span class="n">y</span><span class="o">;</span>     <span class="c1">// same as:   x = x / y;</span>
+<span class="n">x</span> <span class="o">%=</span> <span class="n">y</span><span class="o">;</span>     <span class="c1">// same as:   x = x % y;</span>
+<span class="n">q</span> <span class="o">&amp;&amp;=</span> <span class="n">p</span><span class="o">;</span>    <span class="c1">// same as:   q = q &amp;&amp; p;  (for booleans q and p)</span>
+</code></pre>
+</div>
+
+<p>However, you can create expressions with side effects that are not as obvious.  The following is an example copied from the Oracle website.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="o">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="o">);</span>  <span class="c1">// a is 12 after evaluating this expression</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+ <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="o">(</span><span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="o">);</span>  <span class="c1">// b is 12 after evaluating this expression</span>
+</code></pre>
+</div>
+
+<h2 id="exp9-arithmetic-operators----------">EXP.9 Arithmetic Operators: +  -  *  /  %</h2>
+
+<p>The arithmetic operators are mostly self explanatory.  The % operator is remander.  You should also remember the int / int evaluates to an int, discarding the fractional part.  You should notice that Java does not have an exponentiation operator.  You have to use the Math.pow() function.  The following are a couple of examples.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="c1">// 8.0</span>
+<span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// 9.0</span>
+</code></pre>
+</div>
+
+<h2 id="exp10-relational-operators------------">EXP.10 Relational Operators:  &gt;  &gt;=  &lt;  &lt;=  ==  !=</h2>
+
+<p>NOTE: = is assignment, == is comparison, assignment is an operator that can be used in expressions, but it is wise to simply use it as part of an assignment statement.</p>
+
+<h2 id="exp11-truth-tables">EXP.11 Truth Tables</h2>
+
+<p>The truth tables for Boolean Operators are given as follows.  Note the last column !P applies the not operator to the first column P.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>P</th>
+      <th>Q</th>
+      <th>&amp;&amp;</th>
+      <th>||</th>
+      <th>!P</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="exp12-boolean-operators--and------or------not-">EXP.12 Boolean Operators – And: &amp;&amp;     Or: ||     Not: !</h2>
+
+<p>A Boolean expression is an expression that evaluates to true or false.  To support Boolean expressions, Java has an primitive boolean data type and two key words true and false.   For example, I can create the following variable.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>There are several ways to construct an expression that evaluates to true or false.<br />
+•	I can use the relational operators.  The following are examples.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span>
+<span class="n">a</span> <span class="o">!=</span> <span class="n">b</span>
+</code></pre>
+</div>
+
+<p>•	I can use the Boolean operators.  The following are exmaples.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">b1</span> <span class="o">&amp;&amp;</span> <span class="n">b2</span> <span class="o">||</span> <span class="n">b3</span>
+<span class="n">bb</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">b</span>
+</code></pre>
+</div>
+
+<p>•	I can combine relational operators, Boolean operators, and other operators.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">*</span><span class="n">z</span> <span class="o">||</span> <span class="n">b1</span> <span class="o">&amp;&amp;</span> <span class="n">b2</span>
+</code></pre>
+</div>
+
+<h2 id="exp121-short-circuited-boolean-operators">EXP.12.1 Short Circuited Boolean Operators</h2>
+
+<p>Java can short-circuit the Boolean operators of &amp;&amp; and ||.  Consider the following example of an &amp;&amp; Boolean expression.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<p>In this case Java evaluates the expression i &gt; j &amp;&amp; x &gt; y from left to right.  We know that i &gt; j is false since i is 5 and j is 6.  We also know that false &amp;&amp; anything is false.  Thus we know that b is false without having to evaluate x &gt; y.  Java does this exact short circuit – does not evaluate the x &gt; y.  Likewise Java will perform a similar short circuit for logical || when the leading expression is true.  The following is an example.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span>  <span class="o">||</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">;</span> <span class="c1">// x &gt; y not evaluated</span>
+</code></pre>
+</div>
+
+<p>For the most part, this short-circuiting is rather innocuous; however, if the subsequent expressions have side effects they may not be executed thereby not performing the side effect that you desired.</p>
+
+<p>Provide example here.</p>
+
+<h2 id="exp122-the--and--operators">EXP.12.2 The != and ! Operators</h2>
+
+<p>Note that the not operator ! is similar to !=</p>
+
+<h2 id="exp123-boolean-algebra">EXP.12.3 Boolean Algebra</h2>
+
+<p>Boolean algebra can be helpful at times to simplify a complicated Boolean expression.  When we study while loops, we will learn that they keep going as long as an expression is true.  Sometimes we know when we want to terminate a while loop, which means we know the NOT of the expression needed to keep the while loop going.  De Morgan’s law can be useful in transforming a termination Boolean expression to a keep going Boolean expression.</p>
+
+<p>Complete this.</p>
+
+<h2 id="exp13-conditional-operators">EXP.13 Conditional Operators</h2>
+
+<p>Java has a clever conditional operator, which we will use in our labs before we study the if statement.  I repeat David Eck’s words here.  Notice he uses the term, ternary operator, which means an operator with three operands.</p>
+
+<p>Any good programming language has some nifty little features that aren’t really necessary but that let you feel cool when you use them. Java has the conditional operator. It’s a ternary operator – that is, it has three operands – and it comes in two pieces, ? and :, that have to be used together. It takes the form</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span> <span class="o">?</span> <span class="n">expression1</span> <span class="o">:</span> <span class="n">expression2</span>
+</code></pre>
+</div>
+
+<p>The computer tests the value of boolean-expression. If the value is true, it evaluates expression1; otherwise, it evaluates expression2. For example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">next</span> <span class="o">=</span> <span class="o">(</span><span class="n">N</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="o">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>will assign the value N/2 to next if N is even (that is, if N % 2 == 0 is true), and it will assign the value (3*N+1) to next if N is odd. (The parentheses in this example are not required, but they do make the expression easier to read.)</p>
+
+<h2 id="exp14-java-math-library--including-mathrandom-for-a-random-integer">EXP.14 Java Math Library – Including Math.random() for a Random Integer</h2>
+
+<p>The Java Math library has many useful math functions.  The Java Math library is automatically available so you do not have to import anything.  The following are several examples of functions (or methods) from the Java Math libary.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span> <span class="c1">// 2**10 or 1024.0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>         <span class="c1">// sqrt(100) or 10.0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(-</span><span class="mi">1</span><span class="o">);</span>           <span class="c1">// absolute value or 1</span>
+<span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="mi">0</span><span class="o">,-</span><span class="mi">1</span><span class="o">);</span>             <span class="c1">// maximum or 0</span>
+<span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">250</span><span class="o">);</span>         <span class="c1">// minimum or 250</span>
+<span class="kt">int</span> <span class="n">randomInteger</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mi">5</span><span class="o">*</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span> <span class="c1">// between 0 and 4</span>
+</code></pre>
+</div>
+
+<p>You should pay attention to the last example that generates a random integer between 0 and 4.  Math.random() returns a double that satisfies the following equation.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">1</span>
+</code></pre>
+</div>
+
+<p>If you multiply the value Math.random() by 5 you will have a double that satisfies the following equation.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">5</span>
+
+<span class="n">If</span> <span class="n">you</span> <span class="n">cast</span> <span class="n">the</span> <span class="kt">double</span> <span class="n">returned</span> <span class="nf">by</span> <span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())</span> <span class="n">to</span> <span class="n">an</span> <span class="kt">int</span> <span class="n">you</span> <span class="n">will</span> <span class="n">have</span> <span class="n">an</span> <span class="kt">int</span> <span class="n">that</span> <span class="n">is</span> <span class="n">either</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="n">or</span> <span class="mi">4</span><span class="o">.</span>  <span class="n">The</span> <span class="n">following</span> <span class="n">is</span> <span class="n">the</span> <span class="n">code</span> <span class="n">that</span> <span class="n">accomplishes</span> <span class="k">this</span><span class="o">.</span>
+
+<span class="o">{%</span> <span class="n">raw</span> <span class="o">%}</span>
+<span class="err">```</span><span class="n">java</span>
+<span class="kt">int</span> <span class="n">i</span>  <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span>
+</code></pre>
+</div>
+
+<p>This is a nice technique for generating a random integer using Math.random().</p>
+
+<h2 id="exp15-java-math-methods-are-not-part-of-an-object">EXP.15 Java Math Methods are not Part of an Object</h2>
+
+<p>The Java math methods are defined in the Math class, but we do not have to create Math objects to access them.  Think about our Person class that had methods like getFirstName() and addFriend().  We needed to construct a Person object in order to call these methods.  The following code demonstrates this approach.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="n">Cooper</span><span class="err">”</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">fn</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">getFirstName</span><span class="o">();</span>
+<span class="n">p</span><span class="o">.</span><span class="na">addFriend</span><span class="o">(</span><span class="err">“</span><span class="n">Emily</span><span class="err">”</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>You should compare these Person method calls with the Math method calls provided in the previous section.  They both use a dot notation to access methods.  Accessing Math methods uses the dot notation to dot-into the library.  Access Person methods uses dot notation to dot-into the object.  Intuitively, this should make sense.  We do not want to create a Math object to call those methods.  To accomplish this we use the static modifier when define class methods.</p>
+
+<h2 id="exp16-random-generator-class-and-object">EXP.16 Random Generator Class and Object</h2>
+
+<p>We learned in Section EXP.14 how to generate random numbers with Math.random().  This section describes the class Random, which is another way to generate random numbers.  You can create a Random object with an initial seed value, which allows you to always get the same sequence of random numbers.  This can be useful when testing your program.  The Random class is in the java.util package so you have to import java.util.Random.  The following code snippet demonstrates how to create a variable of type Random, allocate a Random object, and call the methods.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+<span class="n">Random</span> <span class="n">generator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="mi">42</span><span class="o">);</span> <span class="c1">// seed get same stream for testing</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">n</span><span class="o">);</span> <span class="c1">// 0 &lt;= i &lt; n</span>
+<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span> <span class="c1">// 0 &lt;= x &lt; 1</span>
+</code></pre>
+</div>
+
+<p>You should notice that Math.random() is a static method in the Math class and the nextInt(int n) and nextDouble() are methods in a Random object.  You have to construct a Random object before you can call those methods.</p>
+
+<h2 id="exp17-example-problems-with-expressions">EXP.17 Example Problems with Expressions</h2>
+
+<p>Whenever you solve a problem, you first want to work through concrete examples by hand.  This will allow you to understand the problem.  After you can solve several concrete examples, you can turn you concrete solutions into a general solution.</p>
+
+<h2 id="exp171-tiles">EXP.17.1 Tiles</h2>
+
+<p>TBD</p>
+
+
+
+<div class="tags">
+    
+    <b>Tags: </b>
+    
+    
+    
+    
+    
+</div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 University of Mary Washington, Gusty Cooper. All rights reserved. <br />
+<p>Page last updated:</span> May 1, 2016<br/> Site last generated: May 5, 2016 <br />
+<p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+</body>
+
+</html>
