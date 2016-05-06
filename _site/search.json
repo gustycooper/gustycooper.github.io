@@ -6,11 +6,21 @@
 
 
 {
-"title": "Getting Started in CPSC 220",
-"tags": "getting_started",
+"title": "Welcome to CPSC 220",
+"tags": "welcome",
 "keywords": "",
 "url": "/gustycooper.github.io/",
 "summary": ""
+},
+
+
+
+{
+"title": "First Java Programs (Labs - Lab 1)",
+"tags": "",
+"keywords": "loop",
+"url": "/gustycooper.github.io/labs_lab01_00/",
+"summary": "Lab 1, Overview"
 },
 
 
@@ -36,6 +46,16 @@
 
 
 {
+"title": "First Classes and Objects (Labs - Lab 2)",
+"tags": "",
+"keywords": "loop",
+"url": "/gustycooper.github.io/labs_lab02_00/",
+"summary": "Lab 2, Overview"
+},
+
+
+
+{
 "title": "First Program (Labs - Lab 1)",
 "tags": "",
 "keywords": "first program",
@@ -51,6 +71,16 @@
 "keywords": "MyString",
 "url": "/gustycooper.github.io/labs_lab02_02/",
 "summary": "Lab 2, MyString"
+},
+
+
+
+{
+"title": "First Program (Labs - Lab 3)",
+"tags": "",
+"keywords": "loop",
+"url": "/gustycooper.github.io/labs_lab03_00/",
+"summary": "Lab 3, Overview"
 },
 
 
@@ -76,6 +106,76 @@
 
 
 {
+"title": "First Program (Labs - Lab 4)",
+"tags": "",
+"keywords": "loop",
+"url": "/gustycooper.github.io/labs_lab04_00/",
+"summary": "Lab 4, Overview"
+},
+
+
+
+{
+"title": "First Loops (Labs - Lab 4)",
+"tags": "",
+"keywords": "loop",
+"url": "/gustycooper.github.io/labs_lab04_01/",
+"summary": "Lab 4, First Loops"
+},
+
+
+
+{
+"title": "Potato Class (Labs - Lab 4)",
+"tags": "",
+"keywords": "first program",
+"url": "/gustycooper.github.io/labs_lab04_02/",
+"summary": "Lab 4, Potato Class"
+},
+
+
+
+{
+"title": "Loops, Ifs, Switches (Labs - Lab 4)",
+"tags": "",
+"keywords": "loop, if, switch",
+"url": "/gustycooper.github.io/labs_lab04_03/",
+"summary": "Lab 4, Loops, Ifs, Switches"
+},
+
+
+
+{
+"title": "Millionaire (Labs - Lab 4)",
+"tags": "",
+"keywords": "millionair",
+"url": "/gustycooper.github.io/labs_lab04_04/",
+"summary": "Lab 4, Millionair"
+},
+
+
+
+{
+"title": "First Program (Labs - Lab 5)",
+"tags": "",
+"keywords": "class, object",
+"url": "/gustycooper.github.io/labs_lab05_00/",
+"summary": "Lab 5, Overview"
+},
+
+
+
+{
+"title": "First Program (Labs - Lab 5)",
+"tags": "",
+"keywords": "class, object",
+"url": "/gustycooper.github.io/labs_lab06_00/",
+"summary": "Lab 6, Overview"
+},
+
+
+
+{
 "title": "CPSC 220 Labs",
 "tags": "",
 "keywords": "mydoc",
@@ -86,11 +186,41 @@
 
 
 {
+"title": "Downloads and Installs",
+"tags": "downloadsinstalls",
+"keywords": "downloads, installs",
+"url": "/gustycooper.github.io/mydoc_0_downloads/",
+"summary": "Downloads and Installs"
+},
+
+
+
+{
 "title": "Example Authoring",
 "tags": "getting_started",
 "keywords": "sample, authoring",
 "url": "/gustycooper.github.io/mydoc_0_examples/",
 "summary": "I added this to save examples of authoring."
+},
+
+
+
+{
+"title": "Getting Started in CPSC 220",
+"tags": "getting_started",
+"keywords": "sample, authoring",
+"url": "/gustycooper.github.io/mydoc_0_get_started/",
+"summary": "Getting Started in CPSC 220"
+},
+
+
+
+{
+"title": "How to Use This Site",
+"tags": "How to use",
+"keywords": "how to use",
+"url": "/gustycooper.github.io/mydoc_0_how_to_use/",
+"summary": "How to Use This Site"
 },
 
 
@@ -1107,6 +1237,63 @@
 
 
 
+{
+"title": "CPSC 220 Projectsl",
+"tags": "",
+"keywords": "mydoc",
+"url": "/gustycooper.github.io/projects_landing_page/",
+"summary": ""
+},
+
+
+
+{
+"title": "Project 1",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_project01_01/",
+"summary": "Project 1"
+},
+
+
+
+{
+"title": "First Project (Projects - Project 1)",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_project02_01/",
+"summary": "Project 1"
+},
+
+
+
+{
+"title": "First Projects (Projects - Project 1)",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_project03_01/",
+"summary": "Project 1"
+},
+
+
+
+{
+"title": "Project 4",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_project04_01/",
+"summary": "Project 4"
+},
+
+
+
+{
+"title": "Project 5",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_project05_01/",
+"summary": "Project 5"
+},
 
 
 
@@ -1145,6 +1332,19 @@
 
 
 
+
+
+
+
+
+{
+"title": "Welcome to CSPC 220!",
+"tags": "news",
+"keywords": "",
+"url": "/gustycooper.github.io/myupdate/",
+"summary": ""
+}
+,
 
 
 {
@@ -1153,16 +1353,6 @@
 "keywords": "",
 "url": "/gustycooper.github.io/samplepost/",
 "summary": "This is some summary frontmatter for my sample post."
-}
-,
-
-
-{
-"title": "Welcome to Jekyll!",
-"tags": "news",
-"keywords": "",
-"url": "/gustycooper.github.io/myupdate/",
-"summary": ""
 }
 ,
 

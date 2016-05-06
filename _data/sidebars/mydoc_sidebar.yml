@@ -23,9 +23,21 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Let's Get started
+    - title: Welcome
       url: /
       type: homepage
+      output: web, pdf
+
+    - title: Let's Get Started
+      url: /mydoc_0_get_started/
+      output: web, pdf
+
+    - title: Java Downloads
+      url: /mydoc_0_downloads/
+      output: web, pdf
+
+    - title: How to Use
+      url: /mydoc_0_how_to_use/
       output: web, pdf
 
     - title: Example Authoring
@@ -50,18 +62,6 @@ entries:
 
     - title: Algorithms, Programming
       url: /mydoc_1_algorithms_programming/
-      output: web, pdf
-
-    - title: Supported features
-      url: /mydoc_supported_features/
-      output: web, pdf
-
-    - title: About the theme author
-      url: /mydoc_about/
-      output: web, pdf
-
-    - title: Support
-      url: /mydoc_support/
       output: web, pdf
 
   - title: Simple Objects

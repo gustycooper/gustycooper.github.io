@@ -20,7 +20,7 @@ Write a Java ```SplitTheBill``` class that has two public static methods: ```mai
 double amount = pay(50, .20, 5) ; // amount is 12.0
 ```
 
-public static void main(String[] args) – This is your program’s main method that calls your pay method to test that it is correct.  Use System.out.print, System.out.println, and a Scanner object to create the dialog for running your program.  The following is an example dialog.
+```public static void main(String[] args)``` – This is your program’s main method that calls your pay method to test that it is correct.  Use ```System.out.print```, ```System.out.println```, and a ```Scanner``` object to create the dialog for running your program.  The following is an example dialog.
 
 ```java
 Enter restaurant bill: 20

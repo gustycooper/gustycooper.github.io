@@ -10,9 +10,30 @@
 
  
 :
-  title: "Let's Get started"
+  title: "Welcome"
   url: /gustycooper.github.io/
-  link: <a href="/gustycooper.github.io/">Let's Get started</a>
+  link: <a href="/gustycooper.github.io/">Welcome</a>
+
+
+ 
+mydoc_0_get_started:
+  title: "Let's Get Started"
+  url: /gustycooper.github.io/mydoc_0_get_started/
+  link: <a href="/gustycooper.github.io/mydoc_0_get_started/">Let's Get Started</a>
+
+
+ 
+mydoc_0_downloads:
+  title: "Java Downloads"
+  url: /gustycooper.github.io/mydoc_0_downloads/
+  link: <a href="/gustycooper.github.io/mydoc_0_downloads/">Java Downloads</a>
+
+
+ 
+mydoc_0_how_to_use:
+  title: "How to Use"
+  url: /gustycooper.github.io/mydoc_0_how_to_use/
+  link: <a href="/gustycooper.github.io/mydoc_0_how_to_use/">How to Use</a>
 
 
  
@@ -50,27 +71,6 @@ mydoc_1_algorithms_programming:
   title: "Algorithms, Programming"
   url: /gustycooper.github.io/mydoc_1_algorithms_programming/
   link: <a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a>
-
-
- 
-mydoc_supported_features:
-  title: "Supported features"
-  url: /gustycooper.github.io/mydoc_supported_features/
-  link: <a href="/gustycooper.github.io/mydoc_supported_features/">Supported features</a>
-
-
- 
-mydoc_about:
-  title: "About the theme author"
-  url: /gustycooper.github.io/mydoc_about/
-  link: <a href="/gustycooper.github.io/mydoc_about/">About the theme author</a>
-
-
- 
-mydoc_support:
-  title: "Support"
-  url: /gustycooper.github.io/mydoc_support/
-  link: <a href="/gustycooper.github.io/mydoc_support/">Support</a>
 
 
 
@@ -416,6 +416,13 @@ labs_landing_page:
 
 
  
+labs_lab01_00:
+  title: "Labs - Lab 1 Overview"
+  url: /gustycooper.github.io/labs_lab01_00/
+  link: <a href="/gustycooper.github.io/labs_lab01_00/">Labs - Lab 1 Overview</a>
+
+
+ 
 labs_lab01_01:
   title: "Labs - First Program"
   url: /gustycooper.github.io/labs_lab01_01/
@@ -429,6 +436,13 @@ labs_lab01_02:
   link: <a href="/gustycooper.github.io/labs_lab01_02/">Labs - Second Program</a>
 
 
+
+
+ 
+labs_lab02_00:
+  title: "Labs - Lab 2 Overview"
+  url: /gustycooper.github.io/labs_lab02_00/
+  link: <a href="/gustycooper.github.io/labs_lab02_00/">Labs - Lab 2 Overview</a>
 
 
  
@@ -448,6 +462,13 @@ labs_lab02_02:
 
 
  
+labs_lab03_00:
+  title: "Labs - Lab 3 Overview"
+  url: /gustycooper.github.io/labs_lab03_00/
+  link: <a href="/gustycooper.github.io/labs_lab03_00/">Labs - Lab 3 Overview</a>
+
+
+ 
 labs_lab03_01:
   title: "Labs - Java Expressions in Codepad"
   url: /gustycooper.github.io/labs_lab03_01/
@@ -459,6 +480,61 @@ labs_lab03_02:
   title: "Labs - Split the Bill"
   url: /gustycooper.github.io/labs_lab03_02/
   link: <a href="/gustycooper.github.io/labs_lab03_02/">Labs - Split the Bill</a>
+
+
+
+
+ 
+labs_lab04_00:
+  title: "Labs - Lab 4 Overview"
+  url: /gustycooper.github.io/labs_lab04_00/
+  link: <a href="/gustycooper.github.io/labs_lab04_00/">Labs - Lab 4 Overview</a>
+
+
+ 
+labs_lab04_01:
+  title: "Labs - First Loops"
+  url: /gustycooper.github.io/labs_lab04_01/
+  link: <a href="/gustycooper.github.io/labs_lab04_01/">Labs - First Loops</a>
+
+
+ 
+labs_lab04_02:
+  title: "Labs - Potato Class"
+  url: /gustycooper.github.io/labs_lab04_02/
+  link: <a href="/gustycooper.github.io/labs_lab04_02/">Labs - Potato Class</a>
+
+
+ 
+labs_lab04_03:
+  title: "Labs - Loops, Ifs, Switches"
+  url: /gustycooper.github.io/labs_lab04_03/
+  link: <a href="/gustycooper.github.io/labs_lab04_03/">Labs - Loops, Ifs, Switches</a>
+
+
+ 
+labs_lab04_04:
+  title: "Labs - Millionaire"
+  url: /gustycooper.github.io/labs_lab04_04/
+  link: <a href="/gustycooper.github.io/labs_lab04_04/">Labs - Millionaire</a>
+
+
+
+
+ 
+labs_lab05_00:
+  title: "Labs - Lab 5 Overview"
+  url: /gustycooper.github.io/labs_lab05_00/
+  link: <a href="/gustycooper.github.io/labs_lab05_00/">Labs - Lab 5 Overview</a>
+
+
+
+
+ 
+labs_lab06_00:
+  title: "Labs - Lab 6 Overview"
+  url: /gustycooper.github.io/labs_lab06_00/
+  link: <a href="/gustycooper.github.io/labs_lab06_00/">Labs - Lab 6 Overview</a>
 
 
 
@@ -502,6 +578,13 @@ labs_landing_page:
   title: "Labs"
   url: "labs_landing_page"
   link: "<a href='/labs_landing_page/'>Labs</a>"
+
+
+
+projects_landing_page:
+  title: "Projects"
+  url: "projects_landing_page"
+  link: "<a href='/projects_landing_page/'>Projects</a>"
 
 
 
@@ -568,6 +651,13 @@ labs_landing_page:
   title: "Labs"
   url: "labs_landing_page"
   link: "<a href='/labs_landing_page/'>Labs</a>"
+
+
+
+projects_landing_page:
+  title: "Projects"
+  url: "projects_landing_page"
+  link: "<a href='/projects_landing_page/'>Projects</a>"
 
 
 

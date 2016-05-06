@@ -31,6 +31,10 @@ entries:
     output: web, pdf
 
     folderitems:
+    - title: Labs - Lab 1 Overview
+      url: /labs_lab01_00/
+      output: web, pdf
+      
     - title: Labs - First Program
       url: /labs_lab01_01/
       output: web, pdf
@@ -43,6 +47,10 @@ entries:
     output: web, pdf
 
     folderitems:
+    - title: Labs - Lab 2 Overview
+      url: /labs_lab02_00/
+      output: web, pdf
+      
     - title: Labs - String Program
       url: /labs_lab02_01/
       output: web, pdf
@@ -55,11 +63,55 @@ entries:
     output: web, pdf
 
     folderitems:
+    - title: Labs - Lab 3 Overview
+      url: /labs_lab03_00/
+      output: web, pdf
+      
     - title: Labs - Java Expressions in Codepad
       url: /labs_lab03_01/
       output: web, pdf
       
     - title: Labs - Split the Bill
       url: /labs_lab03_02/
+      output: web, pdf
+      
+  - title: Lab 4
+    output: web, pdf
+
+    folderitems:
+    - title: Labs - Lab 4 Overview
+      url: /labs_lab04_00/
+      output: web, pdf
+      
+    - title: Labs - First Loops
+      url: /labs_lab04_01/
+      output: web, pdf
+      
+    - title: Labs - Potato Class
+      url: /labs_lab04_02/
+      output: web, pdf
+      
+    - title: Labs - Loops, Ifs, Switches
+      url: /labs_lab04_03/
+      output: web, pdf
+      
+    - title: Labs - Millionaire
+      url: /labs_lab04_04/
+      output: web, pdf
+      
+  - title: Lab 5
+    output: web, pdf
+
+    folderitems:
+    - title: Labs - Lab 5 Overview
+      url: /labs_lab05_00/
+      output: web, pdf
+      
+  - title: Lab 6
+    output: web, pdf
+
+    folderitems:
+    - title: Labs - Lab 6 Overview
+      url: /labs_lab06_00/
       output: web, pdf
       

@@ -125,7 +125,7 @@ See [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-jekyll/m
 
 ## Code Syntax Highlight
 
-This looks as follows:
+The markdown \`\`\`java looks as follows:
 
 ```java
     public static void main(String[] args) {

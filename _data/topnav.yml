@@ -18,6 +18,8 @@ topnav_dropdowns:
           url: /p1_landing_page/
         - title: Labs
           url: /labs_landing_page/
+        - title: Projects
+          url: /projects_landing_page/
         - title: References
           url: /p2_landing_page/
     - title: Jekyll Resources

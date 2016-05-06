@@ -10,13 +10,22 @@ permalink: /mydoc_6_arrays_arraylists/
 
 ## Arrays (Eck 7.1) and ArrayLists (Eck 7.3)
 
-An array and an ArrayList are ordered, sequential collections of information.  They are ordered in that each element has a position – 1st element, 2nd element, and so on.  Each element of an array or ArrayList must be that same type.  Arrays and ArrayLists are both objects, with ArrayLists being more flexible in that you can always add more elements to it.  We will discuss arrays first.
+An array and an ArrayList are ordered, sequential collections of information.  They are ordered in that each element has a position – 1st element, 2nd element, and so on.  Each element of an array or ArrayList must be that same type. For example, you could have an array or ArrayList that is all ```int```, ```double```, ```String```, or ```Person```. 
+
+The following is a diagram showing how an array/ArrayList is a sequention collection.  Each element has an index that begins at 0 and contuues to N-1, where the total number of elements in the array/ArrayList is N.
+
+![Array/ArrayList](../images/array-picture.png "Array/ArrayList") 
+
+
+Arrays and ArrayLists are both objects, with ArrayLists being more flexible in that you can always add more elements to it.  We will discuss arrays first.
 
 ## A.1 Arrays Introduction
 
 The meta-language for declaring an array is given by the following.
 
+```
 <type-name>[] <variable-name-or-names>;
+```
 
 The following are example declarations.
 
@@ -25,12 +34,13 @@ The following are example declarations.
 int[] intArray;
 double[] doubleArray;
 String[] stringArray;
+Person[] personArray;
 ```
 {% endraw %}
 
 ## A.2 Allocating Memory for Array Elements
 
-You should notice an array declaration is like a regular variable declaration, with the two square brackets added.  For those familiar with C/C++, Java retained their syntax so the following are equivalent declarations.
+You should notice an array declaration is like a regular variable declaration, with the two square brackets added.  For those familiar with C/C++, Java retained their syntax so the following are equivalent declarations.  However, I usually refrain from using this notation when doing Java programming.
 
 {% raw %}
 ```java
@@ -74,12 +84,13 @@ When Java allocates memory for arrays, it initializes the memory like when decla
 
 The following diagram shows the relationship between declaring an int array and allocating memory for its elements.
 
+![int array](../images/intArray.png "int array") 
  
 Figure A-20 Arrays and Memory
 
-## A.4 Array length Attribute
+## A.4 Array length field
 
-Arrays have the length attribute, which returns the number of elements the array can hold.  The attribute length does not return the number of elements that you have explicitly assigned values.  Consider the following for example.
+The length of an array is accessible in the field ```length```, which provides the number of elements the array can hold.  You access the field ```length``` using the dot notation as you would for any object's field.  For example, if I have ```int[] ia```, then the length of ```ia``` is ```ia.length```.  The field ```length``` does not return the number of elements that you have explicitly assigned values.  Consider the following for example, where the ```length``` is 3, but you have only put values into the first two elements of the array ```intArr```.
 
 {% raw %}
 ```java
@@ -93,11 +104,20 @@ int x = intArr[2]; // x is 0
 
 ## A.5 Assigning Initial Values to an Array
 
-There are a couple of ways to place initial values into an array.  The first notation does not require a new operator.
+There are a couple of ways to place initial values into an array.  The first notation does not require a new operator.  Instead you can fill the array with values using ```{}```.  The number of values between ```{``` and ```}``` becomes the ```length``` of the array.
 
-{% raw %}
 ```java
 int[] intArr = { 1,2,3,4,5}; // five element int array with 1,2,3,4,5
+```
+
+You are not restricted to filling an array with literals.  You can populate an array with variables or a combination of literals and variables.  The following populates a ```Person[]```.
+
+```java
+Person gusty = new Person("Gusty",22);
+Person emily = new Person("EmilY",23);
+Person coletta = new Person("Coletta",2);
+Person[] people = {gusty, emily, people};
+```
 
 The second method involves providing initial values when you use new.
 

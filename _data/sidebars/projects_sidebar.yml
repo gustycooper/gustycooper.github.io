@@ -1,0 +1,68 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+
+entries:
+- title: Projects
+  product: Projects
+  version: 0.0
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage/
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage/
+      output: pdf
+      type: frontmatter
+
+  - title: Projects
+    output: web, pdf
+    folderitems:
+    - title: Projects
+      url: /projects_landing_page/
+      output: web
+
+  - title: Project 1
+    output: web, pdf
+
+    folderitems:
+    - title: Projects - First Project
+      url: /projects_project01_01/
+      output: web, pdf
+      
+  - title: Project 2
+    output: web, pdf
+
+    folderitems:
+    - title: Projects - Second Project
+      url: /projects_project02_01/
+      output: web, pdf
+      
+  - title: Project 3
+    output: web, pdf
+
+    folderitems:
+    - title: Projects - Third Project
+      url: /projects_project03_01/
+      output: web, pdf
+
+  - title: Project 4
+    output: web, pdf
+
+    folderitems:
+    - title: Projects - Fourth Project
+      url: /projects_project04_01/
+      output: web, pdf
+
+  - title: Project 5
+    output: web, pdf
+
+    folderitems:
+    - title: Projects - Fifth Project
+      url: /projects_project05_01/
+      output: web, pdf
