@@ -631,14 +631,43 @@ $('#toc').on('click', 'a', function() {
 
   <h2 id="algorithm-introduction-eck-32">Algorithm Introduction (Eck 3.2)</h2>
 
-<p>An algorithm is a sequence of steps that solves a problem.  We will also say that an algorithm has to terminate.  If an algorithm does not terminate, it cannot solve a problem.</p>
+<p>An <strong>algorithm</strong> is a sequence of steps that solves a problem.  For the purposes of our definition, an <strong>algorithm</strong> has to terminate.  Adding the termination clause makes perfect sences because if an algorithm does not terminate, it cannot solve a problem.  The following are a sequence of steps that solves a problem.  We typically create the problem specification first, and then create the algorithm; however, for this example, we create the algorithm first.  See if you can determine the problem.</p>
 
-<p>We will create the steps of our algorithms using the following basic control structures.
-* Sequential – perform the operation of a step and move to the next step
-* Conditional – perform a test on some condition which determines which sequence of steps to execute
-* Loop – execute a sequence of steps in a repetitive iteration</p>
+<ol>
+  <li>Pour water into a cup that is safe for microwave use.</li>
+  <li>Place the cup of water in a microwave.</li>
+  <li>Microwave the water on high for 53 seconds.</li>
+  <li>If the water is not boiling repeat step 3.</li>
+  <li>Remove the cup of water from the microwave.</li>
+  <li>Get a tea bag from the cupboard.</li>
+  <li>If the teabag is in an external wrapper, remove the teabag from the wrapper.</li>
+  <li>Place the teabag in the cup of water.</li>
+  <li>Wait 31 seconds.</li>
+  <li>If the cup of tea is not as strong as you like, repeat step 9.</li>
+  <li>Remove the teabag from the cup of tea.</li>
+  <li>If the cup of tea is too hot repeat step 12.</li>
+  <li>Sit back, relax, and enjoy your cup of tea.</li>
+</ol>
 
-<p>As we will soon discover, the most used sequential operation in programming is the assignment statement that assigns the value of some expression to a variable.</p>
+<p>As everyone knows, the algorithm provided in steps 1 through 13 solves the problem: Make yourself a cup of tea.  This simple algorithm demonstrates all of the fundamental building blocks of algorithms.</p>
+
+<ul>
+  <li><strong>Sequential</strong> – perform the operation of a step and move to the next step.  Steps 1, 2, and 3 are performed sequentially. As we will soon discover, the most used sequential operation in programming is the assignment statement that assigns the value of some expression to a variable.</li>
+  <li><strong>Conditional</strong> – perform a test on some condition which determines which sequence of steps to execute.  Steps 4, 7 10, and 12 are conditional steps.  In programming a conditional statement is typically associated with an if-then-else statement.  Java has <code class="highlighter-rouge">if-then-else</code> and <code class="highlighter-rouge">switch</code> statements.</li>
+  <li><strong>Loop</strong> – peform a step or sequence of steps in a repetitive iteration.  The above algorithm has three loops.
+    <ul>
+      <li>Steps 3 and 4</li>
+      <li>Steps 9 and 10</li>
+      <li>Step 12</li>
+    </ul>
+
+    <p>Java has <code class="highlighter-rouge">for</code>, <code class="highlighter-rouge">while</code> and <code class="highlighter-rouge">do-while</code> loops.</p>
+  </li>
+</ul>
+
+<p>There are several attributes of problems and their solution algorithms.  There are usually many algorithms that solve a problem.  I am sure you can think of many ways to get yourself a cup of tea, including going to the nearest coffee shop and ordering a cup.</p>
+
+<p>Sometimes the problem specification does not have enough information to solve the problem.</p>
 
 <p>Suppose that you are about to purchase a car, and I tell you the following.
 * One car costs $20,000.00 and gets 20mpg.
@@ -806,8 +835,10 @@ place on 8x2 lego on top
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 University of Mary Washington, Gusty Cooper. All rights reserved. <br />
-<p>Page last updated:</span> May 1, 2016<br/> Site last generated: May 6, 2016 <br />
+
+<br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
+
+<p>Page last updated: May 1, 2016; Site last generated: May 7, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

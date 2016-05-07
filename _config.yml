@@ -9,6 +9,8 @@ output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 topnav_title: CPSC 220 - Under Construction
 # this appears on the top navigation bar next to the home button
+site_author: Gusty Cooper
+# this appears in the footer
 site_title: UMW CPSC 220
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 company_name: University of Mary Washington

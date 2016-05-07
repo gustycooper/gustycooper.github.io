@@ -10,14 +10,36 @@ permalink: /mydoc_1_algorithms/
 
 ## Algorithm Introduction (Eck 3.2)
 
-An algorithm is a sequence of steps that solves a problem.  We will also say that an algorithm has to terminate.  If an algorithm does not terminate, it cannot solve a problem.
+An **algorithm** is a sequence of steps that solves a problem.  For the purposes of our definition, an **algorithm** has to terminate.  Adding the termination clause makes perfect sences because if an algorithm does not terminate, it cannot solve a problem.  The following are a sequence of steps that solves a problem.  We typically create the problem specification first, and then create the algorithm; however, for this example, we create the algorithm first.  See if you can determine the problem.
 
-We will create the steps of our algorithms using the following basic control structures.
-* Sequential – perform the operation of a step and move to the next step
-* Conditional – perform a test on some condition which determines which sequence of steps to execute
-* Loop – execute a sequence of steps in a repetitive iteration
+1. Pour water into a cup that is safe for microwave use.
+2. Place the cup of water in a microwave.
+3. Microwave the water on high for 53 seconds.
+4. If the water is not boiling repeat step 3.
+5. Remove the cup of water from the microwave.
+6. Get a tea bag from the cupboard.
+7. If the teabag is in an external wrapper, remove the teabag from the wrapper.
+8. Place the teabag in the cup of water.
+9. Wait 31 seconds.
+10. If the cup of tea is not as strong as you like, repeat step 9.
+11. Remove the teabag from the cup of tea.
+12. If the cup of tea is too hot repeat step 12.
+13. Sit back, relax, and enjoy your cup of tea.
 
-As we will soon discover, the most used sequential operation in programming is the assignment statement that assigns the value of some expression to a variable.
+As everyone knows, the algorithm provided in steps 1 through 13 solves the problem: Make yourself a cup of tea.  This simple algorithm demonstrates all of the fundamental building blocks of algorithms.
+
+* **Sequential** – perform the operation of a step and move to the next step.  Steps 1, 2, and 3 are performed sequentially. As we will soon discover, the most used sequential operation in programming is the assignment statement that assigns the value of some expression to a variable.
+* **Conditional** – perform a test on some condition which determines which sequence of steps to execute.  Steps 4, 7 10, and 12 are conditional steps.  In programming a conditional statement is typically associated with an if-then-else statement.  Java has ```if-then-else``` and ```switch``` statements.
+* **Loop** – peform a step or sequence of steps in a repetitive iteration.  The above algorithm has three loops.
+  * Steps 3 and 4
+  * Steps 9 and 10
+  * Step 12
+
+  Java has ```for```, ```while``` and ```do-while``` loops.
+
+There are several attributes of problems and their solution algorithms.  There are usually many algorithms that solve a problem.  I am sure you can think of many ways to get yourself a cup of tea, including going to the nearest coffee shop and ordering a cup.
+
+Sometimes the problem specification does not have enough information to solve the problem.
 
 Suppose that you are about to purchase a car, and I tell you the following.
 * One car costs $20,000.00 and gets 20mpg.
@@ -43,7 +65,7 @@ The preceding algorithm is called pseudo code because it resembles code of some 
 
 The following subsections describe various algorithms.  The lego-based algorithms are renditions of those from a Udacity course.
 
-### Algorithm (Pseudo-code: ordering legos) 
+### Algorithm (Pseudo-code: ordering legos)
 
 For this algorithm, I give you a sequence of legos that are as follows.  
 
@@ -143,7 +165,7 @@ y y b y b b
 However, if you attempt the algorithm on the sequence y b y b, it never terminates.  The first two steps (which are repeated forever) are given as follows.
 
 1.  b y y b
-2.  y b y b 
+2.  y b y b
 
 ### Algorithm (Pseudo-code: Lego Doorway)
 

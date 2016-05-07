@@ -2,7 +2,7 @@
 title: Computer Basics
 tags: [getting_started]
 keywords: java, introduction, computer, high-level, low-level, interpreting, compiling, portable
-last_updated: May 1, 2016
+last_updated: May 7, 2016
 summary: "This defines basic computer terminology"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_computer_basics/

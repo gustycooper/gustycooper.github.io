@@ -1,6 +1,7 @@
 ---
 title: Welcome to CPSC 220
 tags: [welcome]
+last_updated: May 7, 2016
 sidebar: mydoc_sidebar
 type: homepage
 ---
