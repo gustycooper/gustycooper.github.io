@@ -1,6 +1,6 @@
 ---
 title: Classes and Objects
-tags: [classes, objects]
+tags: [class, object]
 keywords: classes, objects
 last_updated: May 1, 2016
 summary: "Classes and Objects"

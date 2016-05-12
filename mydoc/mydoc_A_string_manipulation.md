@@ -1,6 +1,6 @@
 ---
 title: Java String Manipulation
-tags: [string manipulation]
+tags: [string]
 keywords: string methods
 last_updated: May 1, 2016
 summary: "Java String Manipulation"

@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="This describes algorithms">
-<meta name="keywords" content="getting_started,  java, algorithms, design">
+<meta name="keywords" content="algorithmloopconditionalsequential,  java, algorithms, design">
 <title>Algorithms  | UMW CPSC 220</title>
 <link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
 
@@ -292,14 +292,21 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_1_overview/">Introduction Overview</a></li>
             
             
             
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_1_information_people_computers/">Information, People, Computers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_problem_solving/">Problem Solving</a></li>
             
             
             
@@ -313,7 +320,28 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_programming_simple_programs/">Programming Simple Programs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_ides_compiling_interpreting/">IDEs, Compiling, Interpreting</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_software_development_process/">Software Development Process</a></li>
             
             
             
@@ -507,63 +535,12 @@ window.location.href = uri;
         
     
     <li>
-        <a href="#">Tag archives</a>
+        <a href="#">Tag Pages</a>
         <ul>
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a></li>
-            
-            
-            
-            <li class="subfolders">
-                <a href="#">Tag archive pages</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="/gustycooper.github.io/tag_content_types/">Content types pages</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
+            <li><a href="/gustycooper.github.io/tag_overview/">Tag Pages</a></li>
             
             
             
@@ -629,9 +606,9 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h2 id="algorithm-introduction-eck-32">Algorithm Introduction (Eck 3.2)</h2>
+  <h2 id="algorithm-introduction-eck-32httpmathhwsedujavanotesc3s2html">Algorithm Introduction (<a href="http://math.hws.edu/javanotes/c3/s2.html">Eck 3.2</a>)</h2>
 
-<p>An <strong>algorithm</strong> is a sequence of steps that solves a problem.  For the purposes of our definition, an <strong>algorithm</strong> has to terminate.  Adding the termination clause makes perfect sences because if an algorithm does not terminate, it cannot solve a problem.  The following are a sequence of steps that solves a problem.  We typically create the problem specification first, and then create the algorithm; however, for this example, we create the algorithm first.  See if you can determine the problem.</p>
+<p>An <strong>algorithm</strong> is a sequence of steps that solves a problem.  For the purposes of our definition, an <strong>algorithm</strong> has to <em>terminate</em>.  Adding the termination clause makes perfect sences because if an algorithm does not terminate, it cannot solve a problem.  The following are a sequence of steps that solves a problem.  We typically create the problem specification first, and then create the algorithm; however, for this example, we create the algorithm first.  See if you can determine the problem.</p>
 
 <ol>
   <li>Pour water into a cup that is safe for microwave use.</li>
@@ -649,6 +626,8 @@ $('#toc').on('click', 'a', function() {
   <li>Sit back, relax, and enjoy your cup of tea.</li>
 </ol>
 
+<h2 id="algorithm-building-blocks">Algorithm Building Blocks</h2>
+
 <p>As everyone knows, the algorithm provided in steps 1 through 13 solves the problem: Make yourself a cup of tea.  This simple algorithm demonstrates all of the fundamental building blocks of algorithms.</p>
 
 <ul>
@@ -663,47 +642,104 @@ $('#toc').on('click', 'a', function() {
 
     <p>Java has <code class="highlighter-rouge">for</code>, <code class="highlighter-rouge">while</code> and <code class="highlighter-rouge">do-while</code> loops.</p>
   </li>
+  <li><strong>Method</strong> - collect steps into a reusable container that your can reference.  Step 1 is an example of a method.  Pouring water into a cup could be a severals steps collected into a reusable container.  I use the Java term method, which is equivalent to function or subroutine.</li>
 </ul>
 
-<p>There are several attributes of problems and their solution algorithms.  There are usually many algorithms that solve a problem.  I am sure you can think of many ways to get yourself a cup of tea, including going to the nearest coffee shop and ordering a cup.</p>
+<h2 id="problems-have-many-solutions">Problems Have Many Solutions</h2>
 
-<p>Sometimes the problem specification does not have enough information to solve the problem.</p>
+<p>There are often many algorithms that solve a problem.  I am sure you can think of many ways to get yourself a cup of tea, including going to the nearest coffee shop and ordering a cup.</p>
 
-<p>Suppose that you are about to purchase a car, and I tell you the following.
-* One car costs $20,000.00 and gets 20mpg.
-* Another car costs $30,000.00 and gets 30mpg.</p>
+<h2 id="problems-without-soultions">Problems Without Soultions</h2>
 
-<p>If I ask you are to construct an algorithm in your brain that determines which of the cars you want to purchase, do you have enough information to construct an algorithm in your brain?  In this case you are trying to make a decision and your probably need some other parameters such as how much money you make each year, how far you plan to drive the car, and what percentage of you income you can afford to spend on operating your car.  For example, if you plan to drive your car 25,000 miles per year, gas will cost $3.50 per gallon, and you want to spend less that $3000 per year in gas; you could create some algorithm to help you decide which car to purchase.  You could compute the cost per year of each car and make a decision based on the lesser cost.  The algorithm may look like the following.</p>
+<p>Sometimes a problem cannot be solved.  There are two ways that a problem cannot be solved.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>For each car compute
-   gas cost = miles driven / mpg * price per gal
-total cost = purchase price + gas cost
-if total cost car 1 &lt; total cost car 2
-   buy car 1
-else
-   buy car 2
+<ol>
+  <li>The problem is unsolvable. This is actually an important field in computer science.  An example unsolvable computer science problem is “What is the fastest algorithm for multiplication of two n-digit numbers?”.  You will have to go further in your computer science study to understand these problems.</li>
+  <li>The problem is solvable, but the problem specification does not provide enough information.  The rest of this section provides an example of this.</li>
+</ol>
+
+<p>I like to to ride bicycles.  This is one of my most enjoyable hobbies.  Suppose that you are about to purchase a new bicycle, and I tell you the following.</p>
+
+<ul>
+  <li>Bicycle One costs $100.00 and is blue.</li>
+  <li>Bicycle Two costs $500.00 and is red.</li>
+</ul>
+
+<p>If I ask you are to construct an algorithm in your brain that determines which of the bicycles you want to purchase, you do not have enough information to construct an algorithm in your brain.  You need additional parameters that can help answer questions such as am I riding on trails (a mountain bike), am I racing against others on road courses (a road bike), am I riding with my friend who is blind (a tandem)</p>
+
+<p>I could update the specification to be the following.</p>
+
+<blockquote>
+  <p>You have a good friend who is blind, but wants to experience the joys of bicycling.  Your friend has $1000.00 that can be used to purchase a bike.  Your friend’s favorite color is orange.  Your friend wants to ride on crushed gravel trails and roads.  You are provided with the following bicycles to choose.</p>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>A red mountain bike for $100.00</li>
+    <li>A green road-style tandem for $2,000.00</li>
+    <li>A blue Gold Rush Replica for $4,000.00</li>
+    <li>A child’s tricylce for $30.00</li>
+    <li>An orange cross-tandem for $949.00</li>
+    <li>A titanium road bike for $2,700.00</li>
+  </ul>
+</blockquote>
+
+<p>Examining this list, you would choose the orange cross-tandem because you can use it satisfies all of the criteria.  We can create a pseudo code algorithm to make this selection.  This algorithm is called pseudo code because it resembles code of some programming language, but it is not precise enough for a compiler to translate into machine code.  We can execute the algorithm in our brain.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for each bicycle store in the area 
+  for each bicycle in the store
+   if the bicycle is a tandem and 
+     the tandem costs less than $1000 and
+     the tandem can ride on roads and trails and
+     the tandem is orange then
+       purchase that tandem
 </code></pre>
 </div>
 
-<p>The message from this discussion is that you need to specify enough information to create an algorithm.</p>
+<p>An important part of programming is to first understand the problem to be solved.  The initial problem had an incomplete specification.  When you analyzed the specification, you could not solve it.  Throughout this course, I will provide you with specifications of problems to be solved.  All of the problems are solvable.  That does not mean my specifications are perfect.  You will probably discover errors in my specifications.  That is why you must thoroughly analyze my specifications before trying to solve the problem.</p>
 
-<p>The preceding algorithm is called pseudo code because it resembles code of some programming language, but it is not precise enough for a compiler to translate into machine code.  We can execute the algorithm in our brain.</p>
+<h2 id="algorithm-example---cost-of-my-coffee-shop">Algorithm Example - Cost of My Coffee Shop</h2>
 
-<p>The following subsections describe various algorithms.  The lego-based algorithms are renditions of those from a Udacity course.</p>
+<p>For this exercise, I am purchasing items in a coffee shop, and I will keep a running total of my cost.  The example shows two items, but the pseudo code works for any number of items.</p>
 
-<h3 id="algorithm-pseudo-code-ordering-legos">Algorithm (Pseudo-code: ordering legos)</h3>
-
-<p>For this algorithm, I give you a sequence of legos that are as follows.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>b y b y b y
+<div class="highlighter-rouge"><pre class="highlight"><code>item prices are Coffee 4.85 and Scone 3.25
+cost = 0
+for each item
+   tax = item price * 0.08
+   tip = item price * 0.10
+   cost = cost + item price + tax + tip
+print cost in my brain
+make sure I have enough money in my pocket to pay
 </code></pre>
 </div>
 
-<p>The challenge is to create an algorithm that results in the legos ordered such that the blue legos first followed by the yellow legos.  The following is the solution.</p>
+<h2 id="algorithm-example---3n1">Algorithm Example - 3N+1</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>b b b y y y
+<p>The 3N+1 problem is a fun little problem that can be found in many places. (<a href="http://math.hws.edu/javanotes/c3/s2.html">Eck 3.2.2</a>, <a href="https://en.wikipedia.org/wiki/Collatz_conjecture">Wikipedia</a>).  The problem generates a sequence of integers.  Given any positive integer, <em>N</em>, create the next integer by if <em>N</em> is even then divide <em>N</em> by 2 else multiply <em>N</em> by 3 and add 1.  Continue this until <em>N</em> is 1.  If the initial <em>N</em> is 3, the resulting sequence is 3, 10, 5, 16, 8, 4, 2, 1.  The 3N+1 pseudo code is the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>n = 10
+while n &gt; 1
+  print n
+  if n is even
+    n = n / 2
+  else
+    n = 3 * n + 1
 </code></pre>
 </div>
+
+<h2 id="algorithm-examples---legos">Algorithm Examples - Legos</h2>
+
+<p>The following lego example algorithms are renditions of those provided in the Udacity Java course.</p>
+
+<h3 id="algorithm---ordering-blue-and-yellow-legos">Algorithm - Ordering Blue and Yellow Legos</h3>
+
+<p>For this algorithm, you begin with a sequence of blue and yellow legos that are as follows.</p>
+
+<p><img src="../images/legosUnordered.png" alt="Legos Unordered" title="Legos Unordered" /></p>
+
+<p>The challenge is to create an algorithm that results in the legos ordered such that the blue legos are first followed by the yellow legos.  The following is the solution.</p>
+
+<p><img src="../images/legosOrdered.png" alt="Legos Ordered" title="Legos Ordered" /></p>
 
 <p>One algorithm that works for this particular case is the following.</p>
 
@@ -720,33 +756,23 @@ else
   <li>b b b y y y</li>
 </ol>
 
-<h3 id="algorithm-pseudo-code-cost-of-shopping">Algorithm (Pseudo-code: cost of shopping)</h3>
+<h3 id="not-an-algorithm---swapping-blue-and-yellow-legos">Not An Algorithm - Swapping Blue and Yellow Legos</h3>
 
-<p>For this exercise, you are purchasing two items in a coffee shop.  You will keep a running total of the cost of your items.  The pseudo-code to compute this total is as follows.</p>
+<p>This example is one that is not an algorithm because it does not terminate.  Termination is also a criteria of Turing machines, which define a concept of computable.  This algorithm attempts to order a sequence of yellow and blue legos such that such that they are ordered with one color first followed by the other color.  At first glance, this appears to be an algorithm.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>item prices are Coffee 4.85 and Scone 3.25
-cost = 0
-for each item
-   tax = item price * 0.08
-   tip = item price * 0.10
-   cost = cost + item price + tax + tip
-print cost in your brain
+<div class="highlighter-rouge"><pre class="highlight"><code>while the legos are not in order
+   locate first pair of nonmatching legos
+   swap them
 </code></pre>
 </div>
 
-<h3 id="algorithm-pseudo-code-3n1-eck-322">Algorithm (Pseudo-code: 3N+1) (Eck 3.2.2)</h3>
+<p>This algorithm will work on some input.  For example, it will work on the following.</p>
 
-<p>David Eck describes the 3N+1 algorithm in our textbook.  He develops the algorithm, including the code.  We will simply examine the pseudo code as follows.</p>
+<p><img src="../images/legosWorks.png" alt="Swapping Works" title="Swapping Works on this input" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>n = 10
-while n &gt; 1
-  print n
-  if n is even
-    n = n / 2
-  else
-    n = 3 * n + 1
-</code></pre>
-</div>
+<p>However, if you attempt the algorithm on the following sequence, it never terminates because you simply swap the first two bricks over and over.</p>
+
+<p><img src="../images/legosNotWorks.png" alt="Swapping Does Not Work" title="Swapping does not work on this input" /></p>
 
 <h3 id="algorithm-pseudo-code-legos-with-rules">Algorithm (Pseudo-code: Legos with Rules)</h3>
 
@@ -761,7 +787,7 @@ while n &gt; 1
 
 <p>You can still use ifs and loops in your solution, but the sequential steps have to be one of the rules.  You are to use the rules to construct an algorithm that will find the first pair of legos that are ordered y b.  The initial input of legos is the follows.</p>
 
-<p>b b b y y b b</p>
+<p><img src="../images/legosRules.png" alt="Legos with rules" title="Legos searched with rules" /></p>
 
 <p>The algorithm for finding the first pair ordered y b is given by the following.</p>
 
@@ -776,30 +802,11 @@ while the pair y b is not found do the following
 </code></pre>
 </div>
 
-<h3 id="not-an-algorithm-pseudo-code-lego-swapping">Not An Algorithm (Pseudo-code: Lego swapping)</h3>
-
-<p>This example is one that is not an algorithm because it does not terminate.  Termination is also a criteria of Turing machines, which define a concept of computable.  This algorithm attempts to order a sequence of yellow and blue legos such that such that they are ordered with one color first followed by the other color</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>while the legos are not in order
-   locate first pair of nonmatching legos
-   swap them
-</code></pre>
-</div>
-
-<p>This algorithm will work on some input.  For example, it will work on the following.</p>
-
-<p>y y b y b b</p>
-
-<p>However, if you attempt the algorithm on the sequence y b y b, it never terminates.  The first two steps (which are repeated forever) are given as follows.</p>
-
-<ol>
-  <li>b y y b</li>
-  <li>y b y b</li>
-</ol>
-
 <h3 id="algorithm-pseudo-code-lego-doorway">Algorithm (Pseudo-code: Lego Doorway)</h3>
 
 <p>If you own a house construction company, you probably have an algorithm for building a house.  You know how to study the plans, order the materials, and assemble them in a specific order.  This is particularly true when you have built the same house several times.  This example builds a doorframe with legos.  In this example, there are two kinds of legos: 1 is 8x2, the other is 2x2</p>
+
+<p><img src="../images/legosDoor.png" alt="Legos Door" title="Legos Door" /></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>place an 8x2 lego horizontally
 stick a 2x2 lego on top of the left end of the 8x2 lego
@@ -813,14 +820,25 @@ place on 8x2 lego on top
 </div>
 
 
-
 <div class="tags">
     
     <b>Tags: </b>
     
     
     
-    <a href="/gustycooper.github.io/tag_getting_started" class="btn btn-default navbar-btn cursorNorm" role="button">getting_started</a>
+    <a href="/gustycooper.github.io/tag_algorithm" class="btn btn-default navbar-btn cursorNorm" role="button">algorithm</a>
+    
+    
+    
+    <a href="/gustycooper.github.io/tag_loop" class="btn btn-default navbar-btn cursorNorm" role="button">loop</a>
+    
+    
+    
+    <a href="/gustycooper.github.io/tag_conditional" class="btn btn-default navbar-btn cursorNorm" role="button">conditional</a>
+    
+    
+    
+    <a href="/gustycooper.github.io/tag_sequential" class="btn btn-default navbar-btn cursorNorm" role="button">sequential</a>
     
     
     
@@ -838,7 +856,7 @@ place on 8x2 lego on top
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: May 7, 2016
+<p>Page last updated: May 1, 2016; Site last generated: May 11, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

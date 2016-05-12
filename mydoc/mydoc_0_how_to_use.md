@@ -1,6 +1,6 @@
 ---
 title: How to Use This Site
-tags: [How to use]
+tags: [getting_started]
 keywords: how to use
 last_updated: May 1, 2016
 summary: "How to Use This Site"

@@ -46,17 +46,24 @@ mydoc_0_examples:
 
 
  
-mydoc_1_computer_basics:
-  title: "Computer Basics"
-  url: /gustycooper.github.io/mydoc_1_computer_basics/
-  link: <a href="/gustycooper.github.io/mydoc_1_computer_basics/">Computer Basics</a>
+mydoc_1_overview:
+  title: "Introduction Overview"
+  url: /gustycooper.github.io/mydoc_1_overview/
+  link: <a href="/gustycooper.github.io/mydoc_1_overview/">Introduction Overview</a>
 
 
  
-mydoc_1_primitive_types:
-  title: "Primitive Types"
-  url: /gustycooper.github.io/mydoc_1_primitive_types/
-  link: <a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a>
+mydoc_1_information_people_computers:
+  title: "Information, People, Computers"
+  url: /gustycooper.github.io/mydoc_1_information_people_computers/
+  link: <a href="/gustycooper.github.io/mydoc_1_information_people_computers/">Information, People, Computers</a>
+
+
+ 
+mydoc_1_problem_solving:
+  title: "Problem Solving"
+  url: /gustycooper.github.io/mydoc_1_problem_solving/
+  link: <a href="/gustycooper.github.io/mydoc_1_problem_solving/">Problem Solving</a>
 
 
  
@@ -67,10 +74,31 @@ mydoc_1_algorithms:
 
 
  
-mydoc_1_algorithms_programming:
-  title: "Algorithms, Programming"
-  url: /gustycooper.github.io/mydoc_1_algorithms_programming/
-  link: <a href="/gustycooper.github.io/mydoc_1_algorithms_programming/">Algorithms, Programming</a>
+mydoc_1_primitive_types:
+  title: "Primitive Types"
+  url: /gustycooper.github.io/mydoc_1_primitive_types/
+  link: <a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a>
+
+
+ 
+mydoc_1_programming_simple_programs:
+  title: "Programming Simple Programs"
+  url: /gustycooper.github.io/mydoc_1_programming_simple_programs/
+  link: <a href="/gustycooper.github.io/mydoc_1_programming_simple_programs/">Programming Simple Programs</a>
+
+
+ 
+mydoc_1_ides_compiling_interpreting:
+  title: "IDEs, Compiling, Interpreting"
+  url: /gustycooper.github.io/mydoc_1_ides_compiling_interpreting/
+  link: <a href="/gustycooper.github.io/mydoc_1_ides_compiling_interpreting/">IDEs, Compiling, Interpreting</a>
+
+
+ 
+mydoc_1_software_development_process:
+  title: "Software Development Process"
+  url: /gustycooper.github.io/mydoc_1_software_development_process/
+  link: <a href="/gustycooper.github.io/mydoc_1_software_development_process/">Software Development Process</a>
 
 
 
@@ -206,54 +234,10 @@ mydoc_A_random_numbers:
 
 
  
-mydoc_tag_archives_overview:
-  title: "Tag archives overview"
-  url: /gustycooper.github.io/mydoc_tag_archives_overview/
-  link: <a href="/gustycooper.github.io/mydoc_tag_archives_overview/">Tag archives overview</a>
-
-
- 
-tag_formatting:
-  title: "Formatting pages"
-  url: /gustycooper.github.io/tag_formatting/
-  link: <a href="/gustycooper.github.io/tag_formatting/">Formatting pages</a>
-
- 
-tag_navigation:
-  title: "Navigation pages"
-  url: /gustycooper.github.io/tag_navigation/
-  link: <a href="/gustycooper.github.io/tag_navigation/">Navigation pages</a>
-
- 
-tag_content_types:
-  title: "Content types pages"
-  url: /gustycooper.github.io/tag_content_types/
-  link: <a href="/gustycooper.github.io/tag_content_types/">Content types pages</a>
-
- 
-tag_publishing:
-  title: "Publishing pages"
-  url: /gustycooper.github.io/tag_publishing/
-  link: <a href="/gustycooper.github.io/tag_publishing/">Publishing pages</a>
-
- 
-tag_special_layouts:
-  title: "Special layout pages"
-  url: /gustycooper.github.io/tag_special_layouts/
-  link: <a href="/gustycooper.github.io/tag_special_layouts/">Special layout pages</a>
-
- 
-tag_collaboration:
-  title: "Collaboration pages"
-  url: /gustycooper.github.io/tag_collaboration/
-  link: <a href="/gustycooper.github.io/tag_collaboration/">Collaboration pages</a>
-
- 
-tag_troubleshooting:
-  title: "Troubleshooting pages"
-  url: /gustycooper.github.io/tag_troubleshooting/
-  link: <a href="/gustycooper.github.io/tag_troubleshooting/">Troubleshooting pages</a>
-
+tag_overview:
+  title: "Tag Pages"
+  url: /gustycooper.github.io/tag_overview/
+  link: <a href="/gustycooper.github.io/tag_overview/">Tag Pages</a>
 
 
 

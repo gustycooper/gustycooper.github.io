@@ -1,6 +1,6 @@
 ---
 title: Random Numbers
-tags: [random numbers]
+tags: [random]
 keywords: random, numbers
 last_updated: May 1, 2016
 summary: "Random Numbers"

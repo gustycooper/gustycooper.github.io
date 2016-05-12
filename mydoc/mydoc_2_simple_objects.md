@@ -1,6 +1,6 @@
 ---
 title: Simple Objects
-tags: [objects]
+tags: [object, class]
 keywords: objects, simple objects
 last_updated: May 1, 2016
 summary: "First Introduction to Classes and Objects"

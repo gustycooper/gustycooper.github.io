@@ -1,6 +1,6 @@
 ---
 title: Control Flow
-tags: [control flow]
+tags: [sequential, conditional, loop]
 keywords: control flow, conditional, if, if-then, loop, for loop, while loop, do-while loop
 last_updated: May 1, 2016
 summary: "Control Flow"

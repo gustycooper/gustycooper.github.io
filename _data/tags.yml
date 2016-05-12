@@ -1,4 +1,5 @@
 allowed-tags:
+  - board
   - getting_started
   - content_types
   - navigation
@@ -10,3 +11,26 @@ allowed-tags:
   - news
   - troubleshooting
   - mobile
+  - object
+  - class
+  - expression
+  - compile
+  - collection
+  - sequential
+  - conditional
+  - loop
+  - graphics
+  - type
+  - method
+  - download
+  - algorithm
+  - package
+  - interface
+  - inheritance
+  - recursion
+  - searching
+  - sorting
+  - exceptions
+  - io
+  - random
+  - string

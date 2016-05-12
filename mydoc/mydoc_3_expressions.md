@@ -1,6 +1,6 @@
 ---
 title: Expressions
-tags: [expressions]
+tags: [expression]
 keywords: expression, expressions, numeric expressions, relation expressions, boolean expressions
 last_updated: May 1, 2016
 summary: "This describes Java expressions"

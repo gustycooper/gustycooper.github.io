@@ -1,61 +1,52 @@
 ---
-title: Computer Basics
-tags: [getting_started]
+title: IDEs, Compiling, Interpreting
+tags: [compile]
 keywords: java, introduction, computer, high-level, low-level, interpreting, compiling, portable
 last_updated: May 7, 2016
-summary: "This defines basic computer terminology"
+summary: "Discussion of IDEs, compiling, and interpreting"
 sidebar: mydoc_sidebar
-permalink: /mydoc_1_computer_basics/
+permalink: /mydoc_1_ides_compiling_interpreting/
 ---
 
-## People, Information, and Computers
-People have been sharing information with each other for as long as we have been.  We love information.  We love to talk with our friends and share information. We will talk about everything and anything.  We talk about weather, food, school, work, sports, politics, music, movies, and hobbies. If I hear that we are expecting a snowstorm, I am quick to share that with my friends.  When one of my friends gets a new hairdo, I will share that information with my other friends.  We have newspapers, magazines, and websites that are full of information.  Some of today's most profitable comppanies provide information - Google, Facebook.
+## Creating Programs – Editors and IDE ([Eck 2.6](http://math.hws.edu/javanotes/c2/s6.html))
 
-[![Gossip](../images/E!_News_current_logo.png "E! News")](http://www.eonline.com)
+We will write Java programs or Java code.  Java code is simply a text file so you can use just about any text editor create the code.  For example, I sometime use VIM, and old, but trustworthy, UNIX editor.  When using VIM, I can compile my Java code by using the javac compiler from my UNIX command shell.  I can then run the resulting byte code using the java byte-code interpreter from my UNIX command shell.
 
-Exactly what is information.  
+We will use an Interactive Development Environment to create and run our Java code.  We will begin with BlueJ, which is a simple IDE.  I think BlueJ will allow you to more easily become familiar with objects.  In week 5 we will begin using Netbeans, which is more complex.  Netbeans has many features – I do not know how to use all of the features.
 
-**Information** – Stuff that is good to know and can be communicated.  Information can be encoded in various forms.  We perceive information with our senses (eyes, ears, nose, and touch), store our perceptions in our brain, and share our perceptions with others.
+## JVM, JDK, and JRE ([Eck 2.6](http://math.hws.edu/javanotes/c2/s6.html))
 
-The following diagram shows a general form of information communication.  The blue font shows a normal way of two people communicating using their vocal chords and aural canals.  In this communication, the channel is air - sound flows through the air from one person's mouth into the other person's ears.  There can be some noise source that messes up the communication.  The diagram shows applause at some football game that may mess up the communication.
 
-![Information Communication](../images/information_communication.png "Information Communication") 
+JVM, JDK, and JRE area often mentioned when discussing Java.  They can be confusing at first, and I sometimes still get them confused.  You can always look them up.
+* JVM – Java Virtual Machine.  This is the code that executes the Java Byte Code.  You can think of Java Byte Code as Java specific assembly language.  The JVM is like a virtual computer that knows how to execute the Java Byte Code.
+* JRE – Java Runtime Environment.  The JRE includes the JVM as well as the various libraries that come with Java and you will need to execute your Java byte code.
+* JDK – Java Development Kit.  The JDK includes the JRE as well as the development tools such as the Java compiler and Java debugger.
 
-Computers are machines, not people, but computers are good at processing information. In fact information is a key ingredient in our definition of a computer.
+We will use Java Standard Edition Development Kit 8.
 
-**Computer** – A machine that stores and manipulates *information* under the control of a *changeable program*.
 
-We will be writing lots of programs.  A program will consist of algorithms and data.  The data is our information and the algorithms manipulate the data.  The data we create will be in variables.  Each variable will have a type.  The algorithms will use assignment statements, expressions, method calls, conditional statements, and loop statements.
- 
-## Computer Diagram (Eck 1.1)
-The following diagram is a simpler version of the ones on pages 3 and 4 of Eck’s book.   The figure on page 3 shows the CPU accessing memory as a sequence of bytes.  The figure on page 4 shows the CPU accessing main memory, secondary memory, input devices, and output devices using a bus.  
-
-![Computer Diagram](../images/computer_diagram.png "Computer Diagram") 
-
-## Computer Diagram With Software (Eck 1.1)
+## Computer Diagram With Software ([Eck 1.1](http://math.hws.edu/javanotes/c1/s1.html))
 The following diagram shows how software is stored on secondary memory (a disk, which is either a rotating disk or a solid state disk).  Software is loaded into main memory and executed by the Central Processing Unit (CPU) following the fetch-execute paradigm.  We will execute the code in Section BBDT.7 as a classroom exercise to demonstrate the fetch-execute cycle.  Newer computers are equipped with solid-state disks, which are more expensive per byte than the traditional rotating disk drives.  The Surface Pro and MacBook Pro/Air typically have solid-state disks.
 
  
-Figure - Computer Diagram with Programs
+![Computer with Software](../images/computerWithSoftware.png "Computer with Software")
 
-## Compiling High-level Code (Eck 1.3)
+## Compiling High-level Code ([Eck 1.3](http://math.hws.edu/javanotes/c1/s3.html))
 A compiler generates machine code that can be directly executed by the CPU of a computer.  Machine code is binary code stored in memory; however, there is assembly language that is a one-to-one correspondence to machine code.  People can read assembly code.  We will walk through an example of assembly code.
 
  
-Figure - Compiling High-level Code
+![Compiling Code](../images/compilingCode.png "Compiling Code")
 
-## Interpreting Code (Eck 1.3)
+## Interpreting Code ([Eck 1.3](http://math.hws.edu/javanotes/c1/s3.html))
 An interpreter reads the source code and interprets the statements.  You will notice that an interpreter is a program executing on a CPU.  An interpreter has been compiled into machine code.  An interpreter is one of the programs 
 
- 
-Figure - Interpreting Code
+![Interpreting Code](../images/interpretingCode.png "Interpreting Code")
 
-## Java Byte Code Interpreting (Eck 1.3)
+## Java Byte Code Interpreting ([Eck 1.3](http://math.hws.edu/javanotes/c1/s3.html))
 Java is executed by a combination of compiling and interpreting.  The Java source code is compiled into a Java-defined “assembly” language that is called Java byte code.  The byte code is interpreted by the Java interpreter.  The Java source code is contained in files with a .java extension.  The Java byte code is contained in files with a .class extension.  The .class files can be moved between computers.  You have to have a Java interpreter on a computer to run the .class files.
 
+![Java Interpreting](../images/javaInterpreting.png "Java Interpreting")
  
-Figure -Java Byte Code Interpreting
-
 ## Java Code Snippet - to Assembly Code
 The following Java code shows a simple algorithm, which will be translated into its corresponded assembly language in the next section.
 {% raw %}

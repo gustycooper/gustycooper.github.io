@@ -19,36 +19,81 @@ entries:
   - title: Tags
     output: web
     folderitems:
+    - title: Board
+      url: /tag_board/
+      output: web
     - title: Collaboration
       url: /tag_collaboration/
-      output: web
-    - title: Content Types
-      url: /tag_content_types/
-      output: web
-    - title: Formatting
-      url: /tag_formatting/
       output: web
     - title: Getting started
       url: /tag_getting_started/
       output: web
-    - title: Mobile
-      url: /tag_mobile/
+    - title: Object
+      url: /tag_object/
       output: web
-    - title: Navigation
-      url: /tag_navigation/
+    - title: Expression
+      url: /tag_expression/
       output: web
-    - title: News
-      url: /tag_news/
+    - title: Compile
+      url: /tag_compile/
       output: web
-    - title: Publishing
-      url: /tag_publishing/
+    - title: Class
+      url: /tag_class/
       output: web
-    - title: Single sourcing
-      url: /tag_single_sourcing/
+    - title: Collection
+      url: /tag_collection/
       output: web
-    - title: Special layouts
-      url: /tag_special_layouts/
+    - title: Sequential
+      url: /tag_sequential/
       output: web
-    - title: Troubleshooting
-      url: /tag_troubleshooting/
+    - title: Conditional
+      url: /tag_conditional/
+      output: web
+    - title: Loop
+      url: /tag_loop/
+      output: web
+    - title: Graphics
+      url: /tag_graphics/
+      output: web
+    - title: Type
+      url: /tag_type/
+      output: web
+    - title: Method
+      url: /tag_method/
+      output: web
+    - title: Download
+      url: /tag_download/
+      output: web
+    - title: Algorithm
+      url: /tag_algorithm/
+      output: web
+    - title: Package
+      url: /tag_package/
+      output: web
+    - title: Interface
+      url: /tag_interface/
+      output: web
+    - title: Inheritance
+      url: /tag_inheritance/
+      output: web
+    - title: Recursion
+      url: /tag_recursion/
+      output: web
+    - title: Searching
+      url: /tag_searching/
+      output: web
+    - title: Sorting
+      url: /tag_sorting/
+      output: web
+    - title: Exceptions
+      url: /tag_exceptions/
+      output: web
+    - title: IO
+      url: /tag_io/
+      output: web
+    - title: Random
+      url: /tag_random/
+      output: web
+    - title: String
+      url: /tag_string/
       output: web

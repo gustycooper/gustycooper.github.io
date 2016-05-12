@@ -1,6 +1,6 @@
 ---
 title: Passing Parameters
-tags: [parameters]
+tags: [methods]
 keywords: parameters
 last_updated: May 1, 2016
 summary: "Passing Parameters"

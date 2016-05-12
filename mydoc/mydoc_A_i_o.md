@@ -1,6 +1,6 @@
 ---
 title: Java I/O
-tags: [console I/O]
+tags: [io]
 keywords: console, I/O, file I/O
 last_updated: May 1, 2016
 summary: "Java I/O"

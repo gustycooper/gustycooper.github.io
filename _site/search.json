@@ -187,7 +187,7 @@
 
 {
 "title": "Downloads and Installs",
-"tags": "downloadsinstalls",
+"tags": "downloads",
 "keywords": "downloads, installs",
 "url": "/gustycooper.github.io/mydoc_0_downloads/",
 "summary": "Downloads and Installs"
@@ -217,7 +217,7 @@
 
 {
 "title": "How to Use This Site",
-"tags": "How to use",
+"tags": "getting_started",
 "keywords": "how to use",
 "url": "/gustycooper.github.io/mydoc_0_how_to_use/",
 "summary": "How to Use This Site"
@@ -237,7 +237,7 @@
 
 {
 "title": "Algorithms",
-"tags": "getting_started",
+"tags": "algorithmloopconditionalsequential",
 "keywords": "java, algorithms, design",
 "url": "/gustycooper.github.io/mydoc_1_algorithms/",
 "summary": "This describes algorithms"
@@ -246,28 +246,38 @@
 
 
 {
-"title": "Algorithms and Programming",
-"tags": "getting_started",
-"keywords": "java, algorithms, design, programming",
-"url": "/gustycooper.github.io/mydoc_1_algorithms_programming/",
-"summary": "This describes algorithms and programming"
+"title": "IDEs, Compiling, Interpreting",
+"tags": "compile",
+"keywords": "java, introduction, computer, high-level, low-level, interpreting, compiling, portable",
+"url": "/gustycooper.github.io/mydoc_1_ides_compiling_interpreting/",
+"summary": "Discussion of IDEs, compiling, and interpreting"
 },
 
 
 
 {
-"title": "Computer Basics",
-"tags": "getting_started",
+"title": "Information, People, and Computers",
+"tags": "compile",
 "keywords": "java, introduction, computer, high-level, low-level, interpreting, compiling, portable",
-"url": "/gustycooper.github.io/mydoc_1_computer_basics/",
+"url": "/gustycooper.github.io/mydoc_1_information_people_computers/",
 "summary": "This defines basic computer terminology"
 },
 
 
 
 {
+"title": "Introduction Overview",
+"tags": "algorithmgetting_started",
+"keywords": "java, algorithms, design",
+"url": "/gustycooper.github.io/mydoc_1_overview/",
+"summary": "Provides an overview on the Introductory Section and how to proceed with your study of it."
+},
+
+
+
+{
 "title": "Primitive Types",
-"tags": "getting_started",
+"tags": "type",
 "keywords": "java, primitive types",
 "url": "/gustycooper.github.io/mydoc_1_primitive_types/",
 "summary": "This describes primitive data types and their relationship to memory"
@@ -276,8 +286,38 @@
 
 
 {
+"title": "Problem Solving",
+"tags": "algorithmgetting_startedboard",
+"keywords": "java, algorithms, design",
+"url": "/gustycooper.github.io/mydoc_1_problem_solving/",
+"summary": "A discussion on general problem solving"
+},
+
+
+
+{
+"title": "Programming Simple Programs",
+"tags": "objectalgorithm",
+"keywords": "java, algorithms, design, programming",
+"url": "/gustycooper.github.io/mydoc_1_programming_simple_programs/",
+"summary": "This describes algorithms and programming"
+},
+
+
+
+{
+"title": "Software Development Process",
+"tags": "algorithm",
+"keywords": "java, software development",
+"url": "/gustycooper.github.io/mydoc_1_software_development_process/",
+"summary": "This describes software development process"
+},
+
+
+
+{
 "title": "Simple Objects",
-"tags": "objects",
+"tags": "objectclass",
 "keywords": "objects, simple objects",
 "url": "/gustycooper.github.io/mydoc_2_simple_objects/",
 "summary": "First Introduction to Classes and Objects"
@@ -287,7 +327,7 @@
 
 {
 "title": "Expressions",
-"tags": "expressions",
+"tags": "expression",
 "keywords": "expression, expressions, numeric expressions, relation expressions, boolean expressions",
 "url": "/gustycooper.github.io/mydoc_3_expressions/",
 "summary": "This describes Java expressions"
@@ -297,7 +337,7 @@
 
 {
 "title": "Control Flow",
-"tags": "control flow",
+"tags": "sequentialconditionalloop",
 "keywords": "control flow, conditional, if, if-then, loop, for loop, while loop, do-while loop",
 "url": "/gustycooper.github.io/mydoc_4_control_flow/",
 "summary": "Control Flow"
@@ -307,7 +347,7 @@
 
 {
 "title": "Classes and Objects",
-"tags": "classesobjects",
+"tags": "classobject",
 "keywords": "classes, objects",
 "url": "/gustycooper.github.io/mydoc_5_classes_objects/",
 "summary": "Classes and Objects"
@@ -317,7 +357,7 @@
 
 {
 "title": "Arrays and ArrayLists",
-"tags": "arraysarraylists",
+"tags": "collection",
 "keywords": "arrays, arraylists",
 "url": "/gustycooper.github.io/mydoc_6_arrays_arraylists/",
 "summary": "Arrays and ArrayLists"
@@ -337,7 +377,7 @@
 
 {
 "title": "Packages",
-"tags": "packagesinterfacesinheritance",
+"tags": "packageinterfaceinheritance",
 "keywords": "packages, interfaces, inheritance",
 "url": "/gustycooper.github.io/mydoc_8_packages_ADT/",
 "summary": "Packages, Interfaces, Inheritance, ADT, and More"
@@ -387,7 +427,7 @@
 
 {
 "title": "Java I/O",
-"tags": "console I/O",
+"tags": "io",
 "keywords": "console, I/O, file I/O",
 "url": "/gustycooper.github.io/mydoc_A_i_o/",
 "summary": "Java I/O"
@@ -397,7 +437,7 @@
 
 {
 "title": "Java Meta Language",
-"tags": "Java meta language",
+"tags": "",
 "keywords": "meta language",
 "url": "/gustycooper.github.io/mydoc_A_meta_language/",
 "summary": "Meta Language"
@@ -407,7 +447,7 @@
 
 {
 "title": "Passing Parameters",
-"tags": "parameters",
+"tags": "methods",
 "keywords": "parameters",
 "url": "/gustycooper.github.io/mydoc_A_passing_parameters/",
 "summary": "Passing Parameters"
@@ -417,7 +457,7 @@
 
 {
 "title": "Random Numbers",
-"tags": "random numbers",
+"tags": "random",
 "keywords": "random, numbers",
 "url": "/gustycooper.github.io/mydoc_A_random_numbers/",
 "summary": "Random Numbers"
@@ -427,7 +467,7 @@
 
 {
 "title": "Java String Manipulation",
-"tags": "string manipulation",
+"tags": "string",
 "keywords": "string methods",
 "url": "/gustycooper.github.io/mydoc_A_string_manipulation/",
 "summary": "Java String Manipulation"
@@ -1294,6 +1334,56 @@
 "url": "/gustycooper.github.io/projects_project05_01/",
 "summary": "Project 5"
 },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

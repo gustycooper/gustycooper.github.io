@@ -1,6 +1,6 @@
 ---
 title: Downloads and Installs
-tags: [downloads, installs]
+tags: [downloads]
 keywords: downloads, installs
 last_updated: May 1, 2016
 summary: "Downloads and Installs"

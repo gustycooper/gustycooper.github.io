@@ -1,6 +1,6 @@
 ---
 title: Arrays and ArrayLists
-tags: [arrays, arraylists]
+tags: [collection]
 keywords: arrays, arraylists
 last_updated: May 1, 2016
 summary: "Arrays and ArrayLists"

@@ -1,6 +1,6 @@
 ---
 title: Packages
-tags: [packages, interfaces, inheritance]
+tags: [package, interface, inheritance]
 keywords: packages, interfaces, inheritance
 last_updated: May 1, 2016
 summary: "Packages, Interfaces, Inheritance, ADT, and More"

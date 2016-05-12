@@ -1,6 +1,6 @@
 ---
 title: Java Meta Language
-tags: [Java meta language]
+tags: []
 keywords: meta language
 last_updated: May 1, 2016
 summary: "Meta Language"
