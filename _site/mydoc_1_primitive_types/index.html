@@ -3,8 +3,8 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="This describes primitive data types and their relationship to memory">
-<meta name="keywords" content="type,  java, primitive types">
+<meta name="description" content="Understand the attributes of a program. Understand the concept of variables. Understand Java identifiers Understand camelCase Understand the definition of a ...">
+<meta name="keywords" content="type,  data type, variable, camel case, primitive type, literal, declaration">
 <title>Primitive Types  | UMW CPSC 220</title>
 <link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
 
@@ -306,6 +306,20 @@ window.location.href = uri;
             
             
             
+            <li><a href="/gustycooper.github.io/mydoc_1_ides_compiling_interpreting/">IDEs, Compiling, Interpreting</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_software_development_process/">Software Development Process</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="/gustycooper.github.io/mydoc_1_problem_solving/">Problem Solving</a></li>
             
             
@@ -320,6 +334,20 @@ window.location.href = uri;
             
             
             
+            <li><a href="/gustycooper.github.io/mydoc_1_numbers/">Numbers as Information</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1_characters/">Characters as Information</a></li>
+            
+            
+            
+            
+            
+            
             <li class="active"><a href="/gustycooper.github.io/mydoc_1_primitive_types/">Primitive Types</a></li>
             
             
@@ -327,36 +355,7 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_1_programming_simple_programs/">Programming Simple Programs</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="/gustycooper.github.io/mydoc_1_ides_compiling_interpreting/">IDEs, Compiling, Interpreting</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="/gustycooper.github.io/mydoc_1_software_development_process/">Software Development Process</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Simple Objects</a>
-        <ul>
-            
-            
-            
-            <li><a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_1_first_programs/">Our First Java Programs</a></li>
             
             
             
@@ -371,7 +370,22 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_2_expressions/">Expressions</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Simple Objects</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_3_simple_objects/">Simple Objects</a></li>
             
             
             
@@ -490,6 +504,13 @@ window.location.href = uri;
             
             
             
+            <li><a href="/gustycooper.github.io/mydoc_A_programming_style/">Programming Style</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="/gustycooper.github.io/mydoc_A_meta_language/">Meta Language</a></li>
             
             
@@ -569,7 +590,7 @@ window.location.href = uri;
 <div class="post-content">
 
    
-    <div class="summary">This describes primitive data types and their relationship to memory</div>
+    <div class="summary"><li>Understand the attributes of a program.</li> <li>Understand the concept of variables.</li> <li>Understand Java identifiers</li> <li>Understand camelCase</li> <li>Understand the definition of a data type</li> <li>Understand Java primitive types.</li> <li>Understand Java literals</li> <li>Understand how Java primitive types are mapped to memory</li></div>
    
 
     
@@ -606,594 +627,237 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h2 id="programming">Programming</h2>
+  <h2 id="program-attributes---algorithms-and-data-structures">Program Attributes - Algorithms and Data Structures</h2>
 
-<p>CPSC 220 primary goal is for you to learn Java programming.  Java programming consists of solving problems using algorithms and data structures that adhere to the Java programming syntax and semantics.  You have already studied</p>
+<p>The primary goal of CPSC 220 is for everyone to learn how to solve problems in Java.  To do this we will create Java programs that consist of algorithms and data structures.  We have already studied the following concepts, which we will connect together into Java programming.</p>
 
 <ul>
-  <li>people and computers process information</li>
+  <li>people and computers receive information, store and manipluate information, and generate information</li>
   <li>a model of a computer that has input, output, CPU, RAM, and secondary memory</li>
   <li>problem solving</li>
-  <li>algorithms</li>
+  <li>algorithms
+    <ul>
+      <li>accept input</li>
+      <li>manipulate information and are constructed with
+        <ul>
+          <li>sequential steps</li>
+          <li>conditional steps</li>
+          <li>looping steps</li>
+          <li>calling chunks of algorithms that are bottled in a method</li>
+        </ul>
+      </li>
+      <li>produce output</li>
+    </ul>
+  </li>
+  <li>numbers information in computers</li>
+  <li>characters information in computers</li>
 </ul>
 
-<p>We want to connect these concepts together into Java programming.</p>
+<p>To demonstrate how writing a program is primarily creating algorithms and data structures, <a href="https://en.wikipedia.org/wiki/Niklaus_Wirth">Niklaus Wirth</a> (a famous computer scientist, who (among other things) created the programming language Pascal) wrote a book titled, Algorithms + Data Structures = Programs.  We have a general idea of algorithms,  which we will tighten into designing and implemeting Java programs, but first we have to begin our journey into data structure.  We begin with Java primitive data types.</p>
 
-<p>Writing a program is primarily creating algorithms and data structures.  In fact you can purchase a book published in 1976 by Niklaus Wirth (the creator of the programming language Pascal) that is titled, Algorithms + Data Structures = Programs.  We have a general feel for algorithms, which we will tighten into Java, but first we have to begin our journey into data structure.  We begin with Java primitive data types.</p>
+<h2 id="variables-and-data-types">Variables and Data Types</h2>
 
-<p>Recall a computer is a machine that stores and manipulates information under the control of a changeable program.  A data type defines the characteristics of information we want to manipulate.  We will use data types to declare variables, which will contain the information we will manipulate.</p>
+<p>Recall a computer is a machine that stores and manipulates information under the control of a changeable program.  A data type defines the characteristics of information we want to manipulate.  We use data types to declare variables, which contain the information we manipulate.  In Java variables must be declared to be a specific type, and the declaration must happen before you can use a variable.</p>
 
 <p>A <strong>variable</strong> has the following</p>
 
 <ol>
-  <li>a name</li>
-  <li>a data type</li>
-  <li>a value</li>
-  <li>memory locations</li>
+  <li>a <strong>name</strong></li>
+  <li>a <strong>data type</strong></li>
+  <li>a <strong>value</strong></li>
+  <li><strong>memory locations</strong></li>
 </ol>
 
-<p>A <strong>data type</strong> is a set of values and a set of operations.  We will return to this definition throughout the course.  We will consider the Java primitive data type <strong>byte</strong> as our initial example.  The following example declares a variable named gusty that is type byte, initially has value 55, but is immediately changed to have value -55.</p>
+<p>A <strong>data type</strong> is a set of values and a set of operations.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>byte gusty = 55;
-gusty = gusty - 110;
+<p>We will return to this definition throughout the course.  Let us consider the Java primitive data type <code class="highlighter-rouge">byte</code> as our initial example of this definition.  The following example declares a variable named <code class="highlighter-rouge">gusty</code> that is type <code class="highlighter-rouge">byte</code>, initially has value 55, but is immediately changed to have value -55.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">gusty</span> <span class="o">=</span> <span class="mi">55</span><span class="o">;</span>
+<span class="n">gusty</span> <span class="o">=</span> <span class="n">gusty</span> <span class="o">-</span> <span class="mi">110</span><span class="o">;</span>
 </code></pre>
 </div>
 
-<p>In this example, code we see</p>
+<p>In this example code we see</p>
 
 <ol>
-  <li>The variable name is gusty</li>
+  <li>The variable name is <code class="highlighter-rouge">gusty</code></li>
   <li>
-    <p>The data type is byte, which</p>
+    <p>The data type is <code class="highlighter-rouge">byte</code>, which</p>
 
     <ul>
-      <li>Has the set of values {-128, -127, …, 0, 1, 2, … 127}</li>
-      <li>Has the set of arithmetic operations {+ - * / %}</li>
+      <li>Has the set of values <code class="highlighter-rouge"><span class="p">{</span><span class="err">-128,</span><span class="w"> </span><span class="err">-127,</span><span class="w"> </span><span class="err">...,</span><span class="w"> </span><span class="err">0,</span><span class="w"> </span><span class="err">1,</span><span class="w"> </span><span class="err">2,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">127</span><span class="p">}</span></code></li>
+      <li>Has the set of arithmetic operations <code class="highlighter-rouge"><span class="p">{</span><span class="err">+</span><span class="w"> </span><span class="err">-</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code></li>
     </ul>
   </li>
   <li>The value is initially 55, but then changed to -55</li>
-  <li>We will demonstrate the memory locations in a later section, after we have discussed how numbers are represented in computers.</li>
+  <li>The memory locations are demonstrated in a later section.</li>
 </ol>
 
-<p>Java provides the following primitive data types.</p>
+<h2 id="java-identifiers">Java Identifiers</h2>
 
-<ul>
-  <li>byte – an integer in the range -128 to 127.</li>
-  <li>short – an integer in the range xx to xx.</li>
-  <li>int – an integer in the range xx to xx.</li>
-  <li>long – an integer in the range xx to xx.</li>
-  <li>float – a floating point in the range xx to xx.</li>
-  <li>double – a floating point in the range xx to xx.</li>
-  <li>char – a letter that can be found on your keyboard</li>
-  <li>boolean - a value that is true or false</li>
-</ul>
+<p>Java <strong>identifiers</strong> are used to give variables, methods, and classes names.  The preceding section declared a variable named <code class="highlighter-rouge">gusty</code>.  <code class="highlighter-rouge">gusty</code> is a Java identifer.  Java identifiers must be constructed according the following rules.</p>
 
-<h2 id="numbers--decimal-and-people">Numbers – Decimal and People</h2>
+<ol>
+  <li>The first character of an identifier must be letter, $, or _</li>
+  <li>The remaining characters of an identifer my be letter, $, _, or number.  An identifier cannot begin with a number.</li>
+  <li>Upper case and lower case letters are different.  The identifers <code class="highlighter-rouge">Gusty</code> and <code class="highlighter-rouge">gusty</code> are different.</li>
+</ol>
 
-<p>Everyone understands numbers, but most have forgotten the fundamentals of number systems - base and place value.  Roman numerals are difficult to perform computations because they do not have a base and a place value.  Even the NFL has dropped the Roman numeral from its Superbowl.  We are most familiar with base 10, which has ten digits - 0, 1, …, 9.  When we examine a number we intuitively know the value of each digits place.  Beginning from the right and moving left, each place in a number has a value that corresponds to base raised to the position.</p>
+<h2 id="java-camelcase-identifiers">Java camelCase Identifiers</h2>
 
-<p><img src="../images/decimal.png" alt="Decimal Number" title="Decimal Number" /></p>
+<p>Java programmers tend to use <code class="highlighter-rouge">camelCase</code> identifiers. As can be seen in this example, a multisyllable identifer will have an upper case letter for each syllable.  For example, if I want to place to age of a person in a variable, I may choose <code class="highlighter-rouge">personsName</code> to be the camelCase identifier.  You can contrast the camelCase style of identifers to a style of using <code class="highlighter-rouge">_</code> as the syllable separator, which would be <code class="highlighter-rouge">camel_case</code> and <code class="highlighter-rouge">persons_name</code>.  Both are good styles, but you will see that Java programmers traditionally use <code class="highlighter-rouge">camelCase</code>.</p>
 
-<p>The Hindus started using place value numbers around 500.  The Hindus discovered ZERO around 650.  The Hindu numbering system was discovered right around the time of the expansion of Islam.  Arabic mathematicians adopted the system – hence Hindu-Arabic numbers.  Leonardo Fibonacci wrote a book Liber Abaci in 1202 where he extolled the virtues of place-value numbers; however, the western world did not adopt place value until around 1500.  I am certainly glad that we did.</p>
-
-<p>Almost all people use decimal numbers today.</p>
-
-<h2 id="numbers--binary-and-computers">Numbers – Binary and Computers</h2>
-
-<p>Computers use binary numbers, not decimal.  Binary is base-2, which means there are two digits: 0 and 1.  Each digit in a binary number is called a <strong>bit</strong>, which is a contraction of binary-digit.  Binary employs the place-value system  just like decimal.  The following figure shows binary 0b101101, which is equivalent decimal 45</p>
-
-<p><img src="../images/binary.png" alt="Binary Number" title="Binary Number" /></p>
-
-<h2 id="numbers---how-many-numbers-in-n-digits">Numbers - How Many Numbers in N Digits</h2>
-
-<p>When mentally using decimal numbers, we usually do not worry about how many numbers can be represented in N digits.  For example, if we have 3 decimal digits, we can count from 0 to 999, which means 3 decimal digits can represent 1000 numbers.  In this case, we have 10^3 numbers, where 10 is the base and 3 is the number of digits.</p>
-
-<p>However, within a computer, we often consider how many numbers can be represented in N bits.  Memory is organized into a sequence of bytes where each byte has an address, so we typically consider how many numbers can be represented in 8-bits (1 bytes), 16-bits (2 bytes), 32-bits (4 bytes), and 64-bits (8 bytes).  The same formula for computer total numbers applies, so (for example) a 2 byte quantity can hold 2^16 , where 2 is the base and 16 is the number of bits.  We can consider various numbers in the follownig snippet of memory.  For examples, a 1-byte number is at address 0004040 and a 4-byte numbers is at addresses 004040 through 004043.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Address	  Value
-0004040   00000000
-0004041   00001000
-0004042   00000101
-0004043   11111110
-0004044   01010100
-0004045   01010100
-0004046   00000000
-0004047   00000000
-</code></pre>
-</div>
-
-<h2 id="numbers---converting-between-bases">Numbers - Converting Between Bases</h2>
-
-<p>This section presents an pseudo-code algorithm that we will program in Java during a future lab.  Thinking in terms of our computer model, we first define the input and output of our algorithm.</p>
-
-<ul>
-  <li>Input
-    <ul>
-      <li>Number to be converted</li>
-      <li>Base of the converted number</li>
-    </ul>
-  </li>
-  <li>Output
-    <ul>
-      <li>Number converted to Base</li>
-    </ul>
-  </li>
-</ul>
-
-<p>An example call to this algorithm would be Convert(20,16), which is asking us to convert the number 20 to base 16.  The output for this case is 0x14, which is 1<em>16^1 + 4</em>16^0.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>// We will build answer from right to left
-Convert(Number, Base)
-    while (Number != 0) {
-        digit = Number % Base      // modulo
-        Number = Number / Base // integer division
-        Add digit to answer
-    }
-</code></pre>
-</div>
-
-<h2 id="binary-numbers---positive-and-negative">Binary Numbers - Positive and Negative</h2>
-
-<p>We need to represent both positive and negative numbers in memory.  In this section we will consider 3-bit numbers, but the same concepts apply to 8-bit, 16-bit, 32-bit, and 64-bit numbers.</p>
-
-<p>The following table shows positive decimal numbers for a 3-bit binary numbers.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Binary</th>
-      <th>Decimal</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>000</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>001</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>010</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>011</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>100</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>110</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>111</td>
-      <td>7</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>If we want to represent both positive and negative numbers, we can consider the first bit to be a sign bit to create signed magnitude numbers.  This means that each number has the same magnitude and a sign indicates whether the number is positive or negative   This is how we manipulate numbers in our brains.  For example, 512 is a magnitude with +512 being positive and -512 being negative.  The same 512 is on both the positive and negative numbers.  This results in the following for binary, which has two representations of zero.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Binary</th>
-      <th>Decimal</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>011</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>010</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>001</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>000</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>100</td>
-      <td>-0</td>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <td>110</td>
-      <td>-2</td>
-    </tr>
-    <tr>
-      <td>111</td>
-      <td>-3</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Our brains process signed magnitude rather well, but computers do not.  Computers represent signed integers in twos-complement.  The following shows twos-complement for 3 bits.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Binary</th>
-      <th>Decimal</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>011</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>010</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>001</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>000</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>111</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <td>110</td>
-      <td>-2</td>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>-3</td>
-    </tr>
-    <tr>
-      <td>100</td>
-      <td>-4</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Notice how twos-complement has only one representation of zero.  You will also notice how we get 3 positive numbers (2^(2-1)), one zero, and 4 negative numbers (2^2).  If we have an 8-bit twos-complement integer, we would have 127 positive numbers (2^(7-1)), one zero, and 128 negative numbers (2^7).  The general formula for a twos-complement number of N bits is the following.</p>
-
-<ul>
-  <li>2^(N-1)-1 positive numbers</li>
-  <li>one zero</li>
-  <li>2^(N-1) negative numbers</li>
-</ul>
-
-<p>There is a simple algorithm to convert between a positive and negative number in twos-complement, which is change all the bits and add one.  Let’s continue with our 3-bit example and convert a positive 2 to a negative 2.</p>
-
-<ul>
-  <li>Positive 2: 010</li>
-  <li>Change all the bits: 101</li>
-  <li>Add one: 101+1 is 110, which is negative 2</li>
-</ul>
-
-<h2 id="adding-twos-complement-numbers">Adding Twos Complement Numbers</h2>
-
-<p>Twos complement also allows us to simply add numbers and subtraction takes care of itself.  Consider adding 1 and -1 in a 3-bit number.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    001	   (1)
-   +111  +(-1) 
---------------------
-    000	 (0)
-</code></pre>
-</div>
-
-<p>Let’s add 24 and 37 in 8-bit numbers.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  00011000   24      
-+ 00100101   37
-----------------
-  00111101   61
-</code></pre>
-</div>
-
-<p>Let’s convert 37 to a negative 37 in an 8-bit number.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  11011010   Change bits
-+        1   Add 1
------------
-  11011011   2’s Comp (-37)  
-</code></pre>
-</div>
-
-<p>Let’s add 24 and -37.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  00011000    24
-+ 11011011   -37
------------------
-  11110011   -13
-</code></pre>
-</div>
-
-<p>Now lets change all of the bits and add 1 to our -13,</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  11110011   -13
-  00001100   Change bits
-+        1
------------------
-  00001101    13
-</code></pre>
-</div>
-
-<p>It is almost like magic.</p>
-
-<h2 id="floating-point-numbers-in-a-computer">Floating Point Numbers in a Computer</h2>
-
-<p>The first step in understanding floating-point numbers in a computer is to understand scientific notation.  All floating-point numbers can be represented in scientific notation, which has a fraction part (also called the mantissa) and exponent part.  Here are few numbers that have the same fraction, but different exponents.</p>
-
-<ul>
-  <li>3.14159 is equivalent to .314159 * 10^1</li>
-  <li>31415.9 is equivalent to .314159 * 10^5</li>
-  <li>31.4159 is equivalent to .314159 * 10^2</li>
-</ul>
-
-<p>The following tables shows those numbers in a somewhat computer form, where all we care about is the exponent and fraction.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>exp</th>
-      <th>fraction</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>314159</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>314159</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>314159</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>We can consider fractions from a place value perspective.  The fraction .314159 is</p>
-
-<p>3*.1 + 1*.01 + 4*.001 + 1*.0001 + 5*.00001 + 9*.000001</p>
-
-<p>Another way to write this is</p>
-
-<p>3 * 1/10 + 1 * 1/100 + 4 * 1/1000 + 1 * 1/10000 + 5 * 1/100000 + 9 * 1/1000000</p>
-
-<p>Of course, a computer only has binary so we will represent the fraction as a binary fraction.  For example, suppose we want to represent the fraction .625, which is ½ + ⅛.  We represent this fraction as 1 * ½ + 0 * ¼ + 1 * ⅛.  We can multiply .625 by 22, to get 2.5.  Putting all of this together in an 8-bit fraction that has 4-bits for a positive exponent and 4-bits for mantissa, we get the following</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>exp</th>
-      <th>fraction</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0010</td>
-      <td>1010</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>This simple model is just slightly more complicated on real computers.  We can have positive and negative floating-point numbers, and the exponent can be both positive and negative.  Floating point binary numbers have a sign bit to indicate whether it is positive or negative.  The exponent is represented in a bias notation.  Suppose you had a 3-bit exponent.  The following represents a bias notation for the exponent. value.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bin     exp
-000     -3
-001     -2
-010     -1
-011      0
-100      1
-101      2
-110      3
-111      4
-</code></pre>
-</div>
-
-<p>Floating point numbers in computers are stored with normalized mantissas, which means the fractional part has a 1 in the most significant fractional bit.  The decimal floating-point number 1234.567 is normalized as 1.234567 x 10^3.   Notice that only one digit appears before the decimal.  The exponent expresses the number of positions the decimal point was moved left  (positive exponent) or moved right (negative exponent).  The binary floating-point number 1101.101 is normalized as 1.101101 x 23.  Moving the binary point 3 positions to the left, and multiplying by 23 accomplishes this.  The following shows normalization of binary floating-point numbers.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Binary Value</th>
-      <th>Normalized As</th>
-      <th>Exponent</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1101.101</td>
-      <td>1.101101</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>.00101</td>
-      <td>1.01</td>
-      <td>-3</td>
-    </tr>
-    <tr>
-      <td>1.0001</td>
-      <td>1.0001</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>10000011.0</td>
-      <td>1.0000011</td>
-      <td>7</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>The following figure shows IEEE 745 floating-point numbers.</p>
-
-<p><img src="../images/ieeeFloatingPoint.png" alt="IEEE Floating Point" title="IEEE Floating Point" /></p>
-
-<p>Some examples of floating point numbers in the IEEE format are as follows.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Binary Value</th>
-      <th>Biased Exponent</th>
-      <th>Sign</th>
-      <th>Exponent</th>
-      <th>Mantissa</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>-1.11</td>
-      <td>127</td>
-      <td>1</td>
-      <td>01111111</td>
-      <td>11000000000000000000000</td>
-    </tr>
-    <tr>
-      <td>+1101.101</td>
-      <td>130</td>
-      <td>0</td>
-      <td>10000010</td>
-      <td>10110100000000000000000</td>
-    </tr>
-    <tr>
-      <td>-.00101</td>
-      <td>124</td>
-      <td>1</td>
-      <td>01111100</td>
-      <td>01000000000000000000000</td>
-    </tr>
-    <tr>
-      <td>+100111.0</td>
-      <td>132</td>
-      <td>0</td>
-      <td>10000100</td>
-      <td>00111000000000000000000</td>
-    </tr>
-    <tr>
-      <td>+.0000001101011</td>
-      <td>120</td>
-      <td>0</td>
-      <td>01111000</td>
-      <td>10101100000000000000000</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>If a decimal fraction can be easily represented as a sum of fractions in the 
- form (1/2 + 1/4 + 1/8 + … ), it is fairly easy to discover the corresponding binary real.  Here are a few simple examples</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Decimal Fraction</th>
-      <th>Factored As…</th>
-      <th>Binary Real</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1/2</td>
-      <td>1/2</td>
-      <td>.1</td>
-    </tr>
-    <tr>
-      <td>1/4</td>
-      <td>1/4</td>
-      <td>.01</td>
-    </tr>
-    <tr>
-      <td>3/4</td>
-      <td>1/2 + 1/4</td>
-      <td>.11</td>
-    </tr>
-    <tr>
-      <td>1/8</td>
-      <td>1/8</td>
-      <td>.001</td>
-    </tr>
-    <tr>
-      <td>7/8</td>
-      <td>1/2 + 1/4 + 1/8</td>
-      <td>.111</td>
-    </tr>
-    <tr>
-      <td>3/8</td>
-      <td>1/4 + 1/8</td>
-      <td>.011</td>
-    </tr>
-    <tr>
-      <td>1/16</td>
-      <td>1/16</td>
-      <td>.0001</td>
-    </tr>
-    <tr>
-      <td>3/16</td>
-      <td>1/8 + 1/16</td>
-      <td>.0011</td>
-    </tr>
-    <tr>
-      <td>5/16</td>
-      <td>1/4 + 1/16</td>
-      <td>.0101</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>A computer can represent some floating point numbers quite well.  For example, .5 and .125; however some are just approximations.  How well can a computer represent .1?  Not too well.  The following algorithm as typed into the BlueJ Code Pad does not compute 1.0, which is what you think it should.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">y</span><span class="o">=.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+.</span><span class="mi">1</span><span class="o">;</span>
-<span class="n">y</span>
-<span class="mf">0.9999999999999999</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
-</code></pre>
-</div>
+<p>I suggest that we follow the Java tradition.  You should always select meaningful variable names, regardless of the style of identifiers.  Good programming style is discussed in <a href="/gustycooper.github.io/mydoc_A_programming_style">Programming Style</a>.</p>
 
 <h2 id="java-primitive-data-types">Java Primitive Data Types</h2>
 
-<p>A data type is a set of values and a set of operations.  When considering Java elementary data types such as byte, short, int, etc., the set of operations are the normal arithmetic operations.  The set of values are restricted by the individual type.  For example, the set of values for the type byte are -128 to 127.</p>
+<p>Java primitve data types are <code class="highlighter-rouge">byte</code>, <code class="highlighter-rouge">short</code>, <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">long</code>, <code class="highlighter-rouge">float</code>, <code class="highlighter-rouge">double</code>, and <code class="highlighter-rouge">char</code>.  These are keywords that we will use to declare variables and arrays.  The previous section demonstrated declaring <code class="highlighter-rouge">byte gusty</code>.  The meta language for declaring variables of primitvie types is the following.</p>
 
-<p>We know that memory is a sequence of bytes, where each byte is 8-bits.  A byte can encode 256 (or 28) digits.  We can connect bytes together to make larger quantities.  Java elementary data types map directly to connected bytes of memory.</p>
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Declaring Variables of Primitive Types 
+</b>
+<br />
+<pre>
+&lt;type-name&gt; &lt;variable-name&gt; [= &lt;exp&gt;];
+</pre>
+</div>
 
 <ul>
-  <li>byte – one byte</li>
-  <li>short – two bytes</li>
-  <li>char – two bytes</li>
-  <li>int – four bytes</li>
-  <li>long – eight bytes</li>
-  <li>float – four bytes</li>
-  <li>double – eight bytes</li>
+  <li>For now <code class="highlighter-rouge">&lt;type-name&gt;</code> will be <code class="highlighter-rouge">byte</code>, <code class="highlighter-rouge">short</code>, <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">long</code>, <code class="highlighter-rouge">float</code>, <code class="highlighter-rouge">double</code>, <code class="highlighter-rouge">char</code>, or <code class="highlighter-rouge">boolean</code>.  We will soon learn many more types, including how to define our own types.</li>
+  <li>We refer to the types <code class="highlighter-rouge">byte</code>, <code class="highlighter-rouge">short</code>, <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">long</code>, <code class="highlighter-rouge">float</code>, <code class="highlighter-rouge">double</code> as numeric types.  Corresponding variables are numeric variables.</li>
+  <li>The variable initialization expression (<code class="highlighter-rouge">&lt;exp&gt;</code>) is optional.</li>
+  <li>The <code class="highlighter-rouge">&lt;exe&gt;</code> must evaluate to <code class="highlighter-rouge">&lt;type-name&gt;</code>.</li>
+  <li>If you do not include the optional <code class="highlighter-rouge">&lt;exp&gt;</code> as part of your declaration, Java initializes variables as follows.
+    <ul>
+      <li>numeric variables to 0.</li>
+      <li><code class="highlighter-rouge">char</code> variables to the null character, which is <code class="highlighter-rouge">'\0'</code> or 0.</li>
+      <li><code class="highlighter-rouge">boolean</code> variables to <code class="highlighter-rouge">false</code>.</li>
+    </ul>
+  </li>
+  <li>We study expressions in<a href="/gustycooper.github.io/mydoc_3_expressions">Expressions</a>.</li>
+  <li>You may declare and initialize multiple variables by using a comma to separate them.</li>
 </ul>
 
-<p>The following figure shows memory as bytes and how Java primitive data types align.</p>
+<p>The following are example declarations, some of which use the <code class="highlighter-rouge">&lt;exp&gt;</code> to initialize the variable.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">isFinished</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">firstInitial</span><span class="o">,</span> <span class="n">middleInitial</span><span class="o">,</span> <span class="n">lastInitial</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">principal</span><span class="o">;</span>    <span class="c1">// Amount of money invested.</span>
+<span class="kt">double</span> <span class="n">interestRate</span><span class="o">;</span> <span class="c1">// Rate as a decimal, not percentage.</span>
+<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">myPi</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">;</span>
+
+</code></pre>
+</div>
+
+<h2 id="java-numeric-char-and-boolean-literals">Java Numeric, <code class="highlighter-rouge">char</code>, and <code class="highlighter-rouge">boolean</code> Literals</h2>
+
+<p>A literal is an entity that you know its value when you read it.  The following are examples.</p>
+
+<ul>
+  <li>The numbers <code class="highlighter-rouge">152</code> and <code class="highlighter-rouge">3.14</code> are numeric literals.
+    <ul>
+      <li>The number <code class="highlighter-rouge">152</code> is an ```int`` literal.</li>
+      <li>The number <code class="highlighter-rouge">3.14</code> is a <code class="highlighter-rouge">double</code> literal.</li>
+      <li>The number <code class="highlighter-rouge">3.14F</code> is a <code class="highlighter-rouge">float</code> literal.  You must</li>
+    </ul>
+  </li>
+  <li>The characters <code class="highlighter-rouge">'G'</code> and <code class="highlighter-rouge">'5'</code> are <code class="highlighter-rouge">char</code> literals.</li>
+  <li>You should know that <code class="highlighter-rouge">5</code> and <code class="highlighter-rouge">'5'</code> are two distinct literals. <code class="highlighter-rouge">5</code> is a numeric value that can be used in arithmetic expressions.  <code class="highlighter-rouge">'5'</code> is a <code class="highlighter-rouge">char</code>.  We know from <a href="/gustycooper.github.io/mydoc_1_characters">Characters as Information</a> that <code class="highlighter-rouge">'5'</code> is encoded as the Unicode (ASCII) number <code class="highlighter-rouge">54</code>.  We will learn that you can use <code class="highlighter-rouge">char</code> values in arithmetic expressions, but you have to be careful.  Consider the following silly example.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'5'</span> <span class="o">+</span> <span class="sc">'5'</span><span class="o">;</span>    <span class="c1">// c contains 108, which is 'j'</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printnl</span><span class="o">(</span><span class="n">c</span><span class="o">);</span> <span class="c1">// prints j to the terminal </span>
+</code></pre>
+</div>
+
+<ul>
+  <li>There are two <code class="highlighter-rouge">boolean</code> literals: <code class="highlighter-rouge">true</code> and <code class="highlighter-rouge">false</code>.  We will study <code class="highlighter-rouge">boolean</code> expressions in <a href="/gustycooper.github.io/mydoc_3_expressions">Expressions</a>.</li>
+</ul>
+
+<h2 id="determining-the-minimum-and-maximum-of-java-primitive-types">Determining the Minimum and Maximum of Java Primitive Types</h2>
+
+<p>Java maps most of its primitive data types to specific bytes of memory.  For example, a <code class="highlighter-rouge">byte</code> is one byte of memory and an <code class="highlighter-rouge">int</code> is four bytes of memory.  We can use our knowledge from <a href="/gustycooper.github.io/mydoc_1_numbers">Numbers as Information</a> to compute the minimum value for a <code class="highlighter-rouge">byte</code>, which we know is 8 bits.</p>
+
+<ul>
+  <li>Minumum value is -2<sup>numOfBits-1</sup>, which is -2<sup>7</sup> or -128.</li>
+  <li>Maximum value is 2<sup>numOfBits-1</sup>-1, which is 2<sup>7</sup>-1 or 127.</li>
+</ul>
+
+<h2 id="java-primitive-data-types-1">Java Primitive Data Types</h2>
+
+<p>Java provides the following primitive data types.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>type</th>
+      <th>num bytes</th>
+      <th>min value</th>
+      <th>max value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>byte</td>
+      <td>1</td>
+      <td>-128</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>2</td>
+      <td>-32768</td>
+      <td>32767</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>4</td>
+      <td>-2147483648</td>
+      <td>2147483647</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>8</td>
+      <td>-9223372036854775808</td>
+      <td>9223372036854775807</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>4</td>
+      <td>1.4E-45</td>
+      <td>3.4028235E38</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td>8</td>
+      <td>4.9E-324</td>
+      <td>1.7976931348623157E308</td>
+    </tr>
+    <tr>
+      <td>char</td>
+      <td>2</td>
+      <td>-32768</td>
+      <td>32767</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We will learn Java boxing classes of <code class="highlighter-rouge">Byte</code>, <code class="highlighter-rouge">Short</code>, <code class="highlighter-rouge">Integer</code>, <code class="highlighter-rouge">Long</code>, <code class="highlighter-rouge">Float</code>, and <code class="highlighter-rouge">Double</code>.  These classes have <code class="highlighter-rouge">fields</code> that are the min and max of the type.  We will soon learn about Java <code class="highlighter-rouge">classes</code>, including such things as <code class="highlighter-rouge">instance methods</code> and <code class="highlighter-rouge">fields</code>.  The following shows example code that access the fields <code class="highlighter-rouge">MIN_VALUE</code> and <code class="highlighter-rouge">MAX_VALUE</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">minValue</span> <span class="o">=</span> <span class="n">Byte</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span> <span class="c1">// minValue is -128</span>
+<span class="kt">byte</span> <span class="n">maxValue</span> <span class="o">=</span> <span class="n">Byte</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span> <span class="c1">// maxValue is 127</span>
+</code></pre>
+</div>
+
+<h2 id="java-primitive-data-types-and-memory">Java Primitive Data Types and Memory</h2>
+
+<p>The following figure shows memory as bytes and how Java primitive data types align.  We will return to this concept throughout the course.</p>
 
 <p><img src="../images/memJavaPrimitiveTypes.png" alt="Java Primitive Types and Memory" title="Java Primitive Types and Memory" /></p>
 
@@ -1223,7 +887,7 @@ Convert(Number, Base)
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: May 11, 2016
+<p>Page last updated: May 1, 2016; Site last generated: May 16, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

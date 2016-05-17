@@ -3,7 +3,7 @@ title: Algorithms
 tags: [algorithm, loop, conditional, sequential]
 keywords: java, algorithms, design
 last_updated: May 1, 2016
-summary: "This describes algorithms"
+summary: "<li>Understand the definition of an algorithm.</li> <li>Understand the building blocks of algorithms.</li> <li>Undestand we create algorithms with pseudo code.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_algorithms/
 ---

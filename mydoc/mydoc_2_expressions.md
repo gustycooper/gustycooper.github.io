@@ -5,7 +5,7 @@ keywords: expression, expressions, numeric expressions, relation expressions, bo
 last_updated: May 1, 2016
 summary: "This describes Java expressions"
 sidebar: mydoc_sidebar
-permalink: /mydoc_3_expressions/
+permalink: /mydoc_2_expressions/
 ---
 
 ## Expressions (Eck 2.5)

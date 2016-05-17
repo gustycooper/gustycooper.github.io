@@ -3,7 +3,7 @@ title: Introduction Overview
 tags: [algorithm, getting_started]
 keywords: java, algorithms, design
 last_updated: May 11, 2016
-summary: "Provides an overview on the Introductory Section and how to proceed with your study of it."
+summary: "<li>Understand all of the topics we will study in the Introduction Module.</li>"
 sidebar: mydoc_sidebar
 toc: false
 permalink: /mydoc_1_overview/

@@ -56,22 +56,6 @@ entries:
       url: /mydoc_1_information_people_computers/
       output: web, pdf
 
-    - title: Problem Solving
-      url: /mydoc_1_problem_solving/
-      output: web, pdf
-
-    - title: Algorithms
-      url: /mydoc_1_algorithms/
-      output: web, pdf
-
-    - title: Primitive Types
-      url: /mydoc_1_primitive_types/
-      output: web, pdf
-
-    - title: Programming Simple Programs
-      url: /mydoc_1_programming_simple_programs/
-      output: web, pdf
-
     - title: IDEs, Compiling, Interpreting
       url: /mydoc_1_ides_compiling_interpreting/
       output: web, pdf
@@ -80,12 +64,28 @@ entries:
       url: /mydoc_1_software_development_process/
       output: web, pdf
 
-  - title: Simple Objects
-    output: web, pdf
-    folderitems:
+    - title: Problem Solving
+      url: /mydoc_1_problem_solving/
+      output: web, pdf
 
-    - title: Simple Objects
-      url: /mydoc_2_simple_objects/
+    - title: Algorithms
+      url: /mydoc_1_algorithms/
+      output: web, pdf
+
+    - title: Numbers as Information
+      url: /mydoc_1_numbers/
+      output: web, pdf
+
+    - title: Characters as Information
+      url: /mydoc_1_characters/
+      output: web, pdf
+
+    - title: Primitive Types
+      url: /mydoc_1_primitive_types/
+      output: web, pdf
+
+    - title: Our First Java Programs
+      url: /mydoc_1_first_programs/
       output: web, pdf
 
   - title: Expressions
@@ -93,7 +93,15 @@ entries:
     
     folderitems:
     - title: Expressions
-      url: /mydoc_3_expressions/
+      url: /mydoc_2_expressions/
+      output: web, pdf
+
+  - title: Simple Objects
+    output: web, pdf
+    folderitems:
+
+    - title: Simple Objects
+      url: /mydoc_3_simple_objects/
       output: web, pdf
 
   - title: Control Flow
@@ -158,6 +166,10 @@ entries:
     output: web, pdf
     
     folderitems:
+
+    - title: Programming Style
+      url: /mydoc_A_programming_style/
+      output: web, pdf
 
     - title: Meta Language
       url: /mydoc_A_meta_language/

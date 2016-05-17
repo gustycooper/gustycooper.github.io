@@ -3,15 +3,39 @@ title: Example Authoring
 tags: [getting_started]
 keywords: sample, authoring
 last_updated: May 1, 2016
-summary: "I added this to save examples of authoring."
+summary: "<li>This page does not have learning objectives.</li> <li>I added this page in order to retain examples of authoring pages.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_0_examples/
 ---
 
 ## Example Site URLS
 
+For these next two links to work, I need to perform [Managed Links](http://idratherbewriting.com/documentation-theme-jekyll/mydoc_hyperlinks/), which uses urls.txt, _site/urls.txt, and _data/urls.yml.  Then site.data.urls fetches the link information in the _data/urls.yml file.
+
 * {{site.data.urls.mydoc_install_jekyll_on_mac.link}}
 * {{site.data.urls.mydoc_install_jekyll_on_windows.link}}
+
+Link to an external site.
+
+[Managed Links](http://idratherbewriting.com/documentation-theme-jekyll/mydoc_hyperlinks/)
+
+HTML Style Link to an internal page
+
+<a href="{{ "/mydoc_1_algorithms" | prepend: site.baseurl }}">Algorithms</a>.
+
+Markdown style link to an internal page.
+
+[Algorithms](/gustycooper.github.io/mydoc_1_algorithms)
+
+Markdown style link to an internal page using baseurl, which **does not work**.
+
+[Algorithms]({{baseurl}}mydoc_1_algorithms)
+
+## Example Superscript and Subscript
+
+O(n<sup>2</sup>)
+
+O(n<sub>2</sub>)
 
 ## Example Tooltip
 

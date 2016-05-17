@@ -190,7 +190,7 @@
 "tags": "downloads",
 "keywords": "downloads, installs",
 "url": "/gustycooper.github.io/mydoc_0_downloads/",
-"summary": "Downloads and Installs"
+"summary": "<li> Understand the Java and IDE Downloads/Installs we will use in CPSC 220</li> <li>You should download Java SDK and BlueJ immediately</li>"
 },
 
 
@@ -200,7 +200,7 @@
 "tags": "getting_started",
 "keywords": "sample, authoring",
 "url": "/gustycooper.github.io/mydoc_0_examples/",
-"summary": "I added this to save examples of authoring."
+"summary": "<li>This page does not have learning objectives.</li> <li>I added this page in order to retain examples of authoring pages.</li>"
 },
 
 
@@ -210,7 +210,7 @@
 "tags": "getting_started",
 "keywords": "sample, authoring",
 "url": "/gustycooper.github.io/mydoc_0_get_started/",
-"summary": "Getting Started in CPSC 220"
+"summary": "<li>Understand CPSC 220 vs. CSPC 110 vs. AP Java.</li> <li>Understand the knowledge that you should already have prior to CPSC 220.</li>"
 },
 
 
@@ -220,7 +220,7 @@
 "tags": "getting_started",
 "keywords": "how to use",
 "url": "/gustycooper.github.io/mydoc_0_how_to_use/",
-"summary": "How to Use This Site"
+"summary": "<li>Understand how to navigate this site in order to best learn the material for CPSC 220</li>"
 },
 
 
@@ -240,7 +240,27 @@
 "tags": "algorithmloopconditionalsequential",
 "keywords": "java, algorithms, design",
 "url": "/gustycooper.github.io/mydoc_1_algorithms/",
-"summary": "This describes algorithms"
+"summary": "<li>Understand the definition of an algorithm.</li> <li>Understand the building blocks of algorithms.</li> <li>Undestand we create algorithms with pseudo code.</li>"
+},
+
+
+
+{
+"title": "Characters and Strings",
+"tags": "algorithmgetting_started",
+"keywords": "java, characters, strings",
+"url": "/gustycooper.github.io/mydoc_1_characters/",
+"summary": "<li>Understand characters as information in computers.</li> <li>Understand ASCII and Unicode</li> <li>Understand a sequence of characters can be a String</li>"
+},
+
+
+
+{
+"title": "Our First Java Programs",
+"tags": "objectalgorithm",
+"keywords": "java, algorithms, design, programming",
+"url": "/gustycooper.github.io/mydoc_1_first_programs/",
+"summary": "This describes algorithms and programming"
 },
 
 
@@ -250,7 +270,7 @@
 "tags": "compile",
 "keywords": "java, introduction, computer, high-level, low-level, interpreting, compiling, portable",
 "url": "/gustycooper.github.io/mydoc_1_ides_compiling_interpreting/",
-"summary": "Discussion of IDEs, compiling, and interpreting"
+"summary": "<li>Understand how IDEs and editors are used to create programs.</li> <li>Understand JVM, JDK, and JRE.</li> <li>Understand high-level, low-level, and portable code.</li> <li>Understand compiling hig-level code to assembly code.</li> <li>Understand interpreting low-level code.</li> <li>Understand interpreting Java byte code.</li>"
 },
 
 
@@ -260,7 +280,17 @@
 "tags": "compile",
 "keywords": "java, introduction, computer, high-level, low-level, interpreting, compiling, portable",
 "url": "/gustycooper.github.io/mydoc_1_information_people_computers/",
-"summary": "This defines basic computer terminology"
+"summary": "<li>Understand information.</li> <li>Understand that people process information.</li> <li>Understand that computers process information.</li> <li>Understand our definition and model of a computer.</li> <li>Understand that memory is a sequence of bytes.</li>"
+},
+
+
+
+{
+"title": "Numbers",
+"tags": "type",
+"keywords": "java, binary, decimal",
+"url": "/gustycooper.github.io/mydoc_1_numbers/",
+"summary": "<li>Understand numbers as information in computers.</li> <li>Understand base and place value concepts of numbers.</li> <li>Understand decimal numbers and people.</li> <li>Understand binary numbers and computers</li> <li>Understand positive and negative integers in computers.</li> <li>Understand floating point numbers in computers</li>"
 },
 
 
@@ -270,7 +300,7 @@
 "tags": "algorithmgetting_started",
 "keywords": "java, algorithms, design",
 "url": "/gustycooper.github.io/mydoc_1_overview/",
-"summary": "Provides an overview on the Introductory Section and how to proceed with your study of it."
+"summary": "<li>Understand all of the topics we will study in the Introduction Module.</li>"
 },
 
 
@@ -278,9 +308,9 @@
 {
 "title": "Primitive Types",
 "tags": "type",
-"keywords": "java, primitive types",
+"keywords": "data type, variable, camel case, primitive type, literal, declaration",
 "url": "/gustycooper.github.io/mydoc_1_primitive_types/",
-"summary": "This describes primitive data types and their relationship to memory"
+"summary": "<li>Understand the attributes of a program.</li> <li>Understand the concept of variables.</li> <li>Understand Java identifiers</li> <li>Understand camelCase</li> <li>Understand the definition of a data type</li> <li>Understand Java primitive types.</li> <li>Understand Java literals</li> <li>Understand how Java primitive types are mapped to memory</li>"
 },
 
 
@@ -288,19 +318,9 @@
 {
 "title": "Problem Solving",
 "tags": "algorithmgetting_startedboard",
-"keywords": "java, algorithms, design",
+"keywords": "java, algorithms, design, main program",
 "url": "/gustycooper.github.io/mydoc_1_problem_solving/",
-"summary": "A discussion on general problem solving"
-},
-
-
-
-{
-"title": "Programming Simple Programs",
-"tags": "objectalgorithm",
-"keywords": "java, algorithms, design, programming",
-"url": "/gustycooper.github.io/mydoc_1_programming_simple_programs/",
-"summary": "This describes algorithms and programming"
+"summary": "<li>Understand problem solving.</li> <li>Understand knowledge that and how.</li> <li>Understand that programming is problem solving.</li> <li>Undestand that becoming a good programmer (problem solver) requires practice.</li> <li>Understand patterns are important in problem solving.</li> <li>Understand that we will learn many programming patterns.</li> <li>Understand that our programming patterns will be marked with programming chessboard.</li>"
 },
 
 
@@ -310,17 +330,7 @@
 "tags": "algorithm",
 "keywords": "java, software development",
 "url": "/gustycooper.github.io/mydoc_1_software_development_process/",
-"summary": "This describes software development process"
-},
-
-
-
-{
-"title": "Simple Objects",
-"tags": "objectclass",
-"keywords": "objects, simple objects",
-"url": "/gustycooper.github.io/mydoc_2_simple_objects/",
-"summary": "First Introduction to Classes and Objects"
+"summary": "<li>Understand the steps of the software development process.</li> <li>Understand the steps that our course will focus upon.</li>"
 },
 
 
@@ -329,8 +339,18 @@
 "title": "Expressions",
 "tags": "expression",
 "keywords": "expression, expressions, numeric expressions, relation expressions, boolean expressions",
-"url": "/gustycooper.github.io/mydoc_3_expressions/",
+"url": "/gustycooper.github.io/mydoc_2_expressions/",
 "summary": "This describes Java expressions"
+},
+
+
+
+{
+"title": "Simple Objects",
+"tags": "objectclass",
+"keywords": "objects, simple objects",
+"url": "/gustycooper.github.io/mydoc_3_simple_objects/",
+"summary": "First Introduction to Classes and Objects"
 },
 
 
@@ -451,6 +471,16 @@
 "keywords": "parameters",
 "url": "/gustycooper.github.io/mydoc_A_passing_parameters/",
 "summary": "Passing Parameters"
+},
+
+
+
+{
+"title": "Programming Style",
+"tags": "",
+"keywords": "style",
+"url": "/gustycooper.github.io/mydoc_A_programming_style/",
+"summary": "<li>Understand the elements of good programming style.</li>"
 },
 
 

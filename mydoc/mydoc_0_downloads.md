@@ -3,7 +3,7 @@ title: Downloads and Installs
 tags: [downloads]
 keywords: downloads, installs
 last_updated: May 1, 2016
-summary: "Downloads and Installs"
+summary: "<li> Understand the Java and IDE Downloads/Installs we will use in CPSC 220</li> <li>You should download Java SDK and BlueJ immediately</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_0_downloads/
 ---

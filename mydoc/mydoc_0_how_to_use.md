@@ -3,7 +3,7 @@ title: How to Use This Site
 tags: [getting_started]
 keywords: how to use
 last_updated: May 1, 2016
-summary: "How to Use This Site"
+summary: "<li>Understand how to navigate this site in order to best learn the material for CPSC 220</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_0_how_to_use/
 ---

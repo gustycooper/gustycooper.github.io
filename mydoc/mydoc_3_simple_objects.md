@@ -5,7 +5,7 @@ keywords: objects, simple objects
 last_updated: May 1, 2016
 summary: "First Introduction to Classes and Objects"
 sidebar: mydoc_sidebar
-permalink: /mydoc_2_simple_objects/
+permalink: /mydoc_3_simple_objects/
 ---
 
 ## Simple Objects – An Introduction

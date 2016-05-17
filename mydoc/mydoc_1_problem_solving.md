@@ -1,9 +1,9 @@
 ---
 title: Problem Solving
 tags: [algorithm, getting_started, board]
-keywords: java, algorithms, design
+keywords: java, algorithms, design, main program
 last_updated: May 1, 2016
-summary: "A discussion on general problem solving"
+summary: "<li>Understand problem solving.</li> <li>Understand knowledge that and how.</li> <li>Understand that programming is problem solving.</li> <li>Undestand that becoming a good programmer (problem solver) requires practice.</li> <li>Understand patterns are important in problem solving.</li> <li>Understand that we will learn many programming patterns.</li> <li>Understand that our programming patterns will be marked with programming chessboard.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_problem_solving/
 ---
@@ -11,6 +11,10 @@ permalink: /mydoc_1_problem_solving/
 ## Problem Solving
 
 Throughout your life, you will encounter problems, usually several a day.  The ability to solve problems is fundamental to living.  You wake up only to discover that your roomate has used the last dab of toothpaste.  This is a trivial problem, but you have to solve how you will brush your teeth.  Do you drive to the store and purchase a new tube?  Do you visit a neighbor to borrow a dab?  Do you brush your teeth with water, hoping there is enought paste from last night.  Do you pop a mint in your mouth an go forth.  Your solution will be based upon many factors - how many times have you encountered this (or similar) problem, your personality, etc.
+
+## Knowledge - That and How
+
+There are two basic types of knowledge – knowledge *that* and knowledge *how*.  Knowledge *that* are facts that you stick in your memory mansion.  For example, you know *that* the world is round and *that* the U.S. dropped the first atomic bomb on Hiroshima.  Knowledge *how* is knowing how to do things.  For example, you know *how* to ride a bicycle and *how* to cook a hamburger.   Solving problems requires both types of knowledge.  Since programming is primarily solving problems, the most knowledge we want to establish in this class is knowledge *how* – we want to learn *how* to write programs.  We will learn knowledge *that* with respect to Java and its specifics, but the knowledge *how* we learn will be applicable to any programming language.
 
 ## Mechanical Problems
 
@@ -45,24 +49,29 @@ Consider a chess player, who has played chess for many years, achieving a level 
 
 1. Move to the next board.
 2. Examine the board.
-3. Make a move based on the pattern of pieces on the board.
+3. Make a move based on the **pattern** of pieces on the board.
 4. Go to step 1.
 
 We want to fill our memory mansions with programming patterns so that when presented a problem, we can select the next move.  During this course, we will clearly mark programming patterns.  The following is our first programming pattern.
 
-{% include board.html content="1. Main Program" %}
-
-All programs has a main entry point, which by convention is a method named main.  The following is our first Java proram, which has is the obligatory Hello World program.  There are many aspects of this program that require additional study, for example, Java class, a method of type void, String[], System.out.println.  We will study all of these aspects.  You will become an expert in every aspect.  At this point, you should realize that every program will have a main entry point, which is where your program begins.
-
-```java
+<div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+1. Main Pattern
+</b>
+<br>
+<pre>
 public class Main {
    public static void main(String[] args) {
       System.out.println("Hello World");
    }
 }
-```
+</pre>
+</div>
 
-## Knowledge - That and How
+All programs have a main entry point, which by convention is a method named ```main```.  The above is our first Java proram, which is the obligatory Hello World program.  There are many aspects of this program that require additional study, for example, Java ```class```, a method of type ```void```, ```String[]```, ```System.out.println```.  We will study all of these aspects, and you will become an expert in everyone.  We will create and run this program in [Our First Java Programs](/gustycooper.github.io/mydoc_1_first_programs).  At this point, you should simply understand 
 
-There are two basic types of knowledge – knowledge *that* and knowledge *how*.  Knowledge *that* are facts that you stick in your memory mansion.  For example, you know *that* the world is round and *that* the U.S. dropped the first atomic bomb on Hiroshima.  Knowledge *how* is knowing how to do things.  For example, you know *how* to ride a bicycle and *how* to cook a hamburger.   Solving problems requires both types of knowledge.  Since programming is primarily solving problems, the most knowledge we want to establish in this class is knowledge *how* – we want to learn *how* to write programs.  We will learn knowledge *that* with respect to Java and its specifics, but the knowledge *how* we learn will be applicable to any programming language.
+* Every program will have a ```main``` entry point, which is where your program begins execution.
+* We will discover more programming patterns, which will be marked as shown here.
+
 

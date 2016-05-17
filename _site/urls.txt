@@ -60,6 +60,20 @@ mydoc_1_information_people_computers:
 
 
  
+mydoc_1_ides_compiling_interpreting:
+  title: "IDEs, Compiling, Interpreting"
+  url: /gustycooper.github.io/mydoc_1_ides_compiling_interpreting/
+  link: <a href="/gustycooper.github.io/mydoc_1_ides_compiling_interpreting/">IDEs, Compiling, Interpreting</a>
+
+
+ 
+mydoc_1_software_development_process:
+  title: "Software Development Process"
+  url: /gustycooper.github.io/mydoc_1_software_development_process/
+  link: <a href="/gustycooper.github.io/mydoc_1_software_development_process/">Software Development Process</a>
+
+
+ 
 mydoc_1_problem_solving:
   title: "Problem Solving"
   url: /gustycooper.github.io/mydoc_1_problem_solving/
@@ -74,6 +88,20 @@ mydoc_1_algorithms:
 
 
  
+mydoc_1_numbers:
+  title: "Numbers as Information"
+  url: /gustycooper.github.io/mydoc_1_numbers/
+  link: <a href="/gustycooper.github.io/mydoc_1_numbers/">Numbers as Information</a>
+
+
+ 
+mydoc_1_characters:
+  title: "Characters as Information"
+  url: /gustycooper.github.io/mydoc_1_characters/
+  link: <a href="/gustycooper.github.io/mydoc_1_characters/">Characters as Information</a>
+
+
+ 
 mydoc_1_primitive_types:
   title: "Primitive Types"
   url: /gustycooper.github.io/mydoc_1_primitive_types/
@@ -81,42 +109,28 @@ mydoc_1_primitive_types:
 
 
  
-mydoc_1_programming_simple_programs:
-  title: "Programming Simple Programs"
-  url: /gustycooper.github.io/mydoc_1_programming_simple_programs/
-  link: <a href="/gustycooper.github.io/mydoc_1_programming_simple_programs/">Programming Simple Programs</a>
-
-
- 
-mydoc_1_ides_compiling_interpreting:
-  title: "IDEs, Compiling, Interpreting"
-  url: /gustycooper.github.io/mydoc_1_ides_compiling_interpreting/
-  link: <a href="/gustycooper.github.io/mydoc_1_ides_compiling_interpreting/">IDEs, Compiling, Interpreting</a>
-
-
- 
-mydoc_1_software_development_process:
-  title: "Software Development Process"
-  url: /gustycooper.github.io/mydoc_1_software_development_process/
-  link: <a href="/gustycooper.github.io/mydoc_1_software_development_process/">Software Development Process</a>
+mydoc_1_first_programs:
+  title: "Our First Java Programs"
+  url: /gustycooper.github.io/mydoc_1_first_programs/
+  link: <a href="/gustycooper.github.io/mydoc_1_first_programs/">Our First Java Programs</a>
 
 
 
 
  
-mydoc_2_simple_objects:
-  title: "Simple Objects"
-  url: /gustycooper.github.io/mydoc_2_simple_objects/
-  link: <a href="/gustycooper.github.io/mydoc_2_simple_objects/">Simple Objects</a>
-
-
-
-
- 
-mydoc_3_expressions:
+mydoc_2_expressions:
   title: "Expressions"
-  url: /gustycooper.github.io/mydoc_3_expressions/
-  link: <a href="/gustycooper.github.io/mydoc_3_expressions/">Expressions</a>
+  url: /gustycooper.github.io/mydoc_2_expressions/
+  link: <a href="/gustycooper.github.io/mydoc_2_expressions/">Expressions</a>
+
+
+
+
+ 
+mydoc_3_simple_objects:
+  title: "Simple Objects"
+  url: /gustycooper.github.io/mydoc_3_simple_objects/
+  link: <a href="/gustycooper.github.io/mydoc_3_simple_objects/">Simple Objects</a>
 
 
 
@@ -187,6 +201,13 @@ mydoc_9_sorting:
   link: <a href="/gustycooper.github.io/mydoc_9_sorting/">Sorting</a>
 
 
+
+
+ 
+mydoc_A_programming_style:
+  title: "Programming Style"
+  url: /gustycooper.github.io/mydoc_A_programming_style/
+  link: <a href="/gustycooper.github.io/mydoc_A_programming_style/">Programming Style</a>
 
 
  

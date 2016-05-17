@@ -598,7 +598,7 @@ a[data-toggle] {
 }
 
 .summary:before {
-    content: "Summary: ";
+    content: "Learning Objective(s): ";
     font-weight: bold;
 }
 

@@ -3,12 +3,12 @@ title: Information, People, and Computers
 tags: [compile]
 keywords: java, introduction, computer, high-level, low-level, interpreting, compiling, portable
 last_updated: May 7, 2016
-summary: "This defines basic computer terminology"
+summary: "<li>Understand information.</li> <li>Understand that people process information.</li> <li>Understand that computers process information.</li> <li>Understand our definition and model of a computer.</li> <li>Understand that memory is a sequence of bytes.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_information_people_computers/
 ---
 
-## People, Information, and Computers
+## Information, People, and Computers
 
 We love information. We love to talk, text, and email our friends about everything and anything.  We have been sharing information with each other for as long as we have been.   We talk about weather, food, school, work, love, sports, politics, music, movies, and hobbies. If I hear that we are expecting a snowstorm, I am quick to share that with my friends.  When one of my friends gets a new hairdo, most likely that will be a topic during converstaions with other friends.  We have newspapers, magazines, and websites that are full of information.  When you observe someone constantly staring at their smartphone, that person is observing and creating information.  Perhaps we suffer from information overload.  
 
@@ -32,11 +32,17 @@ Computers process information similar to the way people process information; how
 
 **Computer** – A *machine* that processes *input* information, stores and manipulates *information* under the control of a *changeable program*, and produces *output* information.
 
-A computer does not have a brain, but it does have memory to store information and it can have many programs, each of which can perform specialized operations that somewhat act as a brain.  We will learn how to write Java programs in this course.  We will create a simple diagram of a computer.  A more complex diagram can be found in [Eck's Book](http://math.hws.edu/javanotes/c1/s1.html).
+## Computer Information
 
-![Computer Diagram](../images/computer_diagram.png "Computer Diagram") 
+All information in a computer can be classified as either **numbers** or **characters**.  Computer numbers can be either **integers** or **floating point**. Computer characters can be letters, numbers, and special characters from many different language scripts (English to Chinese).  We will collect a sequence of computer characters into a ```String```.  We will soon learn the ways a computer encodes numbers and characters in bytes of memory, in particular how Java primitive types encode numbers and characters.
 
-All computers follow this simple model.  The Central Processing Unit (CPU) executes programs stored in memory, which is also called main memory or random access memory (RAM).  The contents of RAM remain as long as the computer has power, but if you turn off the computer, the contents of RAM disappear.  In order for the information to persist across power outages, the information is stored in seconday memory, which is either a hard disk drive or solid state memory.  When you purchase a modern laptop, you most likely get 8 gigabytes (GB) of memory and a terabyte (1,000 gigabytes) of hard disk storage.
+## Computer Model
+
+A computer does not have a brain, but it does have memory to store information and it can have many programs, each of which can perform specialized operations that somewhat act as a brain.  We will learn how to write Java programs in this course.  We will create a simple **model of a computer**.  A more complex model can be found in [Eck's Book](http://math.hws.edu/javanotes/c1/s1.html).
+
+![Computer Model](../images/computer_diagram.png "Computer Model") 
+
+All computers follow our simple **model**.  The Central Processing Unit (CPU) executes programs stored in memory, which is also called main memory or random access memory (RAM).  The contents of RAM remain as long as the computer has power, but if you turn off the computer, the contents of RAM disappear.  In order for the information to persist across power outages, the information is stored in seconday memory, which is either a hard disk drive or solid state memory.  When you purchase a modern laptop, you most likely get 8 gigabytes (GB) of memory and a terabyte (1,000 gigabytes) of hard disk storage.  When you purcahse a phone, the marketing terminology usually states a 64GB phone, which is referring to the secondary memory.
 
 We want to write Java programs, which must be stored and run on a computer.  Our Java programs will read input information, manipulate the information, and generate output information.  Our Java programs will consist of algorithms and data.  The data is our information and the algorithms manipulate the data.  The data we create will be in variables.  Each variable will have a type.  The algorithms will use assignment statements, expressions, method calls, conditional statements, and loop statements.  All of this is what we want to understand.
 
@@ -60,4 +66,16 @@ Address	  Value
 0004044   01010100
 ```
 
-Determining what information these five bytes of memory encode is dependent upon how they are interpreted.  They could be a program, they could be integers, they could be floating point numbers, or they could be characters. We need to learn some more before we can decode these five bytes of memory.  We will learn enough in the remainder of this section to begin interpreting bytes of memory.  We will also learn how to translate a decimal number to binary and back.
+A computer must encode all of its information in a sequence of bytes.  Determining what information these five bytes of memory encode is dependent upon how they are interpreted.  The bytes could be a program, they could be integers, they could be floating point numbers, or they could be characters. We need to learn some more before we can decode these five bytes of memory.  We will learn enough in the remainder of this section to begin interpreting bytes of memory.  We will also learn how to translate a decimal number to binary and back.
+
+## Computer Science
+
+Computer science can mean several things.  You may think of computer science as writing programs, establishing networks, putting various workstations on the networks, creating websites, creating databases, removing malware from computers, or any combination of these things.  
+
+A more theoretical definition of computer science is studying what can be computed.  By computed we can construct an algorithm (and its accompanying data structures) that will execute its sequence of steps and terminate when finished.  We know that we can write computer programs to perform computations, but computer scientists also use abstract machines to determine computability.  A Turing Machine – named for its creator Alan Turing who had the movie Imitation Game created about him – is an example abstract machine.  The following is a question about the 3N+1 Algorithm discussed earlier.  
+
+Will the algorithm for 3N+1 terminate for all possible initial values of N? 
+
+We know it terminates for everything tried, but we have not answered the general question.
+
+For this class, we will consider **computer science** to be *designing, analyzing, and evaluating algorithms and their accompanying data structure*.

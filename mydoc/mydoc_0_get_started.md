@@ -2,8 +2,8 @@
 title: Getting Started in CPSC 220
 tags: [getting_started]
 keywords: sample, authoring
-last_updated: May 1, 2016
-summary: "Getting Started in CPSC 220"
+last_updated: May 14, 2016
+summary: "<li>Understand CPSC 220 vs. CSPC 110 vs. AP Java.</li> <li>Understand the knowledge that you should already have prior to CPSC 220.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_0_get_started/
 ---
