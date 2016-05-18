@@ -118,10 +118,11 @@ double myPi = Math.PI;
 
 A literal is an entity that you know its value when you read it.  The following are examples. 
  
-* The numbers ```152``` and ```3.14``` are numeric literals.  
-  * The number ```152``` is an ```int`` literal.
+* The numbers ```152```, ```2147483648L```, ```3.14```, and ```3.14F``` are numeric literals.  
+  * The number ```152``` is an ```int``` literal.  Whenever you examine a integer literal, it will be ```int```.  You should recall the ```int``` is a 4-byte quantity.  Java allows you to assign ```int``` literals into smaller variables (of type ```short``` and ```byte```) provided the value of the literal fits into the variable.  For example 127 fits into a ```byte```, but 128 does not so you cannot ```byte b = 128;```.
+  * The number ```2147483648L``` is a ```long``` literal.  ```2147483647``` is the largest ```int``` literal.  You must use the suffix ```L``` to create a ```long``` literal that is outside the range of ```int```.  You can assing ```int``` literals to ```long``` such as ```long l = 5;```.
   * The number ```3.14``` is a ```double``` literal.
-  * The number ```3.14F``` is a ```float``` literal.  You must 
+  * The number ```3.14F``` is a ```float``` literal. You must use the suffix ```F``` to create a ```float``` literal.  You cannot assign ```double``` literal to a ```float``` variable.  For example, ```float f = 3.14F;``` is legal, but ```float f = 3.14;``` is illegal.
 * The characters ```'G'``` and ```'5'``` are ```char``` literals.  
 * You should know that ```5``` and ```'5'``` are two distinct literals. ```5``` is a numeric value that can be used in arithmetic expressions.  ```'5'``` is a ```char```.  We know from [Characters as Information](/gustycooper.github.io/mydoc_1_characters) that ```'5'``` is encoded as the Unicode (ASCII) number ```54```.  We will learn that you can use ```char``` values in arithmetic expressions, but you have to be careful.  Consider the following silly example.
 

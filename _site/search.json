@@ -336,11 +336,71 @@
 
 
 {
+"title": "Useful Methods Quick Reference",
+"tags": "getting_started",
+"keywords": "methods",
+"url": "/gustycooper.github.io/mydoc_1a_method_qr/",
+"summary": "<li>A quick reference quide to some useful methods.</li>"
+},
+
+
+
+{
+"title": "Methods",
+"tags": "algorithm",
+"keywords": "method, java, algorithms, design",
+"url": "/gustycooper.github.io/mydoc_1a_methods/",
+"summary": "<li>Understand how to define Java methods.</li> <li>Understand how to call Java methods.</li>"
+},
+
+
+
+{
+"title": "Arithmetic Expressions",
+"tags": "expression",
+"keywords": "expression, expressions, numeric expressions, arithmetic expressions, overflow, approximation, random",
+"url": "/gustycooper.github.io/mydoc_2_arithmetic_expressions/",
+"summary": "<li>Understand Java arithmetic (numeric) expressions.</li> <li>Understand evaluating expressions to their resultant type</li> <li>Understand integer overflow</li> <li>Understand floating points are approximations</li>"
+},
+
+
+
+{
+"title": "Assignment Expressions",
+"tags": "expression",
+"keywords": "assignment, expression, expressions, numeric expressions, relation expressions, boolean expressions",
+"url": "/gustycooper.github.io/mydoc_2_assignment_expressions/",
+"summary": "<li>Understand assignment expressions.</li> <li>Understand side effects in expressions</li>"
+},
+
+
+
+{
+"title": "Conditional Expressions",
+"tags": "expression",
+"keywords": "assignment, expression, expressions, numeric expressions, relation expressions, boolean expressions",
+"url": "/gustycooper.github.io/mydoc_2_conditional_expressions/",
+"summary": "<li>Understand conditional expressions.</li> <li>Understand how to use conditional expressions in programs.</li>"
+},
+
+
+
+{
 "title": "Expressions",
 "tags": "expression",
 "keywords": "expression, expressions, numeric expressions, relation expressions, boolean expressions",
 "url": "/gustycooper.github.io/mydoc_2_expressions/",
-"summary": "This describes Java expressions"
+"summary": "<li>Understand all of the topics we will study in the Expression Module.</li>"
+},
+
+
+
+{
+"title": "Relational and Boolean Expressions",
+"tags": "expression",
+"keywords": "expression, expressions, numeric expressions, relational expressions, boolean expressions, boolean algebra",
+"url": "/gustycooper.github.io/mydoc_2_relational_boolean_expressions/",
+"summary": "<li>Understand relational expressions.</li> <li>Understand Boolean expressions.</li> <li>Understand short circuting Boolean expressions.</li> <li>Understand Boolean Algegra<li>"
 },
 
 
@@ -441,6 +501,16 @@
 "keywords": "exceptions",
 "url": "/gustycooper.github.io/mydoc_A_exceptions/",
 "summary": "Exceptions"
+},
+
+
+
+{
+"title": "Expressions and Statements Reference",
+"tags": "expresssonsequentialconditionalloop",
+"keywords": "expresssons, statements",
+"url": "/gustycooper.github.io/mydoc_A_exp_statements/",
+"summary": "<li>Understand top-level view of expressions and statements.</li>"
 },
 
 

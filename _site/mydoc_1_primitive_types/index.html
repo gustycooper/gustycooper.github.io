@@ -370,7 +370,57 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_2_expressions/">Expressions</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_2_expressions/">Expressions Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_arithmetic_expressions/">Arithmetic Expressions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_relational_boolean_expressions/">Relational & Boolean Expressions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_assignment_expressions/">Assignment Expressions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_2_conditional_expressions/">Conditional Expressions</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Methods</a>
+        <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1a_methods/">Methods</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_1a_method_qr/">Method Quick Reference</a></li>
             
             
             
@@ -505,6 +555,13 @@ window.location.href = uri;
             
             
             <li><a href="/gustycooper.github.io/mydoc_A_programming_style/">Programming Style</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_A_exp_statements/">Expressions, Statements, Blocks</a></li>
             
             
             
@@ -760,11 +817,12 @@ Meta Language - Declaring Variables of Primitive Types
 <p>A literal is an entity that you know its value when you read it.  The following are examples.</p>
 
 <ul>
-  <li>The numbers <code class="highlighter-rouge">152</code> and <code class="highlighter-rouge">3.14</code> are numeric literals.
+  <li>The numbers <code class="highlighter-rouge">152</code>, <code class="highlighter-rouge">2147483648L</code>, <code class="highlighter-rouge">3.14</code>, and <code class="highlighter-rouge">3.14F</code> are numeric literals.
     <ul>
-      <li>The number <code class="highlighter-rouge">152</code> is an ```int`` literal.</li>
+      <li>The number <code class="highlighter-rouge">152</code> is an <code class="highlighter-rouge">int</code> literal.  Whenever you examine a integer literal, it will be <code class="highlighter-rouge">int</code>.  You should recall the <code class="highlighter-rouge">int</code> is a 4-byte quantity.  Java allows you to assign <code class="highlighter-rouge">int</code> literals into smaller variables (of type <code class="highlighter-rouge">short</code> and <code class="highlighter-rouge">byte</code>) provided the value of the literal fits into the variable.  For example 127 fits into a <code class="highlighter-rouge">byte</code>, but 128 does not so you cannot <code class="highlighter-rouge">byte b = 128;</code>.</li>
+      <li>The number <code class="highlighter-rouge">2147483648L</code> is a <code class="highlighter-rouge">long</code> literal.  <code class="highlighter-rouge">2147483647</code> is the largest <code class="highlighter-rouge">int</code> literal.  You must use the suffix <code class="highlighter-rouge">L</code> to create a <code class="highlighter-rouge">long</code> literal that is outside the range of <code class="highlighter-rouge">int</code>.  You can assing <code class="highlighter-rouge">int</code> literals to <code class="highlighter-rouge">long</code> such as <code class="highlighter-rouge">long l = 5;</code>.</li>
       <li>The number <code class="highlighter-rouge">3.14</code> is a <code class="highlighter-rouge">double</code> literal.</li>
-      <li>The number <code class="highlighter-rouge">3.14F</code> is a <code class="highlighter-rouge">float</code> literal.  You must</li>
+      <li>The number <code class="highlighter-rouge">3.14F</code> is a <code class="highlighter-rouge">float</code> literal. You must use the suffix <code class="highlighter-rouge">F</code> to create a <code class="highlighter-rouge">float</code> literal.  You cannot assign <code class="highlighter-rouge">double</code> literal to a <code class="highlighter-rouge">float</code> variable.  For example, <code class="highlighter-rouge">float f = 3.14F;</code> is legal, but <code class="highlighter-rouge">float f = 3.14;</code> is illegal.</li>
     </ul>
   </li>
   <li>The characters <code class="highlighter-rouge">'G'</code> and <code class="highlighter-rouge">'5'</code> are <code class="highlighter-rouge">char</code> literals.</li>
@@ -887,7 +945,7 @@ Meta Language - Declaring Variables of Primitive Types
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: May 16, 2016
+<p>Page last updated: May 1, 2016; Site last generated: May 17, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

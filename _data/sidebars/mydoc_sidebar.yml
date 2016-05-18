@@ -90,10 +90,38 @@ entries:
 
   - title: Expressions
     output: web, pdf
-    
     folderitems:
-    - title: Expressions
+
+    - title: Expressions Overview
       url: /mydoc_2_expressions/
+      output: web, pdf
+
+    - title: Arithmetic Expressions
+      url: /mydoc_2_arithmetic_expressions/
+      output: web, pdf
+
+    - title: Relational & Boolean Expressions
+      url: /mydoc_2_relational_boolean_expressions/
+      output: web, pdf
+
+    - title: Assignment Expressions
+      url: /mydoc_2_assignment_expressions/
+      output: web, pdf
+
+    - title: Conditional Expressions
+      url: /mydoc_2_conditional_expressions/
+      output: web, pdf
+
+  - title: Methods
+    output: web, pdf
+    folderitems:
+
+    - title: Methods
+      url: /mydoc_1a_methods/
+      output: web, pdf
+
+    - title: Method Quick Reference
+      url: /mydoc_1a_method_qr/
       output: web, pdf
 
   - title: Simple Objects
@@ -106,39 +134,38 @@ entries:
 
   - title: Control Flow
     output: web, pdf
-    
     folderitems:
+
     - title: Control Flow
       url: /mydoc_4_control_flow/
       output: web, pdf
 
   - title: Classes and Objects
     output: web, pdf
-    
     folderitems:
+
     - title: Classes and Objects
       url: /mydoc_5_classes_objects/
       output: web, pdf
 
   - title: Arrays and ArrayLists
     output: web, pdf
-    
     folderitems:
+    
     - title: Arrays and ArrayLists
       url: /mydoc_6_arrays_arraylists/
       output: web, pdf
 
   - title: Graphics
     output: web, pdf
-    
     folderitems:
+
     - title: Graphics
       url: /mydoc_7_graphics/
       output: web, pdf
 
   - title: Packages, Interfaces, ADTs
     output: web, pdf
-    
     folderitems:
 
     - title: Packages, Interfaces, ADTs
@@ -147,7 +174,6 @@ entries:
 
   - title: Recursion, Searching, Sorting
     output: web, pdf
-    
     folderitems:
 
     - title: Recursion
@@ -164,11 +190,14 @@ entries:
 
   - title: Reference Information
     output: web, pdf
-    
     folderitems:
 
     - title: Programming Style
       url: /mydoc_A_programming_style/
+      output: web, pdf
+
+    - title: Expressions, Statements, Blocks
+      url: /mydoc_A_exp_statements/
       output: web, pdf
 
     - title: Meta Language

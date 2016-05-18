@@ -340,7 +340,7 @@ Picture of the first computer bug.
 
 ## First Java Programs ([Eck 2.1](http://math.hws.edu/javanotes/c2/s1.html))
 
-You are just about read to create your first Java programs.  First we will revisit the Main program shown in the Input Pattern above in order to understand several important concepts.
+You are just about ready to create your first Java programs.  First we will revisit the Main program shown in the Input Pattern above in order to understand several important concepts.
 
 * All Java code must be in a ```class```.  The above code is in the ```class Main```.
   * We will study classes in more detail in [Simple Objects](/gustycooper.githum.io/mydoc_2_simple_objects).

@@ -75,3 +75,25 @@ All programs have a main entry point, which by convention is a method named ```m
 * We will discover more programming patterns, which will be marked as shown here.
 
 
+## Steps to Solving Labs and Projects
+
+These steps are the way everyone should apply our [software development](/gustycooper.github.io/mydoc_1_software_development_process) process to solving labs and projects.  If you spend ample time in steps 1, 2, and 3; steps 4 and 5 become easier.  
+
+1. Understand the Problem
+   * Analyze specification - study the specification as soon as the problem is assigned.  This is important for projects, which (a) longer and more difficult than labs and (b) you complete by yourself.  You will often discover solutions to problems as you are wandering about campus, but if you have not studied the specification, you cannot solve the problem.  Also, Gusty tries to make things clear, but often he does not.  Ask questions untuil you understand the specification.
+   * Identify inputs and outputs
+   * Think about the data
+2. Initial Algorithmic Thinking
+   * Manually solve small concrete cases - I cannot emphasize this enough.  If you cannot create and solve small concrete cases of the problem, you will never discover the underlying algorithm and data strucutes.  Get out paper and pencil.  Draw out the problem.  Solve small concrete cases.
+   * Confirm your inputs, outputs, and data that resulted from Understand the Problem
+3. Design – Algorithms, Data Structs, Tests
+   * Generalize the small cases into a detailed design with data structures
+   * Create test cases
+4. Write Java Code
+   * Translate you design into Java Code
+5. Test and Debug
+   * Execute your test cases
+   * Debug code when test cases fail
+
+
+
