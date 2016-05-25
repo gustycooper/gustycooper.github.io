@@ -132,6 +132,26 @@ entries:
       url: /mydoc_3_simple_objects/
       output: web, pdf
 
+    - title: Java Strings
+      url: /mydoc_3_strings/
+      output: web, pdf
+
+    - title: Java Scanner
+      url: /mydoc_3_scanner/
+      output: web, pdf
+
+    - title: Java Random
+      url: /mydoc_3_random/
+      output: web, pdf
+
+    - title: Our First Classes
+      url: /mydoc_3_our_first_classes/
+      output: web, pdf
+
+    - title: JavaDoc
+      url: /mydoc_3_javadoc/
+      output: web, pdf
+
   - title: Control Flow
     output: web, pdf
     folderitems:

@@ -406,11 +406,61 @@
 
 
 {
+"title": "JavaDoc",
+"tags": "objectclass",
+"keywords": "objects, simple objects",
+"url": "/gustycooper.github.io/mydoc_3_javadoc/",
+"summary": "<li>Understand JavaDoc</li> <li>Understand how to include JavaDoc in your classes.</li>"
+},
+
+
+
+{
+"title": "Our First Classes",
+"tags": "objectclass",
+"keywords": "objects, simple objects",
+"url": "/gustycooper.github.io/mydoc_3_our_first_classes/",
+"summary": "<li>Understand how to define types in a Java class</li> <li> MORE </li>"
+},
+
+
+
+{
+"title": "Java Random",
+"tags": "objectclass",
+"keywords": "objects, method",
+"url": "/gustycooper.github.io/mydoc_3_random/",
+"summary": "<li>Understand Java Random</li> <Understand Java Random has a set of values and a set of operations.</li> <li>Understand how to call Randome instance methods</li>"
+},
+
+
+
+{
+"title": "Java Scanner",
+"tags": "objectclass",
+"keywords": "objects, simple objects",
+"url": "/gustycooper.github.io/mydoc_3_scanner/",
+"summary": "<li>Understand Java Scanner</li> <li>Understand the differences between Scanner and String.</li> <Understand Java Scanner has a set of values and a set of operations.</li> <li>Understand how to call Scanner instance methods</li>"
+},
+
+
+
+{
 "title": "Simple Objects",
 "tags": "objectclass",
 "keywords": "objects, simple objects",
 "url": "/gustycooper.github.io/mydoc_3_simple_objects/",
 "summary": "First Introduction to Classes and Objects"
+},
+
+
+
+{
+"title": "Java Strings",
+"tags": "objectclass",
+"keywords": "objects, simple objects",
+"url": "/gustycooper.github.io/mydoc_3_strings/",
+"summary": "<li>Understand Java Strings</li> <li>Understand Java Strings are a reference type - not a primitive type.</li> <Understand Java Strings have a set of values and a set of operations.</li> <li>Understand instance methods.</li> <li>Understand how to call String instance methods</li>"
 },
 
 

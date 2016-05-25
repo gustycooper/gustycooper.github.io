@@ -105,3 +105,16 @@ int b = 9;
  b = b + (b = 3);  // b is 12 after evaluating this expression
 ```
 
+## Java Expression Statements
+
+Recall that a Java block is a sequence of statements enclosed within curly braces {}.  Java has declaration statements, which we began studying in [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types), expression statements, two of which are discussed in this section, method calls, which we begin studying in [Methods](/gustycooper.github.io/mydoc_1a_methods), and object creation expression statement, which we begin studying in [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).  Java expression statements consist of the following.
+
+* Assignment expression
+  * ```x = 4.4;```
+* Increment/decrement expression
+  * ```i++;```
+* Method Calls
+  * System.out.println("Gusty");
+* Object Creation Expression
+  * Person p - new Person("Gusty",22);
+

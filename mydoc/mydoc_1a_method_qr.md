@@ -12,55 +12,49 @@ permalink: /mydoc_1a_method_qr/
 ## Useful Methods Quick Reference
 
 <ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a class="noCrossRef" href="#profile" data-toggle="tab">String</a></li>
-    <li><a class="noCrossRef" href="#about" data-toggle="tab">Math</a></li>
-    <li><a class="noCrossRef" href="#match" data-toggle="tab">Scanner</a></li>
-    <li><a class="noCrossRef" href="#match" data-toggle="tab">Random</a></li>
+    <li class="active"><a class="noCrossRef" href="#string" data-toggle="tab">String</a></li>
+    <li><a class="noCrossRef" href="#math" data-toggle="tab">Math</a></li>
+    <li><a class="noCrossRef" href="#scanner" data-toggle="tab">Scanner</a></li>
+    <li><a class="noCrossRef" href="#random" data-toggle="tab">Random</a></li>
 </ul>
   <div class="tab-content"> 
-<div role="tabpanel" class="tab-pane active" id="profile">
-    <h2>String Methods QR</h2> 
-<pre>
-char	charAt(int index) – returns char at index
-int	compareTo(String anotherString)
-boolean contains(String s) – returns true of string contains s
-boolean equals(String s) – returns true if string equals s
-int	indexOf(String s [,fromIndex]) – returns index of s
-boolean isEmpty() – returns true if string is “”
-int length() – returns number of characters in string
-String replace(String s, String t) – returns string where t replaces s
-String substring(int begin) – returns substring from begin to length
-String substring(int begin,int end)–returns substring from begin 2 end
-char[] toCharArray() – returns char[] of string
-String toLowerCase() – returns lowercase of string
-String toUpperCase() – returns uppercase of string
-</pre>
+<div role="tabpanel" class="tab-pane active" id="string">
+    <h2>String Methods Quick Reference</h2> 
+<li> <code>char	charAt(int index)</code> - returns char at index </li>
+<li> <code> int	compareTo(String anotherString)</code> </li>
+<li> <code> boolean contains(String s)</code> - returns true of string contains s </li>
+<li> <code> boolean equals(String s)</code> - returns true if string equals s </li>
+<li> <code> int	indexOf(String s [,fromIndex])</code> - returns index of s </li>
+<li> <code> boolean isEmpty()</code> - returns true if string is “” </li>
+<li> <code> int length()</code> - returns number of characters in string </li>
+<li> <code> String replace(String s, String t)</code> - returns string where t replaces s </li>
+<li> <code> String substring(int begin)</code> - returns substring from begin to length </li>
+<li> <code> String substring(int begin,int end)</code> -returns substring from begin 2 end </li>
+<li> <code> char[] toCharArray()</code> - returns char[] of string </li>
+<li> <code> String toLowerCase()</code> - returns lowercase of string </li>
+<li> <code> String toUpperCase()</code> - returns uppercase of string </li>
 </div>
 
-<div role="tabpanel" class="tab-pane" id="about">
-    <h2>Math Methods QR</h2>
-<pre>
-double Math.random() - returns random double, 0 <= Math.random() < 1
-double Math.pow(double a, double b) - returns ab
-</pre>
+<div role="tabpanel" class="tab-pane" id="math">
+    <h2>Math Methods Quick Reference</h2>
+<li> <code> double Math.random()</code> - returns random double, 0 <= Math.random() < 1 </li>
+<li> <code> double Math.pow(double a, double b)</code> - returns ab </li>
 </div>
 
-<div role="tabpanel" class="tab-pane" id="match">
-    <h2>Scanner Methods QR</h2>
-<pre>
-Scanner in = new Scanner(System.in);
-int nextInt() – return next integer in input
-double nextDouble() – return next double input
-String nextLine() – return next line in input
-String next() – return next word in input
-</pre>
+<div role="tabpanel" class="tab-pane" id="scanner">
+    <h2>Scanner Methods Quick Reference</h2>
+<li> <code> Scanner in = new Scanner(System.in); </code> </li>
+<li> <code> int nextInt()</code> - return next integer in input </li>
+<li> <code> double nextDouble()</code> - return next double input </li>
+<li> <code> String nextLine()</code> - return next line in input </li>
+<li> <code> String next()</code> - return next word in input </li>
 </div>
 
-<div role="tabpanel" class="tab-pane" id="match">
-    <h2>Random Methods QR</h2>
-<pre>
-int nextInt(int range) – returns random int from 0 to range-1
-double nextDouble() - returns random double, 0 <= nextDouble() < 1
-</pre>
+<div role="tabpanel" class="tab-pane" id="random">
+    <h2>Random Methods Quick Reference</h2>
+<li> <code> Random()</code> - construct a Random object </li>
+<li> <code> Random(int seed)</code> - construct a Random object with seed.  Using the same seed will product the same sequence of random numbers.</li>
+<li> <code> int nextInt(int range)</code> - returns random int from 0 to range-1 </li>
+<li> <code> double nextDouble()</code> - returns random double, 0 <= nextDouble() < 1 </li>
 </div>
 

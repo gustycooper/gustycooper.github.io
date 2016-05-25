@@ -65,6 +65,20 @@ All programs have a main entry point, which by convention is a method named ```m
 
 Java syntax can be a bit confusing at first, as it has strategically placed semicolons, curly braces, and parentheses.  The following is just enough syntax to complete our first programs.
 
+* Comments - Java has several forms of comments.
+
+```java
+int x = 0;  // Comment goes to end of line
+/* 
+   Mulitple line
+   comment
+ */
+
+/** 
+ * JavaDoc comment - we will study in Simple Objects
+ */
+```
+
 * Semicolon – a single statement is terminated with a semicolon.  For example an assignment statement,
 
 ```java
@@ -113,7 +127,7 @@ if (a < b) {
 public static void main(String[] args) 
 ```
 
-* In calling methods, parentheses enclose the actual parameters.  For example, the call to ```System.out.printnl``` has parentheses enclosing the actual parameter ```"Hello World"```.
+* In calling methods, parentheses enclose the actual parameters.  For example, the call to ```System.out.println``` has parentheses enclosing the actual parameter ```"Hello World"```.  Do not fret about the dotted notation in ```System.out.println```.  We will study this in [Simple Objects](/gustycooper.github.io/mydoc_4_simple_objects).
 
 ```java
 System.out.println("Hello World");
@@ -201,9 +215,9 @@ c = 'c';
 
 ## Java ```String```s - Just Enough for our First Programs
 
-```String```s are probably the most used type in programming, and we will use them in our first programs.  ```String``` is a Java type, but ```String``` is **not** a Java primitive type.  We study the details of Java ```String``` in [Strings](/gustycooper.github.io/mydoc_3_simple_objects).  For now we learn just enough to use ```String```s in our first programs.
+```String```s are probably the most used type in programming, and we will use them in our first programs.  ```String``` is a Java type, but ```String``` is **not** a Java primitive type.  We study the details of Java ```String``` in [Strings](/gustycooper.github.io/mydoc_3_strings).  For now we learn just enough to use ```String```s in our first programs.
 
-* A ```String``` is a sequence of characters.  A ```String``` is not a ```char```.  A ```char``` is a single character.
+* A ```String``` is a sequence of characters.  A ```String``` is not a ```char```.  A ```char``` is a single character.  You should realize that ```'a'``` is a ```char``` literal and ```"a"``` is a ```String``` literal.  ```'a'``` and ```"a"``` are two different literals.  
 
 * A ```String``` literal is a sequence of characters enclosed in the double tic-mark quotation.
 
@@ -294,7 +308,7 @@ System.out.println("Num 1 is " + num1 + " and num 2 is " + num2 + ".");
 
 ## Input Programming Pattern
 
-Our initial Java programs read input from the Java standard input stream, which is connected to a terminal window.  All Java implementations support standard input, including BlueJ and Netbeans. Accessing the standard input stream is more complex than accessing the standard output stream.  We will use a Java ```Scanner```.  ```Scanner``` is a Java type similar to ```String```.  ```Scanner``` is not a Java primitive type.  You will learn the details of how this pattern works when we study [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).  For examples, we do not know the details of what it means to ```new Scanner(System.in)``` and ```in.nextLine()```.  For now, we want to use the mechanics of the **Input Programming Pattern** in our first Java programs.  
+Our initial Java programs read input from the Java standard input stream, which is connected to a terminal window.  All Java implementations support standard input, including BlueJ and Netbeans. Accessing the standard input stream is more complex than accessing the standard output stream.  We will use a Java ```Scanner```.  ```Scanner``` is a Java type similar to ```String```.  ```Scanner``` is not a Java primitive type.  You will learn the details of how this pattern works when we study [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).  For examples, we do not know the details of what it means to ```import java.util.scanner```, ```new Scanner(System.in)``` and ```in.nextLine()```.  For now, we want to use the mechanics of the **Input Programming Pattern** in our first Java programs.  We can just mimick for the time being.
 
 <div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
@@ -342,9 +356,17 @@ Picture of the first computer bug.
 
 You are just about ready to create your first Java programs.  First we will revisit the Main program shown in the Input Pattern above in order to understand several important concepts.
 
-* All Java code must be in a ```class```.  The above code is in the ```class Main```.
-  * We will study classes in more detail in [Simple Objects](/gustycooper.githum.io/mydoc_2_simple_objects).
-* All Java code must be in a ```.java``` file that has the same name as the ```class``` name.  In this case, the file is ```Main.java```.
+* All Java code must be in a ```class```.  The input pattern code is in the ```class Main```.  We will study classes in more detail in [Simple Objects](/gustycooper.githum.io/mydoc_2_simple_objects).  For now our classes will have the following structure.
+
+```java
+public class Main {
+// main method
+   public static void main(String[] args) { ... }
+
+}
+```
+
+* All Java code must be in a ```.java``` file that has the same name as the ```class``` name.  In this example diagram, the file is ```Main.java```.
 * The Java compiler must translate the Java code in the ```Main.java``` file into byte code that is placed in a ```Main.class``` file.
 * The Java byte code is placed in RAM, where the Java Virtual Machine (JVM) interprets the byte code.
 * The Java Run Time Environment (JRE) is in memory with the JVM.  JRE provides class libraries that are needed by the byte code in ```Main.class```.

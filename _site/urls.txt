@@ -177,6 +177,41 @@ mydoc_3_simple_objects:
   link: <a href="/gustycooper.github.io/mydoc_3_simple_objects/">Simple Objects</a>
 
 
+ 
+mydoc_3_strings:
+  title: "Java Strings"
+  url: /gustycooper.github.io/mydoc_3_strings/
+  link: <a href="/gustycooper.github.io/mydoc_3_strings/">Java Strings</a>
+
+
+ 
+mydoc_3_scanner:
+  title: "Java Scanner"
+  url: /gustycooper.github.io/mydoc_3_scanner/
+  link: <a href="/gustycooper.github.io/mydoc_3_scanner/">Java Scanner</a>
+
+
+ 
+mydoc_3_random:
+  title: "Java Random"
+  url: /gustycooper.github.io/mydoc_3_random/
+  link: <a href="/gustycooper.github.io/mydoc_3_random/">Java Random</a>
+
+
+ 
+mydoc_3_our_first_classes:
+  title: "Our First Classes"
+  url: /gustycooper.github.io/mydoc_3_our_first_classes/
+  link: <a href="/gustycooper.github.io/mydoc_3_our_first_classes/">Our First Classes</a>
+
+
+ 
+mydoc_3_javadoc:
+  title: "JavaDoc"
+  url: /gustycooper.github.io/mydoc_3_javadoc/
+  link: <a href="/gustycooper.github.io/mydoc_3_javadoc/">JavaDoc</a>
+
+
 
 
  

@@ -59,6 +59,16 @@ In this example code we see
 3. The value is initially 55, but then changed to -55
 4. The memory locations are demonstrated in a later section.
 
+## Kinds of Variables
+
+In our study we will learn that Java has several kinds of variables
+
+* variables in a block of code or method - these are local variables - they are local to the method or block.
+* variables in method declarations - these are parameters - they are local to the method.
+* variables in a class - these are fields.
+
+For now we are trying to understand the general properties of variables.
+
 ## Java Identifiers
 
 Java **identifiers** are used to give variables, methods, and classes names.  The preceding section declared a variable named ```gusty```.  ```gusty``` is a Java identifer.  Java identifiers must be constructed according the following rules.
@@ -79,7 +89,7 @@ Java primitve data types are ```byte```, ```short```, ```int```, ```long```, ```
 
 <div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
-Meta Language - Declaring Variables of Primitive Types 
+Meta Language - Java's Declarartion Statement
 </b>
 <br>
 <pre>

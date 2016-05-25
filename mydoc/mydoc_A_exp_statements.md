@@ -40,22 +40,22 @@ for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp<
 </div>
 
 
-**Statements** – unit of execution terminated by a ;
+**Statements** – unit of execution terminated by a ;  Java has three categories of statements.
 
-* Declaration statements 				
+* **Declaration statement** - discussed in [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types)				
   * double d = 3.4;
-* Expression Statements
-* Assignment expression 				
-  * d = Math.random();
-* Increment/decrement expression 		
-  * i++;
-* Method calls 						
-  * mini.addGas(10);
-* Object creation expression 			
-  * Car mini = new Car(25);
-* Control flow statements – if, switch, while, do-while, for
+* **Expression Statement**
+  * **Assignment expression statement** - discussed in [Assignment Expression](/gustycooper.github.io/mydoc_2_assignment_expressions)
+    * d = Math.random();
+  * **Increment/decrement expression statement** - discussed in [Assignment Expression](/gustycooper.github.io/mydoc_2_assignment_expressions)
+    * i++;
+  * **Method call statement** - discussed in [Methods](/gustycooper.github.io/mydoc_1a_methods), [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects), and [Classes and Objects](/gustycooper.github.io/mydoc_5_classes_objects)		
+    * mini.addGas(10);
+  * **Object creation expression statement**
+    * Car mini = new Car(25);
+* **Control flow statements** – if, switch, while, do-while, for - discussed in [Control Flow](/gustycooper.github.io/mydoc_4_control_flow)
 
-**Blocks** – sequence of statements between balanced braces { }
+**Blocks** – sequence of statements between balanced braces { } where each statement is terminated by a ; - discussed in [Our First Java Programs](/gustycooper.github.io/first_programs)
 
 * A block is not terminated by a ;
 
@@ -65,4 +65,3 @@ for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp<
    double d = 0.0;
 }; // This is incorrect
 ```
-
