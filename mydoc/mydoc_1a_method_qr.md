@@ -20,6 +20,9 @@ permalink: /mydoc_1a_method_qr/
   <div class="tab-content"> 
 <div role="tabpanel" class="tab-pane active" id="string">
     <h2>String Methods Quick Reference</h2> 
+<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">Java String Page</a>
+<br>
+<br>
 <li> <code>char	charAt(int index)</code> - returns char at index </li>
 <li> <code> int	compareTo(String anotherString)</code> </li>
 <li> <code> boolean contains(String s)</code> - returns true of string contains s </li>
@@ -37,12 +40,25 @@ permalink: /mydoc_1a_method_qr/
 
 <div role="tabpanel" class="tab-pane" id="math">
     <h2>Math Methods Quick Reference</h2>
+
+<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html">Java Math Page</a>
+<br>
+<br>
 <li> <code> double Math.random()</code> - returns random double, 0 <= Math.random() < 1 </li>
-<li> <code> double Math.pow(double a, double b)</code> - returns ab </li>
+<li> <code> double Math.pow(double a, double b)</code> - returns a<sup>b</sup> </li>
+<li> <code> type Math.abs(type a)</code> - returns absolute value, type can be double, int, float, long </li>
+<li> <code> long Math.round(double a)</code> - returns rounded a</li>
+<li> <code> double Math.cos(double a)</code> - returns cosine a</li>
+<li> <code> double Math.sin(double a)</code> - returns sine a</li>
+<li> <code> static double Math.PI</code> - pi</li>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="scanner">
     <h2>Scanner Methods Quick Reference</h2>
+
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html">Java Scanner Page</a>
+<br>
+<br>
 <li> <code> Scanner in = new Scanner(System.in); </code> </li>
 <li> <code> int nextInt()</code> - return next integer in input </li>
 <li> <code> double nextDouble()</code> - return next double input </li>
@@ -52,6 +68,10 @@ permalink: /mydoc_1a_method_qr/
 
 <div role="tabpanel" class="tab-pane" id="random">
     <h2>Random Methods Quick Reference</h2>
+
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Random.html">Java Random Page</a>
+<br>
+<br>
 <li> <code> Random()</code> - construct a Random object </li>
 <li> <code> Random(int seed)</code> - construct a Random object with seed.  Using the same seed will product the same sequence of random numbers.</li>
 <li> <code> int nextInt(int range)</code> - returns random int from 0 to range-1 </li>

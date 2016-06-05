@@ -160,12 +160,68 @@ entries:
       url: /mydoc_4_control_flow/
       output: web, pdf
 
-  - title: Classes and Objects
+    - title: Sequential, Blocks, Scope
+      url: /mydoc_4_seq_blocks_scope/
+      output: web, pdf
+
+    - title: Conditional Statements
+      url: /mydoc_4_conditional/
+      output: web, pdf
+
+    - title: Loop Statements
+      url: /mydoc_4_loops/
+      output: web, pdf
+
+    - title: Loop Patterns
+      url: /mydoc_4_loop_patterns/
+      output: web, pdf
+
+  - title: Classes, Objects, and more
     output: web, pdf
     folderitems:
 
-    - title: Classes and Objects
+    - title: Classes, Objects, and more
       url: /mydoc_5_classes_objects/
+      output: web, pdf
+
+    - title: Stack and Heap
+      url: /mydoc_5_stack_heap/
+      output: web, pdf
+
+    - title: Public and Private
+      url: /mydoc_5_public_private/
+      output: web, pdf
+
+    - title: Instance and Static
+      url: /mydoc_5_instance_static/
+      output: web, pdf
+
+    - title: This
+      url: /mydoc_5_this/
+      output: web, pdf
+
+    - title: Final
+      url: /mydoc_5_final/
+      output: web, pdf
+
+    - title: Passing Parameters
+      url: /mydoc_5_passing_parameters/
+      output: web, pdf
+
+    - title: Enumeration Types
+      url: /mydoc_5_enumeration_types/
+      output: web, pdf
+
+    - title: Subclasses
+      url: /mydoc_5_subclasses/
+      output: web, pdf
+
+    - title: Interface
+      url: /mydoc_5_interface/
+      output: web, pdf
+
+    - title: toString, comparable
+      url: /mydoc_5_toString_comparable/
       output: web, pdf
 
   - title: Arrays and ArrayLists

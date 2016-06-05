@@ -1,57 +1,32 @@
 ---
-title: MyString (Labs - Lab 1)
-keywords: MyString
-summary: "Lab 2, MyString"
+title: Split the Bill (Labs - Lab 2)
+keywords: split the bill
+last_updated: June 5, 2016
+summary: "Lab 2, Split the Bill"
 sidebar: labs_sidebar
 permalink: /labs_lab02_02/
 toc: false
 ---
 
-## Create a Java Class myString – 20 Points
+## Create a Java Program to Split the Bill
+**Points**: Complete this entire section for 10 points.
 
-**Points**: Complete this entire section for 11 points.
+When friends dine together in restaurants, they often split the bill.  For example, if 5 friends are dining where the bill is $50 and we are giving a 20% tip, then the total is $60 divided by 5 people, which means each person pays $12.
 
-This lab allows you to practice creating a Java class – myString.  Your myString class will be your own simplified version of the Java String class.  You will use the same String methods that you used to complete 2.1.  Write a Java public class MyString that satisfies the requirements listed in this section.  This section also describes steps to test your MyString class.  You should recall that the general format of a Java class is as follows.
+Write a Java ```SplitTheBill``` class that has two public static methods: ```main``` and ```pay```. Both ```main()``` and ```pay()``` will be ```public static``` methods since we will not create objects of type ```SplitTheBill```.  
 
-{% raw %}
+```public static double pay(double bill, double tip, int numOfPeople)``` – the 3 formal arguments are the total of the bill, the percent tip we want to give, and the total number of people in the group.  The pay method computes and returns the amount each person in the group should pay. The following is an example call.
+
 ```java
-public class MyString {
-// instance variables
-
-// constructors
-
-// methods
-
-}
+double amount = pay(50, .20, 5) ; // amount is 12.0
 ```
-{% endraw %}
 
-1. Your MyString class shall have one constructor that saves the parameter in a private instance variable myString.  The constructor signature shall be as follows.
+```public static void main(String[] args)``` – This is your program’s main method that calls your pay method to test that it is correct.  Use ```System.out.print```, ```System.out.println```, and a ```Scanner``` object to create the dialog for running your program.  The following is an example dialog.
 
-MyString(String s)
-
-2. Your MyString class shall have the following public interface.  You will have to implement each of these methods using the Java String methods that you used in section 2.1.
-
-   * ```public String capitalCase()``` – returns the uppercase of the String used to construct the object.
-   * ```public int count()``` – returns the number of characters in the String used to construct the object.
-   * ```public int firstSpace()``` – returns the index of the first space of the String used to construct the object.
-
-3. After implementing your class MyString, use the BlueJ GUI to construct MyString object.    Test your MyString class using the BlueJ GUI and the BlueJ code pad to manipulate the MyString methods.
-
-4. Create a Java public class myStringTester that has a public static void main() method that performs the following operations.
-   A. Prompt the user to enter a string, which you will read into a variable of type String.
-   B. Using the String variable from step a, construct a MyString variable myString that contains the contents.
-MyString myString = new MyString(s);  // s is a String
-   C. Use the myString.captialCase() method to generate the uppercase of myString.  Print the result.
-   D. Use the myString.count() method to compute the number of characters in myString.  Print the result.
-   E. Use the myString.firstSpace() method to compute the index of the first space in myString.  Print the result.
-   F. The following is an example run of your myStringTester.
-
-{% raw %}
 ```java
-Enter a String: Gusty is teaching Java.
-GUSTY IS TEACHING JAVA.
-Your input has 23 characters.
-The first space is at index 4.
+Enter restaurant bill: 20
+Enter tip (.2 for 20%): .2
+Enter number of people dining: 4
+Price per person is 6.0
 ```
-{% endraw %}
+

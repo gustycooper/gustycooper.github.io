@@ -9,7 +9,7 @@ toc: false
 permalink: /mydoc_A_exp_statements/
 ---
 
-## Expressions, Statements, Blocks
+## Expressions
 
 **Expressions** – syntactically correct combination of variables, literals, operators, and method calls that evaluate to a value with a specific type.  The following meta language shows where expressions are found within Java statements
 
@@ -40,6 +40,8 @@ for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp<
 </div>
 
 
+## Statements
+
 **Statements** – unit of execution terminated by a ;  Java has three categories of statements.
 
 * **Declaration statement** - discussed in [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types)				
@@ -51,9 +53,11 @@ for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp<
     * i++;
   * **Method call statement** - discussed in [Methods](/gustycooper.github.io/mydoc_1a_methods), [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects), and [Classes and Objects](/gustycooper.github.io/mydoc_5_classes_objects)		
     * mini.addGas(10);
-  * **Object creation expression statement**
+  * **Object creation expression statement** - discussed in [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) and [Classes and Objects](/gustycooper.github.io/mydoc_5_classes_objects)
     * Car mini = new Car(25);
 * **Control flow statements** – if, switch, while, do-while, for - discussed in [Control Flow](/gustycooper.github.io/mydoc_4_control_flow)
+
+## Blocks
 
 **Blocks** – sequence of statements between balanced braces { } where each statement is terminated by a ; - discussed in [Our First Java Programs](/gustycooper.github.io/first_programs)
 

@@ -59,14 +59,14 @@ The variables and methods of an object are called **instance** variables and met
 
 ## Java Classes
 
-Java ```class```es are the mechanism for defining types, which are used to declare variables.  The ```class``` is our pattern and the variable references our object.  We already used predefined ```class```es to declare variables that reference objects.  The following are examples of our use.
+Java ```class```es are the mechanism for defining types, which are used to declare variables.  The ```class``` is a blueprint that can be used to stamp our objects, and variables reference objects.  We already used predefined ```class```es to declare variables that reference objects.  The following are examples of our use.
 
 ```java
 String gusty = "Gusty";
 Scanner in = new Scanner(System.in);
 ```
 
-At this poing, we have mimicked these programming techniques.  We will learn exactly what is happening, including how to define and use our own classes.
+At this point, we have mimicked these programming techniques.  In this module, we learn exactly what is happening, including how to define and use our own classes.
 
 ## Reference Types
 
@@ -76,18 +76,34 @@ We now have two categories of Java types.
 
 * **primitive types** - types defined by the Java language, e.g., ```int```, ```double```, ```char```, ```boolean```
 * **reference types** - types defined by users within a Java class, e.g., ```String```, ```Scanner```
-## Way Forward
+
+## Data Type Definition and Java Classes
+
+In [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types) we studied variables and data types.  Let us review that material in the context of reference types and objects.
+
+A computer is a machine that stores and manipulates information under the control of a changeable program.  A data type defines the characteristics of information we want to manipulate.  We use data types to declare variables, which contain the information we manipulate.  In Java variables must be declared to be a specific type, and the declaration must happen before you can use a variable.   
+
+A **variable** has the following
+
+1. a **name**
+2. a **data type**
+3. a **value**
+4. **memory locations**
+
+A **data type** is a set of values and a set of operations.
+
+* ```byte b;```
+  * set of values is ```{-128, -127, ..., 0, 1, ... 127}```
+  * set of operations is ```{+, -, *, /, %}``` 
+
+* ```Car c;```
+  * set of values is defined by the **state**
+  * set of operations is defined by the **behavior**
+
+## Way Forward for This Module
+
+In the next two sections, we return to ```String``` and ```Scanner``` - two Java provided reference types we have already used.  Instead of mimicking techniques to declare variables of types ```String``` and ```Scanner```, we disect what is actually happening.  Then we discuss ```Random```, which is another Java provided reference type that can be used to generate random numbers.  Then we study how to create and use our own reference types.  Finally, we study how to document our reference types with JavaDoc.
 
 ## Reference Type Naming Convention
 
-Reference types, by convention, begin with an uppercase letter.
-
-
-## OLD WORDS
-
-Since everything in Java is contained in classes, which are used to create objects, we will study objects right from the start of our class.  Our approach is to understand how we can create our own data types using a Java class, and then use the class to construct objects.  These data types are in addition to the Java primitive Java data types.  Just as an primitive data type has a set of values and set of operations, our data types will have a set of values and a set of operations.  The values will be stored in instance variable and the operations will be performed by instance methods.  We will also learn that Java Strings are a class.  In order to study Java classes and objects first, we will study variable declarations, simple assignment statements, method definitions, method returns, and calling methods.
-
-Objects and object-oriented programming are somewhat of a natural way of thinking about and dissecting a problem.  The world is full of objects, objects align with our way of thinking, objects have attributes (or properties), and we often use objects to do work for us.  We can think of people as an object.  Everyone has shared set of properties – name, age, height, weight, etc.  Each person will have his or her own values for these properties.  We also have ways of getting those properties from others.  For example, when we first meet we may ask someone to provide us with his or her name.  Let’s consider the weather app on our phone as an object.  We use the weather app to get work done for us – namely to see what today’s weather will be.  We do not care how the weather app knows what today’s weather will be (maybe it is just random), but we use the information.    To summarize, objects have properties, objects do work for us, and objects have methods that allow us to interact with their properties and examine their work.
-
-We will create objects in our programs, and these program objects will have properties and methods.  Before we can create objects, we will have to create classes, which are objects with common behavior.  You can think of a generic person as a class and the person Gusty as an object of type person.  We will define Java classes, which will be like a data type, and we will use the Java classes to declare variables, which will be objects of the particular type.
-
+Reference types, by convention, begin with an uppercase letter, e.g., ```String``` and ```Scanner```.

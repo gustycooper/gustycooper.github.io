@@ -14,6 +14,19 @@ permalink: /mydoc_2_assignment_expressions/
 
 **Assignment expressions** update the value of a variable or array element.
 
+## Assignment Expression Statement Metalanguage
+
+The following shows the meta language for an assignment expressions statement.  As discussed in this section, the ```=``` assignment operator is a regular operator and is not limited to an assignment expression statement; however, the ```=``` operator is used most often in an assignment expression statement.
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Expressions within Statements
+</b>
+<br>
+<pre>
+&lt;variable&gt; = &lt;<font color="red">exp</font>&gt;;  // The assignment operator is part of expressions
+</pre>
+</div>
 
 ## Assignment Operator Precedence
 
@@ -44,7 +57,7 @@ double totalPrice = 100 * unitPrice // 434.999999999999994
 ```
 {% endraw %}
 
-## Assignment Operators
+## The ```=``` Assignment Operator
 
 One thing to remember is that assignment is an operator, not a statement.  This means that Java allows you to include assignments in expressions as follows.  The precedence of the assignment operator is low and it groups from right to left.  I suggest you use the assignment operator as an assignment statement.
 
@@ -55,9 +68,9 @@ i2 = i3 = i1; // after this i1, i2, i3 contain 1
 i3 = (i1 = i3) + i2;  // after this i3 contains 2, i1,i2 contain 1
 ```
 
-Adding some value to a variable is a common action in programming.  Java has a special assignment statement that provides a short cut for this technique.  David Eck’s book describes this shortcut as follows.
+## The ```+=``` Style Assignment Operators
 
-Getting back to assignment statements, Java has several variations on the assignment operator, which exist to save typing. For example, "A += B" is defined to be the same as "A = A + B". Every operator in Java that applies to two operands, except for the relational operators, gives rise to a similar assignment operator. For example:
+Adding a value to a variable is a common action in programming - for example, ```x = x + 10;``` adds ```10``` to ```x```.  Java has a special assignment statement that provides a short cut for this technique.  Every Java operator that applies to two operands, except for the relational operators, can be used in the ```+=``` style assignment operator.
 
 ```java
 x -= y;     // same as:   x = x - y;
@@ -69,11 +82,13 @@ q &&= p;    // same as:   q = q && p;  (for booleans q and p)
 
 ## Increment and Decrement Operators
 
-Adding 1 or subtracting 1 to a variable is a common action in programming.  Java has a shortcut for doing this.  You will use this shortcut quite often in for loops.
+Adding 1 or subtracting 1 to a variable is a common action in programming.  The ```++``` and ```--``` are shortcut Java operators for incrementing and decrementing a variable.   The ```++``` and ```--``` operators can be used as either prefix or postfix.  The difference of prefix and postfix is explained in the next section.  You will use this shortcut quite often in for loops.
 
 ```java
 x++; // same as x = x + 1
-x--; // same as x = x -1
+++x; // same as x = x + 1
+x--; // same as x = x - 1
+--x; // same as x = x - 1
 ```
 
 ## Expressions with Side Effects
@@ -116,5 +131,5 @@ Recall that a Java block is a sequence of statements enclosed within curly brace
 * Method Calls
   * System.out.println("Gusty");
 * Object Creation Expression
-  * Person p - new Person("Gusty",22);
+  * Person p = new Person("Gusty",22);
 

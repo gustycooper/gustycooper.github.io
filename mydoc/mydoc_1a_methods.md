@@ -51,7 +51,9 @@ The following is a diagram of this flow of control.
 The idea with a method is that you bottle up useful functionality so that you can call it whenever needed.  The concept is easier to grasp that finding useful functionality.  As you can see from our ```sqrt()``` example, methods have two attributes.
 
 1. Methods have zero or more parameters, which are also called arguments. Parameters are variables that are declared in the method definition.
-2. Methods return.  Methods may return a value or they may simply return.
+2. Methods return.  Methods may return a value or they may simply return. 
+   * Methods that return value have a type, e.g., ```int```, ```double```, ```String```.  
+   * Methods that simply return have the type ```void```.  We have seen ```public static void main```.
 
 The following code snippet shows two example methods.  The ```multiply()``` method that accepts two arguments argument and returns a value of type ```double```.  The ```printGusty()``` method does not have arguments and does not return a value; however, it does call the ```multiply()``` method.  You should notice that an argument declaration is similar to a variable declaration where you provide a type and an argument name.
 
@@ -234,19 +236,19 @@ Programs often require the ability to generate a random number.  ```Math.random`
 
 Suppose you want to simulate rolling a die, which results in a random number between 1 and 6.   We can create an expresion using ```Math.random()``` that produces a number between 1 and 6.  We construct this expression in a sequence of steps.
 
-1. This step is basic arithmetic.  ```6 * Math.random()``` produces a ```double``` that satisfies the following.
+**Step 1.** This step is basic arithmetic.  ```6 * Math.random()``` produces a ```double``` that satisfies the following.
 
 ```java
 0.0 <= Math.random() * 6 < 6.0
 ```
 
-2. This step casts the ```double``` to an ```int`` to produce an ```int``` that satisfies the following.
+**Step 2.** This step casts the ```double``` to an ```int``` to produce an ```int``` that satisfies the following.
 
 ```java
 0 <= (int)(Math.random() * 6) < 5
 ```
 
-3. If you add one to the casted expression, you get a random number that represent the roll of a die. The following shows this as part of an assignment statement.
+**Step 3.** If you add one to the casted expression, you get a random number that represent the roll of a die. The following shows this as part of an assignment statement.
 
 ```java
 int dieValue = (int)(Math.random() * 6) + 1;

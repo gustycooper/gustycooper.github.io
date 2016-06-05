@@ -51,12 +51,36 @@ entries:
       url: /labs_lab02_00/
       output: web, pdf
       
-    - title: Labs - String Program
+    - title: Labs - Java Expressions in Codepad
       url: /labs_lab02_01/
       output: web, pdf
       
-    - title: Labs - MyString Class
+    - title: Labs - Split the Bill
       url: /labs_lab02_02/
+      output: web, pdf
+      
+    - title: Labs - Paycheck
+      url: /labs_lab02_03/
+      output: web, pdf
+      
+    - title: Labs - Average
+      url: /labs_lab02_04/
+      output: web, pdf
+      
+    - title: Labs - Largest
+      url: /labs_lab02_05/
+      output: web, pdf
+      
+    - title: Labs - Temperature
+      url: /labs_lab02_06/
+      output: web, pdf
+      
+    - title: Labs - Dice
+      url: /labs_lab02_07/
+      output: web, pdf
+      
+    - title: Labs - Strings
+      url: /labs_lab02_08/
       output: web, pdf
       
   - title: Lab 3
@@ -67,12 +91,32 @@ entries:
       url: /labs_lab03_00/
       output: web, pdf
       
-    - title: Labs - Java Expressions in Codepad
+    - title: Labs - Person Type
       url: /labs_lab03_01/
       output: web, pdf
       
-    - title: Labs - Split the Bill
+    - title: Labs - Car Type
       url: /labs_lab03_02/
+      output: web, pdf
+      
+    - title: Labs - TwoPays Type
+      url: /labs_lab03_03/
+      output: web, pdf
+      
+    - title: Labs - MyMath Type
+      url: /labs_lab03_04/
+      output: web, pdf
+      
+    - title: Labs - Dice Type
+      url: /labs_lab03_05/
+      output: web, pdf
+      
+    - title: Labs - MyString Type
+      url: /labs_lab03_06/
+      output: web, pdf
+      
+    - title: Labs - Temperature Type
+      url: /labs_lab03_07/
       output: web, pdf
       
   - title: Lab 4

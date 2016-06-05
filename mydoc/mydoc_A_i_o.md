@@ -12,7 +12,6 @@ permalink: /mydoc_A_i_o/
 
 ## C.1 I/O with System.out and Scanner
 
-{% raw %}
 ```java
 import java.util.Scanner;
 
@@ -35,7 +34,6 @@ while (in.hasNextDouble()) {
   System.out.print(“Enter a value, Q to quit: “);
 }
 ```
-{% endraw %}
 
 ## C.2 File I/O
 
@@ -43,7 +41,6 @@ while (in.hasNextDouble()) {
 The following shows reading a file where each line contains a student’s name.  This code does not handle the exception very well since we just print the stack trace.  Production code would provide some better indications to the user and repeat until the user enters correct data.
 
 
-{% raw %}
 ```java
 private final ArrayList<String> studentNames = new ArrayList<String>();
 private void loadStudentNames() throws IOException {
@@ -65,11 +62,9 @@ private void loadStudentNames() throws IOException {
     }
 }
 ```
-{% endraw %}
 
 The following shows equivalent code that uses a try with resources.  Notice how the try statement allocates the resources – BufferedReader and FileReader.  Since they are allocated in the try statement, they are deallocated (in this case closed) automatically.
 
-{% raw %}
 ```java
 private final ArrayList<String> studentNames = new ArrayList<String>();
 
@@ -116,13 +111,11 @@ private void loadPlayerData() throws Exception {
     }
 }
 ```
-{% endraw %}
 
 ## C.2.2 File Output
 
 The following demonstrates a function to write an ArrayList.
 
-{% raw %}
 ```java
 private static ArrayList<String> studentNames = new ArrayList<String>();
 
@@ -140,11 +133,9 @@ private static void writeStudentNames() {
     }
 }
 ```
-{% endraw %}
 
 An alternative code snippet for writing to a file is given as follows.
 
-{% raw %}
 ```java
 String content = "This is the content to write into file";
 File file = new File("filename.txt");
@@ -153,5 +144,34 @@ BufferedWriter bw = new BufferedWriter(fw);
 bw.write(content);
 bw.close();// be sure to close BufferedWriter 
 ```
-{% endraw %}
+
+## Formatted Output
+
+Section 2.4.1 of David Eck’s book does a fine job explaining formatted output.  This section presents another example of formatted output that I modeled after one from the Udacity course.
+
+```java
+int mnmsPerDay = 142;
+double cerealBoxesPerDay = .1;
+System.out.printf("%6d", cookiesPerDay); // 6 chrs wide
+System.out.printf("%4.2f", cerealBoxesPerDay); // 2 dec places, 4 wide
+System.out.printf("%s", “Gusty”); // string format
+
+public static void main(String[] args) {
+    int gustyMnMsPerDay = 100;
+    double gustyCerealPerDay = .06;
+    int emilyMnMsPerDay = 1;
+    double emilyCerealPerDay = 0;
+    System.out.println("  M&Ms  | cereal | name");
+    System.out.println("------------------------");
+    System.out.printf("%8d|%8.2f|%s", gustyMnMsPerDay,   
+                       gustyCerealPerDay, “Gusty”);
+    System.out.println();
+    System.out.printf("%8d|%8.2f|%s", emilyMnMsPerDay, 
+                       emilyCerealPerDay, “Emily”);
+    System.out.println();
+}
+```
+
+See folder formattedOutput
+
 

@@ -3,9 +3,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Lab 2, MyString">
-<meta name="keywords" content=" MyString">
-<title>MyString (Labs - Lab 1)  | UMW CPSC 220</title>
+<meta name="description" content="Lab 2, Split the Bill">
+<meta name="keywords" content=" split the bill">
+<title>Split the Bill (Labs - Lab 2)  | UMW CPSC 220</title>
 <link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
 
 
@@ -175,7 +175,7 @@
 <script>
 function SendLinkByMail(href) {
 var subject= "UMW CPSC 220 feedback";
-var body = "I have some feedback about the MyString (Labs - Lab 1) page: ";
+var body = "I have some feedback about the Split the Bill (Labs - Lab 2) page: ";
 body += window.location.href;
 body += "";
 var uri = "mailto:gusty@umw.edu?subject=";
@@ -202,7 +202,7 @@ window.location.href = uri;
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/gustycooper.github.io/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="MyString (Labs - Lab 1)">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Split the Bill (Labs - Lab 2)">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -300,14 +300,56 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/labs_lab02_01/">Labs - String Program</a></li>
+            <li><a href="/gustycooper.github.io/labs_lab02_01/">Labs - Java Expressions in Codepad</a></li>
             
             
             
             
             
             
-            <li class="active"><a href="/gustycooper.github.io/labs_lab02_02/">Labs - MyString Class</a></li>
+            <li class="active"><a href="/gustycooper.github.io/labs_lab02_02/">Labs - Split the Bill</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_03/">Labs - Paycheck</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_04/">Labs - Average</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_05/">Labs - Largest</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_06/">Labs - Temperature</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_07/">Labs - Dice</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_08/">Labs - Strings</a></li>
             
             
             
@@ -329,14 +371,49 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/labs_lab03_01/">Labs - Java Expressions in Codepad</a></li>
+            <li><a href="/gustycooper.github.io/labs_lab03_01/">Labs - Person Type</a></li>
             
             
             
             
             
             
-            <li><a href="/gustycooper.github.io/labs_lab03_02/">Labs - Split the Bill</a></li>
+            <li><a href="/gustycooper.github.io/labs_lab03_02/">Labs - Car Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_03/">Labs - TwoPays Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_04/">Labs - MyMath Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_05/">Labs - Dice Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_06/">Labs - MyString Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_07/">Labs - Temperature Type</a></li>
             
             
             
@@ -432,13 +509,13 @@ window.location.href = uri;
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">MyString (Labs - Lab 1)</h1>
+   <h1 class="post-title-main">Split the Bill (Labs - Lab 2)</h1>
 </div>
 
 <div class="post-content">
 
    
-    <div class="summary">Lab 2, MyString</div>
+    <div class="summary">Lab 2, Split the Bill</div>
    
 
     
@@ -452,58 +529,25 @@ window.location.href = uri;
 
     
 
-  <h2 id="create-a-java-class-mystring--20-points">Create a Java Class myString – 20 Points</h2>
+  <h2 id="create-a-java-program-to-split-the-bill">Create a Java Program to Split the Bill</h2>
+<p><strong>Points</strong>: Complete this entire section for 10 points.</p>
 
-<p><strong>Points</strong>: Complete this entire section for 11 points.</p>
+<p>When friends dine together in restaurants, they often split the bill.  For example, if 5 friends are dining where the bill is $50 and we are giving a 20% tip, then the total is $60 divided by 5 people, which means each person pays $12.</p>
 
-<p>This lab allows you to practice creating a Java class – myString.  Your myString class will be your own simplified version of the Java String class.  You will use the same String methods that you used to complete 2.1.  Write a Java public class MyString that satisfies the requirements listed in this section.  This section also describes steps to test your MyString class.  You should recall that the general format of a Java class is as follows.</p>
+<p>Write a Java <code class="highlighter-rouge">SplitTheBill</code> class that has two public static methods: <code class="highlighter-rouge">main</code> and <code class="highlighter-rouge">pay</code>. Both <code class="highlighter-rouge">main()</code> and <code class="highlighter-rouge">pay()</code> will be <code class="highlighter-rouge">public static</code> methods since we will not create objects of type <code class="highlighter-rouge">SplitTheBill</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyString</span> <span class="o">{</span>
-<span class="c1">// instance variables</span>
+<p><code class="highlighter-rouge">public static double pay(double bill, double tip, int numOfPeople)</code> – the 3 formal arguments are the total of the bill, the percent tip we want to give, and the total number of people in the group.  The pay method computes and returns the amount each person in the group should pay. The following is an example call.</p>
 
-<span class="c1">// constructors</span>
-
-<span class="c1">// methods</span>
-
-<span class="o">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">amount</span> <span class="o">=</span> <span class="n">pay</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="o">.</span><span class="mi">20</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span> <span class="o">;</span> <span class="c1">// amount is 12.0</span>
 </code></pre>
 </div>
 
-<ol>
-  <li>Your MyString class shall have one constructor that saves the parameter in a private instance variable myString.  The constructor signature shall be as follows.</li>
-</ol>
+<p><code class="highlighter-rouge">public static void main(String[] args)</code> – This is your program’s main method that calls your pay method to test that it is correct.  Use <code class="highlighter-rouge">System.out.print</code>, <code class="highlighter-rouge">System.out.println</code>, and a <code class="highlighter-rouge">Scanner</code> object to create the dialog for running your program.  The following is an example dialog.</p>
 
-<p>MyString(String s)</p>
-
-<ol>
-  <li>
-    <p>Your MyString class shall have the following public interface.  You will have to implement each of these methods using the Java String methods that you used in section 2.1.</p>
-
-    <ul>
-      <li><code class="highlighter-rouge">public String capitalCase()</code> – returns the uppercase of the String used to construct the object.</li>
-      <li><code class="highlighter-rouge">public int count()</code> – returns the number of characters in the String used to construct the object.</li>
-      <li><code class="highlighter-rouge">public int firstSpace()</code> – returns the index of the first space of the String used to construct the object.</li>
-    </ul>
-  </li>
-  <li>
-    <p>After implementing your class MyString, use the BlueJ GUI to construct MyString object.    Test your MyString class using the BlueJ GUI and the BlueJ code pad to manipulate the MyString methods.</p>
-  </li>
-  <li>
-    <p>Create a Java public class myStringTester that has a public static void main() method that performs the following operations.
-A. Prompt the user to enter a string, which you will read into a variable of type String.
-B. Using the String variable from step a, construct a MyString variable myString that contains the contents.
-MyString myString = new MyString(s);  // s is a String
-C. Use the myString.captialCase() method to generate the uppercase of myString.  Print the result.
-D. Use the myString.count() method to compute the number of characters in myString.  Print the result.
-E. Use the myString.firstSpace() method to compute the index of the first space in myString.  Print the result.
-F. The following is an example run of your myStringTester.</p>
-  </li>
-</ol>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Enter</span> <span class="n">a</span> <span class="nl">String:</span> <span class="n">Gusty</span> <span class="n">is</span> <span class="n">teaching</span> <span class="n">Java</span><span class="o">.</span>
-<span class="n">GUSTY</span> <span class="n">IS</span> <span class="n">TEACHING</span> <span class="n">JAVA</span><span class="o">.</span>
-<span class="n">Your</span> <span class="n">input</span> <span class="n">has</span> <span class="mi">23</span> <span class="n">characters</span><span class="o">.</span>
-<span class="n">The</span> <span class="n">first</span> <span class="n">space</span> <span class="n">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mi">4</span><span class="o">.</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Enter</span> <span class="n">restaurant</span> <span class="nl">bill:</span> <span class="mi">20</span>
+<span class="n">Enter</span> <span class="nf">tip</span> <span class="p">(</span><span class="o">.</span><span class="mi">2</span> <span class="k">for</span> <span class="mi">20</span><span class="o">%):</span> <span class="o">.</span><span class="mi">2</span>
+<span class="n">Enter</span> <span class="n">number</span> <span class="n">of</span> <span class="n">people</span> <span class="nl">dining:</span> <span class="mi">4</span>
+<span class="n">Price</span> <span class="n">per</span> <span class="n">person</span> <span class="n">is</span> <span class="mf">6.0</span>
 </code></pre>
 </div>
 
@@ -525,7 +569,7 @@ F. The following is an example run of your myStringTester.</p>
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-; Site last generated: May 25, 2016
+<p>Page last updated: June 5, 2016; Site last generated: Jun 5, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

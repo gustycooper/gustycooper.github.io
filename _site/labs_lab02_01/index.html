@@ -3,9 +3,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Lab 1, First Program">
-<meta name="keywords" content=" first program">
-<title>First Program (Labs - Lab 1)  | UMW CPSC 220</title>
+<meta name="description" content="Codepad Expressions">
+<meta name="keywords" content=" expression">
+<title>Codepad Expressions  | UMW CPSC 220</title>
 <link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
 
 
@@ -175,7 +175,7 @@
 <script>
 function SendLinkByMail(href) {
 var subject= "UMW CPSC 220 feedback";
-var body = "I have some feedback about the First Program (Labs - Lab 1) page: ";
+var body = "I have some feedback about the Codepad Expressions page: ";
 body += window.location.href;
 body += "";
 var uri = "mailto:gusty@umw.edu?subject=";
@@ -202,7 +202,7 @@ window.location.href = uri;
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/gustycooper.github.io/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="First Program (Labs - Lab 1)">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Codepad Expressions">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -300,14 +300,56 @@ window.location.href = uri;
             
             
             
-            <li class="active"><a href="/gustycooper.github.io/labs_lab02_01/">Labs - String Program</a></li>
+            <li class="active"><a href="/gustycooper.github.io/labs_lab02_01/">Labs - Java Expressions in Codepad</a></li>
             
             
             
             
             
             
-            <li><a href="/gustycooper.github.io/labs_lab02_02/">Labs - MyString Class</a></li>
+            <li><a href="/gustycooper.github.io/labs_lab02_02/">Labs - Split the Bill</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_03/">Labs - Paycheck</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_04/">Labs - Average</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_05/">Labs - Largest</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_06/">Labs - Temperature</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_07/">Labs - Dice</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab02_08/">Labs - Strings</a></li>
             
             
             
@@ -329,14 +371,49 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/labs_lab03_01/">Labs - Java Expressions in Codepad</a></li>
+            <li><a href="/gustycooper.github.io/labs_lab03_01/">Labs - Person Type</a></li>
             
             
             
             
             
             
-            <li><a href="/gustycooper.github.io/labs_lab03_02/">Labs - Split the Bill</a></li>
+            <li><a href="/gustycooper.github.io/labs_lab03_02/">Labs - Car Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_03/">Labs - TwoPays Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_04/">Labs - MyMath Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_05/">Labs - Dice Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_06/">Labs - MyString Type</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/labs_lab03_07/">Labs - Temperature Type</a></li>
             
             
             
@@ -432,13 +509,13 @@ window.location.href = uri;
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">First Program (Labs - Lab 1)</h1>
+   <h1 class="post-title-main">Codepad Expressions</h1>
 </div>
 
 <div class="post-content">
 
    
-    <div class="summary">Lab 1, First Program</div>
+    <div class="summary">Codepad Expressions</div>
    
 
     
@@ -452,30 +529,157 @@ window.location.href = uri;
 
     
 
-  <h2 id="create-a-java-program-with-strings-input-and-output--10-points">Create a Java Program with Strings, Input, and Output – 10 Points</h2>
+  <h2 id="create-java-expressions">Create Java Expressions</h2>
 
-<p><strong>Points</strong>: Complete this entire section for 10 points.</p>
+<p><strong>Points</strong>: Understand this entire section for 10 points.  If you do not understand Java expressions, this section provides you with the opportunity to practice in the BlueJ Codepad.  The BlueJ Codepad is a nice tool that I use to experiment with Java features.  If you understand Java expressions, then proceed to the next section.</p>
 
-<p>This lab allows you to practice using Java String methods.  Write a Java public class StringManip that satisfies the following requirements
-1. Your class shall contain a public static void main() function that does all of the work.
-2. Use a Scanner object to read from the console.
-3. System.out.println() to print to the console.
-4. Prompt the user to enter a string, which you read into a variable of type String.<br />
-5. Use the String method toUpperCase to print the string and the uppercase version of the string.
-6. Use the String method length to print the number of letters in the string.
-7. Use the String method indexOf to print the index of the first space in the string. 
-8. The following is an example run of your program.</p>
+<p>Expressions are a central component of programming.  You will use expressions on the right-hand side of an assignment statement, controlling if statements, controlling switch statements, controlling loop statements, as actual parameters, and as the return expression.  You have to master expressions to be a good programmer.  For the most part, expressions are intuitive; however, mixing types can be tricky, Boolean expressions require careful thought, and Java has several fancy operators such as ++, +=, *=, and ? :.  The more you practice creating expressions, the better programmer you will be.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Enter</span> <span class="n">a</span> <span class="nl">String:</span> <span class="n">Gusty</span> <span class="n">is</span> <span class="n">teaching</span> <span class="n">Java</span><span class="o">.</span>
-<span class="n">GUSTY</span> <span class="n">IS</span> <span class="n">TEACHING</span> <span class="n">JAVA</span><span class="o">.</span>
-<span class="n">Your</span> <span class="n">input</span> <span class="n">has</span> <span class="mi">23</span> <span class="n">characters</span><span class="o">.</span>
-<span class="n">The</span> <span class="n">first</span> <span class="n">space</span> <span class="n">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mi">5</span><span class="o">.</span>
+<p>Use the BlueJ Codepad window to create arithmetic expressions so that you understand how operators and types interact.  When creating statements in the BlueJ Codepad, the semicolon, which terminates Java statements, can be inserted or omitted.  When a statement in the BlueJ Codepad does not have a semicolon the BlueJ Codepad will display the results.  Consider the following several example statements as entered into the BlueJ Codepad with and without semicolons.  The font colors are indicative of the font colors in BlueJ Codepad.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">ten</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="n">x</span>
+<span class="mf">3.141592653589793</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+<span class="n">ten</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="mi">11</span>   <span class="o">(</span><span class="kt">int</span><span class="o">)</span>
+<span class="kt">double</span> <span class="n">y</span><span class="o">;</span>
+<span class="nl">Note:</span> <span class="n">Codepad</span> <span class="n">variables</span> <span class="n">are</span> <span class="n">automatically</span> <span class="n">initialized</span>
+ <span class="n">in</span> <span class="n">the</span> <span class="n">same</span> <span class="n">way</span> <span class="n">as</span> <span class="n">instance</span> <span class="n">fields</span><span class="o">.</span>
+<span class="n">y</span>
+<span class="mf">0.0</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="mf">13.141592653589793</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">300</span><span class="o">;</span>
+<span class="nl">Error:</span> <span class="n">incompatible</span> <span class="nl">types:</span> <span class="n">possible</span> <span class="n">lossy</span> <span class="n">conversion</span> <span class="n">from</span> <span class="kt">int</span> <span class="n">to</span> <span class="kt">byte</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">128</span><span class="o">;</span>
+<span class="nl">Error:</span> <span class="n">incompatible</span> <span class="nl">types:</span> <span class="n">possible</span> <span class="n">lossy</span> <span class="n">conversion</span> <span class="n">from</span> <span class="kt">int</span> <span class="n">to</span> <span class="kt">byte</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">127</span><span class="o">;</span>  <span class="c1">// finally</span>
+<span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">300</span><span class="o">;</span>
+<span class="n">bb</span>
+<span class="mi">44</span>   <span class="o">(</span><span class="kt">byte</span><span class="o">)</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">255</span>
+<span class="o">-</span><span class="mi">1</span>   <span class="o">(</span><span class="kt">byte</span><span class="o">)</span>
+<span class="kt">boolean</span> <span class="n">myBool</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="o">;</span>
+<span class="n">myBool</span>
+<span class="nf">true</span>   <span class="p">(</span><span class="kt">boolean</span><span class="o">)</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">5.0</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">dd</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">e</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">?</span> <span class="mf">20.0</span> <span class="o">:</span> <span class="mf">25.0</span><span class="o">;</span>
+<span class="n">e</span>
+<span class="mf">20.0</span>   <span class="o">(</span><span class="kt">double</span><span class="o">)</span>
 </code></pre>
 </div>
 
-<ol>
-  <li>Test your program to make sure it prints the correct values.</li>
-</ol>
+<p>I have provided a list of expressions that you should enter into the BlueJ Codepad, but you should experiment with your own expressions.  Be sure to notice which of the following is terminated with a semicolon and enter them as such.  I will ask you to evaluate expressions on tests.  The following are words from David Eck’s book describing Java operators.</p>
+
+<p>Here is a listing of the operators discussed in this section, listed in order from highest precedence (evaluated first) to lowest precedence (evaluated last):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Operators</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Unary</td>
+      <td><code class="highlighter-rouge">++</code> <code class="highlighter-rouge">--</code> <code class="highlighter-rouge">!</code> <code class="highlighter-rouge">unary -</code> <code class="highlighter-rouge">unary +</code> <code class="highlighter-rouge">type-cast</code></td>
+    </tr>
+    <tr>
+      <td>Multiply Divide</td>
+      <td><code class="highlighter-rouge">*</code>  <code class="highlighter-rouge">/</code>  <code class="highlighter-rouge">%</code></td>
+    </tr>
+    <tr>
+      <td>Add Subtract</td>
+      <td><code class="highlighter-rouge">+</code>  <code class="highlighter-rouge">-</code></td>
+    </tr>
+    <tr>
+      <td>Relational</td>
+      <td><code class="highlighter-rouge">&lt;</code>  <code class="highlighter-rouge">&gt;</code>  <code class="highlighter-rouge">&lt;=</code>  <code class="highlighter-rouge">&gt;=</code></td>
+    </tr>
+    <tr>
+      <td>Equality</td>
+      <td><code class="highlighter-rouge">==</code>  <code class="highlighter-rouge">!=</code></td>
+    </tr>
+    <tr>
+      <td>Boolean and</td>
+      <td><code class="highlighter-rouge">&amp;&amp;</code></td>
+    </tr>
+    <tr>
+      <td>Boolean or</td>
+      <td><code class="highlighter-rouge">||</code></td>
+    </tr>
+    <tr>
+      <td>Conditional</td>
+      <td><code class="highlighter-rouge">?:</code></td>
+    </tr>
+    <tr>
+      <td>Assignment</td>
+      <td><code class="highlighter-rouge">=</code>  <code class="highlighter-rouge">+=</code>  <code class="highlighter-rouge">-=</code>  <code class="highlighter-rouge">*=</code>  <code class="highlighter-rouge">/=</code>  <code class="highlighter-rouge">%=</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Operators on the same line have the same precedence. When operators of the same precedence are used in an expression without parentheses, unary operators and assignment operators are evaluated right-to-left, while the remaining operators are evaluated left-to-right. You are most likely familiar with left-to-right evaluation.  For example, <code class="highlighter-rouge">x * y / z</code> is evaluated as <code class="highlighter-rouge">(x * y) / z</code>.  For right-to-left evaluation consider multiple assignments.  <code class="highlighter-rouge">i = j = k</code> is evaluated as <code class="highlighter-rouge">i = (j = k)</code>.</p>
+
+<p>The following are examples of expression evaluation questions I will ask on tests.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">24</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.123</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">5</span><span class="o">;</span>               <span class="c1">// What is the value of j?</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">5</span><span class="o">;</span>            <span class="c1">// What is the value of d? </span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mf">5.0</span><span class="o">;</span>                 <span class="c1">// What is the value of d?</span>
+<span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">false</span><span class="o">;</span>   <span class="c1">// What is the value of b?</span>
+<span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">||</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span>      <span class="c1">// What is the value of c?</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span>                   <span class="c1">// What is the value of c?</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="mi">20</span> <span class="o">:</span> <span class="mi">21</span><span class="o">;</span>         <span class="c1">// What is the value of d?</span>
+<span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="o">+</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">6</span><span class="o">;</span>          <span class="c1">// What is the value of y</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">3</span><span class="o">;</span>                   <span class="c1">// What is the value of i?  </span>
+                             <span class="c1">// Maybe this statement is illegal.</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="mi">25</span><span class="o">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">;</span>       <span class="c1">// What is the value of d?</span>
+</code></pre>
+</div>
+
+<p>As you work through the above and following expressions, you should practice evaluating them so that you know the answers and are prepared for our tests.  Be sure to create expressions that use all of the Java operators.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">oneMillion</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">mystery</span> <span class="o">=</span> <span class="n">oneMillion</span> <span class="o">*</span> <span class="n">oneMillion</span><span class="o">;</span> <span class="c1">// -727379968</span>
+<span class="n">oneMillion</span> <span class="c1">// 1000000</span>
+<span class="n">mystery</span> <span class="c1">// -727379968</span>
+<span class="kt">double</span> <span class="n">unitPrice</span> <span class="o">=</span> <span class="mf">4.35</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">totalPrice</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">unitPrice</span><span class="o">;</span> <span class="c1">// 434.999999999999994</span>
+<span class="n">oneMillion</span><span class="o">++</span> <span class="c1">// post increment, displays 1000000</span>
+<span class="n">oneMillion</span>   <span class="c1">// 1000001</span>
+<span class="o">++</span><span class="n">oneMillion</span> <span class="c1">// pre increment, displays 1000002</span>
+<span class="n">oneMillion</span>   <span class="c1">// 1000002</span>
+<span class="n">oneMillion</span><span class="o">--</span> <span class="c1">// post decrement, displays 1000002</span>
+<span class="n">oneMillion</span>   <span class="c1">// 1000001</span>
+<span class="o">--</span><span class="n">oneMillion</span> <span class="c1">// pre decrement, displays 1000000</span>
+<span class="n">oneMillion</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">// 1000001</span>
+<span class="n">oneMillion</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1">// 1000000</span>
+<span class="n">oneMillion</span><span class="o">*</span><span class="n">oneMillion</span>  <span class="c1">// -727379968</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="n">d</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span> <span class="c1">// incompatible types</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">d</span><span class="o">;</span>
+<span class="n">i</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">--</span>
+<span class="n">i</span>
+<span class="n">i</span> <span class="o">=</span> <span class="o">--</span><span class="n">i</span>
+<span class="n">i</span>
+<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">10</span> <span class="c1">// a legal but confusing statement</span>
+<span class="n">i</span>
+<span class="n">j</span>
+<span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="o">;</span>
+<span class="n">b</span>
+<span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="n">b</span>
+<span class="kc">false</span> <span class="o">||</span> <span class="n">b</span>
+<span class="o">!</span><span class="n">b</span>
+</code></pre>
+</div>
 
 
 
@@ -495,7 +699,7 @@ window.location.href = uri;
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-; Site last generated: May 25, 2016
+<p>Page last updated: June 5, 2016; Site last generated: Jun 5, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

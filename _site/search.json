@@ -46,7 +46,7 @@
 
 
 {
-"title": "First Classes and Objects (Labs - Lab 2)",
+"title": "Expressions (Labs - Lab 2)",
 "tags": "",
 "keywords": "loop",
 "url": "/gustycooper.github.io/labs_lab02_00/",
@@ -56,27 +56,87 @@
 
 
 {
-"title": "First Program (Labs - Lab 1)",
+"title": "Codepad Expressions",
 "tags": "",
-"keywords": "first program",
+"keywords": "expression",
 "url": "/gustycooper.github.io/labs_lab02_01/",
-"summary": "Lab 1, First Program"
+"summary": "Codepad Expressions"
 },
 
 
 
 {
-"title": "MyString (Labs - Lab 1)",
+"title": "Split the Bill (Labs - Lab 2)",
 "tags": "",
-"keywords": "MyString",
+"keywords": "split the bill",
 "url": "/gustycooper.github.io/labs_lab02_02/",
-"summary": "Lab 2, MyString"
+"summary": "Lab 2, Split the Bill"
 },
 
 
 
 {
-"title": "First Program (Labs - Lab 3)",
+"title": "Compute Pay Check (Labs - Lab 2)",
+"tags": "",
+"keywords": "split the bill",
+"url": "/gustycooper.github.io/labs_lab02_03/",
+"summary": "Lab 2, Compute Pay Check"
+},
+
+
+
+{
+"title": "Compute Average (Labs - Lab 2)",
+"tags": "",
+"keywords": "average",
+"url": "/gustycooper.github.io/labs_lab02_04/",
+"summary": "Lab 2, Compute Average"
+},
+
+
+
+{
+"title": "Compute Largest (Labs - Lab 2)",
+"tags": "",
+"keywords": "largest",
+"url": "/gustycooper.github.io/labs_lab02_05/",
+"summary": "Lab 2, Compute Largest"
+},
+
+
+
+{
+"title": "Compute Temperature (Labs - Lab 2)",
+"tags": "",
+"keywords": "temperature",
+"url": "/gustycooper.github.io/labs_lab02_06/",
+"summary": "Lab 2, Compute Temperature"
+},
+
+
+
+{
+"title": "Compute Dice (Labs - Lab 2)",
+"tags": "",
+"keywords": "dice, random",
+"url": "/gustycooper.github.io/labs_lab02_07/",
+"summary": "Lab 2, Compute Dice"
+},
+
+
+
+{
+"title": "Using Strings",
+"tags": "",
+"keywords": "class, string",
+"url": "/gustycooper.github.io/labs_lab02_08/",
+"summary": "Lab 2, Using Strings"
+},
+
+
+
+{
+"title": "First Classes and Objects (Labs - Lab 3)",
 "tags": "",
 "keywords": "loop",
 "url": "/gustycooper.github.io/labs_lab03_00/",
@@ -86,21 +146,71 @@
 
 
 {
-"title": "First Program (Labs - Lab 1)",
+"title": "Person Type",
 "tags": "",
-"keywords": "first program",
+"keywords": "class, person",
 "url": "/gustycooper.github.io/labs_lab03_01/",
-"summary": "Lab 1, First Program"
+"summary": "Lab 2, Person Type"
 },
 
 
 
 {
-"title": "Split the Bill (Labs - Lab 3)",
+"title": "Car Type",
 "tags": "",
-"keywords": "split the bill",
+"keywords": "class, car",
 "url": "/gustycooper.github.io/labs_lab03_02/",
-"summary": "Lab 3, Split the Bill"
+"summary": "Lab 2, Car Type"
+},
+
+
+
+{
+"title": "TwoPays Type",
+"tags": "",
+"keywords": "class, twopays",
+"url": "/gustycooper.github.io/labs_lab03_03/",
+"summary": "Lab 2, TwoPays Type"
+},
+
+
+
+{
+"title": "MyMath Type",
+"tags": "",
+"keywords": "class, mymath",
+"url": "/gustycooper.github.io/labs_lab03_04/",
+"summary": "Lab 2, MyMath Type"
+},
+
+
+
+{
+"title": "Dice Type",
+"tags": "",
+"keywords": "class, dice",
+"url": "/gustycooper.github.io/labs_lab03_05/",
+"summary": "Lab 2, Dice Type"
+},
+
+
+
+{
+"title": "MyString Type (Labs - Lab 3)",
+"tags": "",
+"keywords": "mystring",
+"url": "/gustycooper.github.io/labs_lab03_06/",
+"summary": "Lab 3, MyString Type"
+},
+
+
+
+{
+"title": "Temperature Type (Labs - Lab 3)",
+"tags": "",
+"keywords": "temperature",
+"url": "/gustycooper.github.io/labs_lab03_07/",
+"summary": "Lab 3, Temperature Type"
 },
 
 
@@ -466,10 +576,50 @@
 
 
 {
+"title": "Conditional Statements",
+"tags": "conditional",
+"keywords": "control flow, conditional, if, if-then",
+"url": "/gustycooper.github.io/mydoc_4_conditional/",
+"summary": "Conditional Statements"
+},
+
+
+
+{
 "title": "Control Flow",
 "tags": "sequentialconditionalloop",
 "keywords": "control flow, conditional, if, if-then, loop, for loop, while loop, do-while loop",
 "url": "/gustycooper.github.io/mydoc_4_control_flow/",
+"summary": "Control Flow"
+},
+
+
+
+{
+"title": "Loop Patterns",
+"tags": "loop",
+"keywords": "control flow, loop, for loop, while loop, do-while loop, loop patterns",
+"url": "/gustycooper.github.io/mydoc_4_loop_patterns/",
+"summary": "Loop Patterns"
+},
+
+
+
+{
+"title": "Loops",
+"tags": "loop",
+"keywords": "control flow, loop, for loop, while loop, do-while loop",
+"url": "/gustycooper.github.io/mydoc_4_loops/",
+"summary": "Loops"
+},
+
+
+
+{
+"title": "Sequential, Blocks, Scope",
+"tags": "sequentialconditionalloop",
+"keywords": "control flow, sequential, blocks, scope",
+"url": "/gustycooper.github.io/mydoc_4_seq_blocks_scope/",
 "summary": "Control Flow"
 },
 
@@ -481,6 +631,106 @@
 "keywords": "classes, objects",
 "url": "/gustycooper.github.io/mydoc_5_classes_objects/",
 "summary": "Classes and Objects"
+},
+
+
+
+{
+"title": "Enumeration Types",
+"tags": "classobject",
+"keywords": "enumeration",
+"url": "/gustycooper.github.io/mydoc_5_enumeration_types/",
+"summary": "Enumeration Types"
+},
+
+
+
+{
+"title": "final",
+"tags": "classobject",
+"keywords": "final",
+"url": "/gustycooper.github.io/mydoc_5_final/",
+"summary": "final"
+},
+
+
+
+{
+"title": "Instance and Static",
+"tags": "classobject",
+"keywords": "instance, static",
+"url": "/gustycooper.github.io/mydoc_5_instance_static/",
+"summary": "Instance and Static"
+},
+
+
+
+{
+"title": "Interface",
+"tags": "classobject",
+"keywords": "interface",
+"url": "/gustycooper.github.io/mydoc_5_interface/",
+"summary": "Interface"
+},
+
+
+
+{
+"title": "Passing Parameters",
+"tags": "classobject",
+"keywords": "parameters, value, reference",
+"url": "/gustycooper.github.io/mydoc_5_passing_parameters/",
+"summary": "Passing Parameters"
+},
+
+
+
+{
+"title": "Public and Private",
+"tags": "classobject",
+"keywords": "public, private",
+"url": "/gustycooper.github.io/mydoc_5_public_private/",
+"summary": "Public and Private"
+},
+
+
+
+{
+"title": "Stack and Heap",
+"tags": "classobject",
+"keywords": "stack, heap",
+"url": "/gustycooper.github.io/mydoc_5_stack_heap/",
+"summary": "Stack and Heap"
+},
+
+
+
+{
+"title": "Subclasses",
+"tags": "classobject",
+"keywords": "subclasses",
+"url": "/gustycooper.github.io/mydoc_5_subclasses/",
+"summary": "Subclasses"
+},
+
+
+
+{
+"title": "this",
+"tags": "classobject",
+"keywords": "this",
+"url": "/gustycooper.github.io/mydoc_5_this/",
+"summary": "this"
+},
+
+
+
+{
+"title": "toString, comparable",
+"tags": "classobject",
+"keywords": "toString, comparable",
+"url": "/gustycooper.github.io/mydoc_5_toString_comparable/",
+"summary": "toString, comparable"
 },
 
 

@@ -14,6 +14,8 @@ permalink: /mydoc_2_arithmetic_expressions/
 
 **Arithmetic expressions** evaluate to a number, which in most cases is ```int``` or a ```double```.  You can cast the resulting expression to other primitive types.  Since arithmetic expressions follow the rules of arithmetic we have studied since elementary school, this section describes attributes about Java arithmetic expressions that are not intuitive.
 
+We will use  ```int``` and ```double``` in most all of our programs.  Occasionally, I have a lab that requires a ```long```. 
+
 ## Arithmetic Operator Precedence
 
 The bolded descriptions in the following table are the operators discussed in this section, listed in order from highest precedence (evaluated first) to lowest precedence (evaluated last):
@@ -34,6 +36,8 @@ Operators on the same line have the same precedence. When operators of the same 
 
 ## Rules to Determine the Type of an Arithmetic Expression
 
+Arithmetic expressions evaluate to a numeric type - typically ```int``` or ```double```.  This section explains how you can examine an arithmetic expression and determine its resulting type.
+
 An arithmetic expression contains operands and operators. 
 
 * operands
@@ -42,7 +46,7 @@ An arithmetic expression contains operands and operators.
   * methods calls - You can understand this section without reading [Methods](/gustycooper.github.io/mydoc_1a_methods), which provides method details.  
 * arithmetic operators: ```+ - * / %```
 
-We will use  ```int``` and ```double``` in most all of our programs.  Occasionally, I have a lab that requires a ```long```. 
+### Arithmetic Expression Evaluates to an ```int```
 
 If all operands in an arithmetic expression are a mixture of ```int```, ```short```, ```byte```, and ```char```, the expression evaluates to ```int```.  The following expressions evaluate to ```int```.
 
@@ -61,11 +65,13 @@ i / 2
 i % 2
 ```
 
-If all operands in an arithmetic expression are a mixture of  ```int```, ```short```, ```byte```, and ```char``` and at least one operand is a ```long```, the expression evaluates to ```long```.  Just add a ```long``` operand to any of the previous expressions, and it will evaluate to a ```long```.
+### Arithmetic Expression Evaluates to a ```long```
 
-If at least one operand in an arithmetic expression is a ```float``` and the expression does not contain any ```double``` operands, the expression evaluates to ```float```.
+If all operands in an arithmetic expression are a mixture of  ```int```, ```short```, ```byte```, and ```char``` and at least one operand is a ```long```, the expression evaluates to ```long```.  Add a ```long``` operand to any of the expressions in the previous section, and it will evaluate to a ```long```.
 
-If at least one operand in an arithmetic expression is a ```double```, the expression evaluates to ```double```.
+### Arithmetic Expression Evaluates to a ```double```
+
+If at least one operand in an arithmetic expression is a ```double```, the expression evaluates to ```double```.  The following expressions evaluation to a ```double```.
 
 ```java
 double d = 3.5;
@@ -78,9 +84,23 @@ i + 2 * (d * d)
 i / d
 ```
 
+### Arithmetic Expression Evaluates to a ```float```
+
+If at least one operand in an arithmetic expression is a ```float``` and the expression does not contain any ```double``` operands, the expression evaluates to ```float```.  The following expressions evaluation to a ```float```.  Notice how the floating point literals require the ```f``` (or ```F```) suffix.
+
+```java
+float d = 3.5f;
+int i = 3;
+
+i * 20.2f
+d + 5
+i + 2 * (d * d)
+1 + 2.002f + 3
+i / d
+```
 ## Division (```/```) and Remainder (```%```) Operators
 
-Java does not have a specific operator for integer division because the rules for determining the type of expression evaluation make the normal division ```/``` operator ```int```.  ```int / int``` evaluates to an ```int```, where the fractional part of the result is discarded.  This type of division is sometimes called goes-into because it provides how many times a number goes into another.  Integer division has a counterpart modulo operator that provides the remainder, which is Java is the ```%``` operator.  Consider two ```int```s and two ```double```s as follows.
+Java does not have a specific operator for integer division because the rules for determining the type of expression evaluation make the normal division ```/``` operator ```int```.  That is, ```int / int``` evaluates to an ```int```, where the fractional part of the result is discarded.  This type of division is sometimes called goes-into because it provides how many times a number goes into another.  Integer division has a counterpart modulo operator that provides the remainder, which in Java is the ```%``` operator.  Consider two ```int```s and two ```double```s as follows.
 
 ```java
 int i = 5;
@@ -97,7 +117,7 @@ double g = d%e; // g is 1.0
 
 At first glance, integer division and modulo appear to be useless operators; however, they are surprisely useful.  
 
-* Suppose you have a number that you want to count from 0 to 7.  You place the following assignment statement in a loop, and the variable ```number``` repeatedly counts from 0 to 7.
+* Suppose you have a number that you want to count from 0 to 7.  You place the following assignment statement in a loop, and the variable ```number``` repeatedly counts from 0 to 7.  This does not require any conditional logic.
 
 ```java
 number = (number + 1) % 8;
@@ -109,19 +129,34 @@ During week one we discussed converting numbers to particular bases.  The follow
 
 ```java
 import java.lang.StringBuilder
-public static string convert(int Number, int Base) {
+public static string convert(int number, int base) {
     String answer = “”;
-    while (Number != 0) {
-        digit = Number % Base      // modulo
-        Number = Number / Base // integer division
+    while (number != 0) {
+        digit = number % base      // modulo
+        number = number / base     // integer division
         answer = answer + digit
     }
     return new StringBuilder(answer).reverse().toString();
 ```
 
+Let convert the decimal number 10 to binary using the above algorithm as a sequence of steps.
+
+```java
+int number = 10;
+int digit2to0 = number % 2;  // digit2to0 is 0
+number = number / 2;         // number is 5
+int digit2to1 = number % 2;  // digit2to1 is 1
+number = number / 2;         // number is 2
+int digit2to2 = number % 2;  // digit2to2 is 0
+number = number / 2;         // number is 1
+int digit2to3 = number % 2;  // digit2to3 is 1
+number = number / 2;         // number is 0 so we are done
+String numberInBinary = "" + digit2to3 + digit2to2 + digit2to1 + digit2to0;
+````
+
 ## Integers and Overflow
  
-The following is an interesting Java expression that provides a surprising result due to integer overflow.  Java’s largest positive int is 2<sup>31-1</sup>, which is 2147483647, which you can remember is close to 2 billion.  You can see this using ```Integer.MAX_VALUE``` field.
+The following is an interesting Java expression that provides a surprising result due to integer overflow.  Java’s largest positive int is 2<sup>31</sup>-1, which is 2147483647, which you can remember as a number close to 2 billion.  The ```Integer.MAX_VALUE``` field contains 2147483647.  The expression ```(int)(Math.pow(2,31)-1)``` evaluates to 2147483647.
 
 ```java
 int oneMillion = 1_000_000;

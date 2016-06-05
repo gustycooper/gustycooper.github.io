@@ -10,9 +10,7 @@ permalink: /mydoc_3_random/
 
 ## Java Random
 
-## Random Generator
-
-We can also use a ```Random``` class to generate a random number.    The ```Random``` class is in the ```java.util``` package so you have to ```import java.util.Random```.  The following code snippet demonstrates how to create a variable of type ```Random```, allocate a ```Random``` object, and call the methods.  We study the details of objects and classes in [Simple Objects](/gustycooper.github.io/mydoc_2_simple_objects). 
+We have used ```Math.random``` to generate a random numbers.  In this section, we learn the ```Random``` class, which can be used to generate random numbers. To do this we have to declare a variable of type ```Random```, allocate a ```Random``` object, and then call instance methods.   The ```Random``` class is in the ```java.util``` package so you have to ```import java.util.Random```.  The following code snippet demonstrates how to create a variable of type ```Random```, allocate a ```Random``` object, and call the methods.  
 
 ```java
 import java.util.Random;  // must be at the top of your .java file
@@ -22,4 +20,6 @@ int i = generator.nextInt(n); // 0 <= i < n
 double x = generator.nextDouble(); // 0 <= x < 1
 ```
 
-You should notice that ```Math.random()``` is a ```static``` method in the ```Math``` class and the ```nextInt(int n)``` and ```nextDouble()``` are methods in a ```Random``` object.  You have to construct a ```Random``` object before you can call those methods.
+```nextInt``` and ```nextDouble``` are ```Random``` object instance methods.  What is the ```Math.random()``` method?  It is a ```static``` method in the ```Math``` class. We will study the differences between instance and static in [Classes and Objects](/gustycooper.github.io/mydoc_5_classes_objects).
+
+Seeding a ```Random``` object results in the same stream of random numbers each time a program is executed.

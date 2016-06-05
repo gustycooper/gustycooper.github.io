@@ -490,17 +490,115 @@ window.location.href = uri;
             
             
             
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_seq_blocks_scope/">Sequential, Blocks, Scope</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_conditional/">Conditional Statements</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_loops/">Loop Statements</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_loop_patterns/">Loop Patterns</a></li>
+            
+            
+            
+            
         </ul>
         
         
     
     <li>
-        <a href="#">Classes and Objects</a>
+        <a href="#">Classes, Objects, and more</a>
         <ul>
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes, Objects, and more</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_stack_heap/">Stack and Heap</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_public_private/">Public and Private</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_instance_static/">Instance and Static</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_this/">This</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_final/">Final</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_passing_parameters/">Passing Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_enumeration_types/">Enumeration Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_subclasses/">Subclasses</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_interface/">Interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_toString_comparable/">toString, comparable</a></li>
             
             
             
@@ -719,151 +817,114 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h2 id="appendix-a-java-language-meta-language-and-tips">Appendix A: Java Language Meta Language and Tips</h2>
+  <h2 id="java-meta-language-and-examples">Java Meta Language and Examples</h2>
 
-<p>The meta-language in this Appendix is from our David Eck’s online textbook.  David has these spread throughout his book.  I have collected them together in an appendix.</p>
+<p>The meta-language in this section is an augmented version of that in David Eck’s online textbook.  I have collected the meta language throughout David’s book, augmented, and reformatted it into this section.</p>
 
-<h2 id="public-static-void-main">public static void main</h2>
+<h2 id="identifiers">Identifiers</h2>
 
-<p>A public static void main() function is usually the entry point of your program.  main(String[] args) has an String array as its argument, where the “command line” arguments are passed as parameters.  For example, if the following is how your program in invoked.</p>
-
-<p>java myProgram one two three</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">arg</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="n">has</span> <span class="err">“</span><span class="n">one</span><span class="err">”</span>
-<span class="n">arg</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">has</span> <span class="err">“</span><span class="n">two</span><span class="err">”</span>
-<span class="n">arg</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">has</span> <span class="err">“</span><span class="n">three</span><span class="err">”</span>
-</code></pre>
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Identifier
+</b>
+<br />
+<pre>
+&lt;identifier&gt; is a sequence of one or more characters
+</pre>
 </div>
 
-<p>For most of our problems, we do not pass command line arguments.  BlueJ allows you to pass parameters.</p>
+<ul>
+  <li><code class="highlighter-rouge">&lt;identifier&gt;</code>s first character must be letter, $, _</li>
+  <li><code class="highlighter-rouge">&lt;identifier&gt;</code>s subsequent characters must be letter, digit, $, _</li>
+  <li><code class="highlighter-rouge">&lt;identifier&gt;</code>s are names for variables, methods, classes, enum</li>
+  <li>Lowecase and uppercase letters are different, which means <code class="highlighter-rouge">Gusty</code> and <code class="highlighter-rouge">gusty</code> are two different identifiers.</li>
+  <li>Any meta language with <strong>name</strong> is an <code class="highlighter-rouge">&lt;identifier&gt;</code>.  For example, <code class="highlighter-rouge">&lt;class-name&gt;</code> and <code class="highlighter-rouge">&lt;type-name&gt;</code> are <code class="highlighter-rouge">&lt;identifier&gt;</code>s.</li>
+</ul>
 
-<p>The following show the syntax of a main() function and a public class that has a main() function.</p>
+<h2 id="expressions">Expressions</h2>
 
-<h2 id="static-void-main-method">static void main method.</h2>
+<p><strong>Expressions</strong> – syntactically correct combination of variables, literals, operators, and method calls that evaluate to a value with a specific type.  The following meta language shows where expressions are found within Java statements</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span>
-</code></pre>
+<h3 id="expressions-within-statements">Expressions within Statements</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Expressions within Statements
+</b>
+<br />
+<pre>
+&lt;variable&gt; = &lt;<font color="red">exp</font>&gt;;  // The assignment operator is part of expressions
+ 
+&lt;<font color="red">exp</font>&gt;;
+
+&lt;methodCall&gt;( &lt;<font color="red">exp</font>&gt;, … , &lt;<font color="red">exp</font>&gt;); // A method call is part of expressions
+x = y + Math.sin(Math.random()); 
+
+if (&lt;<font color="red">boolean-exp</font>&gt;) { &lt;statement-list&gt; }
+
+switch (&lt;<font color="red">exp</font>&gt;) { &lt;switch-cases&gt; }
+
+while (&lt;<font color="red">boolean-exp</font>&gt;) { &lt;statement-list&gt; }
+
+do { &lt;statement-list&gt; } while (&lt;<font color="red">boolean-exp</font>&gt;);
+
+for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp</font>&gt;; &lt;<font color="red">update-exp</font>&gt; )
+    { &lt;statement-list&gt; }
+</pre>
 </div>
 
-<h2 id="program-with-a-static-void-main-method">Program with a static void main method.</h2>
+<h3 id="operator-precedence">Operator Precedence</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="err">&lt;</span><span class="nc">program</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">{</span>
-	<span class="o">&lt;</span><span class="n">optional</span><span class="o">-</span><span class="n">variable</span><span class="o">-</span><span class="n">declarations</span><span class="o">-</span><span class="n">and</span><span class="o">-</span><span class="n">subroutines</span><span class="o">&gt;</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span> 
-	<span class="o">}</span>
-	<span class="o">&lt;</span><span class="n">optional</span><span class="o">-</span><span class="n">variable</span><span class="o">-</span><span class="n">declarations</span><span class="o">-</span><span class="n">and</span><span class="o">-</span><span class="n">subroutines</span><span class="o">&gt;</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<h2 id="simple-variable-declaration">Simple Variable Declaration</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">or</span><span class="o">-</span><span class="n">names</span><span class="o">&gt;;</span>
-
-<span class="kt">int</span> <span class="n">numberOfStudents</span><span class="o">;</span>
-<span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-<span class="kt">double</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
-<span class="kt">boolean</span> <span class="n">isFinished</span><span class="o">;</span>
-<span class="kt">char</span> <span class="n">firstInitial</span><span class="o">,</span> <span class="n">middleInitial</span><span class="o">,</span> <span class="n">lastInitial</span><span class="o">;</span>
-<span class="kt">double</span> <span class="n">principal</span><span class="o">;</span>    <span class="c1">// Amount of money invested.</span>
-<span class="kt">double</span> <span class="n">interestRate</span><span class="o">;</span> <span class="c1">// Rate as a decimal, not percentage.</span>
-</code></pre>
-</div>
-
-<p>You can also assign a value with the declaration.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
-<span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>
-<span class="kt">double</span> <span class="n">myPi</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">;</span>
-</code></pre>
-</div>
-
-<h2 id="array-variable-declaration-and-allocation">Array Variable Declaration and Allocation</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;[]</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">or</span><span class="o">-</span><span class="n">names</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="o">&lt;</span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;[&lt;</span><span class="n">array</span><span class="o">-</span><span class="n">len</span><span class="o">&gt;];</span>
-</code></pre>
-</div>
-
-<p>Declaring an array creates a reference.  You need to create the actual array.  This can be done in two ways: (1) with new or (2) use {} to populate the array when declared.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">A</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">100</span><span class="o">];</span>
-<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="na">length</span> <span class="c1">// x is 100</span>
-<span class="kt">int</span><span class="o">[][]</span> <span class="n">A</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">][</span><span class="mi">7</span><span class="o">];</span>
-<span class="kt">int</span><span class="o">[]</span> <span class="n">B</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span>
-</code></pre>
-</div>
-
-<h2 id="definition-of-an-enum-type">Definition of an enum type</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="o">&lt;</span><span class="kd">enum</span><span class="o">-</span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">{</span> <span class="o">&lt;</span><span class="n">list</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="kd">enum</span><span class="o">-</span><span class="n">values</span><span class="o">&gt;</span> <span class="o">}</span>
-<span class="kd">enum</span> <span class="n">Season</span> <span class="o">{</span> <span class="n">SPRING</span><span class="o">,</span> <span class="n">SUMMER</span><span class="o">,</span> <span class="n">FALL</span><span class="o">,</span> <span class="n">WINTER</span> <span class="o">}</span>
-<span class="n">Season</span> <span class="n">vacation</span><span class="o">;</span>
-<span class="n">vacation</span> <span class="o">=</span> <span class="n">Season</span><span class="o">.</span><span class="na">SUMMER</span><span class="o">;</span>
-</code></pre>
-</div>
-
-<h2 id="method-definition">Method Definition</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">modifiers</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="k">return</span><span class="o">-</span><span class="n">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">method</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">(</span> <span class="o">&lt;</span><span class="n">parameter</span><span class="o">-</span><span class="n">list</span><span class="o">&gt;</span> <span class="o">)</span> <span class="o">{</span>    
-    <span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span>
-<span class="o">&lt;</span><span class="n">modifiers</span><span class="o">&gt;</span> 
-   <span class="kd">public</span> <span class="err">–</span> <span class="n">method</span> <span class="n">may</span> <span class="n">be</span> <span class="n">called</span> <span class="n">from</span> <span class="n">objects</span> <span class="n">or</span> <span class="n">outside</span> <span class="n">of</span> <span class="n">the</span> <span class="kd">class</span>
-   <span class="nc">static</span> <span class="err">–</span> <span class="n">method</span> <span class="n">exists</span> <span class="n">independent</span> <span class="n">of</span> <span class="n">an</span> <span class="n">object</span>
-<span class="o">&lt;</span><span class="k">return</span><span class="o">-</span><span class="n">type</span><span class="o">&gt;</span>
-   <span class="n">any</span> <span class="n">Java</span> <span class="n">type</span>
-<span class="o">&lt;</span><span class="n">parameter</span><span class="o">-</span><span class="n">list</span><span class="o">&gt;</span> 
-   <span class="o">&lt;</span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">parameter</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;,</span> <span class="err">…</span><span class="o">,</span> <span class="o">&lt;</span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">parameter</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
-</code></pre>
-</div>
-
-<h2 id="expressions--operator-precedence">Expressions – Operator Precedence</h2>
+<p>Simple expressions are easy to determine the order of operator evaluation.  Complex expressions should contain parentheses to help the reader understand the order of operator evaluation.</p>
 
 <table>
   <thead>
     <tr>
-      <th>Unary operators</th>
-      <th>++, –, !, unary -, unary +, type-cast</th>
+      <th>Description</th>
+      <th>Operators</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Multiplication and division</td>
-      <td>*,  /,  %</td>
+      <td>Unary</td>
+      <td><code class="highlighter-rouge">++</code> <code class="highlighter-rouge">--</code> <code class="highlighter-rouge">!</code> <code class="highlighter-rouge">unary -</code> <code class="highlighter-rouge">unary +</code> <code class="highlighter-rouge">type-cast</code></td>
     </tr>
     <tr>
-      <td>Addition and subtraction</td>
-      <td>+,-</td>
+      <td>Multiply Divide</td>
+      <td><code class="highlighter-rouge">*</code>  <code class="highlighter-rouge">/</code>  <code class="highlighter-rouge">%</code></td>
     </tr>
     <tr>
-      <td>Relational operators</td>
-      <td>&lt;,&gt;,&lt;=,&gt;=</td>
+      <td>Add Subtract</td>
+      <td><code class="highlighter-rouge">+</code>  <code class="highlighter-rouge">-</code></td>
     </tr>
     <tr>
-      <td>Equality and inequality</td>
-      <td>==, !=</td>
+      <td>Relational</td>
+      <td><code class="highlighter-rouge">&lt;</code>  <code class="highlighter-rouge">&gt;</code>  <code class="highlighter-rouge">&lt;=</code>  <code class="highlighter-rouge">&gt;=</code></td>
+    </tr>
+    <tr>
+      <td>Equality</td>
+      <td><code class="highlighter-rouge">==</code>  <code class="highlighter-rouge">!=</code></td>
     </tr>
     <tr>
       <td>Boolean and</td>
-      <td>&amp;&amp;</td>
+      <td><code class="highlighter-rouge">&amp;&amp;</code></td>
     </tr>
     <tr>
       <td>Boolean or</td>
-      <td>||</td>
+      <td><code class="highlighter-rouge">||</code></td>
     </tr>
     <tr>
-      <td>Conditional operator</td>
-      <td>?:</td>
+      <td>Conditional</td>
+      <td><code class="highlighter-rouge">?:</code></td>
     </tr>
     <tr>
-      <td>Assignment operators</td>
-      <td>=,  +=,  -=,  *=,  /=,  %=</td>
+      <td>Assignment</td>
+      <td><code class="highlighter-rouge">=</code>  <code class="highlighter-rouge">+=</code>  <code class="highlighter-rouge">-=</code>  <code class="highlighter-rouge">*=</code>  <code class="highlighter-rouge">/=</code>  <code class="highlighter-rouge">%=</code></td>
     </tr>
   </tbody>
 </table>
+
+<p>Operators on the same line have the same precedence. When operators of the same precedence are used in an expression without parentheses, unary operators and assignment operators are evaluated right-to-left, while the remaining operators are evaluated left-to-right. You are most likely familiar with left-to-right evaluation.  For example, <code class="highlighter-rouge">x * y / z</code> is evaluated as <code class="highlighter-rouge">(x * y) / z</code>.  For right-to-left evaluation consider multiple assignments.  <code class="highlighter-rouge">i = j = k</code> is evaluated as <code class="highlighter-rouge">i = (j = k)</code>.</p>
 
 <p>Examples:</p>
 
@@ -872,35 +933,54 @@ $('#toc').on('click', 'a', function() {
 </code></pre>
 </div>
 
-<h2 id="conditional-operator">Conditional Operator</h2>
+<h3 id="conditional-expression">Conditional Expression</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;boolean-expression&gt; ? &lt;expression1&gt; : &lt;expression2&gt;
-</code></pre>
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Conditional Expression
+</b>
+<br />
+<pre>
+&lt;boolean-expression&gt; ? &lt;exp1&gt; : &lt;exp2&gt;
+</pre>
 </div>
+
+<ul>
+  <li>The expression evaluates to <exp1> if <boolean-expression> is ```true```.</boolean-expression></exp1></li>
+  <li>The expression evaluates to <exp2> if <boolean-expression> is ```false```.</boolean-expression></exp2></li>
+</ul>
+
+<p>Examples:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="n">next</span> <span class="o">=</span> <span class="o">(</span><span class="n">N</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="o">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
 </code></pre>
 </div>
 
-<h2 id="assignment-statement">Assignment Statement</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;;</span>
-
-<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.07</span><span class="o">;</span>				<span class="kt">int</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">17</span><span class="o">;</span>
-<span class="n">interest</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">*</span> <span class="n">principal</span><span class="o">;</span>		<span class="kt">double</span> <span class="n">X</span><span class="o">;</span>
-<span class="n">test</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>				<span class="kt">short</span> <span class="n">B</span><span class="o">;</span>
-<span class="n">test</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="o">;</span>			<span class="n">X</span> <span class="o">=</span> <span class="n">A</span><span class="o">;</span>  <span class="c1">// OK</span>
-					<span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">;</span>  <span class="c1">// illegal, must cast A</span>
-</code></pre>
-</div>
-
 <h2 id="block">Block</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">{</span>
-	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span> 
-<span class="o">}</span>
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Block
+</b>
+<br />
+<pre>
+{
+&lt;statement-list&gt;;
+}
+</pre>
+</div>
 
-<span class="o">{</span>
+<ul>
+  <li><code class="highlighter-rouge">&lt;statement-list&gt;</code> is zero or more <statement>;</statement></li>
+  <li>Also <code class="highlighter-rouge">&lt;statement-list&gt;</code> is <statement>; ... <statement>;</statement></statement></li>
+  <li>A ; terminates a statement.</li>
+  <li><code class="highlighter-rouge">&lt;statement&gt;</code> is one defined in <a href="/gustycooper.github.io/mydoc_A_exp_statement">Statements</a>
+```java</li>
+</ul>
+
+<p>The following are some example Java blocks.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">{</span>
 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"The answer is "</span><span class="o">);</span>
 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
 <span class="o">}</span>
@@ -915,28 +995,434 @@ $('#toc').on('click', 'a', function() {
 </code></pre>
 </div>
 
-<h2 id="if-statement">If Statement</h2>
+<h2 id="class-declarations">Class Declarations</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span> <span class="o">&lt;</span><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span><span class="o">&gt;</span> <span class="o">)</span>   <span class="c1">// two-way</span>
-	<span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
-<span class="k">else</span>
-	<span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+<p>All Java code exists with a <code class="highlighter-rouge">class</code>.</p>
 
-<span class="k">if</span> <span class="o">(</span> <span class="o">&lt;</span><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span><span class="o">&gt;</span> <span class="o">)</span>   <span class="c1">// one-way</span>
-	<span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+<h3 id="class-declaration">Class Declaration</h3>
 
-<span class="k">if</span> <span class="o">(</span> <span class="o">&lt;</span><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span><span class="o">&gt;</span> <span class="o">)</span> <span class="o">{</span> <span class="c1">// two-way with block</span>
-	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span> 
-<span class="k">else</span> <span class="o">{</span>
-	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span>
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Basic Class Definition
+</b>
+<br />
+<pre>
+public class &lt;class-name&gt; {
+   &lt;declaration-list&gt;
+}
+</pre>
+</div>
 
-<span class="k">if</span> <span class="o">(</span> <span class="o">&lt;</span><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span><span class="o">&gt;</span> <span class="o">)</span> <span class="o">{</span> <span class="c1">// one-way with block</span>
-	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span>
+<ul>
+  <li><code class="highlighter-rouge">&lt;declaration-list&gt;</code> is zero or more <code class="highlighter-rouge">&lt;declaration&gt;</code></li>
+  <li><code class="highlighter-rouge">&lt;declaration&gt;</code> is <code class="highlighter-rouge">&lt;declaration-statement&gt;</code></li>
+  <li><code class="highlighter-rouge">&lt;declaration&gt;</code> is <code class="highlighter-rouge">&lt;method-defintion&gt;</code></li>
+  <li><code class="highlighter-rouge">&lt;declaration&gt;</code> is <code class="highlighter-rouge">&lt;constructor-definition&gt;</code></li>
+  <li>A variable declared at the class level is called <strong>field</strong>.</li>
+</ul>
 
-<span class="k">if</span> <span class="o">(</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="o">)</span> <span class="o">{</span>
+<h3 id="program-declaration">Program Declaration</h3>
+
+<p>Class Declaration with <code class="highlighter-rouge">main</code>.</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Program Declaration
+</b>
+<br />
+<pre>
+public class &lt;class-name&gt; {
+   &lt;declaration-list&gt;
+   public static void main(String[] args) {
+      &lt;statement-list&gt;
+   }
+   &lt;declaration-list&gt;
+}
+</pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;declaration-list&gt;</code> is zero or more <code class="highlighter-rouge">&lt;declaration&gt;</code></li>
+  <li><code class="highlighter-rouge">&lt;declaration&gt;</code> is <code class="highlighter-rouge">&lt;declaration-statement&gt;</code></li>
+  <li><code class="highlighter-rouge">&lt;declaration&gt;</code> is <code class="highlighter-rouge">&lt;method-defintion&gt;</code></li>
+  <li><code class="highlighter-rouge">&lt;declaration&gt;</code> is <code class="highlighter-rouge">&lt;constructor-definition&gt;</code></li>
+  <li><code class="highlighter-rouge">main</code> is the entry point of a program.</li>
+  <li>
+    <p>The “command line” arguments are passed as parameters in the <code class="highlighter-rouge">args</code> parameter. The identifier <code class="highlighter-rouge">args</code> is used by convention.  Any valid Java identifier may be used.  For most of our problems, we do not pass command line arguments.  BlueJ allows you to pass parameters. The following shows a program run from a command line and the values of <code class="highlighter-rouge">args</code>.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">java</span> <span class="n">myProgram</span> <span class="n">one</span> <span class="n">two</span> <span class="n">three</span>
+
+<span class="n">arg</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="n">contains</span> <span class="err">“</span><span class="n">one</span><span class="err">”</span>
+<span class="n">arg</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">contains</span> <span class="err">“</span><span class="n">two</span><span class="err">”</span>
+<span class="n">arg</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">contains</span> <span class="err">“</span><span class="n">three</span><span class="err">”</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h2 id="statements">Statements</h2>
+
+<p><strong>Statements</strong> – unit of execution terminated by a ;  Java has three categories of statements.</p>
+
+<ul>
+  <li><strong>Declaration statement</strong> - discussed in <a href="/gustycooper.github.io/mydoc_1_primitive_types">Primitive Types</a>
+    <ul>
+      <li>double d = 3.4;</li>
+    </ul>
+  </li>
+  <li><strong>Expression Statement</strong>
+    <ul>
+      <li><strong>Assignment expression statement</strong> - discussed in <a href="/gustycooper.github.io/mydoc_2_assignment_expressions">Assignment Expression</a>
+        <ul>
+          <li>d = Math.random();</li>
+        </ul>
+      </li>
+      <li><strong>Increment/decrement expression statement</strong> - discussed in <a href="/gustycooper.github.io/mydoc_2_assignment_expressions">Assignment Expression</a>
+        <ul>
+          <li>i++;</li>
+        </ul>
+      </li>
+      <li><strong>Method call statement</strong> - discussed in <a href="/gustycooper.github.io/mydoc_1a_methods">Methods</a>, <a href="/gustycooper.github.io/mydoc_3_simple_objects">Simple Objects</a>, and <a href="/gustycooper.github.io/mydoc_5_classes_objects">Classes and Objects</a>
+        <ul>
+          <li>mini.addGas(10);</li>
+        </ul>
+      </li>
+      <li><strong>Object creation expression statement</strong> - discussed in <a href="/gustycooper.github.io/mydoc_3_simple_objects">Simple Objects</a> and <a href="/gustycooper.github.io/mydoc_5_classes_objects">Classes and Objects</a>
+        <ul>
+          <li>Car mini = new Car(25);</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Control flow statements</strong> – if, switch, while, do-while, for - discussed in <a href="/gustycooper.github.io/mydoc_4_control_flow">Control Flow</a></li>
+</ul>
+
+<h2 id="declaration-statements">Declaration Statements</h2>
+
+<p>There are several <code class="highlighter-rouge">&lt;declaration-statement&gt;</code>s.  The meta language for each is provided in its own subsection.</p>
+
+<h3 id="variable-declaration-without-expression">Variable Declaration without Expression</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Declaration Statement without Expression
+</b>
+<br />
+<pre>
+&lt;type-name&gt; &lt;variable-name&gt;
+</pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;type-name&gt;</code> can be any primitive or reference type.
+    <ul>
+      <li>Primitive types are <code class="highlighter-rouge">byte</code>, <code class="highlighter-rouge">short</code>, <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">long</code>, <code class="highlighter-rouge">float</code>, <code class="highlighter-rouge">double</code>, <code class="highlighter-rouge">char</code>, or <code class="highlighter-rouge">boolean</code>.</li>
+      <li>Reference types are <code class="highlighter-rouge">String</code>, <code class="highlighter-rouge">Scanner</code>, <code class="highlighter-rouge">Person</code>, <code class="highlighter-rouge">Car</code>, and many more.</li>
+    </ul>
+  </li>
+  <li>Variables declared without <code class="highlighter-rouge">&lt;exp&gt;</code> as part of your declaration are initialized as follows.
+    <ul>
+      <li>numeric variables to 0.</li>
+      <li><code class="highlighter-rouge">char</code> variables to the null character, which is <code class="highlighter-rouge">'\0'</code> or 0.</li>
+      <li><code class="highlighter-rouge">boolean</code> variables to <code class="highlighter-rouge">false</code>.</li>
+      <li>Reference variables are initialized to <code class="highlighter-rouge">null</code>.</li>
+    </ul>
+  </li>
+  <li>You may declare mulitple variables by using a comma to separate them.</li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfPeople</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">k</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">isFinished</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">s</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">firstInitial</span><span class="o">,</span> <span class="n">middleInitial</span><span class="o">,</span> <span class="n">lastInitial</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">principal</span><span class="o">;</span>    <span class="c1">// Amount of money invested.</span>
+<span class="kt">double</span> <span class="n">interestRate</span><span class="o">;</span> <span class="c1">// Rate as a decimal, not percentage.</span>
+</code></pre>
+</div>
+
+<h3 id="variable-declaration-with-expression">Variable Declaration with Expression</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Declaration Statement with Expression
+</b>
+<br />
+<pre>
+&lt;type-name&gt; &lt;variable-name&gt; = &lt;exp&gt;;
+</pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;type-name&gt;</code> can be any primitive type.
+    <ul>
+      <li>Primitive types are <code class="highlighter-rouge">byte</code>, <code class="highlighter-rouge">short</code>, <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">long</code>, <code class="highlighter-rouge">float</code>, <code class="highlighter-rouge">double</code>, <code class="highlighter-rouge">char</code>, or <code class="highlighter-rouge">boolean</code>.</li>
+    </ul>
+  </li>
+  <li>The <code class="highlighter-rouge">&lt;exe&gt;</code> must evaluate to <code class="highlighter-rouge">&lt;type-name&gt;</code>.</li>
+  <li>You may declare and initialize multiple variables by using a comma to separate them.</li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">isFinished</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"Hello"</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">myPi</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h3 id="object-creation-expression-statement">Object Creation Expression Statement</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Object Creation Expression Statement
+</b>
+<br />
+<pre>
+&lt;type-name&gt; &lt;variable-name&gt; = new &lt;type-constructor&gt;(&lt;parameters&gt;);
+</pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;type-name&gt;</code> can be any reference type.
+    <ul>
+      <li>Reference types are <code class="highlighter-rouge">String</code>, <code class="highlighter-rouge">Scanner</code>, <code class="highlighter-rouge">Person</code>, <code class="highlighter-rouge">Car</code>, and many more.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>
+<span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">"Gusty"</span><span class="o">,</span><span class="mi">22</span><span class="o">),</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">"Emily"</span><span class="o">,</span><span class="mi">25</span><span class="o">);</span>
+<span class="n">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h3 id="enum-declaration">enum Declaration</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - enum Declaration
+</b>
+<br />
+<pre>
+enum &lt;enum-type-name&gt; {&lt;list-of-enum-values&gt;}
+</pre>
+</div>
+
+<p>Examples.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="n">Season</span> <span class="o">{</span> <span class="n">SPRING</span><span class="o">,</span> <span class="n">SUMMER</span><span class="o">,</span> <span class="n">FALL</span><span class="o">,</span> <span class="n">WINTER</span> <span class="o">}</span>
+<span class="n">Season</span> <span class="n">vacation</span><span class="o">;</span>
+<span class="n">vacation</span> <span class="o">=</span> <span class="n">Season</span><span class="o">.</span><span class="na">SUMMER</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h3 id="array-declaration">Array Declaration</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Array Declarartion Statement
+</b>
+<br />
+<pre>
+&lt;type-name&gt;[] &lt;variable-name&gt;;
+&lt;type-name&gt;[] &lt;variable-name&gt; = new &lt;type-name&gt;[&lt;array-len&gt;];
+&lt;type-name&gt;[] &lt;variable-name&gt; = {&lt;exp&gt;, ... , &lt;exp&gt;};
+</pre>
+</div>
+
+<p>Declaring an array creates a reference.  You need to create the actual array.  This can be done at the time of declaration using the {} with a list of expressions that evaluate to the <code class="highlighter-rouge">&lt;type-name&gt;</code>.  This can be done at the time or declaration or after the declaration using <code class="highlighter-rouge">new</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">100</span><span class="o">];</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="c1">// x is 100</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">][</span><span class="mi">7</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span>
+<span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">100</span><span class="o">];</span>
+</code></pre>
+</div>
+
+<h2 id="methdod-definition-and-call">Methdod Definition and Call</h2>
+
+<h3 id="method-definition">Method Definition</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Method Definition
+</b>
+<br />
+<pre>
+&lt;modifiers&gt; &lt;return-type&gt; &lt;method-name&gt; ( &lt;formal-parameter-list&gt; ) {    
+    &lt;statement-list&gt;
+}
+&lt;modifiers&gt; 
+   public – method may be called from objects or outside of the class
+   static – method exists independent of an object
+&lt;method-name&gt;
+   any Java identifier
+&lt;return-type&gt;
+   any Java type or void
+   void is for a method that does not return a value
+&lt;formal-parameter-list&gt; 
+   &lt;type-name&gt; &lt;formal-parameter-name&gt;, ..., &lt;type-name&gt; &lt;formal-parameter-name&gt; 
+&lt;type-name&gt;
+   any Java type
+&lt;formal-parameter-name&gt;
+   any Java identifier
+&lt;statement-list&gt;
+   &lt;statement&gt;; ... &lt;statement&gt;; 
+   each statement is terminated with a ;
+</pre>
+</div>
+
+<p>The formal-parameter-list is a sequence of variable declarations separated by commas.  A formal parameter is a variable.  The type of the actual parameter must match that of the formal parameter.  The value of the actual parameter is copied into the formal parameter when the method is called.</p>
+
+<p>A method definition has a block with a sequence of statements.  The method block may contain inner blocks.  The top-level meta language for a method defintion could have been written as follows to emphaise a method block.</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Method Definition with Emphasized Block
+</b>
+<br />
+<pre>
+&lt;modifiers&gt; &lt;return-type&gt; &lt;method-name&gt; ( &lt;formal-parameter-list&gt; ) &lt;method-block&gt;
+
+&lt;method-block&gt;
+   { &lt;statement-list&gt; }
+</pre>
+</div>
+
+<h3 id="constructor-definition">Constructor Definition</h3>
+
+<p>A constructor definition is like a method defintion except</p>
+
+<ul>
+  <li>The <code class="highlighter-rouge">&lt;return-type&gt;</code> is omitted.</li>
+  <li>The <code class="highlighter-rouge">&lt;constructor-name&gt;</code> must match the <code class="highlighter-rouge">&lt;class-name&gt;</code>.</li>
+</ul>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Constructor Definition
+</b>
+<br />
+<pre>
+&lt;modifiers&gt; &lt;constructor-name&gt; ( &lt;formal-parameter-list&gt; ) {    
+    &lt;statement-list&gt;
+}
+</pre>
+</div>
+
+<h3 id="method-call-statement">Method Call Statement</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Method Call Statement
+</b>
+<br />
+<pre>
+&lt;method-name&gt; ( &lt;actual-parameter-list&gt; )
+&lt;method-name&gt;
+   any Java identifier that matches the name of a defined method
+&lt;actual-parameter-list&gt; 
+   &lt;actual-parameter-exp&gt;, ..., &lt;actual-parameter-exp&gt; 
+&lt;actual-parameter-exp&gt;
+   any Java expression that evaluates to the type of the corresponding actual parameter
+</pre>
+</div>
+
+<p>The actual-parameter-list is a list of expressions separated by commas.  Each actual parameter expression must evaluate to the type of its corresponding formal parameter.</p>
+
+<h2 id="assignment-statements">Assignment Statements</h2>
+
+<p>The most used statement in programming is an assignment statement.  Everyone is familiar with assignment statements, and we have used several assignment statements in discussions prior to this.  The meta language for assignment statement is as follows.</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Assignment Statements
+</b>
+<br />
+<pre>
+&lt;variable-name&gt; = &lt;exp&gt;;
+&lt;variable-name&gt; += &lt;exp&gt;;
+&lt;variable-name&gt; -= &lt;exp&gt;;
+&lt;variable-name&gt; *= &lt;exp&gt;;
+&lt;variable-name&gt; /= &lt;exp&gt;;
+&lt;variable-name&gt; %= &lt;exp&gt;;
+&lt;variable-name&gt;++;
+++&lt;variable-name&gt;;
+&lt;variable-name&gt;--;
+--&lt;variable-name&gt;;
+</pre>
+</div>
+
+<ul>
+  <li>= is the assignment operator
+    <ul>
+      <li>The assignment operator is just like the other operators.</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">&lt;variable-name&gt;</code> is a variable that has previously been declared.</li>
+  <li><code class="highlighter-rouge">&lt;exp&gt;</code> evaluates to the same type as <code class="highlighter-rouge">&lt;variable-name&gt;</code></li>
+</ul>
+
+<p>The following are some example Java assignment statements where in each case the <code class="highlighter-rouge">&lt;exp&gt;</code> is simply a literal.  You understand expressions from your previous study.  We will study the details of expressions in <a href="/gustycooper.github.io/mydoc_2_expressions">Expressions</a>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span> 
+<span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+<span class="n">x</span> <span class="o">/=</span> <span class="mf">3.0</span><span class="o">;</span>       
+<span class="n">i</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>
+<span class="n">i</span><span class="o">++;</span>
+<span class="o">--</span><span class="n">i</span><span class="o">;</span>    
+<span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>  <span class="c1">// declares l and assigns it a value</span>
+<span class="n">String</span> <span class="n">s</span><span class="o">;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s">"Silly"</span><span class="o">;</span>
+<span class="n">s</span> <span class="o">+=</span> <span class="s">" Gusty"</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">c</span><span class="o">;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="sc">'c'</span><span class="o">;</span>
+</code></pre>
+</div>
+
+<h2 id="control-flow-statements">Control Flow Statements</h2>
+
+<h3 id="if-statement">If Statement</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - If Statement
+</b>
+<br />
+<pre>
+if ( &lt;boolean-expression&gt; ) // two-way
+   &lt;statement1&gt;;
+else
+   &lt;statement2&gt;;
+
+if ( &lt;boolean-expression&gt; ) // one-way
+   &lt;statement&gt;;
+
+if ( &lt;boolean-expression&gt; ) { // two-way with block
+   &lt;statement-list&gt;
+}
+else {
+   &lt;statement-list&gt;
+}
+
+if ( &lt;boolean-expression&gt; ) { // one-way with block
+   &lt;statement-list&gt;
+}
+</pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="o">)</span> <span class="o">{</span>
 	<span class="kt">int</span> <span class="n">temp</span><span class="o">;</span>	<span class="c1">// A temporary variable for use in this block.</span>
 	<span class="n">temp</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>	<span class="c1">// Save a copy of the value of x in temp.</span>
 	<span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>	<span class="c1">// Copy the value of y into x.</span>
@@ -951,91 +1437,47 @@ $('#toc').on('click', 'a', function() {
 </code></pre>
 </div>
 
-<h2 id="while-loop-statement--may-not-execute-loop-body">While Loop Statement – may not execute loop body</h2>
+<h3 id="switch-statement">Switch Statement</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="o">(&lt;</span><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span><span class="o">&gt;)</span>
-	<span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
-</code></pre>
+<p>A switch statement is like a multi-way if statement.</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Switch Statement
+</b>
+<br />
+<pre>
+switch (&lt;expression&gt;) { 
+   case &lt;constant-1&gt;:
+      &lt;statement-list1&gt;
+      break;		// required or flow goes to next case
+   case &lt;constant-2&gt;:
+      &lt;statement-list2 &gt; 
+      break;
+     .
+     . // (more cases) 
+     .
+   case &lt;constant-N&gt;: 
+      &lt;statement-listN&gt; 
+      break;
+   default:  // optional default case
+      &lt;statement-listN1&gt;
+} // end of switch statement
+</pre>
 </div>
 
-<p>Since the statement can be, and usually is, a block, most while loops have the form:</p>
+<ul>
+  <li><code class="highlighter-rouge">&lt;expression&gt;</code> must evaluate to <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">short</code>, <code class="highlighter-rouge">byte</code>, <code class="highlighter-rouge">char</code>, or <code class="highlighter-rouge">String</code>.</li>
+  <li>Multiple <code class="highlighter-rouge">case</code>s can be used.  The following is an example.
+<code class="highlighter-rouge">java
+case 1: case 2: case 3:
+   i = 10;
+   break;
+</code></li>
+  <li>The <code class="highlighter-rouge">break</code> is required to cause flow to the end of the <code class="highlighter-rouge">switch</code>; otherwise, flow continued with the next <code class="highlighter-rouge">case</code>.</li>
+</ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="o">(&lt;</span><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span> <span class="o">&gt;)</span> <span class="o">{</span> 
-	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span>
-<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>                <span class="c1">// The number to be printed.</span>
-<span class="k">while</span><span class="o">(</span><span class="n">number</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">){</span>               <span class="c1">//Keep going as long as number is &lt;6.</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
-	<span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>     <span class="c1">// Go on to the next number.</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<h2 id="do-while-statement--executes-loop-body-at-least-one-time">Do While Statement – executes loop body at least one time</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">do</span>
-	<span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
-<span class="k">while</span> <span class="o">(</span> <span class="o">&lt;</span><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span><span class="o">&gt;</span> <span class="o">);</span>
-
-<span class="k">do</span> <span class="o">{</span>
-	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span> <span class="k">while</span> <span class="o">(</span> <span class="o">&lt;</span><span class="kt">boolean</span><span class="o">-</span><span class="n">expression</span><span class="o">&gt;</span> <span class="o">);</span>
-</code></pre>
-</div>
-
-<h2 id="for-loop-statement">For Loop Statement</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span> <span class="o">&lt;</span><span class="n">initialization</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">continuation</span><span class="o">-</span><span class="n">condition</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">update</span><span class="o">&gt;</span> <span class="o">)</span> 	<span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
-
-<span class="k">for</span> <span class="o">(</span> <span class="o">&lt;</span><span class="n">initialization</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">continuation</span><span class="o">-</span><span class="n">condition</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">update</span><span class="o">&gt;</span> <span class="o">)</span> <span class="o">{</span> 	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span>
-
-<span class="c1">// Typical counting loop</span>
-<span class="k">for</span><span class="o">(&lt;</span><span class="n">variable</span><span class="o">&gt;=&lt;</span><span class="n">min</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;&lt;=&lt;</span><span class="n">max</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;++)</span> <span class="o">{</span> 
-	<span class="o">&lt;</span><span class="n">statements</span> <span class="o">&gt;</span>
-<span class="o">}</span>
-
-<span class="k">for</span><span class="o">(</span><span class="n">N</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">N</span><span class="o">&lt;=</span><span class="mi">10</span><span class="o">;</span> <span class="n">N</span><span class="o">++)</span> 
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">N</span> <span class="o">);</span>
-</code></pre>
-</div>
-
-<h2 id="break-and-continue-statements">Break and Continue Statements</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">break</span><span class="o">;</span> 	<span class="c1">// break out of loop and continue after the loop</span>
-<span class="k">continue</span><span class="o">;</span>	<span class="c1">// go back to beginning of loop</span>
-
-<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// looks like it will run forever! 	System.out.print("Enter a positive number: ");</span>
-	<span class="n">N</span> <span class="o">=</span> <span class="n">TextIO</span><span class="o">.</span><span class="na">getlnInt</span><span class="o">();</span>
-	<span class="k">if</span><span class="o">(</span><span class="n">N</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="c1">//the input value is OK, so jump out of loop</span>
-		<span class="k">break</span><span class="o">;</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Your answer must be &gt; 0."</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<p>// continue here after break</p>
-
-<h2 id="switch-statement--like-a-multi-way-else">Switch Statement – like a multi-way else</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">switch</span> <span class="o">(&lt;</span><span class="n">expression</span> <span class="o">&gt;)</span> <span class="o">{</span> 
-   <span class="k">case</span> <span class="o">&lt;</span><span class="n">constant</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;:</span>
-      <span class="o">&lt;</span><span class="n">statements</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;</span>
-      <span class="k">break</span><span class="o">;</span>		<span class="c1">// required or flow goes to next case</span>
-   <span class="k">case</span> <span class="o">&lt;</span><span class="n">constant</span><span class="o">-</span><span class="mi">2</span><span class="o">&gt;:</span>
-      <span class="o">&lt;</span><span class="n">statements</span><span class="o">-</span><span class="mi">2</span> <span class="o">&gt;</span> 
-      <span class="k">break</span><span class="o">;</span>
-     <span class="o">.</span>
-     <span class="o">.</span> <span class="c1">// (more cases) </span>
-     <span class="o">.</span>
-   <span class="k">case</span> <span class="o">&lt;</span><span class="n">constant</span><span class="o">-</span><span class="n">N</span><span class="o">&gt;:</span> 
-      <span class="o">&lt;</span><span class="n">statements</span><span class="o">-</span><span class="n">N</span> <span class="o">&gt;</span> 
-      <span class="k">break</span><span class="o">;</span>
-   <span class="k">default</span><span class="o">:</span>  <span class="c1">// optional default case</span>
-      <span class="o">&lt;</span><span class="n">statements</span><span class="o">-(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span> <span class="o">&gt;</span>
-<span class="o">}</span> <span class="c1">// end of switch statement</span>
-
-<span class="n">String</span> <span class="n">computerMove</span><span class="o">;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">computerMove</span><span class="o">;</span>
 <span class="k">switch</span> <span class="o">(</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mi">3</span><span class="o">*</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())</span> <span class="o">)</span> <span class="o">{</span>
    <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
       <span class="n">computerMove</span> <span class="o">=</span> <span class="s">"Rock"</span><span class="o">;</span>
@@ -1051,31 +1493,158 @@ $('#toc').on('click', 'a', function() {
 </code></pre>
 </div>
 
-<h2 id="try-catch-statement">Try-catch Statement</h2>
+<h3 id="while-loop-statement">While Loop Statement</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
-   <span class="o">&lt;</span><span class="n">statements</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span> 
-<span class="o">}</span>
-<span class="k">catch</span> <span class="o">(</span> <span class="o">&lt;</span><span class="n">exception</span><span class="o">-</span><span class="kd">class</span><span class="err">-</span><span class="nc">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">-</span><span class="n">name</span> <span class="o">&gt;</span> <span class="o">)</span> <span class="o">{</span>
-   <span class="o">&lt;</span><span class="n">statements</span><span class="o">-</span><span class="mi">2</span> <span class="o">&gt;</span>
-<span class="o">}</span>
+<p>A while loop will execute loop body zero times if the <code class="highlighter-rouge">&lt;boolean-expression&gt;</code> is false the first time.</p>
 
-<span class="kt">double</span> <span class="n">x</span><span class="o">;</span>
-<span class="k">try</span> <span class="o">{</span>
-   <span class="n">x</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
-   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">"The number is "</span> <span class="o">+</span> <span class="n">x</span> <span class="o">);</span>
-<span class="o">}</span>
-   <span class="k">catch</span> <span class="o">(</span> <span class="n">NumberFormatException</span> <span class="n">e</span> <span class="o">)</span> <span class="o">{</span>
-   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">"Not a legal number."</span> <span class="o">);</span>
-   <span class="n">x</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">NaN</span><span class="o">;</span>
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - While Statement
+</b>
+<br />
+<pre>
+while ( &lt;boolean-expression&gt; )  // one statement
+   &lt;statement1&gt;;
+
+while ( &lt;boolean-expression&gt; ) { // block
+   &lt;statement-list&gt;
+}
+
+</pre>
+</div>
+
+<p>Most while loops have the block format.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>                <span class="c1">// The number to be printed.</span>
+<span class="k">while</span><span class="o">(</span><span class="n">number</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">){</span>               <span class="c1">//Keep going as long as number is &lt;6.</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+	<span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>     <span class="c1">// Go on to the next number.</span>
 <span class="o">}</span>
 </code></pre>
 </div>
 
-<h2 id="empty-statement">Empty Statement</h2>
+<h3 id="do-while-statement">Do While Statement</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">;</span>  <span class="c1">// empty statement</span>
-<span class="k">if</span> <span class="o">(</span> <span class="n">done</span> <span class="o">)</span>
+<p>A do while loop will execute the loop body at least one time.</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Do-While Statement
+</b>
+<br />
+<pre>
+do
+   &lt;statement1&gt;;
+while ( &lt;boolean-expression&gt; ); // one statement
+
+do {
+   &lt;statement-list&gt;  // block
+} while ( &lt;boolean-expression&gt; ) 
+
+</pre>
+</div>
+
+<h3 id="for-loop-statement">For Loop Statement</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - For Loop Statement
+</b>
+<br />
+<pre>
+for ( &lt;initialization&gt;; &lt;continuation-condition&gt;; &lt;update&gt; ) 	
+   &lt;statement&gt;
+
+for ( &lt;initialization&gt;; &lt;continuation-condition&gt;; &lt;update&gt; ) { 	
+   &lt;statement-list&gt;
+}
+</pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Typical counting loop</span>
+<span class="k">for</span><span class="o">(&lt;</span><span class="n">variable</span><span class="o">&gt;=&lt;</span><span class="n">min</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;&lt;=&lt;</span><span class="n">max</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;++)</span> <span class="o">{</span> 
+	<span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="n">list</span><span class="o">&gt;</span>
+<span class="o">}</span>
+
+<span class="k">for</span><span class="o">(</span><span class="n">N</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">N</span><span class="o">&lt;=</span><span class="mi">10</span><span class="o">;</span> <span class="n">N</span><span class="o">++)</span> 
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">N</span> <span class="o">);</span>
+</code></pre>
+</div>
+
+<h3 id="break-and-continue-statements">Break and Continue Statements</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Break and Continue Statements
+</b>
+<br />
+<pre>
+break;
+continue;
+</pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">break</code> - breaks out of a loop, continuing flow with the statement following the loop.</li>
+  <li><code class="highlighter-rouge">break</code> - breaks out of a <code class="highlighter-rouge">switch</code>, continuing flow with the statement following the <code class="highlighter-rouge">switch</code>.</li>
+  <li><code class="highlighter-rouge">continue</code> - goes back to the beginning of a loop, skipping any statements between <code class="highlighter-rouge">continue</code> and the end of the loop.</li>
+</ul>
+
+<p>Examples:
+```java</p>
+
+<p>while (true) { // looks like it will run forever! 	System.out.print(“Enter a positive number: “);
+	N = TextIO.getlnInt();
+	if(N&gt;0) //the input value is OK, so jump out of loop
+		break;
+	System.out.println(“Your answer must be &gt; 0.”);
+}
+// continue here after break
+```</p>
+
+<h3 id="try-catch-statement">Try-catch Statement</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Try-catch Statement
+</b>
+<br />
+<pre>
+try {
+   &lt;statement-list1&gt; 
+}
+catch ( &lt;exception-class-name&gt; &lt;variable-name &gt; ) {
+   &lt;statement-list2&gt;
+}
+</pre>
+</div>
+
+<p>Examples:
+<code class="highlighter-rouge">java
+double x;
+try {
+   x = Double.parseDouble(str);
+   System.out.println( "The number is " + x );
+}
+   catch ( NumberFormatException e ) {
+   System.out.println( "Not a legal number." );
+   x = Double.NaN;
+}
+</code></p>
+
+<h3 id="empty-statement">Empty Statement</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<b>
+Meta Language - Empty Statement
+</b>
+<br />
+<pre>
+;  // empty statement
+</pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span> <span class="n">done</span> <span class="o">)</span>
    <span class="o">;</span>
 <span class="k">else</span>
    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Not</span> <span class="n">done</span> <span class="n">yet</span><span class="o">.</span><span class="err">”</span><span class="o">)</span>
@@ -1104,7 +1673,7 @@ $('#toc').on('click', 'a', function() {
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: May 25, 2016
+<p>Page last updated: June 3, 2016; Site last generated: Jun 5, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

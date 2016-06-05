@@ -8,12 +8,13 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_2_relational_boolean_expressions/
 ---
 
-## Relational Expressions ([Eck 2.5](http://math.hws.edu/javanotes/c2/s5.html))
+## Relational and ```boolean``` Expressions ([Eck 2.5](http://math.hws.edu/javanotes/c2/s5.html))
 
 **Expressions** – syntactically correct combination of variables, literals, operators, and method calls that evaluate to a value with a specific type.  The following meta language shows where expressions are found within Java statements
 
-**Relational expressions** compare numeric values using relational operators and result in a ```boolean``` value.  
+**Relational expressions** compare numeric operands using relational operators and result in a ```boolean``` value.  
 
+**```boolean``` expressions** perform Boolean operations on ```boolean``` operands using ```boolean``` operators.
 
 ## Relational and Boolean Operator Precedence
 
@@ -31,42 +32,49 @@ Add Subtract                | ```+```  ```-```
 Conditional                 | ```?:```
 Assignment                  | ```=```  ```+=```  ```-=```  ```*=```  ```/=```  ```%=```
 
-
 Operators on the same line have the same precedence. When operators of the same precedence are strung together in the absence of parentheses, the relational operators are evlauated left-to-right.  For example, ```A<B>C``` means ```(A<B)>C```.
 
+The precedence allows you to mix relational operators and ```boolean``` operators in an expression without parentheses.  For example,
 
-## Relational Operators:  >  >=  <  <=  ==  !=
+```java
+x < y && y > z
+```
 
-NOTE: = is assignment, == is comparison, assignment is an operator that can be used in expressions, but it is wise to simply use it as part of an assignment statement.
+peforms the ```&&``` operation after the relational operations.
+
+## Relational Operators:  ```>  >=  <  <=  ==  !=```
+
+NOTE: ```=``` is assignment, ```==``` is comparison, assignment is an operator that can be used in expressions, but it is wise to simply use it as part of an assignment statement.
 
 ## Truth Tables
 
 The truth tables for ```boolean``` Operators are given as follows.  Note the last column !P applies the not operator to the first column P.
 
-P | Q | && | \|\| | \!P
-- | - | - | - | -
-F | F | F | F | T
-F | T | F | T | T
-T | F | F | T | F
-T | T | T | T | F
+ P  |  Q  |  && | \|\| | \!P
+--- | --- | --- | --- | ---
+ F  |  F  |  F  |  F  |  T
+ F  |  T  |  F  |  T  |  T
+ T  |  F  |  F  |  T  |  F
+ T  |  T  |  T  |  T  |  F
 
-## Boolean Operators – And: &&     Or: ||     Not: !
+## Boolean Operators – And: ```&&```     Or: ```||```     Not: ```!```
 
-A ```boolean``` expression is an expression that evaluates to ```true``` or ```false```.  To support ```boolean``` expressions, Java has an primitive ```boolean``` data type and two literals ```true``` and ```false```.   For example, I can create the following variable.
+A ```boolean``` expression is an expression that evaluates to ```true``` or ```false```.  To support ```boolean``` expressions, Java has the primitive ```boolean``` data type and two literals ```true``` and ```false```.   For example, I can create the following variable.
 
 ```java
 boolean b = true;
 ```
 
 There are several ways to construct an expression that evaluates to ```true``` or ```false```.  
-* I can use the relational operators.  The following are examples.
+
+* I can use the relational operators to compare numeric operands.  The following are examples.
 
 ```java
 x < 10
 a != b
 ```
 
-* I can use the ```boolean``` operators.  The following are exmaples.
+* I can use the ```boolean``` operators on ```boolean``` operands.  The following are exmaples.
 
 ```java
 b1 && b2 || b3

@@ -490,17 +490,115 @@ window.location.href = uri;
             
             
             
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_seq_blocks_scope/">Sequential, Blocks, Scope</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_conditional/">Conditional Statements</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_loops/">Loop Statements</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_4_loop_patterns/">Loop Patterns</a></li>
+            
+            
+            
+            
         </ul>
         
         
     
     <li>
-        <a href="#">Classes and Objects</a>
+        <a href="#">Classes, Objects, and more</a>
         <ul>
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes and Objects</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes, Objects, and more</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_stack_heap/">Stack and Heap</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_public_private/">Public and Private</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_instance_static/">Instance and Static</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_this/">This</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_final/">Final</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_passing_parameters/">Passing Parameters</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_enumeration_types/">Enumeration Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_subclasses/">Subclasses</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_interface/">Interface</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_toString_comparable/">toString, comparable</a></li>
             
             
             
@@ -855,6 +953,35 @@ $('#toc').on('click', 'a', function() {
 </code></pre>
 </div>
 
+<h2 id="formatted-output">Formatted Output</h2>
+
+<p>Section 2.4.1 of David Eck’s book does a fine job explaining formatted output.  This section presents another example of formatted output that I modeled after one from the Udacity course.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">mnmsPerDay</span> <span class="o">=</span> <span class="mi">142</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">cerealBoxesPerDay</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%6d"</span><span class="o">,</span> <span class="n">cookiesPerDay</span><span class="o">);</span> <span class="c1">// 6 chrs wide</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%4.2f"</span><span class="o">,</span> <span class="n">cerealBoxesPerDay</span><span class="o">);</span> <span class="c1">// 2 dec places, 4 wide</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s"</span><span class="o">,</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">);</span> <span class="c1">// string format</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">gustyMnMsPerDay</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+    <span class="kt">double</span> <span class="n">gustyCerealPerDay</span> <span class="o">=</span> <span class="o">.</span><span class="mi">06</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">emilyMnMsPerDay</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kt">double</span> <span class="n">emilyCerealPerDay</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"  M&amp;Ms  | cereal | name"</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"------------------------"</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%8d|%8.2f|%s"</span><span class="o">,</span> <span class="n">gustyMnMsPerDay</span><span class="o">,</span>   
+                       <span class="n">gustyCerealPerDay</span><span class="o">,</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%8d|%8.2f|%s"</span><span class="o">,</span> <span class="n">emilyMnMsPerDay</span><span class="o">,</span> 
+                       <span class="n">emilyCerealPerDay</span><span class="o">,</span> <span class="err">“</span><span class="n">Emily</span><span class="err">”</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>See folder formattedOutput</p>
+
 
 
 <div class="tags">
@@ -881,7 +1008,7 @@ $('#toc').on('click', 'a', function() {
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: May 25, 2016
+<p>Page last updated: May 1, 2016; Site last generated: Jun 5, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>
