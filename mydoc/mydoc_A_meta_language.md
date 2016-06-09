@@ -14,7 +14,7 @@ The meta-language in this section is an augmented version of that in David Eckâ€
 
 ## Identifiers
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Identifier
 </b>
@@ -36,7 +36,7 @@ Meta Language - Identifier
 
 ### Expressions within Statements
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Expressions within Statements
 </b>
@@ -90,7 +90,7 @@ x = x++ // does not change x
 
 ### Conditional Expression
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Conditional Expression
 </b>
@@ -112,7 +112,7 @@ next = (N % 2 == 0) ? (N/2) : (3*N+1);
 
 ## Block
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Block
 </b>
@@ -153,7 +153,7 @@ All Java code exists with a ```class```.
 
 ### Class Declaration
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Basic Class Definition
 </b>
@@ -176,7 +176,7 @@ public class &lt;class-name&gt; {
 
 Class Declaration with ```main```.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Program Declaration
 </b>
@@ -230,7 +230,7 @@ There are several ```<declaration-statement>```s.  The meta language for each is
 
 ### Variable Declaration without Expression
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Declaration Statement without Expression
 </b>
@@ -264,7 +264,7 @@ double interestRate; // Rate as a decimal, not percentage.
 
 ### Variable Declaration with Expression
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Declaration Statement with Expression
 </b>
@@ -294,7 +294,7 @@ double myPi = Math.PI;
 
 ### Object Creation Expression Statement
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Object Creation Expression Statement
 </b>
@@ -317,7 +317,7 @@ Scanner in = new Scanner(System.in);
 
 ### enum Declaration
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - enum Declaration
 </b>
@@ -337,7 +337,7 @@ vacation = Season.SUMMER;
 
 ### Array Declaration
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Array Declarartion Statement
 </b>
@@ -363,7 +363,7 @@ b = new int[100];
 
 ### Method Definition
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Method Definition
 </b>
@@ -396,7 +396,7 @@ The formal-parameter-list is a sequence of variable declarations separated by co
 
 A method definition has a block with a sequence of statements.  The method block may contain inner blocks.  The top-level meta language for a method defintion could have been written as follows to emphaise a method block.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Method Definition with Emphasized Block
 </b>
@@ -416,7 +416,7 @@ A constructor definition is like a method defintion except
 * The ```<return-type>``` is omitted.
 * The ```<constructor-name>``` must match the ```<class-name>```.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Constructor Definition
 </b>
@@ -430,7 +430,7 @@ Meta Language - Constructor Definition
 
 ### Method Call Statement
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Method Call Statement
 </b>
@@ -452,7 +452,7 @@ The actual-parameter-list is a list of expressions separated by commas.  Each ac
 
 The most used statement in programming is an assignment statement.  Everyone is familiar with assignment statements, and we have used several assignment statements in discussions prior to this.  The meta language for assignment statement is as follows.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Assignment Statements
 </b>
@@ -497,7 +497,7 @@ c = 'c';
 
 ### If Statement
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - If Statement
 </b>
@@ -544,7 +544,7 @@ else					if (x >= 0)
 
 A switch statement is like a multi-way if statement.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Switch Statement
 </b>
@@ -569,7 +569,7 @@ switch (&lt;expression&gt;) {
 </pre>
 </div>
 
-* ```<expression>``` must evaluate to ```int```, ```short```, ```byte```, ```char```, or ```String```.
+* ```<expression>``` must evaluate to ```int```, ```short```, ```byte```, ```char```, ```String```, or an ```enum``` type.
 * Multiple ```case```s can be used.  The following is an example.
   ```java
   case 1: case 2: case 3:
@@ -598,7 +598,7 @@ System.out.println("The computerâ€™s move is " + computerMove);  // OK!
 
 A while loop will execute loop body zero times if the ```<boolean-expression>``` is false the first time.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - While Statement
 </b>
@@ -628,7 +628,7 @@ while(number<6){               //Keep going as long as number is <6.
 
 A do while loop will execute the loop body at least one time.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Do-While Statement
 </b>
@@ -647,7 +647,7 @@ do {
 
 ### For Loop Statement
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - For Loop Statement
 </b>
@@ -674,7 +674,7 @@ for(N=1; N<=10; N++)
 
 ### Break and Continue Statements
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Break and Continue Statements
 </b>
@@ -703,7 +703,7 @@ while (true) { // looks like it will run forever! 	System.out.print("Enter a pos
 
 ### Try-catch Statement
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Try-catch Statement
 </b>
@@ -733,7 +733,7 @@ try {
 
 ### Empty Statement
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Empty Statement
 </b>

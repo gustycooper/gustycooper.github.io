@@ -52,7 +52,7 @@ As we venture into creating types, we initially create two classes, each in its 
 
 The following is our pattern for creating a ```class``` that defines a type.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
 Programming Pattern
 X. Class for Defining Our Types
@@ -74,7 +74,7 @@ public class OurType {
 
 The following is our pattern for creating a ```class``` that defines a type.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
 Programming Pattern
 X. Class for Testing Our Types

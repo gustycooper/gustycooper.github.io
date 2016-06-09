@@ -54,7 +54,7 @@ Consider a chess player, who has played chess for many years, achieving a level 
 
 We want to fill our memory mansions with programming patterns so that when presented a problem, we can select the next move.  During this course, we will clearly mark programming patterns.  The following is our first programming pattern.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
 Programming Pattern
 1. Main Pattern

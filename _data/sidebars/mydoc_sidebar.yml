@@ -32,12 +32,20 @@ entries:
       url: /mydoc_0_get_started/
       output: web, pdf
 
+    - title: Grand Goal of Course
+      url: /mydoc_0_grand_goal/
+      output: web, pdf
+
     - title: Java Downloads
       url: /mydoc_0_downloads/
       output: web, pdf
 
     - title: How to Use
       url: /mydoc_0_how_to_use/
+      output: web, pdf
+
+    - title: FAQ - Template
+      url: /mydoc_0_faq/
       output: web, pdf
 
     - title: Example Authoring
@@ -164,16 +172,32 @@ entries:
       url: /mydoc_4_seq_blocks_scope/
       output: web, pdf
 
-    - title: Conditional Statements
+    - title: Conditionals - if, switch
       url: /mydoc_4_conditional/
       output: web, pdf
 
-    - title: Loop Statements
+    - title: Sample Code with if, switch
+      url: /mydoc_4_conditional_code/
+      output: web, pdf
+
+    - title: Loops, while, for, do-while
       url: /mydoc_4_loops/
       output: web, pdf
 
     - title: Loop Patterns
       url: /mydoc_4_loop_patterns/
+      output: web, pdf
+
+    - title: Sample Code with loops
+      url: /mydoc_4_loop_code/
+      output: web, pdf
+
+  - title: Debugging
+    output: web, pdf
+    folderitems:
+
+    - title: Debugging
+      url: /mydoc_4a_debugging/
       output: web, pdf
 
   - title: Classes, Objects, and more
@@ -184,8 +208,8 @@ entries:
       url: /mydoc_5_classes_objects/
       output: web, pdf
 
-    - title: Stack and Heap
-      url: /mydoc_5_stack_heap/
+    - title: This
+      url: /mydoc_5_this/
       output: web, pdf
 
     - title: Public and Private
@@ -196,8 +220,8 @@ entries:
       url: /mydoc_5_instance_static/
       output: web, pdf
 
-    - title: This
-      url: /mydoc_5_this/
+    - title: Stack and Heap
+      url: /mydoc_5_stack_heap/
       output: web, pdf
 
     - title: Final

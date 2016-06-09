@@ -20,6 +20,24 @@ The terms classes and objects go hand-in-hand.  You define a type in a Java clas
 String gusty = "Gusty";
 ```  
 
+## Objects and the Wirth Pattern
+
+The Wirth pattern (defined earlier) defines a prgram to be algorithms and data structures.
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br>
+<pre>
+Algorithms + Data Structures = Programs
+</pre>
+</div>
+
+This module on simple objects concentrates upon the Data Structures component.  We want to learn the basics of defining our own times with minimal Algorithms.  Most of the algorithms will be sequential assignment statements, with an occasional conditional expression.
+
+
 ## Objects in the World
 
 We live in a world full of objects.  We have cars, buses, people, clocks, desks, chairs, books, etc.  Each of these objects share two characteristics

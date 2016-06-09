@@ -23,10 +23,23 @@ The primary goal of CPSC 220 is for everyone to learn how to solve problems in J
     * looping steps
     * calling chunks of algorithms that are bottled in a method
   * produce output
-* numbers information in computers
-* characters information in computers
+* numbers as information in computers
+* characters as information in computers
 
 To demonstrate how writing a program is primarily creating algorithms and data structures, [Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth) (a famous computer scientist, who (among other things) created the programming language Pascal) wrote a book titled, Algorithms + Data Structures = Programs.  We have a general idea of algorithms,  which we will tighten into designing and implemeting Java programs, but first we have to begin our journey into data structure.  We begin with Java primitive data types.
+
+We introduct our first Programming Pattern, which is our definition of programs - the title of Niklaus Wirth's book.  We return to this definition throughout the course.  For example, when studying [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) focus on the Data Structures component and studying [Control Flow](/gustycooper.githum.io/mydoc_4_control_flow) focuses on the Algorithms component.
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br>
+<pre>
+Algorithms + Data Structures = Programs
+</pre>
+</div>
 
 ## Variables and Data Types
 
@@ -87,7 +100,7 @@ I suggest that we follow the Java tradition.  You should always select meaningfu
 
 Java primitve data types are ```byte```, ```short```, ```int```, ```long```, ```float```, ```double```, and ```char```.  These are keywords that we will use to declare variables and arrays.  The previous section demonstrated declaring ```byte gusty```.  The meta language for declaring variables of primitvie types is the following.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Java's Declarartion Statement
 </b>

@@ -13,7 +13,7 @@ permalink: /mydoc_A_exp_statements/
 
 **Expressions** – syntactically correct combination of variables, literals, operators, and method calls that evaluate to a value with a specific type.  The following meta language shows where expressions are found within Java statements
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Expressions within Statements
 </b>

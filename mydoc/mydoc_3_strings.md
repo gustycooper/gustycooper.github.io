@@ -18,22 +18,22 @@ We have used ```String```s in early programs.  The following highlights our know
 * A ```String``` literal is a sequence of characters enclosed in the double tic-mark quotation, e.g., ```"Gusty"```.
 * ```String``` variables are declared just like variables of primitive types.
 
-```java
-String s; // declare a String variable
-int i;    // declare a primitive type variable
-String gusty = "Gusty"; 
-int j = 21;
-```
+  ```java
+  String s; // declare a String variable
+  int i;    // declare a primitive type variable
+  String gusty = "Gusty"; 
+  int j = 21;
+  ```
 
 * ```String```s are concatenated with the ```+``` operator, and primitive types are converted to ```String```s when used in concatenation.  A concatenation expression must include at least one operand that is type ```String```.
 
-```java
-String cpsc = "CPSC";
-int twentyTwo = 22;
-String cpsc220 = cpsc + " " + twentyTwo + 0;
-```
+  ```java
+  String cpsc = "CPSC";
+  int twentyTwo = 22;
+  String cpsc220 = cpsc + " " + twentyTwo + 0;
+  ```
 
-In computer programming a string is a collection of readable characters.  For example, “This document is our handout” is a string literal.  String variables are variables that hold strings.  Strings and variables of type String are (probably) the most used literals and data types in programming.  I suppose that if you are creating a mathematical model, numbers may outnumber strings.  
+In computer programming a string is a collection of readable characters.  For example, “This document is our handout” is a ```String``` literal.  ```String``` variables are variables that hold strings.  Strings and variables of type ```String``` are (probably) the most used literals and data types in programming.  I suppose that if you are creating a mathematical model, numbers may outnumber strings.  
 
 ## Java ```String```s - Reference Type and Objects
 
@@ -50,7 +50,7 @@ Recall the meta language for declaring variables is the following.
 
 The meta language for declaring variables of primitvie types is the following.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Java's Declarartion Statement
 </b>
@@ -87,7 +87,7 @@ gustysFriends = friend1.toLowerCase() + " " + friend2.toUpperCase();
 ```
 Notice this is like a normal method call with the variable name prepended.  The following meta language shows a calling a method of an object, where the variable name is preprended.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Object Method Call
 </b>
@@ -149,18 +149,37 @@ The following are some of Java String methods.  In the following examples, s1 an
   * ```s1.charAt(N)```, returns ```char``` – the Nth character in the string where ```s1.charAt(0)``` is 1st, ```s1.charAt(1)``` is 2nd, and so on. The las position is ```s1.length() - 1```.  ```"cat".charAt(1)``` is ```’a’```.  An error occurs if the value of the parameter is less than zero or is greater than or equal to ```s1.length()```.
 * ```int compareTo(String anotherString)``` 
   * ```s1.compareTo(s2)``` is an integer-valued function that compares the two strings. If the strings are equal, the value returned is zero. If s1 is less than s2, the value returned is a number less than zero, and if s1 is greater than s2, the value returned is some number greater than zero. (If both of the strings consist entirely of lower case letters, or if they consist entirely of upper case letters, then “less than” and “greater than” refer to alphabetical order. Otherwise, the ordering is more complicated.)
+  * The ordering of ```String```s is somewhat intuitive.  You compare character by character of two ```String```s until you reach two characters that are different.
+    * A < B
+    * AA < AB
+    * GUSTY < GUTTY
+  * Comparing ```String```s with mixed case, numbers, spaces relies upon the Unicode encoding we studied in [Characters as Information](/gustycooper.github.io/mydoc_1_characters).  You should recall that ```'Z'``` is encoded as 90 and ```'a'``` is incoded as 97.
+    * Z < a
+    * Gusty < gusty
+  * ```"Gusty".compareTo("Gusty")``` returns 0
+  * ```"Gasty".compareTo("Gusty")``` returns negative
+  * ```"Gusty".compareTo("Gasty")``` returns positive
 * ```boolean contains(String s)``` - returns ```true``` if string contains s 
+  * ```"Gusty".contains("us") returns ```true```
 * ```boolean equals(String s)``` - returns ```true``` if string equals s 
   * ```s1.equals(s2)``` returns boolean – ```true``` if ```s1``` and ```s2``` contain the same sequence of characters, and returns false otherwise.
+  * ```"Gusty".equals("Gusty")``` returns ```true```
+  * ```"Gasty".equals("Gusty")``` returns ```false```
 * ```int indexOf(String s [,fromIndex])``` - returns index of ```s``` 
   * ```s1.indexOf(s2)``` returns integer. If ```String s2``` occurs is substring of ```s1```, then the returned value is the starting position of that substring. Otherwise, the returned value is -1. You can also use ```s1.indexOf(ch)``` to search for a ```char, ch```, in ```s1```. To find the first occurrence of x at or after position N, you can use ```s1.indexOf(x,N)```. To find the last occurrence of ```x``` in ```s1```, use ```s1.lastIndexOf(x)```.
-* ```boolean isEmpty()``` - returns true if string is “” 
+* ```boolean isEmpty()``` - returns ```true``` if string is ```""```
+  * ```""```.isEmpty() returns ```true``` 
+  * ```"Hello"```.isEmpty() returns ```false``` 
 * ```int length()``` - returns number of characters in string 
   * ```s1.length()```, returns the number of characters in ```s1```.
+  * ```"1234567".length()``` returns 7.
 * ```String replace(String s, String t)``` - returns string where ```t``` replaces ```s``` 
+  * Replace does not change a ```String```.  Replace creates a new ```String``` object.
+  * ```String newString = "Gusty".replace("us", "1234");``` - ```newString``` is ```"G1234ty"```.
 * ```String substring(int begin)``` - returns substring from begin to length 
-* ```String substring(int begin,int end)``` -returns substring from begin to end 
+* ```String substring(int begin,int end)``` - returns substring from begin to end 
   * s1.substring(N,M)```, returns ```String```, which is the characters of ```s1``` in positions N through M-1, and the character in position M is not included. The method ```s1.substring(N)``` returns the substring of ```s1``` consisting of characters starting at position N up until the end of the string.
+  * ```"Gusty".substring(0,5)``` returns ```"Gusty"```.  You should notice ```'y'``` is in postion 4 - ```"Gusty"```.charAt(4) returns ```'y'```.  Calling ```substring``` with parameters 0 and 5 indicates to get characters from postion 0 through 4.
 * ```char[] toCharArray()``` - returns ```char[]``` of string 
 * ```String toLowerCase()``` - returns lowercase of string 
 * ```String toUpperCase()``` - returns uppercase of string 

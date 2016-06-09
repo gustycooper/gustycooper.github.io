@@ -23,6 +23,13 @@ mydoc_0_get_started:
 
 
  
+mydoc_0_grand_goal:
+  title: "Grand Goal of Course"
+  url: /gustycooper.github.io/mydoc_0_grand_goal/
+  link: <a href="/gustycooper.github.io/mydoc_0_grand_goal/">Grand Goal of Course</a>
+
+
+ 
 mydoc_0_downloads:
   title: "Java Downloads"
   url: /gustycooper.github.io/mydoc_0_downloads/
@@ -34,6 +41,13 @@ mydoc_0_how_to_use:
   title: "How to Use"
   url: /gustycooper.github.io/mydoc_0_how_to_use/
   link: <a href="/gustycooper.github.io/mydoc_0_how_to_use/">How to Use</a>
+
+
+ 
+mydoc_0_faq:
+  title: "FAQ - Template"
+  url: /gustycooper.github.io/mydoc_0_faq/
+  link: <a href="/gustycooper.github.io/mydoc_0_faq/">FAQ - Template</a>
 
 
  
@@ -230,16 +244,23 @@ mydoc_4_seq_blocks_scope:
 
  
 mydoc_4_conditional:
-  title: "Conditional Statements"
+  title: "Conditionals - if, switch"
   url: /gustycooper.github.io/mydoc_4_conditional/
-  link: <a href="/gustycooper.github.io/mydoc_4_conditional/">Conditional Statements</a>
+  link: <a href="/gustycooper.github.io/mydoc_4_conditional/">Conditionals - if, switch</a>
+
+
+ 
+mydoc_4_conditional_code:
+  title: "Sample Code with if, switch"
+  url: /gustycooper.github.io/mydoc_4_conditional_code/
+  link: <a href="/gustycooper.github.io/mydoc_4_conditional_code/">Sample Code with if, switch</a>
 
 
  
 mydoc_4_loops:
-  title: "Loop Statements"
+  title: "Loops, while, for, do-while"
   url: /gustycooper.github.io/mydoc_4_loops/
-  link: <a href="/gustycooper.github.io/mydoc_4_loops/">Loop Statements</a>
+  link: <a href="/gustycooper.github.io/mydoc_4_loops/">Loops, while, for, do-while</a>
 
 
  
@@ -247,6 +268,22 @@ mydoc_4_loop_patterns:
   title: "Loop Patterns"
   url: /gustycooper.github.io/mydoc_4_loop_patterns/
   link: <a href="/gustycooper.github.io/mydoc_4_loop_patterns/">Loop Patterns</a>
+
+
+ 
+mydoc_4_loop_code:
+  title: "Sample Code with loops"
+  url: /gustycooper.github.io/mydoc_4_loop_code/
+  link: <a href="/gustycooper.github.io/mydoc_4_loop_code/">Sample Code with loops</a>
+
+
+
+
+ 
+mydoc_4a_debugging:
+  title: "Debugging"
+  url: /gustycooper.github.io/mydoc_4a_debugging/
+  link: <a href="/gustycooper.github.io/mydoc_4a_debugging/">Debugging</a>
 
 
 
@@ -259,10 +296,10 @@ mydoc_5_classes_objects:
 
 
  
-mydoc_5_stack_heap:
-  title: "Stack and Heap"
-  url: /gustycooper.github.io/mydoc_5_stack_heap/
-  link: <a href="/gustycooper.github.io/mydoc_5_stack_heap/">Stack and Heap</a>
+mydoc_5_this:
+  title: "This"
+  url: /gustycooper.github.io/mydoc_5_this/
+  link: <a href="/gustycooper.github.io/mydoc_5_this/">This</a>
 
 
  
@@ -280,10 +317,10 @@ mydoc_5_instance_static:
 
 
  
-mydoc_5_this:
-  title: "This"
-  url: /gustycooper.github.io/mydoc_5_this/
-  link: <a href="/gustycooper.github.io/mydoc_5_this/">This</a>
+mydoc_5_stack_heap:
+  title: "Stack and Heap"
+  url: /gustycooper.github.io/mydoc_5_stack_heap/
+  link: <a href="/gustycooper.github.io/mydoc_5_stack_heap/">Stack and Heap</a>
 
 
  
@@ -581,6 +618,8 @@ p2_landing_page:
 
  
 
+ 
+
 
 
 
@@ -785,6 +824,55 @@ labs_lab04_04:
   link: <a href="/gustycooper.github.io/labs_lab04_04/">Labs - Millionaire</a>
 
 
+ 
+labs_lab04_05:
+  title: "Labs - MyMath Take 2"
+  url: /gustycooper.github.io/labs_lab04_05/
+  link: <a href="/gustycooper.github.io/labs_lab04_05/">Labs - MyMath Take 2</a>
+
+
+ 
+labs_lab04_06:
+  title: "Labs - Twitter Type"
+  url: /gustycooper.github.io/labs_lab04_06/
+  link: <a href="/gustycooper.github.io/labs_lab04_06/">Labs - Twitter Type</a>
+
+
+ 
+labs_lab04_07:
+  title: "Labs - Gerbil Game"
+  url: /gustycooper.github.io/labs_lab04_07/
+  link: <a href="/gustycooper.github.io/labs_lab04_07/">Labs - Gerbil Game</a>
+
+
+ 
+labs_lab04_08:
+  title: "Labs - Triangle"
+  url: /gustycooper.github.io/labs_lab04_08/
+  link: <a href="/gustycooper.github.io/labs_lab04_08/">Labs - Triangle</a>
+
+
+ 
+labs_lab04_09:
+  title: "Labs - Credit Card Type"
+  url: /gustycooper.github.io/labs_lab04_09/
+  link: <a href="/gustycooper.github.io/labs_lab04_09/">Labs - Credit Card Type</a>
+
+
+ 
+labs_lab04_10:
+  title: "Labs - Pig Game People"
+  url: /gustycooper.github.io/labs_lab04_10/
+  link: <a href="/gustycooper.github.io/labs_lab04_10/">Labs - Pig Game People</a>
+
+
+ 
+labs_lab04_11:
+  title: "Labs - Pig Game Computer"
+  url: /gustycooper.github.io/labs_lab04_11/
+  link: <a href="/gustycooper.github.io/labs_lab04_11/">Labs - Pig Game Computer</a>
+
+
 
 
  
@@ -794,6 +882,34 @@ labs_lab05_00:
   link: <a href="/gustycooper.github.io/labs_lab05_00/">Labs - Lab 5 Overview</a>
 
 
+ 
+labs_lab05_01:
+  title: "Labs - Lab 5 Person Revisited"
+  url: /gustycooper.github.io/labs_lab05_01/
+  link: <a href="/gustycooper.github.io/labs_lab05_01/">Labs - Lab 5 Person Revisited</a>
+
+
+ 
+labs_lab05_02:
+  title: "Labs - Lab 5 Car Revisited"
+  url: /gustycooper.github.io/labs_lab05_02/
+  link: <a href="/gustycooper.github.io/labs_lab05_02/">Labs - Lab 5 Car Revisited</a>
+
+
+ 
+labs_lab05_03:
+  title: "Labs - Lab 5 Twitter Revisited"
+  url: /gustycooper.github.io/labs_lab05_03/
+  link: <a href="/gustycooper.github.io/labs_lab05_03/">Labs - Lab 5 Twitter Revisited</a>
+
+
+ 
+labs_lab05_04:
+  title: "Labs - Lab 5 Student Type"
+  url: /gustycooper.github.io/labs_lab05_04/
+  link: <a href="/gustycooper.github.io/labs_lab05_04/">Labs - Lab 5 Student Type</a>
+
+
 
 
  
@@ -801,6 +917,41 @@ labs_lab06_00:
   title: "Labs - Lab 6 Overview"
   url: /gustycooper.github.io/labs_lab06_00/
   link: <a href="/gustycooper.github.io/labs_lab06_00/">Labs - Lab 6 Overview</a>
+
+
+ 
+labs_lab06_01:
+  title: "Labs - Lab 6 Loop Patterns"
+  url: /gustycooper.github.io/labs_lab06_01/
+  link: <a href="/gustycooper.github.io/labs_lab06_01/">Labs - Lab 6 Loop Patterns</a>
+
+
+ 
+labs_lab06_02:
+  title: "Labs - Lab 6 MyIntegers Type"
+  url: /gustycooper.github.io/labs_lab06_02/
+  link: <a href="/gustycooper.github.io/labs_lab06_02/">Labs - Lab 6 MyIntegers Type</a>
+
+
+ 
+labs_lab06_03:
+  title: "Labs - Lab 6 Person Type Again"
+  url: /gustycooper.github.io/labs_lab06_03/
+  link: <a href="/gustycooper.github.io/labs_lab06_03/">Labs - Lab 6 Person Type Again</a>
+
+
+ 
+labs_lab06_04:
+  title: "Labs - Lab 6 My Trip"
+  url: /gustycooper.github.io/labs_lab06_04/
+  link: <a href="/gustycooper.github.io/labs_lab06_04/">Labs - Lab 6 My Trip</a>
+
+
+ 
+labs_lab06_05:
+  title: "Labs - Lab 6 Person Type AGAIN"
+  url: /gustycooper.github.io/labs_lab06_05/
+  link: <a href="/gustycooper.github.io/labs_lab06_05/">Labs - Lab 6 Person Type AGAIN</a>
 
 
 

@@ -71,7 +71,7 @@ void printGusty() {
 
 The example code in the preceding sections defined three methods ```sqrt```, ```multiply```, and ```printGusty```.  The meta language for a method definition is given as follows.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Method Definition
 </b>
@@ -104,7 +104,7 @@ The formal-parameter-list is a sequence of variable declarations separated by co
 
 A method definition has a block with a sequence of statements.  The method block may contain inner blocks.  The top-level meta language for a method defintion could have been written as follows to emphaise a method block.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Method Definition with Emphasized Block
 </b>
@@ -125,7 +125,7 @@ All of the Java \<statement\>s are described in [Expresssions, Statements, Block
 
 The meta language for a method call is given as follows.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Method Call
 </b>

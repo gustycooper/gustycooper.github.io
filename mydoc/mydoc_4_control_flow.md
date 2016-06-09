@@ -2,7 +2,7 @@
 title: Control Flow
 tags: [sequential, conditional, loop]
 keywords: control flow, conditional, if, if-then, loop, for loop, while loop, do-while loop
-last_updated: May 1, 2016
+last_updated: June 7, 2016
 summary: "Control Flow"
 sidebar: mydoc_sidebar
 permalink: /mydoc_4_control_flow/
@@ -10,54 +10,55 @@ permalink: /mydoc_4_control_flow/
 
 ## Control Flow
 
-We are solving problems in the form of programs.  A program is algorithms and data structures.  Control flow is the essense of algorithms.  We first studied control flow in [Algorithms](/gustycooper.github.io/mydoc_1_algorithms).  We know that control flow consists of the following.
+We are solving problems in the form of programs.  The Wirth pattern (defined earlier) defines a prgram to be algorithms and data structures. 
 
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br>
+<pre>
+Algorithms + Data Structures = Programs
+</pre>
+</div>
+
+Control flow is the essense of algorithms, which means this module concentrates on the Algorithms component.  We first studied control flow in [Algorithms](/gustycooper.github.io/mydoc_1_algorithms).  We know that control flow consists of the following.
 
 * **Sequential** – perform the operation of a step and move to the next step.  Our program executes each statement in order, one right after the other.
+
 * **Conditional** – perform a test on some condition which determines which sequence of steps to execute.  If-then-else statements that evaluate a Boolean expression to determine which of two paths to execute next.  You can connect several if-then-else statements together to get multiple paths.  Java also provides a switch statement, which is somewhat like a specialized if-then-else statement.
 
 * **Loop** – peform a step or sequence of steps in a repetitive iteration.  Statements that execute a block of statements multiple times.  Java provides several varieties of loop statements.
+
 * **Method** - collect steps into a reusable container that your can reference.  
 
-We studied methods in [Methods](/gustycooper.github.io/mydoc_1a_methods) and [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).
+We have studied several modules: [Introduction](/gustycooper.githum.io/mydoc_0_introduction), [Expressions](/gustycooper.github.io/mydoc_1_expressions), [Methods](/gustycooper.github.io/mydoc_1a_methods) and [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).
 
+At this point, we understand the following.
 
-At this point, we understand Java primitive data types, how to create our own data types in a Java class, how to declare variables using primitive data types and classes, how to define instance variables in a class, how to define class constructors, how to define methods in a class, how to return values from methods, how to create a block statement, how to create assignment statements, and how to create expressions.  So far our methods have used mostly a sequential flow of statements, method/function calls, and conditional expressions.  At this point we are ready to add conditional statements and loop statements to our programming techniques.  There are four primary forms of control flow.
+* All of the the Java primitive types.
+* How to declare variables using primitive types. 
+* How to create a Java program.
+* How to create a Java block.
+* how to create expressions.  
+* how to create assignment statements with expressions. 
+* How to create methods as part of our programs.
+* How to return values from methods and use those values in expressions. 
+* How to create our own reference data types in a Java class. 
+  * How to define instance variables in a class. 
+  * How to define class constructors. 
+  * How to define methods in a class. 
+* How to declare variables using reference types. 
 
-CF.1 If-then-else Statement (Eck 3.5)
+We have done a lot, but to this point our algorithms have primarily used two flow of control components, sequential statements and method calls.  At this point we are ready to add conditional statements and loop statements to our programming techniques.  Java has two conditionals statements - ```if``` and ```swtich````.  Java has three loop statements - ```for```, ```while```, and ```do-while```.  The following shows these statements and how they incorporate expressions.  You should notice the Boolean expression is enclosed in parentheses, which are required.
 
-An if-then-else statement evaluates a Boolean expression.  We discussed Boolean expressions in the Expression chapter.  If the expression is true, the statements in the then portion are executed.  If the expression is false, the statements in the else portion are executed.  Sometimes large buildings omit the 13th floor for superstitious reasons.  The following is an example if-then-else statement that changes a variable based upon a condition.
-
-{% raw %}
-```java
-if (floor > 13) {
-  actualFloor = floor - 1;  // execute this if floor > 13
-}
-else {
-  actualFloor = floor;      // execute this if floor <= 13
-}
-```
-{% endraw %}
-
-You should notice the Boolean expression is enclosed in parentheses, which are required.
-
-## Expressions
-
-**Expressions** – syntactically correct combination of variables, literals, operators, and method calls that evaluate to a value with a specific type.  The following meta language shows where expressions are found within Java statements
-
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Expressions within Statements
 </b>
 <br>
 <pre>
-&lt;variable&gt; = &lt;<font color="red">exp</font>&gt;;  // The assignment operator is part of expressions
- 
-&lt;<font color="red">exp</font>&gt;;
-
-&lt;methodCall&gt;( &lt;<font color="red">exp</font>&gt;, … , &lt;<font color="red">exp</font>&gt;); // A method call is part of expressions
-x = y + Math.sin(Math.random()); 
-
 if (&lt;<font color="red">boolean-exp</font>&gt;) { &lt;statements&gt; }
 
 switch (&lt;<font color="red">exp</font>&gt;) { &lt;switch-cases&gt; }
@@ -72,26 +73,7 @@ for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp<
 </div>
 
 
-## Statements
-
-**Statements** – unit of execution terminated by a ;  Java has three categories of statements.
-
-* **Declaration statement** - discussed in [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types)				
-  * double d = 3.4;
-* **Expression Statement**
-  * **Assignment expression statement** - discussed in [Assignment Expression](/gustycooper.github.io/mydoc_2_assignment_expressions)
-    * d = Math.random();
-  * **Increment/decrement expression statement** - discussed in [Assignment Expression](/gustycooper.github.io/mydoc_2_assignment_expressions)
-    * i++;
-  * **Method call statement** - discussed in [Methods](/gustycooper.github.io/mydoc_1a_methods), [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects), and [Classes and Objects](/gustycooper.github.io/mydoc_5_classes_objects)		
-    * mini.addGas(10);
-  * **Object creation expression statement** - discussed in [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) and [Classes and Objects](/gustycooper.github.io/mydoc_5_classes_objects)
-    * Car mini = new Car(25);
-* **Control flow statements** – if, switch, while, do-while, for - discussed in [Control Flow](/gustycooper.github.io/mydoc_4_control_flow)
-
-## Blocks
-
-**Blocks** – sequence of statements between balanced braces { } where each statement is terminated by a ; - discussed in [Our First Java Programs](/gustycooper.github.io/first_programs)
+You should recall that **Blocks** are sequence of statements between balanced braces { } where each statement is terminated by a ; - discussed in [Our First Java Programs](/gustycooper.github.io/first_programs)
 
 * A block is not terminated by a ;
 
@@ -102,3 +84,10 @@ for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp<
 }; // This is incorrect
 ```
 
+## Control Flow Knowledge
+
+Most students in CPSC 220 have used control flow in prior programming classes.  The specifics of creating an ```if``` statement or a ```while``` statement are not hard to master; however, combining control flow constructs into elequent solutions of difficult problems takes practice to master.  There are a few subtleties in the way Java implements its control flow statements.  Everyone will benefit from studying this section.  Everyone will get ample practice in using control flow in Lab 4.
+
+## Control Flow - Syntax and Semantics
+
+When discussing control flow we show meta language to describe its syntax and a flow chart to describe it semantics.  Syntax is the format and punctuation.  Semantics is the meaning.

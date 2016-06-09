@@ -12,7 +12,7 @@ permalink: /mydoc_3_scanner/
 
 We have already used a Scanner to read input from the terminal window.  In our early programs we mimicked sample code.  At this point we can understand what is happening in terms of defining a reference variable, assigning the variable to an object, and using instance methods of the object.  The Programming Pattern 3 is repeated here with line numbers for discussion.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
 Programming Pattern
 3. Input Pattern (and Output Pattern)

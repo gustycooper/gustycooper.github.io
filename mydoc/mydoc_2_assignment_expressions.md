@@ -18,7 +18,7 @@ permalink: /mydoc_2_assignment_expressions/
 
 The following shows the meta language for an assignment expressions statement.  As discussed in this section, the ```=``` assignment operator is a regular operator and is not limited to an assignment expression statement; however, the ```=``` operator is used most often in an assignment expression statement.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Expressions within Statements
 </b>

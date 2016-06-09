@@ -8,21 +8,21 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_4_loop_patterns/
 ---
 
-## Fence Post Problem – Off-by-one Error
+## Fence Post Error – Off-by-one Error
 
-Suppose you want to build a fence that is 16 yards long, and you want each section of the fence to 4 yards long.  How many fence posts do you need?  The correct answer is 5; however, many people will divide 16 by 4 to say they need 4 posts.  The correct answer is in the following figure.
+Suppose you want to build a fence that is 16 yards long, and you want each section of the fence to 4 yards long.  How many fence posts do you need?  The correct answer is 5; however, many people will divide 16 by 4 to say they need 4 posts.  You can easily observe the correct answer in the following figure.
 
-![Fence Post Problem](../images/fencePost.png "Fence Post Problem")
+![Fence Post Error](../images/fencePost.png "Fence Post Error")
  
-In a loop, the fence post problem is when the loop iterates one extra time or one less time.  Consider the following for loop, which attempts to print four numbers, but prints five.
+In a loop, the fence post error is when the loop iterates one extra time or one less time.  You will create fence post errors throughout your programming career.  Most fence post errors are relatively easy to discover with good test cases.  Consider the following ```for``` loop, which attempts to print four numbers, but prints three.
 
 ```java
-for (int i = 0; i <= 4; i++) {
+for (int i = 1; i < 4; i++) {
     System.out.println(i);
 }
 ```
 
-You should be careful with loops that walk through a ```String```.  Consider the following loop that is counting non-vowels in the ```String``` word.  The loop has a fence post problem.  Can you spot it?
+You should be careful with loops that process ```String```s.  The first character of a ```String``` is at position 0.  The length of a ```String``` is the number of characters in the ```String``` - for example, ```"Gusty"``` has a length of 5.  The last character in a ```String``` is a position length-1.  Consider the following loop that is counting non-vowels in the ```String``` word.  The loop has a fence post error.  On the last iteration of the loop, the variable ```i``` will contain the value 5.  This translates to the statement ```String letter = word.substring(5,6);``` and 6 is beyond the range of characters in ```word``` – a ```String``` index out of range exception.
 
 ```java
 int totCons = 0;
@@ -34,26 +34,57 @@ for (int i = 0; i <= word.length(); i++) {
 }
 ```
 
-On the last iteration of the loop, the variable i will contain the value 5.  This means the statement ```String letter = word.substring(5,6);``` and 6 is beyond the range of characters in word – a ```String``` index out of range error.
+## Loop Patterns
 
-## Common Loop Patterns
+There are several loop patterns that are used over and over in solving problems.   You want to put these patterns in your memory mansion so they can easily be recalled.   We will return to these patterns in [Arrays and ArrayLists](/gustycooper.github.io/mydoc_6_arrays_arraylists).  The patterns discussed in this section include the following.
 
-There are several loop patterns that are useful in many programming problems.  The patterns discussed in this section include the following.
+1. Sentinel Pattern
+2. Accumulator Pattern
+3. Compute Sum/Average Pattern
+4. Count Matches Pattern
+5. Find Largest (or Smallest) Pattern
+6. Find Position of First Match Pattern
 
-1. Loop to compute an average
-2. Loop to fine the largest (or smallest) element
-3. Loop to count matches
-4. Loop to find the first match
-5. Loop to find the position of the first match
-6. Loop finding all matches
+## Sentinel Pattern
 
-## Sentinel Loop
+A **sentinel loop** is one that terminates when the loop encounters a **sentinel**, which is a preknown entity that tells us to stop.  For example, you could iteratively read positive numbers (one at a time) from a user.  You would stop reading when the user inputs a negative number.  In this case, the negative number is the sentinel, which is guarding the input like a sentinel.  The following loop demonstrates the Sentinel Pattern.  The loop reads numbers from a user.  The sentinel is when the user enters ```quit```.  Actually, the sentinel is any input that is not a number.
 
-A **sentinel loop** is one that terminates when the loop encounters a **sentinel**, which is a preknown entity that tells us to stop.  For example, you could iteratively read positive numbers (one at a time) from a user.  You would stop reading when the user inputs a negative number.  In this case, the negative number is the sentinel, which is guarding the input like a sentinel.
+```java
+Scanner in = new Scanner(System.in);
+System.out.println("\nEnter sequence of nums, quit to see sum.");
+double sum = 0.0;
+/*
+ * Sum is 0.0 if user does not enter numbers
+ */
+System.out.print("Enter value, q to quit: ");
+while (in.hasNextDouble()) {  // enter quit to terminate
+   sum += in.nextDouble();
+   System.out.print("Enter value, q to quit: ");
+}
+System.out.println("Sum is " + sum);
+```
 
-## Loop to Compute an Average
+## Accumulator Pattern
 
-How many inputs do we read to be computed in our average?  In this example of a loop to compute the average, we will use a sentinel to stop reading from the user.  We will read ```double```s until the users enters a sentinel ```“q”```, which tells us to stop reading numbers.  Our algorithm will use a Java ```Scanner```, which has a peek-ahead method ```hasNextDouble()``` which returns ```true``` when the next input items is a ```double```.  This means when the user enters a ```"q"```, ```hasNextDouble()``` returns ```false```.
+The Accumulator Pattern is a pattern for a pattern.  The Compute Average, Count Matches, Find Largest, etc. are specific instances of the Accumulator Pattern.  
+The Accumulator Pattern initializes some data structure prior to a loop and then accumulates data as the loop iterates.  This pattern is shown in the following pseudo code.
+
+```java
+initialize data
+loop begin
+   update data
+loop end
+data has accumulated a value
+```
+
+## Compute Sum/Average Pattern
+
+This section describes the Compute Average Pattern.  An average is the sum of N numbers divided by N.  Thus the Compute Average Pattern contains the compute sum pattern.The Compute Average Pattern initializes two variables to 0 prior to the loop.
+
+* ```count``` counts the numbers entered by the user
+* ```sum``` accumulates the sum of numbers entered by the user
+
+The ```while``` loop is a sentinel loop that terminates when the user enters ```"quit"```.  Since the ```while``` expression is ```Scanner hasNextDouble``` method, the sentinel loop actually terminates when the user enters something other than a number.  On each iteration of the ```while``` loop, we read a ```double``` from the user, which is added to ```sum```.
 
 ```java
 Scanner in = new Scanner(System.in);
@@ -75,9 +106,9 @@ else {
 }
 ```
 
-## Loop to Find the Largest (or Smallest)
+## Find Largest (or Smallest) Pattern
 
-The loop to find the largest assumes that the first value is the largest.  Then we examine other values, updating the largest whenever a new value is largest than the current largest.  The following is pseudo code for finding the largest.
+This section describes finding the Find Largest Pattern.  You can change the comparison from ```>``` to ```<``` to find the smallest.  When finding the largest, you assume that the first values is the largest.  Then you repeately examine other values in a loop, updating the largest whenever a new value is largest than the current largest.  The following is pseudo code for finding the largest, which is a specific instance of the accumulator pattern.
 
 ```java
 largestVal is first value from the user
@@ -87,7 +118,7 @@ while there are more values
      largestVal = inputVal
 ```
 
-You can create a similar algorithm for smallest by changing the comparison operator.  A portion of the code from the Compute and Average is changed below to find the largest number input by a user.
+The code for finding the largest is given by the following.
 
 ```java
 double largest;
@@ -111,12 +142,11 @@ else {
 }
 ```
 
-
 This algorithm finds the largest in terms of input from some user (or possibly a file), but the same algorithm applies to arrays and arrayLists, which we will study in the near future.
 
-## Loop to Find Largest Number in a File
+## Find Largest Pattern for Numbers in a File
 
-We can connect a Java Scanner to an input file, and read numbers from a file to find the largest number.  The code for doing this is given by the following.
+We can connect a Java ```Scanner``` to an input file, and read numbers from a file to find the largest number.  The code for doing this is given by the following.
 
 ```java
 import java.io.File;
@@ -138,19 +168,53 @@ public class LargestNumInFile {
     }
 }
 ```
-## Loop to Count Matches
 
-## Loop to Find the First Match
+## Count Matches Pattern
 
-## Loop to Find the Position of the First Match
+The section describes the Count Matches Pattern, which is a specific example of the Accumulator Pattern.  The Count Matches Pattern is demonstrated by counting digits in a ```long```.  Suppose ```long longVar``` contains 1001232121.  The count of digit 0 is 2, digit 1 is 4, digit 2 is 3, and digit 3 is 1.  Section "Numbers - Converting Between Bases" in [Numbers as Information](mydoc_1_numbers) contains pseudo code that converts to a particular base.  The following code implements the base conversion algorithm where we convert a ```long``` to decimal, picking out digits to compare.
 
-## Loop to Find All Matches
+```java
+public static void countMatchingDigits() {
+   Scanner in = new Scanner(System.in);
+   int counter = 0;
+   System.out.print("Enter an long: ");
+   long number = in.nextLong();
+   System.out.print("Enter a digit to match: ");
+   int digitToMatch = in.nextInt();
+   long temp = number;
+   while (temp > 0) {
+      int digit = (int)(temp % 10);
+      if (digit == digitToMatch) {
+         counter++;
+      }
+      temp = temp / 10;
+   }
+   System.out.println(number + " has " + counter + " digits of " + digitToMatch);
+}
+```
 
-## Accumulator Pattern
+## Find Position of First Match Pattern
 
-The patterns find larges, count matches, find first match, etc. are specific examples of the accumulator loop pattern, which initializes some data structure prior to a loop and then accumulates data as the loop iterates.  
+A ```String``` is a sequence of characters.  A ```String``` can also be a sentence with words.  The position of a match in a ```String``` is the index where the ```String``` begins.  For examples,
 
-## Nested Loops
+* The first ```'a'``` in ```"I am a teacher."``` is at position 2.
+* The first ```"brick"``` in ```"Lego bricks are not masonry bricks"``` is at position 5.
+
+The Find Poistion of First Match Pattern finds the index where the match begins.  The example in ths section uses ```String```, but this pattern works with any sequential collection such as arrays and ```ArrayList```s.
+
+The following example finds the position of a space in a ```String```.  If the ```String``` does not contain a space, the position is determined to be -1.  You should notice this mimicks the semantics of the ```String``` method ```indexOf```.
+
+```java
+String s = "Thissentence hasaspace";
+int firstSpace = -1;
+for (int j = 0; j < s.length(); j++)
+   if (s.charAt(j) == ' ') {
+      firstSpace = j;
+      break;
+   }
+        
+System.out.println("First space in " + s + " is " + firstSpace);
+```
 
 ## Loops and Simulation
 
@@ -180,17 +244,3 @@ public class Darts {
 }
 ```
 
-## Debugging
-
-When your program does not work like it is supposed to, your program contains bugs.  Bugs are not syntax errors. Bugs are when you program runs, but does not do what you thought you told it to do.  Debugging is trying to figure out what you did wrong when trying to write your code in the first place.  There are two primary ways of debugging.  One is to place print statements in your code to print values of variables at various points in the algorithm.  These values serve as clues, which you can examine to determine what has gone wrong.  The second way to debug is to use a debugger.  Most IDEs provide you with a debug.  BlueJ has a nice introductory debugger, which means it is not overly complex.  Debugging consists of three concepts.
-
-1. Breakpoint – You set breakpoints on statements in your code.  When you program runs and hits a breakpoint, your program stops
-
-2. Single step – Once you have stopped at a breakpoint, you can step one statement at a time.  There are two ways of stepping.
-   * a. Step over – This means to execute the entire statement.  For simple statements – like assignment statements – this is intuitive.  For a method call, a step over executes the entire method.
-   * b. Step into – This steps into a method so that you now must single step through the method.  NOTE: You do not want to step into a method like System.out.println().
-
-3. Inspect variables  - Once your program is stopped, you can examine the content of your variables.  You can hit a breakpoint, examine variables, step, examine, step, and so forth.
-
-
- these values can show you 

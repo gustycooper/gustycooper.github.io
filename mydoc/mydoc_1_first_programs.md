@@ -29,11 +29,14 @@ The primary goal of CPSC 220 is for everyone to learn how to solve problems in J
 
 Writing a program is primarily creating algorithms and data structures that solve the problem.  We have a general feel for algorithms that we studied in <a href="{{ "/mydoc_1_algorithms" | prepend: site.baseurl }}">Algorithms</a>.  We began our study of data structures with Java primitive types in [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types).  We will now create our first Java programs using Java primitive types and some simple intutive control flow.  This will be done precisely inorder to adhere to Java syntax. 
 
+## Programming Languages - Syntax and Semantics
+
 Recall from <a href="{{ "/mydoc_1_problem_solving" | prepend: site.baseurl }}">Problem Solving</a> that we learned knowledge that and knowledge how.  Knowledge that is just facts that you stick in your brain.  Knowledge how is knowing how to do things.  Programming involves both types of knowledge.  Our study of programming involves the following.
 
 * Programming language syntax
   * This is knowledge that
   * The syntax can be tedious and you have to understand it.
+  * Programming language syntax is similar to the syntax (or punctuation) of our natural languages.  
 * Creating an algorithm and its data structures that solves a problem
   * This is knowledge how
   * This is the semantics or meaning of our program.
@@ -44,7 +47,7 @@ Recall from <a href="{{ "/mydoc_1_problem_solving" | prepend: site.baseurl }}">P
 
 Recall from [Problem Solving](/gustycooper.github.io/mydoc_1_problem_solving) we learned about problem solving patterns, including our first pattern - Main Program, which is repeated here.  You should notice that the ```main``` method must be placed within a Java ```class```.  You will learn the details of classes in [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) If you did not type it in during your study of Problem Solving, you should do so as you study this section and complete Lab 1.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
 Programming Pattern
 1. Main Pattern
@@ -67,77 +70,75 @@ Java syntax can be a bit confusing at first, as it has strategically placed semi
 
 * Comments - Java has several forms of comments.
 
-```java
-int x = 0;  // Comment goes to end of line
-/* 
-   Mulitple line
-   comment
- */
-
-/** 
- * JavaDoc comment - we will study in Simple Objects
- */
-```
+  ```java
+  int x = 0;  // Comment goes to end of line
+  /* 
+     Mulitple line
+     comment
+   */
+  
+  /** 
+   * JavaDoc comment - we will study in Simple Objects
+   */
+  ```
 
 * Semicolon – a single statement is terminated with a semicolon.  For example an assignment statement,
 
-```java
-x = 3.0;
-```
+  ```java
+  x = 3.0;
+  ```
 
 * Curly braces – a block of statements is enclosed by curly braces {}.  The closing curly brace is not terminated by a semicolon.  For example the Main Pattern shows curly braces.  Notice there is not a ; after the closing curly brace.
 
-```java
-public class Main {
-   public static void main(String[] args) {
-      System.out.println("Hello World");
-   }
-}
-```
-```java
-// the following is a block of statements
-{
-   x = 3.0;        
-   i = 32000;      
-   long l = 32000;  // declares l and assigns it a value
-}
-```
+  ```java
+  public class Main {
+     public static void main(String[] args) {
+        System.out.println("Hello World");
+     }
+  }
+  // the following is a block of statements
+  {
+     x = 3.0;        
+     i = 32000;      
+     long l = 32000;  // declares l and assigns it a value
+  }
+  ```
 
 * Parentheses have several uses.  In expressions, parentheses force a specific evaluation order.  We will study the details of expressions in [Expressions](/gustycooper.githum.io/mydoc_2_expressions).  The following example shows parentheses to force addition before multiplication.
 
-```java
-(a + b) * c;
-```
+  ```java
+  (a + b) * c;
+  ```
 
-* In conditionals and loops, parentheses enclose the controlling expressions of conditionals and loops and curly braces denote a block of statements.  We will study the details of control flow in [Control Flow](/gustycooper.githum.io/mydoc_4_control_flow).  The following if statement demonstrates parentheses, curly braces, and semicolons
+* In conditionals and loops, parentheses enclose the controlling expressions of conditionals and loops and curly braces denote a block of statements.  We will study the details of control flow in [Control Flow](/gustycooper.githum.io/mydoc_4_control_flow).  We will not use conditionals and loops in our first programs.  The following if statement demonstrates parentheses, curly braces, and semicolons
 
-```java
-if (a < b) {
-    a = b;
-} else {
-    b = a;
-}
-```
+  ```java
+  if (a < b) {
+      a = b;
+  } else {
+      b = a;
+  }
+  ```
 
 * We will study the details of method defintion and calling in [Methods](/gustycooper.githum.io/mydoc_methods).  For now, you should rely upon your previous knowledge of defining and calling functions.
 
 * In method definitions, parenthesis enclose the formal parameters.  For example, the ```main``` method in the Main Pattern has parentheses enclosing the formal parameter ```String[] args```.
 
-```java
-public static void main(String[] args) 
-```
+  ```java
+  public static void main(String[] args) 
+  ```
 
 * In calling methods, parentheses enclose the actual parameters.  For example, the call to ```System.out.println``` has parentheses enclosing the actual parameter ```"Hello World"```.  Do not fret about the dotted notation in ```System.out.println```.  We will study this in [Simple Objects](/gustycooper.github.io/mydoc_4_simple_objects).
 
-```java
-System.out.println("Hello World");
-```
+  ```java
+  System.out.println("Hello World");
+  ```
 
 * The spacing in Java does not make any difference.  The previous if statement can be coded as follows.
 
-```java
-if(a<b){a=b;}else{b=a;}
-```
+  ```java
+  if(a<b){a=b;}else{b=a;}
+  ```
 
 * You should establish a good programming style that makes your code easy to read.  You can examine programming style in [Programming Style](/gustycooper.github.io/mydoc_A_programming_style).
 
@@ -186,7 +187,7 @@ number = (int)Math.round(3.4 * 2); // number is 7
 
 The most used statement in programming is an assignment statement.  Everyone is familiar with assignment statements, and we have used several assignment statements in discussions prior to this.  The meta language for assignment statement is as follows.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-language fa-lg"></i>
+<div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
 Meta Language - Assignment Statement
 </b>
@@ -221,35 +222,35 @@ c = 'c';
 
 * A ```String``` literal is a sequence of characters enclosed in the double tic-mark quotation.
 
-```java
-"This is a string literal"
-"a" // a String with 1 character
-// "a" is not the same as 'a'
-"" // empty String, a String with 0 characters
-```
+  ```java
+  "This is a string literal"
+  "a" // a String with 1 character
+  // "a" is not the same as 'a'
+  "" // empty String, a String with 0 characters
+  ```
 
 * A ```String``` variable is declared using the same technique as we used for declaring variables of primitive types.  We can assign an initial value to a ```String``` variable when it is declared.
 
-```java
-String s = "String s is initialized";
-String t; // String t is not initialized
-```
+  ```java
+  String s = "String s is initialized";
+  String t; // String t is not initialized
+  ```
 
 * ```String```s are concatenated with the + operator.
 
-```java
-String gusty = "Gusty";
-String cooper = "Cooper";
-String gustyCooper = gusty + " " + cooper;
-```
+  ```java
+  String gusty = "Gusty";
+  String cooper = "Cooper";
+  String gustyCooper = gusty + " " + cooper;
+  ```
 
 * Java converts primitive types to ```String``` when concatenated.
 
-```java
-String gusty = "Gusty" + 23; // gusty is "Gusty23"
-int i = 5;
-String s = "" + 5; // s is "5"
-```
+  ```java
+  String gusty = "Gusty" + 23; // gusty is "Gusty23"
+  int i = 5;
+  String s = "" + 5; // s is "5"
+  ```
 
 ## Input and Output
 
@@ -284,7 +285,7 @@ The first input and output device that we will study is a **terminal window**.  
 
 Our initial Java programs write output to the Java standard output stream, which is connected to a terminal window.  All Java implementations support standard output, including BlueJ and Netbeans. The standard output stream is already open, and you do not have to import anything to access the method.  There are two ```print``` methods to place data in the output stream, which are shown in the following Programming Pattern.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
 Programming Pattern
 2. Output Pattern
@@ -310,7 +311,7 @@ System.out.println("Num 1 is " + num1 + " and num 2 is " + num2 + ".");
 
 Our initial Java programs read input from the Java standard input stream, which is connected to a terminal window.  All Java implementations support standard input, including BlueJ and Netbeans. Accessing the standard input stream is more complex than accessing the standard output stream.  We will use a Java ```Scanner```.  ```Scanner``` is a Java type similar to ```String```.  ```Scanner``` is not a Java primitive type.  You will learn the details of how this pattern works when we study [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).  For examples, we do not know the details of what it means to ```import java.util.scanner```, ```new Scanner(System.in)``` and ```in.nextLine()```.  For now, we want to use the mechanics of the **Input Programming Pattern** in our first Java programs.  We can just mimick for the time being.
 
-<div class="alert alert-success" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
 Programming Pattern
 3. Input Pattern (and Output Pattern)

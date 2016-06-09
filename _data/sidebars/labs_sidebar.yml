@@ -143,6 +143,34 @@ entries:
       url: /labs_lab04_04/
       output: web, pdf
       
+    - title: Labs - MyMath Take 2
+      url: /labs_lab04_05/
+      output: web, pdf
+      
+    - title: Labs - Twitter Type
+      url: /labs_lab04_06/
+      output: web, pdf
+      
+    - title: Labs - Gerbil Game
+      url: /labs_lab04_07/
+      output: web, pdf
+      
+    - title: Labs - Triangle
+      url: /labs_lab04_08/
+      output: web, pdf
+      
+    - title: Labs - Credit Card Type
+      url: /labs_lab04_09/
+      output: web, pdf
+      
+    - title: Labs - Pig Game People
+      url: /labs_lab04_10/
+      output: web, pdf
+      
+    - title: Labs - Pig Game Computer
+      url: /labs_lab04_11/
+      output: web, pdf
+      
   - title: Lab 5
     output: web, pdf
 
@@ -151,11 +179,47 @@ entries:
       url: /labs_lab05_00/
       output: web, pdf
       
+    - title: Labs - Lab 5 Person Revisited
+      url: /labs_lab05_01/
+      output: web, pdf
+      
+    - title: Labs - Lab 5 Car Revisited
+      url: /labs_lab05_02/
+      output: web, pdf
+      
+    - title: Labs - Lab 5 Twitter Revisited
+      url: /labs_lab05_03/
+      output: web, pdf
+      
+    - title: Labs - Lab 5 Student Type
+      url: /labs_lab05_04/
+      output: web, pdf
+      
   - title: Lab 6
     output: web, pdf
 
     folderitems:
     - title: Labs - Lab 6 Overview
       url: /labs_lab06_00/
+      output: web, pdf
+      
+    - title: Labs - Lab 6 Loop Patterns
+      url: /labs_lab06_01/
+      output: web, pdf
+      
+    - title: Labs - Lab 6 MyIntegers Type
+      url: /labs_lab06_02/
+      output: web, pdf
+      
+    - title: Labs - Lab 6 Person Type Again
+      url: /labs_lab06_03/
+      output: web, pdf
+      
+    - title: Labs - Lab 6 My Trip
+      url: /labs_lab06_04/
+      output: web, pdf
+      
+    - title: Labs - Lab 6 Person Type AGAIN
+      url: /labs_lab06_05/
       output: web, pdf
       
