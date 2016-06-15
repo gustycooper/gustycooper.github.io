@@ -2,71 +2,43 @@
 title: Interface
 tags: [class, object]
 keywords: interface
-last_updated: June 1, 2016
-summary: "Interface"
+last_updated: June 14, 2016
+summary: "<li>Understand a Java interface.</li> <li>Understand a Java interface contains method signatures, but does not contain code.</li> <li>Understand how to write a class that implements a Java interface.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_5_interface/
 ---
 
 ## Interfaces (Eck 5.7)
 
-XXX
+A Java ```interface``` is like a Java ```class```, but an ```interface``` contains method signatures without their code.  A Java ```interface``` is placed in a ```.java``` file just like a ```class```.  Both BlueJ and Netbeans provide the option to create an ```interface``` type file.  Once ```interface```s are defined, ```class```es ```implement``` an ```interface```s.  The ```interface``` concept forces all implementations to include all methods of the ```interface``` or the ```class``` does not compile.  The Battleship project defines an ```interface```.  All students implementing the Battleship project must conform to this ```interface```.  
 
-## (Eck 5.5.4)
-
-XXX
-## Abstract Classes (Eck 5.5.5)
-
-XXX
-
-## Nested Classes (Eck 5.8)
-
-XXX 
-
-## Parameterized Classes – Generic Types (Eck 10.1)
-
-A generic type is a generic class or interface that is parameterized over types.  See box example at https://docs.oracle.com/javase/tutorial/java/generics/types.html. 
-
-XXX
-
-## Let’s Create Our Own Class mathInJava with Static Methods
-
-XXX
-
-See section 8.9 to see the mathInJava class methods converted to static, which is a better implementation because the methods are only dependent upon their input parameters.
+The following shows a ```PersonInterface``` and a ```Person``` that implements the ```PersonInterface```.  The ```Person``` class looks exactly like code we have created in the past except the first line begins ```public class Person implements PersonInterface```.  If ```Person``` does not include instance methods ```getName``` and ```setName``` with the same signatures as defined in ```PersonInterface```, ```Person``` does not compile.
 
 ```java
-public class mathInJava {
+public interface PersonInterface {
+   public void setName(String firstName, String lastName);
+   public String getName();
+}
 
-/* computes the fraction
-
-          1
-  -----------------
-          1 - s
-   s +  --------
-            n
-*/
-  public double amdahlSpeedup(double s, double n) {
-    return 1 / (s + (1 - s) / n);
-  }
-
-/* computes the fraction
-
-   (a - c)(b - d)
-   --------------
-   (b - c)(a - d)
-*/
-  public double crossRatio(double a, double b, double c, double d) {
-  //return (a-c)(b-d) / (b-c)(a-d) first solution
-  //return (a-c)*(b-d) / (b-c)*(a-d) second solution
-    return ((a-c)*(b-d)) / ((b-c)*(a-d));
-  }
-
-/* compute the average of four values */
-  public double average(int a, int b, int c, int d) {
-  //return (a + b + c + d) / 4; first solution
-    return (a + b + c + d) / 4.0;
-  }
+public class Person implements PersonInterface {
+    private String firstName;
+    private String lastName; 
+    private int age;
+    
+    public Person(String firstName, String lastName, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+    
+    public void setName(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
 ```
- 
+

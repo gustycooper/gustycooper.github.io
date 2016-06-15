@@ -208,6 +208,14 @@ entries:
       url: /mydoc_5_classes_objects/
       output: web, pdf
 
+    - title: nullReferences
+      url: /mydoc_5_null/
+      output: web, pdf
+
+    - title: Class without Methods
+      url: /mydoc_5_class_without_methods/
+      output: web, pdf
+
     - title: This
       url: /mydoc_5_this/
       output: web, pdf
@@ -236,16 +244,16 @@ entries:
       url: /mydoc_5_enumeration_types/
       output: web, pdf
 
-    - title: Subclasses
-      url: /mydoc_5_subclasses/
+    - title: toString, comparable
+      url: /mydoc_5_toString_comparable/
       output: web, pdf
 
     - title: Interface
       url: /mydoc_5_interface/
       output: web, pdf
 
-    - title: toString, comparable
-      url: /mydoc_5_toString_comparable/
+    - title: Subclasses
+      url: /mydoc_5_subclasses/
       output: web, pdf
 
   - title: Arrays and ArrayLists
@@ -254,6 +262,14 @@ entries:
     
     - title: Arrays and ArrayLists
       url: /mydoc_6_arrays_arraylists/
+      output: web, pdf
+
+    - title: Arrays
+      url: /mydoc_6_arrays/
+      output: web, pdf
+
+    - title: ArrayLists
+      url: /mydoc_6_arraylists/
       output: web, pdf
 
   - title: Graphics
@@ -275,6 +291,14 @@ entries:
   - title: Recursion, Searching, Sorting
     output: web, pdf
     folderitems:
+
+    - title: Method Call Frames
+      url: /mydoc_9_method_call_frames/
+      output: web, pdf
+
+    - title: Big O
+      url: /mydoc_9_big_o/
+      output: web, pdf
 
     - title: Recursion
       url: /mydoc_9_recursion/

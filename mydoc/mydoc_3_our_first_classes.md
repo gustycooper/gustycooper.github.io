@@ -3,7 +3,7 @@ title: Our First Classes
 tags: [object, class]
 keywords: objects, simple objects
 last_updated: May 21, 2016
-summary: "<li>Understand how to define types in a Java class</li> <li> MORE </li>"
+summary: "<li>Understand how to define a reference type in a Java class.</li> <li>Understand a Java class/type consists of instance variables, constructors, and instance methods.</li> <li>Understand how to create a tester class to test our type.</li> <li>Understand how to declare variables of reference types.</li> <li>Understand how to allocate objects by using new and constructors.</li> <li>Understand how to manipulate objects by calling instance methods.</li> <li>Understand that objects are allocated in heap memory.</li> <li>Undertand that a reference variable has enough memory (4-bytes) allocated to hold the refence to the object allocated in heap memory.</li> <li>Understand the naming convention for Java types.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_3_our_first_classes/
 ---

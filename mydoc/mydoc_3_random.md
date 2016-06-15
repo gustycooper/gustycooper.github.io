@@ -3,7 +3,7 @@ title: Java Random
 tags: [object, class]
 keywords: objects, method
 last_updated: May 21, 2016
-summary: "<li>Understand Java Random</li> <Understand Java Random has a set of values and a set of operations.</li> <li>Understand how to call Randome instance methods</li>"
+summary: "<li>Understand Java Random</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type Random.</li> <li>Understand Java Random has a set of values and a set of operations.</li> <li>Understand how to call Randome instance methods</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_3_random/
 ---

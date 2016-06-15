@@ -1,8 +1,8 @@
 ---
 title: Expressions (Labs - Lab 2)
 keywords: loop
-last_updated: June 5, 2016
-summary: "Lab 2, Overview"
+last_updated: June 13, 2016
+summary: "The learning objectives for the entire Lab 2. <li>Practice expressions using the BlueJ Codepad.</li> <li>Practice writing a methods and main</li> <li>Practice using System.out and Scanner.</li> <li>Practice creating a class that has methods with the same name.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_00/
 toc: false

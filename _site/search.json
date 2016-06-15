@@ -50,7 +50,7 @@
 "tags": "",
 "keywords": "loop",
 "url": "/gustycooper.github.io/labs_lab02_00/",
-"summary": "Lab 2, Overview"
+"summary": "The learning objectives for the entire Lab 2. <li>Practice expressions using the BlueJ Codepad.</li> <li>Practice writing a methods and main</li> <li>Practice using System.out and Scanner.</li> <li>Practice creating a class that has methods with the same name.</li>"
 },
 
 
@@ -60,7 +60,7 @@
 "tags": "",
 "keywords": "expression",
 "url": "/gustycooper.github.io/labs_lab02_01/",
-"summary": "Codepad Expressions"
+"summary": "<li>Practice expressions using the BlueJ Codepad.</li>"
 },
 
 
@@ -70,7 +70,7 @@
 "tags": "",
 "keywords": "split the bill",
 "url": "/gustycooper.github.io/labs_lab02_02/",
-"summary": "Lab 2, Split the Bill"
+"summary": "<li>Practice writing a method and main - Lab 2, Split the Bill.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
@@ -80,7 +80,17 @@
 "tags": "",
 "keywords": "split the bill",
 "url": "/gustycooper.github.io/labs_lab02_03/",
-"summary": "Lab 2, Compute Pay Check"
+"summary": "<li>Practice writing a method and main - Lab 2, Compute Pay Check.</li> <li>Practice using System.out and Scanner.</li>"
+},
+
+
+
+{
+"title": "Compute Split the Bill and Pay Check (Labs - Lab 2)",
+"tags": "",
+"keywords": "pay check, split the bill",
+"url": "/gustycooper.github.io/labs_lab02_03a/",
+"summary": "<li>Practice creating a class that has methods with the same name.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
@@ -90,7 +100,7 @@
 "tags": "",
 "keywords": "average",
 "url": "/gustycooper.github.io/labs_lab02_04/",
-"summary": "Lab 2, Compute Average"
+"summary": "<li>Practice writing a method and main - Lab 2, Compute Average</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
@@ -100,7 +110,7 @@
 "tags": "",
 "keywords": "largest",
 "url": "/gustycooper.github.io/labs_lab02_05/",
-"summary": "Lab 2, Compute Largest"
+"summary": "<li>Practice writing a method and main - Lab 2, Compute Largest</li> <li>Practice using conditional expressions.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
@@ -110,7 +120,7 @@
 "tags": "",
 "keywords": "temperature",
 "url": "/gustycooper.github.io/labs_lab02_06/",
-"summary": "Lab 2, Compute Temperature"
+"summary": "<li>Practice writing a method and main - Lab 2, Compute Temperature.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
@@ -120,7 +130,7 @@
 "tags": "",
 "keywords": "dice, random",
 "url": "/gustycooper.github.io/labs_lab02_07/",
-"summary": "Lab 2, Compute Dice"
+"summary": "<li>Practice writing a method and main - Lab 2, Compute Dice.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
@@ -130,7 +140,7 @@
 "tags": "",
 "keywords": "class, string",
 "url": "/gustycooper.github.io/labs_lab02_08/",
-"summary": "Lab 2, Using Strings"
+"summary": "<li>Practice writing a method and main - Lab 2, Using Strings.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
@@ -216,9 +226,9 @@
 
 
 {
-"title": "First Program (Labs - Lab 4)",
+"title": "Control Flow (Labs - Lab 4)",
 "tags": "",
-"keywords": "loop",
+"keywords": "loop, conditional, for, while, do-while, if, switch",
 "url": "/gustycooper.github.io/labs_lab04_00/",
 "summary": "Lab 4, Overview"
 },
@@ -710,7 +720,7 @@
 "tags": "objectclass",
 "keywords": "objects, simple objects",
 "url": "/gustycooper.github.io/mydoc_3_our_first_classes/",
-"summary": "<li>Understand how to define types in a Java class</li> <li> MORE </li>"
+"summary": "<li>Understand how to define a reference type in a Java class.</li> <li>Understand a Java class/type consists of instance variables, constructors, and instance methods.</li> <li>Understand how to create a tester class to test our type.</li> <li>Understand how to declare variables of reference types.</li> <li>Understand how to allocate objects by using new and constructors.</li> <li>Understand how to manipulate objects by calling instance methods.</li> <li>Understand that objects are allocated in heap memory.</li> <li>Undertand that a reference variable has enough memory (4-bytes) allocated to hold the refence to the object allocated in heap memory.</li> <li>Understand the naming convention for Java types.</li>"
 },
 
 
@@ -720,7 +730,7 @@
 "tags": "objectclass",
 "keywords": "objects, method",
 "url": "/gustycooper.github.io/mydoc_3_random/",
-"summary": "<li>Understand Java Random</li> <Understand Java Random has a set of values and a set of operations.</li> <li>Understand how to call Randome instance methods</li>"
+"summary": "<li>Understand Java Random</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type Random.</li> <li>Understand Java Random has a set of values and a set of operations.</li> <li>Understand how to call Randome instance methods</li>"
 },
 
 
@@ -730,7 +740,7 @@
 "tags": "objectclass",
 "keywords": "objects, simple objects",
 "url": "/gustycooper.github.io/mydoc_3_scanner/",
-"summary": "<li>Understand Java Scanner</li> <li>Understand the differences between Scanner and String.</li> <Understand Java Scanner has a set of values and a set of operations.</li> <li>Understand how to call Scanner instance methods</li>"
+"summary": "<li>Understand Java Scanner</li> <li>Understand the differences between Scanner and String.</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type Scanner.</li> <Understand Java Scanner has a set of values and a set of operations.</li> <li>Understand how to call Scanner instance methods</li>"
 },
 
 
@@ -740,7 +750,7 @@
 "tags": "objectclass",
 "keywords": "objects, simple objects",
 "url": "/gustycooper.github.io/mydoc_3_simple_objects/",
-"summary": "First Introduction to Classes and Objects"
+"summary": "The learning objectives for this entire module. <li>Understance objects in the real-world.</li> <li>Understand software objects have state and behavior.</li> <li>Understand that Java String, Scanner, and Random are reference types - not primitive types.</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type String, Scanner, and Random. <li>Understand an object's state and behavior are like a data type's set of values and set of operations.</li> <li>Understand how to define a reference type in a Java class.</li> <li>Understand a Java class/type consists of instance variables, constructors, and instance methods.</li> <li>Understand how to create a tester class to test our type.</li> <li>Understand how to declare variables of reference types.</li> <li>Understand how to allocate objects by using new and constructors.</li> <li>Understand how to manipulate objects by calling instance methods.</li> <li>Understand that objects are allocated in heap memory.</li> <li>Undertand that a reference variable has enough memory (4-bytes) allocated to hold the refence to the object allocated in heap memory.</li> <li>Understand the naming convention for Java types.</li> <li>Understand JavaDoc.</li> <li>Understand how to include JavaDoc in your classes.</li>"
 },
 
 
@@ -750,7 +760,7 @@
 "tags": "objectclass",
 "keywords": "objects, simple objects",
 "url": "/gustycooper.github.io/mydoc_3_strings/",
-"summary": "<li>Understand Java Strings</li> <li>Understand Java Strings are a reference type - not a primitive type.</li> <Understand Java Strings have a set of values and a set of operations.</li> <li>Understand instance methods.</li> <li>Understand how to call String instance methods</li>"
+"summary": "<li>Understand Java Strings</li> <li>Understand Java Strings are a reference type - not a primitive type.</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type String.</li> <Understand Java Strings have a set of values and a set of operations.</li> <li>Understand instance methods.</li> <li>Understand how to call String instance methods</li>"
 },
 
 
@@ -836,11 +846,21 @@
 
 
 {
-"title": "Classes and Objects",
+"title": "Class without Methods",
+"tags": "classobject",
+"keywords": "class, method",
+"url": "/gustycooper.github.io/mydoc_5_class_without_methods/",
+"summary": "<li>Understand classes can be defined without methods.</li>"
+},
+
+
+
+{
+"title": "Classes, Objects, and More",
 "tags": "classobject",
 "keywords": "classes, objects",
 "url": "/gustycooper.github.io/mydoc_5_classes_objects/",
-"summary": "Classes and Objects"
+"summary": "The learning objectives for this entire module. <li>Understand several details about classes and objects that were omitted in the Simple Objects module.</li> <li>Understand classes can be defined without methods.</li> <li>Understand null references.</li> <li>Understand this and its use in classes.</li> <li>Understand public and private.</li> <li>Understand instance and static.</li>  <li>Understand how to put instance and static in the same class.</li> <li>Understand stack and heap.</li> <li>Understand the variables declared inside of methods are allocated on the stack.</li> <li>Understand that objects are allocated on the heap.</li> <li>Understand final and its use on declaring variables.</li> <li>Understand formal and actual parameters.</li> <li>Understand passing parameters - pass by value and pass by reference.</li> <li>Understand that actual parameters cannot be modified in pass by value.</li> <li>Understand that objects such as Person and Car can be modified when passed as an actual parameter.</li> <li>Understand String variables cannot be modified when passes as an actual parameter.</li> <li>Understand that Java is pass by value.</li> <li>Understand methods return values.</li> <li>Undersand how to define an enumeration type.</li> <li>Understand how to use an enumeration type.</li> <li>Understand subclasses.</li> <li>Understand how to create a Student that is a subclass of a Person.</li> <li>Understand class hierarchy.</li> <li>Understand a Java interface.</li> <li>Understand a Java interface contains method signatures, but does not contain code.</li> <li>Understand how to write a class that implements a Java interface.</li> <li>Understand overriding toString and comparable.</li>"
 },
 
 
@@ -850,7 +870,7 @@
 "tags": "classobject",
 "keywords": "enumeration",
 "url": "/gustycooper.github.io/mydoc_5_enumeration_types/",
-"summary": "Enumeration Types"
+"summary": "<li>Undersand how to define an enumeration type.</li> <li>Understand how to use an enumeration type.</li>"
 },
 
 
@@ -860,7 +880,7 @@
 "tags": "classobject",
 "keywords": "final",
 "url": "/gustycooper.github.io/mydoc_5_final/",
-"summary": "final"
+"summary": "<li>Understand final and its use on declaring variables.</li>"
 },
 
 
@@ -870,7 +890,7 @@
 "tags": "classobject",
 "keywords": "instance, static",
 "url": "/gustycooper.github.io/mydoc_5_instance_static/",
-"summary": "Instance and Static"
+"summary": "<li>Understand instance and static.<li> <li>Understand how to put instance and static in the same class.</li>"
 },
 
 
@@ -880,7 +900,17 @@
 "tags": "classobject",
 "keywords": "interface",
 "url": "/gustycooper.github.io/mydoc_5_interface/",
-"summary": "Interface"
+"summary": "<li>Understand a Java interface.</li> <li>Understand a Java interface contains method signatures, but does not contain code.</li> <li>Understand how to write a class that implements a Java interface.</li>"
+},
+
+
+
+{
+"title": "",
+"tags": "classobject",
+"keywords": "",
+"url": "/gustycooper.github.io/mydoc_5_null/",
+"summary": "<li>Understand null references.</li>"
 },
 
 
@@ -888,9 +918,9 @@
 {
 "title": "Passing Parameters",
 "tags": "classobject",
-"keywords": "parameters, value, reference",
+"keywords": "parameters, passing, value, reference",
 "url": "/gustycooper.github.io/mydoc_5_passing_parameters/",
-"summary": "Passing Parameters"
+"summary": "<li>Understand formal and actual parameters.</li> <li>Understand passing parameters - pass by value and pass by reference.</li> <li>Understand that actual parameters cannot be modified in pass by value.</li> <li>Understand that objects such as Person and Car can be modified when passed as an actual parameter.</li> <li>Understand String variables cannot be modified when passes as an actual parameter.</li> <li>Understand that Java is pass by value.</li> <li>Understand methods return values.</li>"
 },
 
 
@@ -900,7 +930,7 @@
 "tags": "classobject",
 "keywords": "public, private",
 "url": "/gustycooper.github.io/mydoc_5_public_private/",
-"summary": "Public and Private"
+"summary": "<li>Understand public and private.</li>"
 },
 
 
@@ -910,7 +940,7 @@
 "tags": "classobject",
 "keywords": "stack, heap",
 "url": "/gustycooper.github.io/mydoc_5_stack_heap/",
-"summary": "Stack and Heap"
+"summary": "<li>Understand stack and heap.</li> <li>Understand the variables declared inside of methods are allocated on the stack.</li> <li>Understand that objects are allocated on the heap.</li>"
 },
 
 
@@ -920,7 +950,7 @@
 "tags": "classobject",
 "keywords": "subclasses",
 "url": "/gustycooper.github.io/mydoc_5_subclasses/",
-"summary": "Subclasses"
+"summary": "<li>Understand subclasses.</li> <li>Understand how to create a Teacher that is a subclass of a Person.</li> <li>Understand class hierarchy.</li>"
 },
 
 
@@ -930,7 +960,7 @@
 "tags": "classobject",
 "keywords": "this",
 "url": "/gustycooper.github.io/mydoc_5_this/",
-"summary": "this"
+"summary": "<li>Understand this and its use in classes.</li>"
 },
 
 
@@ -941,6 +971,26 @@
 "keywords": "toString, comparable",
 "url": "/gustycooper.github.io/mydoc_5_toString_comparable/",
 "summary": "toString, comparable"
+},
+
+
+
+{
+"title": "ArrayLists",
+"tags": "collection",
+"keywords": "arraylists",
+"url": "/gustycooper.github.io/mydoc_6_arraylists/",
+"summary": "ArrayLists"
+},
+
+
+
+{
+"title": "Arrays",
+"tags": "collection",
+"keywords": "arrays, arraylists",
+"url": "/gustycooper.github.io/mydoc_6_arrays/",
+"summary": "Arrays"
 },
 
 
@@ -966,11 +1016,41 @@
 
 
 {
+"title": "Abstract Data Types",
+"tags": "packageinterfaceinheritance",
+"keywords": "abstract, data, type",
+"url": "/gustycooper.github.io/mydoc_8_ADI/",
+"summary": "Abstract Data Types"
+},
+
+
+
+{
 "title": "Packages",
 "tags": "packageinterfaceinheritance",
 "keywords": "packages, interfaces, inheritance",
 "url": "/gustycooper.github.io/mydoc_8_packages_ADT/",
 "summary": "Packages, Interfaces, Inheritance, ADT, and More"
+},
+
+
+
+{
+"title": "Big O",
+"tags": "recursion",
+"keywords": "big O",
+"url": "/gustycooper.github.io/mydoc_9_big_o/",
+"summary": "Recursion"
+},
+
+
+
+{
+"title": "Method Call Frames",
+"tags": "recursion",
+"keywords": "method, call frames",
+"url": "/gustycooper.github.io/mydoc_9_method_call_frames/",
+"summary": "Method Call Frames"
 },
 
 

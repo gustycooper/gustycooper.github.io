@@ -270,6 +270,38 @@ Either way is equivalent in this case.  Some programmers always use a block of s
      water = 5; // ounces            
   ```
 
+## ```if else if else``` - One Path Only
+
+The following statements should be obvious at this point.  All statements are the same.
+
+* A two-way if executes either the if-path or the else-path.  
+* A two-way ```if``` never executes both paths.
+* The paths of a two-way ```if``` are mutually exclusive.
+
+The same principle is true for multi-way ```if``` statements.  A multi-way ```if``` executes one of the paths.  Consider the following example.  Each path is mutually exclusive.  Only one of the following is printed, ```"Bicyclist"```, ```"Chef"```, ```"Barrack"```, ```"Do not know"```.
+
+```java
+if (name.equals("Gusty"))
+   System.out.println("Bicyclist");
+else if (name.equals("Jerri Anne"))
+   System.out.println("Chef");
+else if (name.equals("Barrack"))
+   System.out.println("President");
+else
+   System.out.println("Do not know");
+```
+
+Now consider the following multi-way ```if```, which still executes one (and only one) of the paths even though the ```boolean``` expressions for two paths are true.  The first path with a ```true boolean``` expression is executed, which in this case is ```if (xp > 70)```.  This example prints ```'C'```.
+
+```java
+int xp = 92;
+if (xp > 70)
+   System.out.println('C');
+else if (xp > 80)	               
+   System.out.println('B');
+else
+   System.out.println('A');
+```
 
 ## Use a two-way ```if``` When Mutual Exclusive
 

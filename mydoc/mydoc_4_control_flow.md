@@ -8,9 +8,9 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_4_control_flow/
 ---
 
-## Control Flow
+## Control Flow and the Wirth Pattern
 
-We are solving problems in the form of programs.  The Wirth pattern (defined earlier) defines a prgram to be algorithms and data structures. 
+We are solving problems in the form of programs.  The Wirth pattern from [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types) defines a prgram to be algorithms and data structures.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>

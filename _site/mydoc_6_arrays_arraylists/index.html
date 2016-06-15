@@ -578,6 +578,20 @@ window.location.href = uri;
             
             
             
+            <li><a href="/gustycooper.github.io/mydoc_5_null/">nullReferences</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_5_class_without_methods/">Class without Methods</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="/gustycooper.github.io/mydoc_5_this/">This</a></li>
             
             
@@ -627,7 +641,7 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_5_subclasses/">Subclasses</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_5_toString_comparable/">toString, comparable</a></li>
             
             
             
@@ -641,7 +655,7 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_5_toString_comparable/">toString, comparable</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_5_subclasses/">Subclasses</a></li>
             
             
             
@@ -657,6 +671,20 @@ window.location.href = uri;
             
             
             <li class="active"><a href="/gustycooper.github.io/mydoc_6_arrays_arraylists/">Arrays and ArrayLists</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_6_arrays/">Arrays</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_6_arraylists/">ArrayLists</a></li>
             
             
             
@@ -698,6 +726,20 @@ window.location.href = uri;
     <li>
         <a href="#">Recursion, Searching, Sorting</a>
         <ul>
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_method_call_frames/">Method Call Frames</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_9_big_o/">Big O</a></li>
+            
+            
+            
             
             
             
@@ -860,271 +902,33 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h2 id="arrays-eck-71-and-arraylists-eck-73">Arrays (Eck 7.1) and ArrayLists (Eck 7.3)</h2>
+  <h2 id="arrays-arraylists-and-the-wirth-pattern">Arrays, ArrayLists, and the Wirth Pattern</h2>
 
-<p>An array and an ArrayList are ordered, sequential collections of information.  They are ordered in that each element has a position – 1st element, 2nd element, and so on.  Each element of an array or ArrayList must be that same type. For example, you could have an array or ArrayList that is all <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">double</code>, <code class="highlighter-rouge">String</code>, or <code class="highlighter-rouge">Person</code>.</p>
+<p>We are solving problems with programs.  The Wirth pattern from <a href="/gustycooper.github.io/mydoc_1_primitive_types">Primitive Types</a> defines a prgram to be algorithms and data structures.</p>
 
-<p>The following is a diagram showing how an array/ArrayList is a sequention collection.  Each element has an index that begins at 0 and contuues to N-1, where the total number of elements in the array/ArrayList is N.</p>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br />
+<pre>
+Algorithms + Data Structures = Programs
+</pre>
+</div>
+
+<p>Arrays and ArrayLists are part of the Data Structures component.</p>
+
+<h2 id="arrays-eck-71-and-arraylists-eck-73">Arrays (Eck 7.1) and ArrayLists (Eck 7.3)</h2>
+
+<p>Arrays and <code class="highlighter-rouge">ArrayList</code>s are ordered, sequential collections of information, where each element must be the same type.  Ordered and sequential in that each element has a position – zero-ith element, 1st element, 2nd element, and so on.  For example, an array or <code class="highlighter-rouge">ArrayList</code> must contain all <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">double</code>, <code class="highlighter-rouge">String</code>, <code class="highlighter-rouge">Person</code>, etc.</p>
+
+<p>The following figure demonstrates the sequentialness of arrays and <code class="highlighter-rouge">ArrayList</code>s.  Each element has an index with the first index 0 and the last index to N-1, where the total number of elements in the collection is N.</p>
 
 <p><img src="../images/array-picture.png" alt="Array/ArrayList" title="Array/ArrayList" /></p>
 
-<p>Arrays and ArrayLists are both objects, with ArrayLists being more flexible in that you can always add more elements to it.  We will discuss arrays first.</p>
+<p>Arrays and <code class="highlighter-rouge">ArrayList</code>s are reference types that reference objects.  <code class="highlighter-rouge">ArrayList</code>s are more flexible than arrays because the total number of elements can grow and shrink.</p>
 
-<h2 id="a1-arrays-introduction">A.1 Arrays Introduction</h2>
-
-<p>The meta-language for declaring an array is given by the following.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;type-name&gt;[] &lt;variable-name-or-names&gt;;
-</code></pre>
-</div>
-
-<p>The following are example declarations.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">intArray</span><span class="o">;</span>
-<span class="kt">double</span><span class="o">[]</span> <span class="n">doubleArray</span><span class="o">;</span>
-<span class="n">String</span><span class="o">[]</span> <span class="n">stringArray</span><span class="o">;</span>
-<span class="n">Person</span><span class="o">[]</span> <span class="n">personArray</span><span class="o">;</span>
-</code></pre>
-</div>
-
-<h2 id="a2-allocating-memory-for-array-elements">A.2 Allocating Memory for Array Elements</h2>
-
-<p>You should notice an array declaration is like a regular variable declaration, with the two square brackets added.  For those familiar with C/C++, Java retained their syntax so the following are equivalent declarations.  However, I usually refrain from using this notation when doing Java programming.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">intArray</span><span class="o">[];</span>
-<span class="kt">double</span> <span class="n">doubleArray</span><span class="o">[];</span>
-<span class="n">String</span> <span class="n">stringArray</span><span class="o">[];</span>
-</code></pre>
-</div>
-
-<p>The most important thing to realize is that an array is a reference to an array object.  Just like in declaring objects, declaring an array does not allocate memory for the array contents – it only allocates memory to hold the reference.  To actually get memory for the array contents, you have to use the new operator.  The follow are examples.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">intArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span> <span class="c1">// intArray can hold 10 integers</span>
-</code></pre>
-</div>
-
-<p>Once you have an array, you access its elements by placing the desired index between square brackets.  The first element is at index 0.  The following is an example notation.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">intArray</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-<span class="n">intArray</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
-<span class="n">intArray</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">intArray</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">intArray</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-</code></pre>
-</div>
-
-<p>You can combine the definition of an array with the allocation of memory to contain its elements.  The meta-language followed by examples for this are given by the following.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;[]</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">or</span><span class="o">-</span><span class="n">names</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="o">&lt;</span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;[&lt;</span><span class="n">array</span><span class="o">-</span><span class="n">len</span><span class="o">&gt;];</span>
-<span class="kt">int</span><span class="o">[]</span> <span class="n">intArr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
-<span class="n">String</span><span class="o">[]</span> <span class="n">strArr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
-</code></pre>
-</div>
-
-<p>When Java allocates memory for arrays, it initializes the memory like when declaring a regular variable.  For numbers, this means the values are initialized to 0 for numbers and null pointers for objects.  For example, the above declaration of intArr results in 3 elements of 0.</p>
-
-<h2 id="a3-arrays-in-memory">A.3 Arrays in Memory</h2>
-
-<p>The following diagram shows the relationship between declaring an int array and allocating memory for its elements.</p>
-
-<p><img src="../images/intArray.png" alt="int array" title="int array" /></p>
-
-<p>Figure A-20 Arrays and Memory</p>
-
-<h2 id="a4-array-length-field">A.4 Array length field</h2>
-
-<p>The length of an array is accessible in the field <code class="highlighter-rouge">length</code>, which provides the number of elements the array can hold.  You access the field <code class="highlighter-rouge">length</code> using the dot notation as you would for any object’s field.  For example, if I have <code class="highlighter-rouge">int[] ia</code>, then the length of <code class="highlighter-rouge">ia</code> is <code class="highlighter-rouge">ia.length</code>.  The field <code class="highlighter-rouge">length</code> does not return the number of elements that you have explicitly assigned values.  Consider the following for example, where the <code class="highlighter-rouge">length</code> is 3, but you have only put values into the first two elements of the array <code class="highlighter-rouge">intArr</code>.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">intArr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
-<span class="n">intArr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-<span class="n">intArr</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
-<span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">intArr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="c1">// l is 3</span>
-<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">intArr</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span> <span class="c1">// x is 0</span>
-</code></pre>
-</div>
-
-<h2 id="a5-assigning-initial-values-to-an-array">A.5 Assigning Initial Values to an Array</h2>
-
-<p>There are a couple of ways to place initial values into an array.  The first notation does not require a new operator.  Instead you can fill the array with values using <code class="highlighter-rouge"><span class="p">{}</span></code>.  The number of values between <code class="highlighter-rouge"><span class="p">{</span></code> and <code class="highlighter-rouge">}</code> becomes the <code class="highlighter-rouge">length</code> of the array.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">intArr</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span> <span class="c1">// five element int array with 1,2,3,4,5</span>
-</code></pre>
-</div>
-
-<p>You are not restricted to filling an array with literals.  You can populate an array with variables or a combination of literals and variables.  The following populates a <code class="highlighter-rouge">Person[]</code>.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">gusty</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">"Gusty"</span><span class="o">,</span><span class="mi">22</span><span class="o">);</span>
-<span class="n">Person</span> <span class="n">emily</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">"EmilY"</span><span class="o">,</span><span class="mi">23</span><span class="o">);</span>
-<span class="n">Person</span> <span class="n">coletta</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">"Coletta"</span><span class="o">,</span><span class="mi">2</span><span class="o">);</span>
-<span class="n">Person</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="o">{</span><span class="n">gusty</span><span class="o">,</span> <span class="n">emily</span><span class="o">,</span> <span class="n">people</span><span class="o">};</span>
-</code></pre>
-</div>
-
-<p>The second method involves providing initial values when you use new.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">intArr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">};</span>
-</code></pre>
-</div>
-
-<h2 id="a5-arrays-and-loops">A.5 Arrays and Loops</h2>
-
-<p>You will often use a loop to process the elements of an array.  You will also sometimes combine the Common Loop Patterns from Section CF.8.  Let’s find the average of numbers in an array of doubles to examine an example.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// this loop processes a double[] numbers</span>
-<span class="kt">double</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">sum</span> <span class="o">+=</span> <span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-<span class="o">}</span>
-<span class="kt">double</span> <span class="n">ave</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-</code></pre>
-</div>
-
-<p>Pay attention to for loop controlling expressions.
-•	The initial value of the loop index is 0, the same as the index of the first element of the array.
-•	The terminating condition is i &lt; numbers.length, which means the loop index will count 0, 1, … lengthOfArray-1.</p>
-
-<h2 id="a6-arrays-and-the-for-each-loop">A.6 Arrays and the For-each Loop</h2>
-
-<p>Looping through all elements of an array (described in the previous section) is so common in programming, that we have a special for loop for it.  The for-each for loop that corresponds to the on in the previous section is the following.  You read the loop as “For each d in the array numbers”.  On each loop iteration, the variable d takes on the next element of the array numbers.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-<span class="k">for</span> <span class="o">(</span><span class="kt">double</span> <span class="nl">d:</span> <span class="n">numbers</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">sum</span> <span class="o">+=</span> <span class="n">d</span><span class="o">;</span>
-<span class="o">}</span>
-<span class="kt">double</span> <span class="n">ave</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-</code></pre>
-</div>
-
-<p>The meta-language for a for-each loop is given by the following.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span> <span class="o">&lt;</span><span class="n">BaseType</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">item</span><span class="o">&gt;</span> <span class="o">:</span> <span class="o">&lt;</span><span class="n">itemArray</span><span class="o">&gt;</span>  <span class="o">)</span>
- 	<span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
-
-<span class="k">for</span> <span class="o">(</span> <span class="o">&lt;</span><span class="n">BaseType</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">item</span><span class="o">&gt;</span> <span class="o">:</span> <span class="o">&lt;</span><span class="n">itemArray</span><span class="o">&gt;</span>  <span class="o">)</span>
-	<span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<h2 id="a7-passing-arrays-as-parameters">A.7 Passing Arrays as Parameters</h2>
-
-<p>Passing arrays is really no different than passing any other parameters.  The formal and actual arguments have to match.  You have to pass an actual integer array to a formal integer array.  Consider the following function that returns the largest number in a double array.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">double</span> <span class="nf">largest</span><span class="p">(</span><span class="kt">double</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">)</span> <span class="o">{</span>
-   <span class="kt">double</span> <span class="n">retLargest</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-   <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-     <span class="k">if</span> <span class="o">(</span><span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">retLargest</span><span class="o">)</span> <span class="o">{</span>
-       <span class="n">retLargest</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-     <span class="o">}</span>
-   <span class="o">}</span>
-   <span class="k">return</span> <span class="n">retLargest</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<p>We can call the above function as follows.  Notice how one call allocates an array without creating a variable.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="mf">100.0</span><span class="o">,</span> <span class="mf">3.4</span><span class="o">,</span> <span class="mf">5.6</span><span class="o">,</span> <span class="mi">1000101</span><span class="o">};</span>
-<span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">largest</span><span class="o">(</span><span class="n">nums</span><span class="o">);</span>  <span class="c1">// result is 1000101</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">largest</span><span class="o">(</span><span class="k">new</span> <span class="kt">double</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">6</span><span class="o">});</span> <span class="c1">// result is 6</span>
-</code></pre>
-</div>
-
-<h2 id="a8-arrays-in-programming">A.8 Arrays in Programming</h2>
-
-<p>An array is a fixed size – it can only hold the number of elements initially allocated to it.  What if you are processing input from a user and you do not know how many inputs to expect?  You can allocate a large array, and hope they do not go over.  You can allocate a typical array, and if they exceed the limit of the initially allocated array, reallocate.  This is a fairly common technique.  This means you have to keep track of how many elements are in your array to know when it is full.  When it is full, you reallocate a new array that is twice the size of the original and copy the original into the new.  The following is a simple example of this concept.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="mi">25</span><span class="o">];</span>
-<span class="kt">int</span> <span class="n">numElements</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Enter a double or q to quit: "</span><span class="o">);</span>
-<span class="k">while</span> <span class="o">(</span><span class="n">in</span><span class="o">.</span><span class="na">hasNextDouble</span><span class="o">())</span> <span class="o">{</span>
-  <span class="k">if</span> <span class="o">(</span><span class="n">numElements</span> <span class="o">&gt;</span> <span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">double</span><span class="o">[]</span> <span class="n">newNumbers</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">*</span><span class="mi">2</span><span class="o">];</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-      <span class="n">newNumbers</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-    <span class="o">}</span>
-    <span class="n">numbers</span> <span class="o">=</span> <span class="n">newNumbers</span><span class="o">;</span>
-  <span class="o">}</span>
-  <span class="n">numbers</span><span class="o">[</span><span class="n">numElements</span><span class="o">]</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
-  <span class="n">numElements</span><span class="o">++</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Enter a double or q to quit: "</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<h2 id="a81-javas-arrayscopyof-method">A.8.1 Java’s Arrays.copyOf() Method</h2>
-
-<p>Java has methods for just about everything in the kitchen sink.  There is an Arrays.copyOf() method that we can use in the previous algorithm.  Instead of creating a newNumbers array and copying the values with a loop, we can do the following.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">numElements</span> <span class="o">&gt;</span> <span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-  <span class="n">numbers</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">numbers</span><span class="o">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<h2 id="a9-arraylists">A.9 ArrayLists</h2>
-
-<p>ArrayLists are similar to arrays, but you can keep adding new elements without having to perform an algorithm as described in the previous section – Java does this algorithm for you.  With ArrayLists you loose the concise [] notation for accessing elements – you have to call methods.  An ArrayList<t> uses Java generic types, which allows you to declare ArrayLists of various types; however, those types have to be objects.  An ArrayList is in the java.util package, so it must be imported.  Some of the more used ArrayList methods are the following.</t></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="n">element</span><span class="o">)</span> <span class="err">–</span> <span class="n">adds</span> <span class="n">element</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> 
-<span class="n">add</span><span class="o">(</span><span class="n">index</span><span class="o">,</span> <span class="n">element</span><span class="o">)</span> <span class="err">–</span> <span class="n">adds</span> <span class="n">element</span> <span class="n">at</span> <span class="n">index</span><span class="o">,</span> <span class="n">sliding</span> <span class="n">others</span> <span class="n">to</span> <span class="n">the</span> <span class="n">right</span>
-<span class="n">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span> <span class="err">–</span> <span class="n">returns</span> <span class="n">element</span> <span class="n">at</span> <span class="n">index</span>
-<span class="n">remove</span><span class="o">(</span><span class="n">index</span><span class="o">)</span> <span class="err">–</span> <span class="n">removes</span> <span class="n">element</span> <span class="n">at</span> <span class="n">index</span><span class="o">,</span> <span class="n">sliding</span> <span class="n">others</span> <span class="n">to</span> <span class="n">left</span>
-<span class="n">remove</span><span class="o">(</span><span class="n">element</span><span class="o">)</span> <span class="err">–</span> <span class="n">removes</span> <span class="n">first</span> <span class="n">element</span> <span class="n">found</span><span class="o">,</span> <span class="k">if</span> <span class="n">found</span>
-<span class="n">indexOf</span><span class="o">(</span><span class="n">element</span><span class="o">)</span> <span class="err">–</span> <span class="n">returns</span> <span class="n">index</span> <span class="n">of</span> <span class="n">element</span><span class="o">,</span> <span class="n">or</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">not</span> <span class="n">found</span>
-<span class="n">contains</span><span class="o">(</span><span class="n">element</span><span class="o">)</span> <span class="err">–</span> <span class="n">returns</span> <span class="kc">true</span> <span class="k">if</span> <span class="n">element</span> <span class="n">in</span> <span class="n">ArrayList</span>
-<span class="n">isEmpty</span><span class="o">()</span> <span class="err">–</span> <span class="n">returns</span> <span class="kc">true</span> <span class="n">of</span> <span class="n">ArrayList</span> <span class="n">is</span> <span class="n">empty</span>
-<span class="n">size</span><span class="o">()</span> <span class="err">–</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">elements</span> <span class="n">in</span> <span class="n">ArrayList</span>
-</code></pre>
-</div>
-
-<p>The following subsections provide a simple examples of how to use an array list.  All of the examples require the following import.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-</code></pre>
-</div>
-
-<h2 id="a91-arraylist-example-1">A.9.1 ArrayList Example 1</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">strs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">strs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"aaa"</span><span class="o">);</span>
-<span class="n">strs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"bbb"</span><span class="o">);</span>
-<span class="n">strs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"ccc"</span><span class="o">);</span>
-<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">strs</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span> <span class="c1">// s has "[aaa, bbb, ccc]"</span>
-</code></pre>
-</div>
-
-<h2 id="a92-arraylist-example-2">A.9.2 ArrayList Example 2</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">al</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">al</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mf">1.2</span><span class="o">);</span>  <span class="c1">// index 0</span>
-<span class="n">al</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mf">2.3</span><span class="o">);</span>  <span class="c1">// index 1</span>
-<span class="n">al</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mf">4.5</span><span class="o">);</span>  <span class="c1">// index 2</span>
-<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span> <span class="c1">// s has "[1.2, 2.3, 4.5]"</span>
-<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span> <span class="c1">// d has 4.5</span>
-<span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="c1">// s has 3</span>
-<span class="n">al</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mf">2.0</span><span class="o">);</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span> <span class="c1">// s has "[1.2, 2.0, 2.3, 4.5]"</span>
-<span class="n">al</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span> <span class="c1">// s has "[2.0, 2.3, 4.5]"</span>
-</code></pre>
-</div>
-
-<p>Notice the Double vice double.  XXX</p>
-
-<h2 id="a10-arrays-and-arraylists--when-to-use-which">A.10 Arrays and ArrayLists – When to Use Which</h2>
-
-<p>Arrays and ArrayLists can both be used for the same type of programming. How do you choose which one to use.  The following are some ideas to ponder.</p>
-
-<ol>
-  <li>Array syntax with brackets is more compact and easier to read.</li>
-  <li>If you know the size and values, array is best because easier syntax.
-String[] workdays = { “Mo”, “Tu”, “We”, “Th”, “Fr” };</li>
-  <li>Numbers is ArrayLists are not efficient.  This is because</li>
-  <li>ArrayList<double> values = new ArrayList<double>();  XXX More explanation… Notice the uppercase Double, which is a wrapper class.  If you need lots of numbers, then use an array.</double></double></li>
-</ol>
-
-<h2 id="a11-java-exceptions-try-and-throw-eck-37">A.11 Java Exceptions, Try, and Throw (Eck 3.7)</h2>
-
-<p>XXX</p>
 
 
 <div class="tags">
@@ -1151,7 +955,7 @@ String[] workdays = { “Mo”, “Tu”, “We”, “Th”, “Fr” };</li>
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: Jun 9, 2016
+<p>Page last updated: May 1, 2016; Site last generated: Jun 15, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -8,6 +8,28 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_1a_methods/
 ---
 
+## Methods and the Wirth Pattern
+
+We are solving problems in the form of programs.  The Wirth pattern from [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types) defines a prgram to be algorithms and data structures.
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br>
+<pre>
+Algorithms + Data Structures = Programs
+</pre>
+</div>
+
+Methods and method calls are one of the four building blocks of algorithsm defined in [Algorithms](/gustycooper.github.io/mydoc_1_algorithms).   
+
+* Sequential
+* Conditional
+* Loop
+* Method
+
 ## Method Overview
 
 This section discusses the basic mechanisms of Java methods from an introductory perspective.  The goal of this module is to learn how to create simple methods so that we can complete [Lab 2](/gustycooper.github.io/labs_lab02_00), which has several methods that solve problems using expressions.  We revisit Methods in two modules - [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) where we learn the details of ```instance``` and ```static``` methods and [Classes and Objects](/gustycooper.github.io/mydoc_5_classes_objects) where we learn the details of passing parameters by value and reference.  The four method mechanisms to understand are the following.
@@ -37,10 +59,11 @@ Recall [Algorithms](/gustycooper.github.io/mydoc_1_algorithms) defined Methods a
 
 1. You should envision the above code as sequentially executing lines 6, 7, and 8.   
 2. When the code gets to line 7,  the ```sqrt()``` method is called and assigns the return value to the variable ```x```.  
-3. When encountering a method call, your code temporarily leaves the current sequence of code and jumps to the code contained in the method. 
-4. The actual parameters are copied into the formal paramters prior to executing the code contained in the method.  
-5. The code in the method is executed and then flow of control returns to the statement following the method call.  
-6. The returned value is used in the expression as applicable.  
+3. When encountering a method call, the control flow temporarily leaves the current sequence of code at line 7 and jumps to the code contained in the method at line 1. 
+4. The actual parameters (in this example ```9.0``) are copied into the formal paramters (in this example ```double x```) prior to executing the code contained in the method.  
+5. The code (lines 2, missing code, and line 3) in the method ```sqrt``` is executed.
+6. When the ```return``` statement on line 3 is executed,  flow of control returns to the expression in which ```sqrt``` is invoked.  
+6. The value returned from ```sqrt``` is used in the expression as applicable.  
 
 The following is a diagram of this flow of control.
 
@@ -116,6 +139,8 @@ Meta Language - Method Definition with Emphasized Block
    { &lt;statement-list&gt; }
 </pre>
 </div>
+
+```<return-type```> may be any Java primitive type, any Java reference type (studied in [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects), or ```void```.  A return type of ```void``` indicates the method does not return a value.
 
 We will study \<modifiers\> in modules [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) and [Classes and Objects](/gustycooper.github.io/mydoc_5_classes_objects).  
 
@@ -199,7 +224,7 @@ line
 ```
       
 * ```class Main``` has a block from line 3 to line 33.
-* The scope of the variable ```Scanner in``` is from line 5 to line 33.  ```in``` is a class variable.  We study class variables in [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).
+* The scope of the variable ```Scanner in``` is from line 5 to line 33.  ```in``` is a class variable.  We study class variables in [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).  For the purpose of this explanation, ```in``` is available for use by all of the methods defined in ```class Main```.  This is demonstrated on lines 15 and 21, where ```getDouble``` and ```getString``` use the ```Scanner in```.
 * Method ```getName``` has a block from line 7 to line 11.
 * The scope of method ```getName``` is from line 3 to line 33.  This scope allows method ```main``` to call ```getName``` on line 25.
 * The scope of local variable ```name``` declared on line 9 is line 9 to line 11.
@@ -212,6 +237,88 @@ line
 * Notice how method ```getDouble``` declared a local variable ```d``` to hold ```in.nextDouble``` on line 15 only to return ```d``` on line 16.  This technique can be contrasted with method ```getString``` that did not declare a local variable to hole ```in.nextLine``` that was called on line 21.
 * Method ```main``` has a block from line 24 to line 32.
 * Method ```main``` has four local variables - ```name```, ```age```, ```d1```, and ```d2``` - declared on lines 25, 26, 27, and 28.  Their scope is from their declaration line to line 32.
+
+## ```void``` Methods Do Not ```return``` a Value
+
+The examples so far demonstrate methods returning values.  Methods do not have to return a value.  Methods that do not return a value are type ```void```.  The ```main``` method of programs is ```void```.
+
+```java
+public static void main(String[] args)
+```
+
+## ```void``` Methods and Global Scope
+
+Typically methods compute something, which is returned.  Methods can update variables that have a more global scope, which are define outside of the method.  If these global scope variables are in the scope of the calling method, the calling method can access them.  In this style of programming, methods can be type ```void```.  The previous example is rewritten to demonstrate this technique.  This style of programming obfuscates the meaning of the code.  For example, ```main``` prints the varialbe ```name``` on line 31, and you have to read the entire class to discover where ```name``` is declared.  The previous example is better code.  It is best to keep variable declarations local and return values - use global scope variables sparingly.
+
+```java
+line
+  1    import java.util.Scanner;
+  2
+  3    public class Main {
+  4    
+  5       public static Scanner in = new Scanner(System.in);
+  6       public static double d = 0.0;
+  7       public static String name = "";
+  8    
+  9       public static void getName() {
+ 10           name = getString("Enter your name: ");
+ 11        }
+ 12     
+ 13       public static void getDouble(String prompt) {
+ 14          System.out.print(prompt);
+ 15          d = in.nextDouble();
+ 16       }
+ 17     
+ 18       public static String getString(String prompt) {
+ 19          System.out.print(prompt);
+ 20          return in.nextLine();
+ 21       }
+ 22     
+ 23       public static void main(String[] args) {
+ 24          getName();
+ 25          getDouble("Enter age");
+ 26          int age = (int)d;
+ 27          getDouble("Enter number 1: ");
+ 28          double d1 = d;
+ 29          getDouble("Enter number 2: ");
+ 30          double d2 = d;
+ 31          System.out.println("Hello " + name);
+ 32          System.out.println("I see that you are " + age + " years old.");
+ 33          System.out.println(d1 + " + " + d2 + " is " + (d1 + d2));
+ 34       }
+ 35    }
+```
+
+## Method Signature
+
+The **signature** of a method is the return type and the type of each formal parameter.  For examples, the method ```int add(int x, int y)``` has a signature of ```int int int``` and the method ```String concatNum(String s, double d)``` has a signature of ```String String double```.
+
+## Methods with the Same Name
+
+Two methods may have the same name if 
+
+* They have a different number of formal parameters or
+* They have the same number of formal parameters but the formal parameters are different types.
+
+Java determines which method to call by the types of the actual parameters.  The following demonstrates two ```add``` methods with different parameter types.
+
+```java
+public class TwoAdds {
+
+   public static int add(int x, int y) {
+      return x + y;
+   }
+
+   public static double add(double x, double y) {
+      return x + y;
+   }
+   
+   public static void main(String[] args) {
+      System.out.println(add(2.2,3.3));
+      System.out.println(add(1,2));
+   }
+}
+```
 
 ## Java Math Class
 

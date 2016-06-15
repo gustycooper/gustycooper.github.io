@@ -2,7 +2,7 @@
 title: Compute Average (Labs - Lab 2)
 keywords: average
 last_updated: June 5, 2016
-summary: "Lab 2, Compute Average"
+summary: "<li>Practice writing a method and main - Lab 2, Compute Average</li> <li>Practice using System.out and Scanner.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_04/
 toc: false

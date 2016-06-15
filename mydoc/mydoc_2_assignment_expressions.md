@@ -133,3 +133,33 @@ Recall that a Java block is a sequence of statements enclosed within curly brace
 * Object Creation Expression
   * Person p = new Person("Gusty",22);
 
+## Swapping Variables Pattern
+
+Programming often entails moving the contents of one variable to another.  A common problem is swapping the contents of two variables, e.g., ```x``` and ```y```.  You cannot perform two consecutive assignment statements, ```x = y;``` followed by ```y = x;```.  You have to introduce a temporary variable.  The following code sequence does not swap ```x``` and ```y```.
+
+```java
+int x = 1;
+int y = 2;
+x = y;  // x is now 2
+y = x;  // y is now 2
+```
+
+The pattern for swapping the contents of two variables is given as follows.
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+1. Swapping Variables
+</b>
+<br>
+<pre>
+int x = 1;
+int y = 2;
+int t = x; // t is 1
+x = y;     // x is 2
+y = t;     // y is 1
+</pre>
+</div>
+
+
+

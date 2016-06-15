@@ -3,7 +3,7 @@ title: Java Strings
 tags: [object, class]
 keywords: objects, simple objects
 last_updated: May 21, 2016
-summary: "<li>Understand Java Strings</li> <li>Understand Java Strings are a reference type - not a primitive type.</li> <Understand Java Strings have a set of values and a set of operations.</li> <li>Understand instance methods.</li> <li>Understand how to call String instance methods</li>"
+summary: "<li>Understand Java Strings</li> <li>Understand Java Strings are a reference type - not a primitive type.</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type String.</li> <Understand Java Strings have a set of values and a set of operations.</li> <li>Understand instance methods.</li> <li>Understand how to call String instance methods</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_3_strings/
 ---
@@ -129,7 +129,7 @@ day2.equals(day1)     // evaluates to true
 day2.equals("Monday") // evaluates to true
 ```
 
-Java will reuse ```String``` literals, which can serendipitously result in ```==``` giving you a correct result.  Do not fall into this trap.  Always use ```equals``` with ```String```.  The following code shows a couple of examples.
+Java will reuse ```String``` literals.  If you declare several ```String``` variables and assign them the same ```String``` literal, Java does not create a new ```String``` object for each literal.  In this case each ```String``` variable contains the same reference (or address).  This Java optimization results in ```==``` returning ```true``` for these variables.  Do not fall into this trap because you will create some code that works and some that does not.  Always use ```equals``` with ```String```.  The following code shows a couple of examples.
 
 ```java
 String one = "one";
@@ -147,8 +147,8 @@ The following are some of Java String methods.  In the following examples, s1 an
 
 * ```char charAt(int index)``` - returns ```char``` at index 
   * ```s1.charAt(N)```, returns ```char``` – the Nth character in the string where ```s1.charAt(0)``` is 1st, ```s1.charAt(1)``` is 2nd, and so on. The las position is ```s1.length() - 1```.  ```"cat".charAt(1)``` is ```’a’```.  An error occurs if the value of the parameter is less than zero or is greater than or equal to ```s1.length()```.
-* ```int compareTo(String anotherString)``` 
-  * ```s1.compareTo(s2)``` is an integer-valued function that compares the two strings. If the strings are equal, the value returned is zero. If s1 is less than s2, the value returned is a number less than zero, and if s1 is greater than s2, the value returned is some number greater than zero. (If both of the strings consist entirely of lower case letters, or if they consist entirely of upper case letters, then “less than” and “greater than” refer to alphabetical order. Otherwise, the ordering is more complicated.)
+* ```int compareTo(String anotherString)``` - returns ```int``` indicating equal, less than, or greater than.
+  * ```s1.compareTo(s2)``` If ```s1``` and ```s2``` are the same string, the value returned is zero. If ```s1``` is less than ```s2```, the value returned is negative. If ```s1``` is greater than ```s2```, the value returned is positive.  If both of the strings consist entirely of lower case letters, or if they consist entirely of upper case letters, then “less than” and “greater than” refer to alphabetical ordering. Otherwise, the ordering requires understanding Unicode encoding of characters.
   * The ordering of ```String```s is somewhat intuitive.  You compare character by character of two ```String```s until you reach two characters that are different.
     * A < B
     * AA < AB
@@ -159,6 +159,7 @@ The following are some of Java String methods.  In the following examples, s1 an
   * ```"Gusty".compareTo("Gusty")``` returns 0
   * ```"Gasty".compareTo("Gusty")``` returns negative
   * ```"Gusty".compareTo("Gasty")``` returns positive
+  * ```"Gusty".compareTo("1")``` returns positive
 * ```boolean contains(String s)``` - returns ```true``` if string contains s 
   * ```"Gusty".contains("us") returns ```true```
 * ```boolean equals(String s)``` - returns ```true``` if string equals s 
@@ -202,11 +203,11 @@ Java will create the following strings: ```"A string"```, ```"B string"```, ```"
 
 ## Java Strings are Immutable
 
-Java Strings are immutable.  The term immutable means cannot be changed; however, we can do the following, which looks like we are changing a String.
+Java Strings are **immutable**.  Immutable means cannot be changed.  Sometimes code appears as if it is changing a ```String``` when it is actually allocating a new ```String``` object and assigning a new reference value to the ```String``` variable.
 
 ```java
 String s = "I am Gusty";
-s = "I am also Cooper";
+s = "I am also Cooper"; // a new String object assigned to s
 ```
 
 We have learned the variable ```s``` references a ```String``` object.  We can change the value of ```s``` so it references a new object, but we are not changing the ```String``` ```"I am Gusty"```.  The following figure demonstrates this.  The dashed arrow shows ```s``` referencing ```"I am Gusty"```.  The solid arrow shows ```s``` referencing ```"I am also Cooper"```.

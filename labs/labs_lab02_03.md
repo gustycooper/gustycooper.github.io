@@ -2,7 +2,7 @@
 title: Compute Pay Check (Labs - Lab 2)
 keywords: split the bill
 last_updated: June 5, 2016
-summary: "Lab 2, Compute Pay Check"
+summary: "<li>Practice writing a method and main - Lab 2, Compute Pay Check.</li> <li>Practice using System.out and Scanner.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_03/
 toc: false

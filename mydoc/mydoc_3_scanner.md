@@ -3,7 +3,7 @@ title: Java Scanner
 tags: [object, class]
 keywords: objects, simple objects
 last_updated: May 21, 2016
-summary: "<li>Understand Java Scanner</li> <li>Understand the differences between Scanner and String.</li> <Understand Java Scanner has a set of values and a set of operations.</li> <li>Understand how to call Scanner instance methods</li>"
+summary: "<li>Understand Java Scanner</li> <li>Understand the differences between Scanner and String.</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type Scanner.</li> <Understand Java Scanner has a set of values and a set of operations.</li> <li>Understand how to call Scanner instance methods</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_3_scanner/
 ---

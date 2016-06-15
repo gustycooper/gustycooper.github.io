@@ -1,7 +1,7 @@
 ---
-title: First Program (Labs - Lab 4)
-keywords: loop
-last_updated: June 5, 2016
+title: Control Flow (Labs - Lab 4)
+keywords: loop, conditional, for, while, do-while, if, switch
+last_updated: June 13, 2016
 summary: "Lab 4, Overview"
 sidebar: labs_sidebar
 permalink: /labs_lab04_00/

@@ -2,7 +2,7 @@
 title: Codepad Expressions
 keywords: expression
 last_updated: June 5, 2016
-summary: "Codepad Expressions"
+summary: "<li>Practice expressions using the BlueJ Codepad.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_01/
 toc: false

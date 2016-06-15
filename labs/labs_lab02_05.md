@@ -2,7 +2,7 @@
 title: Compute Largest (Labs - Lab 2)
 keywords: largest
 last_updated: June 5, 2016
-summary: "Lab 2, Compute Largest"
+summary: "<li>Practice writing a method and main - Lab 2, Compute Largest</li> <li>Practice using conditional expressions.</li> <li>Practice using System.out and Scanner.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_05/
 toc: false
