@@ -5,7 +5,7 @@ keywords: abstract, data, type
 last_updated: June 11, 2016
 summary: "Abstract Data Types"
 sidebar: mydoc_sidebar
-permalink: /mydoc_8_ADI/
+permalink: /mydoc_8_ADT/
 ---
 
 ## PI.1 Abstract Data Types

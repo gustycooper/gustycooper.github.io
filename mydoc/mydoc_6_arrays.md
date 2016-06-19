@@ -3,7 +3,7 @@ title: Arrays
 tags: [collection]
 keywords: arrays, arraylists
 last_updated: June 15, 2016
-summary: "Arrays"
+summary: "<li>Understand arrays are a sequential collection of data.</li> <li>Understand each element of an array is the same type.</li> <li>Understand elements of an array have indices from 0 to the array.length-1.</li> <li>Understand how to declare array variables.</li> <li>Understand how to allocate array objects.</li> <li>Understand the relationship between array variable, array objects, and memory.</li> <li>Understand how to use array syntax of [] to access array elements.</li> <Understand how loop patterns are applied to arrays.</li> <li>Understand the for-each loop and how to use it with arrays.</li> <li>Understand how to pass arrays as parameters.</li> <li>Understand how to reallcoate an array.</li> <li>Understand the main parameter String[] args.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_6_arrays/
 ---
@@ -250,6 +250,12 @@ The Java [Arrays Class](https://docs.oracle.com/javase/8/docs/api/java/util/Arra
 
 * ```static boolean equals(int[] a, int[] a2)``` - Returns true if the two specified arrays of ints are equal to one another.
 * ```static void fill(int[] a, int val)``` - Assigns the specified int value to each element of the specified array of ints.
+* ```static String toString(int[] a)``` -  Returns a string representation of the contents of the specified array.
+  ```java
+  int[] ia = {1,2,3};
+  String s = Arrays.toString(ia);
+  // s is "[1, 2, 3]"
+  ```
 * ```static int[] copyOf(int[] original, int newLength)``` - Copies the specified array, truncating or padding with zeros (if necessary) so the copy has the specified length.  The ```copyOf``` method can be used to solve the previous problem of reallocating an array.  The following shows the solution.
 
   ```java

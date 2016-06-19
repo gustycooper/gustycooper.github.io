@@ -290,9 +290,9 @@ mydoc_4a_debugging:
 
  
 mydoc_5_classes_objects:
-  title: "Classes, Objects, and more"
+  title: "Classes, Objects, ..."
   url: /gustycooper.github.io/mydoc_5_classes_objects/
-  link: <a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes, Objects, and more</a>
+  link: <a href="/gustycooper.github.io/mydoc_5_classes_objects/">Classes, Objects, ...</a>
 
 
  
@@ -400,6 +400,15 @@ mydoc_6_arraylists:
   title: "ArrayLists"
   url: /gustycooper.github.io/mydoc_6_arraylists/
   link: <a href="/gustycooper.github.io/mydoc_6_arraylists/">ArrayLists</a>
+
+
+
+
+ 
+mydoc_6a_exceptions_try_fileio:
+  title: "Exceptions, Try, File I/O"
+  url: /gustycooper.github.io/mydoc_6a_exceptions_try_fileio/
+  link: <a href="/gustycooper.github.io/mydoc_6a_exceptions_try_fileio/">Exceptions, Try, File I/O</a>
 
 
 
@@ -687,320 +696,347 @@ labs_landing_page:
 
  
 labs_lab01_00:
-  title: "Labs - Lab 1 Overview"
+  title: "Intro & 1st Programs Overview"
   url: /gustycooper.github.io/labs_lab01_00/
-  link: <a href="/gustycooper.github.io/labs_lab01_00/">Labs - Lab 1 Overview</a>
+  link: <a href="/gustycooper.github.io/labs_lab01_00/">Intro & 1st Programs Overview</a>
 
 
  
 labs_lab01_01:
-  title: "Labs - First Program"
+  title: "First Program"
   url: /gustycooper.github.io/labs_lab01_01/
-  link: <a href="/gustycooper.github.io/labs_lab01_01/">Labs - First Program</a>
+  link: <a href="/gustycooper.github.io/labs_lab01_01/">First Program</a>
 
 
  
 labs_lab01_02:
-  title: "Labs - Second Program"
+  title: "Second Program"
   url: /gustycooper.github.io/labs_lab01_02/
-  link: <a href="/gustycooper.github.io/labs_lab01_02/">Labs - Second Program</a>
+  link: <a href="/gustycooper.github.io/labs_lab01_02/">Second Program</a>
 
 
 
 
  
 labs_lab02_00:
-  title: "Labs - Lab 2 Overview"
+  title: "Expressoins, Methods Overview"
   url: /gustycooper.github.io/labs_lab02_00/
-  link: <a href="/gustycooper.github.io/labs_lab02_00/">Labs - Lab 2 Overview</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_00/">Expressoins, Methods Overview</a>
 
 
  
 labs_lab02_01:
-  title: "Labs - Java Expressions in Codepad"
+  title: "Java Expressions in Codepad"
   url: /gustycooper.github.io/labs_lab02_01/
-  link: <a href="/gustycooper.github.io/labs_lab02_01/">Labs - Java Expressions in Codepad</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_01/">Java Expressions in Codepad</a>
 
 
  
 labs_lab02_02:
-  title: "Labs - Split the Bill"
+  title: "Split the Bill"
   url: /gustycooper.github.io/labs_lab02_02/
-  link: <a href="/gustycooper.github.io/labs_lab02_02/">Labs - Split the Bill</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_02/">Split the Bill</a>
 
 
  
 labs_lab02_03:
-  title: "Labs - Paycheck"
+  title: "Paycheck"
   url: /gustycooper.github.io/labs_lab02_03/
-  link: <a href="/gustycooper.github.io/labs_lab02_03/">Labs - Paycheck</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_03/">Paycheck</a>
 
 
  
 labs_lab02_03a:
-  title: "Labs - TwoPays"
+  title: "TwoPays"
   url: /gustycooper.github.io/labs_lab02_03a/
-  link: <a href="/gustycooper.github.io/labs_lab02_03a/">Labs - TwoPays</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_03a/">TwoPays</a>
 
 
  
 labs_lab02_04:
-  title: "Labs - Average"
+  title: "Average"
   url: /gustycooper.github.io/labs_lab02_04/
-  link: <a href="/gustycooper.github.io/labs_lab02_04/">Labs - Average</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_04/">Average</a>
 
 
  
 labs_lab02_05:
-  title: "Labs - Largest"
+  title: "Largest"
   url: /gustycooper.github.io/labs_lab02_05/
-  link: <a href="/gustycooper.github.io/labs_lab02_05/">Labs - Largest</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_05/">Largest</a>
 
 
  
 labs_lab02_06:
-  title: "Labs - Temperature"
+  title: "Temperature"
   url: /gustycooper.github.io/labs_lab02_06/
-  link: <a href="/gustycooper.github.io/labs_lab02_06/">Labs - Temperature</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_06/">Temperature</a>
 
 
  
 labs_lab02_07:
-  title: "Labs - Dice"
+  title: "Dice"
   url: /gustycooper.github.io/labs_lab02_07/
-  link: <a href="/gustycooper.github.io/labs_lab02_07/">Labs - Dice</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_07/">Dice</a>
 
 
  
 labs_lab02_08:
-  title: "Labs - Strings"
+  title: "Strings"
   url: /gustycooper.github.io/labs_lab02_08/
-  link: <a href="/gustycooper.github.io/labs_lab02_08/">Labs - Strings</a>
+  link: <a href="/gustycooper.github.io/labs_lab02_08/">Strings</a>
 
 
 
 
  
 labs_lab03_00:
-  title: "Labs - Lab 3 Overview"
+  title: "Simple Objects Overview"
   url: /gustycooper.github.io/labs_lab03_00/
-  link: <a href="/gustycooper.github.io/labs_lab03_00/">Labs - Lab 3 Overview</a>
+  link: <a href="/gustycooper.github.io/labs_lab03_00/">Simple Objects Overview</a>
 
 
  
 labs_lab03_01:
-  title: "Labs - Person Type"
+  title: "Person Type"
   url: /gustycooper.github.io/labs_lab03_01/
-  link: <a href="/gustycooper.github.io/labs_lab03_01/">Labs - Person Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab03_01/">Person Type</a>
 
 
  
 labs_lab03_02:
-  title: "Labs - Car Type"
+  title: "Car Type"
   url: /gustycooper.github.io/labs_lab03_02/
-  link: <a href="/gustycooper.github.io/labs_lab03_02/">Labs - Car Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab03_02/">Car Type</a>
 
 
  
 labs_lab03_03:
-  title: "Labs - TwoPays Type"
+  title: "TwoPays Type"
   url: /gustycooper.github.io/labs_lab03_03/
-  link: <a href="/gustycooper.github.io/labs_lab03_03/">Labs - TwoPays Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab03_03/">TwoPays Type</a>
 
 
  
 labs_lab03_04:
-  title: "Labs - MyMath Type"
+  title: "MyMath Type"
   url: /gustycooper.github.io/labs_lab03_04/
-  link: <a href="/gustycooper.github.io/labs_lab03_04/">Labs - MyMath Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab03_04/">MyMath Type</a>
 
 
  
 labs_lab03_05:
-  title: "Labs - Dice Type"
+  title: "Dice Type"
   url: /gustycooper.github.io/labs_lab03_05/
-  link: <a href="/gustycooper.github.io/labs_lab03_05/">Labs - Dice Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab03_05/">Dice Type</a>
 
 
  
 labs_lab03_06:
-  title: "Labs - MyString Type"
+  title: "MyString Type"
   url: /gustycooper.github.io/labs_lab03_06/
-  link: <a href="/gustycooper.github.io/labs_lab03_06/">Labs - MyString Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab03_06/">MyString Type</a>
 
 
  
 labs_lab03_07:
-  title: "Labs - Temperature Type"
+  title: "Temperature Type"
   url: /gustycooper.github.io/labs_lab03_07/
-  link: <a href="/gustycooper.github.io/labs_lab03_07/">Labs - Temperature Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab03_07/">Temperature Type</a>
 
 
 
 
  
 labs_lab04_00:
-  title: "Labs - Lab 4 Overview"
+  title: "Control Flow Overview"
   url: /gustycooper.github.io/labs_lab04_00/
-  link: <a href="/gustycooper.github.io/labs_lab04_00/">Labs - Lab 4 Overview</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_00/">Control Flow Overview</a>
 
 
  
 labs_lab04_01:
-  title: "Labs - First Loops"
+  title: "First Loops"
   url: /gustycooper.github.io/labs_lab04_01/
-  link: <a href="/gustycooper.github.io/labs_lab04_01/">Labs - First Loops</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_01/">First Loops</a>
 
 
  
 labs_lab04_02:
-  title: "Labs - Potato Class"
+  title: "Potato Class"
   url: /gustycooper.github.io/labs_lab04_02/
-  link: <a href="/gustycooper.github.io/labs_lab04_02/">Labs - Potato Class</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_02/">Potato Class</a>
 
 
  
 labs_lab04_03:
-  title: "Labs - Loops, Ifs, Switches"
+  title: "Loops, Ifs, Switches"
   url: /gustycooper.github.io/labs_lab04_03/
-  link: <a href="/gustycooper.github.io/labs_lab04_03/">Labs - Loops, Ifs, Switches</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_03/">Loops, Ifs, Switches</a>
 
 
  
 labs_lab04_04:
-  title: "Labs - Millionaire"
+  title: "Millionaire"
   url: /gustycooper.github.io/labs_lab04_04/
-  link: <a href="/gustycooper.github.io/labs_lab04_04/">Labs - Millionaire</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_04/">Millionaire</a>
 
 
  
 labs_lab04_05:
-  title: "Labs - MyMath Take 2"
+  title: "MyMath Take 2"
   url: /gustycooper.github.io/labs_lab04_05/
-  link: <a href="/gustycooper.github.io/labs_lab04_05/">Labs - MyMath Take 2</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_05/">MyMath Take 2</a>
 
 
  
 labs_lab04_06:
-  title: "Labs - Twitter Type"
+  title: "Twitter Type"
   url: /gustycooper.github.io/labs_lab04_06/
-  link: <a href="/gustycooper.github.io/labs_lab04_06/">Labs - Twitter Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_06/">Twitter Type</a>
 
 
  
 labs_lab04_07:
-  title: "Labs - Gerbil Game"
+  title: "Gerbil Game"
   url: /gustycooper.github.io/labs_lab04_07/
-  link: <a href="/gustycooper.github.io/labs_lab04_07/">Labs - Gerbil Game</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_07/">Gerbil Game</a>
 
 
  
 labs_lab04_08:
-  title: "Labs - Triangle"
+  title: "Triangle"
   url: /gustycooper.github.io/labs_lab04_08/
-  link: <a href="/gustycooper.github.io/labs_lab04_08/">Labs - Triangle</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_08/">Triangle</a>
 
 
  
 labs_lab04_09:
-  title: "Labs - Credit Card Type"
+  title: "Credit Card Type"
   url: /gustycooper.github.io/labs_lab04_09/
-  link: <a href="/gustycooper.github.io/labs_lab04_09/">Labs - Credit Card Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_09/">Credit Card Type</a>
 
 
  
 labs_lab04_10:
-  title: "Labs - Pig Game People"
+  title: "Pig Game People"
   url: /gustycooper.github.io/labs_lab04_10/
-  link: <a href="/gustycooper.github.io/labs_lab04_10/">Labs - Pig Game People</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_10/">Pig Game People</a>
 
 
  
 labs_lab04_11:
-  title: "Labs - Pig Game Computer"
+  title: "Pig Game Computer"
   url: /gustycooper.github.io/labs_lab04_11/
-  link: <a href="/gustycooper.github.io/labs_lab04_11/">Labs - Pig Game Computer</a>
+  link: <a href="/gustycooper.github.io/labs_lab04_11/">Pig Game Computer</a>
 
 
 
 
  
 labs_lab05_00:
-  title: "Labs - Lab 5 Overview"
+  title: "Classes, Objects, ... Overview"
   url: /gustycooper.github.io/labs_lab05_00/
-  link: <a href="/gustycooper.github.io/labs_lab05_00/">Labs - Lab 5 Overview</a>
+  link: <a href="/gustycooper.github.io/labs_lab05_00/">Classes, Objects, ... Overview</a>
 
 
  
 labs_lab05_01:
-  title: "Labs - Lab 5 Person Revisited"
+  title: "Person Revisited"
   url: /gustycooper.github.io/labs_lab05_01/
-  link: <a href="/gustycooper.github.io/labs_lab05_01/">Labs - Lab 5 Person Revisited</a>
+  link: <a href="/gustycooper.github.io/labs_lab05_01/">Person Revisited</a>
 
 
  
 labs_lab05_02:
-  title: "Labs - Lab 5 Car Revisited"
+  title: "Car Revisited"
   url: /gustycooper.github.io/labs_lab05_02/
-  link: <a href="/gustycooper.github.io/labs_lab05_02/">Labs - Lab 5 Car Revisited</a>
+  link: <a href="/gustycooper.github.io/labs_lab05_02/">Car Revisited</a>
 
 
  
 labs_lab05_03:
-  title: "Labs - Lab 5 Twitter Revisited"
+  title: "Twitter Revisited"
   url: /gustycooper.github.io/labs_lab05_03/
-  link: <a href="/gustycooper.github.io/labs_lab05_03/">Labs - Lab 5 Twitter Revisited</a>
+  link: <a href="/gustycooper.github.io/labs_lab05_03/">Twitter Revisited</a>
 
 
  
 labs_lab05_04:
-  title: "Labs - Lab 5 Student Type"
+  title: "Student Type"
   url: /gustycooper.github.io/labs_lab05_04/
-  link: <a href="/gustycooper.github.io/labs_lab05_04/">Labs - Lab 5 Student Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab05_04/">Student Type</a>
 
 
 
 
  
 labs_lab06_00:
-  title: "Labs - Lab 6 Overview"
+  title: "Arrays, ArrayLists Overview"
   url: /gustycooper.github.io/labs_lab06_00/
-  link: <a href="/gustycooper.github.io/labs_lab06_00/">Labs - Lab 6 Overview</a>
+  link: <a href="/gustycooper.github.io/labs_lab06_00/">Arrays, ArrayLists Overview</a>
 
 
  
 labs_lab06_01:
-  title: "Labs - Lab 6 Loop Patterns"
+  title: "Loop Patterns"
   url: /gustycooper.github.io/labs_lab06_01/
-  link: <a href="/gustycooper.github.io/labs_lab06_01/">Labs - Lab 6 Loop Patterns</a>
+  link: <a href="/gustycooper.github.io/labs_lab06_01/">Loop Patterns</a>
 
 
  
 labs_lab06_02:
-  title: "Labs - Lab 6 MyIntegers Type"
+  title: "MyIntegers Type"
   url: /gustycooper.github.io/labs_lab06_02/
-  link: <a href="/gustycooper.github.io/labs_lab06_02/">Labs - Lab 6 MyIntegers Type</a>
+  link: <a href="/gustycooper.github.io/labs_lab06_02/">MyIntegers Type</a>
 
 
  
 labs_lab06_03:
-  title: "Labs - Lab 6 Person Type Again"
+  title: "Person Type Again"
   url: /gustycooper.github.io/labs_lab06_03/
-  link: <a href="/gustycooper.github.io/labs_lab06_03/">Labs - Lab 6 Person Type Again</a>
+  link: <a href="/gustycooper.github.io/labs_lab06_03/">Person Type Again</a>
 
 
  
 labs_lab06_04:
-  title: "Labs - Lab 6 My Trip"
+  title: "My Trip"
   url: /gustycooper.github.io/labs_lab06_04/
-  link: <a href="/gustycooper.github.io/labs_lab06_04/">Labs - Lab 6 My Trip</a>
+  link: <a href="/gustycooper.github.io/labs_lab06_04/">My Trip</a>
 
 
  
 labs_lab06_05:
-  title: "Labs - Lab 6 Person Type AGAIN"
+  title: "Person Type AGAIN"
   url: /gustycooper.github.io/labs_lab06_05/
-  link: <a href="/gustycooper.github.io/labs_lab06_05/">Labs - Lab 6 Person Type AGAIN</a>
+  link: <a href="/gustycooper.github.io/labs_lab06_05/">Person Type AGAIN</a>
+
+
+
+
+ 
+labs_lab07_00:
+  title: "Graphics Overview"
+  url: /gustycooper.github.io/labs_lab07_00/
+  link: <a href="/gustycooper.github.io/labs_lab07_00/">Graphics Overview</a>
+
+
+
+
+ 
+labs_lab08_00:
+  title: "Packages, Interfaces, ADTs Overview"
+  url: /gustycooper.github.io/labs_lab08_00/
+  link: <a href="/gustycooper.github.io/labs_lab08_00/">Packages, Interfaces, ADTs Overview</a>
+
+
+
+
+ 
+labs_lab09_00:
+  title: "Recursion, Searching, Sorting"
+  url: /gustycooper.github.io/labs_lab09_00/
+  link: <a href="/gustycooper.github.io/labs_lab09_00/">Recursion, Searching, Sorting</a>
 
 
 

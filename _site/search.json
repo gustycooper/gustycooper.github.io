@@ -456,6 +456,16 @@
 
 
 {
+"title": "Data Types, Packages, Interfaces",
+"tags": "",
+"keywords": "data type, package, interface",
+"url": "/gustycooper.github.io/labs_lab08_00/",
+"summary": "Data Types, Packages, Interfaces"
+},
+
+
+
+{
 "title": "CPSC 220 Labs",
 "tags": "",
 "keywords": "mydoc",
@@ -890,7 +900,7 @@
 "tags": "classobject",
 "keywords": "instance, static",
 "url": "/gustycooper.github.io/mydoc_5_instance_static/",
-"summary": "<li>Understand instance and static.<li> <li>Understand how to put instance and static in the same class.</li>"
+"summary": "<li>Understand instance and static.</li> <li>Understand how to put instance and static in the same class.</li>"
 },
 
 
@@ -980,7 +990,7 @@
 "tags": "collection",
 "keywords": "arraylists",
 "url": "/gustycooper.github.io/mydoc_6_arraylists/",
-"summary": "ArrayLists"
+"summary": "<li>Understand ArrayLists are a sequential collection of data.</li> <li>Understand each element of an ArrayList is the same type.</li> <li>Understand elements of an ArrayList have indices from 0 to the ArrayList.size()-1.</li> <li>Understand how to declare ArrayList variables.</li> <li>Understand how to allocate ArrayList objects.</li> <li>Understand the relationship between ArrayList variables, ArrayList objects, and memory.</li> <li>Understand how to use ArrayList methods to access ArrayList elements.</li> <li>Understand that ArrayList elements must be reference types.</li> <li>Understand how primitive types are autoboxed into reference types.</li> <Understand how loop patterns are applied to ArrayList.</li> <li>Understand the for-each loop and how to use it with ArrayList.</li>"
 },
 
 
@@ -990,7 +1000,7 @@
 "tags": "collection",
 "keywords": "arrays, arraylists",
 "url": "/gustycooper.github.io/mydoc_6_arrays/",
-"summary": "Arrays"
+"summary": "<li>Understand arrays are a sequential collection of data.</li> <li>Understand each element of an array is the same type.</li> <li>Understand elements of an array have indices from 0 to the array.length-1.</li> <li>Understand how to declare array variables.</li> <li>Understand how to allocate array objects.</li> <li>Understand the relationship between array variable, array objects, and memory.</li> <li>Understand how to use array syntax of [] to access array elements.</li> <Understand how loop patterns are applied to arrays.</li> <li>Understand the for-each loop and how to use it with arrays.</li> <li>Understand how to pass arrays as parameters.</li> <li>Understand how to reallcoate an array.</li> <li>Understand the main parameter String[] args.</li>"
 },
 
 
@@ -1000,7 +1010,17 @@
 "tags": "collection",
 "keywords": "arrays, arraylists",
 "url": "/gustycooper.github.io/mydoc_6_arrays_arraylists/",
-"summary": "Arrays and ArrayLists"
+"summary": "<li>Understand arrays and ArrayLists are a sequential collections of data.</li> <li>Understand each element of an arrays and ArrayList is the same type.</li> <li>Understand elements of an arrays and ArrayList have indices from 0 to their sizes-1</li> <li>Understand how to declare arrays and ArrayList variables.</li> <li>Understand how to allocate arrays and ArrayList objects.</li> <li>Understand the relationship between arrays and ArrayList variables, objects, and memory.</li> <li>Understand similarities and differences between arrays and ArrayLists.</li>"
+},
+
+
+
+{
+"title": "Exceptions, Try, File I/O",
+"tags": "collection",
+"keywords": "exception, try, file io",
+"url": "/gustycooper.github.io/mydoc_6a_exceptions_try_fileio/",
+"summary": "<li>Understand Java Exceptions.</li> <li>Understand the try statement.</li> <li>Understand file input and output.</li>"
 },
 
 
@@ -1019,7 +1039,7 @@
 "title": "Abstract Data Types",
 "tags": "packageinterfaceinheritance",
 "keywords": "abstract, data, type",
-"url": "/gustycooper.github.io/mydoc_8_ADI/",
+"url": "/gustycooper.github.io/mydoc_8_ADT/",
 "summary": "Abstract Data Types"
 },
 

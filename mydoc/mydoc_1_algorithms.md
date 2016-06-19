@@ -118,7 +118,7 @@ while n > 1
 
 ## Algorithm Examples - Legos
 
-The following lego example algorithms are renditions of those provided in the Udacity Java course.
+The following lego example algorithms are renditions of those provided in the [Udacity Java course](https://www.udacity.com/course/intro-to-java-programming--cs046).
 
 ### Algorithm - Ordering Blue and Yellow Legos
 

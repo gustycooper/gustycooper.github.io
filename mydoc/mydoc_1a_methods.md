@@ -361,4 +361,4 @@ Suppose you want to simulate rolling a die, which results in a random number bet
 int dieValue = (int)(Math.random() * 6) + 1;
 ```
 
-We will study another technique for gerating random numbers in [Java Scanner](/gustycooper.github.io/mydoc_3_random).
+We will study another technique for gerating random numbers in [Java Random](/gustycooper.github.io/mydoc_3_random).

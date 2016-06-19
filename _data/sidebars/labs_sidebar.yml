@@ -27,203 +27,227 @@ entries:
       url: /labs_landing_page/
       output: web
 
-  - title: Lab 1
+  - title: Intro & 1st Programs
     output: web, pdf
 
     folderitems:
-    - title: Labs - Lab 1 Overview
+    - title: Intro & 1st Programs Overview
       url: /labs_lab01_00/
       output: web, pdf
       
-    - title: Labs - First Program
+    - title: First Program
       url: /labs_lab01_01/
       output: web, pdf
       
-    - title: Labs - Second Program
+    - title: Second Program
       url: /labs_lab01_02/
       output: web, pdf
       
-  - title: Lab 2
+  - title: Expressions, Methods
     output: web, pdf
 
     folderitems:
-    - title: Labs - Lab 2 Overview
+    - title: Expressoins, Methods Overview
       url: /labs_lab02_00/
       output: web, pdf
       
-    - title: Labs - Java Expressions in Codepad
+    - title: Java Expressions in Codepad
       url: /labs_lab02_01/
       output: web, pdf
       
-    - title: Labs - Split the Bill
+    - title: Split the Bill
       url: /labs_lab02_02/
       output: web, pdf
       
-    - title: Labs - Paycheck
+    - title: Paycheck
       url: /labs_lab02_03/
       output: web, pdf
       
-    - title: Labs - TwoPays
+    - title: TwoPays
       url: /labs_lab02_03a/
       output: web, pdf
       
-    - title: Labs - Average
+    - title: Average
       url: /labs_lab02_04/
       output: web, pdf
       
-    - title: Labs - Largest
+    - title: Largest
       url: /labs_lab02_05/
       output: web, pdf
       
-    - title: Labs - Temperature
+    - title: Temperature
       url: /labs_lab02_06/
       output: web, pdf
       
-    - title: Labs - Dice
+    - title: Dice
       url: /labs_lab02_07/
       output: web, pdf
       
-    - title: Labs - Strings
+    - title: Strings
       url: /labs_lab02_08/
       output: web, pdf
       
-  - title: Lab 3
+  - title: Simple Objects
     output: web, pdf
 
     folderitems:
-    - title: Labs - Lab 3 Overview
+    - title: Simple Objects Overview
       url: /labs_lab03_00/
       output: web, pdf
       
-    - title: Labs - Person Type
+    - title: Person Type
       url: /labs_lab03_01/
       output: web, pdf
       
-    - title: Labs - Car Type
+    - title: Car Type
       url: /labs_lab03_02/
       output: web, pdf
       
-    - title: Labs - TwoPays Type
+    - title: TwoPays Type
       url: /labs_lab03_03/
       output: web, pdf
       
-    - title: Labs - MyMath Type
+    - title: MyMath Type
       url: /labs_lab03_04/
       output: web, pdf
       
-    - title: Labs - Dice Type
+    - title: Dice Type
       url: /labs_lab03_05/
       output: web, pdf
       
-    - title: Labs - MyString Type
+    - title: MyString Type
       url: /labs_lab03_06/
       output: web, pdf
       
-    - title: Labs - Temperature Type
+    - title: Temperature Type
       url: /labs_lab03_07/
       output: web, pdf
       
-  - title: Lab 4
+  - title: Control Flow
     output: web, pdf
 
     folderitems:
-    - title: Labs - Lab 4 Overview
+    - title: Control Flow Overview
       url: /labs_lab04_00/
       output: web, pdf
       
-    - title: Labs - First Loops
+    - title: First Loops
       url: /labs_lab04_01/
       output: web, pdf
       
-    - title: Labs - Potato Class
+    - title: Potato Class
       url: /labs_lab04_02/
       output: web, pdf
       
-    - title: Labs - Loops, Ifs, Switches
+    - title: Loops, Ifs, Switches
       url: /labs_lab04_03/
       output: web, pdf
       
-    - title: Labs - Millionaire
+    - title: Millionaire
       url: /labs_lab04_04/
       output: web, pdf
       
-    - title: Labs - MyMath Take 2
+    - title: MyMath Take 2
       url: /labs_lab04_05/
       output: web, pdf
       
-    - title: Labs - Twitter Type
+    - title: Twitter Type
       url: /labs_lab04_06/
       output: web, pdf
       
-    - title: Labs - Gerbil Game
+    - title: Gerbil Game
       url: /labs_lab04_07/
       output: web, pdf
       
-    - title: Labs - Triangle
+    - title: Triangle
       url: /labs_lab04_08/
       output: web, pdf
       
-    - title: Labs - Credit Card Type
+    - title: Credit Card Type
       url: /labs_lab04_09/
       output: web, pdf
       
-    - title: Labs - Pig Game People
+    - title: Pig Game People
       url: /labs_lab04_10/
       output: web, pdf
       
-    - title: Labs - Pig Game Computer
+    - title: Pig Game Computer
       url: /labs_lab04_11/
       output: web, pdf
       
-  - title: Lab 5
+  - title: Classes, Objects, ...
     output: web, pdf
 
     folderitems:
-    - title: Labs - Lab 5 Overview
+    - title: Classes, Objects, ... Overview
       url: /labs_lab05_00/
       output: web, pdf
       
-    - title: Labs - Lab 5 Person Revisited
+    - title: Person Revisited
       url: /labs_lab05_01/
       output: web, pdf
       
-    - title: Labs - Lab 5 Car Revisited
+    - title: Car Revisited
       url: /labs_lab05_02/
       output: web, pdf
       
-    - title: Labs - Lab 5 Twitter Revisited
+    - title: Twitter Revisited
       url: /labs_lab05_03/
       output: web, pdf
       
-    - title: Labs - Lab 5 Student Type
+    - title: Student Type
       url: /labs_lab05_04/
       output: web, pdf
       
-  - title: Lab 6
+  - title: Arrays, ArrayLists
     output: web, pdf
 
     folderitems:
-    - title: Labs - Lab 6 Overview
+    - title: Arrays, ArrayLists Overview
       url: /labs_lab06_00/
       output: web, pdf
       
-    - title: Labs - Lab 6 Loop Patterns
+    - title: Loop Patterns
       url: /labs_lab06_01/
       output: web, pdf
       
-    - title: Labs - Lab 6 MyIntegers Type
+    - title: MyIntegers Type
       url: /labs_lab06_02/
       output: web, pdf
       
-    - title: Labs - Lab 6 Person Type Again
+    - title: Person Type Again
       url: /labs_lab06_03/
       output: web, pdf
       
-    - title: Labs - Lab 6 My Trip
+    - title: My Trip
       url: /labs_lab06_04/
       output: web, pdf
       
-    - title: Labs - Lab 6 Person Type AGAIN
+    - title: Person Type AGAIN
       url: /labs_lab06_05/
+      output: web, pdf
+      
+  - title: Graphics
+    output: web, pdf
+
+    folderitems:
+    - title: Graphics Overview
+      url: /labs_lab07_00/
+      output: web, pdf
+      
+  - title: Packages, Interfaces, ADTs
+    output: web, pdf
+
+    folderitems:
+    - title: Packages, Interfaces, ADTs Overview
+      url: /labs_lab08_00/
+      output: web, pdf
+      
+  - title: Recursion, Searching, Sorting
+    output: web, pdf
+
+    folderitems:
+    - title: Recursion, Searching, Sorting
+      url: /labs_lab09_00/
       output: web, pdf
       

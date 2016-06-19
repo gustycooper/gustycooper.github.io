@@ -128,7 +128,7 @@ Boolean algebra can be helpful at times to simplify a complicated ```boolean``` 
 
 ## DeMorgan's Law Example
 
-This example applies DeMorgan's Law to an loop, which we study in [Control Flow](/gustycooper.github.io/mydoc_3_control_flow).  In this example, you want to quit a while loop when the user presses Enter with nothing or the command quit.  The basic structure for a while loop is the following.
+This example applies DeMorgan's Law to an loop, which we study in [Control Flow](/gustycooper.github.io/mydoc_4_control_flow).  In this example, you want to quit a while loop when the user presses Enter with nothing or the command quit.  The basic structure for a while loop is the following.
 
 ```java
 while (<exp-is-true>) { keep looping }

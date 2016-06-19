@@ -33,7 +33,7 @@ Control flow is the essense of algorithms, which means this module concentrates 
 
 * **Method** - collect steps into a reusable container that your can reference.  
 
-We have studied several modules: [Introduction](/gustycooper.githum.io/mydoc_0_introduction), [Expressions](/gustycooper.github.io/mydoc_1_expressions), [Methods](/gustycooper.github.io/mydoc_1a_methods) and [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).
+We have studied several modules: [Introduction](/gustycooper.github.io/mydoc_1_overview), [Expressions](/gustycooper.github.io/mydoc_2_expressions), [Methods](/gustycooper.github.io/mydoc_1a_methods) and [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).
 
 At this point, we understand the following.
 
@@ -73,7 +73,7 @@ for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp<
 </div>
 
 
-You should recall that **Blocks** are sequence of statements between balanced braces { } where each statement is terminated by a ; - discussed in [Our First Java Programs](/gustycooper.github.io/first_programs)
+You should recall that **Blocks** are sequence of statements between balanced braces { } where each statement is terminated by a ; - discussed in [Our First Java Programs](/gustycooper.github.io/mydoc_1_first_programs)
 
 * A block is not terminated by a ;
 

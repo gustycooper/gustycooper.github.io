@@ -3,7 +3,7 @@ title: Instance and Static
 tags: [class, object]
 keywords: instance, static
 last_updated: June 1, 2016
-summary: "<li>Understand instance and static.<li> <li>Understand how to put instance and static in the same class.</li>"
+summary: "<li>Understand instance and static.</li> <li>Understand how to put instance and static in the same class.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_5_instance_static/
 ---

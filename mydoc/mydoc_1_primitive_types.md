@@ -28,7 +28,7 @@ The primary goal of CPSC 220 is for everyone to learn how to solve problems in J
 
 To demonstrate how writing a program is primarily creating algorithms and data structures, [Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth) (a famous computer scientist, who (among other things) created the programming language Pascal) wrote a book titled, Algorithms + Data Structures = Programs.  We have a general idea of algorithms,  which we will tighten into designing and implemeting Java programs, but first we have to begin our journey into data structure.  We begin with Java primitive data types.
 
-We introduct our first Programming Pattern, which is our definition of programs - the title of Niklaus Wirth's book.  We return to this definition throughout the course.  For example, when studying [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) focus on the Data Structures component and studying [Control Flow](/gustycooper.githum.io/mydoc_4_control_flow) focuses on the Algorithms component.
+We introduct our first Programming Pattern, which is our definition of programs - the title of Niklaus Wirth's book.  We return to this definition throughout the course.  For example, when studying [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) focus on the Data Structures component and studying [Control Flow](/gustycooper.github.io/mydoc_4_control_flow) focuses on the Algorithms component.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
@@ -118,7 +118,7 @@ Meta Language - Java's Declarartion Statement
   * numeric variables to 0. 
   * ```char``` variables to the null character, which is ```'\0'``` or 0.
   * ```boolean``` variables to ```false```.
-* We study expressions in[Expressions](/gustycooper.github.io/mydoc_3_expressions). 
+* We study expressions in [Expressions](/gustycooper.github.io/mydoc_3_expressions). 
 * You may declare and initialize multiple variables by using a comma to separate them.
 
 The following are example declarations, some of which use the ```<exp>``` to initialize the variable.

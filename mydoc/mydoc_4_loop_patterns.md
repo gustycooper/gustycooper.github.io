@@ -171,7 +171,7 @@ public class LargestNumInFile {
 
 ## Count Matches Pattern
 
-The section describes the Count Matches Pattern, which is a specific example of the Accumulator Pattern.  The Count Matches Pattern is demonstrated by counting digits in a ```long```.  Suppose ```long longVar``` contains 1001232121.  The count of digit 0 is 2, digit 1 is 4, digit 2 is 3, and digit 3 is 1.  Section "Numbers - Converting Between Bases" in [Numbers as Information](mydoc_1_numbers) contains pseudo code that converts to a particular base.  The following code implements the base conversion algorithm where we convert a ```long``` to decimal, picking out digits to compare.
+The section describes the Count Matches Pattern, which is a specific example of the Accumulator Pattern.  The Count Matches Pattern is demonstrated by counting digits in a ```long```.  Suppose ```long longVar``` contains 1001232121.  The count of digit 0 is 2, digit 1 is 4, digit 2 is 3, and digit 3 is 1.  Section "Numbers - Converting Between Bases" in [Numbers as Information](/gustycooper.github.io/mydoc_1_numbers) contains pseudo code that converts to a particular base.  The following code implements the base conversion algorithm where we convert a ```long``` to decimal, picking out digits to compare.
 
 ```java
 public static void countMatchingDigits() {

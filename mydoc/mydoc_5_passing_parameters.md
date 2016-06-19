@@ -271,7 +271,7 @@ The following figure provides clarity.  The blue ```s``` and ```String``` object
 
 ## Swapping Parameters
 
-Recall the Swapping Variables pattern from [Assignment Expressions](/gustycooper.github.io/assignment_expressions).  
+Recall the Swapping Variables pattern from [Assignment Expressions](/gustycooper.github.io/mydoc_2_assignment_expressions).  
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>

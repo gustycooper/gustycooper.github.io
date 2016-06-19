@@ -52,7 +52,7 @@ entries:
       url: /mydoc_0_examples/
       output: web, pdf
 
-  - title: Introduction
+  - title: Intro & 1st Programs
     output: web, pdf
     folderitems:
 
@@ -200,11 +200,11 @@ entries:
       url: /mydoc_4a_debugging/
       output: web, pdf
 
-  - title: Classes, Objects, and more
+  - title: Classes, Objects, ...
     output: web, pdf
     folderitems:
 
-    - title: Classes, Objects, and more
+    - title: Classes, Objects, ...
       url: /mydoc_5_classes_objects/
       output: web, pdf
 
@@ -270,6 +270,14 @@ entries:
 
     - title: ArrayLists
       url: /mydoc_6_arraylists/
+      output: web, pdf
+
+  - title: Exceptions, Try, File I/O
+    output: web, pdf
+    folderitems:
+    
+    - title: Exceptions, Try, File I/O
+      url: /mydoc_6a_exceptions_try_fileio/
       output: web, pdf
 
   - title: Graphics

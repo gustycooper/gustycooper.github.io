@@ -114,7 +114,13 @@ When a Java program executes,
   * the stack grows and shrinks
   * the heap get objects created with the new operator
 
-The following figure demonstrats the stack and heap for the method ```memDemo```.
+The following figure demonstrates the stack and heap for the method ```memDemo```.
 
 ![Stack and Heap](../images/stackHeap.png "Stack and Heap")
+
+## ```String``` is Immutable
+
+In [Java Strings](/gustycooper.github.io/mydoc_3_strings) we learned that ```String``` is immutable.  Now that we understand stack and heap, the following figure demonstrates ```String``` and its immutability.
+
+![Immutable Strings](../images/stringsImmutable2.png "Immutable Strings")
 

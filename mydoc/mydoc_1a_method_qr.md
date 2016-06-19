@@ -64,6 +64,8 @@ permalink: /mydoc_1a_method_qr/
 <li> <code> double nextDouble()</code> - return next double input </li>
 <li> <code> String nextLine()</code> - return next line in input </li>
 <li> <code> String next()</code> - return next word in input </li>
+<li> <code> boolean hasNextDouble()</code> - return true if next token in input stream is a double</li>
+<li> <code> boolean hasNextInt()</code> - return true if next token in input stream is an int</li>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="random">

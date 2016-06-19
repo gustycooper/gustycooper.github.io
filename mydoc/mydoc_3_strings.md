@@ -113,7 +113,7 @@ String name2 = "Gusty";
 name2 = name2 + " " + new String("teaches");
 ```
 
-In the next three sections of this module, we will use the ```new``` operator to allocate ```Scanner``` objects, for ```Random``` objects, and objects of ```class```es we define.  All Java classes except ```String``` have to use the ```new``` operator to allocate their objects.  The ```new``` operator is applied to a ```class``` **constructor**, which we learn how to create in [Our First Classes](/gustycooper.github.io/our_first_classes).  
+In the next three sections of this module, we will use the ```new``` operator to allocate ```Scanner``` objects, for ```Random``` objects, and objects of ```class```es we define.  All Java classes except ```String``` have to use the ```new``` operator to allocate their objects.  The ```new``` operator is applied to a ```class``` **constructor**, which we learn how to create in [Our First Classes](/gustycooper.github.io/mydoc_3_our_first_classes).  
 
 ## Java String Equality
 

@@ -104,13 +104,13 @@ Java syntax can be a bit confusing at first, as it has strategically placed semi
   }
   ```
 
-* Parentheses have several uses.  In expressions, parentheses force a specific evaluation order.  We will study the details of expressions in [Expressions](/gustycooper.githum.io/mydoc_2_expressions).  The following example shows parentheses to force addition before multiplication.
+* Parentheses have several uses.  In expressions, parentheses force a specific evaluation order.  We will study the details of expressions in [Expressions](/gustycooper.github.io/mydoc_2_expressions).  The following example shows parentheses to force addition before multiplication.
 
   ```java
   (a + b) * c;
   ```
 
-* In conditionals and loops, parentheses enclose the controlling expressions of conditionals and loops and curly braces denote a block of statements.  We will study the details of control flow in [Control Flow](/gustycooper.githum.io/mydoc_4_control_flow).  We will not use conditionals and loops in our first programs.  The following if statement demonstrates parentheses, curly braces, and semicolons
+* In conditionals and loops, parentheses enclose the controlling expressions of conditionals and loops and curly braces denote a block of statements.  We will study the details of control flow in [Control Flow](/gustycooper.github.io/mydoc_4_control_flow).  We will not use conditionals and loops in our first programs.  The following if statement demonstrates parentheses, curly braces, and semicolons
 
   ```java
   if (a < b) {
@@ -120,7 +120,7 @@ Java syntax can be a bit confusing at first, as it has strategically placed semi
   }
   ```
 
-* We will study the details of method defintion and calling in [Methods](/gustycooper.githum.io/mydoc_methods).  For now, you should rely upon your previous knowledge of defining and calling functions.
+* We will study the details of method defintion and calling in [Methods](/gustycooper.github.io/mydoc_methods).  For now, you should rely upon your previous knowledge of defining and calling functions.
 
 * In method definitions, parenthesis enclose the formal parameters.  For example, the ```main``` method in the Main Pattern has parentheses enclosing the formal parameter ```String[] args```.
 
@@ -128,7 +128,7 @@ Java syntax can be a bit confusing at first, as it has strategically placed semi
   public static void main(String[] args) 
   ```
 
-* In calling methods, parentheses enclose the actual parameters.  For example, the call to ```System.out.println``` has parentheses enclosing the actual parameter ```"Hello World"```.  Do not fret about the dotted notation in ```System.out.println```.  We will study this in [Simple Objects](/gustycooper.github.io/mydoc_4_simple_objects).
+* In calling methods, parentheses enclose the actual parameters.  For example, the call to ```System.out.println``` has parentheses enclosing the actual parameter ```"Hello World"```.  Do not fret about the dotted notation in ```System.out.println```.  We will study this in [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects).
 
   ```java
   System.out.println("Hello World");
@@ -357,7 +357,7 @@ Picture of the first computer bug.
 
 You are just about ready to create your first Java programs.  First we will revisit the Main program shown in the Input Pattern above in order to understand several important concepts.
 
-* All Java code must be in a ```class```.  The input pattern code is in the ```class Main```.  We will study classes in more detail in [Simple Objects](/gustycooper.githum.io/mydoc_2_simple_objects).  For now our classes will have the following structure.
+* All Java code must be in a ```class```.  The input pattern code is in the ```class Main```.  We will study classes in more detail in [Simple Objects](/gustycooper.github.io/mydoc_2_simple_objects).  For now our classes will have the following structure.
 
 ```java
 public class Main {
