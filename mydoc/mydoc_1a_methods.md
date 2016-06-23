@@ -18,9 +18,7 @@ Programming Pattern
 0. Wirth Pattern
 </b>
 <br>
-<pre>
-Algorithms + Data Structures = Programs
-</pre>
+<img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />
 </div>
 
 Methods and method calls are one of the four building blocks of algorithsm defined in [Algorithms](/gustycooper.github.io/mydoc_1_algorithms).   

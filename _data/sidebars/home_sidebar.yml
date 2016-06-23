@@ -14,7 +14,7 @@ entries:
     - title: News
       url: /news/
       output: web
-    - title: CPSC 220
+    - title: Textbook
       url: /mydoc_introduction/
       output: web
     - title: Syllabus

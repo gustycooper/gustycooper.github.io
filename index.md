@@ -1,16 +1,27 @@
 ---
 title: Welcome to CPSC 220
 tags: [welcome]
-last_updated: May 7, 2016
+last_updated: June 20, 2016
 sidebar: mydoc_sidebar
 type: homepage
 ---
 
 ## Welcome to CPSC 220
 
-![Programming Cartoon](images/programming_cartoon.png "Programming Cartoon")
+[![Welcome Cartoon](images/welcome.png "Welcome Cartoon")](/gustycooper.github.io/mydoc_0_how_to_use)
 
-<a href="http://cliparts.co/clipart/575737">Clip arts</a>
 <a href="http://cliparts.co">Clipart.co</a>
 
-[Programming](http://i.imgur.com/VhlQK.gif)
+
+
+
+
+
+
+
+
+<!--
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="VhlQK"><a href="//imgur.com/VhlQK">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
+-->

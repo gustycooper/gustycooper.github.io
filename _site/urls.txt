@@ -16,6 +16,13 @@
 
 
  
+mydoc_0_how_to_use:
+  title: "How to Use"
+  url: /gustycooper.github.io/mydoc_0_how_to_use/
+  link: <a href="/gustycooper.github.io/mydoc_0_how_to_use/">How to Use</a>
+
+
+ 
 mydoc_0_get_started:
   title: "Let's Get Started"
   url: /gustycooper.github.io/mydoc_0_get_started/
@@ -37,17 +44,10 @@ mydoc_0_downloads:
 
 
  
-mydoc_0_how_to_use:
-  title: "How to Use"
-  url: /gustycooper.github.io/mydoc_0_how_to_use/
-  link: <a href="/gustycooper.github.io/mydoc_0_how_to_use/">How to Use</a>
-
-
- 
 mydoc_0_faq:
-  title: "FAQ - Template"
+  title: "FAQs"
   url: /gustycooper.github.io/mydoc_0_faq/
-  link: <a href="/gustycooper.github.io/mydoc_0_faq/">FAQ - Template</a>
+  link: <a href="/gustycooper.github.io/mydoc_0_faq/">FAQs</a>
 
 
  
@@ -406,9 +406,16 @@ mydoc_6_arraylists:
 
  
 mydoc_6a_exceptions_try_fileio:
-  title: "Exceptions, Try, File I/O"
+  title: "Exceptions, Try"
   url: /gustycooper.github.io/mydoc_6a_exceptions_try_fileio/
-  link: <a href="/gustycooper.github.io/mydoc_6a_exceptions_try_fileio/">Exceptions, Try, File I/O</a>
+  link: <a href="/gustycooper.github.io/mydoc_6a_exceptions_try_fileio/">Exceptions, Try</a>
+
+
+ 
+mydoc_6a_fileio:
+  title: "File I/O"
+  url: /gustycooper.github.io/mydoc_6a_fileio/
+  link: <a href="/gustycooper.github.io/mydoc_6a_fileio/">File I/O</a>
 
 
 
@@ -1021,6 +1028,76 @@ labs_lab07_00:
   link: <a href="/gustycooper.github.io/labs_lab07_00/">Graphics Overview</a>
 
 
+ 
+labs_lab07_01_01:
+  title: "Graphics Repeat"
+  url: /gustycooper.github.io/labs_lab07_01_01/
+  link: <a href="/gustycooper.github.io/labs_lab07_01_01/">Graphics Repeat</a>
+
+ 
+labs_lab07_01_02:
+  title: "First Graphics Program"
+  url: /gustycooper.github.io/labs_lab07_01_02/
+  link: <a href="/gustycooper.github.io/labs_lab07_01_02/">First Graphics Program</a>
+
+ 
+labs_lab07_01_03:
+  title: "Growing Circle Animation"
+  url: /gustycooper.github.io/labs_lab07_01_03/
+  link: <a href="/gustycooper.github.io/labs_lab07_01_03/">Growing Circle Animation</a>
+
+ 
+labs_lab07_01_04:
+  title: "Simple Animation Starter"
+  url: /gustycooper.github.io/labs_lab07_01_04/
+  link: <a href="/gustycooper.github.io/labs_lab07_01_04/">Simple Animation Starter</a>
+
+ 
+labs_lab07_01_05:
+  title: "Java Fonts"
+  url: /gustycooper.github.io/labs_lab07_01_05/
+  link: <a href="/gustycooper.github.io/labs_lab07_01_05/">Java Fonts</a>
+
+ 
+labs_lab07_01_06:
+  title: "CGTemplate"
+  url: /gustycooper.github.io/labs_lab07_01_06/
+  link: <a href="/gustycooper.github.io/labs_lab07_01_06/">CGTemplate</a>
+
+
+
+ 
+labs_lab07_02_01:
+  title: "Hello World Repeat"
+  url: /gustycooper.github.io/labs_lab07_02_01/
+  link: <a href="/gustycooper.github.io/labs_lab07_02_01/">Hello World Repeat</a>
+
+ 
+labs_lab07_02_02:
+  title: "Capitalizer Repeat"
+  url: /gustycooper.github.io/labs_lab07_02_02/
+  link: <a href="/gustycooper.github.io/labs_lab07_02_02/">Capitalizer Repeat</a>
+
+ 
+labs_lab07_02_03:
+  title: "Move A Line Repeat"
+  url: /gustycooper.github.io/labs_lab07_02_03/
+  link: <a href="/gustycooper.github.io/labs_lab07_02_03/">Move A Line Repeat</a>
+
+ 
+labs_lab07_02_04:
+  title: "Netbeans GUI Builder"
+  url: /gustycooper.github.io/labs_lab07_02_04/
+  link: <a href="/gustycooper.github.io/labs_lab07_02_04/">Netbeans GUI Builder</a>
+
+ 
+labs_lab07_02_05:
+  title: "EndorSmints"
+  url: /gustycooper.github.io/labs_lab07_02_05/
+  link: <a href="/gustycooper.github.io/labs_lab07_02_05/">EndorSmints</a>
+
+
+
 
 
  
@@ -1030,6 +1107,34 @@ labs_lab08_00:
   link: <a href="/gustycooper.github.io/labs_lab08_00/">Packages, Interfaces, ADTs Overview</a>
 
 
+ 
+labs_lab08_01:
+  title: "Stack ADT"
+  url: /gustycooper.github.io/labs_lab08_01/
+  link: <a href="/gustycooper.github.io/labs_lab08_01/">Stack ADT</a>
+
+
+ 
+labs_lab08_02:
+  title: "Palindrome Checker"
+  url: /gustycooper.github.io/labs_lab08_02/
+  link: <a href="/gustycooper.github.io/labs_lab08_02/">Palindrome Checker</a>
+
+
+ 
+labs_lab08_03:
+  title: "Parentheses Balance Checker"
+  url: /gustycooper.github.io/labs_lab08_03/
+  link: <a href="/gustycooper.github.io/labs_lab08_03/">Parentheses Balance Checker</a>
+
+
+ 
+labs_lab08_04:
+  title: "MyMath Package"
+  url: /gustycooper.github.io/labs_lab08_04/
+  link: <a href="/gustycooper.github.io/labs_lab08_04/">MyMath Package</a>
+
+
 
 
  
@@ -1037,6 +1142,114 @@ labs_lab09_00:
   title: "Recursion, Searching, Sorting"
   url: /gustycooper.github.io/labs_lab09_00/
   link: <a href="/gustycooper.github.io/labs_lab09_00/">Recursion, Searching, Sorting</a>
+
+
+ 
+labs_lab09_01_01:
+  title: "Recursive Power Method"
+  url: /gustycooper.github.io/labs_lab09_01_01/
+  link: <a href="/gustycooper.github.io/labs_lab09_01_01/">Recursive Power Method</a>
+
+ 
+labs_lab09_01_02:
+  title: "Recursive Fibonacci Method"
+  url: /gustycooper.github.io/labs_lab09_01_02/
+  link: <a href="/gustycooper.github.io/labs_lab09_01_02/">Recursive Fibonacci Method</a>
+
+ 
+labs_lab09_01_03:
+  title: "Recursive Thinking"
+  url: /gustycooper.github.io/labs_lab09_01_03/
+  link: <a href="/gustycooper.github.io/labs_lab09_01_03/">Recursive Thinking</a>
+
+ 
+labs_lab09_01_04:
+  title: "Recursive Simple Maze"
+  url: /gustycooper.github.io/labs_lab09_01_04/
+  link: <a href="/gustycooper.github.io/labs_lab09_01_04/">Recursive Simple Maze</a>
+
+ 
+labs_lab09_01_05:
+  title: "Recursive Array Printing"
+  url: /gustycooper.github.io/labs_lab09_01_05/
+  link: <a href="/gustycooper.github.io/labs_lab09_01_05/">Recursive Array Printing</a>
+
+ 
+labs_lab09_01_06:
+  title: "Recursive ArrayList Printing"
+  url: /gustycooper.github.io/labs_lab09_01_06/
+  link: <a href="/gustycooper.github.io/labs_lab09_01_06/">Recursive ArrayList Printing</a>
+
+
+
+ 
+labs_lab09_02_01:
+  title: "Number Searching"
+  url: /gustycooper.github.io/labs_lab09_02_01/
+  link: <a href="/gustycooper.github.io/labs_lab09_02_01/">Number Searching</a>
+
+ 
+labs_lab09_02_02:
+  title: "Recursive Linear Search"
+  url: /gustycooper.github.io/labs_lab09_02_02/
+  link: <a href="/gustycooper.github.io/labs_lab09_02_02/">Recursive Linear Search</a>
+
+ 
+labs_lab09_02_03:
+  title: "Recursive Binary Search"
+  url: /gustycooper.github.io/labs_lab09_02_03/
+  link: <a href="/gustycooper.github.io/labs_lab09_02_03/">Recursive Binary Search</a>
+
+ 
+labs_lab09_02_04:
+  title: "String Searching"
+  url: /gustycooper.github.io/labs_lab09_02_04/
+  link: <a href="/gustycooper.github.io/labs_lab09_02_04/">String Searching</a>
+
+ 
+labs_lab09_02_05:
+  title: "Updating Hash.java"
+  url: /gustycooper.github.io/labs_lab09_02_05/
+  link: <a href="/gustycooper.github.io/labs_lab09_02_05/">Updating Hash.java</a>
+
+ 
+labs_lab09_02_06:
+  title: "wordCount with Map"
+  url: /gustycooper.github.io/labs_lab09_02_06/
+  link: <a href="/gustycooper.github.io/labs_lab09_02_06/">wordCount with Map</a>
+
+
+
+ 
+labs_lab09_03_01:
+  title: "Sorting Animation"
+  url: /gustycooper.github.io/labs_lab09_03_01/
+  link: <a href="/gustycooper.github.io/labs_lab09_03_01/">Sorting Animation</a>
+
+ 
+labs_lab09_03_02:
+  title: "Sort a Few Numbers"
+  url: /gustycooper.github.io/labs_lab09_03_02/
+  link: <a href="/gustycooper.github.io/labs_lab09_03_02/">Sort a Few Numbers</a>
+
+ 
+labs_lab09_03_03:
+  title: "Sort a Few Strings"
+  url: /gustycooper.github.io/labs_lab09_03_03/
+  link: <a href="/gustycooper.github.io/labs_lab09_03_03/">Sort a Few Strings</a>
+
+ 
+labs_lab09_03_04:
+  title: "Sort a Bunch of Strings"
+  url: /gustycooper.github.io/labs_lab09_03_04/
+  link: <a href="/gustycooper.github.io/labs_lab09_03_04/">Sort a Bunch of Strings</a>
+
+ 
+labs_lab09_03_05:
+  title: "Recursive Number Conversion"
+  url: /gustycooper.github.io/labs_lab09_03_05/
+  link: <a href="/gustycooper.github.io/labs_lab09_03_05/">Recursive Number Conversion</a>
+
 
 
 
@@ -1063,9 +1276,9 @@ news:
 
 
 :
-  title: "CPSC 220"
+  title: "Textbook"
   url: ""
-  link: "<a href='//'>CPSC 220</a>"
+  link: "<a href='//'>Textbook</a>"
 
 
 
@@ -1136,9 +1349,9 @@ news:
 
 
 :
-  title: "CPSC 220"
+  title: "Textbook"
   url: ""
-  link: "<a href='//'>CPSC 220</a>"
+  link: "<a href='//'>Textbook</a>"
 
 
 

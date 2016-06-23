@@ -34,9 +34,7 @@ Programming Pattern
 0. Wirth Pattern
 </b>
 <br>
-<pre>
-Algorithms + Data Structures = Programs
-</pre>
+<img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />
 </div>
 
 This module on Classes, Objects, and More focuses more on the Data Structures component than the Algorithms component.  [Passing Parameters](/gustycooper.github.io/mydoc_5_passing_parameters) is part of the Algorithms component. 

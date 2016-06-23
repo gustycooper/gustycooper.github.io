@@ -1,16 +1,16 @@
 ---
-title: First Program (Labs - Lab 6)
+title: Arrays, ArrayLists
 keywords: array, arraylist
-last_updated: June 6, 2016
-summary: "Lab 6, Overview"
+last_updated: June 22, 2016
+summary: "Arrays, ArrayLists"
 sidebar: labs_sidebar
 permalink: /labs_lab06_00/
 toc: false
 ---
 
-## Lab 6 Overview
+## Array, ArrayLists Overview
 
-In Lab 6, we return to looping patterns, but this time we use them on arrays and array lists.  We implement a ```MyIntegers class``` with an array that has to be extended when it becomes full.  We update our ```Person``` class so that friends is an array list of ```Person```.
+In this lab, we return to looping patterns, but this time we use them on arrays and array lists.  We implement a ```MyIntegers class``` with an array that has to be extended when it becomes full.  We update our ```Person``` class so that friends is an array list of ```Person```.
 
 ## Submission Requirements
 

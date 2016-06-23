@@ -9,9 +9,9 @@ toc: false
 permalink: /mydoc_1_overview/
 ---
 
-## Introduction Overview
+## Intro and 1st Program Module Overview
 
-The Introduction section is primarily concerned with concepts and not programming.  The Introduction section defines the basic components of computers science.  After completing this section, you should understand the following concepts.
+The Introduction module is primarily concerned with concepts and not programming; however, we do write our first programs in this module.  The Introduction section defines the basic components of computers science.  After completing this section, you should understand the following concepts.
 
 * computers
 * input
@@ -35,4 +35,6 @@ The Introduction Section does include some elementary programs, including a few 
 * Input Pattern
 * Output Pattern
 
+## Intro and 1st Program Lab
 
+The overview lab for this module is [Intro and 1st Programs Lab Overview](/gustycooper.github.io/labs_lab01_00)

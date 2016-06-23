@@ -2,7 +2,7 @@
 
 entries:
 - title: sidebar
-  product: CPSC 220
+  product: Textbook
   version: 0.0
   folders:
 
@@ -28,6 +28,10 @@ entries:
       type: homepage
       output: web, pdf
 
+    - title: How to Use
+      url: /mydoc_0_how_to_use/
+      output: web, pdf
+
     - title: Let's Get Started
       url: /mydoc_0_get_started/
       output: web, pdf
@@ -40,11 +44,7 @@ entries:
       url: /mydoc_0_downloads/
       output: web, pdf
 
-    - title: How to Use
-      url: /mydoc_0_how_to_use/
-      output: web, pdf
-
-    - title: FAQ - Template
+    - title: FAQs
       url: /mydoc_0_faq/
       output: web, pdf
 
@@ -276,8 +276,12 @@ entries:
     output: web, pdf
     folderitems:
     
-    - title: Exceptions, Try, File I/O
+    - title: Exceptions, Try
       url: /mydoc_6a_exceptions_try_fileio/
+      output: web, pdf
+
+    - title: File I/O
+      url: /mydoc_6a_fileio/
       output: web, pdf
 
   - title: Graphics

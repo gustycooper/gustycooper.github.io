@@ -68,6 +68,19 @@ Java is executed by a combination of compiling and interpreting.
 
 ![Java Interpreting](../images/javaInterpreting.png "Java Interpreting")
  
+## JVM, JDK, and JRE Pattern
+
+The JVM, JDK, and JRE pattern figure allows you to easily visulize the software development process.
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. JVM, JDK, and JRE Pattern </b>
+<br>
+<img title="JVMJDKJRE" src="{{ "/images/jvmJdkJreFigure.png" | prepend: site.baseurl }}" />
+</div>
+
+
 ## C Code Snippet
 
 The following C code shows a simple algorithm, which will be translated into its corresponded assembly language in the next section.  If the following code snippet appears to be Java, that is because Java began with C/C++ syntax.

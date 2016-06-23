@@ -30,9 +30,7 @@ Programming Pattern
 0. Wirth Pattern
 </b>
 <br>
-<pre>
-Algorithms + Data Structures = Programs
-</pre>
+<img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />
 </div>
 
 This module on simple objects concentrates upon the Data Structures component.  We want to learn the basics of defining our own times with minimal Algorithms.  Most of the algorithms will be sequential assignment statements, with an occasional conditional expression.

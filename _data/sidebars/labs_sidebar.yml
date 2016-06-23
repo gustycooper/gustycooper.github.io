@@ -235,12 +235,81 @@ entries:
       url: /labs_lab07_00/
       output: web, pdf
       
+      subfolders:
+      - title: Simple Graphics
+        output: web, pdf
+        subfolderitems:
+
+        - title: Graphics Repeat
+          url: /labs_lab07_01_01/
+          output: web, pdf
+
+        - title: First Graphics Program
+          url: /labs_lab07_01_02/
+          output: web, pdf
+
+        - title: Growing Circle Animation
+          url: /labs_lab07_01_03/
+          output: web, pdf
+
+        - title: Simple Animation Starter
+          url: /labs_lab07_01_04/
+          output: web, pdf
+
+        - title: Java Fonts
+          url: /labs_lab07_01_05/
+          output: web, pdf
+
+        - title: CGTemplate
+          url: /labs_lab07_01_06/
+          output: web, pdf
+
+      - title: Graphics Events
+        output: web, pdf
+        subfolderitems:
+
+        - title: Hello World Repeat
+          url: /labs_lab07_02_01/
+          output: web, pdf
+
+        - title: Capitalizer Repeat
+          url: /labs_lab07_02_02/
+          output: web, pdf
+
+        - title: Move A Line Repeat
+          url: /labs_lab07_02_03/
+          output: web, pdf
+
+        - title: Netbeans GUI Builder
+          url: /labs_lab07_02_04/
+          output: web, pdf
+
+        - title: EndorSmints
+          url: /labs_lab07_02_05/
+          output: web, pdf
+
   - title: Packages, Interfaces, ADTs
     output: web, pdf
 
     folderitems:
     - title: Packages, Interfaces, ADTs Overview
       url: /labs_lab08_00/
+      output: web, pdf
+      
+    - title: Stack ADT
+      url: /labs_lab08_01/
+      output: web, pdf
+      
+    - title: Palindrome Checker
+      url: /labs_lab08_02/
+      output: web, pdf
+      
+    - title: Parentheses Balance Checker
+      url: /labs_lab08_03/
+      output: web, pdf
+      
+    - title: MyMath Package
+      url: /labs_lab08_04/
       output: web, pdf
       
   - title: Recursion, Searching, Sorting
@@ -251,3 +320,83 @@ entries:
       url: /labs_lab09_00/
       output: web, pdf
       
+      subfolders:
+      - title: Recursion Labs
+        output: web, pdf
+        subfolderitems:
+
+        - title: Recursive Power Method
+          url: /labs_lab09_01_01/
+          output: web, pdf
+
+        - title: Recursive Fibonacci Method
+          url: /labs_lab09_01_02/
+          output: web, pdf
+
+        - title: Recursive Thinking
+          url: /labs_lab09_01_03/
+          output: web, pdf
+
+        - title: Recursive Simple Maze
+          url: /labs_lab09_01_04/
+          output: web, pdf
+
+        - title: Recursive Array Printing
+          url: /labs_lab09_01_05/
+          output: web, pdf
+
+        - title: Recursive ArrayList Printing
+          url: /labs_lab09_01_06/
+          output: web, pdf
+
+      - title: Searching Labs
+        output: web, pdf
+        subfolderitems:
+
+        - title: Number Searching
+          url: /labs_lab09_02_01/
+          output: web, pdf
+
+        - title: Recursive Linear Search
+          url: /labs_lab09_02_02/
+          output: web, pdf
+
+        - title: Recursive Binary Search
+          url: /labs_lab09_02_03/
+          output: web, pdf
+
+        - title: String Searching
+          url: /labs_lab09_02_04/
+          output: web, pdf
+
+        - title: Updating Hash.java
+          url: /labs_lab09_02_05/
+          output: web, pdf
+
+        - title: wordCount with Map
+          url: /labs_lab09_02_06/
+          output: web, pdf
+
+      - title: Sorting Labs
+        output: web, pdf
+        subfolderitems:
+
+        - title: Sorting Animation
+          url: /labs_lab09_03_01/
+          output: web, pdf
+
+        - title: Sort a Few Numbers
+          url: /labs_lab09_03_02/
+          output: web, pdf
+
+        - title: Sort a Few Strings
+          url: /labs_lab09_03_03/
+          output: web, pdf
+
+        - title: Sort a Bunch of Strings
+          url: /labs_lab09_03_04/
+          output: web, pdf
+
+        - title: Recursive Number Conversion
+          url: /labs_lab09_03_05/
+          output: web, pdf

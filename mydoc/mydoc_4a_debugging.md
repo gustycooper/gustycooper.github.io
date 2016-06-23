@@ -21,4 +21,16 @@ When your program does not work like it is supposed to, your program contains bu
 3. **Inspect variables**  - Once your program is stopped, you can examine the content of your variables.  You can hit a breakpoint, examine variables, step, examine, step, and so forth.
 
 
- these values can show you 
+## Debugging Software Development Process Pattern
+
+Debugging is a primary step in the software development process.  You often loop between implementation and test/debug.
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Software Development Process Pattern
+</b>
+<br>
+<img title="SW Dev Process" src="{{ "/images/processFigure.png" | prepend: site.baseurl }}" />
+</div>
+

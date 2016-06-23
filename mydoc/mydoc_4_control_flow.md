@@ -18,9 +18,7 @@ Programming Pattern
 0. Wirth Pattern
 </b>
 <br>
-<pre>
-Algorithms + Data Structures = Programs
-</pre>
+<img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />
 </div>
 
 Control flow is the essense of algorithms, which means this module concentrates on the Algorithms component.  We first studied control flow in [Algorithms](/gustycooper.github.io/mydoc_1_algorithms).  We know that control flow consists of the following.

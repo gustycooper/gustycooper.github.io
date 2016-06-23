@@ -8,6 +8,19 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_2_expressions/
 ---
 
+## Expressions and the Wirth Pattern
+
+We are solving problems in the form of programs.  The Wirth pattern from [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types) defines a prgram to be algorithms and data structures.  Expressions are the fundamental building blocks of the control flow component.
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br>
+<img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />
+</div>
+
 ## Expressions ([Eck 2.5](http://math.hws.edu/javanotes/c2/s5.html))
 
 Expressions are fairly straightforward.  Everyone should already be fairly proficient with creating expressions.  Section 2.5 in David Eck’s book provides a nice overview of Java expressions.  This module reviews expressions.
