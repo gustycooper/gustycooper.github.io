@@ -978,7 +978,7 @@ $('#toc').on('click', 'a', function() {
 <h3 id="bbdt71-java-code-snippet">BBDT.7.1 Java Code Snippet</h3>
 <p>The following Java code shows a simple algorithm, which will be translated into its corresponded assembly language in the next section.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">z</span><span class="o">;</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
@@ -1280,7 +1280,7 @@ else
 
 <p>For this exercise, you are purchasing two items in a coffee shop.  You will keep a running total of the cost of your items.  The pseudo-code to compute this total is as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span><span class="o">;</span>
 <span class="kt">double</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
 <span class="kt">char</span> <span class="n">firstInitial</span><span class="o">,</span> <span class="n">middleInitial</span><span class="o">,</span> <span class="n">lastInitial</span><span class="o">;</span>
 <span class="kt">byte</span> <span class="n">b</span><span class="o">;</span>
@@ -1291,7 +1291,7 @@ else
 
 <p>You can also assign a value with the declaration.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
 <span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
 <span class="kt">double</span> <span class="n">myPi</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">;</span>
 </code></pre>
@@ -1309,26 +1309,26 @@ else
 
 <p>All variables in Java will be a specific type, for example int or double.  Once you have a variable of a specific type, you cannot change the type – for example an int variable will always be an int.  Sometimes you have to convert from one type to another, and there are some cases where Java will automatically perform the type conversion.  For example, if you mix int and double in expressions, Java will automatically convert the int to a double.  This makes sense intuitively.  In other cases, Java will not make the conversion; however, you can tell Java to perform the conversion.  Suppose I have the following two variables defined.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
 <span class="kt">byte</span> <span class="n">bb</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
 </code></pre>
 </div>
 
 <p>We know that an int is four-bytes long while a byte is just a single byte, which means the set of values for the variable number is much larger that the set of values for the variable bb.  This means the following assignment is illegal in Java.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">bb</span> <span class="o">=</span> <span class="n">number</span><span class="o">;</span> <span class="c1">// illegal assignment</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">bb</span> <span class="o">=</span> <span class="n">number</span><span class="o">;</span> <span class="c1">// illegal assignment</span>
 </code></pre>
 </div>
 
 <p>However, we know that the current value in number is 4, which fits into a byte.  We can perform the following cast to make the assignment legal.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">bb</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">number</span><span class="o">;</span> <span class="c1">// legal assignment with (byte) cast</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">bb</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">number</span><span class="o">;</span> <span class="c1">// legal assignment with (byte) cast</span>
 </code></pre>
 </div>
 
 <p>An example of casting a double to a int is shown as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
 <span class="kt">double</span> <span class="n">myPi</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="o">;</span>
 <span class="n">number</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">myPi</span><span class="o">;</span> <span class="c1">// assigns 3 to number</span>
 </code></pre>
@@ -1387,7 +1387,7 @@ public class HelloWorld {
 }
 * Parentheses are used in expressions to force a specific expression evaluation; however, parentheses are also used to enclose the controlling expressions of conditionals and loops.  For example, the following if statement shows parentheses, curly braces, and semicolons</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
@@ -1399,7 +1399,7 @@ public class HelloWorld {
 
 <p>The spacing in Java does not make any difference.  The previous if statement can be coded as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">;}</span> <span class="k">else</span> <span class="o">{</span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">;}</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">;}</span> <span class="k">else</span> <span class="o">{</span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">;}</span>
 </code></pre>
 </div>
 
@@ -1413,7 +1413,7 @@ public class HelloWorld {
 
 <p>The data will be converted to a printable format.  If you have several variables to print you have to “concatenate” them.  The following is an example.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Num</span> <span class="mi">1</span> <span class="n">is</span> <span class="err">“</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="err">“</span> <span class="n">and</span> <span class="n">num</span> <span class="mi">2</span> <span class="n">is</span> <span class="err">“</span> <span class="o">+</span> <span class="mf">3.14</span> <span class="o">+</span> <span class="err">“</span><span class="o">.</span><span class="err">”</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Num</span> <span class="mi">1</span> <span class="n">is</span> <span class="err">“</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="err">“</span> <span class="n">and</span> <span class="n">num</span> <span class="mi">2</span> <span class="n">is</span> <span class="err">“</span> <span class="o">+</span> <span class="mf">3.14</span> <span class="o">+</span> <span class="err">“</span><span class="o">.</span><span class="err">”</span><span class="o">);</span>
 </code></pre>
 </div>
 
@@ -1421,7 +1421,7 @@ public class HelloWorld {
 
 <p>The most used statement in programming is an assignment statement.  We have already used it in several of the preceding sections.  The following are some example Java assignment statements.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span>        
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span>        
 <span class="n">i</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>      
 <span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>  <span class="c1">// declares l and assigns it a value</span>
 </code></pre>

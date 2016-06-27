@@ -946,14 +946,14 @@ $('#toc').on('click', 'a', function() {
 
 <p>You can use Math.random to generate a random integer as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">randomInteger</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mi">5</span><span class="o">*</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span> <span class="c1">// between 0 and 4</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">randomInteger</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mi">5</span><span class="o">*</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span> <span class="c1">// between 0 and 4</span>
 </code></pre>
 </div>
 
 <h2 id="f12-using-a-javautilrandom">F.1.2 Using a java.util.Random</h2>
 <p>You can use java.util.Random to generate random integers and doubles as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
 <span class="n">Random</span> <span class="n">generator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="mi">42</span><span class="o">);</span> <span class="c1">// seed get same stream for testing</span>
 <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">n</span><span class="o">);</span> <span class="c1">// 0 &lt;= i &lt; n</span>
 <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span> <span class="c1">// 0 &lt;= x &lt; 1</span>

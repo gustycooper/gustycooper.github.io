@@ -18,7 +18,7 @@ The Hindus started using place value numbers around 500.  The Hindus discovered 
 
 ![Decimal Digits](../images/decimalImages.png "Decimal Digits")
 
-Almost all people use decimal numbers today.  If you want to explore an interesting radio article on numbers and what part of numbers are inate to us, you are welcom to listen to the following.
+Almost all people use decimal numbers today.  If you want to explore an interesting radio article on numbers and what part of numbers are inate to us, you are welcome to listen to the following.
 
 [Radiolab - Innate Numbers](http://www.radiolab.org/story/91698-innate-numbers/ )
 

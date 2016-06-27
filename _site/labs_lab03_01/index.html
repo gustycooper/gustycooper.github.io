@@ -940,13 +940,13 @@ window.location.href = uri;
 
 <p>As we have learned, Java classes contain instance variables, constructors, and methods.  We use the class to define variables and we use the constructors to create objects that we assign to our variables. A <code class="highlighter-rouge">Person class</code> is a great introduction to defining classes and constructing objects.  For example, I can create a <code class="highlighter-rouge">Person</code> variable gusty and assign it to a person object by the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">gusty</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="n">Cooper</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">gusty</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="n">Cooper</span><span class="o">);</span>
 </code></pre>
 </div>
 
 <p>The class definition of Person will look like the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
 <span class="c1">// instance variables</span>
 
 <span class="c1">// constructors</span>
@@ -987,7 +987,7 @@ window.location.href = uri;
       <li>
         <p>d. You can also manipulate the object in the BlueJ code pad.  You may have to select Show Code Pad in the BlueJ View pull-down menu to view the code pad.  The BlueJ code pad allows you to interactively enter Java commands.  For example, if you have constructed a Person object with a name of person1, you can enter the following in the BlueJ code pad to directly access the instance variables.</p>
 
-        <div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">person1</span><span class="o">.</span><span class="na">firstName</span>
+        <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">person1</span><span class="o">.</span><span class="na">firstName</span>
 <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span>
 <span class="o">&gt;</span> <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">person1</span><span class="o">.</span><span class="na">lastName</span><span class="o">;</span>
 <span class="o">&gt;</span> <span class="n">s</span>
@@ -1022,7 +1022,7 @@ window.location.href = uri;
       <li>
         <p>a. Manipulate your <code class="highlighter-rouge">Person</code> object from the BlueJ GUI and the BlueJ code pad.  You have to use the getters and setters.  For example, you will have to do the following.</p>
 
-        <div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">person1</span><span class="o">.</span><span class="na">getFirstName</span>
+        <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">person1</span><span class="o">.</span><span class="na">getFirstName</span>
 <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span>
 <span class="o">&gt;</span> <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">person1</span><span class="o">.</span><span class="na">getLastName</span><span class="o">;</span>
 <span class="o">&gt;</span> <span class="n">s</span>
@@ -1052,7 +1052,7 @@ window.location.href = uri;
       <li>a. <code class="highlighter-rouge">addFriend(String friend)</code> – this method will add the <code class="highlighter-rouge">String</code> friend to your <code class="highlighter-rouge">Person</code> by concatenating it onto the private <code class="highlighter-rouge">String friends</code> instance variable.  String concatenation is performed using the + operator.</li>
     </ul>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="n">friends</span> <span class="o">=</span> <span class="n">friends</span> <span class="o">+</span> <span class="err">“</span> <span class="err">“</span> <span class="o">+</span> <span class="n">friend</span><span class="o">;</span>
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">friends</span> <span class="o">=</span> <span class="n">friends</span> <span class="o">+</span> <span class="err">“</span> <span class="err">“</span> <span class="o">+</span> <span class="n">friend</span><span class="o">;</span>
 </code></pre>
     </div>
 
@@ -1063,7 +1063,7 @@ window.location.href = uri;
   <li>
     <p>Use BlueJ to create a Person, use the Person methods to get the first / last names, add some friends, and get the friends.  The following shows a BlueJ Code Pad sequence of statements manipulating a Person p that has been created using the BlueJ object creation.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">person1</span><span class="o">.</span><span class="na">getFirstName</span><span class="o">()</span>
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">person1</span><span class="o">.</span><span class="na">getFirstName</span><span class="o">()</span>
 <span class="s">"Gusty"</span>   <span class="o">(</span><span class="n">String</span><span class="o">)</span>
 <span class="o">&gt;</span> <span class="n">person1</span><span class="o">.</span><span class="na">addFriend</span><span class="o">(</span><span class="s">"Grandma"</span><span class="o">);</span>
 <span class="o">&gt;</span> <span class="n">person1</span><span class="o">.</span><span class="na">addFriend</span><span class="o">(</span><span class="s">"Tweetie"</span><span class="o">);</span>
@@ -1080,7 +1080,7 @@ window.location.href = uri;
       <li>
         <p>a. Declares and constructs a <code class="highlighter-rouge">Person p</code> that you provide a first and last name.</p>
 
-        <div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="err">“</span><span class="n">JerriAnne</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="n">Cooper</span><span class="err">”</span><span class="o">);</span>
+        <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="err">“</span><span class="n">JerriAnne</span><span class="err">”</span><span class="o">,</span> <span class="err">“</span><span class="n">Cooper</span><span class="err">”</span><span class="o">);</span>
 </code></pre>
         </div>
       </li>
@@ -1096,7 +1096,7 @@ p.addFriend(“Emily);
       <li>
         <p>c. Uses the following Java statements to print information to the console.</p>
 
-        <div class="highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Friends</span> <span class="n">of</span> <span class="err">“</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="na">getFirstName</span><span class="o">()</span> <span class="o">+</span> 
+        <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Friends</span> <span class="n">of</span> <span class="err">“</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="na">getFirstName</span><span class="o">()</span> <span class="o">+</span> 
                     <span class="err">“</span> <span class="err">“</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="na">getLastName</span><span class="o">();</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Expected</span> <span class="nl">Friends:</span> <span class="n">Gusty</span> <span class="n">Coletta</span> <span class="n">Emily</span><span class="err">”</span><span class="o">);</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Actual</span> <span class="nl">Friends:</span> <span class="err">“</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="na">getFriends</span><span class="o">());</span>

@@ -40,7 +40,7 @@ permalink: /mydoc_0_about_gusty/
 
   * Programming.
 
-* The following is a photo of Gusty eating a Philly Cheestake in downtown Philiadelphia.
+* The following is a photo of Gusty eating a Philly Cheesesteak in downtown Philadelphia.
 
 ![Gusty](../images/gusty.jpg "Gusty") 
 

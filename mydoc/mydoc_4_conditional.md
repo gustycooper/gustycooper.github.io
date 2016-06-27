@@ -10,7 +10,7 @@ permalink: /mydoc_4_conditional/
 
 ## Conditional Statements
 
-A conditional statement evaluates an expression and selects a specific path for execution based upon the result of the expression.  Java provides two conditional statemetnts - ```if``` and ```switch```.  The ```if``` statement evaluates a ```boolean``` expression.  The ```switch``` statement evaluates an expression that must evaluate to evaluate to ```int```, ```short```, ```byte```, ```char```, ```String```, or an ```enum``` type.  We study ```enum``` in [Classes, Objects, and more](/gustycooper.github.io/mydoc_5_classes_objects).
+A conditional statement evaluates an expression and selects a specific path for execution based upon the result of the expression.  Java provides two conditional statements - ```if``` and ```switch```.  The ```if``` statement evaluates a ```boolean``` expression.  The ```switch``` statement evaluates an expression that must evaluate to evaluate to ```int```, ```short```, ```byte```, ```char```, ```String```, or an ```enum``` type.  We study ```enum``` in [Classes, Objects, and more](/gustycooper.github.io/mydoc_5_classes_objects).
 
 if statement (Eck 3.5)
 
@@ -203,7 +203,7 @@ else
 System.out.println(“Done”);
 ```
 
-You may encounter an unwelcomed dangling else in your programming, but maybe you not.  The preceding code is rather contrived.  The code does not print anything for positive numbers greater than 100.  Most likely, I would have used a ```boolean``` expression with the first ```if``` as follows.  Note: this code is not exactly the same as the earlier code.
+You may encounter an unwelcome dangling else in your programming, but maybe you not.  The preceding code is rather contrived.  The code does not print anything for positive numbers greater than 100.  Most likely, I would have used a ```boolean``` expression with the first ```if``` as follows.  Note: this code is not exactly the same as the earlier code.
 
 ```java
 int num = -1;

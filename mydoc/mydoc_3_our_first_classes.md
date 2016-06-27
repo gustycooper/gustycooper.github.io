@@ -425,7 +425,7 @@ We update ```Person```s state to include ```age``` and ```friends```.  We update
  42 }
 ```
 
-The following code snippet demonstrates using our udpated ```Person class```.
+The following code snippet demonstrates using our updated ```Person class```.
 
 ```java
 Person gusty = new Person("Gusty",22);

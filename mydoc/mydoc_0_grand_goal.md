@@ -12,7 +12,7 @@ permalink: /mydoc_0_grand_goal/
 
 The grand goal of CPSC 220 is for you to become competent solving introductory computer science problems in Java.  At the end of CPSC 220, you should be able to do the following.
 
-* read a problem specifiction, written in English
+* read a problem specification, written in English
 * understand the problem
 * ask questions to better understand the problem
 * rewrite portions of the problem to reflect your understanding

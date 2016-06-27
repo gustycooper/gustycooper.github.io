@@ -32,7 +32,7 @@ There are various ways to develop software.  For examples, there is Functional D
 
 ## Software Development Process Pattern
 
-The software development process pattern figure allows you to easily visulize the software development process.
+The software development process pattern figure allows you to easily visualize the software development process.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>

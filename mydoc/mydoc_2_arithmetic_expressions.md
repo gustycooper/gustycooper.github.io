@@ -115,7 +115,7 @@ double g = d%e; // g is 1.0
 
 ## Integer Division and Modulo Can be Surprisingly Useful
 
-At first glance, integer division and modulo appear to be useless operators; however, they are surprisely useful.  
+At first glance, integer division and modulo appear to be useless operators; however, they are surprisingly useful.  
 
 * Suppose you have a number that you want to count from 0 to 7.  You place the following assignment statement in a loop, and the variable ```number``` repeatedly counts from 0 to 7.  This does not require any conditional logic.
 
