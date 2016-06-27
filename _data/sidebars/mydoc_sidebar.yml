@@ -44,6 +44,10 @@ entries:
       url: /mydoc_0_downloads/
       output: web, pdf
 
+    - title: About Gusty
+      url: /mydoc_0_about_gusty/
+      output: web, pdf
+
     - title: FAQs
       url: /mydoc_0_faq/
       output: web, pdf
@@ -277,7 +281,7 @@ entries:
     folderitems:
     
     - title: Exceptions, Try
-      url: /mydoc_6a_exceptions_try_fileio/
+      url: /mydoc_6a_exceptions_try/
       output: web, pdf
 
     - title: File I/O
@@ -292,12 +296,16 @@ entries:
       url: /mydoc_7_graphics/
       output: web, pdf
 
-  - title: Packages, Interfaces, ADTs
+  - title: Packages, ADTs
     output: web, pdf
     folderitems:
 
-    - title: Packages, Interfaces, ADTs
-      url: /mydoc_8_packages_ADT/
+    - title: Packages
+      url: /mydoc_8_packages/
+      output: web, pdf
+
+    - title: ADTs
+      url: /mydoc_8_ADT/
       output: web, pdf
 
   - title: Recursion, Searching, Sorting

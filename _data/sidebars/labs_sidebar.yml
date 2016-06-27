@@ -288,7 +288,7 @@ entries:
           url: /labs_lab07_02_05/
           output: web, pdf
 
-  - title: Packages, Interfaces, ADTs
+  - title: Packages, ADTs
     output: web, pdf
 
     folderitems:

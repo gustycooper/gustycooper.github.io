@@ -47,22 +47,22 @@ entries:
     output: web, pdf
 
     folderitems:
-    - title: Projects - Third Project
-      url: /projects_project03_01/
+    - title: Projects - EndorSmints
+      url: /projects_endorsmints/
       output: web, pdf
 
   - title: Project 4
     output: web, pdf
 
     folderitems:
-    - title: Projects - Fourth Project
-      url: /projects_project04_01/
+    - title: Projects - Battleship
+      url: /projects_battleship/
       output: web, pdf
 
   - title: Project 5
     output: web, pdf
 
     folderitems:
-    - title: Projects - Fifth Project
-      url: /projects_project05_01/
+    - title: Projects - Choice
+      url: /projects_choice/
       output: web, pdf

@@ -9,9 +9,12 @@ permalink: /mydoc_9_sorting/
 ---
 
 ## Sorting
+
 We will examine three sorting algorithms – bubble, insertion, and selection.
 
-## SORT.1.1 Bubble Sort Introduction
+I have more INFO for this Module.
+
+## Bubble Sort Introduction
 
 Bubble sort repetitively compares adjacent pairs and swap if necessary.
 * Step through the array, swapping adjacent pairs if they are not in order.  You compare element j and element j+1.  This means that on this iteration, you will step up to the next to last element of the array.  At the end of this step through the array, the largest element will be at the end.
@@ -38,7 +41,7 @@ public static void bubbleSortIntArray(int[] a) {
 ```
 {% endraw %}
 
-## SORT.1.2 Bubble Sort Optimization
+## Bubble Sort Optimization
 
 What happens when call bubbleSortIntArray() with an array that is already sorted?  The algorithm will iterate through the arrays without ever performing a swap.  If our inner loop does not perform a swap, the array a is in order.  We can add a little optimization to our bubbleSortIntArray() by breaking out of the outer loop if the inner loop does not perform a sway.   The code for this is as follows.
 
@@ -67,11 +70,11 @@ public static void bubbleSortIntArray(int[] a) {
 
 This optimization is rather clever, but in general did this optimization really help?  Our algorithm will be faster on arrays that are already sorted or partially sorted, but on unsorted arrays our algorithm is still takes just as many steps.  I
 
-## SORT.1.3 Introduction to Big O
+## Introduction to Big O
 
 Describe Big O in terms of Bubble Sort 
 
-## SORT.2 Selection Sort
+## Selection Sort
 
 Selection sort finds the smallest element and puts it in the correct position.
 * Step through the array, find the smallest element and put it in the first position of the array.  At the end of this iteration, you will have the smallest element in the first position of your array.  Notice you did not swap adjacent elements as you did in the bubble sort.  Of course you will have to perform compares to locate the smallest, but you will remember the position that has the smallest and at the end you will swap the element in that position with the first element. 
@@ -99,7 +102,7 @@ public static void selectionSort(int[] a) {
 ```
 {% endraw %}
 
-## SORT.3 Insertion Sort
+## Insertion Sort
 
 Insertion sort maintains a sorted sub-array and repetitively inserts new elements into it.
 * Take the first element as a sorted sub-array.

@@ -16,6 +16,7 @@ permalink: /mydoc_1a_method_qr/
     <li><a class="noCrossRef" href="#math" data-toggle="tab">Math</a></li>
     <li><a class="noCrossRef" href="#scanner" data-toggle="tab">Scanner</a></li>
     <li><a class="noCrossRef" href="#random" data-toggle="tab">Random</a></li>
+    <li><a class="noCrossRef" href="#arrays" data-toggle="tab">Arrays</a></li>
 </ul>
   <div class="tab-content"> 
 <div role="tabpanel" class="tab-pane active" id="string">
@@ -78,5 +79,20 @@ permalink: /mydoc_1a_method_qr/
 <li> <code> Random(int seed)</code> - construct a Random object with seed.  Using the same seed will product the same sequence of random numbers.</li>
 <li> <code> int nextInt(int range)</code> - returns random int from 0 to range-1 </li>
 <li> <code> double nextDouble()</code> - returns random double, 0 <= nextDouble() < 1 </li>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="arrays">
+    <h2>Arrays Methods Quick Reference</h2>
+
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html">Java Arrays Page</a>
+<br>
+<br>
+The methods are shown for int[] arrays.  Arrays has methods for arrays of all primitive types.
+<br>
+<br>
+<li> <code> boolean equals(int[] a, int[] a2)</code> - Returns true if the two specified arrays of ints are equal. </li>
+<li> <code> void fill(int[] a, int val)</code> - Assigns the specified int val to each element of the specified array of ints. </li>
+<li> <code> String toString(int[] a)</code> - Returns a string representation of the contents of the specified array. </li>
+<li> <code> static int[] copyOf(int[] original, int newLength)</code> - Returns a new array that is a copy of original.  The original array is truncated or padded with zeros (if necessary) so the copy has the specified length. </li>
 </div>
 

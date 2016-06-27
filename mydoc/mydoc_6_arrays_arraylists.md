@@ -10,7 +10,7 @@ permalink: /mydoc_6_arrays_arraylists/
 
 ## Arrays, ArrayLists, and the Wirth Pattern
 
-We are solving problems with programs.  The Wirth pattern from [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types) defines a prgram to be algorithms and data structures.
+We are solving problems with programs.  The Wirth pattern from [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types) defines a prgram to be algorithms and data structures.  Arrays and ArrayLists are part of the Data Structures component.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
@@ -18,12 +18,8 @@ Programming Pattern
 0. Wirth Pattern
 </b>
 <br>
-<pre>
-Algorithms + Data Structures = Programs
-</pre>
+<img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />
 </div>
-
-Arrays and ArrayLists are part of the Data Structures component.
 
 ## Arrays (Eck 7.1) and ArrayLists (Eck 7.3)
 

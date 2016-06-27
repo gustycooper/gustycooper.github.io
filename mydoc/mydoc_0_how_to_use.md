@@ -43,7 +43,7 @@ The Textbook material contains everything we study.  Each expandable selection i
 * [Debugging](/gustycooper.github.io/mydoc_4a_debugging) - week 4
 * [Classes, Objects, ...](/gustycooper.github.io/mydoc_5_classes_objects) - week 5
 * [Arrays and ArrayLists](/gustycooper.github.io/mydoc_6_arrays_arraylists) - week 6
-* [Exceptions, Try, File I/O](/gustycooper.github.io/mydoc_6a_exceptions_try_fileio) - week 8
+* [Exceptions, Try, File I/O](/gustycooper.github.io/mydoc_6a_exceptions_try) - week 8
 * [Graphics](/gustycooper.github.io/mydoc_7_graphics) - weeks 9, 10
 * [Packages, Interfaces, ADTs](/gustycooper.github.io/mydoc_8_packages_ADT) - week 11
 * [Recursion, Searching, Sorting](/gustycooper.github.io/mydoc_9_method_call_frames) - weeks 12, 13

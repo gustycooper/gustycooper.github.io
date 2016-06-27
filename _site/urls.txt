@@ -44,6 +44,13 @@ mydoc_0_downloads:
 
 
  
+mydoc_0_about_gusty:
+  title: "About Gusty"
+  url: /gustycooper.github.io/mydoc_0_about_gusty/
+  link: <a href="/gustycooper.github.io/mydoc_0_about_gusty/">About Gusty</a>
+
+
+ 
 mydoc_0_faq:
   title: "FAQs"
   url: /gustycooper.github.io/mydoc_0_faq/
@@ -405,10 +412,10 @@ mydoc_6_arraylists:
 
 
  
-mydoc_6a_exceptions_try_fileio:
+mydoc_6a_exceptions_try:
   title: "Exceptions, Try"
-  url: /gustycooper.github.io/mydoc_6a_exceptions_try_fileio/
-  link: <a href="/gustycooper.github.io/mydoc_6a_exceptions_try_fileio/">Exceptions, Try</a>
+  url: /gustycooper.github.io/mydoc_6a_exceptions_try/
+  link: <a href="/gustycooper.github.io/mydoc_6a_exceptions_try/">Exceptions, Try</a>
 
 
  
@@ -430,10 +437,17 @@ mydoc_7_graphics:
 
 
  
-mydoc_8_packages_ADT:
-  title: "Packages, Interfaces, ADTs"
-  url: /gustycooper.github.io/mydoc_8_packages_ADT/
-  link: <a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a>
+mydoc_8_packages:
+  title: "Packages"
+  url: /gustycooper.github.io/mydoc_8_packages/
+  link: <a href="/gustycooper.github.io/mydoc_8_packages/">Packages</a>
+
+
+ 
+mydoc_8_ADT:
+  title: "ADTs"
+  url: /gustycooper.github.io/mydoc_8_ADT/
+  link: <a href="/gustycooper.github.io/mydoc_8_ADT/">ADTs</a>
 
 
 

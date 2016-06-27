@@ -284,6 +284,13 @@ window.location.href = uri;
             
             
             
+            <li><a href="/gustycooper.github.io/mydoc_0_about_gusty/">About Gusty</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="/gustycooper.github.io/mydoc_0_faq/">FAQs</a></li>
             
             
@@ -699,7 +706,7 @@ window.location.href = uri;
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_6a_exceptions_try_fileio/">Exceptions, Try</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_6a_exceptions_try/">Exceptions, Try</a></li>
             
             
             
@@ -731,12 +738,19 @@ window.location.href = uri;
         
     
     <li>
-        <a href="#">Packages, Interfaces, ADTs</a>
+        <a href="#">Packages, ADTs</a>
         <ul>
             
             
             
-            <li><a href="/gustycooper.github.io/mydoc_8_packages_ADT/">Packages, Interfaces, ADTs</a></li>
+            <li><a href="/gustycooper.github.io/mydoc_8_packages/">Packages</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_8_ADT/">ADTs</a></li>
             
             
             
@@ -925,7 +939,240 @@ $('#toc').on('click', 'a', function() {
     
 
   <h2 id="recursion">Recursion</h2>
-<p>We will study recursion.</p>
+
+<p><strong>Recursion</strong> is when a method calls itself.  A recursive solution is one that uses a recursive method.  Any algorithm of consequence involves some repetitive computations.  The repetition can be iteration in the form of loops or recursion in the form of methods calling themselves.  For some problems a recursive solution is simpler and easier to understand.</p>
+
+<p>We begin our study of recursion by considering a matriarchal society.  In this society, ladies get pension of they are descendants of Sally.  The following figure depicts the society.</p>
+
+<p><img src="../images/matriarchalSociety.png" alt="Matriarchal Society" title="Matriarchal Society" /></p>
+
+<p>Examining the figure, we know that Mary Fay and Rose get pensions, but Shawnee and Emily do not get a pension.  The following <strong>recursive</strong> algorithm determines who gets a pension.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">getsPension</span><span class="p">(</span><span class="n">String</span> <span class="n">lady</span><span class="o">)</span> <span class="o">{</span>
+ <span class="k">if</span> <span class="o">(</span><span class="n">lady</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="err">“</span><span class="n">Sally</span><span class="err">”</span><span class="o">))</span>
+   <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+ <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">lady</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="err">“”</span><span class="o">))</span>
+   <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>	
+ <span class="k">else</span>	
+  <span class="k">return</span> <span class="n">getsPension</span><span class="o">(</span><span class="n">motherOf</span><span class="o">(</span><span class="n">lady</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The Matriarchal Society problem is an example problem where a recursive solution is simpler and easier to understand than an iterative solution.</p>
+
+<p>A recursive solution as two parts</p>
+
+<ul>
+  <li>Base case solution
+    <ul>
+      <li>This part allows the algorithm to terminate</li>
+      <li>The <code class="highlighter-rouge">getsPension</code> method base case is <code class="highlighter-rouge">lady.equals(“Sally”)</code> and <code class="highlighter-rouge">lady.equals(“”)</code></li>
+    </ul>
+  </li>
+  <li>Recursive case solution for all other cases
+    <ul>
+      <li>Keep reducing the problem until you get to the base case, which causes the recursive solution to terminate</li>
+      <li>The <code class="highlighter-rouge">getsPension</code> method recursive case is <code class="highlighter-rouge">return getsPension(motherOf(lady));</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="russian-matryoshka-doll">Russian Matryoshka Doll</h2>
+
+<p>This section describes a somewhat silly recursive algorithm - Matryoshka Dolls.  You may be familiar with <a href="https://en.wikipedia.org/wiki/Matryoshka_doll">Russian Matryoshka Dolls</a>.  They are the dolls within dolls as shown by the following Wikipedia figure.</p>
+
+<p><img src="../images/matryoshkaDolls.png" alt="Matryoshka Dolls" title="Matryoshka Dolls" /></p>
+
+<p>The following is a recursive algorithm that paints mustaches on Matryoshka Dolls.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">paintMustache</span><span class="o">(</span><span class="n">Matryoshka</span> <span class="n">Doll</span><span class="o">)</span>
+   <span class="k">if</span> <span class="n">there</span> <span class="n">is</span> <span class="n">one</span> <span class="n">figure</span> <span class="n">in</span> <span class="n">nest</span> <span class="n">of</span> <span class="n">dolls</span> 
+      <span class="n">paint</span> <span class="n">a</span> <span class="n">Mustache</span> <span class="n">on</span> <span class="n">the</span> <span class="n">face</span>
+   <span class="k">else</span>
+      <span class="n">paint</span> <span class="n">a</span> <span class="n">Mustache</span> <span class="n">on</span> <span class="n">the</span> <span class="n">outer</span> <span class="n">doll</span>
+      <span class="n">paintMustache</span><span class="o">(</span><span class="n">Matryoshka</span> <span class="n">Doll</span> <span class="n">after</span> <span class="n">removing</span> <span class="n">outer</span> <span class="n">doll</span><span class="o">)</span>
+</code></pre>
+</div>
+
+<h2 id="factorial-recursive">Factorial Recursive</h2>
+
+<p>The factorial of a non-negative integer <code class="highlighter-rouge">n</code> is the product of all positive integers less than or equal to <code class="highlighter-rouge">n</code>.  The notation of n-factorial is <code class="highlighter-rouge">n!</code>.  The value of 5! is shown by the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="mi">5</span><span class="o">!</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">4</span>  <span class="o">*</span> <span class="mi">3</span>  <span class="o">*</span> <span class="mi">2</span>  <span class="o">*</span> <span class="mi">1</span> <span class="n">which</span> <span class="n">is</span> <span class="mi">120</span>
+</code></pre>
+</div>
+
+<p>Factorial has a natural recursive defintion.</p>
+
+<ul>
+  <li>Base Case: factorial(0) is 1</li>
+  <li>Recursive Case: factorial(n) is n * factorial(n-1)</li>
+</ul>
+
+<p>The recursive Java method <code class="highlighter-rouge">factorial</code> is given by the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+      <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>                   <span class="c1">// base case</span>
+   <span class="k">else</span>
+      <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>  <span class="c1">// recursive case</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The following sequence of figures shows the recursive calls incurred for <code class="highlighter-rouge">factorial(4)</code>, which is <code class="highlighter-rouge">4*3*2*1</code>.  The program begins in <code class="highlighter-rouge">main</code>, which calls <code class="highlighter-rouge">factorial</code> with the statement <code class="highlighter-rouge">int fact = factorial(4);</code>.  The <code class="highlighter-rouge">factorial</code> method executes the recursive case (i.e., calls itself) whenever the formal parameter is not 0.  This means <code class="highlighter-rouge">factorial(4)</code> calls <code class="highlighter-rouge">factorial(3)</code>, which calls <code class="highlighter-rouge">factorial(2)</code>, which calls <code class="highlighter-rouge">factorial(1)</code>, which calls <code class="highlighter-rouge">factorial(0)</code>.  The method <code class="highlighter-rouge">factorial</code> has been called 5 times - once by <code class="highlighter-rouge">main</code> and 4 times by itself.  Each of these calls results is a method call frame on the stack.  Finally, the call <code class="highlighter-rouge">factorial(0)</code> executes the recursive base case, which causes the recursion to terminate.  The <code class="highlighter-rouge">factorial(0)</code> call returns <code class="highlighter-rouge">1</code> to <code class="highlighter-rouge">factorial(1)</code>, which returns <code class="highlighter-rouge">1 * 1</code> to <code class="highlighter-rouge">factorial(2)</code>, which returns <code class="highlighter-rouge">1 * 2</code> to <code class="highlighter-rouge">factorial(3)</code>, which returns <code class="highlighter-rouge">3 * 2</code> to <code class="highlighter-rouge">factorial(4)</code>, which returns <code class="highlighter-rouge">4 * 6</code> to <code class="highlighter-rouge">main</code>.  <code class="highlighter-rouge">main</code> assigns <code class="highlighter-rouge">24</code> to the variable <code class="highlighter-rouge">fact</code>, which is <code class="highlighter-rouge">4!</code>.</p>
+
+<h3 id="factorial---main-stack-frame">Factorial - <code class="highlighter-rouge">main</code> Stack Frame</h3>
+
+<p>This figure shows <code class="highlighter-rouge">main</code> stack frame before the <code class="highlighter-rouge">factorial(4)</code> call.</p>
+
+<p><img src="../images/factorial1.png" alt="Factorial 1" title="Factorial 1" /></p>
+
+<h3 id="factorial---factorial4-stack-frame">Factorial - <code class="highlighter-rouge">factorial(4)</code> Stack Frame`</h3>
+
+<p>This figure shows the stack frame with <code class="highlighter-rouge">main</code> and the <code class="highlighter-rouge">factorial(4)</code> call.</p>
+
+<p><img src="../images/factorial2.png" alt="Factorial 2" title="Factor`ial 2" /></p>
+
+<h3 id="factorial---factorial3-stack-frame">Factorial - <code class="highlighter-rouge">factorial(3)</code> Stack Frame</h3>
+
+<p>This figure shows the stack frame with <code class="highlighter-rouge">main</code>, the <code class="highlighter-rouge">factorial(4)</code> call, and the first recursive call <code class="highlighter-rouge">factorial(4)</code> calls <code class="highlighter-rouge">factorial(3)</code>.</p>
+
+<p><img src="../images/factorial3.png" alt="Factorial 3" title="Factorial 3" /></p>
+
+<h3 id="factorial---factorial2-stack-frame">Factorial - <code class="highlighter-rouge">factorial(2)</code> Stack Frame</h3>
+
+<p>This figure shows the stack frame with <code class="highlighter-rouge">main</code>, the <code class="highlighter-rouge">factorial(4)</code> call, the <code class="highlighter-rouge">factorial(3)</code> call, and the <code class="highlighter-rouge">factorial(2)</code> call.  There are two more recursive calls.</p>
+
+<p><img src="../images/factorial4.png" alt="Factorial 4" title="Factorial 4" /></p>
+
+<h3 id="factorial---factorial1-stack-frame">Factorial - <code class="highlighter-rouge">factorial(1)</code> Stack Frame</h3>
+
+<p>This figure shows the stack frame with <code class="highlighter-rouge">main</code>, the <code class="highlighter-rouge">factorial(4)</code> call, the <code class="highlighter-rouge">factorial(3)</code> call, the <code class="highlighter-rouge">factorial(2)</code> call, and the <code class="highlighter-rouge">factorial(1)</code> call.  There is one more recursive call.</p>
+
+<p><img src="../images/factorial5.png" alt="Factorial 5" title="Factorial 5" /></p>
+
+<h3 id="factorial---factorial0-stack-frame">Factorial - <code class="highlighter-rouge">factorial(0)</code> Stack Frame</h3>
+
+<p>This figure shows the stack frame with <code class="highlighter-rouge">main</code>, the <code class="highlighter-rouge">factorial(4)</code> call, the <code class="highlighter-rouge">factorial(3)</code> call, the <code class="highlighter-rouge">factorial(2)</code> call, the <code class="highlighter-rouge">factorial(1)</code> call, and the <code class="highlighter-rouge">factorial(0)</code> call.  The <code class="highlighter-rouge">factorial(0)</code> call executed the base case so it is the last recursive call.  The stack frame now begins to unwind.</p>
+
+<p><img src="../images/factorial6.png" alt="Factorial 6" title="Factorial 6" /></p>
+
+<h3 id="factorial---factorial1-stack-frame-1">Factorial - <code class="highlighter-rouge">factorial(1)</code> Stack Frame</h3>
+
+<p>We have now returned from <code class="highlighter-rouge">factorial(0)</code> to <code class="highlighter-rouge">factorial(1)</code>.  This figure shows the stack frame with <code class="highlighter-rouge">main</code>, the <code class="highlighter-rouge">factorial(4)</code> call, the <code class="highlighter-rouge">factorial(3)</code> call, the <code class="highlighter-rouge">factorial(2)</code> call, and the <code class="highlighter-rouge">factorial(1)</code> call.  The stack frame is the same as earlier, but now we are unwinding the recursive calls.</p>
+
+<p><img src="../images/factorial7.png" alt="Factorial 7" title="Factorial 7" /></p>
+
+<h3 id="factorial---factorial2-stack-frame-1">Factorial - <code class="highlighter-rouge">factorial(2)</code> Stack Frame</h3>
+
+<p>We have now returned from <code class="highlighter-rouge">factorial(1)</code> to <code class="highlighter-rouge">factorial(2)</code>.  This figure shows the stack frame with <code class="highlighter-rouge">main</code>, the <code class="highlighter-rouge">factorial(4)</code> call, the <code class="highlighter-rouge">factorial(3)</code> call, and the <code class="highlighter-rouge">factorial(2)</code> call.  The stack frame is the same as earlier, but now we are unwinding the recursive calls.</p>
+
+<p><img src="../images/factorial8.png" alt="Factorial 8" title="Factorial 8" /></p>
+
+<h3 id="factorial---factorial3-stack-frame-1">Factorial - <code class="highlighter-rouge">factorial(3)</code> Stack Frame</h3>
+
+<p>We have now returned from <code class="highlighter-rouge">factorial(2)</code> to <code class="highlighter-rouge">factorial(3)</code>.  This figure shows the stack frame with <code class="highlighter-rouge">main</code>, the <code class="highlighter-rouge">factorial(4)</code> call, and the <code class="highlighter-rouge">factorial(3)</code> call.  The stack frame is the same as earlier, but now we are unwinding the recursive calls.</p>
+
+<p><img src="../images/factorial9.png" alt="Factorial 9" title="Factorial 9" /></p>
+
+<h3 id="factorial---factorial4-stack-frame-1">Factorial - <code class="highlighter-rouge">factorial(4)</code> Stack Frame</h3>
+
+<p>We have now returned from <code class="highlighter-rouge">factorial(3)</code> to <code class="highlighter-rouge">factorial(4)</code>.  This figure shows the stack frame with <code class="highlighter-rouge">main</code> and the <code class="highlighter-rouge">factorial(4)</code> call.  The stack frame is the same as earlier, but now we are unwinding the recursive calls.</p>
+
+<p><img src="../images/factorial10.png" alt="Factorial 10" title="Factorial 10" /></p>
+
+<h3 id="factorial---main-stack-frame-1">Factorial - <code class="highlighter-rouge">main</code> Stack Frame</h3>
+
+<p>We have now returned from <code class="highlighter-rouge">factorial(4)</code> to <code class="highlighter-rouge">main</code>.  This figure shows the stack frame with <code class="highlighter-rouge">main</code>.  The stack frame is the same as earlier, but now we have completed unwinding the recursive calls.  We have computed 4!.</p>
+
+<p><img src="../images/factorial11.png" alt="Factorial 11" title="Factorial 11" /></p>
+
+<h2 id="recursion---stack-overflow">Recursion - Stack Overflow</h2>
+
+<p>A call <code class="highlighter-rouge">factorial(100000)</code> would either overflow the stack or overflow <code class="highlighter-rouge">int</code>.  Stack Overflow exceptions will occur when you have incorrectly implemented the base case such that recursion never stops.</p>
+
+<h2 id="general-recursive-algorithm">General Recursive Algorithm</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Step</span> <span class="mi">1</span><span class="o">:</span>
+<span class="n">If</span> <span class="n">the</span> <span class="n">problem</span> <span class="n">can</span> <span class="n">be</span> <span class="n">solved</span> <span class="k">for</span> <span class="n">the</span> <span class="n">current</span> <span class="n">value</span> <span class="n">of</span> <span class="n">n</span>
+   <span class="n">Solve</span> <span class="n">It</span>
+<span class="k">else</span>
+<span class="n">Step</span> <span class="mi">2</span><span class="o">:</span>
+   <span class="n">Recursively</span> <span class="n">apply</span> <span class="n">the</span> <span class="n">algorithm</span> <span class="n">to</span> <span class="n">one</span> <span class="n">or</span>  <span class="n">more</span> <span class="n">problems</span> <span class="n">involving</span> <span class="n">smaller</span> <span class="n">values</span> <span class="n">of</span> <span class="n">n</span>
+   <span class="n">Combine</span> <span class="n">the</span> <span class="n">solutions</span> <span class="n">to</span> <span class="n">the</span> <span class="n">smaller</span> <span class="n">problems</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">solution</span> <span class="n">to</span> <span class="n">the</span> <span class="n">bigger</span>
+</code></pre>
+</div>
+
+<p>Step 1: Base Case – Easily solved
+Step 3: Recursive Case</p>
+
+<h2 id="finding-a-recursive-solution">Finding a Recursive Solution</h2>
+
+<ol>
+  <li>You have to recognize the base case
+    <ul>
+      <li>Something that is easy to solve for a small value of n</li>
+    </ul>
+  </li>
+  <li>You have to devise a strategy to split the problem into smaller versions of itself</li>
+  <li>Each recursive case must make progress toward the base case</li>
+  <li>You have to be able to combine the solutions to the smaller problems in such a way that each larger problem is solved correctly</li>
+</ol>
+
+<h2 id="recursive-stringlength">Recursive <code class="highlighter-rouge">stringLength</code></h2>
+
+<p>The recursive <code class="highlighter-rouge">stringLength</code> method looks a lot like <code class="highlighter-rouge">factorial</code>.  The design shown in pseudo code is the following.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Base</span> <span class="n">Case</span>
+<span class="k">if</span> <span class="n">the</span> <span class="n">string</span> <span class="n">is</span> <span class="n">empty</span>
+   <span class="n">the</span> <span class="n">length</span> <span class="n">is</span> <span class="mi">0</span>
+<span class="k">else</span>
+<span class="n">Recursive</span> <span class="n">Case</span>
+   <span class="n">the</span> <span class="n">length</span> <span class="n">is</span> <span class="mi">1</span> <span class="n">plus</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">string</span> <span class="n">excluding</span> <span class="n">the</span> <span class="n">first</span> <span class="n">character</span>
+</code></pre>
+</div>
+
+<p>The method defintion is given as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">stringLength</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">if</span> <span class="o">(</span><span class="n">s</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="err">“”</span><span class="o">))</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+   <span class="k">else</span>
+      <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">stringLength</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="recursion-vs-iteratition">Recursion vs. Iteratition</h2>
+
+<p>The following figure shows the recursive <code class="highlighter-rouge">factorial</code> and an iterative <code class="highlighter-rouge">factorial</code>.</p>
+
+<p><img src="../images/recursionVsIteration.png" alt="Recursion vs. Iteration" title="Recursion vs. Iteration" /></p>
+
+<h2 id="towers-of-hanoi">Towers of Hanoi</h2>
+
+<p>The Towers of Hanoi is a classic recursive algorithm.  It is problem that seems to be hard to solve, but the recursive solution is eloquant and beautiful.  Consider the following figure that shows three pegs labeled A, B, and C.  Peg A has disks stacked with the largest on the bottom and the smallest on the top.</p>
+
+<p><img src="../images/towersOfHanoi.png" alt="Towers of Hanoi" title="Towers of Hanoi" /></p>
+
+<p>To play the Towers of Hanoi game, you must move the discs from peg A to peg B by moving one disc at a time.  A larger disc can never sit atop a smaller disc.  Peg C can be used as a holding area.</p>
+
+<p>INCLUDE MORE INFO HERE. - Algorithm, Code, and sequence of photos showing a solution</p>
+
+<h2 id="recursion-in-a-maze">Recursion in a Maze</h2>
+
+<p>INCLUD INFO HERE</p>
+
+<h2 id="ecludids-algorithm">Ecludid’s Algorithm</h2>
+
+<p>INCLUDE INFO HERE</p>
+
+<h2 id="recursive-fibonacci">Recursive Fibonacci</h2>
+
+<p>INCLUDE INFO HERE</p>
+
 
 
 <div class="tags">
@@ -952,7 +1199,7 @@ $('#toc').on('click', 'a', function() {
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: Jun 22, 2016
+<p>Page last updated: May 1, 2016; Site last generated: Jun 26, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

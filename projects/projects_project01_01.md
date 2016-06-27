@@ -11,9 +11,9 @@ toc: false
 
 ## Create Your First Java Program – 10 Points
 
-**Points** Complete this entire section for 10 points.
-
 Use BlueJ to write a Java program that does the following.
+
+**NEEDS UPDATING**
 
 1. Create a classic Hello World program.  You should create a HelloWorld class that is in a file named HelloWorld.java.  In Java the filename matches the class name.  BlueJ will create some template code for your HelloWorld class that has placeholders for instance variables, constructors, and methods.  Your HelloWorld class will not have instance variables and its only method will be a public static void main() that calls System.out.println.   You can delete unnecessary code.  We will study instance variables, constructors, and methods next week.  The following is an example HelloWorld class that contains a main() method that prints to the console.
 

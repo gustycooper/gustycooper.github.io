@@ -5,7 +5,7 @@ keywords: exception, try, catch, throw
 last_updated: June 16, 2016
 summary: "<li>Understand Java Exceptions.</li> <li>Understand the try statement.</li> <li>Understand the catch statement.</li> <li>Understand the throw statement.</li>"
 sidebar: mydoc_sidebar
-permalink: /mydoc_6a_exceptions_try_fileio/
+permalink: /mydoc_6a_exceptions_try/
 ---
 
 ## Exceptions, Try, Catch, Throw

@@ -816,6 +816,16 @@
 
 
 {
+"title": "About Gusty",
+"tags": "getting_started",
+"keywords": "gusty",
+"url": "/gustycooper.github.io/mydoc_0_about_gusty/",
+"summary": "<li>Understand a little bit about Gusty.</li>"
+},
+
+
+
+{
 "title": "Downloads and Installs",
 "tags": "downloads",
 "keywords": "downloads, installs",
@@ -1359,7 +1369,7 @@
 "title": "Exceptions, Try, Catch, Throw",
 "tags": "collection",
 "keywords": "exception, try, catch, throw",
-"url": "/gustycooper.github.io/mydoc_6a_exceptions_try_fileio/",
+"url": "/gustycooper.github.io/mydoc_6a_exceptions_try/",
 "summary": "<li>Understand Java Exceptions.</li> <li>Understand the try statement.</li> <li>Understand the catch statement.</li> <li>Understand the throw statement.</li>"
 },
 
@@ -1391,6 +1401,16 @@
 "keywords": "abstract, data, type",
 "url": "/gustycooper.github.io/mydoc_8_ADT/",
 "summary": "Abstract Data Types"
+},
+
+
+
+{
+"title": "Packages",
+"tags": "package",
+"keywords": "packages",
+"url": "/gustycooper.github.io/mydoc_8_packages/",
+"summary": "<li>Understand Java packages.</li> <li>Understand how to create Java packages.</li> <li>Understand how to import Java packages.</li>"
 },
 
 
@@ -1838,6 +1858,36 @@
 
 
 {
+"title": "Battleship",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_battleship/",
+"summary": "Battleship"
+},
+
+
+
+{
+"title": "Your Choice",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_choice/",
+"summary": "Your Choice"
+},
+
+
+
+{
+"title": "Endor Smints",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_endorsmints/",
+"summary": "Endor Smints"
+},
+
+
+
+{
 "title": "CPSC 220 Projects",
 "tags": "",
 "keywords": "mydoc",
@@ -1858,41 +1908,11 @@
 
 
 {
-"title": "First Project (Projects - Project 1)",
+"title": "Second Project",
 "tags": "",
 "keywords": "project",
 "url": "/gustycooper.github.io/projects_project02_01/",
-"summary": "Project 1"
-},
-
-
-
-{
-"title": "First Projects (Projects - Project 1)",
-"tags": "",
-"keywords": "project",
-"url": "/gustycooper.github.io/projects_project03_01/",
-"summary": "Project 1"
-},
-
-
-
-{
-"title": "Project 4",
-"tags": "",
-"keywords": "project",
-"url": "/gustycooper.github.io/projects_project04_01/",
-"summary": "Project 4"
-},
-
-
-
-{
-"title": "Project 5",
-"tags": "",
-"keywords": "project",
-"url": "/gustycooper.github.io/projects_project05_01/",
-"summary": "Project 5"
+"summary": "Project 2"
 },
 
 

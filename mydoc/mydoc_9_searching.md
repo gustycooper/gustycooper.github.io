@@ -9,4 +9,7 @@ permalink: /mydoc_9_searching/
 ---
 
 ## Searching
+
 We will study two search algorithms – linear and binary.
+
+I have a INFO TO INCLUDE.

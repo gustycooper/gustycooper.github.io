@@ -1,9 +1,9 @@
 ---
-title: Project 4
+title: Endor Smints
 keywords: project
-summary: "Project 4"
+summary: "Endor Smints"
 sidebar: projects_sidebar
-permalink: /projects_project04_01/
+permalink: /projects_endorsmints/
 toc: false
 ---
 
