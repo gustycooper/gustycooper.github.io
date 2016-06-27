@@ -199,7 +199,7 @@ public class String {
 
 ## ```throwing``` Instead  of ```catch```
 
-Java checked exceptions must be either caught with a ```try catch``` or thrown by including a ```throws``` clause on the method definition.  Opening a file for reading generates a checked exception.  The user may have provided an incorrect filename.  You can catch the exception and continue asking the user for a filename until they enter a correct name.  Alternatively, you can ```throw``` the exception.  Java forces you to either ```catch``` or ```throw``` checked exceptions.  Your code will not compile if a ```catch``` or ```throw``` is not present.  The following code sample demonstrates throwing a file not found exception.  We saw ```thows``` in [Sample Code with Loops](/gustycooper.github.io/mydoc_4_loop_sample_code).
+Java checked exceptions must be either caught with a ```try catch``` or thrown by including a ```throws``` clause on the method definition.  Opening a file for reading generates a checked exception.  The user may have provided an incorrect filename.  You can catch the exception and continue asking the user for a filename until they enter a correct name.  Alternatively, you can ```throw``` the exception.  Java forces you to either ```catch``` or ```throw``` checked exceptions.  Your code will not compile if a ```catch``` or ```throw``` is not present.  The following code sample demonstrates throwing a file not found exception.  We saw ```throws``` in [Sample Code with Loops](/gustycooper.github.io/mydoc_4_loop_sample_code).
 
 ```java
 public class ThrowSample {
