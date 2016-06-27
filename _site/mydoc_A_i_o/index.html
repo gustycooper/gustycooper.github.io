@@ -942,7 +942,7 @@ $('#toc').on('click', 'a', function() {
 
 <h2 id="c1-io-with-systemout-and-scanner">C.1 I/O with System.out and Scanner</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="err">“</span><span class="n">This</span> <span class="n">is</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">=</span> <span class="err">“</span><span class="o">);</span> <span class="c1">// no linefeed</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">);</span>
@@ -970,8 +970,8 @@ $('#toc').on('click', 'a', function() {
 <h2 id="c21-file-input">C.2.1 File Input</h2>
 <p>The following shows reading a file where each line contains a student’s name.  This code does not handle the exception very well since we just print the stack trace.  Production code would provide some better indications to the user and repeat until the user enters correct data.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">final</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">studentNames</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
-<span class="kd">private</span> <span class="kt">void</span> <span class="nf">loadStudentNames</span><span class="p">(</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">final</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">studentNames</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">loadStudentNames</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
     <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
     <span class="k">try</span> <span class="o">{</span>
         <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="n">STUDENTS_FILENAME</span><span class="o">));</span>
@@ -994,11 +994,11 @@ $('#toc').on('click', 'a', function() {
 
 <p>The following shows equivalent code that uses a try with resources.  Notice how the try statement allocates the resources – BufferedReader and FileReader.  Since they are allocated in the try statement, they are deallocated (in this case closed) automatically.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">final</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">studentNames</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">final</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">studentNames</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
 
-<span class="kd">private</span> <span class="kt">void</span> <span class="nf">loadStudentNames</span><span class="p">(</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">loadStudentNames</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
     <span class="k">try</span> <span class="o">(</span><span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>  
-         <span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="n">STUDENTS_FILENAME</span><span class="o">)))</span> <span class="o">{</span>
+         <span class="k">new</span> <span class="nf">FileReader</span><span class="o">(</span><span class="n">STUDENTS_FILENAME</span><span class="o">)))</span> <span class="o">{</span>
         <span class="n">String</span> <span class="n">studentLine</span><span class="o">;</span>
         <span class="k">while</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="o">(</span><span class="n">studentLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">()))</span> <span class="o">{</span>
             <span class="n">studentNames</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">studentLine</span><span class="o">);</span>
@@ -1025,7 +1025,7 @@ $('#toc').on('click', 'a', function() {
    <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 <span class="o">}</span>
 
-<span class="kd">private</span> <span class="kt">void</span> <span class="nf">loadPlayerData</span><span class="p">(</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">loadPlayerData</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
     <span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span>
             <span class="n">PLAYER_FILENAME</span><span class="o">));</span>
     <span class="n">String</span> <span class="n">playerLine</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
@@ -1045,9 +1045,9 @@ $('#toc').on('click', 'a', function() {
 
 <p>The following demonstrates a function to write an ArrayList.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">studentNames</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">studentNames</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
 
-<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">writeStudentNames</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">writeStudentNames</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">Charset</span> <span class="n">charset</span> <span class="o">=</span> <span class="n">Charset</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"US-ASCII"</span><span class="o">);</span>
     <span class="n">Path</span> <span class="n">file</span><span class="o">;</span>
     <span class="n">file</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"studentsOut.txt"</span><span class="o">);</span>
@@ -1065,7 +1065,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>An alternative code snippet for writing to a file is given as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">content</span> <span class="o">=</span> <span class="s">"This is the content to write into file"</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">content</span> <span class="o">=</span> <span class="s">"This is the content to write into file"</span><span class="o">;</span>
 <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"filename.txt"</span><span class="o">);</span>
 <span class="n">FileWriter</span> <span class="n">fw</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileWriter</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getAbsoluteFile</span><span class="o">());</span>
 <span class="n">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedWriter</span><span class="o">(</span><span class="n">fw</span><span class="o">);</span>
@@ -1078,13 +1078,13 @@ $('#toc').on('click', 'a', function() {
 
 <p>Section 2.4.1 of David Eck’s book does a fine job explaining formatted output.  This section presents another example of formatted output that I modeled after one from the Udacity course.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">mnmsPerDay</span> <span class="o">=</span> <span class="mi">142</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">mnmsPerDay</span> <span class="o">=</span> <span class="mi">142</span><span class="o">;</span>
 <span class="kt">double</span> <span class="n">cerealBoxesPerDay</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span><span class="o">;</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%6d"</span><span class="o">,</span> <span class="n">cookiesPerDay</span><span class="o">);</span> <span class="c1">// 6 chrs wide</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%4.2f"</span><span class="o">,</span> <span class="n">cerealBoxesPerDay</span><span class="o">);</span> <span class="c1">// 2 dec places, 4 wide</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s"</span><span class="o">,</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">);</span> <span class="c1">// string format</span>
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">gustyMnMsPerDay</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
     <span class="kt">double</span> <span class="n">gustyCerealPerDay</span> <span class="o">=</span> <span class="o">.</span><span class="mi">06</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">emilyMnMsPerDay</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>

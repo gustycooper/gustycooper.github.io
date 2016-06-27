@@ -994,7 +994,7 @@ Programming Pattern
 
 <p>We will return to this definition throughout the course.  Let us consider the Java primitive data type <code class="highlighter-rouge">byte</code> as our initial example of this definition.  The following example declares a variable named <code class="highlighter-rouge">gusty</code> that is type <code class="highlighter-rouge">byte</code>, initially has value 55, but is immediately changed to have value -55.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">gusty</span> <span class="o">=</span> <span class="mi">55</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">gusty</span> <span class="o">=</span> <span class="mi">55</span><span class="o">;</span>
 <span class="n">gusty</span> <span class="o">=</span> <span class="n">gusty</span> <span class="o">-</span> <span class="mi">110</span><span class="o">;</span>
 </code></pre>
 </div>
@@ -1075,7 +1075,7 @@ Meta Language - Java's Declarartion Statement
 
 <p>The following are example declarations, some of which use the <code class="highlighter-rouge">&lt;exp&gt;</code> to initialize the variable.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span>
 <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
 <span class="kt">boolean</span> <span class="n">isFinished</span><span class="o">;</span>
@@ -1106,7 +1106,7 @@ Meta Language - Java's Declarartion Statement
   <li>You should know that <code class="highlighter-rouge">5</code> and <code class="highlighter-rouge">'5'</code> are two distinct literals. <code class="highlighter-rouge">5</code> is a numeric value that can be used in arithmetic expressions.  <code class="highlighter-rouge">'5'</code> is a <code class="highlighter-rouge">char</code>.  We know from <a href="/gustycooper.github.io/mydoc_1_characters">Characters as Information</a> that <code class="highlighter-rouge">'5'</code> is encoded as the Unicode (ASCII) number <code class="highlighter-rouge">54</code>.  We will learn that you can use <code class="highlighter-rouge">char</code> values in arithmetic expressions, but you have to be careful.  Consider the following silly example.</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'5'</span> <span class="o">+</span> <span class="sc">'5'</span><span class="o">;</span>    <span class="c1">// c contains 108, which is 'j'</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'5'</span> <span class="o">+</span> <span class="sc">'5'</span><span class="o">;</span>    <span class="c1">// c contains 108, which is 'j'</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printnl</span><span class="o">(</span><span class="n">c</span><span class="o">);</span> <span class="c1">// prints j to the terminal </span>
 </code></pre>
 </div>
@@ -1185,7 +1185,7 @@ Meta Language - Java's Declarartion Statement
 
 <p>We will learn Java boxing classes of <code class="highlighter-rouge">Byte</code>, <code class="highlighter-rouge">Short</code>, <code class="highlighter-rouge">Integer</code>, <code class="highlighter-rouge">Long</code>, <code class="highlighter-rouge">Float</code>, and <code class="highlighter-rouge">Double</code>.  These classes have <code class="highlighter-rouge">fields</code> that are the min and max of the type.  We will soon learn about Java <code class="highlighter-rouge">classes</code>, including such things as <code class="highlighter-rouge">instance methods</code> and <code class="highlighter-rouge">fields</code>.  The following shows example code that access the fields <code class="highlighter-rouge">MIN_VALUE</code> and <code class="highlighter-rouge">MAX_VALUE</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">minValue</span> <span class="o">=</span> <span class="n">Byte</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span> <span class="c1">// minValue is -128</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">byte</span> <span class="n">minValue</span> <span class="o">=</span> <span class="n">Byte</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span> <span class="c1">// minValue is -128</span>
 <span class="kt">byte</span> <span class="n">maxValue</span> <span class="o">=</span> <span class="n">Byte</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span> <span class="c1">// maxValue is 127</span>
 </code></pre>
 </div>

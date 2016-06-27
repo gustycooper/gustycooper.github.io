@@ -948,13 +948,13 @@ $('#toc').on('click', 'a', function() {
 
 <p>Examining the figure, we know that Mary Fay and Rose get pensions, but Shawnee and Emily do not get a pension.  The following <strong>recursive</strong> algorithm determines who gets a pension.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">getsPension</span><span class="p">(</span><span class="n">String</span> <span class="n">lady</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">getsPension</span><span class="o">(</span><span class="n">String</span> <span class="n">lady</span><span class="o">)</span> <span class="o">{</span>
  <span class="k">if</span> <span class="o">(</span><span class="n">lady</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="err">“</span><span class="n">Sally</span><span class="err">”</span><span class="o">))</span>
    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
- <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">lady</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="err">“”</span><span class="o">))</span>
+ <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">lady</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="err">“”</span><span class="o">))</span>
    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>	
  <span class="k">else</span>	
-  <span class="k">return</span> <span class="n">getsPension</span><span class="o">(</span><span class="n">motherOf</span><span class="o">(</span><span class="n">lady</span><span class="o">));</span>
+  <span class="k">return</span> <span class="nf">getsPension</span><span class="o">(</span><span class="n">motherOf</span><span class="o">(</span><span class="n">lady</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
 </div>
@@ -986,12 +986,12 @@ $('#toc').on('click', 'a', function() {
 
 <p>The following is a recursive algorithm that paints mustaches on Matryoshka Dolls.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">paintMustache</span><span class="o">(</span><span class="n">Matryoshka</span> <span class="n">Doll</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">paintMustache</span><span class="o">(</span><span class="n">Matryoshka</span> <span class="n">Doll</span><span class="o">)</span>
    <span class="k">if</span> <span class="n">there</span> <span class="n">is</span> <span class="n">one</span> <span class="n">figure</span> <span class="n">in</span> <span class="n">nest</span> <span class="n">of</span> <span class="n">dolls</span> 
       <span class="n">paint</span> <span class="n">a</span> <span class="n">Mustache</span> <span class="n">on</span> <span class="n">the</span> <span class="n">face</span>
    <span class="k">else</span>
       <span class="n">paint</span> <span class="n">a</span> <span class="n">Mustache</span> <span class="n">on</span> <span class="n">the</span> <span class="n">outer</span> <span class="n">doll</span>
-      <span class="n">paintMustache</span><span class="o">(</span><span class="n">Matryoshka</span> <span class="n">Doll</span> <span class="n">after</span> <span class="n">removing</span> <span class="n">outer</span> <span class="n">doll</span><span class="o">)</span>
+      <span class="nf">paintMustache</span><span class="o">(</span><span class="n">Matryoshka</span> <span class="n">Doll</span> <span class="n">after</span> <span class="n">removing</span> <span class="n">outer</span> <span class="n">doll</span><span class="o">)</span>
 </code></pre>
 </div>
 
@@ -999,7 +999,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>The factorial of a non-negative integer <code class="highlighter-rouge">n</code> is the product of all positive integers less than or equal to <code class="highlighter-rouge">n</code>.  The notation of n-factorial is <code class="highlighter-rouge">n!</code>.  The value of 5! is shown by the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="mi">5</span><span class="o">!</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">4</span>  <span class="o">*</span> <span class="mi">3</span>  <span class="o">*</span> <span class="mi">2</span>  <span class="o">*</span> <span class="mi">1</span> <span class="n">which</span> <span class="n">is</span> <span class="mi">120</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="mi">5</span><span class="o">!</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">4</span>  <span class="o">*</span> <span class="mi">3</span>  <span class="o">*</span> <span class="mi">2</span>  <span class="o">*</span> <span class="mi">1</span> <span class="n">which</span> <span class="n">is</span> <span class="mi">120</span>
 </code></pre>
 </div>
 
@@ -1012,7 +1012,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>The recursive Java method <code class="highlighter-rouge">factorial</code> is given by the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">factorial</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
    <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
       <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>                   <span class="c1">// base case</span>
    <span class="k">else</span>
@@ -1095,7 +1095,7 @@ $('#toc').on('click', 'a', function() {
 
 <h2 id="general-recursive-algorithm">General Recursive Algorithm</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Step</span> <span class="mi">1</span><span class="o">:</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Step</span> <span class="mi">1</span><span class="o">:</span>
 <span class="n">If</span> <span class="n">the</span> <span class="n">problem</span> <span class="n">can</span> <span class="n">be</span> <span class="n">solved</span> <span class="k">for</span> <span class="n">the</span> <span class="n">current</span> <span class="n">value</span> <span class="n">of</span> <span class="n">n</span>
    <span class="n">Solve</span> <span class="n">It</span>
 <span class="k">else</span>
@@ -1125,7 +1125,7 @@ Step 3: Recursive Case</p>
 
 <p>The recursive <code class="highlighter-rouge">stringLength</code> method looks a lot like <code class="highlighter-rouge">factorial</code>.  The design shown in pseudo code is the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Base</span> <span class="n">Case</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Base</span> <span class="n">Case</span>
 <span class="k">if</span> <span class="n">the</span> <span class="n">string</span> <span class="n">is</span> <span class="n">empty</span>
    <span class="n">the</span> <span class="n">length</span> <span class="n">is</span> <span class="mi">0</span>
 <span class="k">else</span>
@@ -1136,7 +1136,7 @@ Step 3: Recursive Case</p>
 
 <p>The method defintion is given as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">stringLength</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">stringLength</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
    <span class="k">if</span> <span class="o">(</span><span class="n">s</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="err">“”</span><span class="o">))</span>
       <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
    <span class="k">else</span>

@@ -945,7 +945,7 @@ $('#toc').on('click', 'a', function() {
 <h2 id="b1-java-strings-are-objects">B.1 Java Strings are Objects</h2>
 <p>Remember the Java Strings are objects.  Java provides simplified notations for working with strings.  For example, you can declare and assign as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>              <span class="c1">// Nice notation</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>              <span class="c1">// Nice notation</span>
 <span class="n">String</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="err">“</span><span class="n">Cooper</span><span class="err">”</span><span class="o">);</span> <span class="c1">// using a String constructor</span>
 </code></pre>
 </div>
@@ -954,7 +954,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>Since Strings are objects, a variable of type String is a reference to the object.  This means you must test for equality of strings using the equals method and not the equality operator (==).   Java will allow you to use the == operator, but you are comparing memory addresses and not the contents of the string.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>
 <span class="n">String</span> <span class="n">b</span> <span class="o">=</span> <span class="err">“</span><span class="n">Cooper</span><span class="err">”</span><span class="o">;</span>
 <span class="n">String</span> <span class="n">c</span> <span class="o">=</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">;</span>
 <span class="kt">boolean</span> <span class="n">bCorrect</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
@@ -975,7 +975,7 @@ int y = Integer.parseInt(str);</p>
 <p>The same is for all cases: Short.valueOf, Short. parseShort, Long.valueOf, Long.parseLong, etc.
 ## B.4 Converting Numbers to Strings</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">42</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span>  <span class="mi">42</span><span class="o">;</span>
 <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">5.4</span><span class="o">;</span>
 <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="err">“”</span> <span class="o">+</span> <span class="n">i</span><span class="o">;</span> <span class="c1">// concatenate i to an empty String</span>
 <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
@@ -987,7 +987,7 @@ int y = Integer.parseInt(str);</p>
 
 <p>The following code snippet demonstrates how to split a string of comma separated numbers into a String array, and then how to convert the numbers into an int array.  The String split() method returns a String[].</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">sampleString</span> <span class="o">=</span> <span class="s">"101,203,405"</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">sampleString</span> <span class="o">=</span> <span class="s">"101,203,405"</span><span class="o">;</span>
 <span class="n">String</span><span class="o">[]</span> <span class="n">stringArray</span> <span class="o">=</span> <span class="n">sampleString</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">);</span>
 <span class="kt">int</span><span class="o">[]</span> <span class="n">intArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">stringArray</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stringArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>

@@ -948,7 +948,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>Java has eight primitive data types: six number types, character and boolean. When any variables of these data types are passed as parameters to a method, their values will not change. Consider the following example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tryPrimitives</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">double</span> <span class="n">f</span><span class="o">,</span> <span class="kt">char</span> <span class="n">c</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">test</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tryPrimitives</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">double</span> <span class="n">f</span><span class="o">,</span> <span class="kt">char</span> <span class="n">c</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">test</span><span class="o">)</span>
   <span class="o">{</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">;</span>    <span class="c1">//This is legal, but the new values</span>
     <span class="n">c</span> <span class="o">=</span> <span class="sc">'z'</span><span class="o">;</span>    <span class="c1">//won't be seen outside tryPrimitives.</span>
@@ -962,7 +962,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>If tryPrimitives is called within the following code what will the final print statement produce?</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="kt">int</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kt">int</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
     <span class="kt">double</span> <span class="n">ff</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">;</span>
     <span class="kt">char</span> <span class="n">cc</span> <span class="o">=</span> <span class="sc">'a'</span><span class="o">;</span>
     <span class="kt">boolean</span> <span class="n">bb</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
@@ -977,7 +977,7 @@ $('#toc').on('click', 'a', function() {
 <p>What if an argument to a method is an object reference? We can manipulate the object in any way except we cannot make the reference refer to a different object.
 Suppose we have defined the following class:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Record</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Record</span> <span class="o">{</span>
   <span class="kt">int</span> <span class="n">num</span><span class="o">;</span>
   <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
 <span class="o">}</span>
@@ -986,7 +986,7 @@ Suppose we have defined the following class:</p>
 
 <p>Now we can pass the object as a parameter to a method:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tryObject</span><span class="p">(</span><span class="n">Record</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tryObject</span><span class="o">(</span><span class="n">Record</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">r</span><span class="o">.</span><span class="na">num</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
     <span class="n">r</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Fred"</span><span class="o">;</span>
   <span class="o">}</span>
@@ -995,7 +995,7 @@ Suppose we have defined the following class:</p>
 
 <p>In some other code we can create an object of our new class Record, set its fields, and call the method tryObject.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="n">Record</span> <span class="n">id</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Record</span><span class="o">();</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="n">Record</span> <span class="n">id</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Record</span><span class="o">();</span>
     <span class="n">id</span><span class="o">.</span><span class="na">num</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
     <span class="n">id</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Barney"</span><span class="o">;</span>
     <span class="n">tryObject</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
@@ -1010,7 +1010,7 @@ Note that the object’s instances variables are changed in this case. Why? The 
 
 <p>We cannot however make the object parameter refer to a different object by reassigning the reference or calling new on the reference. For example the following method would not work as expected:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createRecord</span><span class="p">(</span><span class="n">Record</span> <span class="n">r</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createRecord</span><span class="o">(</span><span class="n">Record</span> <span class="n">r</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Record</span><span class="o">();</span>
     <span class="n">r</span><span class="o">.</span><span class="na">num</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
     <span class="n">r</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
@@ -1020,7 +1020,7 @@ Note that the object’s instances variables are changed in this case. Why? The 
 
 <p>We can still encapsulate the initialization of the Record in a method, but we need to return the reference.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="n">Record</span> <span class="nf">createRecord</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="n">Record</span> <span class="nf">createRecord</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">Record</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Record</span><span class="o">();</span>
     <span class="n">r</span><span class="o">.</span><span class="na">num</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
     <span class="n">r</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
@@ -1033,13 +1033,13 @@ Note that the object’s instances variables are changed in this case. Why? The 
 
 <p>When we write code with objects of class String, it can look as if strings are primitive data types. For example, when we assign a string literal to a variable, it looks no different than, say, assigning an number to an int variable. In particular, we do not have to use new. In fact, a string is an object, not a primitive. A new is required, and Java does it behind the scenes. It creates a new object of class String and initializes it to contain the string literal we have given it.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"This is a string literal."</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"This is a string literal."</span><span class="o">;</span>
 </code></pre>
 </div>
 
 <p>Because str is an object we might think that the string it contains might be changed when we pass str as a parameter to a method. Suppose we have the method tryString:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tryString</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tryString</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">s</span> <span class="o">=</span> <span class="s">"a different string"</span><span class="o">;</span>
   <span class="o">}</span>
 </code></pre>
@@ -1047,7 +1047,7 @@ Note that the object’s instances variables are changed in this case. Why? The 
 
 <p>When the following code is executed, what does the print statement produce?</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="n">tryString</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="n">tryString</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"str = "</span> <span class="o">+</span> <span class="n">str</span><span class="o">);</span>
 </code></pre>
 </div>
@@ -1060,7 +1060,7 @@ Note that the object’s instances variables are changed in this case. Why? The 
 
 <p>Okay, so how do we change the values of variables inside methods? One way to do it is simply to return the value that we have changed. In the simple example below, we take two integers, a and b, as parameters and return a to the power of b.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">power</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">power</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
     <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
@@ -1072,7 +1072,7 @@ Note that the object’s instances variables are changed in this case. Why? The 
 
 <p>Now when we call the method power, number gets assigned the value that power returns.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">exponent</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
     <span class="n">number</span> <span class="o">=</span> <span class="n">power</span><span class="o">(</span><span class="n">number</span><span class="o">,</span> <span class="n">exponent</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"New value of number is "</span> <span class="o">+</span> <span class="n">number</span><span class="o">);</span>
@@ -1085,7 +1085,7 @@ Note that the object’s instances variables are changed in this case. Why? The 
 
 <p>Arrays are references. This means that when we pass an arrays as a parameter, we are passing its handle or reference. So, we can change the contents of the array inside the method.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tryArray</span><span class="p">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">tryArray</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'x'</span><span class="o">;</span>
     <span class="n">b</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'y'</span><span class="o">;</span>
     <span class="n">b</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'z'</span><span class="o">;</span>
@@ -1095,7 +1095,7 @@ Note that the object’s instances variables are changed in this case. Why? The 
 
 <p>When the following code is executed, the array a does indeed have the new values in the array.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="kt">char</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="sc">'a'</span><span class="o">,</span> <span class="sc">'b'</span><span class="o">,</span> <span class="sc">'c'</span><span class="o">};</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kt">char</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="sc">'a'</span><span class="o">,</span> <span class="sc">'b'</span><span class="o">,</span> <span class="sc">'c'</span><span class="o">};</span>
     <span class="n">tryArray</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"a[0] = "</span> <span class="o">+</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="s">", a[1] = "</span> <span class="o">+</span> <span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> 
                        <span class="s">", a[2] ="</span> <span class="o">+</span> <span class="n">a</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>

@@ -951,10 +951,10 @@ Of course, we do not want to write our graphics programs using only pixels.  We 
 
 <p>User’s operate today’s programs with a graphical user’s Interface (GUI).  Java has many classes that support GUI development.  The starting point of a GUI application is a window.  The Java class that corresponds to a window is a JFrame.   A JFrame by itself is not very useful.  You can place a JFrame window on your display.  It will have a title-bar, open, close, and maximize icons, but that is about it.  A JFrame has several attributes that you will set.  The following code demonstrates a Java program that creates a JFrame only.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">JFrameOnly</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">JFrame</span> <span class="n">window</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">(</span><span class="s">"JFrame Only"</span><span class="o">);</span>
         <span class="n">window</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">250</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>  <span class="c1">// 250 pixels wide, 100 length</span>
         <span class="n">window</span><span class="o">.</span><span class="na">setLocation</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span> <span class="c1">// 100, 100 from upper rhc</span>
@@ -981,7 +981,7 @@ The content that you want to place in your window consists of the typical things
 
 <p>Section G.2 shows a program with a JFrame and no content.  This section shows code a JFrame where we have added some rudimentary content.  In this example, we add directly to the JFrame by extending the JFrame class and overriding the JFrame paint(Graphics g) method.  The paint() method is automatically called whenever a window needs to be redrawn.  The argument of type Graphics has many low-level graphical drawing routines.  The following are a few examples.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">drawString</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span> <span class="kt">int</span> <span class="n">xBaselineLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yBaselineLeft</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">drawString</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span> <span class="kt">int</span> <span class="n">xBaselineLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yBaselineLeft</span><span class="o">);</span>
 <span class="n">drawLine</span><span class="o">(</span><span class="kt">int</span> <span class="n">x1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="o">);</span>
 <span class="n">drawRect</span><span class="o">(</span><span class="kt">int</span> <span class="n">xTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">,</span> <span class="kt">int</span> <span class="n">height</span><span class="o">);</span>
 <span class="n">drawOval</span><span class="o">(</span><span class="kt">int</span> <span class="n">xTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">,</span> <span class="kt">int</span> <span class="n">height</span><span class="o">);</span>
@@ -994,24 +994,24 @@ The content that you want to place in your window consists of the typical things
 
 <p>When you call one of the basic drawing methods, the object is drawn in the drawing color, which is default to Color.BLACK; however, you can change the drawing color with the following method.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">setColor</span><span class="o">(</span><span class="n">Color</span> <span class="n">c</span><span class="o">);</span>  <span class="c1">// See section Java Colors</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">setColor</span><span class="o">(</span><span class="n">Color</span> <span class="n">c</span><span class="o">);</span>  <span class="c1">// See section Java Colors</span>
 </code></pre>
 </div>
 
 <p>The following code demonstrates a Java program that adds a String and a line directly to a JFrame using drawString() and drawLine().</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BasicJFrame</span> <span class="kd">extends</span> <span class="n">JFrame</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">BasicJFrame</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">BasicJFrame</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">(</span><span class="n">title</span><span class="o">);</span> <span class="c1">// call JFrame's constructor</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">paint</span><span class="o">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paint</span><span class="o">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="o">){</span>
         <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">150</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
         <span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="s">"Hello Class"</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">40</span><span class="o">);</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span> <span class="n">arg</span><span class="o">[])</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">arg</span><span class="o">[])</span> <span class="o">{</span>
         <span class="n">BasicJFrame</span> <span class="n">window</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicJFrame</span><span class="o">(</span><span class="s">"Basic JFrame"</span><span class="o">);</span>
         <span class="n">window</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span><span class="mi">200</span><span class="o">);</span>
         <span class="n">window</span><span class="o">.</span><span class="na">setLocation</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>
@@ -1032,26 +1032,26 @@ The content that you want to place in your window consists of the typical things
 
 <p>Section G.4 shows code for adding content directly to a JFrame.  This section presents our first code that adds content to a JPanel and then adds the JPanel to the content pane (via setContentPane) of the JFrame.  The pattern for this is similar to that in Section G.4.  We will extend the JPanel class and overriding the JPanel paintComponent(Graphics g) method.  The paintComponenet() method (just like the JFrame paint() method) is automatically called whenever a window needs to be redrawn.  The argument of type Graphics has the low-level graphical drawing routines that were described in Section G.4.   The following code demonstrates a Java program that adds a String and a line to a JPanel using drawString() and drawLine().  The JPanel is added to the JFrame using the setContentPane() method.  If you run this Basic JPanel program and the Basic JFrame program (from section G.4) side-by-side, you will notice the coordinate system for the Basic JFrame begins at the upper left-hand corner of the window and the coordinate system for the Basic JPanel begins at the upper left-hand corner of the panel placed within the window.  A JPanel has a background color that you can set by calling</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">setBackground</span><span class="o">(</span><span class="n">Color</span> <span class="n">c</span><span class="o">);</span>  <span class="c1">// See Section Java Colors</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">setBackground</span><span class="o">(</span><span class="n">Color</span> <span class="n">c</span><span class="o">);</span>  <span class="c1">// See Section Java Colors</span>
 </code></pre>
 </div>
 
 <p>The example code changes the background to Color.YELLOW.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BasicJPanel</span> <span class="kd">extends</span> <span class="n">JPanel</span> <span class="o">{</span>
     <span class="c1">// The following constructor is not needed.</span>
     <span class="c1">// super() is called automatically for you.</span>
-    <span class="kd">public</span> <span class="n">BasicJPanel</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">BasicJPanel</span><span class="o">()</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">();</span> <span class="c1">// call JPanel's constructor</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">paintComponent</span><span class="o">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paintComponent</span><span class="o">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="o">){</span>
         <span class="n">setBackground</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">YELLOW</span><span class="o">);</span>
         <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">150</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
         <span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="s">"Hello Class"</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">40</span><span class="o">);</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span> <span class="n">arg</span><span class="o">[])</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">arg</span><span class="o">[])</span> <span class="o">{</span>
         <span class="n">JFrame</span> <span class="n">window</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">(</span><span class="s">"BasicJPanel"</span><span class="o">);</span>
         
         <span class="n">BasicJPanel</span> <span class="n">panel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicJPanel</span><span class="o">();</span>
@@ -1067,7 +1067,7 @@ The content that you want to place in your window consists of the typical things
 
 <p>One thing to note is that a JFrame has a content pane to which you can add content.  The above example did not use the JFrame content pane.  The statement</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">window</span><span class="o">.</span><span class="na">setContentPane</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">window</span><span class="o">.</span><span class="na">setContentPane</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
 
 <span class="n">Replaced</span> <span class="n">the</span> <span class="n">JFrame</span> <span class="n">content</span> <span class="n">pane</span><span class="o">.</span>  <span class="n">An</span> <span class="n">alternative</span> <span class="n">would</span> <span class="n">have</span> <span class="n">been</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">JFrame</span> <span class="n">content</span> <span class="n">pane</span> <span class="n">and</span> <span class="n">add</span> <span class="n">the</span> <span class="n">panel</span> <span class="n">to</span> <span class="n">it</span> <span class="n">as</span> <span class="n">follows</span><span class="o">.</span>
 
@@ -1089,7 +1089,7 @@ The content that you want to place in your window consists of the typical things
 Java Standard Colors – java.awt.color
 The standard colors are accessed as Color.RED, Color.GREEN, etc.  They are defined as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">RED</span>       <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">RED</span>       <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
 <span class="n">GREEN</span>     <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">g</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
 <span class="n">BLUE</span>      <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">g</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">b</span><span class="o">=</span><span class="mi">255</span><span class="o">]</span>
 <span class="n">YELLOW</span>    <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
@@ -1107,7 +1107,7 @@ The standard colors are accessed as Color.RED, Color.GREEN, etc.  They are defin
 
 <p>You can create your own colors using several Color constructors.  The one listed here accepts R, G, B values between 0 and 255.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Color</span> <span class="n">myColor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="mi">101</span><span class="o">,</span> <span class="mi">45</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Color</span> <span class="n">myColor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="mi">101</span><span class="o">,</span> <span class="mi">45</span><span class="o">);</span>
 </code></pre>
 </div>
 

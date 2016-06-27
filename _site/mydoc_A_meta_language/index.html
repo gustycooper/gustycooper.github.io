@@ -1049,7 +1049,7 @@ for ( &lt;<font color="red">init-exp</font>&gt;; &lt;<font color="red">cont-exp<
 
 <p>Examples:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">x</span><span class="o">++;</span> <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// equivalent</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">x</span><span class="o">++;</span> <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// equivalent</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">++</span> <span class="c1">// does not change x</span>
 </code></pre>
 </div>
@@ -1073,7 +1073,7 @@ Meta Language - Conditional Expression
 
 <p>Examples:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">next</span> <span class="o">=</span> <span class="o">(</span><span class="n">N</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="o">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">next</span> <span class="o">=</span> <span class="o">(</span><span class="n">N</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="o">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
 </code></pre>
 </div>
 
@@ -1101,7 +1101,7 @@ Meta Language - Block
 
 <p>The following are some example Java blocks.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">{</span>
 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"The answer is "</span><span class="o">);</span>
 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
 <span class="o">}</span>
@@ -1171,7 +1171,7 @@ public class &lt;class-name&gt; {
   <li>
     <p>The “command line” arguments are passed as parameters in the <code class="highlighter-rouge">args</code> parameter. The identifier <code class="highlighter-rouge">args</code> is used by convention.  Any valid Java identifier may be used.  For most of our problems, we do not pass command line arguments.  BlueJ allows you to pass parameters. The following shows a program run from a command line and the values of <code class="highlighter-rouge">args</code>.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">java</span> <span class="n">myProgram</span> <span class="n">one</span> <span class="n">two</span> <span class="n">three</span>
+    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">java</span> <span class="n">myProgram</span> <span class="n">one</span> <span class="n">two</span> <span class="n">three</span>
 
 <span class="n">arg</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="n">contains</span> <span class="err">“</span><span class="n">one</span><span class="err">”</span>
 <span class="n">arg</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">contains</span> <span class="err">“</span><span class="n">two</span><span class="err">”</span>
@@ -1254,7 +1254,7 @@ Meta Language - Declaration Statement without Expression
 
 <p>Examples:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfPeople</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfPeople</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">k</span><span class="o">;</span>
 <span class="kt">boolean</span> <span class="n">isFinished</span><span class="o">;</span>
 <span class="n">String</span> <span class="n">s</span><span class="o">;</span>
@@ -1288,7 +1288,7 @@ Meta Language - Declaration Statement with Expression
 
 <p>Examples:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numberOfStudents</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span>
 <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
 <span class="kt">boolean</span> <span class="n">isFinished</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
@@ -1321,7 +1321,7 @@ Meta Language - Object Creation Expression Statement
 
 <p>Examples:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>
 <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">"Gusty"</span><span class="o">,</span><span class="mi">22</span><span class="o">),</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">"Emily"</span><span class="o">,</span><span class="mi">25</span><span class="o">);</span>
 <span class="n">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
 </code></pre>
@@ -1341,7 +1341,7 @@ enum &lt;enum-type-name&gt; {&lt;list-of-enum-values&gt;}
 
 <p>Examples.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="n">Season</span> <span class="o">{</span> <span class="n">SPRING</span><span class="o">,</span> <span class="n">SUMMER</span><span class="o">,</span> <span class="n">FALL</span><span class="o">,</span> <span class="n">WINTER</span> <span class="o">}</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="n">Season</span> <span class="o">{</span> <span class="n">SPRING</span><span class="o">,</span> <span class="n">SUMMER</span><span class="o">,</span> <span class="n">FALL</span><span class="o">,</span> <span class="n">WINTER</span> <span class="o">}</span>
 <span class="n">Season</span> <span class="n">vacation</span><span class="o">;</span>
 <span class="n">vacation</span> <span class="o">=</span> <span class="n">Season</span><span class="o">.</span><span class="na">SUMMER</span><span class="o">;</span>
 </code></pre>
@@ -1363,7 +1363,7 @@ Meta Language - Array Declarartion Statement
 
 <p>Declaring an array creates a reference.  You need to create the actual array.  This can be done at the time of declaration using the {} with a list of expressions that evaluate to the <code class="highlighter-rouge">&lt;type-name&gt;</code>.  This can be done at the time or declaration or after the declaration using <code class="highlighter-rouge">new</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">100</span><span class="o">];</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">100</span><span class="o">];</span>
 <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="c1">// x is 100</span>
 <span class="kt">int</span><span class="o">[][]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">][</span><span class="mi">7</span><span class="o">];</span>
 <span class="kt">int</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span>
@@ -1497,7 +1497,7 @@ Meta Language - Assignment Statements
 
 <p>The following are some example Java assignment statements where in each case the <code class="highlighter-rouge">&lt;exp&gt;</code> is simply a literal.  You understand expressions from your previous study.  We will study the details of expressions in <a href="/gustycooper.github.io/mydoc_2_expressions">Expressions</a>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span> 
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">;</span> 
 <span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
 <span class="n">x</span> <span class="o">/=</span> <span class="mf">3.0</span><span class="o">;</span>       
 <span class="n">i</span> <span class="o">=</span> <span class="mi">32000</span><span class="o">;</span>
@@ -1543,7 +1543,7 @@ if ( &lt;boolean-expression&gt; ) { // one-way with block
 </pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="o">)</span> <span class="o">{</span>
 	<span class="kt">int</span> <span class="n">temp</span><span class="o">;</span>	<span class="c1">// A temporary variable for use in this block.</span>
 	<span class="n">temp</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>	<span class="c1">// Save a copy of the value of x in temp.</span>
 	<span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>	<span class="c1">// Copy the value of y into x.</span>
@@ -1553,7 +1553,7 @@ if ( &lt;boolean-expression&gt; ) { // one-way with block
 <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>				<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>				<span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>
 	<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> 				<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-<span class="k">else</span>					<span class="nf">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span>
+<span class="k">else</span>					<span class="nf">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span>
 	<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>				<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
 </code></pre>
 </div>
@@ -1598,7 +1598,7 @@ case 1: case 2: case 3:
   <li>The <code class="highlighter-rouge">break</code> is required to cause flow to the end of the <code class="highlighter-rouge">switch</code>; otherwise, flow continued with the next <code class="highlighter-rouge">case</code>.</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">computerMove</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">String</span> <span class="n">computerMove</span><span class="o">;</span>
 <span class="k">switch</span> <span class="o">(</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mi">3</span><span class="o">*</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())</span> <span class="o">)</span> <span class="o">{</span>
    <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
       <span class="n">computerMove</span> <span class="o">=</span> <span class="s">"Rock"</span><span class="o">;</span>
@@ -1636,7 +1636,7 @@ while ( &lt;boolean-expression&gt; ) { // block
 
 <p>Most while loops have the block format.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>                <span class="c1">// The number to be printed.</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>                <span class="c1">// The number to be printed.</span>
 <span class="k">while</span><span class="o">(</span><span class="n">number</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">){</span>               <span class="c1">//Keep going as long as number is &lt;6.</span>
 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
 	<span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>     <span class="c1">// Go on to the next number.</span>
@@ -1682,7 +1682,7 @@ for ( &lt;initialization&gt;; &lt;continuation-condition&gt;; &lt;update&gt; ) {
 </pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Typical counting loop</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// Typical counting loop</span>
 <span class="k">for</span><span class="o">(&lt;</span><span class="n">variable</span><span class="o">&gt;=&lt;</span><span class="n">min</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;&lt;=&lt;</span><span class="n">max</span><span class="o">&gt;;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;++)</span> <span class="o">{</span> 
 	<span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="n">list</span><span class="o">&gt;</span>
 <span class="o">}</span>
@@ -1765,7 +1765,7 @@ Meta Language - Empty Statement
 </pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span> <span class="n">done</span> <span class="o">)</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span> <span class="n">done</span> <span class="o">)</span>
    <span class="o">;</span>
 <span class="k">else</span>
    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">Not</span> <span class="n">done</span> <span class="n">yet</span><span class="o">.</span><span class="err">”</span><span class="o">)</span>
