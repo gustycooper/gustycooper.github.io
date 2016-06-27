@@ -30,7 +30,7 @@ This section describes two types of memory - stack and heap - that are fundament
 
 ## Stacks in Everyday Life
 
-Most people have a stack somewhere in the life.  For example, you probably have a stack of books in your room or office.  The following figure is a stack of my books.  An old *Linux for Dummies* is on the bottom - I have not read it in a while.  On top of my Linux book is one I read to my granddaughter - *Hop of Pop*.  On the top of my stack is *My Diary*.  My stack of books has a top - the last book I put on the stack is on top.  I have to remove the top book before I can get to the next book and so on.  My stack of books has the attribute - last book in is the first book out - which is shortened to last in first out - whic is shortened to LIFO.  A stack is a LIFO.
+Most people have a stack somewhere in the life.  For example, you probably have a stack of books in your room or office.  The following figure is a stack of my books.  An old *Linux for Dummies* is on the bottom - I have not read it in a while.  On top of my Linux book is one I read to my granddaughter - *Hop of Pop*.  On the top of my stack is *My Diary*.  My stack of books has a top - the last book I put on the stack is on top.  I have to remove the top book before I can get to the next book and so on.  My stack of books has the attribute - last book in is the first book out - which is shortened to last in first out - which is shortened to LIFO.  A stack is a LIFO.
 
 ![Stack of Books](../images/stackOfBooks.png "Stack of Books")
 
