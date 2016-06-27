@@ -30,7 +30,7 @@ We will not study ```final``` as applied to classes and methods.
 
 ## Use of ```final```
 
-In addition to nice constants such as ```PI``` and ```FAVORITE_COLOR```, ```final``` can be used to isolate changes of code to one place.  The example uses a two-dimensional array which we study in [Arrays and ArrayLists](/gustycooper.github.io/mydoc_6_arrays_arraylists).  Array have fixed dimensions.  Suppose we write code for a 4 by 4 array, but we want our code to be easy to modify to process a 5 by 5 array.  We do not want our code to reference constants 4 because then we would have to search throug our code for array references.  Instead we define two ```final``` constants ```ROW``` and ```COL```.  Our first implementation assigns 4.  Then we can update our code simply by assigning 4 to ```ROW``` and ```COL```.  The following code demosntrates this.
+In addition to nice constants such as ```PI``` and ```FAVORITE_COLOR```, ```final``` can be used to isolate changes of code to one place.  The example uses a two-dimensional array which we study in [Arrays and ArrayLists](/gustycooper.github.io/mydoc_6_arrays_arraylists).  Array have fixed dimensions.  Suppose we write code for a 4 by 4 array, but we want our code to be easy to modify to process a 5 by 5 array.  We do not want our code to reference constants 4 because then we would have to search throughour code for array references.  Instead we define two ```final``` constants ```ROW``` and ```COL```.  Our first implementation assigns 4.  Then we can update our code simply by assigning 4 to ```ROW``` and ```COL```.  The following code demosntrates this.
 
 ```java
 public final int ROW = 4;
