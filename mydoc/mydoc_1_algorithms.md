@@ -11,7 +11,7 @@ permalink: /mydoc_1_algorithms/
 ## Algorithm Introduction ([Eck 3.2](http://math.hws.edu/javanotes/c3/s2.html))
 
 
-An **algorithm** is a sequence of steps that solves a problem.  For the purposes of our definition, an **algorithm** has to *terminate*.  Adding the termination clause makes perfect sences because if an algorithm does not terminate, it cannot solve a problem.  The following are a sequence of steps that solves a problem.  We typically create the problem specification first, and then create the algorithm; however, for this example, we create the algorithm first.  See if you can determine the problem.
+An **algorithm** is a sequence of steps that solves a problem.  For the purposes of our definition, an **algorithm** has to *terminate*.  Adding the termination clause makes perfect sense because if an algorithm does not terminate, it cannot solve a problem.  The following are a sequence of steps that solves a problem.  We typically create the problem specification first, and then create the algorithm; however, for this example, we create the algorithm first.  See if you can determine the problem.
 
 1. Pour water into a cup that is safe for microwave use.
 2. Place the cup of water in a microwave.
