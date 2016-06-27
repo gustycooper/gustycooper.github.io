@@ -80,7 +80,7 @@ All programs have a main entry point, which by convention is a method named ```m
 These steps are the way everyone should apply our [software development](/gustycooper.github.io/mydoc_1_software_development_process) process to solving labs and projects.  If you spend ample time in steps 1, 2, and 3; steps 4 and 5 become easier.  
 
 1. Understand the Problem
-   * Analyze specification - study the specification as soon as the problem is assigned.  This is important for projects, which (a) longer and more difficult than labs and (b) you complete by yourself.  You will often discover solutions to problems as you are wandering about campus, but if you have not studied the specification, you cannot solve the problem.  Also, Gusty tries to make things clear, but often he does not.  Ask questions untuil you understand the specification.
+   * Analyze specification - study the specification as soon as the problem is assigned.  This is important for projects, which (a) longer and more difficult than labs and (b) you complete by yourself.  You will often discover solutions to problems as you are wandering about campus, but if you have not studied the specification, you cannot solve the problem.  Also, Gusty tries to make things clear, but often he does not.  Ask questions until you understand the specification.
    * Identify inputs and outputs
    * Think about the data
 2. Initial Algorithmic Thinking
