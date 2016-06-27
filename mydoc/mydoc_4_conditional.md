@@ -203,7 +203,7 @@ else
 System.out.println(“Done”);
 ```
 
-You may encounter an unwelcomed dangling else in your programming, but maybe you not.  The preceding code is rather contrived.  The code does not print anything for positive numbers greater than 100.  Most likely, I would have used a ```boolean``` expression with the first ```if``` as follows.  Note: this code is not exactly the same as the earlier code.
+You may encounter an unwelcome dangling else in your programming, but maybe you not.  The preceding code is rather contrived.  The code does not print anything for positive numbers greater than 100.  Most likely, I would have used a ```boolean``` expression with the first ```if``` as follows.  Note: this code is not exactly the same as the earlier code.
 
 ```java
 int num = -1;
