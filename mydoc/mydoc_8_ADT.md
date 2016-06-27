@@ -231,7 +231,7 @@ public class Que implements QueInterface {
     }
     
     public String dequeue() {
-        if (isEmpty()) throw new NoSuchElementException("Queue undeflow");
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         String retString = first.string;
         first = first.next;
         size--;
@@ -240,7 +240,7 @@ public class Que implements QueInterface {
     }
     
     public String peek() {
-        if (isEmpty()) throw new NoSuchElementException("Queue undeflow");
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         return first.string;
     }
     
@@ -351,7 +351,7 @@ public class QueGeneric<Ele> implements QueGenericInterface<Ele> {
    }
     
    public Ele dequeue() {
-      if (isEmpty()) throw new NoSuchElementException("Queue undeflow");
+      if (isEmpty()) throw new NoSuchElementException("Queue underflow");
       Ele retEle = first.ele;
       first = first.next;
       size--;
@@ -360,7 +360,7 @@ public class QueGeneric<Ele> implements QueGenericInterface<Ele> {
    }
     
    public Ele peek() {
-      if (isEmpty()) throw new NoSuchElementException("Queue undeflow");
+      if (isEmpty()) throw new NoSuchElementException("Queue underflow");
       return first.ele;
    }  
 }
