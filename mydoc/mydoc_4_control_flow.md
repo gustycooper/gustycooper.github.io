@@ -49,7 +49,7 @@ At this point, we understand the following.
   * How to define methods in a class. 
 * How to declare variables using reference types. 
 
-We have done a lot, but to this point our algorithms have primarily used two flow of control components, sequential statements and method calls.  At this point we are ready to add conditional statements and loop statements to our programming techniques.  Java has two conditionals statements - ```if``` and ```swtich````.  Java has three loop statements - ```for```, ```while```, and ```do-while```.  The following shows these statements and how they incorporate expressions.  You should notice the Boolean expression is enclosed in parentheses, which are required.
+We have done a lot, but to this point our algorithms have primarily used two flow of control components, sequential statements and method calls.  At this point we are ready to add conditional statements and loop statements to our programming techniques.  Java has two conditionals statements - ```if``` and ```switch````.  Java has three loop statements - ```for```, ```while```, and ```do-while```.  The following shows these statements and how they incorporate expressions.  You should notice the Boolean expression is enclosed in parentheses, which are required.
 
 <div class="alert alert-info" role="alert"><i class="fa fa-language fa-lg"></i>
 <b>
