@@ -38,10 +38,10 @@ permalink: /mydoc_0_about_gusty/
 
   * Bird watching.  Gusty can identify most birds that frequent his backyard feeder.
 
-  * Programming.
+  * Programming.  Gusty programs for enjoyment.
 
 * The following is a photo of Gusty eating a Philly Cheestake in downtown Philiadelphia.
 
-![Gusty](../images/gusty.jpg "Gusty") 
+![Gusty](../images/gustyInPhiladelphia.jpg "Gusty") 
 
 
