@@ -3,7 +3,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Sorting">
+<meta name="description" content="Understand sorting sequential collections arrays and ArrayLists. Understand bubble sort and its Big O value. Understand selection sort and its Big O value. U...">
 <meta name="keywords" content="sorting,  sorting">
 <title>Sorting  | UMW CPSC 220</title>
 <link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
@@ -901,7 +901,7 @@ window.location.href = uri;
 <div class="post-content">
 
    
-    <div class="summary">Sorting</div>
+    <div class="summary"><li>Understand sorting sequential collections arrays and ArrayLists.</li> <li>Understand bubble sort and its Big O value.</li> <li>Understand selection sort and its Big O value.</li> <li>Understand merge sort and its Big O value.</li></div>
    
 
     
@@ -940,28 +940,141 @@ $('#toc').on('click', 'a', function() {
 
   <h2 id="sorting">Sorting</h2>
 
-<p>We will examine three sorting algorithms – bubble, insertion, and selection.</p>
+<p>Sorting rearranges a sequential collection such as an array or <code class="highlighter-rouge">ArrayList</code> until the elements are in ascending or descending order.  To order elements they must be comparable.  For examples,</p>
 
-<p>I have more INFO for this Module.</p>
+<ul>
+  <li>
+    <p><a href="/gustycooper.github.io/mydoc_1_primitive_types">Numeric types</a> can be compared with the <a href="/gustycooper.github.io/mydoc_2_relational_boolean_expressions">relational operators</a>.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kt">double</span> <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+   <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+   <span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><a href="/gustycooper.github.io/mydoc_3_simple_objects">Reference types</a> can be compared if the type implements the <a href="/gustycooper.github.io/mydoc_5_toString_comparable"><code class="highlighter-rouge">comparable</code></a> interface.  We know the Java <code class="highlighter-rouge">String</code> type implements <code class="highlighter-rouge">comparable</code>, and we learned how to implement <code class="highlighter-rouge">comparable</code> for our own types like <code class="highlighter-rouge">Person</code>.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>String e = "Emily", g = "Gusty";
+if (e.compareTo(g) &lt; 0) {
+   String t = e;
+   e = g;
+   g = e;
+}
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<p>Rearranging array/<code class="highlighter-rouge">ArrayList</code> elements is accomplished by swapping their contents.  In <a href="/gustycooper.github.io/mydoc_2_assignment_expressions">Assignment Expressions</a>, we studied the pattern of swapping the contents of two variables .  The following updates the Swapping Variables pattern to be Swapping Array Elements.  The example swaps elements 0 and 1 of an <code class="highlighter-rouge">int[]</code>.</p>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+1. Swapping Array Elements
+</b>
+<br />
+<pre>
+int[] ia = {10, 5, 20, 100};
+int t = ia[0]; // t is 10
+ia[0] = ia[1]; // ia[0] is 5
+ia[1] = t;     // ia[1] is 10
+</pre>
+</div>
+
+<p>We examine three sorting algorithms – <strong>bubble</strong>, <strong>insertion</strong>, and <strong>selection</strong>.  We discuss sorting into ascending order.  The alogorithms can be easliy modifed to sort into descending order.</p>
+
+<h2 id="sorting-and-the-wirth-pattern">Sorting and the Wirth Pattern</h2>
+
+<p>Sorting is mostly the algorithm component of the Wirth pattern; however, the algorithm has to sort a collection of information, which is the data structure component.</p>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br />
+<img title="computer" src="/gustycooper.github.io/images/wirthFigure.png" />
+</div>
+
+<h2 id="sorting-animation">Sorting Animation</h2>
+
+<p>The following are links to various sorting web sites.</p>
+
+<ul>
+  <li><a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Visualization of Sorting</a> - This site allows you to select various sorting algorithm and watch an animation of the sort.  This site helps you to understand sorting.</li>
+  <li><a href="https://www.youtube.com/user/AlgoRythmics">Dancing Sorting</a> - This site allows you to watch people dancing various sorting algorithms.  This site is both entertaining and helpful.</li>
+  <li><a href="https://www.youtube.com/watch?v=k4RRi_ntQc8">President Obama on Sorting</a> - This site shows President Obama and his knowledge of the bubble sort.</li>
+  <li><a href="https://www.youtube.com/watch?v=B6BzDrQFRpk&amp;feature=fvst">Cowgirl Sorting</a> - This site shows cow girls sorting cows into ascending order.</li>
+</ul>
 
 <h2 id="bubble-sort-introduction">Bubble Sort Introduction</h2>
 
-<p>Bubble sort repetitively compares adjacent pairs and swap if necessary.
-* Step through the array, swapping adjacent pairs if they are not in order.  You compare element j and element j+1.  This means that on this iteration, you will step up to the next to last element of the array.  At the end of this step through the array, the largest element will be at the end.
-* Step through the array, swapping adjacent pairs if they are not in order.  You compare element j and element j+1.  You know the last element is the largest so you can loop one less time that in the previous step through the array.  At the end of this step through the array, the last two elements of the array will be largest two elements of the array and they will be in correct order.
-* Continue stepping through the array until the array elements are in order.</p>
+<p>Bubble sort successively examines pairs of elements in an array/<code class="highlighter-rouge">ArrayList</code>.  Bubble sort begins with the first pair of elements, repetitively comparing adjacent pairs and swapping if necessary to move the larger to the higher index.  If all pairs have been examined without a swap, the array is sorted and the algorithm stops; otherwise go back to the first pair of elements and repeat.  The following sample <code class="highlighter-rouge">int[]</code> is used to demonstrate bubble sort into ascending order.</p>
 
-<p>The above algorithm will be two loops, one nested within the other.  If the array size is 10, the outer loop will iterate 9 times, and the upper bound of the inner loop will decrease by one (first loop from 0 to 8, second loop from 0 to 7, etc.).  The following code demonstrates a bubble sort of an integer array.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">ia</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">35</span><span class="o">,</span> <span class="mi">65</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">20</span> <span class="o">}</span>
+</code></pre>
+</div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">bubbleSortIntArray</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">++</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
-                <span class="c1">// swap a[j] and a[j+1]</span>
-                <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
-                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
-                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+<ul>
+  <li>
+    <p><strong>Step 1</strong>.  Beginning with the first pair of numbers (<code class="highlighter-rouge">ia[0]</code> is 35 and <code class="highlighter-rouge">ia[1]</code> is 65) examine successive pairs of elements, and swap if necessary so that the larger has moved to the higher index value.  We swap three pairs of numbers so we must perform Step 2.  At the end of Step 1, the largest element (60) in the array is in position <code class="highlighter-rouge">ia[4]</code></p>
+
+    <ul>
+      <li>Examine <code class="highlighter-rouge">ia[0]</code>, which is 35, and <code class="highlighter-rouge">ia[1]</code>, which is 65.  We do not swap <code class="highlighter-rouge">ia[0]</code> and <code class="highlighter-rouge">ia[1]</code> because they are in ascending order.</li>
+      <li>Examine <code class="highlighter-rouge">ia[1]</code>, which is 65, and <code class="highlighter-rouge">ia[2]</code>, which is 30.  We swap <code class="highlighter-rouge">ia[1]</code> and <code class="highlighter-rouge">ia[2]</code> moving the larger (65) to the higher index (2).</li>
+      <li>Examine <code class="highlighter-rouge">ia[2]</code>, which is 65, and <code class="highlighter-rouge">ia[3]</code>, which is 60.  We swap <code class="highlighter-rouge">ia[2]</code> and <code class="highlighter-rouge">ia[3]</code> moving the larger (65) to the higher index (3).</li>
+      <li>Examine <code class="highlighter-rouge">ia[3]</code>, which is 65, and <code class="highlighter-rouge">ia[4]</code>, which is 20.  We swap <code class="highlighter-rouge">ia[3]</code> and <code class="highlighter-rouge">ia[4]</code> moving the larger (65) to the higher index (4).</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Step 2</strong>.  Beginning with the first pair of numbers (<code class="highlighter-rouge">ia[0]</code> is 35 and <code class="highlighter-rouge">ia[1]</code> is 30) examine successive pairs of elements, and swap if necessary so that the larger has moved to the higher index value.  Since we know that <code class="highlighter-rouge">ia[4]</code> contains the largest element, we do not compare <code class="highlighter-rouge">ia[3]</code> and <code class="highlighter-rouge">ia[4]</code>.  We swap two pairs of numbers so we must perform Step 3.  At the end of Step 2, the second largest element (60) in the array is in position <code class="highlighter-rouge">ia[3]</code></p>
+
+    <ul>
+      <li>Examine <code class="highlighter-rouge">ia[0]</code>, which is 35, and <code class="highlighter-rouge">ia[1]</code>, which is 30.  We swap <code class="highlighter-rouge">ia[0]</code> and <code class="highlighter-rouge">ia[1]</code> moving the larger (35) to the higher index (1).</li>
+      <li>Examine <code class="highlighter-rouge">ia[1]</code>, which is 35, and <code class="highlighter-rouge">ia[2]</code>, which is 60.  We do not swap <code class="highlighter-rouge">ia[1]</code> and <code class="highlighter-rouge">ia[2]</code> because they are in ascending order.</li>
+      <li>Examine <code class="highlighter-rouge">ia[2]</code>, which is 60, and <code class="highlighter-rouge">ia[3]</code>, which is 20.  We swap <code class="highlighter-rouge">ia[2]</code> and <code class="highlighter-rouge">ia[3]</code> moving the larger (60) to the higher index (3).</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Step 3</strong>.  Beginning with the first pair of numbers (<code class="highlighter-rouge">ia[0]</code> is 30 and <code class="highlighter-rouge">ia[1]</code> is 35) examine successive pairs of elements, and swap if necessary so that the larger has moved to the higher index value.  Since we know that <code class="highlighter-rouge">ia[4]</code> contains the largest element and <code class="highlighter-rouge">ia[3]</code> contains the second largest element,  we do not compare <code class="highlighter-rouge">ia[2]</code> and <code class="highlighter-rouge">ia[3]</code>.  We swap one pair of numbers so we must perform Step 4.  At the end of Step 3, the third largest element (35) in the array is in position <code class="highlighter-rouge">ia[2]</code></p>
+
+    <ul>
+      <li>Examine <code class="highlighter-rouge">ia[0]</code>, which is 30, and <code class="highlighter-rouge">ia[1]</code>, which is 35.  We do not swap <code class="highlighter-rouge">ia[0]</code> and <code class="highlighter-rouge">ia[1]</code> because they are in ascending order.</li>
+      <li>Examine <code class="highlighter-rouge">ia[1]</code>, which is 35, and <code class="highlighter-rouge">ia[2]</code>, which is 20.  We swap <code class="highlighter-rouge">ia[1]</code> and <code class="highlighter-rouge">ia[2]</code> moving the larger (35) to the higher index (2).</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Step 4</strong>.  Beginning with the first pair of numbers (<code class="highlighter-rouge">ia[0]</code> is 30 and <code class="highlighter-rouge">ia[1]</code> is 20) examine successive pairs of elements, and swap if necessary so that the larger has moved to the higher index value.  Since we know that <code class="highlighter-rouge">ia[4]</code> contains the largest element and <code class="highlighter-rouge">ia[3]</code> contains the second largest element, and <code class="highlighter-rouge">ia[2]</code> contains the third largest element, we do not compare <code class="highlighter-rouge">ia[1]</code> and <code class="highlighter-rouge">ia[3]</code>.  We swap one pair of numbers so we must perform Step 5.  At the end of Step 4, the fourth largest element (30) in the array is in position <code class="highlighter-rouge">ia[1]</code>.  In fact, the entire array is sorted; however, the algorithm does not know the array is sorted until it has finished an iteration in which no pair is swapped.</p>
+
+    <ul>
+      <li>Examine <code class="highlighter-rouge">ia[0]</code>, which is 30, and <code class="highlighter-rouge">ia[1]</code>, which is 20.  We swap <code class="highlighter-rouge">ia[0]</code> and <code class="highlighter-rouge">ia[1]</code> moving the larger (30) to the higher index (1).</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Step 5</strong>.  Beginning with the first pair of numbers (<code class="highlighter-rouge">ia[0]</code> is 20 and <code class="highlighter-rouge">ia[1]</code> is 30) examine successive pairs of elements, and swap if necessary so that the larger has moved to the higher index value.  This step does not perform any swaps, so the bubble sort algorithm terminates.  Since we know that <code class="highlighter-rouge">ia[4]</code> contains the largest element and <code class="highlighter-rouge">ia[3]</code> contains the second largest element, and <code class="highlighter-rouge">ia[2]</code> contains the third largest element, and <code class="highlighter-rouge">ia[1]</code> contains the fourth largest numbers, we do not compare <code class="highlighter-rouge">ia[0]</code> and <code class="highlighter-rouge">ia[1]</code>.</p>
+  </li>
+</ul>
+
+<p>The following figure shows the five steps described above.</p>
+
+<p><img src="../images/bubbleSort.png" alt="Bubble Sort" title="Bubble Sort" /></p>
+
+<h2 id="bubble-sort-code">Bubble Sort Code</h2>
+
+<p>The bubble sort algorithm is two loops, one nested within the other.  The outer loop corresponds the five steps in the previous section.  The inner loop examine successive pairs of the array, performing the swap if necessary.  The following code contains some optimizations.  The outer loop counts down, beginning with a value that is one less than the array length.   The inner loop counts from 0 up to one less than the loop index of the outer loop.  This allows the inner loop to not compare elements at the end of the array that have already been sorted.  For example, after the first iteration of the outer loop, the largest element of the array is in the last element of the array, which does not requiring comparing in the second iteration of the outer loop.  The following code demonstrates a bubble sort of an integer array.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">bubbleSortIntArray</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">ia</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">ia</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">ia</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">ia</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+                <span class="c1">// swap ia[j] and ia[j+1]</span>
+                <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">ia</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                <span class="n">ia</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">ia</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+                <span class="n">ia</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
@@ -971,100 +1084,161 @@ $('#toc').on('click', 'a', function() {
 
 <h2 id="bubble-sort-optimization">Bubble Sort Optimization</h2>
 
-<p>What happens when call bubbleSortIntArray() with an array that is already sorted?  The algorithm will iterate through the arrays without ever performing a swap.  If our inner loop does not perform a swap, the array a is in order.  We can add a little optimization to our bubbleSortIntArray() by breaking out of the outer loop if the inner loop does not perform a sway.   The code for this is as follows.</p>
+<p>The <code class="highlighter-rouge">bubbleSortIntArray</code> code in the previous section iterates on loops that are already sorted or partially sorted, often never performing a sway.   If our inner loop does not perform a swap, the array <code class="highlighter-rouge">ia</code> is in order.  We can optimize <code class="highlighter-rouge">bubbleSortIntArray</code> to <code class="highlighter-rouge">break</code> out of the outer loop if the inner loop does not perform a sway.   The code for this is as follows.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">bubbleSortIntArray</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
-        <span class="kt">boolean</span> <span class="n">swapped</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">++</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
-                <span class="c1">// swap a[j] and a[j+1]</span>
-                <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
-                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
-                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
-                <span class="n">swapped</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">swapped</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">break</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">bubbleSortIntArray</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">ia</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">ia</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+      <span class="kt">boolean</span> <span class="n">swapped</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+      <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+         <span class="k">if</span> <span class="o">(</span><span class="n">ia</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">ia</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+            <span class="c1">// swap a[j] and a[j+1]</span>
+            <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+            <span class="n">swapped</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="k">if</span> <span class="o">(!</span><span class="n">swapped</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">break</span><span class="o">;</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 </div>
 
-<p>This optimization is rather clever, but in general did this optimization really help?  Our algorithm will be faster on arrays that are already sorted or partially sorted, but on unsorted arrays our algorithm is still takes just as many steps.  I</p>
+<h2 id="bubble-sort-and-big-o">Bubble Sort and Big O</h2>
 
-<h2 id="introduction-to-big-o">Introduction to Big O</h2>
+<p>From <a href="/gustycooper.github.io/mydoc_9_big_o">Big O</a> we know that the Big O of an algorithm with two loops, with one nested inside the other, is O(N<sup>2</sup>).  A bubble sort fits this pattern so its Big O is O(N<sup>2</sup>).</p>
 
-<p>Describe Big O in terms of Bubble Sort</p>
+<p>The optimization in the previous section is clever, but the optimization did not improve Big O.  The optimized algorithm is faster on arrays that are already sorted or partially sorted, but on unsorted arrays our algorithm the algorithm is still O(N<sup>2</sup>).</p>
 
 <h2 id="selection-sort">Selection Sort</h2>
 
-<p>Selection sort finds the smallest element and puts it in the correct position.
-* Step through the array, find the smallest element and put it in the first position of the array.  At the end of this iteration, you will have the smallest element in the first position of your array.  Notice you did not swap adjacent elements as you did in the bubble sort.  Of course you will have to perform compares to locate the smallest, but you will remember the position that has the smallest and at the end you will swap the element in that position with the first element. 
-* Repeat the previous step until all of the elements are ordered from smallest to largest.</p>
+<p>Selection sort finds the smallest element and puts it in the correct position.  On the first iteration selection sort examines elements of an array to find the smallest element and put it in the position 0 of the array.  At the end of this iteration, you have the smallest element in the first position of your array.  Notice you did not swap adjacent elements as you did in the bubble sort.  Of course you have to perform compares to locate the smallest, but you remember the position that has the smallest and at the end of the iteration, you swap the element in that position with the first element.  The algorithm to find the smallest element in an array is one we first studied in <a href="/gustycooper.github.io/mydoc_4_loop_patterns">Loop Patterns</a> and then expanded to arrays/<code class="highlighter-rouge">ArrayList</code>s in <a href="/gustycooper.github.io/labs_lab06_01">Loop Patterns Lab</a>.  Repeat this for the second position, third position, and so forth.  The following sample <code class="highlighter-rouge">int[]</code> is used to demonstrate selection sort into ascending order.</p>
 
-<p>The above algorithm will be two loops, one nested within the other.  If the array size is 10, the outer loop will iterate 9 times.  On the first iteration of the inner loop will, it will begin at the first element because it may be the smallest.  Each subsequent iteration of the inner loop will begin incrementally into the array because the previous iteration placed the smallest in its correct position. To find the smallest means you to have to assume the first element is the smallest.  See our Lab on Arrays where we first studied finding the smallest in an array.  The code is given by the following.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">[</span><span class="n">min</span><span class="o">])</span> <span class="o">{</span> <span class="c1">// found smaller</span>
-                <span class="n">min</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="c1">// swap a[i] and a[min]</span>
-        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-        <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">min</span><span class="o">];</span>
-        <span class="n">a</span><span class="o">[</span><span class="n">min</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span> 
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">ia</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">35</span><span class="o">,</span> <span class="mi">65</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">20</span> <span class="o">};</span>
 </code></pre>
 </div>
 
-<h2 id="insertion-sort">Insertion Sort</h2>
+<ul>
+  <li>
+    <p><strong>Step 1</strong>.  Mark index 0 as the position to put the smallest - this is the position to fill.  Assume the element at index position 0 (<code class="highlighter-rouge">ia[0]</code> is 35) is the smallest and examine the remainder of the array for the smallest - this is the position of the smallest.  At the end of Step 1, the smallest element (20) in the array is in position <code class="highlighter-rouge">ia[0]</code>.</p>
 
-<p>Insertion sort maintains a sorted sub-array and repetitively inserts new elements into it.
-* Take the first element as a sorted sub-array.
-* Insert the second element into the sorted sub-array (shift elements if needed).
-* Insert the third element into the sorted sub-array.
-* Repeat until all elements are inserted.</p>
+    <ul>
+      <li>Examine <code class="highlighter-rouge">ia[1]</code>, which is 65, and is not smaller than 35.</li>
+      <li>Examine <code class="highlighter-rouge">ia[2]</code>, which is 30, and is smaller than 35.  Remember that position 2 is the current position of the smallest.</li>
+      <li>Examine <code class="highlighter-rouge">ia[3]</code>, which is 60, and is not smaller than 35.</li>
+      <li>Examine <code class="highlighter-rouge">ia[4]</code>, which is 20, and is smaller than 30.  Remember that position 4 is the current position of the smallest.</li>
+      <li>We have found the smallest element at position 4.  Swap ia[4] with ia[0], which put the smallest element in position 0.</li>
+      <li>After Step 1, <code class="highlighter-rouge">ia</code> is <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">20,</span><span class="w"> </span><span class="err">65,</span><span class="w"> </span><span class="err">30,</span><span class="w"> </span><span class="err">60,</span><span class="w"> </span><span class="err">35</span><span class="w"> </span><span class="p">}</span></code>.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Step 2</strong>.  Mark index 1 as the position to put the second smallest - this is the position to fill.  Assume the element at index position 1 (<code class="highlighter-rouge">ia[1]</code> is 65) is the smallest and examine the remainder of the array for the smallest - this is the position of the smallest.  At the end of Step 2, the second smallest element (30) in the array is in position <code class="highlighter-rouge">ia[1]</code>.</p>
 
-<p>The code is given by the following.</p>
+    <ul>
+      <li>Examine <code class="highlighter-rouge">ia[2]</code>, which is 30, and is smaller than 65.  Remember that position 2 is the current position of the smallest.</li>
+      <li>Examine <code class="highlighter-rouge">ia[3]</code>, which is 60, and is not smaller than 30.</li>
+      <li>Examine <code class="highlighter-rouge">ia[4]</code>, which is 35, and is not smaller than 30.</li>
+      <li>We have found the smallest element at position 2.  Swap ia[2] with ia[1], which put the second smallest element in position 1.</li>
+      <li>After Step 2, <code class="highlighter-rouge">ia</code> is <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">20,</span><span class="w"> </span><span class="err">30,</span><span class="w"> </span><span class="err">65,</span><span class="w"> </span><span class="err">60,</span><span class="w"> </span><span class="err">35</span><span class="w"> </span><span class="p">}</span></code>.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Step 3</strong>.  Mark index 2 as the position to put the third smallest - this is the position to fill.  Assume the element at index position 2 (<code class="highlighter-rouge">ia[2]</code> is 65) is the smallest and examine the remainder of the array for the smallest - this is the position of the smallest.  At the end of Step 3, the third smallest element (35) in the array is in position <code class="highlighter-rouge">ia[2]</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-        <span class="kt">int</span> <span class="n">j</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">--)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">tmp</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">break</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="o">];</span> <span class="c1">// shift sorted to right</span>
-        <span class="o">}</span>
-        <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span> <span class="c1">// insert current ele</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sort</span><span class="p">(</span><span class="n">Comparable</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">--)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">less</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]))</span> <span class="o">{</span>
-                <span class="c1">// exchange a[j] and a[j-1]</span>
-                <span class="n">exch</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="k">break</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+    <ul>
+      <li>Examine <code class="highlighter-rouge">ia[3]</code>, which is 60, and is smaller than 65.  Remember that position 3 is the current position of the smallest.</li>
+      <li>Examine <code class="highlighter-rouge">ia[4]</code>, which is 30, and is smaller than 60.  Remember that position 4 is the current position of the smallest.</li>
+      <li>We have found the smallest element at position 4.  Swap ia[4] with ia[2], which put the third smallest element in position 2.</li>
+      <li>After Step 3, <code class="highlighter-rouge">ia</code> is <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">20,</span><span class="w"> </span><span class="err">30,</span><span class="w"> </span><span class="err">35,</span><span class="w"> </span><span class="err">60,</span><span class="w"> </span><span class="err">65</span><span class="w"> </span><span class="p">}</span></code>.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Step 4</strong>.  Mark index 3 as the position to put the fourth smallest - this is the position to fill.  Assume the element at index position 3 (<code class="highlighter-rouge">ia[3]</code> is 60) is the smallest and examine the remainder of the array for the smallest - this is the position of the smallest.  At the end of Step 4, the fourth smallest element (60) in the array is in position <code class="highlighter-rouge">ia[3]</code>.  Since the array has five elements, the array is sorted at the end of Step 4.</p>
+
+    <ul>
+      <li>Examine <code class="highlighter-rouge">ia[4]</code>, which is 65, and is not smaller than 60.</li>
+      <li>After Step 4, <code class="highlighter-rouge">ia</code> is <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">20,</span><span class="w"> </span><span class="err">30,</span><span class="w"> </span><span class="err">35,</span><span class="w"> </span><span class="err">60,</span><span class="w"> </span><span class="err">65</span><span class="w"> </span><span class="p">}</span></code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The following figure shows the four steps described above.</p>
+
+<p><img src="../images/selectionSort.png" alt="Selection Sort" title="Selection Sort" /></p>
+
+<h2 id="selection-sort-code">Selection Sort Code</h2>
+
+<p>The selection sort algorithm is two loops, one nested within the other.  The outer loop corresponds the four steps in the previous section.  The inner loop searches for the smallest element in the array, beginning at position 0 the first time it is executed, position 1 the second, and so forth.  After the inner loop has found the smallest element, the outer loop swaps the smallest with the correct index position.  The following code demonstrates a selection sort of an <code class="highlighter-rouge">int[]</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">ia</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">posToFill</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">posToFill</span> <span class="o">&lt;</span> <span class="n">ia</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">posToFill</span><span class="o">++)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">posOfMin</span> <span class="o">=</span> <span class="n">posToFill</span><span class="o">;</span>
+      <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">curPos</span> <span class="o">=</span> <span class="n">posToFill</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">curPos</span> <span class="o">&lt;</span> <span class="n">ia</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">curPos</span><span class="o">++)</span>
+         <span class="k">if</span> <span class="o">(</span><span class="n">ia</span><span class="o">[</span><span class="n">curPos</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">ia</span><span class="o">[</span><span class="n">posOfMin</span><span class="o">])</span>
+            <span class="n">posOfMin</span> <span class="o">=</span> <span class="n">curPos</span><span class="o">;</span>
+      <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">ia</span><span class="o">[</span><span class="n">posToFill</span><span class="o">];</span>
+      <span class="n">ia</span><span class="o">[</span><span class="n">posToFill</span><span class="o">]</span> <span class="o">=</span> <span class="n">ia</span><span class="o">[</span><span class="n">posOfMin</span><span class="o">];</span>
+      <span class="n">ia</span><span class="o">[</span><span class="n">posOfMin</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>           
+   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 </div>
+
+<h2 id="selection-sort-and-big-o">Selection Sort and Big O</h2>
+
+<p>From <a href="/gustycooper.github.io/mydoc_9_big_o">Big O</a> we know that the Big O of an algorithm with two loops, with one nested inside the other, is O(N<sup>2</sup>).  A selection sort fits this pattern so its Big O is O(N<sup>2</sup>).</p>
+
+<h2 id="merging-two-sorted-arrays">Merging Two Sorted Arrays</h2>
+
+<p>The algorithm to merge two arrays that are already sorted in a central tenet of the merge sort.  The algorithm is not difficult to understand.  You have to visualize two sorted arrays, where one is on the left and the other is on the right.  The following figure shows two sorted arrays that are merged into one sorted array.</p>
+
+<p><img src="../images/mergeSortedArrays.png" alt="Merging Sorted Arrays" title="Merging Sorted Arrays" /></p>
+
+<p>The code to merge two sorted <code class="highlighter-rouge">int[]</code> is provided as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">outputIa</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">leftIa</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">rightIa</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">leftI</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="kt">int</span> <span class="n">rightI</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="kt">int</span> <span class="n">outI</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+   <span class="k">while</span> <span class="o">(</span><span class="n">leftI</span> <span class="o">&lt;</span> <span class="n">leftIa</span><span class="o">.</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="n">rightI</span> <span class="o">&lt;</span> <span class="n">rightIa</span><span class="o">.</span><span class="na">length</span><span class="o">)</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">leftIa</span><span class="o">[</span><span class="n">leftI</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">rightIa</span><span class="o">[</span><span class="n">rightI</span><span class="o">])</span>
+         <span class="n">outputIa</span><span class="o">[</span><span class="n">outI</span><span class="o">++]</span> <span class="o">=</span> <span class="n">leftIa</span><span class="o">[</span><span class="n">leftI</span><span class="o">++];</span>
+      <span class="k">else</span>
+         <span class="n">outputIa</span><span class="o">[</span><span class="n">outI</span><span class="o">++]</span> <span class="o">=</span> <span class="n">rightIa</span><span class="o">[</span><span class="n">rightI</span><span class="o">++];</span>
+   <span class="k">while</span> <span class="o">(</span><span class="n">leftI</span> <span class="o">&lt;</span> <span class="n">leftIa</span><span class="o">.</span><span class="na">length</span><span class="o">)</span>
+      <span class="n">outputIa</span><span class="o">[</span><span class="n">outI</span><span class="o">++]</span> <span class="o">=</span> <span class="n">leftIa</span><span class="o">[</span><span class="n">leftI</span><span class="o">++];</span>
+   <span class="k">while</span> <span class="o">(</span><span class="n">rightI</span> <span class="o">&lt;</span> <span class="n">rightIa</span><span class="o">.</span><span class="na">length</span><span class="o">)</span>
+      <span class="n">outputIa</span><span class="o">[</span><span class="n">outI</span><span class="o">++]</span> <span class="o">=</span> <span class="n">rightIa</span><span class="o">[</span><span class="n">rightI</span><span class="o">++];</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="merging-two-sorted-arrays-and-big-o">Merging Two Sorted Arrays and Big O</h2>
+
+<p>The <code class="highlighter-rouge">merge</code> method in the previous section has three loops, but they are not nested.  Let A be the size of <code class="highlighter-rouge">leftIa</code> and B be the size of <code class="highlighter-rouge">rightIa</code>.  Let N be the sum of A and B.  The sum of steps in all three loops is N, which means the Big O of <code class="highlighter-rouge">merge</code> is O(N).</p>
+
+<h2 id="merge-sort">Merge Sort</h2>
+
+<p>The merge sort is a recursive algorithm.  The idea is to split the array into halves (a left half and a right half) and perform a merge sort on each half.  The algorithm is almost magical.  You should watch a merge sort at <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Visualization of Sorting</a> or <a href="https://www.youtube.com/user/AlgoRythmics">Dancing Sorting</a>.  The code for a merge sort uses the <code class="highlighter-rouge">merge</code> method provided in the previous section.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">mergeSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">ia</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">if</span> <span class="o">(</span><span class="n">ia</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">halfSize</span> <span class="o">=</span> <span class="n">ia</span><span class="o">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">leftIa</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">halfSize</span><span class="o">];</span>
+      <span class="kt">int</span><span class="o">[]</span> <span class="n">rightIa</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">ia</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">halfSize</span><span class="o">];</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">ia</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">leftIa</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">halfSize</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">ia</span><span class="o">,</span><span class="n">halfSize</span><span class="o">,</span><span class="n">rightIa</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">ia</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">halfSize</span><span class="o">);</span>
+      <span class="n">mergeSort</span><span class="o">(</span><span class="n">leftIa</span><span class="o">);</span>
+      <span class="n">mergeSort</span><span class="o">(</span><span class="n">rightIa</span><span class="o">);</span>
+      <span class="n">merge</span><span class="o">(</span><span class="n">ia</span><span class="o">,</span> <span class="n">leftIa</span><span class="o">,</span> <span class="n">rightIa</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="merge-sort-and-big-o">Merge Sort and Big O</h2>
+
+<p>The Big O of merge sort is the product of the Big O of <code class="highlighter-rouge">merge</code> and <code class="highlighter-rouge">mergeSort</code>.  We know the Big O of <code class="highlighter-rouge">merge</code> is O(N).  From a Big O perspective, <code class="highlighter-rouge">mergeSort</code> is the same as binary search, which is O(log<sub>2</sub>N).  Thus the Big O of <code class="highlighter-rouge">mergeSort</code> is O(N log<sub>2</sub> N).</p>
 
 
 
@@ -1092,7 +1266,7 @@ $('#toc').on('click', 'a', function() {
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: Jun 26, 2016
+<p>Page last updated: July 3, 2016; Site last generated: Jul 7, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>

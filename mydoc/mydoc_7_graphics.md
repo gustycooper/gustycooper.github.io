@@ -22,7 +22,6 @@ Of course, we do not want to write our graphics programs using only pixels.  We 
 
 User’s operate today’s programs with a graphical user’s Interface (GUI).  Java has many classes that support GUI development.  The starting point of a GUI application is a window.  The Java class that corresponds to a window is a JFrame.   A JFrame by itself is not very useful.  You can place a JFrame window on your display.  It will have a title-bar, open, close, and maximize icons, but that is about it.  A JFrame has several attributes that you will set.  The following code demonstrates a Java program that creates a JFrame only.
 
-{% raw %}
 ```java
 import java.awt.*;
 import javax.swing.*;
@@ -38,7 +37,6 @@ public class JFrameOnly {
     }
 }
 ```
-{% endraw %}
 
 A JFrame has a ContentPane into which you can place content.  You can add content to the JFrame’s ContentPane or you can replace the JFrame’s ContentPane with your own. 
 ## G.3 Content – GUI Components
@@ -54,7 +52,6 @@ The content that you want to place in your window consists of the typical things
 
 Section G.2 shows a program with a JFrame and no content.  This section shows code a JFrame where we have added some rudimentary content.  In this example, we add directly to the JFrame by extending the JFrame class and overriding the JFrame paint(Graphics g) method.  The paint() method is automatically called whenever a window needs to be redrawn.  The argument of type Graphics has many low-level graphical drawing routines.  The following are a few examples.
 
-{% raw %}
 ```java
 drawString(String str, int xBaselineLeft, int yBaselineLeft);
 drawLine(int x1, int y1, int x2, int y2);
@@ -65,20 +62,16 @@ fillRect(int xTopLeft, int yTopLeft, int width, int height);
 fillOval(int xTopLeft, int yTopLeft, int width, int height);
 fillPolygon(int[] xPoints, int[] yPoints, int numPoint);
 ```
-{% endraw %}
 
 
 When you call one of the basic drawing methods, the object is drawn in the drawing color, which is default to Color.BLACK; however, you can change the drawing color with the following method.
 
-{% raw %}
 ```java
 setColor(Color c);  // See section Java Colors
 ```
-{% endraw %}
 
 The following code demonstrates a Java program that adds a String and a line directly to a JFrame using drawString() and drawLine().
 
-{% raw %}
 ```java
 import java.awt.*;
 import javax.swing.*;
@@ -100,7 +93,6 @@ public class BasicJFrame extends JFrame {
     }
 }
 ```
-{% endraw %}
 
 ## G.5 Panels
 
@@ -114,15 +106,12 @@ Figure G-22 – Window with Three Panels
 
 Section G.4 shows code for adding content directly to a JFrame.  This section presents our first code that adds content to a JPanel and then adds the JPanel to the content pane (via setContentPane) of the JFrame.  The pattern for this is similar to that in Section G.4.  We will extend the JPanel class and overriding the JPanel paintComponent(Graphics g) method.  The paintComponenet() method (just like the JFrame paint() method) is automatically called whenever a window needs to be redrawn.  The argument of type Graphics has the low-level graphical drawing routines that were described in Section G.4.   The following code demonstrates a Java program that adds a String and a line to a JPanel using drawString() and drawLine().  The JPanel is added to the JFrame using the setContentPane() method.  If you run this Basic JPanel program and the Basic JFrame program (from section G.4) side-by-side, you will notice the coordinate system for the Basic JFrame begins at the upper left-hand corner of the window and the coordinate system for the Basic JPanel begins at the upper left-hand corner of the panel placed within the window.  A JPanel has a background color that you can set by calling 
 
-{% raw %}
 ```java
 setBackground(Color c);  // See Section Java Colors
 ```
-{% endraw %}
 
 The example code changes the background to Color.YELLOW.
 
-{% raw %}
 ```java
 import java.awt.*;
 import javax.swing.*;
@@ -149,11 +138,9 @@ public class BasicJPanel extends JPanel {
     }
 }
 ```
-{% endraw %}
 
 One thing to note is that a JFrame has a content pane to which you can add content.  The above example did not use the JFrame content pane.  The statement
 
-{% raw %}
 ```java
 window.setContentPane(panel);
 
@@ -163,7 +150,6 @@ Replaced the JFrame content pane.  An alternative would have been to get the JFr
 ```java
 window.getContentPane().add(panel);
 ```
-{% endraw %}
 
 ## G.7 Building GUIs
 
@@ -177,7 +163,6 @@ Section G.5 shows a window with three panels in it.
 Java Standard Colors – java.awt.color
 The standard colors are accessed as Color.RED, Color.GREEN, etc.  They are defined as follows.
 
-{% raw %}
 ```java
 RED       : java.awt.Color[r=255, g=0,   b=0]
 GREEN     : java.awt.Color[r=0,   g=255, b=0]
@@ -193,15 +178,12 @@ DARK_GRAY : java.awt.Color[r=64,  g=64,  b=64]
 PINK      : java.awt.Color[r=255, g=175, b=175]
 ORANGE    : java.awt.Color[r=255, g=200, b=0]
 ```
-{% endraw %}
 
 You can create your own colors using several Color constructors.  The one listed here accepts R, G, B values between 0 and 255.
 
-{% raw %}
 ```java
 Color myColor = new Color(123, 101, 45);
 ```
-{% endraw %}
 
 Files in SimpleGraphics folder.
 

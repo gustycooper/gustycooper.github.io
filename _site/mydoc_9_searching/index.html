@@ -3,7 +3,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Searching">
+<meta name="description" content="Understand searching. Understand linear search and its associated Big O value. Understand binary search and its associated Big O value. Understand hash table...">
 <meta name="keywords" content="searching,  searching">
 <title>Searching  | UMW CPSC 220</title>
 <link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
@@ -901,7 +901,7 @@ window.location.href = uri;
 <div class="post-content">
 
    
-    <div class="summary">Searching</div>
+    <div class="summary"><li>Understand searching.</li> <li>Understand linear search and its associated Big O value.</li> <li>Understand binary search and its associated Big O value.</li> <li>Understand hash tables and how they are related to searching.</li> <li>Understand the String.hashCode method.</li> <li>Understand Java's key-value data structures Map and HashMap.</li></div>
    
 
     
@@ -940,9 +940,449 @@ $('#toc').on('click', 'a', function() {
 
   <h2 id="searching">Searching</h2>
 
-<p>We will study two search algorithms – linear and binary.</p>
+<p>We will study two search algorithms – linear and binary.  A search requires something to search for and something in which to search for it.  I could be searching for my favorite pair of sneakers.  Sometimes, I search for them in my home.  Sometimes, I search for them in my car.  In a program searching examines elements of some collection (like an array or <code class="highlighter-rouge">ArrayList</code> for a particular element.  The linear search is one that we have already studied, and its speed is rather pedestrian.  The binary search is amazingly fast.</p>
 
-<p>I have a INFO TO INCLUDE.</p>
+<p>Additionally, we will examine hash tables and the Java <code class="highlighter-rouge">Map</code> interface and the <code class="highlighter-rouge">HashMap</code> type, which is a key-value data structure.  Key-value data structures are an optimized algorith to search for values associated with a key.</p>
+
+<h2 id="searching-and-the-wirth-pattern">Searching and the Wirth Pattern</h2>
+
+<p>Searching is mostly the algorithm component of the Wirth pattern; however, the algorithm has to search a collection of information, which is the data structure component.</p>
+
+<p>Java packages deal with grouping information together so they do not apply to the Wirth pattern.</p>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br />
+<img title="computer" src="/gustycooper.github.io/images/wirthFigure.png" />
+</div>
+
+<h2 id="linear-search">Linear Search</h2>
+
+<p>The linear search has a search element that is a particular type (i.e., <code class="highlighter-rouge">double</code>, <code class="highlighter-rouge">Person</code>, <code class="highlighter-rouge">String</code>) and a collection of element of the same type (i.e., <code class="highlighter-rouge">double[]</code>, <code class="highlighter-rouge">ArrayList&lt;Person&gt;</code>, <code class="highlighter-rouge">String[]</code>).  The collection is a sequential collection, which gives rise to the linear search.</p>
+
+<ul>
+  <li>A linear search examines the first element of the collection to see if it is the search item.</li>
+  <li>If the first item is the search item, the item has been found; otherwise, the linear search exaamines the second element of the collection.</li>
+  <li>This continues until the item is found or the collection is exhausted.</li>
+</ul>
+
+<p>The following method <code class="highlighter-rouge">findValue</code> performs a linear search of a <code class="highlighter-rouge">double[]</code> for a specifc <code class="highlighter-rouge">double</code>.  <code class="highlighter-rouge">findValue</code> returns the index that contains <code class="highlighter-rouge">searchItem</code>; otherwise <code class="highlighter-rouge">findvalue</code> returns -1.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">findValue</span><span class="p">(</span><span class="kt">double</span><span class="o">[]</span> <span class="n">searchArray</span><span class="o">,</span> <span class="kt">double</span> <span class="n">searchItem</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">searchArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">searchArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">searchItem</span><span class="o">)</span>
+         <span class="k">return</span> <span class="n">i</span><span class="o">;</span>
+   <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The following method <code class="highlighter-rouge">findLargest</code> is a linear search of an <code class="highlighter-rouge">ArrayList&lt;douible&gt;</code> for the largest element.  <code class="highlighter-rouge">findLargets</code> returns the index of the largest value in the <code class="highlighter-rouge">ArrayList</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">findLargest</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">da</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kt">double</span> <span class="n">largest</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="c1">// assume first element is largest</span>
+   <span class="kt">int</span> <span class="n">retVal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+   <span class="k">for</span> <span class="o">(</span><span class="kt">double</span> <span class="n">d</span> <span class="o">:</span> <span class="n">da</span><span class="o">)</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&gt;</span> <span class="n">largest</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">largest</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span>
+         <span class="n">retVal</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+      <span class="o">}</span>
+   <span class="k">return</span> <span class="n">retVal</span><span class="o">;</span>      
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="linear-search-and-big-o">Linear Search and Big O</h2>
+
+<p>We consider the Big O of a linear search to be its worst case.  The worst case for <code class="highlighter-rouge">findValue</code> is when the sought after value is in the last element of the <code class="highlighter-rouge">double[]</code>.  The worst case for <code class="highlighter-rouge">findLargest</code> is when the largest element is in the last element of the <code class="highlighter-rouge">ArrayList&lt;Double&gt;</code>.  In both of these cases, if the length of the input is N, the number of steps (i.e., the number of iterations of the loop) is N.  Thus the Big O of linear search is N - O(N).</p>
+
+<p>We can consider Big O from several perspectives.</p>
+
+<h3 id="linear-search-and-worst-case-big-o">Linear Search and Worst Case Big O</h3>
+
+<p>The worst case of finding a value in a collection of N is N, Big O Worst Case is O(N).</p>
+
+<h3 id="linear-search-and-average-case-big-o">Linear Search and Average Case Big O</h3>
+
+<p>The average of finding a value in a collection of N is N/2.  Big O Average Case is O(N/2).</p>
+
+<h3 id="linear-search-and-best-case-big-o">Linear Search and Best Case Big O</h3>
+
+<p>The best case of finding a value in a collection of N is 1, Big O Best Case is O(1)</p>
+
+<h2 id="trees---introduction">Trees - Introduction</h2>
+
+<p>We begin our discussion of binary search by examining a binary search tree.  In the biological world a tree is an organism with a trunk, which has branches, each of which has branches, and so on.  In the software world, we create trees to store information, where the trunk contains a piece of information.  The trunk has primary branches each of which contains information, the primary branches have secondary branches each of which contains information, the secondary branches have terciary branches each of which contains information, and so on.  In an arbitray tree the trunk can have 20 primary branches.  Primary branch 1 can have 10 secondary branches, primary branch 2 can have 3 secondary branches, and so on.</p>
+
+<p>In computer science tree terminology, the trunk is root node and all other branches are nodes (i.e., each secondary branch is a node, each terciary branch is a node)</p>
+
+<p>Two figures are shown to demonstrate trees.  The first figure looks like a tree without leaves.  The second figure shows labeled nodes.  Both figures have the same information.  They have a trunk that has 6 secondary branches labeled <strong>b21</strong>, <strong>b22</strong>, …, <strong>b26</strong>.  The primary branch <strong>b21</strong> has 2 secondary branches labed <strong>b211</strong> and <strong>b212</strong>, the primary branch <strong>b22</strong> has 3 secondary branches labed <strong>b221</strong>, <strong>b222</strong>, and <strong>b223</strong>, the primary branch <strong>b23</strong> has 1 secondary branch labeled <strong>b231</strong>, the primary branch <strong>b24</strong> has 2 secondary branched labeled <strong>b241</strong> and <strong>b242</strong>, the primary branch <strong>b25</strong> has one secondary branch labeled <strong>b251</strong>, and the primary branch <strong>b26</strong> has one secondary branch labeled <strong>b261</strong>.</p>
+
+<p><img src="../images/treeShape.png" alt="Tree with Branches" title="Tree with Branches" /></p>
+
+<p><img src="../images/treeFigureUpward.png" alt="Tree Growing Up" title="Tree Growing Up" /></p>
+
+<h2 id="trees---computer-science">Trees - Computer Science</h2>
+
+<p>Most of the time, computer scientists draw trees growing downward, which places the root node at the top of the tree.  The previous tree is redrawn in a downward dog facing pattern, which is the way we do it in computer science.  Note the downward facing dog nomenclature is a Gustyism and not normal computer science terminology.</p>
+
+<p><img src="../images/treeFigureDownward.png" alt="Tree Growing Down" title="Tree Growing Down" /></p>
+
+<h2 id="trees-within-trees">Trees within Trees</h2>
+
+<p>Trees contain subtrees.  For example, all of the nodes beginning at <strong>b22</strong> form a <strong>subtree</strong> of the <strong>trunk</strong> node.  As we will see, subtrees allow some natural recursion within trees.</p>
+
+<h2 id="binary-tree">Binary Tree</h2>
+
+<p>A <strong>binary tree</strong> is a special tree where the trunk can have 1 or 2 secondary branches, each secondary branch can have 1 or 2 terciary branches, and so on.  In computer science terminology, the root node that has (1 or) 2 subnodes, each of which has (1 or) 2 subnodes, each of which has (1 or) 2 subnodes, and so on.</p>
+
+<h2 id="binary-search-tree">Binary Search Tree</h2>
+
+<p>A <strong>binary search tree</strong> is a binary tree organized such that every node is greater than all nodes of its left subtree and less than all nodes of its right subtree.  The following is an example of a binary search tree.  The root node contains <code class="highlighter-rouge">Emily</code>.  The left subtree of <code class="highlighter-rouge">Emily</code> has a root node that contains <code class="highlighter-rouge">Dottie</code>.  The right subtree of <code class="highlighter-rouge">Emily</code> has a root node that contains <code class="highlighter-rouge">Jeremy</code></p>
+
+<p><img src="../images/binarySearchTree.png" alt="Binary Search Tree" title="Binary Search Tree" /></p>
+
+<p>Do not be fooled by binary trees that appear to be binary search trees.  The entire subtree has to be less than (or greater than) the root node.  Sometimes, you examine the root node of the subtree and forget to examine the entire subtree.  The following binary tree is not a binary search tree because the left subtree of <code class="highlighter-rouge">ac</code> contains <code class="highlighter-rouge">d</code> with is greater than <code class="highlighter-rouge">ac</code>.</p>
+
+<p><img src="../images/notBinarySearchTree.png" alt="Not Binary Search Tree" title="Not Binary Search Tree" /></p>
+
+<h2 id="searching-in-a-binary-search-tree">Searching in a Binary Search Tree</h2>
+
+<p>The following figure annotates searching for <code class="highlighter-rouge">Cooper</code> in a binary search tree, which is found in 4 steps.</p>
+
+<ol>
+  <li>Compare <code class="highlighter-rouge">Cooper</code> to the root node.  Since <code class="highlighter-rouge">Cooper</code> is less than <code class="highlighter-rouge">Emily</code>, go to the left subree.</li>
+  <li>Compare <code class="highlighter-rouge">Cooper</code> to <code class="highlighter-rouge">Dottie</code>.  Since <code class="highlighter-rouge">Cooper</code> is less than <code class="highlighter-rouge">Dottie</code>, go to the left subtee.</li>
+  <li>Compare <code class="highlighter-rouge">Cooper</code> to <code class="highlighter-rouge">Brandalee</code>.  Since <code class="highlighter-rouge">Cooper</code> is greater than <code class="highlighter-rouge">Brandalee</code>, go to the right subtree.</li>
+  <li>Compare <code class="highlighter-rouge">Cooper</code> to <code class="highlighter-rouge">Cooper</code>.  Since <code class="highlighter-rouge">Cooper</code> is equal to <code class="highlighter-rouge">Cooper</code>, we have found <code class="highlighter-rouge">Cooper</code>.</li>
+</ol>
+
+<p><img src="../images/binarySearchTreeSearching.png" alt="Searching in Binary Search Tree" title="Searching in a Binary Search Tree" /></p>
+
+<h2 id="where-is-gusty---pseudo-code-for-binary-search">Where is Gusty? - Pseudo Code for Binary Search</h2>
+
+<p>The nodes of the previous tree are arranged alphebetically as follows.  You can easily envision these names stored in a <code class="highlighter-rouge">String[] names = {"Brandalee", ...}</code>  The different colored names denote the middles of sub-arrays and are referenced in the pseudo code.  Emily is in the middle of the array, and Emily is the root node of the tree.  Dottie is in the middle of the first half of the array, and Dottie is the root node of the left subtree.  Jeremy is in the middle of the second half of the array, Jeremy is the root node of the right subtree.</p>
+
+<ul>
+  <li>0 Brandalee</li>
+  <li>1 Cooper</li>
+  <li>2 Dottie</li>
+  <li>3 Ellie</li>
+  <li>4 <font color="blue">Emily</font></li>
+  <li>5 <font color="green">Gusty</font></li>
+  <li>6 <font color="red">Jeremy</font></li>
+  <li>7 Jerri Anne</li>
+  <li>8 Zachary</li>
+</ul>
+
+<p>The <strong>Where is Gusty</strong> pseudo code is given by the following.  This code shows nested ifs - just enough to demonstrate finding <code class="highlighter-rouge">Gusty</code>.  The pseudo code keeps spliting the array in half based upon comparing <code class="highlighter-rouge">Gusty</code> to the middle element.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">If</span> <span class="n">Gusty</span> <span class="n">is</span> <span class="n">in</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">font</span> <span class="n">color</span><span class="o">=</span><span class="s">"blue"</span><span class="o">&gt;</span><span class="n">middle</span><span class="o">&lt;/</span><span class="n">font</span><span class="o">&gt;</span> <span class="n">then</span>
+   <span class="n">found</span>
+<span class="n">Else</span> <span class="k">if</span> <span class="n">Gusty</span> <span class="n">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">font</span> <span class="n">color</span><span class="o">=</span><span class="s">"blue"</span><span class="o">&gt;</span><span class="n">middle</span><span class="o">&lt;/</span><span class="n">font</span><span class="o">&gt;</span> <span class="n">look</span> <span class="n">in</span> <span class="n">the</span> <span class="n">second</span> <span class="n">half</span>
+   <span class="n">If</span> <span class="n">Gusty</span> <span class="n">is</span> <span class="n">in</span> <span class="n">the</span> <span class="n">middle</span> <span class="n">of</span> <span class="k">this</span> <span class="n">half</span> <span class="n">then</span>
+      <span class="n">found</span>
+   <span class="n">Else</span> <span class="k">if</span> <span class="n">Gusty</span> <span class="n">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">font</span> <span class="n">color</span><span class="o">=</span><span class="s">"red"</span><span class="o">&gt;</span><span class="n">middle</span><span class="o">&lt;/</span><span class="n">font</span><span class="o">&gt;</span> <span class="n">look</span> <span class="n">in</span> <span class="n">the</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">half</span> <span class="n">of</span> <span class="k">this</span> <span class="n">half</span>
+        <span class="o">...</span>
+   <span class="n">Else</span> <span class="n">look</span> <span class="n">in</span> <span class="n">the</span> <span class="mi">1</span><span class="n">st</span> <span class="n">half</span> <span class="n">of</span> <span class="k">this</span> <span class="n">half</span>
+      <span class="n">If</span> <span class="n">Gusty</span> <span class="n">is</span> <span class="n">in</span> <span class="n">the</span> <span class="n">middle</span> <span class="n">of</span> <span class="k">this</span> <span class="n">half</span> <span class="n">then</span>
+           <span class="n">found</span>
+<span class="n">Else</span> <span class="n">look</span> <span class="n">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">half</span>
+    <span class="o">...</span>
+</code></pre>
+</div>
+
+<h2 id="binary-search-recursive-method">Binary Search Recursive Method</h2>
+
+<p>The binary search discussion describes binary searching in terms of</p>
+
+<ul>
+  <li>Progressively examining subtrees</li>
+  <li>Progressively splitting an array into halves</li>
+</ul>
+
+<p>Both of these techniques lend themselves to an eloquent recursive algorithm.  The following alorithm is a binary search in a <code class="highlighter-rouge">String[]</code> for a particular string.  The <code class="highlighter-rouge">String[]</code> must be in alphabetical order.  The algorithm uses the <a href="/gustycooper.github.io/mydoc_5_subclasses"><code class="highlighter-rouge">compareTo</code></a> method of the <code class="highlighter-rouge">Comparable interface</code>.  The algorithm returns the index of the found item or -1 if the item is not in the <code class="highlighter-rouge">String[]</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">binarySearchString</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">sa</span><span class="o">,</span> <span class="n">String</span> <span class="n">ele</span><span class="o">,</span> 
+                                      <span class="kt">int</span> <span class="n">first</span><span class="o">,</span> <span class="kt">int</span> <span class="n">last</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">if</span> <span class="o">(</span><span class="n">first</span> <span class="o">&gt;</span> <span class="n">last</span><span class="o">)</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+   <span class="k">else</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">middle</span> <span class="o">=</span> <span class="o">(</span><span class="n">first</span> <span class="o">+</span> <span class="n">last</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+      <span class="kt">int</span> <span class="n">compares</span> <span class="o">=</span> <span class="n">ele</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">sa</span><span class="o">[</span><span class="n">middle</span><span class="o">]);</span> <span class="c1">// string method</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">compares</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+         <span class="k">return</span> <span class="n">middle</span><span class="o">;</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">compares</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>  <span class="c1">// look in the first half</span>
+         <span class="k">return</span> <span class="n">binarySearchString</span><span class="o">(</span><span class="n">sa</span><span class="o">,</span> <span class="n">ele</span><span class="o">,</span> <span class="n">first</span><span class="o">,</span> <span class="n">middle</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+      <span class="k">else</span>                    <span class="c1">// look in the second half</span>
+         <span class="k">return</span> <span class="n">binarySearchString</span><span class="o">(</span><span class="n">sa</span><span class="o">,</span> <span class="n">ele</span><span class="o">,</span> <span class="n">middle</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">last</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">binarySearchString</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">sa</span><span class="o">,</span> <span class="n">String</span> <span class="n">ele</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">binarySearchString</span><span class="o">(</span><span class="n">sa</span><span class="o">,</span> <span class="n">ele</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">sa</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">binarySearchString</span><span class="o">(</span><span class="n">coopers</span><span class="o">,</span> <span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h2 id="binary-search-and-big-o">Binary Search and Big O</h2>
+
+<p>In the binary searching of the example tree with 9 elements, we found <code class="highlighter-rouge">"Cooper"</code> in 4 steps and <code class="highlighter-rouge">"Gusty"</code> in 3 steps.  Every element in our example tree of 9 elements can be found in 4 steps or fewer.  The example tree could be expanded to hold 15 elements and you can still find each element in 4 steps or fewer.</p>
+
+<p>When a binary tree created to hold 63 items, the number of steps to find an item is 6.</p>
+
+<p><img src="../images/binarySearchTree63Elements.png" alt="Binary Search Tree" title="Binary Search Tree" /></p>
+
+<p>You have to understand the logarithm function to understand the Big O of binary search.  The log<sub>10</sub> of a number is the power of 10 that creates the number.  For examples,</p>
+
+<ul>
+  <li>log<sub>10</sub>(100) is 2 because 10<sup>2</sup> is 100.</li>
+  <li>lob<sub>10</sub>(10_000_000) is 7 because 10<sup>7</sup> is 10_000_000.</li>
+  <li>lob<sub>10</sub>(67) is 1.8260748027008262 because 10<sup>1.8260748027008262</sup> is 67.</li>
+</ul>
+
+<p>We can create a log function for binary.  The log<sub>2</sub> of a number is the power of 2 that creates the number.  For examples,</p>
+
+<ul>
+  <li>log<sub>2</sub>(4) is 2 because 2<sup>2</sup> is 4.</li>
+  <li>lob<sub>2</sub>(128) is 7 because 2<sup>7</sup> is 128.</li>
+  <li>lob<sub>2</sub>(67) is 6.066089190457772 because 2<sup>6.066089190457772</sup> is 67.</li>
+</ul>
+
+<p>We have two binary tree examples of different size inputs - one for input size 15 which has 4 max steps and another for input size 63 which has 6 max steps.  The following table expands these examples and derives Big O for binary search.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Input Size</th>
+      <th>Max Steps</th>
+      <th>Size/Step</th>
+      <th>Big O</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7</td>
+      <td>3</td>
+      <td>2<sup>3</sup></td>
+      <td>log<sub>2</sub> 8</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>4</td>
+      <td>2<sup>4</sup></td>
+      <td>log<sub>2</sub> 16</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>5</td>
+      <td>2<sup>5</sup></td>
+      <td>log<sub>2</sub> 32</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>6</td>
+      <td>2<sup>6</sup></td>
+      <td>log<sub>2</sub> 64</td>
+    </tr>
+    <tr>
+      <td>N</td>
+      <td>log<sub>2</sub> N</td>
+      <td>2<sup>N</sup></td>
+      <td>log<sub>2</sub> N</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The Big O of binary search of an input of size N is O(log<sub>2</sub>N).</p>
+
+<p>You have to ponder examples with large input sizes in order to fully appreciate the speed of a Big O algorithm that has a value of O(log<sub>2</sub> N).  The number of steps grows slowly by the log<sub>2</sub> of the input size.  Suppose you want to search for a name in an array of 4294967296 names.  That is over 4 billion names.  The maximum number of steps in a binary search is 32.  That is 32 steps to find a name in over 4 billion names.  In a linear search, you may have to take 4 billion steps.  Of course the input array has to be <a href="/gustycooper.github.io/mydoc_9_sorting">sorted</a>, which takes steps to accomplish.</p>
+
+<h2 id="java-binary-search">Java Binary Search</h2>
+
+<p>The Java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html">Arrays Class</a> in the <code class="highlighter-rouge">java.util</code> package provides <code class="highlighter-rouge">binarySearch</code> methods that accept various array types.  These methods are similar to the one developed in the earlier section.  If the input array is not sorted, the results are undefined.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchDemo</span> <span class="o">{</span>
+   <span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span><span class="o">[]</span> <span class="n">sa</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Abe"</span><span class="o">,</span> <span class="s">"Betty"</span><span class="o">,</span> <span class="s">"Cooper"</span><span class="o">,</span> <span class="s">"Dottie"</span><span class="o">,</span> <span class="s">"Emily"</span><span class="o">,</span> <span class="s">"Zachary"</span><span class="o">,</span> <span class="s">"Zeus"</span><span class="o">};</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">binarySearch</span><span class="o">(</span><span class="n">sa</span><span class="o">,</span> <span class="s">"Zachary"</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="hash-searching">Hash Searching</h2>
+
+<p>In <a href="/gustycooper.github.io/mydoc_8_ADT">Abstract Data Types</a> we implemented a queue ADT with a recursive data structure.  We will use a recursive data structure to implement a hash table to demonstrate another searching technique.  Recall that a recursive data structure references itself.</p>
+
+<p>PICTURE Recursive Data Structure HERE</p>
+
+<p>A hash algorithm generates a number within a specific range (e.g., 0 to 59) for an input parameter.  Our example generates a number for an input <code class="highlighter-rouge">String</code>, where the number is 0, 1, 2, …, 12.  The idea is to use the generated number as an index into an array that can store a value for the <code class="highlighter-rouge">String</code>.  In our example, the <code class="highlighter-rouge">String</code> is a person’s name and the value is the person’s age.</p>
+
+<p>The following is an example hash method for names and a few sample calls to show the resulting hash value.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashExample</span> <span class="o">{</span>
+   <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">HASHTABLESIZE</span> <span class="o">=</span> <span class="mi">13</span><span class="o">;</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">hashValue</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">hashCode</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+      <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span>
+          <span class="n">hashCode</span> <span class="o">=</span> <span class="n">hashCode</span> <span class="o">+</span> <span class="n">c</span><span class="o">;</span>
+      <span class="n">hashCode</span> <span class="o">%=</span> <span class="n">HASHTABLESIZE</span><span class="o">;</span>
+      <span class="k">return</span> <span class="n">hashCode</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">hv</span> <span class="o">=</span> <span class="n">hashValue</span><span class="o">(</span><span class="s">"Gusty"</span><span class="o">);</span>  <span class="c1">// hv is 7</span>
+      <span class="n">hv</span> <span class="o">=</span> <span class="n">hashValue</span><span class="o">(</span><span class="s">"Emily"</span><span class="o">);</span>      <span class="c1">// hv is 5</span>
+      <span class="n">hv</span> <span class="o">=</span> <span class="n">hashValue</span><span class="o">(</span><span class="s">"utsGy"</span><span class="o">);</span>      <span class="c1">// hv is 7</span>
+      <span class="n">hv</span> <span class="o">=</span> <span class="n">hashValue</span><span class="o">(</span><span class="s">"Jerri Anne"</span><span class="o">);</span> <span class="c1">// hv is 3</span>
+      <span class="n">hv</span> <span class="o">=</span> <span class="n">hashValue</span><span class="o">(</span><span class="s">"Coletta"</span><span class="o">);</span>    <span class="c1">// hv is 1</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>We create a <strong>hash table</strong> in the form of a  <code class="highlighter-rouge">Node[]</code> with the recursive data structure <code class="highlighter-rouge">Node</code> that looks as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+   <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+   <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">static</span> <span class="n">Node</span> <span class="n">words</span> <span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">[</span><span class="n">HASHTABLESIZE</span><span class="o">];</span>
+
+</code></pre>
+</div>
+
+<p>We couple this <code class="highlighter-rouge">Node[]</code> with the <code class="highlighter-rouge">hashValue</code> method to insert names and ages into the array as shown be the following figure.</p>
+
+<p><img src="../images/hashTable.png" alt="Hash Table" title="Hash Table" /></p>
+
+<p>You should notice that multiple <code class="highlighter-rouge">String</code>s can generate the same index (i.e., hash value) of the <code class="highlighter-rouge">Node[]</code>.  A <strong>collision</strong> occurs when two <code class="highlighter-rouge">String</code>s hash to the same index.  When a collision occurs, the recursive data structure is used add the collided <code class="highlighter-rouge">String</code>s in a linked list.  A good hash table has an array with a length that minimizes the number of collisions.  We do not study how to minimize the number of collisions.</p>
+
+<p>To search for information in a hash table, the process is reversed.  First compute the hash value of the name and then see if the name in in the linked list of <code class="highlighter-rouge">Node</code>s.  If the name is found, return the age; otherwise, return -10_000_000.</p>
+
+<p>Putting all of this together results in the following code.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hash</span> <span class="o">{</span>
+   <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+      <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+      <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">HASHTABLESIZE</span> <span class="o">=</span> <span class="mi">13</span><span class="o">;</span>
+   <span class="kd">static</span> <span class="n">Node</span> <span class="n">names</span> <span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">[</span><span class="n">HASHTABLESIZE</span><span class="o">];</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">hashValue</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">hashCode</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+      <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span>
+         <span class="n">hashCode</span> <span class="o">=</span> <span class="n">hashCode</span> <span class="o">+</span> <span class="n">c</span><span class="o">;</span>
+      <span class="n">hashCode</span> <span class="o">%=</span> <span class="n">HASHTABLESIZE</span><span class="o">;</span>
+      <span class="k">return</span> <span class="n">hashCode</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">insert</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">();</span>
+      <span class="n">node</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">s</span><span class="o">;</span>
+      <span class="n">node</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+      <span class="kt">int</span> <span class="n">hashCode</span> <span class="o">=</span> <span class="n">hashValue</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+      <span class="n">Node</span> <span class="n">insertPoint</span> <span class="o">=</span> <span class="n">names</span><span class="o">[</span><span class="n">hashCode</span><span class="o">];</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">names</span><span class="o">[</span><span class="n">hashCode</span><span class="o">]</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+         <span class="n">names</span><span class="o">[</span><span class="n">hashCode</span><span class="o">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+      <span class="k">else</span> <span class="o">{</span>
+         <span class="n">Node</span> <span class="n">lookAt</span> <span class="o">=</span> <span class="n">names</span><span class="o">[</span><span class="n">hashCode</span><span class="o">];</span>
+         <span class="n">Node</span> <span class="n">addTo</span><span class="o">;</span>
+         <span class="k">do</span> <span class="o">{</span>
+            <span class="n">addTo</span> <span class="o">=</span> <span class="n">lookAt</span><span class="o">;</span>
+            <span class="n">lookAt</span> <span class="o">=</span> <span class="n">lookAt</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+         <span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">lookAt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">lookAt</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s</span><span class="o">));</span>
+         <span class="k">if</span> <span class="o">(</span><span class="n">lookAt</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="n">addTo</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+      <span class="o">}</span>
+          
+   <span class="o">}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">getValue</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">hashCode</span> <span class="o">=</span> <span class="n">hashValue</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">names</span><span class="o">[</span><span class="n">hashCode</span><span class="o">]</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+         <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="n">_000_000</span><span class="o">;</span>
+      <span class="k">else</span> <span class="o">{</span>
+         <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="n">names</span><span class="o">[</span><span class="n">hashCode</span><span class="o">];</span>
+         <span class="k">while</span> <span class="o">(</span><span class="n">node</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">node</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s</span><span class="o">))</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+         <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="n">_000_000</span><span class="o">;</span>
+         <span class="k">else</span>
+            <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">insert</span><span class="o">(</span><span class="s">"Gusty"</span><span class="o">,</span><span class="mi">22</span><span class="o">);</span>
+      <span class="n">insert</span><span class="o">(</span><span class="s">"Jerri Anne"</span><span class="o">,</span> <span class="mi">21</span><span class="o">);</span>
+      <span class="n">insert</span><span class="o">(</span><span class="s">"Coletta"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+      <span class="n">insert</span><span class="o">(</span><span class="s">"usGty"</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>
+      <span class="n">insert</span><span class="o">(</span><span class="s">"ustGy"</span><span class="o">,</span><span class="mi">111</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Gusty value: "</span> <span class="o">+</span> <span class="n">getValue</span><span class="o">(</span><span class="s">"Gusty"</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"usGty value: "</span> <span class="o">+</span> <span class="n">getValue</span><span class="o">(</span><span class="s">"usGty"</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ustGy value: "</span> <span class="o">+</span> <span class="n">getValue</span><span class="o">(</span><span class="s">"ustGy"</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Gtsyu value: "</span> <span class="o">+</span> <span class="n">getValue</span><span class="o">(</span><span class="s">"Gtsyu"</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"NOTHERE value: "</span> <span class="o">+</span> <span class="n">getValue</span><span class="o">(</span><span class="s">"NOTHERE"</span><span class="o">));</span>
+      <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">names</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+         <span class="k">if</span> <span class="o">(</span><span class="n">names</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">Node</span> <span class="n">n</span> <span class="o">=</span> <span class="n">names</span><span class="o">[</span><span class="n">i</span><span class="o">];</span> <span class="n">n</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">)</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Index: "</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">" Name: "</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" Age: "</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="na">age</span><span class="o">);</span>
+         <span class="o">}</span>
+      <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"Gusty"</span><span class="o">;</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Compare our hashValue(\"Gusty\") with String.hashCode(\"Gusty\")."</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"String.hashCode: "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">hashCode</span><span class="o">()</span> <span class="o">+</span> <span class="s">" %13: "</span> <span class="o">+</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">hashCode</span><span class="o">()%</span><span class="mi">13</span><span class="o">));</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Our hashValue:   "</span> <span class="o">+</span> <span class="n">hashValue</span><span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="o">+</span> <span class="s">" %13: "</span> <span class="o">+</span> <span class="o">(</span><span class="n">hashValue</span><span class="o">(</span><span class="n">s</span><span class="o">)%</span><span class="mi">13</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="key-value-data-structures">Key-Value Data Structures</h2>
+
+<p>A hash table is a <strong>key-value</strong> data structure.  In the example described above, the key is the <code class="highlighter-rouge">String</code> name and the value is the <code class="highlighter-rouge">int</code> age.  You insert a value using a key, and you retrieve a value using a key.</p>
+
+<h2 id="java-map">Java Map</h2>
+
+<p>The <code class="highlighter-rouge">java.util</code> package provides a <code class="highlighter-rouge">Map</code> interface and a <code class="highlighter-rouge">HashMap</code> class that can be used together as a key-value data structure.  Both of these are generic types that accept two input types.  The first type is the type of the key and the second type is the type of the value.  In our example of a name (i.e., <code class="highlighter-rouge">String</code>) key and age (i.e., <code class="highlighter-rouge">int</code>) value, you declare and manipulate a <code class="highlighter-rouge">Map</code> as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+
+<span class="n">m</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Gusty"</span><span class="o">,</span> <span class="mi">22</span><span class="o">);</span>
+<span class="n">m</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">Jerri</span> <span class="n">Anne</span><span class="err">”</span><span class="o">,</span><span class="mi">21</span><span class="o">);</span>  
+<span class="n">m</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">Coletta</span><span class="err">”</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="err">“</span><span class="n">Gusty</span><span class="err">”</span><span class="o">);</span>  <span class="c1">// val is 22</span>
+<span class="n">val</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="na">getDefault</span><span class="o">(</span><span class="err">“</span><span class="n">Jeremy</span><span class="err">”</span><span class="o">,</span><span class="mi">29</span><span class="o">);</span>  <span class="c1">// val is 29, Jeremy not in m</span>
+<span class="n">m</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">Emily</span><span class="err">”</span><span class="o">,</span><span class="n">m</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="err">“</span><span class="n">Emily</span><span class="err">”</span><span class="o">,</span><span class="mi">25</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// Emily is 25</span>
+<span class="n">m</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="err">“</span><span class="n">Coletta</span><span class="err">”</span><span class="o">,</span><span class="n">m</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="err">“</span><span class="n">Coletta</span><span class="err">”</span><span class="o">,</span><span class="mi">25</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span> <span class="c1">// Coletta is 2</span>
+</code></pre>
+</div>
+
+<p>You may recall our solution of the hot potato problem that used <code class="highlighter-rouge">Map</code> to count the games won.  The following code snippet hightlights the algorithm.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Keeping track of Hot Potato Games Won</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">gamesWon</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">101</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">winner</span> <span class="o">=</span> <span class="n">hotPotato</span><span class="o">(</span><span class="n">strings</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+    <span class="n">gamesWon</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">winner</span><span class="o">,</span> <span class="n">gamesWon</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">winner</span><span class="o">,</span><span class="mi">0</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%-12s %s\n"</span><span class="o">,</span> <span class="s">"Player"</span><span class="o">,</span> <span class="s">"Games won"</span><span class="o">);</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">m</span> <span class="o">:</span> <span class="n">gamesWon</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%-12s %7d\n"</span><span class="o">,</span> <span class="n">m</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span> <span class="n">m</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</code></pre>
+</div>
+
 
 
 <div class="tags">
@@ -969,7 +1409,7 @@ $('#toc').on('click', 'a', function() {
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: Jun 26, 2016
+<p>Page last updated: July 3, 2016; Site last generated: Jul 7, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>
