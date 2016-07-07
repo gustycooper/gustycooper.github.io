@@ -348,7 +348,7 @@ public static void main(String[] args) {
 
 ## Return Values
 
-Since Java does not allow you to change the values of actual parameters, you have to write methods that return values. In the simple example below, the method ```power```` has two ```int``` formal parameters, ```a``` and ```b```, and returns ```a``` to the power of ```b```.  when ```main``` calls the ```power```, ```number``` gets assigned the value that ```power``` returns.  Since methods should be designed to be simple and to do one thing, you will often find that returning a single value is sufficient, and that you do not need to change the value of any parameters to the method. Note that this does not help us write a ```swap``` method that wants to return two changed values.  When we study arrays, we will learn that we can swap array elements.
+Since Java does not allow you to change the values of actual parameters, you have to write methods that return values. In the simple example below, the method ```power``` has two ```int``` formal parameters, ```a``` and ```b```, and returns ```a``` to the power of ```b```.  when ```main``` calls the ```power```, ```number``` gets assigned the value that ```power``` returns.  Since methods should be designed to be simple and to do one thing, you will often find that returning a single value is sufficient, and that you do not need to change the value of any parameters to the method. Note that this does not help us write a ```swap``` method that wants to return two changed values.  When we study arrays, we will learn that we can swap array elements.
 
 ```java
 public class Power {
