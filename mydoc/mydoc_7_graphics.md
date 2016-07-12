@@ -1,199 +1,126 @@
 ---
-title: Graphics
+title: Computer Graphics
 tags: [graphics]
 keywords: graphics
-last_updated: May 1, 2016
-summary: "Graphics"
+last_updated: July 7, 2016
+summary: "<li>Understand computer graphics in general.</li> <li>Understand Java's implementation of graphics.</li> <li>Understand how to draw basic shapes and text on a window.</li> <li>Understand the Graphics class</li> <li>Understand how to override paint and paintComponent methods.</li> <li>Understand how to process several graphics events.</li> <li>Understand Swing components such as Jlabel, JButton, JCheckBox, JTextField, etc.</li> "
 sidebar: mydoc_sidebar
 permalink: /mydoc_7_graphics/
 ---
 
-## Graphics (Eck 6)
+## Graphics
 
-## G.1 Introduction
+Programming graphics can be fun, but it involves a lot of Java concepts, some of which complex.  You have to take your time an think when programming Java graphics.  Our goal for graphics is not to become an expert, but rather to achieve a general understanding, mimick a few programs, and create several simple programs.  There are no test questions on graphics.  I think everyone will enjoy using the Netbeand GUI building.  I hope some interested students pursue graphics in more depth on their own - perhaps on the final project where students choose their own.  Most likely the information in this module will have to be augmented with in class. discussions
 
-Computer graphics is accomplished by coloring pixels within windows.  A pixel is a small square dot in a window. Pixels are identified using a coordinate system that begins in the upper left hand corner.  The x coordinates count toward the right, and the y coordinates count downward.  The color of a pixel is specified by its Red, Green, Blue (or RGB) value (see section Java Standard Colors).  The more pixels per inch the better looking the graphics.  Figure G-9 shows pixels within a window along with a red square drawn by coloring pixels.  You will notice how ragged this square looks.  Modern displays have pixels densely packed so one does not notice the raggedness.   The newer 4K and 5K displays are gorgeous.
+The Graphics Code Pattern is as follows.
 
- 
-Figure G-21 Compuer Graphics, Pixels, and Coordinates
-Of course, we do not want to write our graphics programs using only pixels.  We want to manipulate high-level objects such a buttons, text fields, labels, and check boxes.
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+X. Graphics Program Pattern (pseudo code)
+</b>
+<br>
+<pre>
+Create a window
+Fill the window with GUI objects
+Loop
+   Wait for user to select some object
+   The user interaction will generate an event
+   Process the event
+   Update the contents of our window
+</pre>
+</div>
 
-## G.2 Java JFrame Class
+The Graphics pattern shows conceptually what is happening.  As we study graphics, you will discover that you do not code a loop to process events.  You simply write methods that are called by the underlying Java graphics libraries, which have the loop structure.
 
-User’s operate today’s programs with a graphical user’s Interface (GUI).  Java has many classes that support GUI development.  The starting point of a GUI application is a window.  The Java class that corresponds to a window is a JFrame.   A JFrame by itself is not very useful.  You can place a JFrame window on your display.  It will have a title-bar, open, close, and maximize icons, but that is about it.  A JFrame has several attributes that you will set.  The following code demonstrates a Java program that creates a JFrame only.
+The approach for studying graphics is to first study drawing in windows before studying events.
 
-```java
-import java.awt.*;
-import javax.swing.*;
-public class JFrameOnly {
-    public static void main(String[] args) {
-        JFrame window = new JFrame("JFrame Only");
-        window.setSize(250,100);  // 250 pixels wide, 100 length
-        window.setLocation(100,100); // 100, 100 from upper rhc
-        // The following statement will terminate your program 
-        // the window is closed
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
-    }
-}
-```
+* Part 1 - Output - Drawing shapes and text
 
-A JFrame has a ContentPane into which you can place content.  You can add content to the JFrame’s ContentPane or you can replace the JFrame’s ContentPane with your own. 
-## G.3 Content – GUI Components
-The content that you want to place in your window consists of the typical things you encounter with programs.  We will call these things components.
-•	Labels – Jlabel
-•	Regular Buttons – JButton 
-•	Check Buttons – JcheckBox
-•	Text Entry Boxes – JtextField 
-•	Pull-down menus - JComboBox
-•	Scrollable Text Boxes – JtextArea in a JScrollPane
+  * Create a program that has window without content.
+  * Create a program that has a window and draws basic content with low-level ```JFrame``` graphics methods.
+  * Create a program that has a window and draws basic content with low-level ```JPanel``` graphics methods.
+  * Create a program that has multiple components, such as buttons, labels, and text fields.
+  * Examine several sample programs in [Graphics Drawing Code](/gustycooper.github.io/mydoc_7_graphics_drawing_code).
 
-## G.4 Basic JFrame
+* Part 2 - Events and Input
 
-Section G.2 shows a program with a JFrame and no content.  This section shows code a JFrame where we have added some rudimentary content.  In this example, we add directly to the JFrame by extending the JFrame class and overriding the JFrame paint(Graphics g) method.  The paint() method is automatically called whenever a window needs to be redrawn.  The argument of type Graphics has many low-level graphical drawing routines.  The following are a few examples.
+  * Create a Hello World program that processes one event - mouse click on a button.
+  * Examine several sample programs in [Graphics Events Code](/gustycooper.github.io/mydoc_7_graphics_events_code).
 
-```java
-drawString(String str, int xBaselineLeft, int yBaselineLeft);
-drawLine(int x1, int y1, int x2, int y2);
-drawRect(int xTopLeft, int yTopLeft, int width, int height);
-drawOval(int xTopLeft, int yTopLeft, int width, int height);
-drawPolygon(int[] xPoints, int[] yPoints, int numPoint);
-fillRect(int xTopLeft, int yTopLeft, int width, int height);
-fillOval(int xTopLeft, int yTopLeft, int width, int height);
-fillPolygon(int[] xPoints, int[] yPoints, int numPoint);
-```
+## Graphics and the Wirth Pattern
 
+Modern day programs on laptops, phones, desktops, and tablets use a graphical user interface (GUI) to interact with users.  A GUI provides input to programs from components such as text entry fields for typing input, buttons for selecting, and pull down menus for selecting.  A GUI provides output from programs via components such as text fields, pictures, animations, and figures.  A program with a GUI consists of algorithms and data structures that transform input into output.  The difference is that input and output is via the GUI instead of the terminal.  These concepts can be viewed in the Wirth pattern from [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types).
 
-When you call one of the basic drawing methods, the object is drawn in the drawing color, which is default to Color.BLACK; however, you can change the drawing color with the following method.
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br>
+<img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />
+</div>
 
-```java
-setColor(Color c);  // See section Java Colors
-```
+## Java Graphics History
 
-The following code demonstrates a Java program that adds a String and a line directly to a JFrame using drawString() and drawLine().
+* The Abstract Window Toolkit (AWT) was the original Java graphics.  All of the AWT types are in the ```java.awt``` package and can be imported via
 
-```java
-import java.awt.*;
-import javax.swing.*;
+  ```java
+  import java.awt.*;
+  ```
 
-public class BasicJFrame extends JFrame {
-    public BasicJFrame(String title) {
-        super(title); // call JFrame's constructor
-    }
-    public void paint(Graphics g){
-        g.drawLine(10,10,150,150);
-        g.drawString("Hello Class",10,40);
-    }
-    public static void main(String arg[]) {
-        BasicJFrame window = new BasicJFrame("Basic JFrame");
-        window.setSize(200,200);
-        window.setLocation(100,100);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
-    }
-}
-```
+* Swing is the second incarnation of Java graphics.  Swing is built on top of AWT - they are used in conjunction.  All of the Swing types are in the ```javax.swing``` package and can be imported via
 
-## G.5 Panels
+  ```java
+  import javax.swing.*;
+  ```
 
-As we write Java graphics, we will not add content directly to a JFrame.  Our graphics programs will not be too complicated – just a single window with a few options such a buttons and displays.   Thus we will have a JFrame, which will be our primary window, but we will add JPanel(s) to our JFrame.  You should think of your window as consisting of a collections of panels, where each panel contains content.  At this level of thinking a panel is simply a rectangular area on the window.  Figure G-10 shows a window with three panels.
+* Java has recently introduced JavaFX, which is intended to replace Swing.
 
- 
+We will use AWT and Swing.
 
-Figure G-22 – Window with Three Panels
+## PowerBall Code in One File Review
 
-## G.6 Basic JPanel
+In [Instance and Static](/gustycooper.github.io/mydoc_5_instance_static) we learned how to merge a class definition (with instance variables/methods) and a ```main``` method into one ```.java``` file.  Many of our graphics programs use this technique.  Recall the following figure to help prepare for creating a graphics program.
 
-Section G.4 shows code for adding content directly to a JFrame.  This section presents our first code that adds content to a JPanel and then adds the JPanel to the content pane (via setContentPane) of the JFrame.  The pattern for this is similar to that in Section G.4.  We will extend the JPanel class and overriding the JPanel paintComponent(Graphics g) method.  The paintComponenet() method (just like the JFrame paint() method) is automatically called whenever a window needs to be redrawn.  The argument of type Graphics has the low-level graphical drawing routines that were described in Section G.4.   The following code demonstrates a Java program that adds a String and a line to a JPanel using drawString() and drawLine().  The JPanel is added to the JFrame using the setContentPane() method.  If you run this Basic JPanel program and the Basic JFrame program (from section G.4) side-by-side, you will notice the coordinate system for the Basic JFrame begins at the upper left-hand corner of the window and the coordinate system for the Basic JPanel begins at the upper left-hand corner of the panel placed within the window.  A JPanel has a background color that you can set by calling 
+![Power Ball Merged](../images/powerBallMerged.png "Power Ball Merged")
 
-```java
-setBackground(Color c);  // See Section Java Colors
-```
+## Graphics and Objects
 
-The example code changes the background to Color.YELLOW.
+Object-oriented programming started with graphics programming.  You will discover many graphics classes in the ```java.awt``` and ```java.swing``` packages.  Some of the many classes are the following.
 
-```java
-import java.awt.*;
-import javax.swing.*;
-public class BasicJPanel extends JPanel {
-    // The following constructor is not needed.
-    // super() is called automatically for you.
-    public BasicJPanel() {
-        super(); // call JPanel's constructor
-    }
-    public void paintComponent(Graphics g){
-        setBackground(Color.YELLOW);
-        g.drawLine(10,10,150,150);
-        g.drawString("Hello Class",10,40);
-    }
-    public static void main(String arg[]) {
-        JFrame window = new JFrame("BasicJPanel");
-        
-        BasicJPanel panel = new BasicJPanel();
-        window.setContentPane(panel);
-        window.setSize(200,200);
-        window.setLocation(100,100);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
-    }
-}
-```
+* ```JFrame``` is a window.
+* ```JButton``` is a button that can be selected with a mouse (or trackpad) click.
+* ```JTextArea``` is a box into which text may be typed.
+* ```JComboBox``` is a popup menu that allows mutual exclusion selection of one from several.
+* ```JLabel``` is a text label.
+* ```JTextField``` is a small area into which text may be typed.
 
-One thing to note is that a JFrame has a content pane to which you can add content.  The above example did not use the JFrame content pane.  The statement
+To demonstrate the subclasses, consider a ```JButton```, which extends an ```AbstractButton```, which extends ```JComponent```, and so on.  The entire class hierarchy is the following.
 
-```java
-window.setContentPane(panel);
+* ```java.lang.Object```
+  * ```java.awt.Component```
+    * ```java.awt.Container```
+      * ```javax.swing.JComponent```
+        * ```javax.swing.AbstractButton```
+          * ```javax.swing.JButton```
 
-Replaced the JFrame content pane.  An alternative would have been to get the JFrame content pane and add the panel to it as follows.
+## Sites with Java Graphics
 
-{% raw %}
-```java
-window.getContentPane().add(panel);
-```
+### David Eck's Book
 
-## G.7 Building GUIs
+David Eck's book has graphics code sprinkled throughout as examples.  The following are some sections/chapters dedicated to graphics.
 
-A GUI Builder is a program that allows you to create your user interface by dragging and dropping components onto a display.  The GUI Builder provides you with a palette of components and a design area.  The palette of components contains all of the standard components (e.g., buttons, labels, text boxes).  The design area is a window into which you can drag and drop components.  The design area will eventually look like the window you want for you application.  The GUI builder will then generate the code to that generates your window.  You have to add the meaning to the window by processing button clicks, reading text fields, reading files, and placing the results in text areas, but you have avoided some the tedious programming involved with placing components on a JFrame.   
+* [Section 3.9 - Introduction to GUI Programming](http://math.hws.edu/javanotes/c3/s9.html)
+* [Chapter 6 - Introduction to GUI Programming](http://math.hws.edu/javanotes/c6/index.html)
+* [Chapter 13 - Advanced GUI Programming](http://math.hws.edu/javanotes/c13/index.html)
 
-Netbeans has a GUI builder, but we will not use it.  We will learn the basics of GUI programming and create some simple GUI’s.
+### Java Custom Graphics Tutorial
 
-## G.8 Arranging Panels in a JFrame
+[Custom Graphics](https://www3.ntu.edu.sg/home/ehchua/programming/java/J4b_CustomGraphics.html) is a nice web-site on manipulating Java graphics on a Graphics context.
 
-Section G.5 shows a window with three panels in it.  
-Java Standard Colors – java.awt.color
-The standard colors are accessed as Color.RED, Color.GREEN, etc.  They are defined as follows.
+### Loyal Marymont
 
-```java
-RED       : java.awt.Color[r=255, g=0,   b=0]
-GREEN     : java.awt.Color[r=0,   g=255, b=0]
-BLUE      : java.awt.Color[r=0,   g=0,   b=255]
-YELLOW    : java.awt.Color[r=255, g=255, b=0]
-MAGENTA   : java.awt.Color[r=255, g=0,   b=255]
-CYAN      : java.awt.Color[r=0,   g=255, b=255]
-WHITE     : java.awt.Color[r=255, g=255, b=255]
-BLACK     : java.awt.Color[r=0,   g=0,   b=0]
-GRAY      : java.awt.Color[r=128, g=128, b=128]
-LIGHT_GRAY: java.awt.Color[r=192, g=192, b=192]
-DARK_GRAY : java.awt.Color[r=64,  g=64,  b=64]
-PINK      : java.awt.Color[r=255, g=175, b=175]
-ORANGE    : java.awt.Color[r=255, g=200, b=0]
-```
-
-You can create your own colors using several Color constructors.  The one listed here accepts R, G, B values between 0 and 255.
-
-```java
-Color myColor = new Color(123, 101, 45);
-```
-
-Files in SimpleGraphics folder.
-
-1. JFrameOnly.java
-2. BasicJFrame.java
-3. BasicJPanel.java
-4. Capitalizer.java
-5. TrivialSketcher.java
-
-Java Custom Graphics Tutorial
-To see a nice web-site on manipulating Java graphics on a Graphics context see the following link.
-https://www3.ntu.edu.sg/home/ehchua/programming/java/J4b_CustomGraphics.html
+[Basic Java Graphics](http://cs.lmu.edu/~ray/notes/javagraphics/) from [Loyola Marymont University, Los Angeles](http://cs.lmu.edu)
  
+

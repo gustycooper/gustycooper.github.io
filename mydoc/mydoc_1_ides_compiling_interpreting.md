@@ -70,7 +70,7 @@ Java is executed by a combination of compiling and interpreting.
  
 ## JVM, JDK, and JRE Pattern
 
-The JVM, JDK, and JRE pattern figure allows you to easily visulize the software development process.
+The JVM, JDK, and JRE pattern figure allows you to easily visualize the software development process.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>

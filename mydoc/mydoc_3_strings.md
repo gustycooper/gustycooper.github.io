@@ -199,7 +199,7 @@ Java will create the following strings: ```"A string"```, ```"B string"```, ```"
 
 * When the assignment statement in 2 is executed, the string ```"A string"``` is lost in memory.  Eventually, the Java garbage collector will return that memory for reuse.
 * The ```s.toUpperCase()``` in statement 3 does not change the value of ```s```.  This computes a new string which is returned and assigned to ```t```.
-* The ```t.subString(0,1)``` also computes a new string (```“B”```) that is assigned to ```s```.
+* The ```t.substring(0,1)``` also computes a new string (```"B"```) that is assigned to ```s```.
 
 ## Java Strings are Immutable
 

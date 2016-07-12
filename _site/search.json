@@ -1386,11 +1386,61 @@
 
 
 {
-"title": "Graphics",
+"title": "Computer Graphics",
 "tags": "graphics",
 "keywords": "graphics",
 "url": "/gustycooper.github.io/mydoc_7_graphics/",
-"summary": "Graphics"
+"summary": "<li>Understand computer graphics in general.</li> <li>Understand Java's implementation of graphics.</li> <li>Understand how to draw basic shapes and text on a window.</li> <li>Understand the Graphics class</li> <li>Understand how to override paint and paintComponent methods.</li> <li>Understand how to process several graphics events.</li> <li>Understand Swing components such as Jlabel, JButton, JCheckBox, JTextField, etc.</li>"
+},
+
+
+
+{
+"title": "Graphics Output - Drawing",
+"tags": "graphics",
+"keywords": "graphics, drawing",
+"url": "/gustycooper.github.io/mydoc_7_graphics_drawing/",
+"summary": "<li>Understand computer graphics in general.</li> <li>Understand Java's implementation of graphics.</li> <li>Understand how to draw basic shapes and text on a window.</li> <li>Understand the Graphics class</li> <li>Understand how to override paint and paintComponent methods.</li>"
+},
+
+
+
+{
+"title": "Graphics Drawing Code Samples",
+"tags": "graphics",
+"keywords": "graphics code",
+"url": "/gustycooper.github.io/mydoc_7_graphics_drawing_code/",
+"summary": "<li>Understand graphics drawing by studying code samples.</li>"
+},
+
+
+
+{
+"title": "Graphics Input - Events",
+"tags": "graphics",
+"keywords": "graphics, events",
+"url": "/gustycooper.github.io/mydoc_7_graphics_events/",
+"summary": "<li>Understand how to process several graphics events.</li> <li>Understand Swing components such as Jlabel, JButton, JCheckBox, JTextField, etc.</li>"
+},
+
+
+
+{
+"title": "Graphics Events Code Samples",
+"tags": "graphics",
+"keywords": "graphics code",
+"url": "/gustycooper.github.io/mydoc_7_graphics_events_code/",
+"summary": "<li>Understand graphics drawing and events by studying code samples.</li>"
+},
+
+
+
+{
+"title": "Netbeans GUI Builder",
+"tags": "graphics",
+"keywords": "GUI builder",
+"url": "/gustycooper.github.io/mydoc_7_netbeans_gui_builder/",
+"summary": "<li>Understand how to use the Netbeans GUI Builder to create a graphics program.</li>"
 },
 
 

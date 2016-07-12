@@ -22,7 +22,7 @@ If you have completed AP Java, you will discover some of the CPSC 220 material i
 
 ## Assumed Knowledge
 
-Everyone in CPSC 220 has satisfied the prerequisites as defined in the UMW course catalog.  Everyone submits a course agreement stating they ahve fulfilled the prerequisites.  Everyone should have a general understanding of the following concepts.
+Everyone in CPSC 220 has satisfied the prerequisites as defined in the UMW course catalog.  Everyone submits a course agreement stating they have fulfilled the prerequisites.  Everyone should have a general understanding of the following concepts.
 
 * **Programming**, which includes
   * How to create a program
@@ -41,7 +41,7 @@ Everyone in CPSC 220 has satisfied the prerequisites as defined in the UMW cours
 * **flow of control**, statements to include the following
   * **sequential statements** - one statement after the next
   * **conditional statement** - if-then-else
-  * **loop statements**
+  * **loop statements** - while loop and for loop
 * **methods** or **functions**
   * How to define a method
   * How to call a method

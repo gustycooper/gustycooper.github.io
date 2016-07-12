@@ -292,8 +292,28 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Graphics
+    - title: Graphics Overview
       url: /mydoc_7_graphics/
+      output: web, pdf
+
+    - title: Graphics Output - Drawing
+      url: /mydoc_7_graphics_drawing/
+      output: web, pdf
+
+    - title: Graphics Drawing Code
+      url: /mydoc_7_graphics_drawing_code/
+      output: web, pdf
+
+    - title: Graphics Input - Events
+      url: /mydoc_7_graphics_events/
+      output: web, pdf
+
+    - title: Graphics Events Code
+      url: /mydoc_7_graphics_events_code/
+      output: web, pdf
+
+    - title: Netbeans GUI Builder
+      url: /mydoc_7_netbeans_gui_builder/
       output: web, pdf
 
   - title: Packages, ADTs

@@ -429,9 +429,44 @@ mydoc_6a_fileio:
 
  
 mydoc_7_graphics:
-  title: "Graphics"
+  title: "Graphics Overview"
   url: /gustycooper.github.io/mydoc_7_graphics/
-  link: <a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a>
+  link: <a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics Overview</a>
+
+
+ 
+mydoc_7_graphics_drawing:
+  title: "Graphics Output - Drawing"
+  url: /gustycooper.github.io/mydoc_7_graphics_drawing/
+  link: <a href="/gustycooper.github.io/mydoc_7_graphics_drawing/">Graphics Output - Drawing</a>
+
+
+ 
+mydoc_7_graphics_drawing_code:
+  title: "Graphics Drawing Code"
+  url: /gustycooper.github.io/mydoc_7_graphics_drawing_code/
+  link: <a href="/gustycooper.github.io/mydoc_7_graphics_drawing_code/">Graphics Drawing Code</a>
+
+
+ 
+mydoc_7_graphics_events:
+  title: "Graphics Input - Events"
+  url: /gustycooper.github.io/mydoc_7_graphics_events/
+  link: <a href="/gustycooper.github.io/mydoc_7_graphics_events/">Graphics Input - Events</a>
+
+
+ 
+mydoc_7_graphics_events_code:
+  title: "Graphics Events Code"
+  url: /gustycooper.github.io/mydoc_7_graphics_events_code/
+  link: <a href="/gustycooper.github.io/mydoc_7_graphics_events_code/">Graphics Events Code</a>
+
+
+ 
+mydoc_7_netbeans_gui_builder:
+  title: "Netbeans GUI Builder"
+  url: /gustycooper.github.io/mydoc_7_netbeans_gui_builder/
+  link: <a href="/gustycooper.github.io/mydoc_7_netbeans_gui_builder/">Netbeans GUI Builder</a>
 
 
 

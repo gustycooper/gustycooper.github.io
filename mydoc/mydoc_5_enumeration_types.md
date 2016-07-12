@@ -10,7 +10,7 @@ permalink: /mydoc_5_enumeration_types/
 
 ## Enumeration Type – ```Dog``` and ```DogType``` Example
 
-A data type is a set of values and a set of operations.  An enumeration type is a set of values.  You have to add the operations.  An enumeration type allows you to enumerate specific values for a type.  Suppose we need to write a program for veternarian that enumerates the various dogs that visit.  We can choose ```String``` to capture the various dog types.  For example, ```"Poodle"```, ```"German Shepard"```, ```"Hound"```, and so on.  Using this approach, we declare variables of type ```String``` to capture the dog type.
+A data type is a set of values and a set of operations.  An enumeration type is a set of values.  You have to add the operations.  An enumeration type allows you to enumerate specific values for a type.  Suppose we need to write a program for veterinarian that enumerates the various dogs that visit.  We can choose ```String``` to capture the various dog types.  For example, ```"Poodle"```, ```"German Shepard"```, ```"Hound"```, and so on.  Using this approach, we declare variables of type ```String``` to capture the dog type.
 
 '''java
 String dogType = "Poodle";

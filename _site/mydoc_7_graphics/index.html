@@ -3,9 +3,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Graphics">
+<meta name="description" content="Understand computer graphics in general. Understand Java's implementation of graphics. Understand how to draw basic shapes and text on a window. Understand t...">
 <meta name="keywords" content="graphics,  graphics">
-<title>Graphics  | UMW CPSC 220</title>
+<title>Computer Graphics  | UMW CPSC 220</title>
 <link rel="stylesheet" href="/gustycooper.github.io/css/syntax.css">
 
 
@@ -175,7 +175,7 @@
 <script>
 function SendLinkByMail(href) {
 var subject= "UMW CPSC 220 feedback";
-var body = "I have some feedback about the Graphics page: ";
+var body = "I have some feedback about the Computer Graphics page: ";
 body += window.location.href;
 body += "";
 var uri = "mailto:gusty@umw.edu?subject=";
@@ -202,7 +202,7 @@ window.location.href = uri;
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/gustycooper.github.io/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Graphics">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Computer Graphics">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -728,7 +728,42 @@ window.location.href = uri;
             
             
             
-            <li class="active"><a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics</a></li>
+            <li class="active"><a href="/gustycooper.github.io/mydoc_7_graphics/">Graphics Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics_drawing/">Graphics Output - Drawing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics_drawing_code/">Graphics Drawing Code</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics_events/">Graphics Input - Events</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_graphics_events_code/">Graphics Events Code</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/gustycooper.github.io/mydoc_7_netbeans_gui_builder/">Netbeans GUI Builder</a></li>
             
             
             
@@ -895,13 +930,13 @@ window.location.href = uri;
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">Graphics</h1>
+   <h1 class="post-title-main">Computer Graphics</h1>
 </div>
 
 <div class="post-content">
 
    
-    <div class="summary">Graphics</div>
+    <div class="summary"><li>Understand computer graphics in general.</li> <li>Understand Java's implementation of graphics.</li> <li>Understand how to draw basic shapes and text on a window.</li> <li>Understand the Graphics class</li> <li>Understand how to override paint and paintComponent methods.</li> <li>Understand how to process several graphics events.</li> <li>Understand Swing components such as Jlabel, JButton, JCheckBox, JTextField, etc.</li> </div>
    
 
     
@@ -938,193 +973,158 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h2 id="graphics-eck-6">Graphics (Eck 6)</h2>
+  <h2 id="graphics">Graphics</h2>
 
-<h2 id="g1-introduction">G.1 Introduction</h2>
+<p>Programming graphics can be fun, but it involves a lot of Java concepts, some of which complex.  You have to take your time an think when programming Java graphics.  Our goal for graphics is not to become an expert, but rather to achieve a general understanding, mimick a few programs, and create several simple programs.  There are no test questions on graphics.  I think everyone will enjoy using the Netbeand GUI building.  I hope some interested students pursue graphics in more depth on their own - perhaps on the final project where students choose their own.  Most likely the information in this module will have to be augmented with in class. discussions</p>
 
-<p>Computer graphics is accomplished by coloring pixels within windows.  A pixel is a small square dot in a window. Pixels are identified using a coordinate system that begins in the upper left hand corner.  The x coordinates count toward the right, and the y coordinates count downward.  The color of a pixel is specified by its Red, Green, Blue (or RGB) value (see section Java Standard Colors).  The more pixels per inch the better looking the graphics.  Figure G-9 shows pixels within a window along with a red square drawn by coloring pixels.  You will notice how ragged this square looks.  Modern displays have pixels densely packed so one does not notice the raggedness.   The newer 4K and 5K displays are gorgeous.</p>
+<p>The Graphics Code Pattern is as follows.</p>
 
-<p>Figure G-21 Compuer Graphics, Pixels, and Coordinates
-Of course, we do not want to write our graphics programs using only pixels.  We want to manipulate high-level objects such a buttons, text fields, labels, and check boxes.</p>
-
-<h2 id="g2-java-jframe-class">G.2 Java JFrame Class</h2>
-
-<p>User’s operate today’s programs with a graphical user’s Interface (GUI).  Java has many classes that support GUI development.  The starting point of a GUI application is a window.  The Java class that corresponds to a window is a JFrame.   A JFrame by itself is not very useful.  You can place a JFrame window on your display.  It will have a title-bar, open, close, and maximize icons, but that is about it.  A JFrame has several attributes that you will set.  The following code demonstrates a Java program that creates a JFrame only.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JFrameOnly</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">JFrame</span> <span class="n">window</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">(</span><span class="s">"JFrame Only"</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">250</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>  <span class="c1">// 250 pixels wide, 100 length</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setLocation</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span> <span class="c1">// 100, 100 from upper rhc</span>
-        <span class="c1">// The following statement will terminate your program </span>
-        <span class="c1">// the window is closed</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="n">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+X. Graphics Program Pattern (pseudo code)
+</b>
+<br />
+<pre>
+Create a window
+Fill the window with GUI objects
+Loop
+   Wait for user to select some object
+   The user interaction will generate an event
+   Process the event
+   Update the contents of our window
+</pre>
 </div>
 
-<p>A JFrame has a ContentPane into which you can place content.  You can add content to the JFrame’s ContentPane or you can replace the JFrame’s ContentPane with your own. 
-## G.3 Content – GUI Components
-The content that you want to place in your window consists of the typical things you encounter with programs.  We will call these things components.
-•	Labels – Jlabel
-•	Regular Buttons – JButton 
-•	Check Buttons – JcheckBox
-•	Text Entry Boxes – JtextField 
-•	Pull-down menus - JComboBox
-•	Scrollable Text Boxes – JtextArea in a JScrollPane</p>
+<p>The Graphics pattern shows conceptually what is happening.  As we study graphics, you will discover that you do not code a loop to process events.  You simply write methods that are called by the underlying Java graphics libraries, which have the loop structure.</p>
 
-<h2 id="g4-basic-jframe">G.4 Basic JFrame</h2>
+<p>The approach for studying graphics is to first study drawing in windows before studying events.</p>
 
-<p>Section G.2 shows a program with a JFrame and no content.  This section shows code a JFrame where we have added some rudimentary content.  In this example, we add directly to the JFrame by extending the JFrame class and overriding the JFrame paint(Graphics g) method.  The paint() method is automatically called whenever a window needs to be redrawn.  The argument of type Graphics has many low-level graphical drawing routines.  The following are a few examples.</p>
+<ul>
+  <li>
+    <p>Part 1 - Output - Drawing shapes and text</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">drawString</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span> <span class="kt">int</span> <span class="n">xBaselineLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yBaselineLeft</span><span class="o">);</span>
-<span class="n">drawLine</span><span class="o">(</span><span class="kt">int</span> <span class="n">x1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="o">);</span>
-<span class="n">drawRect</span><span class="o">(</span><span class="kt">int</span> <span class="n">xTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">,</span> <span class="kt">int</span> <span class="n">height</span><span class="o">);</span>
-<span class="n">drawOval</span><span class="o">(</span><span class="kt">int</span> <span class="n">xTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">,</span> <span class="kt">int</span> <span class="n">height</span><span class="o">);</span>
-<span class="n">drawPolygon</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">xPoints</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">yPoints</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numPoint</span><span class="o">);</span>
-<span class="n">fillRect</span><span class="o">(</span><span class="kt">int</span> <span class="n">xTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">,</span> <span class="kt">int</span> <span class="n">height</span><span class="o">);</span>
-<span class="n">fillOval</span><span class="o">(</span><span class="kt">int</span> <span class="n">xTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yTopLeft</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">,</span> <span class="kt">int</span> <span class="n">height</span><span class="o">);</span>
-<span class="n">fillPolygon</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">xPoints</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">yPoints</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numPoint</span><span class="o">);</span>
-</code></pre>
+    <ul>
+      <li>Create a program that has window without content.</li>
+      <li>Create a program that has a window and draws basic content with low-level <code class="highlighter-rouge">JFrame</code> graphics methods.</li>
+      <li>Create a program that has a window and draws basic content with low-level <code class="highlighter-rouge">JPanel</code> graphics methods.</li>
+      <li>Create a program that has multiple components, such as buttons, labels, and text fields.</li>
+      <li>Examine several sample programs in <a href="/gustycooper.github.io/mydoc_7_graphics_drawing_code">Graphics Drawing Code</a>.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Part 2 - Events and Input</p>
+
+    <ul>
+      <li>Create a Hello World program that processes one event - mouse click on a button.</li>
+      <li>Examine several sample programs in <a href="/gustycooper.github.io/mydoc_7_graphics_events_code">Graphics Events Code</a>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="graphics-and-the-wirth-pattern">Graphics and the Wirth Pattern</h2>
+
+<p>Modern day programs on laptops, phones, desktops, and tablets use a graphical user interface (GUI) to interact with users.  A GUI provides input to programs from components such as text entry fields for typing input, buttons for selecting, and pull down menus for selecting.  A GUI provides output from programs via components such as text fields, pictures, animations, and figures.  A program with a GUI consists of algorithms and data structures that transform input into output.  The difference is that input and output is via the GUI instead of the terminal.  These concepts can be viewed in the Wirth pattern from <a href="/gustycooper.github.io/mydoc_1_primitive_types">Primitive Types</a>.</p>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern
+0. Wirth Pattern
+</b>
+<br />
+<img title="computer" src="/gustycooper.github.io/images/wirthFigure.png" />
 </div>
 
-<p>When you call one of the basic drawing methods, the object is drawn in the drawing color, which is default to Color.BLACK; however, you can change the drawing color with the following method.</p>
+<h2 id="java-graphics-history">Java Graphics History</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">setColor</span><span class="o">(</span><span class="n">Color</span> <span class="n">c</span><span class="o">);</span>  <span class="c1">// See section Java Colors</span>
+<ul>
+  <li>
+    <p>The Abstract Window Toolkit (AWT) was the original Java graphics.  All of the AWT types are in the <code class="highlighter-rouge">java.awt</code> package and can be imported via</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>
+    <p>Swing is the second incarnation of Java graphics.  Swing is built on top of AWT - they are used in conjunction.  All of the Swing types are in the <code class="highlighter-rouge">javax.swing</code> package and can be imported via</p>
 
-<p>The following code demonstrates a Java program that adds a String and a line directly to a JFrame using drawString() and drawLine().</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BasicJFrame</span> <span class="kd">extends</span> <span class="n">JFrame</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">BasicJFrame</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">(</span><span class="n">title</span><span class="o">);</span> <span class="c1">// call JFrame's constructor</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">paint</span><span class="o">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="o">){</span>
-        <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">150</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
-        <span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="s">"Hello Class"</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">40</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span> <span class="n">arg</span><span class="o">[])</span> <span class="o">{</span>
-        <span class="n">BasicJFrame</span> <span class="n">window</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicJFrame</span><span class="o">(</span><span class="s">"Basic JFrame"</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span><span class="mi">200</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setLocation</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="n">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>
+    <p>Java has recently introduced JavaFX, which is intended to replace Swing.</p>
+  </li>
+</ul>
 
-<h2 id="g5-panels">G.5 Panels</h2>
+<p>We will use AWT and Swing.</p>
 
-<p>As we write Java graphics, we will not add content directly to a JFrame.  Our graphics programs will not be too complicated – just a single window with a few options such a buttons and displays.   Thus we will have a JFrame, which will be our primary window, but we will add JPanel(s) to our JFrame.  You should think of your window as consisting of a collections of panels, where each panel contains content.  At this level of thinking a panel is simply a rectangular area on the window.  Figure G-10 shows a window with three panels.</p>
+<h2 id="powerball-code-in-one-file-review">PowerBall Code in One File Review</h2>
 
-<p>Figure G-22 – Window with Three Panels</p>
+<p>In <a href="/gustycooper.github.io/mydoc_5_instance_static">Instance and Static</a> we learned how to merge a class definition (with instance variables/methods) and a <code class="highlighter-rouge">main</code> method into one <code class="highlighter-rouge">.java</code> file.  Many of our graphics programs use this technique.  Recall the following figure to help prepare for creating a graphics program.</p>
 
-<h2 id="g6-basic-jpanel">G.6 Basic JPanel</h2>
+<p><img src="../images/powerBallMerged.png" alt="Power Ball Merged" title="Power Ball Merged" /></p>
 
-<p>Section G.4 shows code for adding content directly to a JFrame.  This section presents our first code that adds content to a JPanel and then adds the JPanel to the content pane (via setContentPane) of the JFrame.  The pattern for this is similar to that in Section G.4.  We will extend the JPanel class and overriding the JPanel paintComponent(Graphics g) method.  The paintComponenet() method (just like the JFrame paint() method) is automatically called whenever a window needs to be redrawn.  The argument of type Graphics has the low-level graphical drawing routines that were described in Section G.4.   The following code demonstrates a Java program that adds a String and a line to a JPanel using drawString() and drawLine().  The JPanel is added to the JFrame using the setContentPane() method.  If you run this Basic JPanel program and the Basic JFrame program (from section G.4) side-by-side, you will notice the coordinate system for the Basic JFrame begins at the upper left-hand corner of the window and the coordinate system for the Basic JPanel begins at the upper left-hand corner of the panel placed within the window.  A JPanel has a background color that you can set by calling</p>
+<h2 id="graphics-and-objects">Graphics and Objects</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">setBackground</span><span class="o">(</span><span class="n">Color</span> <span class="n">c</span><span class="o">);</span>  <span class="c1">// See Section Java Colors</span>
-</code></pre>
-</div>
+<p>Object-oriented programming started with graphics programming.  You will discover many graphics classes in the <code class="highlighter-rouge">java.awt</code> and <code class="highlighter-rouge">java.swing</code> packages.  Some of the many classes are the following.</p>
 
-<p>The example code changes the background to Color.YELLOW.</p>
+<ul>
+  <li><code class="highlighter-rouge">JFrame</code> is a window.</li>
+  <li><code class="highlighter-rouge">JButton</code> is a button that can be selected with a mouse (or trackpad) click.</li>
+  <li><code class="highlighter-rouge">JTextArea</code> is a box into which text may be typed.</li>
+  <li><code class="highlighter-rouge">JComboBox</code> is a popup menu that allows mutual exclusion selection of one from several.</li>
+  <li><code class="highlighter-rouge">JLabel</code> is a text label.</li>
+  <li><code class="highlighter-rouge">JTextField</code> is a small area into which text may be typed.</li>
+</ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BasicJPanel</span> <span class="kd">extends</span> <span class="n">JPanel</span> <span class="o">{</span>
-    <span class="c1">// The following constructor is not needed.</span>
-    <span class="c1">// super() is called automatically for you.</span>
-    <span class="kd">public</span> <span class="n">BasicJPanel</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">();</span> <span class="c1">// call JPanel's constructor</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">paintComponent</span><span class="o">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="o">){</span>
-        <span class="n">setBackground</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">YELLOW</span><span class="o">);</span>
-        <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">150</span><span class="o">,</span><span class="mi">150</span><span class="o">);</span>
-        <span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="s">"Hello Class"</span><span class="o">,</span><span class="mi">10</span><span class="o">,</span><span class="mi">40</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span> <span class="n">arg</span><span class="o">[])</span> <span class="o">{</span>
-        <span class="n">JFrame</span> <span class="n">window</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">(</span><span class="s">"BasicJPanel"</span><span class="o">);</span>
-        
-        <span class="n">BasicJPanel</span> <span class="n">panel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicJPanel</span><span class="o">();</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setContentPane</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span><span class="mi">200</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setLocation</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="n">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-        <span class="n">window</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-</div>
+<p>To demonstrate the subclasses, consider a <code class="highlighter-rouge">JButton</code>, which extends an <code class="highlighter-rouge">AbstractButton</code>, which extends <code class="highlighter-rouge">JComponent</code>, and so on.  The entire class hierarchy is the following.</p>
 
-<p>One thing to note is that a JFrame has a content pane to which you can add content.  The above example did not use the JFrame content pane.  The statement</p>
+<ul>
+  <li><code class="highlighter-rouge">java.lang.Object</code>
+    <ul>
+      <li><code class="highlighter-rouge">java.awt.Component</code>
+        <ul>
+          <li><code class="highlighter-rouge">java.awt.Container</code>
+            <ul>
+              <li><code class="highlighter-rouge">javax.swing.JComponent</code>
+                <ul>
+                  <li><code class="highlighter-rouge">javax.swing.AbstractButton</code>
+                    <ul>
+                      <li><code class="highlighter-rouge">javax.swing.JButton</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">window</span><span class="o">.</span><span class="na">setContentPane</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
+<h2 id="sites-with-java-graphics">Sites with Java Graphics</h2>
 
-<span class="n">Replaced</span> <span class="n">the</span> <span class="n">JFrame</span> <span class="n">content</span> <span class="n">pane</span><span class="o">.</span>  <span class="n">An</span> <span class="n">alternative</span> <span class="n">would</span> <span class="n">have</span> <span class="n">been</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">JFrame</span> <span class="n">content</span> <span class="n">pane</span> <span class="n">and</span> <span class="n">add</span> <span class="n">the</span> <span class="n">panel</span> <span class="n">to</span> <span class="n">it</span> <span class="n">as</span> <span class="n">follows</span><span class="o">.</span>
+<h3 id="david-ecks-book">David Eck’s Book</h3>
 
+<p>David Eck’s book has graphics code sprinkled throughout as examples.  The following are some sections/chapters dedicated to graphics.</p>
 
-<span class="err">```</span><span class="n">java</span>
-<span class="n">window</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
-</code></pre>
-</div>
+<ul>
+  <li><a href="http://math.hws.edu/javanotes/c3/s9.html">Section 3.9 - Introduction to GUI Programming</a></li>
+  <li><a href="http://math.hws.edu/javanotes/c6/index.html">Chapter 6 - Introduction to GUI Programming</a></li>
+  <li><a href="http://math.hws.edu/javanotes/c13/index.html">Chapter 13 - Advanced GUI Programming</a></li>
+</ul>
 
-<h2 id="g7-building-guis">G.7 Building GUIs</h2>
+<h3 id="java-custom-graphics-tutorial">Java Custom Graphics Tutorial</h3>
 
-<p>A GUI Builder is a program that allows you to create your user interface by dragging and dropping components onto a display.  The GUI Builder provides you with a palette of components and a design area.  The palette of components contains all of the standard components (e.g., buttons, labels, text boxes).  The design area is a window into which you can drag and drop components.  The design area will eventually look like the window you want for you application.  The GUI builder will then generate the code to that generates your window.  You have to add the meaning to the window by processing button clicks, reading text fields, reading files, and placing the results in text areas, but you have avoided some the tedious programming involved with placing components on a JFrame.</p>
+<p><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/J4b_CustomGraphics.html">Custom Graphics</a> is a nice web-site on manipulating Java graphics on a Graphics context.</p>
 
-<p>Netbeans has a GUI builder, but we will not use it.  We will learn the basics of GUI programming and create some simple GUI’s.</p>
+<h3 id="loyal-marymont">Loyal Marymont</h3>
 
-<h2 id="g8-arranging-panels-in-a-jframe">G.8 Arranging Panels in a JFrame</h2>
-
-<p>Section G.5 shows a window with three panels in it.<br />
-Java Standard Colors – java.awt.color
-The standard colors are accessed as Color.RED, Color.GREEN, etc.  They are defined as follows.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">RED</span>       <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
-<span class="n">GREEN</span>     <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">g</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
-<span class="n">BLUE</span>      <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">g</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">b</span><span class="o">=</span><span class="mi">255</span><span class="o">]</span>
-<span class="n">YELLOW</span>    <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
-<span class="n">MAGENTA</span>   <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">b</span><span class="o">=</span><span class="mi">255</span><span class="o">]</span>
-<span class="n">CYAN</span>      <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">g</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">255</span><span class="o">]</span>
-<span class="n">WHITE</span>     <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">255</span><span class="o">]</span>
-<span class="n">BLACK</span>     <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">g</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span>   <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
-<span class="n">GRAY</span>      <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">128</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">128</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">128</span><span class="o">]</span>
-<span class="nl">LIGHT_GRAY:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">192</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">192</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">192</span><span class="o">]</span>
-<span class="n">DARK_GRAY</span> <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">64</span><span class="o">,</span>  <span class="n">g</span><span class="o">=</span><span class="mi">64</span><span class="o">,</span>  <span class="n">b</span><span class="o">=</span><span class="mi">64</span><span class="o">]</span>
-<span class="n">PINK</span>      <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">175</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">175</span><span class="o">]</span>
-<span class="n">ORANGE</span>    <span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Color</span><span class="o">[</span><span class="n">r</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">200</span><span class="o">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<p>You can create your own colors using several Color constructors.  The one listed here accepts R, G, B values between 0 and 255.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Color</span> <span class="n">myColor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="mi">101</span><span class="o">,</span> <span class="mi">45</span><span class="o">);</span>
-</code></pre>
-</div>
-
-<p>Files in SimpleGraphics folder.</p>
-
-<ol>
-  <li>JFrameOnly.java</li>
-  <li>BasicJFrame.java</li>
-  <li>BasicJPanel.java</li>
-  <li>Capitalizer.java</li>
-  <li>TrivialSketcher.java</li>
-</ol>
-
-<p>Java Custom Graphics Tutorial
-To see a nice web-site on manipulating Java graphics on a Graphics context see the following link.
-https://www3.ntu.edu.sg/home/ehchua/programming/java/J4b_CustomGraphics.html
+<p><a href="http://cs.lmu.edu/~ray/notes/javagraphics/">Basic Java Graphics</a> from <a href="http://cs.lmu.edu">Loyola Marymont University, Los Angeles</a>
  </p>
+
 
 
 <div class="tags">
@@ -1151,7 +1151,7 @@ https://www3.ntu.edu.sg/home/ehchua/programming/java/J4b_CustomGraphics.html
 
 <br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CPSC 220 Website, University of Mary Washington</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Gusty Cooper</span> is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>.
 
-<p>Page last updated: May 1, 2016; Site last generated: Jul 7, 2016
+<p>Page last updated: July 7, 2016; Site last generated: Jul 12, 2016
 <p><img src="/gustycooper.github.io/images/UMW-master-monogram.png" alt="Company logo"/></p>
                 </div>
             </div>
