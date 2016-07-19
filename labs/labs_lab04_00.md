@@ -1,30 +1,35 @@
 ---
-title: Control Flow (Labs - Lab 4)
+title: Control Flow Lab
 keywords: loop, conditional, for, while, do-while, if, switch
-last_updated: June 13, 2016
-summary: "Lab 4, Overview"
+last_updated: July 16, 2016
+summary: "<li>Practice writing code that uses loops and conditional statements.</li> <li>Practice solving problems with a while loop.</li> <li>Practice solving problems with a for loop.</li> <li>Practice solving problems with a do-while loop.</li> <li>Practice solving problems with if-else statements.</li> <li>Practice solving problems with a switch statement.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_00/
 toc: false
 ---
 
-## Lab 4 Overview
+## Control Flow Lab Overview
 
-Lab 4 is lengthy; however, it is worth a total of 140 points.  You have to complete Sections 4.1 through 4.8 by the due date.  Sections 4.1 through 4.8 are worth 100 points.  You may work on Sections 4.9 through 4.12 until spring break.  You must finish Sections 4.1 through 4.8 first.  You cannot substitute points from Sections 4.9 through 4.12 for points in Sections 4.1 through 4.8 as part of your submission.
+The Control Flow Lab has many problems.  The Control Flow Lab strikes at the heart of solving basic problems with algorithms.  You have to complete the following by the first due date.
+
+* First Loops
+* Potato Class
+* Loops, Ifs, Switches
+* Millionaire
+* MyMath Take 2
+* Twitter Type
+* Gerbil Game
+
+You can work on the following until the second due date.
+
+* Triangle
+* Credit Card Type
+* Pig Game People
+* Pig Game Computer
 
 ##  Submission Requirements
 
-In addition to submitting your grade as normal, for Lab 4 
-
-##  Submission Requirements
-
-On Canvas submit 
-
-* Your lab score
-* The name of your teammate who verified your work.
-* The UMW Honor Pledge with your name serving as an electronic signature.
-* You must also submit the .java files the comprise your solutions to the problems.  
-* You do not have to submit your answers to the questions.
+Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.
 
 ## Sample Lab
 

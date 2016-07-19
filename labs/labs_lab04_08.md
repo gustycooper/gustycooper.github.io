@@ -1,8 +1,8 @@
 ---
-title: Simple Triangle
-keywords: triangle
-last_updated: June 5, 2016
-summary: "Lab 4, Simple Triangle"
+title: Simple Triangle Lab
+keywords: triangle, nested loops
+last_updated: July 17, 2016
+summary: "<li>Practice using nested loops to draw a simple triangle on the terminal.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_08/
 toc: false

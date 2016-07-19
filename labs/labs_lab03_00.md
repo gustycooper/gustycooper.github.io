@@ -1,28 +1,24 @@
 ---
-title: First Classes and Objects (Labs - Lab 3)
+title: First Classes and Objects Labs
 keywords: loop
 last_updated: June 5, 2016
-summary: "Lab 3, Overview"
+summary: "The learning objectives for the entire First Classes and Objects Labs. <li>Practice writing classes that define types.</li> <li>Practice creating instance variables, constructors, and instance methods within your class.</li> <li>Practice creating test cases for your types.</li> <li>Practice placing your test cases in tester classes that have a main method.</li> <li>Practice using your types to declare variables.</li> <li>Practice constructing objects of your types.</li> <li>Practice calling instance methods in the objects you construct.</li> "
 sidebar: labs_sidebar
 permalink: /labs_lab03_00/
 toc: false
 ---
 
-## Lab 3 Overview
+## First Classes and Objects Labs Overview
 
-Lab 3 is your first opportunity to create your own class, declare variable, and construct objects.  This concept may appear difficult at first, but before long you will be an expert.  All of the problems can be solved using ```main``, ```Scanner``` for input, ``System.out``` for output, helper methods with parameters that you write, and expressions.  A few of the problems require a conditional expression.
+First Classes and Objects Labs is your first opportunity to create your own classes that are types, declare variables of your types, and construct objects of your types.  This concept may appear difficult at first, but before long you will be an expert.  All of the problems can be solved using ```main``, ```Scanner``` for input, ``System.out``` for output, helper methods with parameters that you write, and expressions.  A few of the problems require a conditional expression.
 
 ##  Submission Requirements
 
-On Canvas submit 
-
-* Your lab score
-* The name of your teammate who verified your work.
-* The UMW Honor Pledge with your name serving as an electronic signature.
+Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.
 
 ## Sample Lab
 
-This section provides a sample lab specication and a solution.  You can follow this sample in creating your solutions to the various labs in Lab 3.  For labs that you create a ```class``` that is a type, you will create two classes, each in its onw file.
+This section provides a sample lab specication and a solution.  You can follow this sample in creating your solutions to the various labs in First Classes and Objects Jabs.  For labs that you create a ```class``` that is a type, you will create two classes, each in its onw file.
 
 1. The class that is your type, e.g., ```public class Person``` in file ```Person.java```.  Recall that a Java ```class``` that is used for a type has the following pattern.
 

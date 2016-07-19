@@ -217,3 +217,55 @@ We have learned the variable ```s``` references a ```String``` object.  We can c
 ## Instance Variables and Methods
 
 The term **instance** is used to indicate attributes that are availble in each object.  An object is an instance of a particular class.  For example, a ```String``` object is an instance of a ```String``` class.  A class has instance variables and instance methods.  A ```String``` has one instance variable, which contains the value of the ```String```.  A ```String``` has many instance methods.  We have discussed some of the most used in this section.  We will study instance variables and methods in more detail when we create our own class.
+
+## Converting Between Strings and Numbers
+
+Java provides object wrapper classes for the primitive types.   For example, ```Double``` is the object wrapper class for ```double```.  You can use object wrapper classes with primitive literals so they appear to be primitive types.  In [ArrayLists](/gustycooper.github.io/mydoc_6_arraylists) we learn that ```ArrayLists``` cannot be used to store primitive types, and we will use object wrapper classes.  The following code shows several object wrapper classes used.  Line 1 creates a variable of type ```Integer``` and allocates an object that contains ```5```.  The object referenced by ```i``` is used in line 2 as if it is a primitive variable.  Lines 3 and 4 show similar ideas with the ```Double``` wrapper class.  Java performs [Autoboxing](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html) to easily convert between wrapper classes and primitive types.  Lines 1 and 3 **box** a primitive type into a wrapper class.  Lines 2 and 4 unbox a wrapper class value to a primitive type.
+
+```java
+1 Integer i = 5;  // i is an object
+2 int j = i + 1;
+3 Double d = 3.3;
+4 double x = d * 3;
+```
+
+The Java object wrapper classes contain methods for [converting between numbers and ```Strings```](https://docs.oracle.com/javase/tutorial/java/data/converting.html).  The following code demonstrates converted a string to an ```int```.
+
+### Converting a String to a Number
+
+```java
+Integer x = Integer.valueOf(str);
+// or
+int y = Integer.parseInt(str);
+```
+
+There is a slight difference between these methods.
+
+* ```valueOf``` returns new instance of the object wrapper class ```java.lang.Integer```.
+* ```parseInt``` returns primitive ```int```.
+
+The same is for all wrapper classes, such as ```Short.valueOf```, ```Short.parseShort```, ```Long.valueOf```, ```Long.parseLong```, and so on.
+
+### Converting a Number to a String
+
+The simplest way to convert a primitive type number to a ```String``` is use the primitive type as part of ```String``` concatenation.
+
+```java
+int i = 30;
+String s = "" + i;
+```
+
+The Java object wrapper classes has a ```toString``` method which can also be used.
+
+```java
+int i =  42;
+double d = 5.4;
+String s = "" + i; // concatenate i to an empty String
+String s1 = Integer.toString(i);
+String s2 = Double.toString();
+```
+
+## Numbers and Strings
+
+The Java Tutorial [Numbers and Strings](https://docs.oracle.com/javase/tutorial/java/data/index.html) provides a nice overview of numbers and strings.  The tutorial contains a nice section on [printing numbers](https://docs.oracle.com/javase/tutorial/java/data/numberformat.html).
+

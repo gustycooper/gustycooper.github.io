@@ -1,8 +1,8 @@
 ---
-title: Car Type Revisited
+title: Car Type Revisited Lab
 keywords: class, car
-last_updated: June 6, 2016
-summary: "Lab 5, Car Type Revisited"
+last_updated: July 18, 2016
+summary: "<li>Practice using Netbeans to redo the Car type we created earlier.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab05_02/
 toc: false
@@ -18,23 +18,23 @@ We are going to create a new Netbeans project that uses code we created in [Car 
 
 2. Panel 1 – Choose Project: 
 
-   a. Select Java
-   b. Select Java Application
-   c. Next
+   * a. Select Java
+   * b. Select Java Application
+   * c. Next
 
 3. Panel 2 – Name and Location: 
 
-   a. Enter Project Name: Lab5-2Project (or some other name if you like).
-   b. Enter Project Folder: <you choose>
-   c. You will see a check in Create Main Class.  We want to create a main class ```CarTester``` that is in the default package.  At this point you will see something like ```lab5.pkg2project.Lab52Project```.  Change this to ```CarTester```.
-d. Finish
+   * a. Enter Project Name: Lab5-2Project (or some other name if you like).
+   * b. Enter Project Folder: <you choose>
+   * c. You will see a check in Create Main Class.  We want to create a main class ```CarTester``` that is in the **default package**.  In [Packages, ADTs](/gustycooper.github.io/mydoc_8_packages] we study packages.  For now and for most of our Netbeans projects we want to place our code in the default package.  At this point in Netbeans you will see something like ```lab5.pkg2project.Lab52Project```.  Change this to ```CarTester```.
+   * d. Finish
 
 4. At this point you will be editing the ```CarTester class```, which as a ```main()``` method.  You should copy and paste the code from BlueJ ```CarTester.java main()``` method into the ```main()``` method of this file.  Use whatever editor your like.  Click on the Save All icon.  You will have icons indicating there are errors in ```CarTester.java```.  This is ok because you have not created the ```Car.java``` file.
 
 5. Now right-click on the <default package> icon and select New Java Class.  This creates the New Java Class panel.
 
-   a. Change the Class Name: to be ```Car```
-   b. Finish.
+   * a. Change the Class Name: to be ```Car```
+   * b. Finish.
 
 6. At this point you will be editing the ```Car.java``` class.  You should copy and paste the code from BlueJ ```Car.java``` into this file.  Use whatever editor your like.  Click on the Save All icon.
 

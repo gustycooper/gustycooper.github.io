@@ -26,7 +26,7 @@ The following diagram (from *The Information* by James Gleick) shows a general f
 
 ![People Information](../images/personMemory.png "People Information")
 
-Our brain serves to store information and to manipulate the information.  We get our input from our eyes, ears, nose.  Some of the input is physical stimulation - like when we are outside or talking with people  Some our our input is reading books or listening to music.  Exactly how we store and manipulate information in our brains is a mystery to me, but nueroscientests are beginnging to unravel the mystery.  I have talked with elder people who could not remember information spoken five minutes ago, but can vividly recall events from 50 years ago.  We produce output with our mouth, facial expressions, hands.
+Our brain stores information and manipulates information.  We get our input from our eyes, ears, nose.  Some of the input is physical stimulation - like when we are outside or talking with people  Some our our input is reading books or listening to music.  Exactly how we store and manipulate information in our brains is a mystery to me, but nueroscientests are beginnging to unravel the mystery.  I have talked with elder people who could not remember information spoken five minutes ago, but can vividly recall events from 50 years ago.  We produce output with our mouth, facial expressions, hands.
 
 Computers process information similar to the way people process information; however, computers are machines, not people.  In some ways, computers are better at processing information than people.  Google can find more results that I can.  Some of most profitable companies of today simply process information - Google, Facebook - and they rely upon computers to process their infomation.
 
@@ -38,13 +38,13 @@ All information in a computer can be classified as either **numbers** or **chara
 
 ## Computer Model
 
-A computer does not have a brain, but it does have memory to store information and it can have many programs, each of which can perform specialized operations that somewhat act as a brain.  We will learn how to write Java programs in this course.  We will create a simple **model of a computer**.  A more complex model can be found in [Eck's Book](http://math.hws.edu/javanotes/c1/s1.html).
+A computer does not have a brain, but it does have memory to store information and it can have many programs, each of which can perform specialized operations that somewhat act as a brain.  We will learn how to write Java programs in this course.  We will create a simple **model of a computer**.  A different view of this model can be found in [The Fetch Execute Cycle](http://math.hws.edu/javanotes/c1/s1.html) of David Eck's book.
 
 ![Computer Model](../images/computer_diagram.png "Computer Model") 
 
-All computers follow our simple **model**.  The Central Processing Unit (CPU) executes programs stored in memory, which is also called main memory or random access memory (RAM).  The contents of RAM remain as long as the computer has power, but if you turn off the computer, the contents of RAM disappear.  In order for the information to persist across power outages, the information is stored in seconday memory, which is either a hard disk drive or solid state memory.  When you purchase a modern laptop, you most likely get 8 gigabytes (GB) of memory and a terabyte (1,000 gigabytes) of hard disk storage.  When you purcahse a phone, the marketing terminology usually states a 64GB phone, which is referring to the secondary memory.
+All computers follow our simple **model**.  The Central Processing Unit (CPU) executes programs stored in memory, which is also called main memory or random access memory (RAM).  The contents of RAM remain as long as the computer has power, but if you turn off the computer, the contents of RAM disappear.  In order for the information to persist across power outages, the information is stored in seconday memory, which is either a hard disk drive or solid state memory.  When you purchase a modern laptop, you most likely get 8 gigabytes (GB) of memory and a terabyte (1,000 gigabytes) of hard disk storage.   A smart phone is a computer that adheres to this model.  A smart phone has input, output, CPU, RAM, and secondary memory.  When you purcahse a smart phone, the marketing terminology usually makes claims such as a 64GB phone, which is referring to the secondary memory. 
 
-We want to write Java programs, which must be stored and run on a computer.  Our Java programs will read input information, manipulate the information, and generate output information.  Our Java programs will consist of algorithms and data.  The data is our information and the algorithms manipulate the data.  The data we create will be in variables.  Each variable will have a type.  The algorithms will use assignment statements, expressions, method calls, conditional statements, and loop statements.  All of this is what we want to understand.
+We will learn to write Java programs, which must be stored in RAM and executed by the CPU.  Java programs will read input information, manipulate the information, and generate output information.  Our Java programs will consist of algorithms and data.  The data is our information and the algorithms manipulate the data.  The data we create will be in variables.  Each variable will have a type.  The algorithms will use assignment statements, expressions, method calls, conditional statements, and loop statements.  All of this is what we want to understand.
 
 ## Computer Memory
 
@@ -66,16 +66,23 @@ Address	  Value
 0004044   01010100
 ```
 
-A computer must encode all of its information in a sequence of bytes.  Determining what information these five bytes of memory encode is dependent upon how they are interpreted.  The bytes could be a program, they could be integers, they could be floating point numbers, or they could be characters. We need to learn some more before we can decode these five bytes of memory.  We will learn enough in the remainder of this section to begin interpreting bytes of memory.  We will also learn how to translate a decimal number to binary and back.
+A computer must encode all of its information in a sequence of bytes.  Determining what information these five bytes of memory encode is dependent upon how they are interpreted.  The bytes could be a program, they could be integers, they could be floating point numbers, or they could be characters. We need to learn some more before we can decode these five bytes of memory.  We will learn enough in the remainder of this module to begin interpreting bytes of memory.  We will also learn how to translate a decimal number to binary and back.
 
 ## Computer Science
 
 Computer science can mean several things.  You may think of computer science as writing programs, establishing networks, putting various workstations on the networks, creating websites, creating databases, removing malware from computers, or any combination of these things.  
 
-A more theoretical definition of computer science is studying what can be computed.  By computed we can construct an algorithm (and its accompanying data structures) that will execute its sequence of steps and terminate when finished.  We know that we can write computer programs to perform computations, but computer scientists also use abstract machines to determine computability.  A Turing Machine – named for its creator Alan Turing who had the movie Imitation Game created about him – is an example abstract machine.  The following is a question about the 3N+1 Algorithm discussed earlier.  
+For our class, we consider **computer science** to be *designing, analyzing, and evaluating algorithms and their accompanying data structure*.
+
+* Designing is the creating algorithm and data structures.
+* Analyzing is using your brain to think about the algorithm and data structures.
+* Evaluating is executing a program to discover characteristis of the algorithm and data structures.
+
+A more theoretical definition is - **computer science** is *studying what can be computed*.  Computed means we can construct an algorithm (and its accompanying data structures) that will execute its sequence of steps and terminate when finished.  We can compute many things, but we cannot compute everything.  For example, we cannot compute an exact representation of Pi because the number is infinite.  In addition to computers like our laptops and phones, computer scientist use abstract machines to determine computability.  A Turing Machine – named for its creator Alan Turing who had the movie Imitation Game created about him – is an example abstract machine.  
+
+The following is an example question in the study of computability about the 3N+1 Algorithm that we discuss in [Algorithms](/gustycooper.github.io/mydoc_1_algorithms) of this module.  
 
 Will the algorithm for 3N+1 terminate for all possible initial values of N? 
 
-We know it terminates for everything tried, but we have not answered the general question.
+We know the 3N+1 algorithm terminates for everything tried, but we have not answered the general question.
 
-For this class, we will consider **computer science** to be *designing, analyzing, and evaluating algorithms and their accompanying data structure*.

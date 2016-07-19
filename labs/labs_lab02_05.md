@@ -1,8 +1,8 @@
 ---
-title: Compute Largest (Labs - Lab 2)
+title: Compute Largest Lab
 keywords: largest
-last_updated: June 5, 2016
-summary: "<li>Practice writing a method and main - Lab 2, Compute Largest</li> <li>Practice using conditional expressions.</li> <li>Practice using System.out and Scanner.</li>"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a method and main - Compute Largest</li> <li>Practice using conditional expressions.</li> <li>Practice using System.out and Scanner.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_05/
 toc: false
@@ -37,4 +37,6 @@ Largest is 40.0
 **Bonus Points**: Complete this for an additional 5 points.
 
 ```public static double largest(double x1, double x2, double x3)``` – returns the largest of ```x1```, ```x2```, and ```x3```.  You shall use the Java conditional operators ```?:``` in implementing largest.  
+
+You will reuse your ```Largest``` code in [Simple Objects - MyMath Type Lab](/gustycooper.github.io/labs_lab03_04).
 

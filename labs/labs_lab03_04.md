@@ -1,8 +1,8 @@
 ---
-title: MyMath Type
+title: MyMath Type Lab
 keywords: class, mymath
-last_updated: June 5, 2016
-summary: "Lab 2, MyMath Type"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a MyMath type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your MyMath type.</li> <li>Practice creating test cases for your MyMath type.</li> <li>Practice placing your test cases in MyMathTester class that has a main method.</li> <li>Practice using your MyMath type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the MyMath objects you construct.</li> "
 sidebar: labs_sidebar
 permalink: /labs_lab03_04/
 toc: false
@@ -11,6 +11,7 @@ toc: false
 ## Create a Java MyMath Type
 
 **Points**: Complete this entire section for 10 points.
+
 
 This section will implement the same ```average``` and ```largest``` methods from [Average](/gustycooper.github.io/labs_lab02_04) and [Largest](/gustycooper.github.io/labs_lab02_05) as instance methods in one class, ```MyMath```.  If you completed bonus in [Largest](/gustycooper.github.io/labs_lab02_05), include both ```largest``` methods in ```MyMath```.  This time the ```average``` and ```largest``` methods will not be ```static```.  The ```MyMath class``` will not have any instance variables.  Since we do not have any instance variables, we will not require a constructor to initialize them.  This means we can use you can use the default ```MyMath()``` constructor, which Java provides to us for free.  You will be able to construct objects of type ```MyMath``` as follows.
 
@@ -45,3 +46,4 @@ Use BlueJ to construct and manipulate some myMath1 objects.  The following are e
 50.0   (double)
 ```
 
+You will add methods to MyMath in [Control Flow - MyMath Take 2 Lab](/gustycooper.github.io/labs_lab04_05).

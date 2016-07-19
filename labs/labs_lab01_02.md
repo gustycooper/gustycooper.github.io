@@ -1,15 +1,16 @@
 ---
-title: Course Agreement (Syllabus)
+title: Second Program Lab
 keywords: course agreement,
-summary: "Lab 1, First Program"
+summary: "<li>Understand how to use terminal input and output in your Java program.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab01_02/
 toc: false
 ---
 
-## Second Program
+## Second Program Lab
 
 ## Java Input and Output – 30 Points
+
 **Points**: Complete Steps 1 and 2 for 10 points, Step 3a for 10 points, and Step 3b 10 points.
 
 Use BlueJ to write a Java program that reads numbers from the terminal window, performs some arithmetic operation, and displays the results.

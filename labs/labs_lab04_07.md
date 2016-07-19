@@ -1,8 +1,8 @@
 ---
-title: Gerbil Game
+title: Gerbil Game Lab
 keywords: gerbil
 last_updated: June 5, 2016
-summary: "Lab 4, Gerbil Game"
+summary: "<li>Practice solving a simple game problem with nested ifs.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_07/
 toc: false
@@ -50,4 +50,6 @@ The formal parameters are the amounts of Rhodium, Platinum, Gold, and Ruthenium.
 ```
 
 Work through several specific, concrete examples to discover the algorithm.  The algorithm I created is several nested ifs.
+
+You can solve this problem without a loop.
 

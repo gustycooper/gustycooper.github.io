@@ -1,8 +1,8 @@
 ---
-title: Twitter Type
+title: Twitter Type Lab
 keywords: twitter
-last_updated: June 5, 2016
-summary: "Lab 4, Twitter Type"
+last_updated: July 17, 2016
+summary: "<li>Practice creating a Twitter Type.</li> <li>Practice using String methods.</li> <li>Practice using loops and conditionals to solve problems.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_06/
 toc: false
@@ -12,7 +12,7 @@ toc: false
 
 **Points**: Complete this entire section for 10 points.
 
-NOTE: The Gerbil Game lab is a rendition of a project from a Udacity class.
+This lab has been created by mashing together a similar lab in the [Udacity Java Course](https://www.udacity.com/course/intro-to-java-programming--cs046) and some methods from a lab created by Ron Zacharski.
 
 Write a Java ```Twitter class``` that has the following public interface.
 
@@ -63,6 +63,9 @@ for (int i = 0; i < word.length(); i++) {
         numVowels++;
 }
 ```
+
+You will add methods to Twitter in [Classes, Objects,... - Twitter Revisited Lab](/gustycooper.github.io/labs_lab04_05).
+
 
 The method ```noVowels(String word)``` will be similar to ```numVowels(String word)``` in that you have to loop through the parameter word; however, ```noVowels()``` uses the accumulator pattern to constructs a new ```String``` from word without the vowels.
 
@@ -128,4 +131,6 @@ Use BlueJ to construct and manipulate some ```Twitter``` objects.  The following
 > s4
 “ogday”  (String) 
 ```
+
+You will add methods to Twitter in [Classes, Objects, ... -  Twitter Revisited Lab](/gustycooper.github.io/labs_lab05_03).
 

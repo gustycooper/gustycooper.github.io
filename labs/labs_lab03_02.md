@@ -1,8 +1,9 @@
 ---
-title: Car Type
+title: Car Type Lab
 keywords: class, car
-last_updated: June 5, 2016
-summary: "Lab 2, Car Type"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a Car type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your Car type.</li> <li>Practice creating test cases for your Car type.</li> <li>Practice placing your test cases in CarTester class that has a main method.</li> <li>Practice using your Car type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the Car objects you construct.</li> "
+
 sidebar: labs_sidebar
 permalink: /labs_lab03_02/
 toc: false
@@ -10,7 +11,9 @@ toc: false
 
 ## Create a Java Car Type
 
-**Points**: Complete this entire section for 20 points.  You must include JavaDoc in your code to receive the 20 points for this section.  If you choose to omit JavaDoc, you can only receive 10 points for this section.
+**Points**: Complete this entire section for 20 points.  You must include JavaDoc in your code to receive the 20 points for this section.  If you choose to omit JavaDoc, you can only receive 10 points.
+
+This lab has been modeled after a similar lab in the [Udacity Java Course](https://www.udacity.com/course/intro-to-java-programming--cs046).
 
 This section describes how to create a Java ```Car class``` and its corresponding ```CarTester class```.  Since we have been through the details of creating a couple of classes, the specification of the ```Car class``` is sparser than the previous section.
 

@@ -3,7 +3,7 @@ title: Example Authoring
 tags: [getting_started]
 keywords: sample, authoring
 last_updated: May 1, 2016
-summary: "<li>This page does not have learning objectives.</li> <li>I added this page in order to retain examples of authoring pages.</li>"
+summary: "<li>This page is not part of the class and thus does not have learning objectives.</li> <li>I added this page in order to retain examples of authoring pages.</li> <li>I examine the text in the corresponding .md file to remember how to author specific techniques.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_0_examples/
 ---

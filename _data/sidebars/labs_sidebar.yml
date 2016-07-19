@@ -4,7 +4,7 @@
 entries:
 - title: Labs
   product: Labs
-  version: 0.0
+  version: 1.0
   folders:
 
   - title:
@@ -27,6 +27,10 @@ entries:
       url: /labs_landing_page/
       output: web
 
+    - title: Sample Lab Submission
+      url: /labs_lab00_00/
+      output: web
+
   - title: Intro & 1st Programs
     output: web, pdf
 
@@ -41,6 +45,10 @@ entries:
       
     - title: Second Program
       url: /labs_lab01_02/
+      output: web, pdf
+      
+    - title: Primitive Types
+      url: /labs_lab01_03/
       output: web, pdf
       
   - title: Expressions, Methods
@@ -175,36 +183,20 @@ entries:
       url: /labs_lab04_11/
       output: web, pdf
       
-  - title: Classes, Objects, ...
-    output: web, pdf
-
-    folderitems:
-    - title: Classes, Objects, ... Overview
-      url: /labs_lab05_00/
-      output: web, pdf
-      
-    - title: Person Revisited
-      url: /labs_lab05_01/
-      output: web, pdf
-      
-    - title: Car Revisited
-      url: /labs_lab05_02/
-      output: web, pdf
-      
-    - title: Twitter Revisited
-      url: /labs_lab05_03/
-      output: web, pdf
-      
-    - title: Student Type
-      url: /labs_lab05_04/
-      output: web, pdf
-      
   - title: Arrays, ArrayLists
     output: web, pdf
 
     folderitems:
     - title: Arrays, ArrayLists Overview
       url: /labs_lab06_00/
+      output: web, pdf
+      
+    - title: Car Revisited
+      url: /labs_lab05_02/
+      output: web, pdf
+      
+    - title: Person Revisited
+      url: /labs_lab05_01/
       output: web, pdf
       
     - title: Loop Patterns
@@ -223,8 +215,48 @@ entries:
       url: /labs_lab06_04/
       output: web, pdf
       
+  - title: Classes, Objects, ...
+    output: web, pdf
+
+    folderitems:
+    - title: Classes, Objects, ... Overview
+      url: /labs_lab05_00/
+      output: web, pdf
+      
+    - title: Twitter Revisited
+      url: /labs_lab05_03/
+      output: web, pdf
+      
+    - title: Student Type
+      url: /labs_lab05_04/
+      output: web, pdf
+      
     - title: Person Type AGAIN
       url: /labs_lab06_05/
+      output: web, pdf
+      
+  - title: Packages, ADTs
+    output: web, pdf
+
+    folderitems:
+    - title: Packages, Interfaces, ADTs Overview
+      url: /labs_lab08_00/
+      output: web, pdf
+      
+    - title: Stack ADT
+      url: /labs_lab08_01/
+      output: web, pdf
+      
+    - title: Palindrome Checker
+      url: /labs_lab08_02/
+      output: web, pdf
+      
+    - title: Parentheses Balance Checker
+      url: /labs_lab08_03/
+      output: web, pdf
+      
+    - title: MyMath Package
+      url: /labs_lab08_04/
       output: web, pdf
       
   - title: Graphics
@@ -288,30 +320,6 @@ entries:
           url: /labs_lab07_02_05/
           output: web, pdf
 
-  - title: Packages, ADTs
-    output: web, pdf
-
-    folderitems:
-    - title: Packages, Interfaces, ADTs Overview
-      url: /labs_lab08_00/
-      output: web, pdf
-      
-    - title: Stack ADT
-      url: /labs_lab08_01/
-      output: web, pdf
-      
-    - title: Palindrome Checker
-      url: /labs_lab08_02/
-      output: web, pdf
-      
-    - title: Parentheses Balance Checker
-      url: /labs_lab08_03/
-      output: web, pdf
-      
-    - title: MyMath Package
-      url: /labs_lab08_04/
-      output: web, pdf
-      
   - title: Recursion, Searching, Sorting
     output: web, pdf
 

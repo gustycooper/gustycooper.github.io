@@ -1,8 +1,8 @@
 ---
-title: MyMath Type - Take 2 (Labs - Lab 4)
+title: MyMath Type - Take 2 Lab
 keywords: mymath
-last_updated: June 5, 2016
-summary: "Lab 4, MyMath Type"
+last_updated: July 17, 2016
+summary: "<li>Practice maintenace programming by adding methods to MyMath class.</li> <li>Practice using loops and conditionals to solve problems.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_05/
 toc: false
@@ -14,8 +14,8 @@ toc: false
 
 In this lab, you will add two new methods to [MyMath](/gustycooper.github.io/labs_lab03_04).  The new methods are described as follows.
 
-* ```int numDigits(int number) – returns the number of decimal digits in number.  
-* ```int coins(int cents) – returns the minimal number of coins – quarter, dime, nickel, and penny – that are required to make the amount cents. For example, the minimal number of coins to make 76 cents of change is 4 (3 quarters and 1 penny). 
+* ```int numDigits(int number)``` – returns the number of decimal digits in number.  
+* ```int coins(int cents)``` – returns the minimal number of coins – quarter, dime, nickel, and penny – that are required to make the amount cents. For example, the minimal number of coins to make 76 cents of change is 4 (3 quarters and 1 penny). 
 
 You will be able to construct and manipulate objects of type MyMath as follows.
 

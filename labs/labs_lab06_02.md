@@ -1,8 +1,8 @@
 ---
 title: MyIntegers Type
 keywords: looping pattern, array, arraylist
-last_updated: June 6, 2016
-summary: "Lab 5, MyIntegers Type"
+last_updated: July 18, 2016
+summary: "<li>Practice using arrays to implement a simplified ArrayList-like data structures for ints.</li> <li>Practice extending an array when the array becomes full.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab06_02/
 toc: false
@@ -12,7 +12,7 @@ toc: false
 
 **Points**: Complete this entire section for 20 points.
 
-By completing this section, you will have a better appreciation of Java’s ArrayLists, which as we know can grow and shrink.  We can create Java’s ArrayLists to hold any object.  We will create a simplified a simplified version of a ArrayLists<Integer> that only contains Java ints.  
+By completing this section, you will have a better appreciation of Java’s ArrayLists, which as we know can grow and shrink.  We can create Java’s ArrayLists to hold any object.  We will create simplified version of a ArrayLists<Integer> that only contains Java ints.  
 
 Create a Java MyIntegers class that will contain a private int[] array along with various methods for manipulating the MyIntegers.  The MyIntegers class will allow you to become proficient in basic array algorithms such as the following.
 
@@ -30,6 +30,7 @@ for (int i = 0; i < count; i++) {
    sum += myIntegers[i];
 }
 ```
+
 ### Instance Variables
 
 ```java

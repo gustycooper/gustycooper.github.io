@@ -13,21 +13,18 @@ permalink: /mydoc_1_overview/
 
 The Introduction module is primarily concerned with concepts and not programming; however, we do write our first programs in this module.  The Introduction section defines the basic components of computers science.  After completing this section, you should understand the following concepts.
 
+* information
 * computers
-* input
-* output
-* CPU
-* RAM
-* secondary memory
-* problems
-* problem solving
-* algorithms
+* input and output
+* CPU, RAM, and secondary memory
+* problems and problem solving
+* algorithms and data structures
 * programs
+* representing numbers and characters in computers
 * primitive types
-* compiling
-* interpreting
-* assembly
-* byte code
+* IDEs, compiling, and interpreting
+* assembly and byte code
+* software development process
 
 The Introduction Section does include some elementary programs, including a few programming problem solving patterns.
 

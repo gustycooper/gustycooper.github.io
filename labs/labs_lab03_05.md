@@ -1,8 +1,8 @@
 ---
-title: Dice Type
+title: Dice Type Lab
 keywords: class, dice
-last_updated: June 5, 2016
-summary: "Lab 2, Dice Type"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a Dice type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your Dice type.</li> <li>Practice creating test cases for your Dice type.</li> <li>Practice placing your test cases in DiceTester class that has a main method.</li> <li>Practice using your Dice type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the Dice objects you construct.</li> "
 sidebar: labs_sidebar
 permalink: /labs_lab03_05/
 toc: false

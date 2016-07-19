@@ -1,5 +1,5 @@
 ---
-title: Codepad Expressions
+title: Codepad Expressions Lab
 keywords: expression
 last_updated: June 5, 2016
 summary: "<li>Practice expressions using the BlueJ Codepad.</li>"
@@ -8,7 +8,7 @@ permalink: /labs_lab02_01/
 toc: false
 ---
 
-## Create Java Expressions
+## Create Java Expressions in BlueJ Codepad
 
 **Points**: Understand this entire section for 10 points.  If you do not understand Java expressions, this section provides you with the opportunity to practice in the BlueJ Codepad.  The BlueJ Codepad is a nice tool that I use to experiment with Java features.  If you understand Java expressions, then proceed to the next section.
 

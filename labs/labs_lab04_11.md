@@ -1,8 +1,8 @@
 ---
-title: Pig - Computer
+title: Pig - Computer Lab
 keywords: pig
-last_updated: June 5, 2016
-summary: "Lab 4, Pig - Computer"
+last_updated: July 17, 2016
+summary: "<li>Practice solving a computer simulation of the Pig Game.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_11/
 toc: false
@@ -14,7 +14,7 @@ toc: false
 
 NOTE: The Pig Game lab is a rendition of a project created by Ian Finlayson.
 
-Now that you have implemented Pig, lets create another version of Pig where the second player is the computer.  This is a relative simple simulation.  Whenever it is the computer’s first time to roll, it will always select yes.  You need some algorithm to choose whether to roll on subsequent rolls.  The following two steps shows a way to play the computers turn, where the computer has its own ```Dice``` object, shown as ```computerDie``` in the following.  This means that your code would have the following declaration: ```Dice computerDie = new Dice(1342);```
+Now that you have implemented Pig, lets create another version of Pig where the second player is the computer.  This is a relative simple simulation.  Whenever it is the computer’s first time to roll, it will always select yes.  You need some algorithm to choose whether to roll on subsequent rolls.  The following two steps shows a way to play the computers turn, where the computer has its own [```Dice```](/gustycooper.github.io/labs_lab03_05) object, shown as ```computerDie``` in the following.  This means that your code would have the following declaration: ```Dice computerDie = new Dice(1342);```
 
 * Roll 1: Yes perform the first roll.
 * Roll 2, 3, 4, …: Use the following algorithm to determine whether to roll.  You should realize the following is an aggressive algorithm since the computer will choose to roll 2 out of 3 times.

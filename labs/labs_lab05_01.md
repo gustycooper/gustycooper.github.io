@@ -1,8 +1,8 @@
 ---
-title: Person Type Revisited
+title: Person Type Revisited Lab
 keywords: class, person
-last_updated: June 6, 2016
-summary: "Lab 5, Person Type Revisited"
+last_updated: July 18, 2016
+summary: "<li>Practice using Netbeans to redo the Person type we created earlier.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab05_01/
 toc: false
@@ -17,23 +17,23 @@ We are going to create a new Netbeans project that uses code we created in [Pers
 1. Select File New Project.  This places you in the Netbeans New Project Wizard
 2. Panel 1 – Choose Project: 
 
-   a. Select Java
-   b. Select Java Application
-   c. Next
+   * a. Select Java
+   * b. Select Java Application
+   * c. Next
 
 3. Panel 2 – Name and Location: 
 
-   a. Enter Project Name: ```Lab5-1Project``` (or some other name if you like).
-   b. Enter Project Folder: <you choose>
-   c. You will see a check in Create Main Class.  We want to create a main class ```PersonTester``` that is in the default package.  At this point you will see something like ```lab5.pkg2project.Lab51Project```.  Change this to ```PersonTester```.
-   d. Finish
+   * a. Enter Project Name: ```Lab5-1Project``` (or some other name if you like).
+   * b. Enter Project Folder: <you choose>
+   * c. You will see a check in Create Main Class.  We want to create a main class ```PersonTester``` that is in the **default package**.  In [Packages, ADTs](/gustycooper.github.io/mydoc_8_packages] we study packages.  For now and for most of our Netbeans projects we want to place our code in the default package.  At this point in Netbeans you will see something like ```lab5.pkg2project.Lab51Project```.  Change this to ```PersonTester```.
+   * d. Finish
 
 4. At this point you will be editing the ```PersonTester class```, which has a ```main()``` method.  You should copy and paste the code from BlueJ ```PersonTester.java main()``` method into the ```main()``` of this file.  Use whatever editor you like.  Click on the Save All icon.  You will have icons indicating there are errors in ```PersonTester.java```.  This is ok because you have not created the ```Person.java``` file.
 
 5. Now right-click on the <default package> icon and select New Java Class.  This creates the New Java Class panel.
 
-   a. Change the Class Name: to be ```Person```
-   b. Finish
+   * a. Change the Class Name: to be ```Person```
+   * b. Finish
 
 6. At this point you will be editing the ```Person.java``` class.  You should copy and paste the code from BlueJ ```Person.java``` into this file.  Use whatever editor you like.  Click the Save All icon.
 
@@ -42,21 +42,21 @@ We are going to create a new Netbeans project that uses code we created in [Pers
 8. At this point, you should see something like the following displayed in the Output panel.  NOTE: In the example below I have entered Gusty and Cooper at the two prompts.
 run:
 
-```java
-Enter first name: Gusty
-Enter last name: Cooper
-Friends of Gusty Cooper
-Expected: Gusty Coletta Emily
-Actual:  Gusty Coletta Emily
-BUILD SUCCESSFUL (total time: 10 seconds)
-```
+   ```java
+   Enter first name: Gusty
+   Enter last name: Cooper
+   Friends of Gusty Cooper
+   Expected: Gusty Coletta Emily
+   Actual:  Gusty Coletta Emily
+   BUILD SUCCESSFUL (total time: 10 seconds)
+   ```
 
 9. Now we will edit our ```.java``` files using Netbeans.  You will use the Projects panel to locate your ```Person.java``` and ```PersonTester.java``` files.  They are in <default package> which is in Source Packages.  Double click on each of them.  This will open tabs in the edit panel for both files.  It will also the Navigator window, which shows the methods and instance variables of each class.
 
 10. Select the ```Person.java``` tab in the Edit window.  You can edit your ```Person``` class using this tab.  The Navigator window shows the constructor, methods, and instance variables of the Person class.
 
-    a. The Edit window has lots of nice features.  You will see various hints and tips provided by the editor like providing you with a selection of all String methods. You can use the Expand/Collapse icons in the editor to expand and collapse code segments.  I think you will like the editor.
-    b. Hover over each of the methods/instance variables in the Navigator window.  Netbeans will display the JavaDoc.  Pretty cool, huh?  That is provided you created JavaDoc when you implemented Person for Lab 3.
+    * a. The Edit window has lots of nice features.  You will see various hints and tips provided by the editor like providing you with a selection of all String methods. You can use the Expand/Collapse icons in the editor to expand and collapse code segments.  I think you will like the editor.
+    * b. Hover over each of the methods/instance variables in the Navigator window.  Netbeans will display the JavaDoc.  Pretty cool, huh?  That is provided you created JavaDoc when you implemented Person for Lab 3.
 
 11. Use the Netbeans editor to update the ```Person``` class.  There are several updates that you will make, which are described in the following steps.
 

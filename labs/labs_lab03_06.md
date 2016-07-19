@@ -1,8 +1,8 @@
 ---
-title: MyString Type (Labs - Lab 3)
+title: MyString Type Lab
 keywords: mystring
-last_updated: June 5, 2016
-summary: "Lab 3, MyString Type"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a MyString type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your MyString type.</li> <li>Practice creating test cases for your MyString type.</li> <li>Practice placing your test cases in MyStringTester class that has a main method.</li> <li>Practice using your MyString type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the MyString objects you construct.</li> "
 sidebar: labs_sidebar
 permalink: /labs_lab03_06/
 toc: false
@@ -10,11 +10,10 @@ toc: false
 
 ## Create a MyString Type
 
-**Points**: Complete this entire section for 11 points.
+**Points**: Complete this entire section for 10 points.
 
 This lab allows you to practice creating a Java class – ```MyString```.  Your ```MyString``` class will be your own simplified version of the Java ```String``` class.  You will use the same ```String``` methods that you used to complete 2.1.  Write a Java public class ```MyString``` that satisfies the requirements listed in this section.  This section also describes steps to test your ```MyString``` class.  You should recall that the general format of a Java class is as follows.
 
-{% raw %}
 ```java
 public class ```MyString``` {
 // instance variables
@@ -25,7 +24,6 @@ public class ```MyString``` {
 
 }
 ```
-{% endraw %}
 
 1. Your ```MyString``` class shall have one constructor that saves the parameter in a private instance variable ```myString```.  The constructor signature shall be as follows.
 

@@ -1,8 +1,8 @@
 ---
-title: Looping Patterns, Arrays, ArrayLists
+title: Looping Patterns, Arrays, ArrayLists Lab
 keywords: looping pattern, array, arraylist
 last_updated: June 6, 2016
-summary: "Lab 5, Looping Patterns, Arrays, ArrayLists"
+summary: "<li>Practice using arrays and ArrayLists in the looping patterns.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab06_01/
 ---
@@ -11,7 +11,7 @@ permalink: /labs_lab06_01/
 
 **Points**: Complete this entire section for 20 points.
 
-This section allows you to practice programming looping patterns.  These patterns are used over-and-over in programming.  All good programmers know these patterns like the back of their hands.  All of the patterns are variations of the accumulator pattern.  The looping patterns in this section include the following.
+This section allows you to practice programming looping patterns.  We first studied looping patterns in [Loop Patterns](/gustycooper.github.io/mydoc_5_loop_patterns).  We first practiced writing code for loopint patterns in [Loops, Ifs, Switches Lab](/gustycooper.github.io/labs_lab04_03).  We continue practicing our looping patterns in this lab.  These looping patterns are used over-and-over in programming.  All good programmers know these patterns like the back of their hands.  All of the patterns are variations of the accumulator pattern.  The looping patterns in this section include the following.
 
 * Count the number of times a value is in an array/array list.
 * Find the largest value in an array/array list.
@@ -125,7 +125,8 @@ public static void main(String[] args) {
 Another technique to populating arrays and array lists is to read data from file.  If you use this technique, you will get to practice with File input.    Connecting a Java File class to a Java Scanner class does this.  We have used Java Scanner class objects to read input from the console.  By connecting a Scanner to a File, you can read input from text files.  You will create two static methods that will read the contents of a file.  The first method reads the file into a double[] array.  The second method reads the contents of a file into an ArrayList<Double>.
 
 #### static void fillArray(String filename, double[] numbers)
-static void fillArray(String filename, double[] numbers) – uses a Scanner and a File to create a fillArray() method that you can use to fill arrays from file contents for use in the subsequent methods.  The signature for this method will throw a FileNotFoundException, which is shown as follows.  I include the File and Scanner for your review. You have to be careful with this method so that it does not overflow the double[] array actual parameter.
+
+```static void fillArray(String filename, double[] numbers)``` – uses a Scanner and a File to create a fillArray() method that you can use to fill arrays from file contents for use in the subsequent methods.  The signature for this method will throw a FileNotFoundException, which is shown as follows.  I include the File and Scanner for your review. You have to be careful with this method so that it does not overflow the double[] array actual parameter.
 
 ```java
 static void fillArray(String filename, double[] numbers) throws   
@@ -142,7 +143,7 @@ static void fillArray(String filename, double[] numbers) throws
 }
 ```
 
-You should notice how fillArray() throws a java.io.fileNotFoundException.  Since you will be calling this method from your main() method, your main() must either catch of throw the exception.  For example, you can declare you main() as follows.
+You should notice how fillArray() throws a java.io.fileNotFoundException.  We study exceptions in [Exceptions, Try](/gustycooper.github.io/mydoc_6a_exceptions).  For now you can mimick this code.  Since you will be calling this method from your main() method, your main() must either catch of throw the exception.  For example, you can declare you main() as follows.
 
 ```java
 public static void main(String[] args) throws FileNotFoundException
@@ -190,7 +191,7 @@ Java will fill numbers with 20 values of 0.0.   This means when using fillArray(
  
 #### static void fillArrayList(String filename, ArrayList<Double> numbers)
 
-static void fillArrayList(String filename, ArrayList<Double> numbers) – This method is just like fillArray() except it is filling an ArrayList.  This is a safer method since you can keep adding to an ArrayList.  Remember that ArrayLists contain objects – not Java’s primitive data types.  That is why we use Double, which is the object that Java provides to box the elementary double type.  This method will throws java.io.FileNotFoundException just like fillArray.  The following is the code for this method.  When Java executes the statement numbers.add(number); Java performs boxing to change the double number to a Double.   Java also boxes in the other direction – for example number = numbers.get(0);
+```static void fillArrayList(String filename, ArrayList<Double> numbers)``` – This method is just like fillArray() except it is filling an ArrayList.  This is a safer method since you can keep adding to an ArrayList.  Remember that ArrayLists contain objects – not Java’s primitive data types.  That is why we use Double, which is the object that Java provides to box the elementary double type.  This method will throws java.io.FileNotFoundException just like fillArray.  The following is the code for this method.  When Java executes the statement numbers.add(number); Java performs boxing to change the double number to a Double.   Java also boxes in the other direction – for example number = numbers.get(0);
 
 ```java
 static void fillArrayList(String filename, ArrayList<Double> numbers) throws java.io.FileNotFoundException 
@@ -205,15 +206,16 @@ static void fillArrayList(String filename, ArrayList<Double> numbers) throws jav
    }
 }
 ```
+
 ### Methods to Compute an Average from an Array and ArrayList of Doubles
 
 You shall write the code for two average methods, one has a double[] formal parameter and the other has an ArrayList<Double> formal parameter.  You should populate some arrays and ArrayLists and test your average methods.
 
 ```java
 static double average(double[] numbers) – returns the average of the doubles in the array numbers.
+static double average(ArrayList<Double> numbers) – returns the average of the doubles in the ArrayList numbers.
 ```
 
-static double average(ArrayList<Double> numbers) – returns the average of the doubles in the ArrayList numbers.
 
 ### Method to Count the Number of Times a Value is in an Array/Array List
 
@@ -231,7 +233,6 @@ You shall write the code for two largest methods, one has a double[] formal para
 
 ```java
 static double largest(double[] numbers) – returns the largest value in the array numbers.
-
 static double largest(ArrayList<Double> numbers) – returns the largest value in the ArrayList numbers.
 ```
 
@@ -287,5 +288,5 @@ public static class LoopingPatterns {
 
 ### Method to Convert String to Char[] to String
 
-static String stringToCharToString(String s, char toReplace, char newChar) – Use the String method toCharArray to first convert the formal parameter s to a local char[].  Then loop through the local char[] replacing each occurrence of the char toReplace with the char newChar.  Finally, the method uses the String constructor String(char[]) to convert the changed local char[] back to a String in order to return it.
+```static String stringToCharToString(String s, char toReplace, char newChar)``` – Use the ```String``` method ```toCharArray``` to first convert the formal parameter s to a local ```char[]```.  Then loop through the local ```char[]``` replacing each occurrence of the ```char toReplace``` with the ```char newChar```.  Finally, the method uses the ```String``` constructor ```String(char[])``` to convert the changed local ```char[]``` back to a ```String``` in order to return it.
 

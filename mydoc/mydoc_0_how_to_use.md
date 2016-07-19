@@ -33,7 +33,9 @@ The CPSC 220 Webbook in conjuction with Canvas contains all of the material for 
 
 ## Textbook Material
 
-The Textbook material contains everything we study.  Each expandable selection in the Textbook Sidebar is a module.  We cover the modules in order from top-to-bottom.  Within a module, you read each section from top-to-bottom.  The detailed schedule is provided on Canvas. A rough schedule of the Textbook modules is the following.
+The Textbook material contains everything we study.  Each expandable selection in the Textbook Sidebar is a module.  We cover the modules in order from top-to-bottom.  Within a module, you read each section from top-to-bottom.  The detailed schedule of readings and programming assignmens is provided on Canvas. A rough schedule of the Textbook modules is provided in the following discussion.
+
+The following are the core programming modules, during which you learn the essential problem solving and programming techniques for this course.
 
 * [Intro & 1st Programs](/gustycooper.github.io/mydoc_1_overview) - week 1
 * [Expressions](/gustycooper.github.io/mydoc_2_expressions) - week 2
@@ -41,32 +43,42 @@ The Textbook material contains everything we study.  Each expandable selection i
 * [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) - week 3
 * [Control Flow](/gustycooper.github.io/mydoc_4_control_flow) - week 4
 * [Debugging](/gustycooper.github.io/mydoc_4a_debugging) - week 4
-* [Classes, Objects, ...](/gustycooper.github.io/mydoc_5_classes_objects) - week 5
-* [Arrays and ArrayLists](/gustycooper.github.io/mydoc_6_arrays_arraylists) - week 6
-* [Exceptions, Try, File I/O](/gustycooper.github.io/mydoc_6a_exceptions_try) - week 8
-* [Graphics](/gustycooper.github.io/mydoc_7_graphics) - weeks 9, 10
-* [Packages, Interfaces, ADTs](/gustycooper.github.io/mydoc_8_packages_ADT) - week 11
+* [Arrays and ArrayLists](/gustycooper.github.io/mydoc_6_arrays_arraylists) - week 5
+* [Exceptions, Try, File I/O](/gustycooper.github.io/mydoc_6a_exceptions_try) - week 6
+* [Classes, Objects, ...](/gustycooper.github.io/mydoc_5_classes_objects) - weeks 7, 8
+* [Packages, Interfaces, ADTs](/gustycooper.github.io/mydoc_8_packages_ADT) - week 9
+
+The module on graphics is alway fun, but Java graphics takes effort to understand.  We solve problems and write programs in this module, using all of the techniques we have studied thus far.  Many of the programs you write are mimicks of code provided.
+
+* [Graphics](/gustycooper.github.io/mydoc_7_graphics) - weeks 10, 11
+
+The module covers three topics primarily from a conceptual perspective.  We learn to solve problems recursively; however, recursive thinking is usually difficult to grasp at first so we do not become experts.  We study several searching and sorting algorithms, learning how to measure the efficiency of the algorithms by counting the steps.
+
 * [Recursion, Searching, Sorting](/gustycooper.github.io/mydoc_9_method_call_frames) - weeks 12, 13
 
 ## Syllabus Material
 
 The Syllabus material provides all of the information typically contained in a Syllabus.
 
-[Syllabus Landing Page](/gustycooper.github.io/p1_landing_page).
+* [Syllabus Landing Page](/gustycooper.github.io/p1_landing_page).
 
 ## Labs Material
 
-Each module in the Textbook material has a corresponding lab.  A lab has several problems that you must solve.  You accumulate points based upon how many labs you solve.  You can help each other on labs.
+Each module in the Textbook material has a corresponding lab.  A lab has several problems that you must solve.  You accumulate points based upon how many labs you solve.  Teammates can help each other on labs.
 
-[Syllabus Lab Description](/gustycooper.github.io/p1_labs).
+* [Syllabus Lab Description](/gustycooper.github.io/p1_labs)
+* [Labs](/gustycooper.github.io/labs_landing_page)
 
 ## Projects Material
 
 The class have 5 programming projects, which are defined in the Projects material.  Projects are completed in addition to labs.  Usually have have labs and projects overlapping.  You must complete labs on your own without help.
 
-[Syllabus Project Description](/gustycooper.github.io/p1_projects).
+* [Syllabus Project Description](/gustycooper.github.io/p1_projects).
+* [Projects](/gustycooper.github.io/projects_landing_page)
 
 ## Reference Material
 
 This collection of webpages provide links to references and acknowledgements.
+
+* [References and Acknowledgements](/gustycooper.github.io/p2_landing_page)
 

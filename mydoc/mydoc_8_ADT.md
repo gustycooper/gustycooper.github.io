@@ -3,7 +3,7 @@ title: Abstract Data Types
 tags: [package, interface, inheritance]
 keywords: abstract, data, type
 last_updated: June 11, 2016
-summary: "Abstract Data Types"
+summary: "<li>Understand Abstract Data Types.</li> <li>Understand and implement a queue ADT.</li> <li>Understand and implement a stack ADT.</li> <li>Use an interface when implementing a queue and a stack.<li> <li>Explore Java generic types for queues and stacks.<li> <li>Understand how to implement your own exception.</li> <li>Solve problems with a queue and a stack.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_8_ADT/
 ---

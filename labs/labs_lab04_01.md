@@ -1,13 +1,15 @@
 ---
-title: First Loops (Labs - Lab 4)
-keywords: loop
-summary: "Lab 4, First Loops"
+title: First Loops Lab
+keywords: loop, while, for
+last_updated: July 17, 2016
+summary: "<li>Practice wrintg for, while, and do-while loops.</li> <li>Practice using an if statement within a loop.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_01/
 toc: false
 ---
 
-## 4.1 Create a Java Program to Study and Play Video Games – 10 points
+## Create a Java Program to Study and Play Video Games
+
 **Points**: Complete this entire section for 10 points.
 
 Create a Java class MyFirstLoop that has a public static void main(String[] args) method that contains a while loop, a for loop, and a do-while loop.  Each of your loops will print Study to the console on 6 separate lines.  The following is example output (the numbers are part of your output).

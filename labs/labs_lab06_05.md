@@ -1,8 +1,8 @@
 ---
-title: Person Type - Again
-keywords: looping pattern, array, arraylist
-last_updated: June 6, 2016
-summary: "Lab 5, Person Type - Again"
+title: Person Type One More Time Lab
+keywords: class, type, enum
+last_updated: July 18, 2016
+summary: "<li>Practice writing enum types.</li> <li>Practice using enum types in conjuction with other types.</li> <li>Practice writing classes that define types.</li> <li>Practice creating instance variables, constructors, and instance methods within your class.</li> <li>Practice creating test cases for your types.</li> <li>Practice placing your test cases in tester classes that have a main method.</li> <li>Practice using your types to declare variables.</li> <li>Practice constructing objects of your types.</li> <li>Practice calling instance methods in the objects you construct.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab06_05/
 toc: false
@@ -12,20 +12,21 @@ toc: false
 
 **Points**: Complete this entire section for 30 points.
 
-This lab uses the Person class from Section 6.2 and the Student subclass (of Person) along with the Banner interface from Section 5.4. 
-1. Begin with the Java Person class from 6.2.  This is the Person class that has friends that implemented as an ArrayList<Person> along with all of the methods defined.
+This lab uses the Person class from [Person Revisited](/gustycooper.github.io/labs_lab06_03) and the ```Student``` subclass (of ```Person```) along with the ```Banner``` interface from [Student Type Lab](/gustycooper.github.io/labs_lab05_04).
 
-2. Override the Java Object class toString() method for Person so that it prints the name of the person.
+1. Begin with the Java Person class from [Person Revisited](/gustycooper.github.io/labs_lab06_03).  This is the ```Person``` class that has ```friends``` that implemented as an ```ArrayList<Person>``` along with all of the methods defined.
 
-3. Update your Student class that implements the Banner interface so that it extends the Person class from 1.
+2. Override the Java Object method ```toString()``` method for ```Person``` so that it prints the name of the person.
 
-4. Implement a Dog class that has a DogType enum that defines the following types of dogs: HOUND, COLLIE, GERMAN_SHEPARD, and POODLE.  You may add more types if you like.  You Dog class should define the DogType as public so that users of the class can do the following.  Your Dog class should satisfy the following API.
+3. Update your ```Student``` class that implements the ```Banner``` interface so that it extends the ```Person``` class from step 1.
 
-   * a. public Dog(String name, int age, DogType type) – Constructor where age is people years.
-   * b. public String getName() – returns the name of the dog.
-   * c. public DogType getType() – returns the type of the dog.
-   * d. public int getAge() – returns the age of the dog in people years.
-   * e. public int getDogAge() – returns the age of the dog in dog years where a people year is equal to 7 dog years.
+4. Implement a ```Dog``` class that has a ```DogType``` enum that defines the following types of dogs: ```HOUND```, ```COLLIE```, ```GERMAN_SHEPARD```, and ```POODLE```.  You may add more types if you like.  You Dog class should define the DogType as public so that users of the class can do the following.  Your Dog class should satisfy the following API.
+
+   * a. ```public Dog(String name, int age, DogType type)``` – Constructor where age is people years.
+   * b. ```public String getName()``` – returns the name of the dog.
+   * c. ```public DogType getType()``` – returns the type of the dog.
+   * d. ```public int getAge()``` – returns the age of the dog in people years.
+   * e. ```public int getDogAge()``` – returns the age of the dog in dog years where a people year is equal to 7 dog years.
 
       ```java
       Dog d = new Dog("Gusty", 5, Dog.DogType.HOUND);
@@ -33,12 +34,12 @@ This lab uses the Person class from Section 6.2 and the Student subclass (of Per
 
 5. Add the following methods to your Person class.
 
-   * a. void addDog(Dog dog) – adds the Dog dog to the Person.  You can think of this as the Person now has a pet dog.  You can add as many pet dogs as you lik.
-   * b. boolean hasDog() – returns true of the Person has a pet dog, otherwise returns false
+   * a. ```void addDog(Dog dog)``` – adds the Dog dog to the Person.  You can think of this as the Person now has a pet dog.  You can add as many pet dogs as you lik.
+   * b. ```boolean hasDog()``` – returns true of the Person has a pet dog, otherwise returns false
 
-6. Since you the methods addDog() and hasDog() are Person methods, your Students can have dogs for pets.
+6. Since you the methods ```addDog()``` and ```hasDog()``` are ```Person``` methods, your ```Students``` can have dogs for pets.
 
-7. Create a PersonTester class that creates Persons and Students that allows you to do the following.  You can use your imagination to add to this scenario.
+7. Create a ```PersonTester``` class that creates ```Person```s and ```Student```s that allows you to do the following.  You can use your imagination to add to this scenario.
 
    * a. You will create five Persons, some of which are Students: Gusty, Jeremy, Brandalee, Coletta, and Emily
    * b. Gusty is a Person, but not a Student.  Gusty does not have any dogs.  

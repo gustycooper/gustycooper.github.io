@@ -1,8 +1,8 @@
 ---
-title: Split the Bill (Labs - Lab 2)
+title: Split the Bill Lab
 keywords: split the bill
-last_updated: June 5, 2016
-summary: "<li>Practice writing a method and main - Lab 2, Split the Bill.</li> <li>Practice using System.out and Scanner.</li>"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a method and main - Split the Bill.</li> <li>Practice using System.out and Scanner.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_02/
 toc: false

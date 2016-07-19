@@ -2,7 +2,7 @@
 title: Arrays
 tags: [collection]
 keywords: arrays, arraylists
-last_updated: June 15, 2016
+last_updated: July 19, 2016
 summary: "<li>Understand arrays are a sequential collection of data.</li> <li>Understand each element of an array is the same type.</li> <li>Understand elements of an array have indices from 0 to the array.length-1.</li> <li>Understand how to declare array variables.</li> <li>Understand how to allocate array objects.</li> <li>Understand the relationship between array variable, array objects, and memory.</li> <li>Understand how to use array syntax of [] to access array elements.</li> <Understand how loop patterns are applied to arrays.</li> <li>Understand the for-each loop and how to use it with arrays.</li> <li>Understand how to pass arrays as parameters.</li> <li>Understand how to reallcoate an array.</li> <li>Understand the main parameter String[] args.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_6_arrays/
@@ -10,6 +10,8 @@ permalink: /mydoc_6_arrays/
 
 
 ## Arrays Introduction
+
+An array is a sequential collection of items, where there is a fixed number of items and each item is the same type.
 
 The following figure provides a visual of an array of ```String```s.  The length of the array is N.  Each ```String``` is in a slot.  The first slot is at index 0.  The last slot is at index N-1.
 
@@ -344,7 +346,33 @@ Both BlueJ and Netbeans support passing parameters to ```main```.
     * Run > Run Main Project
     * Do not use Run > Run File (or shift-F6) 
 
+## Splitting a String into an Array
+
+Sometimes it is useful to split a ```String``` into an array of ```String```.  The following code snippet demonstrates how to split a string of comma separated numbers into a ```String[]```, and then how to convert the numbers into an ```int[]```.  The String ```split()``` method returns a ```String[]```.
+
+```java
+String sampleString = "101,203,405";
+String[] stringArray = sampleString.split(",");
+int[] intArray = new int[stringArray.length];
+for (int i = 0; i < stringArray.length; i++) {
+   String numberAsString = stringArray[i];
+   intArray[i] = Integer.parseInt(numberAsString);
+}
+System.out.println("Number of integers: " + intArray.length);
+System.out.println("The integers are:");
+for (int number : intArray) {
+   System.out.println(number);
+}
+
+String commaSeparated = "item1 , item2 , item3";
+ArrayList<String> items = 
+new  ArrayList<String>(Arrays.asList(commaSeparated.split(",")));
+```
+
 ## Arrays in C/C++
 
 As you read Java code from various sources, you may encounter an array declaration as ```int intArray[] = {1,2,3};```.  Java retained this style from C and C++, which place the ```[]``` after the variable - ```int intArray[10];```.
 
+## Java Tutorial
+
+[Arrays](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html)

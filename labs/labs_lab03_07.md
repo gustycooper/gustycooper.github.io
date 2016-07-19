@@ -1,8 +1,8 @@
 ---
-title: Temperature Type (Labs - Lab 3)
+title: Temperature Type Lab
 keywords: temperature
-last_updated: June 5, 2016
-summary: "Lab 3, Temperature Type"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a Temperature type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your Temperature type.</li> <li>Practice creating test cases for your Temperature type.</li> <li>Practice placing your test cases in TemperatureTester class that has a main method.</li> <li>Practice using your Temperature type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the Temperature objects you construct.</li> "
 sidebar: labs_sidebar
 permalink: /labs_lab03_07/
 toc: false
@@ -12,7 +12,7 @@ toc: false
 
 **Points**: Complete this entire section for 10 points.
 
-In this section you write a Java ```Temperature class```, which will use expressions to convert from Fahrenheit to Celsius and Kelvin.   You will also write a ```TemperatureTester class``` that uses your ```Temperature class``` to construct objects to test your expressions.  The Java ```Temperature class``` and ```TemperatureTester class``` that have the following attributes.
+The work for this section implements the same methods from [Temperature](/gustycooper.github.io/labs_lab02_06).  In this section you write a Java ```Temperature class```, which will use expressions to convert from Fahrenheit to Celsius and Kelvin.   You will also write a ```TemperatureTester class``` that uses your ```Temperature class``` to construct objects to test your expressions.  The Java ```Temperature class``` and ```TemperatureTester class``` that have the following attributes.
 
 1. The ```Temperature class``` has the following constructor and methods.  You will have to create the appropriate instance variable.
 

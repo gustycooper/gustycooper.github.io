@@ -1,28 +1,24 @@
 ---
-title: Expressions (Labs - Lab 2)
+title: Java Expression Labs
 keywords: loop
-last_updated: June 13, 2016
-summary: "The learning objectives for the entire Lab 2. <li>Practice expressions using the BlueJ Codepad.</li> <li>Practice writing a methods and main</li> <li>Practice using System.out and Scanner.</li> <li>Practice creating a class that has methods with the same name.</li>"
+last_updated: July 16, 2016
+summary: "The learning objectives for the entire Java Expression Labs. <li>Practice expressions using the BlueJ Codepad.</li> <li>Practice writing a methods and main</li> <li>Practice using System.out and Scanner.</li> <li>Practice creating a class that has methods with the same name.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_00/
 toc: false
 ---
 
-## Lab 2 Overview
+## Java Expression Labs Overview
 
-All of the problems in Lab 2 can be solved in a Java class that has ```main``, ```Scanner``` for input, ``System.out``` for output, helper methods with parameters that you write, and expressions.  A few of the problems require a conditional expression.
+All of the problems in Java Expression Labs can be solved in a Java class that has ```main``, ```Scanner``` for input, ``System.out``` for output, helper methods with parameters that you write, and expressions.  A few of the problems require a conditional expression.
 
-## Lab Submission Requirements
+##  Submission Requirements
 
-On Canvas submit 
-
-* Your lab score
-* The name of your teammate who verified your work.
-* The UMW Honor Pledge with your name serving as an electronic signature.
+Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.
 
 ## Sample Lab
 
-This section provides a sample lab specication and a solution.  You can follow this sample in creating your solutions to the various labs in Lab 2.
+This section provides a sample lab specication and a solution.  You can follow this sample in creating your solutions to the various labs in Java Expression Labs.
 
 ### Sample Lab Specification: Add Double
 

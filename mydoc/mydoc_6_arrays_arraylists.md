@@ -21,7 +21,7 @@ Programming Pattern
 <img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />
 </div>
 
-## Arrays (Eck 7.1) and ArrayLists (Eck 7.3)
+## Arrays and ArrayLists
 
 Arrays and ```ArrayList```s are ordered, sequential collections of information, where each element must be the same type.  Ordered and sequential in that each element has a position – zero-ith element, 1st element, 2nd element, and so on.  For example, an array or ```ArrayList``` must contain all ```int```, ```double```, ```String```, ```Person```, etc. 
 

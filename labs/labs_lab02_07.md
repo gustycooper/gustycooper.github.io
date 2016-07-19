@@ -1,8 +1,8 @@
 ---
-title: Compute Dice (Labs - Lab 2)
+title: Compute Dice Lab
 keywords: dice, random
-last_updated: June 5, 2016
-summary: "<li>Practice writing a method and main - Lab 2, Compute Dice.</li> <li>Practice using System.out and Scanner.</li>"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a method and main - Compute Dice.</li> <li>Practice using System.out and Scanner.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_07/
 toc: false

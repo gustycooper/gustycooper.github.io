@@ -1,51 +1,23 @@
 ---
-title: Packages
+title: Packages, ADTs
 tags: [package, interface, inheritance]
 keywords: packages, interfaces, inheritance
-last_updated: May 1, 2016
-summary: "Packages, Interfaces, Inheritance, ADT, and More"
+last_updated: July 16, 2016
+summary: "The learning objectives for this entire module. <li>Understand Java packages.</li> <li>Understand how to create Java packages.</li> <li>Understand how to import Java packages.</li> <li>Understand Abstract Data Types.</li> <li>Understand and implement a queue ADT.</li> <li>Understand and implement a stack ADT.</li> <li>Use an interface when implementing a queue and a stack.<li> <li>Explore Java generic types for queues and stacks.<li> <li>Understand how to implement your own exception.</li> <li>Solve problems with a queue and a stack.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_8_packages_ADT/
 ---
 
-## Packages, Interfaces, Inheritance, and More
+## Packages, ADTs
 
-## PI.1 Abstract Data Types
+Java packages are a technique for grouping Java types so they can be easily retrieved.  We have already used Java packages with the ```import``` statement.
 
-Discuss ADTs.  Discuss queue, stack, linked lists.
+```java
+import java.util.Scanner;
+import java.util.Random;
+```
 
-PI.2 Inheritance
+For Abstract Data Types, we review and expand upon our definition of a data type - set of values and set of operations.  We study and implement two classic ADTs - queue and stack. As part of this study we explore Java's generic types.
 
-XXX
-
-PI.3 Java Interfaces
-
-XXX
-
-Kind of like multiple inheritance
-
-PI.4 Java Generic Types
-
-XXX
-
-PI.5 Implement a Que ADT
-
-XXX
-
-PI.5.1 Queue of Java int
-
-XXX
-
-PI.5.2 Queue of Generic Type
-
-XXX
-
-PI.6 Polymorphism
-
-XXX
-
-PI.7 Packages
-
-XXX
- 
+Packages and ADTs are covered in separate sections.
 

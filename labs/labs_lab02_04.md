@@ -1,8 +1,8 @@
 ---
-title: Compute Average (Labs - Lab 2)
+title: Compute Average Lab
 keywords: average
-last_updated: June 5, 2016
-summary: "<li>Practice writing a method and main - Lab 2, Compute Average</li> <li>Practice using System.out and Scanner.</li>"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a method and main - Compute Average</li> <li>Practice using System.out and Scanner.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_04/
 toc: false
@@ -30,3 +30,4 @@ Enter number 4: 7
 Average is 5.5
 ```
 
+You will reuse your ```Average``` code in [Simple Objects - MyMath Type Lab](/gustycooper.github.io/labs_lab03_04).

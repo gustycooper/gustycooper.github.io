@@ -16,47 +16,67 @@
 
 
 {
-"title": "First Java Programs (Labs - Lab 1)",
+"title": "Lab Submissions on Canvas",
+"tags": "",
+"keywords": "sample lab",
+"url": "/gustycooper.github.io/labs_lab00_00/",
+"summary": "<li>Understand the labs and their corresponding Canvas assignments.</li> <li>Understand what is expected to be submitted on Canvas for each lab.</li> <li>Understand what is expected to be submitted for the Total Points Lab Assignment.</li> <li>Provide a sample Canvas lab submission so that students know what is expected for Canvas submssions.</li>"
+},
+
+
+
+{
+"title": "First Java Programs Labs",
 "tags": "",
 "keywords": "loop",
 "url": "/gustycooper.github.io/labs_lab01_00/",
-"summary": "Lab 1, Overview"
+"summary": "First Java Programs Lab Overview"
 },
 
 
 
 {
-"title": "Course Agreement (Syllabus)",
+"title": "First Program Lab",
 "tags": "",
 "keywords": "course agreement,",
 "url": "/gustycooper.github.io/labs_lab01_01/",
-"summary": "Lab 1, First Program"
+"summary": "<li>Understand how to use BlueJ to write your first Java program.</li>"
 },
 
 
 
 {
-"title": "Course Agreement (Syllabus)",
+"title": "Second Program Lab",
 "tags": "",
 "keywords": "course agreement,",
 "url": "/gustycooper.github.io/labs_lab01_02/",
-"summary": "Lab 1, First Program"
+"summary": "<li>Understand how to use terminal input and output in your Java program.</li>"
 },
 
 
 
 {
-"title": "Expressions (Labs - Lab 2)",
+"title": "Primitive Types Lab",
+"tags": "",
+"keywords": "primitive, types",
+"url": "/gustycooper.github.io/labs_lab01_03/",
+"summary": "<li>Understand Java primitive types from a programming perspective.</li>"
+},
+
+
+
+{
+"title": "Java Expression Labs",
 "tags": "",
 "keywords": "loop",
 "url": "/gustycooper.github.io/labs_lab02_00/",
-"summary": "The learning objectives for the entire Lab 2. <li>Practice expressions using the BlueJ Codepad.</li> <li>Practice writing a methods and main</li> <li>Practice using System.out and Scanner.</li> <li>Practice creating a class that has methods with the same name.</li>"
+"summary": "The learning objectives for the entire Java Expression Labs. <li>Practice expressions using the BlueJ Codepad.</li> <li>Practice writing a methods and main</li> <li>Practice using System.out and Scanner.</li> <li>Practice creating a class that has methods with the same name.</li>"
 },
 
 
 
 {
-"title": "Codepad Expressions",
+"title": "Codepad Expressions Lab",
 "tags": "",
 "keywords": "expression",
 "url": "/gustycooper.github.io/labs_lab02_01/",
@@ -66,27 +86,27 @@
 
 
 {
-"title": "Split the Bill (Labs - Lab 2)",
+"title": "Split the Bill Lab",
 "tags": "",
 "keywords": "split the bill",
 "url": "/gustycooper.github.io/labs_lab02_02/",
-"summary": "<li>Practice writing a method and main - Lab 2, Split the Bill.</li> <li>Practice using System.out and Scanner.</li>"
+"summary": "<li>Practice writing a method and main - Split the Bill.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
 
 {
-"title": "Compute Pay Check (Labs - Lab 2)",
+"title": "Compute Pay Check Lab",
 "tags": "",
-"keywords": "split the bill",
+"keywords": "compute pay check",
 "url": "/gustycooper.github.io/labs_lab02_03/",
-"summary": "<li>Practice writing a method and main - Lab 2, Compute Pay Check.</li> <li>Practice using System.out and Scanner.</li>"
+"summary": "<li>Practice writing a method and main - Compute Pay Check.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
 
 {
-"title": "Compute Split the Bill and Pay Check (Labs - Lab 2)",
+"title": "Split the Bill and Pay Check Lab",
 "tags": "",
 "keywords": "pay check, split the bill",
 "url": "/gustycooper.github.io/labs_lab02_03a/",
@@ -96,321 +116,321 @@
 
 
 {
-"title": "Compute Average (Labs - Lab 2)",
+"title": "Compute Average Lab",
 "tags": "",
 "keywords": "average",
 "url": "/gustycooper.github.io/labs_lab02_04/",
-"summary": "<li>Practice writing a method and main - Lab 2, Compute Average</li> <li>Practice using System.out and Scanner.</li>"
+"summary": "<li>Practice writing a method and main - Compute Average</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
 
 {
-"title": "Compute Largest (Labs - Lab 2)",
+"title": "Compute Largest Lab",
 "tags": "",
 "keywords": "largest",
 "url": "/gustycooper.github.io/labs_lab02_05/",
-"summary": "<li>Practice writing a method and main - Lab 2, Compute Largest</li> <li>Practice using conditional expressions.</li> <li>Practice using System.out and Scanner.</li>"
+"summary": "<li>Practice writing a method and main - Compute Largest</li> <li>Practice using conditional expressions.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
 
 {
-"title": "Compute Temperature (Labs - Lab 2)",
+"title": "Compute Temperature Lab",
 "tags": "",
 "keywords": "temperature",
 "url": "/gustycooper.github.io/labs_lab02_06/",
-"summary": "<li>Practice writing a method and main - Lab 2, Compute Temperature.</li> <li>Practice using System.out and Scanner.</li>"
+"summary": "<li>Practice writing a method and main - Compute Temperature.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
 
 {
-"title": "Compute Dice (Labs - Lab 2)",
+"title": "Compute Dice Lab",
 "tags": "",
 "keywords": "dice, random",
 "url": "/gustycooper.github.io/labs_lab02_07/",
-"summary": "<li>Practice writing a method and main - Lab 2, Compute Dice.</li> <li>Practice using System.out and Scanner.</li>"
+"summary": "<li>Practice writing a method and main - Compute Dice.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
 
 {
-"title": "Using Strings",
+"title": "Using Strings Lab",
 "tags": "",
 "keywords": "class, string",
 "url": "/gustycooper.github.io/labs_lab02_08/",
-"summary": "<li>Practice writing a method and main - Lab 2, Using Strings.</li> <li>Practice using System.out and Scanner.</li>"
+"summary": "<li>Practice writing a method and main - Using Strings.</li> <li>Practice using System.out and Scanner.</li>"
 },
 
 
 
 {
-"title": "First Classes and Objects (Labs - Lab 3)",
+"title": "First Classes and Objects Labs",
 "tags": "",
 "keywords": "loop",
 "url": "/gustycooper.github.io/labs_lab03_00/",
-"summary": "Lab 3, Overview"
+"summary": "The learning objectives for the entire First Classes and Objects Labs. <li>Practice writing classes that define types.</li> <li>Practice creating instance variables, constructors, and instance methods within your class.</li> <li>Practice creating test cases for your types.</li> <li>Practice placing your test cases in tester classes that have a main method.</li> <li>Practice using your types to declare variables.</li> <li>Practice constructing objects of your types.</li> <li>Practice calling instance methods in the objects you construct.</li>"
 },
 
 
 
 {
-"title": "Person Type",
+"title": "Person Type Lab",
 "tags": "",
 "keywords": "class, person",
 "url": "/gustycooper.github.io/labs_lab03_01/",
-"summary": "Lab 2, Person Type"
+"summary": "<li>Practice writing a Person type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your Person type.</li> <li>Practice creating test cases for your Person type.</li> <li>Practice placing your test cases in PersonTester class that has a main method.</li> <li>Practice using your Person type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the Person objects you construct.</li>"
 },
 
 
 
 {
-"title": "Car Type",
+"title": "Car Type Lab",
 "tags": "",
 "keywords": "class, car",
 "url": "/gustycooper.github.io/labs_lab03_02/",
-"summary": "Lab 2, Car Type"
+"summary": "<li>Practice writing a Car type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your Car type.</li> <li>Practice creating test cases for your Car type.</li> <li>Practice placing your test cases in CarTester class that has a main method.</li> <li>Practice using your Car type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the Car objects you construct.</li>"
 },
 
 
 
 {
-"title": "TwoPays Type",
+"title": "TwoPays Type Lab",
 "tags": "",
 "keywords": "class, twopays",
 "url": "/gustycooper.github.io/labs_lab03_03/",
-"summary": "Lab 2, TwoPays Type"
+"summary": "<li>Practice writing a TwoPays type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your TwoPays type.</li> <li>Practice creating test cases for your TwoPays type.</li> <li>Practice placing your test cases in TwoPaysTester class that has a main method.</li> <li>Practice using your TwoPays type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the TwoPays objects you construct.</li>"
 },
 
 
 
 {
-"title": "MyMath Type",
+"title": "MyMath Type Lab",
 "tags": "",
 "keywords": "class, mymath",
 "url": "/gustycooper.github.io/labs_lab03_04/",
-"summary": "Lab 2, MyMath Type"
+"summary": "<li>Practice writing a MyMath type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your MyMath type.</li> <li>Practice creating test cases for your MyMath type.</li> <li>Practice placing your test cases in MyMathTester class that has a main method.</li> <li>Practice using your MyMath type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the MyMath objects you construct.</li>"
 },
 
 
 
 {
-"title": "Dice Type",
+"title": "Dice Type Lab",
 "tags": "",
 "keywords": "class, dice",
 "url": "/gustycooper.github.io/labs_lab03_05/",
-"summary": "Lab 2, Dice Type"
+"summary": "<li>Practice writing a Dice type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your Dice type.</li> <li>Practice creating test cases for your Dice type.</li> <li>Practice placing your test cases in DiceTester class that has a main method.</li> <li>Practice using your Dice type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the Dice objects you construct.</li>"
 },
 
 
 
 {
-"title": "MyString Type (Labs - Lab 3)",
+"title": "MyString Type Lab",
 "tags": "",
 "keywords": "mystring",
 "url": "/gustycooper.github.io/labs_lab03_06/",
-"summary": "Lab 3, MyString Type"
+"summary": "<li>Practice writing a MyString type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your MyString type.</li> <li>Practice creating test cases for your MyString type.</li> <li>Practice placing your test cases in MyStringTester class that has a main method.</li> <li>Practice using your MyString type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the MyString objects you construct.</li>"
 },
 
 
 
 {
-"title": "Temperature Type (Labs - Lab 3)",
+"title": "Temperature Type Lab",
 "tags": "",
 "keywords": "temperature",
 "url": "/gustycooper.github.io/labs_lab03_07/",
-"summary": "Lab 3, Temperature Type"
+"summary": "<li>Practice writing a Temperature type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your Temperature type.</li> <li>Practice creating test cases for your Temperature type.</li> <li>Practice placing your test cases in TemperatureTester class that has a main method.</li> <li>Practice using your Temperature type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the Temperature objects you construct.</li>"
 },
 
 
 
 {
-"title": "Control Flow (Labs - Lab 4)",
+"title": "Control Flow Lab",
 "tags": "",
 "keywords": "loop, conditional, for, while, do-while, if, switch",
 "url": "/gustycooper.github.io/labs_lab04_00/",
-"summary": "Lab 4, Overview"
+"summary": "<li>Practice writing code that uses loops and conditional statements.</li> <li>Practice solving problems with a while loop.</li> <li>Practice solving problems with a for loop.</li> <li>Practice solving problems with a do-while loop.</li> <li>Practice solving problems with if-else statements.</li> <li>Practice solving problems with a switch statement.</li>"
 },
 
 
 
 {
-"title": "First Loops (Labs - Lab 4)",
+"title": "First Loops Lab",
 "tags": "",
-"keywords": "loop",
+"keywords": "loop, while, for",
 "url": "/gustycooper.github.io/labs_lab04_01/",
-"summary": "Lab 4, First Loops"
+"summary": "<li>Practice wrintg for, while, and do-while loops.</li> <li>Practice using an if statement within a loop.</li>"
 },
 
 
 
 {
-"title": "Potato Class (Labs - Lab 4)",
+"title": "Potato Class Lab",
 "tags": "",
-"keywords": "first program",
+"keywords": "loop, while, for",
 "url": "/gustycooper.github.io/labs_lab04_02/",
-"summary": "Lab 4, Potato Class"
+"summary": "<li>Practice writing a Potato class.</li> <li>Practice writing loops and conditional statements.</li>"
 },
 
 
 
 {
-"title": "Loops, Ifs, Switches (Labs - Lab 4)",
+"title": "Loops, Ifs, Switches Lab",
 "tags": "",
 "keywords": "loop, if, switch",
 "url": "/gustycooper.github.io/labs_lab04_03/",
-"summary": "Lab 4, Loops, Ifs, Switches"
+"summary": "<li>Practice writing for, while, and do-while loops.</li> <li>Practice using conditional statements in loops.</li>"
 },
 
 
 
 {
-"title": "Millionaire (Labs - Lab 4)",
+"title": "Millionaire Lab",
 "tags": "",
-"keywords": "millionair",
+"keywords": "millionaire, loop",
 "url": "/gustycooper.github.io/labs_lab04_04/",
-"summary": "Lab 4, Millionair"
+"summary": "<li>Practice using a while loop to solve a problem.</li>"
 },
 
 
 
 {
-"title": "MyMath Type - Take 2 (Labs - Lab 4)",
+"title": "MyMath Type - Take 2 Lab",
 "tags": "",
 "keywords": "mymath",
 "url": "/gustycooper.github.io/labs_lab04_05/",
-"summary": "Lab 4, MyMath Type"
+"summary": "<li>Practice maintenace programming by adding methods to MyMath class.</li> <li>Practice using loops and conditionals to solve problems.</li>"
 },
 
 
 
 {
-"title": "Twitter Type",
+"title": "Twitter Type Lab",
 "tags": "",
 "keywords": "twitter",
 "url": "/gustycooper.github.io/labs_lab04_06/",
-"summary": "Lab 4, Twitter Type"
+"summary": "<li>Practice creating a Twitter Type.</li> <li>Practice using String methods.</li> <li>Practice using loops and conditionals to solve problems.</li>"
 },
 
 
 
 {
-"title": "Gerbil Game",
+"title": "Gerbil Game Lab",
 "tags": "",
 "keywords": "gerbil",
 "url": "/gustycooper.github.io/labs_lab04_07/",
-"summary": "Lab 4, Gerbil Game"
+"summary": "<li>Practice solving a simple game problem with nested ifs.</li>"
 },
 
 
 
 {
-"title": "Simple Triangle",
+"title": "Simple Triangle Lab",
 "tags": "",
-"keywords": "triangle",
+"keywords": "triangle, nested loops",
 "url": "/gustycooper.github.io/labs_lab04_08/",
-"summary": "Lab 4, Simple Triangle"
+"summary": "<li>Practice using nested loops to draw a simple triangle on the terminal.</li>"
 },
 
 
 
 {
-"title": "Credit Card",
+"title": "Credit Card Lab",
 "tags": "",
 "keywords": "credit, card",
 "url": "/gustycooper.github.io/labs_lab04_09/",
-"summary": "Lab 4, Credit Card"
+"summary": "<li>Practice using loops and conditionals to solve a credit card problem.</li>"
 },
 
 
 
 {
-"title": "Pig - Two Person",
+"title": "Pig - Two Person Lab",
 "tags": "",
-"keywords": "pig",
+"keywords": "pig, loop, conditional",
 "url": "/gustycooper.github.io/labs_lab04_10/",
-"summary": "Lab 4, Pig - Two Person"
+"summary": "<li>Practice using loops and conditionals to create a Pig game.</li>"
 },
 
 
 
 {
-"title": "Pig - Computer",
+"title": "Pig - Computer Lab",
 "tags": "",
 "keywords": "pig",
 "url": "/gustycooper.github.io/labs_lab04_11/",
-"summary": "Lab 4, Pig - Computer"
+"summary": "<li>Practice solving a computer simulation of the Pig Game.</li>"
 },
 
 
 
 {
-"title": "First Program (Labs - Lab 5)",
+"title": "Second Classes and Objects Lab",
 "tags": "",
 "keywords": "class, object",
 "url": "/gustycooper.github.io/labs_lab05_00/",
-"summary": "Lab 5, Overview"
+"summary": "The learning objectives for the entire Second Classes and Objects Labs. <li>Practice writing classes that define types.</li> <li>Practice creating instance variables, constructors, and instance methods within your class.</li> <li>Practice creating test cases for your types.</li> <li>Practice placing your test cases in tester classes that have a main method.</li> <li>Practice using your types to declare variables.</li> <li>Practice constructing objects of your types.</li> <li>Practice calling instance methods in the objects you construct.</li>"
 },
 
 
 
 {
-"title": "Person Type Revisited",
+"title": "Person Type Revisited Lab",
 "tags": "",
 "keywords": "class, person",
 "url": "/gustycooper.github.io/labs_lab05_01/",
-"summary": "Lab 5, Person Type Revisited"
+"summary": "<li>Practice using Netbeans to redo the Person type we created earlier.</li>"
 },
 
 
 
 {
-"title": "Car Type Revisited",
+"title": "Car Type Revisited Lab",
 "tags": "",
 "keywords": "class, car",
 "url": "/gustycooper.github.io/labs_lab05_02/",
-"summary": "Lab 5, Car Type Revisited"
+"summary": "<li>Practice using Netbeans to redo the Car type we created earlier.</li>"
 },
 
 
 
 {
-"title": "Twitter Type Revisited",
+"title": "Twitter Type Revisited Lab",
 "tags": "",
 "keywords": "class, twitter",
 "url": "/gustycooper.github.io/labs_lab05_03/",
-"summary": "Lab 5, Twitter Type Revisited"
+"summary": "<li>Practice maintenance programming on our Twitter class to add some exciting new features.</li> <li>Practice writing classes that define types.</li> <li>Practice creating instance variables, constructors, and instance methods within your class.</li> <li>Practice creating test cases for your types.</li> <li>Practice placing your test cases in tester classes that have a main method.</li> <li>Practice using your types to declare variables.</li> <li>Practice constructing objects of your types.</li> <li>Practice calling instance methods in the objects you construct.</li>"
 },
 
 
 
 {
-"title": "Student Type",
+"title": "Student Type Lab",
 "tags": "",
 "keywords": "class, person, student subclass, superclass",
 "url": "/gustycooper.github.io/labs_lab05_04/",
-"summary": "Lab 5, Student Type"
+"summary": "<li>Practice writing a Student class that extends our favorite Person class.</li>  <li>Practice determining the type of a variable using instanceof.</li> <li>Practice writing classes that define types.</li> <li>Practice creating instance variables, constructors, and instance methods within your class.</li> <li>Practice creating test cases for your types.</li> <li>Practice placing your test cases in tester classes that have a main method.</li> <li>Practice using your types to declare variables.</li> <li>Practice constructing objects of your types.</li> <li>Practice calling instance methods in the objects you construct.</li>"
 },
 
 
 
 {
-"title": "Arrays, ArrayLists",
+"title": "Arrays, ArrayLists Labs",
 "tags": "",
 "keywords": "array, arraylist",
 "url": "/gustycooper.github.io/labs_lab06_00/",
-"summary": "Arrays, ArrayLists"
+"summary": "<li>Practice using arrays and ArrayLists in solving problems.</li> <li>Practice looping patterns with arrays and ArrayLists.</li>"
 },
 
 
 
 {
-"title": "Looping Patterns, Arrays, ArrayLists",
+"title": "Looping Patterns, Arrays, ArrayLists Lab",
 "tags": "",
 "keywords": "looping pattern, array, arraylist",
 "url": "/gustycooper.github.io/labs_lab06_01/",
-"summary": "Lab 5, Looping Patterns, Arrays, ArrayLists"
+"summary": "<li>Practice using arrays and ArrayLists in the looping patterns.</li>"
 },
 
 
@@ -420,17 +440,17 @@
 "tags": "",
 "keywords": "looping pattern, array, arraylist",
 "url": "/gustycooper.github.io/labs_lab06_02/",
-"summary": "Lab 5, MyIntegers Type"
+"summary": "<li>Practice using arrays to implement a simplified ArrayList-like data structures for ints.</li> <li>Practice extending an array when the array becomes full.</li>"
 },
 
 
 
 {
-"title": "Person Type - Revisited Again",
+"title": "Person Type - Revisited Again Lab",
 "tags": "",
 "keywords": "looping pattern, array, arraylist",
 "url": "/gustycooper.github.io/labs_lab06_03/",
-"summary": "Lab 5, Person Type - Revisited Again"
+"summary": "<li>Practice using an ArrayList to keep track of Person's friends.</li>"
 },
 
 
@@ -440,17 +460,17 @@
 "tags": "",
 "keywords": "looping pattern, array, arraylist",
 "url": "/gustycooper.github.io/labs_lab06_04/",
-"summary": "Lab 5, My Trip"
+"summary": "<li>Practice using a class that has instance variables, but does not have methods.  For some problems, classes without methods are the appropriate data structure.</li> <li>Practice using the printf method.</li>"
 },
 
 
 
 {
-"title": "Person Type - Again",
+"title": "Person Type One More Time Lab",
 "tags": "",
-"keywords": "looping pattern, array, arraylist",
+"keywords": "class, type, enum",
 "url": "/gustycooper.github.io/labs_lab06_05/",
-"summary": "Lab 5, Person Type - Again"
+"summary": "<li>Practice writing enum types.</li> <li>Practice using enum types in conjuction with other types.</li> <li>Practice writing classes that define types.</li> <li>Practice creating instance variables, constructors, and instance methods within your class.</li> <li>Practice creating test cases for your types.</li> <li>Practice placing your test cases in tester classes that have a main method.</li> <li>Practice using your types to declare variables.</li> <li>Practice constructing objects of your types.</li> <li>Practice calling instance methods in the objects you construct.</li>"
 },
 
 
@@ -830,7 +850,7 @@
 "tags": "downloads",
 "keywords": "downloads, installs",
 "url": "/gustycooper.github.io/mydoc_0_downloads/",
-"summary": "<li> Understand the Java and IDE Downloads/Installs we will use in CPSC 220</li> <li>You should download Java SDK and BlueJ immediately</li>"
+"summary": "<li> Understand the Java and IDE Downloads/Installs we will use in CPSC 220</li> <li>You should download Java JDK and BlueJ immediately</li>"
 },
 
 
@@ -840,7 +860,7 @@
 "tags": "getting_started",
 "keywords": "sample, authoring",
 "url": "/gustycooper.github.io/mydoc_0_examples/",
-"summary": "<li>This page does not have learning objectives.</li> <li>I added this page in order to retain examples of authoring pages.</li>"
+"summary": "<li>This page is not part of the class and thus does not have learning objectives.</li> <li>I added this page in order to retain examples of authoring pages.</li> <li>I examine the text in the corresponding .md file to remember how to author specific techniques.</li>"
 },
 
 
@@ -891,6 +911,16 @@
 "keywords": "java, algorithms, design, programming",
 "url": "/gustycooper.github.io/mydoc_0_start_here/",
 "summary": "Start Here"
+},
+
+
+
+{
+"title": "WebBook File Names",
+"tags": "getting_started",
+"keywords": "file names",
+"url": "/gustycooper.github.io/mydoc_0_webbook_file_names/",
+"summary": "<li>This page is not part of the class and thus does not have learning objectives.</li> <li>I added this page in order to understand the file names that underly the WebBook.</li> <li>I examine the text in the corresponding .md file to easily see the file that correspondes to a particular section.</li>"
 },
 
 
@@ -1220,7 +1250,7 @@
 "tags": "classobject",
 "keywords": "classes, objects",
 "url": "/gustycooper.github.io/mydoc_5_classes_objects/",
-"summary": "The learning objectives for this entire module. <li>Understand several details about classes and objects that were omitted in the Simple Objects module.</li> <li>Understand classes can be defined without methods.</li> <li>Understand null references.</li> <li>Understand this and its use in classes.</li> <li>Understand public and private.</li> <li>Understand instance and static.</li>  <li>Understand how to put instance and static in the same class.</li> <li>Understand stack and heap.</li> <li>Understand the variables declared inside of methods are allocated on the stack.</li> <li>Understand that objects are allocated on the heap.</li> <li>Understand final and its use on declaring variables.</li> <li>Understand formal and actual parameters.</li> <li>Understand passing parameters - pass by value and pass by reference.</li> <li>Understand that actual parameters cannot be modified in pass by value.</li> <li>Understand that objects such as Person and Car can be modified when passed as an actual parameter.</li> <li>Understand String variables cannot be modified when passes as an actual parameter.</li> <li>Understand that Java is pass by value.</li> <li>Understand methods return values.</li> <li>Undersand how to define an enumeration type.</li> <li>Understand how to use an enumeration type.</li> <li>Understand subclasses.</li> <li>Understand how to create a Student that is a subclass of a Person.</li> <li>Understand class hierarchy.</li> <li>Understand a Java interface.</li> <li>Understand a Java interface contains method signatures, but does not contain code.</li> <li>Understand how to write a class that implements a Java interface.</li> <li>Understand overriding toString and comparable.</li>"
+"summary": "The learning objectives for this entire module. <li>Understand several details about classes and objects that were omitted in the Simple Objects module.</li> <li>Understand classes can be defined without methods.</li> <li>Understand null references.</li> <li>Understand this and its use in classes.</li> <li>Understand public and private.</li> <li>Understand instance and static.</li>  <li>Understand how to put instance and static in the same class.</li> <li>Understand final and its use on declaring variables.</li> <li>Understand how to define an enumeration type.</li> <li>Understand how to use an enumeration type.</li> <li>Understand subclasses.</li> <li>Understand how to create a Student that is a subclass of a Person.</li> <li>Understand class hierarchy.</li> <li>Understand a Java interface.</li> <li>Understand a Java interface contains method signatures, but does not contain code.</li> <li>Understand how to write a class that implements a Java interface.</li> <li>Understand overriding toString and comparable.</li>"
 },
 
 
@@ -1450,7 +1480,7 @@
 "tags": "packageinterfaceinheritance",
 "keywords": "abstract, data, type",
 "url": "/gustycooper.github.io/mydoc_8_ADT/",
-"summary": "Abstract Data Types"
+"summary": "<li>Understand Abstract Data Types.</li> <li>Understand and implement a queue ADT.</li> <li>Understand and implement a stack ADT.</li> <li>Use an interface when implementing a queue and a stack.<li> <li>Explore Java generic types for queues and stacks.<li> <li>Understand how to implement your own exception.</li> <li>Solve problems with a queue and a stack.</li>"
 },
 
 
@@ -1466,11 +1496,11 @@
 
 
 {
-"title": "Packages",
+"title": "Packages, ADTs",
 "tags": "packageinterfaceinheritance",
 "keywords": "packages, interfaces, inheritance",
 "url": "/gustycooper.github.io/mydoc_8_packages_ADT/",
-"summary": "Packages, Interfaces, Inheritance, ADT, and More"
+"summary": "The learning objectives for this entire module. <li>Understand Java packages.</li> <li>Understand how to create Java packages.</li> <li>Understand how to import Java packages.</li> <li>Understand Abstract Data Types.</li> <li>Understand and implement a queue ADT.</li> <li>Understand and implement a stack ADT.</li> <li>Use an interface when implementing a queue and a stack.<li> <li>Explore Java generic types for queues and stacks.<li> <li>Understand how to implement your own exception.</li> <li>Solve problems with a queue and a stack.</li>"
 },
 
 
@@ -1526,16 +1556,6 @@
 
 
 {
-"title": "Exceptions",
-"tags": "exceptions",
-"keywords": "exceptions",
-"url": "/gustycooper.github.io/mydoc_A_exceptions/",
-"summary": "Exceptions"
-},
-
-
-
-{
 "title": "Expressions and Statements Reference",
 "tags": "expresssonsequentialconditionalloop",
 "keywords": "expresssons, statements",
@@ -1566,41 +1586,11 @@
 
 
 {
-"title": "Passing Parameters",
-"tags": "methods",
-"keywords": "parameters",
-"url": "/gustycooper.github.io/mydoc_A_passing_parameters/",
-"summary": "Passing Parameters"
-},
-
-
-
-{
 "title": "Programming Style",
 "tags": "",
 "keywords": "style",
 "url": "/gustycooper.github.io/mydoc_A_programming_style/",
 "summary": "<li>Understand the elements of good programming style.</li>"
-},
-
-
-
-{
-"title": "Random Numbers",
-"tags": "random",
-"keywords": "random, numbers",
-"url": "/gustycooper.github.io/mydoc_A_random_numbers/",
-"summary": "Random Numbers"
-},
-
-
-
-{
-"title": "Java String Manipulation",
-"tags": "string",
-"keywords": "string methods",
-"url": "/gustycooper.github.io/mydoc_A_string_manipulation/",
-"summary": "Java String Manipulation"
 },
 
 
@@ -1912,7 +1902,7 @@
 "tags": "",
 "keywords": "project",
 "url": "/gustycooper.github.io/projects_battleship/",
-"summary": "Battleship"
+"summary": "<li>Understand Java interfaces.</li> <li>Understand Java packages.</li> <li>Understand how to retain state between calls of methods.</li> <li>Understand how to use char[] for implementing game boards.</li>"
 },
 
 
@@ -1923,6 +1913,16 @@
 "keywords": "project",
 "url": "/gustycooper.github.io/projects_choice/",
 "summary": "Your Choice"
+},
+
+
+
+{
+"title": "Cipher",
+"tags": "",
+"keywords": "project",
+"url": "/gustycooper.github.io/projects_cipher/",
+"summary": "<li>Understand elementary encryption algorithms</li> <li>Think about encryption as it relates to events in life such as the Internet.</li> <li>Understand ASCII and UTF encodings of char.</li> <li>Understand the char type can be used in arithmetic expressions.</li>"
 },
 
 

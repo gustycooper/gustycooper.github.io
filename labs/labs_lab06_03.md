@@ -1,24 +1,24 @@
 ---
-title: Person Type - Revisited Again
+title: Person Type - Revisited Again Lab
 keywords: looping pattern, array, arraylist
-last_updated: June 6, 2016
-summary: "Lab 5, Person Type - Revisited Again"
+last_updated: July 18, 2016
+summary: "<li>Practice using an ArrayList to keep track of Person's friends.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab06_03/
 toc: false
 ---
 
-## Java Person Class – Revisited
+## Java Person Type – Revisited
 
 **Points**: Complete this entire section for 20 points.
 
-You created a Java Person class in Lab 2-3 and updated it in Lab 5.1.  This lab will update your Java Person class again.  We will refactor Person, meaning we will reorganize the code where the implementation changes but the observable behavior does not.  The biggest change is that you are going to keep the friends in an ArrayList of Person (i.e., ArrayList<Person>).  Up until now, we have implemented friends as a private String.  When we call the method addFriend(String friend), we concatenated the String friend onto the String friends.  For this implementation we will implement friends as an ArrayList of Person.  We will have the following API on your Person class.  You will notice, I have changed the API some so this is refactoring with a slight change to the API.
+You created a Java Person class in [Person Type Lab](/gustycooper.github.io/labs_lab03_01) and updated it in [Person Revisited Lab](/gustycooper.github.io/labs_lab05_01).  In this lab you update your Java Person class again.  We will **refactor** Person, meaning we will reorganize the code where the implementation changes but the observable behavior does not.  The biggest change is that you are going to keep the friends in an ArrayList of Person (i.e., ArrayList<Person>).  Up until now, we have implemented friends as a ```private String```.  When we call the method ```addFriend(String friend)```, we concatenated the String friend onto the String friends.  For this implementation we will implement friends as an ArrayList of Person.  We will have the following API on your Person class.  You will notice, I have changed the API some so this is refactoring with a slight change to the API.
 
-**Constructor**
+### Constructor
 
-Person(String name) - Constructs a Person.  Notice we have simplified the API to include a single name.
+```Person(String name)``` - Constructs a Person.  Notice we have simplified the API to include a single name.  You are welcome to retain the prior constructor.
 
-**Methods**
+### Methods
 
 ```String getName()``` - Returns the name of the person
 
@@ -67,5 +67,5 @@ zachary.unFriend(gusty);
 String zacsFriends = zachary.getFriends() // “”
 ```
 
-Create a MyIntegersTester class to demonstrate that your MyIntegers class is correct.
+Create a PersonTester class to demonstrate that your Person class is correct.
 

@@ -1,8 +1,8 @@
 ---
-title: Credit Card
+title: Credit Card Lab
 keywords: credit, card
-last_updated: June 5, 2016
-summary: "Lab 4, Credit Card"
+last_updated: July 17, 2016
+summary: "<li>Practice using loops and conditionals to solve a credit card problem.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_09/
 toc: false
@@ -12,7 +12,7 @@ toc: false
 
 **Points**: Complete this entire section for 10 points.
 
-NOTE: The Gerbil Game lab is a rendition of a project created by Karen Anewalt.
+NOTE: The Credit Card lab is a rendition of a project created by Karen Anewalt.
 
 You are to implement a CreditCard class that has the following public interface.
 

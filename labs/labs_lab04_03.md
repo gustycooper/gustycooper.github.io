@@ -1,7 +1,8 @@
 ---
-title: Loops, Ifs, Switches (Labs - Lab 4)
+title: Loops, Ifs, Switches Lab
 keywords: loop, if, switch
-summary: "Lab 4, Loops, Ifs, Switches"
+last_updated: July 17, 2016
+summary: "<li>Practice writing for, while, and do-while loops.</li> <li>Practice using conditional statements in loops.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_03/
 toc: false

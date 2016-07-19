@@ -1,8 +1,8 @@
 ---
-title: Arrays, ArrayLists
+title: Arrays, ArrayLists Labs
 keywords: array, arraylist
-last_updated: June 22, 2016
-summary: "Arrays, ArrayLists"
+last_updated: July 18, 2016
+summary: "<li>Practice using arrays and ArrayLists in solving problems.</li> <li>Practice looping patterns with arrays and ArrayLists.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab06_00/
 toc: false
@@ -10,23 +10,74 @@ toc: false
 
 ## Array, ArrayLists Overview
 
-In this lab, we return to looping patterns, but this time we use them on arrays and array lists.  We implement a ```MyIntegers class``` with an array that has to be extended when it becomes full.  We update our ```Person``` class so that friends is an array list of ```Person```.
+In this lab, we return to looping patterns, but this time we use them on arrays and array lists.  For examples, we implement a ```MyIntegers class``` with an array that has to be extended when it becomes full and we update our ```Person``` class so that friends is an array list of ```Person```.
 
-## Submission Requirements
+## Netbeans Installation
 
-On Canvas submit 
+We use Netbeans to complete this lab.  See [Java Downloads](/gustycooper.github.io/mydoc_0_downloads) for instuctions on installing Netbeans.  Installing Netbeans provides you with 10 lab points.
 
-* Your lab score
-* The name of your teammate who verified your work.
-* The UMW Honor Pledge with your name serving as an electronic signature.
-* You must also submit the .java files the comprise your solutions to the problems.  
-* You do not have to submit your answers to the questions.
+##  Submission Requirements
+
+Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.
 
 ## Sample Lab
 
-### Sample Lab Specification: XXX
+This section provides a sample lab specication and a solution.  You can follow this sample in creating your solutions to the various labs in Java Expression Labs.
 
-### Sample Lab Solution: XXX
+### Sample Lab Specification: Count Values
+
+Write a Java ```CountValues``` class that does the following.
+
+```public static int countValue(double[] da, double value)``` - returns the count of ```value``` in ```da```.
+
+```public static void main(String[] args)``` - uses a ```Scanner``` for input and ```System.out.println``` for output to accomplish the following.
+
+```java
+Enter number of values in array: 5
+Enter value[0] for array: 2.0
+Enter value[1] for array: 4.0
+Enter value[2] for array: 6.0
+Enter value[3] for array: 4.0
+Enter value[4] for array: 4.0
+Enter search value: 4.0
+The count of 4.0 is 3.
+```
+
+### Sample Lab Solution: Count Values
+
+The solution to this problem is the following code.
+
+```java
+import java.util.Scanner;
+
+public class AddDouble {
+
+   public static double countValue(double[] da, double value) {
+      int count = 0;
+      for (double d : da)
+         if (d == value)
+            count++;
+      return count;
+   }
+
+   public static void main(String[] args) {
+      Scanner in = new Scanner(System.in);
+      System.out.print("Enter number of values in array: ");
+      int size = in.nextInt();
+      System.out.println();
+      double[] da = new double[size];
+      for (int i = 0; i < size; i++) {
+         System.out.println("Enter value[" + i + "] for array: ");
+         double x = in.nextDouble();
+         da[i] = x;
+         System.out.println();
+      }
+      System.out.print("Enter search value: ");
+      double value = in.nextDouble();
+      System.out.println("The count of  " + value + " is " countValue(da, value));
+   }
+}
+```
 
 ## Questions
 

@@ -1,5 +1,5 @@
 ---
-title: Compute Split the Bill and Pay Check (Labs - Lab 2)
+title: Split the Bill and Pay Check Lab
 keywords: pay check, split the bill
 last_updated: June 13, 2016
 summary: "<li>Practice creating a class that has methods with the same name.</li> <li>Practice using System.out and Scanner.</li>"

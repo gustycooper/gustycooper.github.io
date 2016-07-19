@@ -1,7 +1,7 @@
 ---
-title: Course Agreement (Syllabus)
+title: First Program Lab
 keywords: course agreement,
-summary: "Lab 1, First Program"
+summary: "<li>Understand how to use BlueJ to write your first Java program.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab01_01/
 toc: false

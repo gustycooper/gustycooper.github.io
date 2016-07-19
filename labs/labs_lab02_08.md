@@ -1,8 +1,8 @@
 ---
-title: Using Strings
+title: Using Strings Lab
 keywords: class, string
-last_updated: June 5, 2016
-summary: "<li>Practice writing a method and main - Lab 2, Using Strings.</li> <li>Practice using System.out and Scanner.</li>"
+last_updated: July 16, 2016
+summary: "<li>Practice writing a method and main - Using Strings.</li> <li>Practice using System.out and Scanner.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab02_08/
 toc: false

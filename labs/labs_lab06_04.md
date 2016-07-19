@@ -2,7 +2,7 @@
 title: My Trip
 keywords: looping pattern, array, arraylist
 last_updated: June 6, 2016
-summary: "Lab 5, My Trip"
+summary: "<li>Practice using a class that has instance variables, but does not have methods.  For some problems, classes without methods are the appropriate data structure.</li> <li>Practice using the printf method.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab06_04/
 toc: false
@@ -11,6 +11,8 @@ toc: false
 ## Create a Java Program to Plot My Trip
 
 **Points**: Complete this entire section for 10 points.
+
+This lab has been created from a lab created by Ron Zacharski.  Ron rides a motor bike.  I ride bicycles without motors.
 
 This summer I took a motorcycle trip through various cities.  Each city has a gas station.  I want to complete my trip with the fewest stops at the gas stations.  The route is described as follows.
 
@@ -49,12 +51,12 @@ Chinle      120
 Gallup      112 
 ```
 
-In writing this program, you should design it such that the information is stored in an array such that you can loop through the array to compute the answer.  For example, one design could consist of an array of objects where each object consists of two items.
+In writing this program, you should design it such that the information is stored in an array such that you can loop through the array to compute the answer.  For example, one design consists of an array of objects where each object consists of two items.
 
-* String cityName;
-* int distanceToNextCity;
+* ```String cityName;```
+* ```int distanceToNextCity;```
  
-This could be a class with two public instance variables as follows.
+This can be a class with two public instance variables as follows.
 
 ```java
 public class City {

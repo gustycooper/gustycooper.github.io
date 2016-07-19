@@ -1,36 +1,24 @@
 ---
-title: First Program (Labs - Lab 5)
+title: Second Classes and Objects Lab
 keywords: class, object
-last_updated: June 6, 2016
-summary: "Lab 5, Overview"
+last_updated: July 18, 2016
+summary: "The learning objectives for the entire Second Classes and Objects Labs. <li>Practice writing classes that define types.</li> <li>Practice creating instance variables, constructors, and instance methods within your class.</li> <li>Practice creating test cases for your types.</li> <li>Practice placing your test cases in tester classes that have a main method.</li> <li>Practice using your types to declare variables.</li> <li>Practice constructing objects of your types.</li> <li>Practice calling instance methods in the objects you construct.</li> "
 sidebar: labs_sidebar
 permalink: /labs_lab05_00/
 toc: false
 ---
 
-## Lab 5 Overview
+## Second Classes and Objects Lab
 
-In Lab 5, we return to creating types.  We update many of the types we created in Lab 3.  We begin use the Netbean IDE in Lab 5.  Section 5.0 installs Netbeans.  Sections 5.1 and 5.2 uses Netbeans to re-implement the Student class and Car class from Lab 2.  Section 5.3 adds a couple of methods to the Twitter class we implemented in Lab 4.  This means the sections 5.1, 5.2, and 5.3 copy information from previous .java files. Section 5.4 uses some new material (subclass and interfaces).
+In Second Classes and Object Lab, we return to creating types.  We update some of the types we created in [First Classes and Objects Lab](/gustycooper.github.io/labs_lab3_00).  We begin use the Netbean IDE in Lab 5.  Section 5.0 installs Netbeans.  Sections 5.1 and 5.2 uses Netbeans to re-implement the Student class and Car class from Lab 2.  Section 5.3 adds a couple of methods to the Twitter class we implemented in Lab 4.  This means the sections 5.1, 5.2, and 5.3 copy information from previous .java files. Section 5.4 uses some new material (subclass and interfaces).
 
-## Netbeans Installation
+##  Submission Requirements
 
-See [Java Downloads](/gustycooper.github.io/mydoc_0_downloads) for instuctions on installing Netbeans.
-
-## Submission Requirements
-
-On Canvas submit 
-
-* Your lab score
-* The name of your teammate who verified your work.
-* The UMW Honor Pledge with your name serving as an electronic signature.
-* You must also submit the .java files the comprise your solutions to the problems.  
-* You do not have to submit your answers to the questions.
+Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.
 
 ## Sample Lab
 
-### Sample Lab Specification: XXX
-
-### Sample Lab Solution: XXX
+See previous labs for a sample lab specification and solution.
 
 ## Questions
 

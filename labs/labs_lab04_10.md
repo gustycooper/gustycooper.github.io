@@ -1,8 +1,8 @@
 ---
-title: Pig - Two Person
-keywords: pig
-last_updated: June 5, 2016
-summary: "Lab 4, Pig - Two Person"
+title: Pig - Two Person Lab
+keywords: pig, loop, conditional
+last_updated: July 17, 2016
+summary: "<li>Practice using loops and conditionals to create a Pig game.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_10/
 toc: false

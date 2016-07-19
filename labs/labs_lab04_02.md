@@ -1,13 +1,14 @@
 ---
-title: Potato Class (Labs - Lab 4)
-keywords: first program
-summary: "Lab 4, Potato Class"
+title: Potato Class Lab
+keywords: loop, while, for
+last_updated: July 17, 2016
+summary: "<li>Practice writing a Potato class.</li> <li>Practice writing loops and conditional statements.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_02/
 toc: false
 ---
 
-## 4.2 Create a Java Potato Class  - 10 Points
+## Create a Java Potato Class
 
 **Points**: Complete this entire section for 10 points.
 

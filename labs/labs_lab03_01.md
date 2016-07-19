@@ -1,8 +1,8 @@
 ---
-title: Person Type
+title: Person Type Lab
 keywords: class, person
 last_updated: June 5, 2016
-summary: "Lab 2, Person Type"
+summary: "<li>Practice writing a Person type.</li>  <li>Practice creating instance variables, constructors, and instance methods within your Person type.</li> <li>Practice creating test cases for your Person type.</li> <li>Practice placing your test cases in PersonTester class that has a main method.</li> <li>Practice using your Person type to declare variables.</li> <li>Practice constructing objects of your Perons type.</li> <li>Practice calling instance methods in the Person objects you construct.</li> "
 sidebar: labs_sidebar
 permalink: /labs_lab03_01/
 toc: false
@@ -10,9 +10,9 @@ toc: false
 
 ## Create a Java Person Type
 
-**Points**: Complete this entire section for 40 points.  The two subsections 2.3.1 and 2.3.2 are each worth 20 points.  You must include JavaDoc in your code to receive the 20 points for each section.  If you choose to omit JavaDoc, you can only receive 10 points for each section.
+**Points**: Complete this entire section for 40 points.  You must include JavaDoc in your code to receive the 40 points.  If you choose to omit JavaDoc, you can only receive 20 points.
 
-As we have learned, Java classes contain instance variables, constructors, and methods.  We use the class to define variables and we use the constructors to create objects that we assign to our variables. A ```Person class``` is a great introduction to defining classes and constructing objects.  For example, I can create a ```Person``` variable gusty and assign it to a person object by the following.
+As we have learned, Java classes contain instance variables, constructors, and methods.  We use the class as a type to declare variables and we use the constructors to create objects that we assign to our variables. A ```Person class``` is a great introduction to defining classes and constructing objects.  For example, I can create a ```Person``` variable ```gusty``` and assign it to a person object by the following.
 
 ```java
 Person gusty = new Person(“Gusty”, “Cooper);
@@ -31,7 +31,7 @@ public class Person {
 }
 ```
 
-We will create various implementations of a Person class throughout the semester.    In this section, we will develop our first Java public class Person in two steps.  
+We will create various implementations of a Person class throughout the semester.    In this section, we will develop our first Java ```public class Person``` in two steps.  
 
 ### Step 1 – Fields ```firstName``` and ```lastName```
 
@@ -89,6 +89,7 @@ We will create various implementations of a Person class throughout the semester
 7. Add the following instance variable to your ```Person``` class.
 
    * a. ```private String friends;```  – this variable will contain the friends of your ```Person``` 
+   * b. Java refers to instance variables as fields.
 
 8. Add the following methods to your ```Person``` class.
 
@@ -126,7 +127,7 @@ We will create various implementations of a Person class throughout the semester
       p.addFriend(“Gusty”);
       p.addFriend(“Coletta”);
       p.addFriend(“Emily);
-       ```
+      ```
 
     * c. Uses the following Java statements to print information to the console.
 

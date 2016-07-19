@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: Textbook
-  version: 0.0
+  version: 1.0
   folders:
 
   - title:
@@ -50,10 +50,6 @@ entries:
 
     - title: FAQs
       url: /mydoc_0_faq/
-      output: web, pdf
-
-    - title: Example Authoring
-      url: /mydoc_0_examples/
       output: web, pdf
 
   - title: Intro & 1st Programs
@@ -204,6 +200,46 @@ entries:
       url: /mydoc_4a_debugging/
       output: web, pdf
 
+  - title: Arrays and ArrayLists
+    output: web, pdf
+    folderitems:
+    
+    - title: Arrays and ArrayLists
+      url: /mydoc_6_arrays_arraylists/
+      output: web, pdf
+
+    - title: Arrays
+      url: /mydoc_6_arrays/
+      output: web, pdf
+
+    - title: ArrayLists
+      url: /mydoc_6_arraylists/
+      output: web, pdf
+
+  - title: Stack, Heap, Parameters
+    output: web, pdf
+    folderitems:
+
+    - title: Stack and Heap
+      url: /mydoc_5_stack_heap/
+      output: web, pdf
+
+    - title: Passing Parameters
+      url: /mydoc_5_passing_parameters/
+      output: web, pdf
+
+  - title: Exceptions, Try, File I/O
+    output: web, pdf
+    folderitems:
+    
+    - title: Exceptions, Try
+      url: /mydoc_6a_exceptions_try/
+      output: web, pdf
+
+    - title: File I/O
+      url: /mydoc_6a_fileio/
+      output: web, pdf
+
   - title: Classes, Objects, ...
     output: web, pdf
     folderitems:
@@ -232,16 +268,8 @@ entries:
       url: /mydoc_5_instance_static/
       output: web, pdf
 
-    - title: Stack and Heap
-      url: /mydoc_5_stack_heap/
-      output: web, pdf
-
     - title: Final
       url: /mydoc_5_final/
-      output: web, pdf
-
-    - title: Passing Parameters
-      url: /mydoc_5_passing_parameters/
       output: web, pdf
 
     - title: Enumeration Types
@@ -260,32 +288,16 @@ entries:
       url: /mydoc_5_subclasses/
       output: web, pdf
 
-  - title: Arrays and ArrayLists
+  - title: Packages, ADTs
     output: web, pdf
     folderitems:
-    
-    - title: Arrays and ArrayLists
-      url: /mydoc_6_arrays_arraylists/
+
+    - title: Packages
+      url: /mydoc_8_packages/
       output: web, pdf
 
-    - title: Arrays
-      url: /mydoc_6_arrays/
-      output: web, pdf
-
-    - title: ArrayLists
-      url: /mydoc_6_arraylists/
-      output: web, pdf
-
-  - title: Exceptions, Try, File I/O
-    output: web, pdf
-    folderitems:
-    
-    - title: Exceptions, Try
-      url: /mydoc_6a_exceptions_try/
-      output: web, pdf
-
-    - title: File I/O
-      url: /mydoc_6a_fileio/
+    - title: ADTs
+      url: /mydoc_8_ADT/
       output: web, pdf
 
   - title: Graphics
@@ -314,18 +326,6 @@ entries:
 
     - title: Netbeans GUI Builder
       url: /mydoc_7_netbeans_gui_builder/
-      output: web, pdf
-
-  - title: Packages, ADTs
-    output: web, pdf
-    folderitems:
-
-    - title: Packages
-      url: /mydoc_8_packages/
-      output: web, pdf
-
-    - title: ADTs
-      url: /mydoc_8_ADT/
       output: web, pdf
 
   - title: Recursion, Searching, Sorting
@@ -368,24 +368,16 @@ entries:
       url: /mydoc_A_meta_language/
       output: web, pdf
 
-    - title: String Manipulation
-      url: /mydoc_A_string_manipulation/
-      output: web, pdf
-
     - title: Input / Output
       url: /mydoc_A_i_o/
       output: web, pdf
 
-    - title: Passing Parameters
-      url: /mydoc_A_passing_parameters/
+    - title: Example Authoring
+      url: /mydoc_0_examples/
       output: web, pdf
 
-    - title: Exceptions
-      url: /mydoc_A_exceptions/
-      output: web, pdf
-
-    - title: Random Numbers
-      url: /mydoc_A_random_numbers/
+    - title: WebBook File Names
+      url: /mydoc_0_webbook_file_names/
       output: web, pdf
 
   - title: Tag Pages
