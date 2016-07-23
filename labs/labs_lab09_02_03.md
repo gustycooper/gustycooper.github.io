@@ -10,7 +10,7 @@ toc: false
 
 ## Recursive Binary Search
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 This lab is designed so that you re-practice writing static methods.  You place your binary search methods in a ```BinarySearch``` class that are called from a ```BinarySearchTester``` class.  You can implement a binary search method that searches for ```Strings```, ```ints```, or ```doubles```.  This section describes a binary search method that searched ```String```s.
 

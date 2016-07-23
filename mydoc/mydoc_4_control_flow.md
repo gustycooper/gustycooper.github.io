@@ -89,3 +89,10 @@ Most students in CPSC 220 have used control flow in prior programming classes.  
 ## Control Flow - Syntax and Semantics
 
 When discussing control flow we show meta language to describe its syntax and a flow chart to describe it semantics.  Syntax is the format and punctuation.  Semantics is the meaning.
+
+## Control Flow Lab
+
+The overview lab for control flow is [Control Flow](/gustycooper.github.io/labs_lab04_00).
+
+
+

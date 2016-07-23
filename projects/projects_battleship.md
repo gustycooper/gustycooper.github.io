@@ -1,6 +1,7 @@
 ---
 title: Battleship
 keywords: project
+last_updated: July 21, 2016
 summary: "<li>Understand Java interfaces.</li> <li>Understand Java packages.</li> <li>Understand how to retain state between calls of methods.</li> <li>Understand how to use char[] for implementing game boards.</li>"
 sidebar: projects_sidebar
 permalink: /projects_battleship/

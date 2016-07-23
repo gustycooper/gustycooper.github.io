@@ -368,4 +368,7 @@ public class Power {
 }
 ```
 
+## Passing Parameters Lab
+
+The overview lab for passing parameters is [Stack, Heap, Parameters](/gustycooper.github.io/labs_passing_parameters_overview)
 

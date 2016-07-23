@@ -10,7 +10,7 @@ toc: false
 
 ## Create a Java Program with Various Loops, Ifs, and Switches
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 20 points.
 
 Create a Java ```VariousControlStructs class``` that has a ```public static void main(String[] args)``` method that does the following.
 

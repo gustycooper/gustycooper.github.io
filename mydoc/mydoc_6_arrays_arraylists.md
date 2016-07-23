@@ -55,3 +55,7 @@ Arrays and ```ArrayList```s are reference types that reference objects.  ```Arra
       ints.add(i);
    int s = ints.size(); // s is 4
    ```
+
+## Arrays and ArrayLists Lab
+
+The overview lab for arrays and arraylists is [Arrays and ArrayLists](/gustycooper.github.io/labs_lab06_00).

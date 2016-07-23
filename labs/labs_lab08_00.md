@@ -1,8 +1,8 @@
 ---
-title: Data Types, Packages, Interfaces
-keywords: data type, package, interface
+title: Packages, ADTs Labs
+keywords: data type, package, ADT
 last_updated: June 15, 2016
-summary: "Data Types, Packages, Interfaces"
+summary: "<li>Practice creating abstract data types.</li> <li>Practice sovling problems with a stack ADT.</li> <li>Practice creating a Java package.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab08_00/
 toc: false
@@ -26,9 +26,7 @@ On Canvas submit
 
 ## Sample Lab
 
-### Sample Lab Specification: XXX
-
-### Sample Lab Solution: XXX
+See previous labs for a sample lab specification and solution.
 
 ## Questions
 

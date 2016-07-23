@@ -10,7 +10,7 @@ toc: false
 
 ## Create a Temperature Type
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 15 points.
 
 The work for this section implements the same methods from [Temperature](/gustycooper.github.io/labs_lab02_06).  In this section you write a Java ```Temperature class```, which will use expressions to convert from Fahrenheit to Celsius and Kelvin.   You will also write a ```TemperatureTester class``` that uses your ```Temperature class``` to construct objects to test your expressions.  The Java ```Temperature class``` and ```TemperatureTester class``` that have the following attributes.
 

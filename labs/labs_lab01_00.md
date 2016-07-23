@@ -1,6 +1,7 @@
 ---
 title: First Java Programs Labs
 keywords: loop
+last_updated: July 21, 2016
 summary: "First Java Programs Lab Overview"
 sidebar: labs_sidebar
 permalink: /labs_lab01_00/
@@ -25,7 +26,7 @@ Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00)
 
 ## Questions
 
-**Points**: You get 1 point for each question that you write or type an answer, up to a maximum of 20 points.
+**Points**: Answer these questions for 20 points.  You have to handwrite or type the answers to get the points.  For each question that you do not answer, subtract one point.  If you do not answer any questions, you get negative points.
 
 1. What is a compiler?
 

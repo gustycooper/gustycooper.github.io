@@ -2,7 +2,7 @@
 title: Computer Graphics
 tags: [graphics]
 keywords: graphics
-last_updated: July 7, 2016
+last_updated: July 21, 2016
 summary: "<li>Understand computer graphics in general.</li> <li>Understand Java's implementation of graphics.</li> <li>Understand how to draw basic shapes and text on a window.</li> <li>Understand the Graphics class</li> <li>Understand how to override paint and paintComponent methods.</li> <li>Understand how to process several graphics events.</li> <li>Understand Swing components such as Jlabel, JButton, JCheckBox, JTextField, etc.</li> "
 sidebar: mydoc_sidebar
 permalink: /mydoc_7_graphics/
@@ -104,6 +104,11 @@ To demonstrate the subclasses, consider a ```JButton```, which extends an ```Abs
       * ```javax.swing.JComponent```
         * ```javax.swing.AbstractButton```
           * ```javax.swing.JButton```
+
+## Graphics Lab
+
+The graphics overview lab is [Graphics](/gustycooper.github.io/labs_lab07_00).
+
 
 ## Sites with Java Graphics
 

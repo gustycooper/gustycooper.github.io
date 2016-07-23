@@ -32,12 +32,16 @@ entries:
       url: /mydoc_0_how_to_use/
       output: web, pdf
 
-    - title: Let's Get Started
+    - title: Prior Knowledge Needed
       url: /mydoc_0_get_started/
       output: web, pdf
 
     - title: Grand Goal of Course
       url: /mydoc_0_grand_goal/
+      output: web, pdf
+
+    - title: General Schedule of Course
+      url: /mydoc_0_general_schedule/
       output: web, pdf
 
     - title: Java Downloads

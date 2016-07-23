@@ -83,3 +83,7 @@ Assignment                  | ```=```  ```+=```  ```-=```  ```*=```  ```/=```  `
 
 Operators on the same line have the same precedence. When operators of the same precedence are used in an expression without parentheses, unary operators and assignment operators are evaluated right-to-left, while the remaining operators are evaluated left-to-right. You are most likely familiar with left-to-right evaluation.  For example, ```x * y / z``` is evaluated as ```(x * y) / z```.  For right-to-left evaluation consider multiple assignments.  ```i = j = k``` is evaluated as ```i = (j = k)```. 
 
+## Expressions and Methods Lab
+
+The overview lab for expressions and methods is [Exp, Methods](/gustycooper.github.io/labs_lab02_00).
+

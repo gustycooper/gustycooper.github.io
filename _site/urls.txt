@@ -24,9 +24,9 @@ mydoc_0_how_to_use:
 
  
 mydoc_0_get_started:
-  title: "Let's Get Started"
+  title: "Prior Knowledge Needed"
   url: /gustycooper.github.io/mydoc_0_get_started/
-  link: <a href="/gustycooper.github.io/mydoc_0_get_started/">Let's Get Started</a>
+  link: <a href="/gustycooper.github.io/mydoc_0_get_started/">Prior Knowledge Needed</a>
 
 
  
@@ -34,6 +34,13 @@ mydoc_0_grand_goal:
   title: "Grand Goal of Course"
   url: /gustycooper.github.io/mydoc_0_grand_goal/
   link: <a href="/gustycooper.github.io/mydoc_0_grand_goal/">Grand Goal of Course</a>
+
+
+ 
+mydoc_0_general_schedule:
+  title: "General Schedule of Course"
+  url: /gustycooper.github.io/mydoc_0_general_schedule/
+  link: <a href="/gustycooper.github.io/mydoc_0_general_schedule/">General Schedule of Course</a>
 
 
  
@@ -592,10 +599,24 @@ p1_landing_page:
 
 
  
+p1_gustys_contact:
+  title: "Gusty's Office Hours, Contact, ..."
+  url: /gustycooper.github.io/p1_gustys_contact/
+  link: <a href="/gustycooper.github.io/p1_gustys_contact/">Gusty's Office Hours, Contact, ...</a>
+
+
+ 
 p1_course_description:
-  title: "Course Description"
+  title: "Course Description & Objectives"
   url: /gustycooper.github.io/p1_course_description/
-  link: <a href="/gustycooper.github.io/p1_course_description/">Course Description</a>
+  link: <a href="/gustycooper.github.io/p1_course_description/">Course Description & Objectives</a>
+
+
+ 
+p1_canvas:
+  title: "Canvas Communciations"
+  url: /gustycooper.github.io/p1_canvas/
+  link: <a href="/gustycooper.github.io/p1_canvas/">Canvas Communciations</a>
 
 
  
@@ -643,10 +664,10 @@ p1_projects:
 
 
  
-p1_team_assignments:
-  title: "Team Assignments"
-  url: /gustycooper.github.io/p1_team_assignments/
-  link: <a href="/gustycooper.github.io/p1_team_assignments/">Team Assignments</a>
+p1_quizzes:
+  title: "Quizzes"
+  url: /gustycooper.github.io/p1_quizzes/
+  link: <a href="/gustycooper.github.io/p1_quizzes/">Quizzes</a>
 
 
  
@@ -734,6 +755,13 @@ labs_lab00_00:
   title: "Sample Lab Submission"
   url: /gustycooper.github.io/labs_lab00_00/
   link: <a href="/gustycooper.github.io/labs_lab00_00/">Sample Lab Submission</a>
+
+
+ 
+labs_lab00_01:
+  title: "Lab Points"
+  url: /gustycooper.github.io/labs_lab00_01/
+  link: <a href="/gustycooper.github.io/labs_lab00_01/">Lab Points</a>
 
 
 
@@ -1036,6 +1064,52 @@ labs_lab06_04:
 
 
  
+labs_passing_parameters_overview:
+  title: "Stack, Heap, Parameters Overview"
+  url: /gustycooper.github.io/labs_passing_parameters_overview/
+  link: <a href="/gustycooper.github.io/labs_passing_parameters_overview/">Stack, Heap, Parameters Overview</a>
+
+
+ 
+labs_passing_primitive_types:
+  title: "Passing Primitive Types"
+  url: /gustycooper.github.io/labs_passing_primitive_types/
+  link: <a href="/gustycooper.github.io/labs_passing_primitive_types/">Passing Primitive Types</a>
+
+
+ 
+labs_passing_reference_types:
+  title: "Passing Reference Types"
+  url: /gustycooper.github.io/labs_passing_reference_types/
+  link: <a href="/gustycooper.github.io/labs_passing_reference_types/">Passing Reference Types</a>
+
+
+ 
+labs_passing_string_types:
+  title: "Passing String Types"
+  url: /gustycooper.github.io/labs_passing_string_types/
+  link: <a href="/gustycooper.github.io/labs_passing_string_types/">Passing String Types</a>
+
+
+
+
+ 
+labs_ex_try_fileio_overview:
+  title: "Exceptions, Try, File I/O Overview"
+  url: /gustycooper.github.io/labs_ex_try_fileio_overview/
+  link: <a href="/gustycooper.github.io/labs_ex_try_fileio_overview/">Exceptions, Try, File I/O Overview</a>
+
+
+ 
+labs_ex_try_fileio_book:
+  title: "Book"
+  url: /gustycooper.github.io/labs_ex_try_fileio_book/
+  link: <a href="/gustycooper.github.io/labs_ex_try_fileio_book/">Book</a>
+
+
+
+
+ 
 labs_lab05_00:
   title: "Classes, Objects, ... Overview"
   url: /gustycooper.github.io/labs_lab05_00/
@@ -1067,9 +1141,9 @@ labs_lab06_05:
 
  
 labs_lab08_00:
-  title: "Packages, Interfaces, ADTs Overview"
+  title: "Packages, ADTs Overview"
   url: /gustycooper.github.io/labs_lab08_00/
-  link: <a href="/gustycooper.github.io/labs_lab08_00/">Packages, Interfaces, ADTs Overview</a>
+  link: <a href="/gustycooper.github.io/labs_lab08_00/">Packages, ADTs Overview</a>
 
 
  

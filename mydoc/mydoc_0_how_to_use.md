@@ -2,7 +2,7 @@
 title: How to Use This Site
 tags: [getting_started]
 keywords: how to use
-last_updated: May 1, 2016
+last_updated: July 21, 2016
 summary: "<li>Understand how to navigate this site in order to best learn the material for CPSC 220</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_0_how_to_use/
@@ -33,28 +33,29 @@ The CPSC 220 Webbook in conjuction with Canvas contains all of the material for 
 
 ## Textbook Material
 
-The Textbook material contains everything we study.  Each expandable selection in the Textbook Sidebar is a module.  We cover the modules in order from top-to-bottom.  Within a module, you read each section from top-to-bottom.  The detailed schedule of readings and programming assignmens is provided on Canvas. A rough schedule of the Textbook modules is provided in the following discussion.
+The Textbook material contains everything we study.  Each expandable selection in the Textbook Sidebar is a module.  We cover the modules in order from top-to-bottom.  Within a module, you read each section from top-to-bottom.  Canvas contains the detailed schedule of readings, programming assignments, and due dates. [General Schedule](/gustycooper.github.io/mydoc_0_general_schedule) provides a general schedule.
 
 The following are the core programming modules, during which you learn the essential problem solving and programming techniques for this course.
 
-* [Intro & 1st Programs](/gustycooper.github.io/mydoc_1_overview) - week 1
-* [Expressions](/gustycooper.github.io/mydoc_2_expressions) - week 2
-* [Methods](/gustycooper.github.io/mydoc_1a_methods) - week 2
-* [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) - week 3
-* [Control Flow](/gustycooper.github.io/mydoc_4_control_flow) - week 4
-* [Debugging](/gustycooper.github.io/mydoc_4a_debugging) - week 4
-* [Arrays and ArrayLists](/gustycooper.github.io/mydoc_6_arrays_arraylists) - week 5
-* [Exceptions, Try, File I/O](/gustycooper.github.io/mydoc_6a_exceptions_try) - week 6
-* [Classes, Objects, ...](/gustycooper.github.io/mydoc_5_classes_objects) - weeks 7, 8
-* [Packages, Interfaces, ADTs](/gustycooper.github.io/mydoc_8_packages_ADT) - week 9
+* [Intro & 1st Programs](/gustycooper.github.io/mydoc_1_overview)
+* [Expressions](/gustycooper.github.io/mydoc_2_expressions)
+* [Methods](/gustycooper.github.io/mydoc_1a_methods)
+* [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects)
+* [Control Flow](/gustycooper.github.io/mydoc_4_control_flow)
+* [Debugging](/gustycooper.github.io/mydoc_4a_debugging)
+* [Arrays and ArrayLists](/gustycooper.github.io/mydoc_6_arrays_arraylists)
+* [Stack, Heap, Parameters](/gustycooper.github.io/mydoc_5_stack_heap)
+* [Exceptions, Try, File I/O](/gustycooper.github.io/mydoc_6a_exceptions_try)
+* [Classes, Objects, ...](/gustycooper.github.io/mydoc_5_classes_objects)
+* [Packages, Interfaces, ADTs](/gustycooper.github.io/mydoc_8_packages_ADT)
 
 The module on graphics is alway fun, but Java graphics takes effort to understand.  We solve problems and write programs in this module, using all of the techniques we have studied thus far.  Many of the programs you write are mimicks of code provided.
 
-* [Graphics](/gustycooper.github.io/mydoc_7_graphics) - weeks 10, 11
+* [Graphics](/gustycooper.github.io/mydoc_7_graphics)
 
 The module covers three topics primarily from a conceptual perspective.  We learn to solve problems recursively; however, recursive thinking is usually difficult to grasp at first so we do not become experts.  We study several searching and sorting algorithms, learning how to measure the efficiency of the algorithms by counting the steps.
 
-* [Recursion, Searching, Sorting](/gustycooper.github.io/mydoc_9_method_call_frames) - weeks 12, 13
+* [Recursion, Searching, Sorting](/gustycooper.github.io/mydoc_9_method_call_frames)
 
 ## Syllabus Material
 

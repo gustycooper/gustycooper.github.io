@@ -1,8 +1,8 @@
 ---
-title: Palindrome Checker
+title: Palindrome Checker Lab
 keywords: data type, stack
 last_updated: June 15, 2016
-summary: "Palindrome Checker"
+summary: "<li>Practice solving the palindrome problem with a stack ADT.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab08_02/
 toc: false
@@ -10,7 +10,7 @@ toc: false
 
 ## Palindrome Checker
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 15 points.
 
 We added ```palindrome``` methods to our Twitter class in [Twitter Revisited](/gustycooper.github.io/labs_lab05_03).  This lab will use our ```Stack``` ADT to perform palindrome checking.  You can see how this is done be considering the palindrome hannah.  We know the length to be 6 so we will have to push 3 characters and pop 3 characters.  For strings with an even number of characters, you will push half and pop half.  For strings with an odd number of characters, you will push up to the middle character, skip the middle character, and then pop the rest.  I show a simple algorithm as a sequence of statements.  You have to capture this algorithm in a method that uses a loop so that it works with an arbitrary string.  For example the method signature should be something like the following.
 

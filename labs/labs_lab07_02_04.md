@@ -10,7 +10,7 @@ toc: false
 
 ## Netbeans GUI Builder
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 20 points.
 
 This section contains my notes when using the NetBeans GUI builder.  The following link is the Netbeans description of these steps.  You may use either to complete this section.
 

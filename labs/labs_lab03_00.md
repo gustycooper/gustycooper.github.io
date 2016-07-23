@@ -99,6 +99,8 @@ public class FlowerTester {
 
 ## Questions
 
+**Points**: Answer these questions for 20 points.  You have to handwrite or type the answers to get the points.  For each question that you do not answer, subtract one point.  If you do not answer any questions, you get negative points.
+
 1. What is a literal?  Provide examples for int, double, boolean, and String.
 
 2. True/False: A Java String is a primitive data type.

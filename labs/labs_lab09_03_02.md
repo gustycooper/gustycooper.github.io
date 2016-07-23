@@ -10,7 +10,7 @@ toc: false
 
 ## Sort a Few Numbers
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 Create two Java methods for sorting ```int```s. The first method has 2 parameters and the second method has 3 parameters.  By implementing these methods, you will appreciate sorting gets complicated as more numbers are sorted.
 

@@ -9,7 +9,7 @@ toc: false
 
 ## Java Primitive Types Lab
 
-**Points**: This section is worth 30 points.  To get the full 30 points, you have to add your own code to the sample provided.
+**Points**: Complete this entire section for 20 points.  To get the full 20 points, you have to add your own code to the sample provided.
 
 1. For this section you can continue adding code to your public static void main() function.
 2. Declare at least one variable of every primitive Java type. 

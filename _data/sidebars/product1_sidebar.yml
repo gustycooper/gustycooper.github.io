@@ -27,8 +27,16 @@ entries:
       url: /p1_landing_page/
       output: web
 
-    - title: Course Description
+    - title: Gusty's Office Hours, Contact, ...
+      url: /p1_gustys_contact/
+      output: web, pdf
+      
+    - title: Course Description & Objectives
       url: /p1_course_description/
+      output: web, pdf
+      
+    - title: Canvas Communciations
+      url: /p1_canvas/
       output: web, pdf
       
     - title: Honor Code
@@ -59,8 +67,8 @@ entries:
       url: /p1_projects/
       output: web, pdf
     
-    - title: Team Assignments
-      url: /p1_team_assignments/
+    - title: Quizzes
+      url: /p1_quizzes/
       output: web, pdf
     
     - title: Examinations

@@ -10,7 +10,7 @@ toc: false
 
 ## Create a Java Person Type
 
-**Points**: Complete this entire section for 40 points.  You must include JavaDoc in your code to receive the 40 points.  If you choose to omit JavaDoc, you can only receive 20 points.
+**Points**: Complete this entire section for 30 points.  You must include JavaDoc in your code to receive the 30 points.  If you choose to omit JavaDoc, you can only receive 20 points.
 
 As we have learned, Java classes contain instance variables, constructors, and methods.  We use the class as a type to declare variables and we use the constructors to create objects that we assign to our variables. A ```Person class``` is a great introduction to defining classes and constructing objects.  For example, I can create a ```Person``` variable ```gusty``` and assign it to a person object by the following.
 

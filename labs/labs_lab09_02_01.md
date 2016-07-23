@@ -10,7 +10,7 @@ toc: false
 
 ## Searching Through Numbers
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 You should create the code for 12.1 if you need practice working with two-dimensional arrays and using file I/O.   Working with two-dimensional arrays is information that you should know for the final.
 

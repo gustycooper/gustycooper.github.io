@@ -22,7 +22,7 @@ See previous labs for a sample lab specification and solution.
 
 ## Questions
 
-**Points**: To earn these 10 points, you have to write or type answers to 16 questions; otherwise you receive 0 points.
+**Points**: Answer these questions for 20 points.  You have to handwrite or type the answers to get the points.  For each question that you do not answer, subtract one point.  If you do not answer any questions, you get negative points.
 
 1. Object-oriented programming uses classes and objects. What are classes and what are objects? What is the relationship between classes and objects?
  
@@ -59,13 +59,13 @@ See previous labs for a sample lab specification and solution.
 
 14. The methods of a class can be called.  Methods have parameters.  Discuss the concept of parameters.  What is the difference between formal parameters and actual parameters?
 
-15. Explain the term polymorphism.
+15. Explain the term polymorphism.  You will have to look this up on the Internet because we have not studied in it class.
 
 16. Java uses “garbage collection” for memory management. Explain what is meant here by garbage collection. What is the alternative to garbage collection?
 
 17. What is an abstract class, and how can you recognize an abstract class in Java.
 
-18. What is this?
+18. What is ```this```?
 
 19. For this problem, you should write a very simple but complete class. The class represents a counter that counts 0, 1, 2, 3, 4, . . . . The name of the class should be Counter. It has one private instance variable representing the value of the counter. It has two instance methods: increment() adds one to the counter value, and getValue() returns the current counter value. Write a complete definition for the class, Counter.
 
@@ -84,4 +84,5 @@ See previous labs for a sample lab specification and solution.
     System.out.println("There were " + ___________ + " heads."); System.out.println("There were " + ___________ + " tails.");
     ```
 
+21. True/False: Java's ```final``` keyword does not have much use.  Explain your answer.
 

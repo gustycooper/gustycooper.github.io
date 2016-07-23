@@ -1,7 +1,7 @@
 ---
 title: Control Flow Lab
 keywords: loop, conditional, for, while, do-while, if, switch
-last_updated: July 16, 2016
+last_updated: July 21, 2016
 summary: "<li>Practice writing code that uses loops and conditional statements.</li> <li>Practice solving problems with a while loop.</li> <li>Practice solving problems with a for loop.</li> <li>Practice solving problems with a do-while loop.</li> <li>Practice solving problems with if-else statements.</li> <li>Practice solving problems with a switch statement.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab04_00/
@@ -33,13 +33,13 @@ Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00)
 
 ## Sample Lab
 
-### Sample Lab Specification: XXX
-
-### Sample Lab Solution: XXX
+See previous labs for a sample lab specification and solution.
 
 ## Questions
 
-**Points**: To earn these 10 points, you have to write or type answers to 16 questions; otherwise you receive 0 points.
+**Points**: Answer these questions for 20 points.  You have to handwrite or type the answers to get the points.  For each question that you do not answer, subtract one point.  If you do not answer any questions, you get negative points.
+
+Some of the questions ask if the code have problems?  If there is a problem, state what it is and a way to remove the problem.
 
 1. What is the last value printed by the following loop?
 
@@ -96,7 +96,6 @@ Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00)
 8. True/False: When the computer encounters an “if/else” construct, it is sometimes the case that both the “if” body's code and also the “else” body's code will get executed.
 
 
-Which of the following bits of code have problems?  ?  If there is a problem, state what it is and a way to remove the problem.
 
 9. Does the following code have a problem? Y/N ___, if so, explain how to remove.
 
@@ -147,4 +146,8 @@ Which of the following bits of code have problems?  ?  If there is a problem, st
       value = in.nextInt();
     } while (value >= 100);
     ```
+
+20. What are the two conditional statements provided by Java?
+
+21. True/False: A while loop is all that is needed to solve problems.  Explain your answer.
 

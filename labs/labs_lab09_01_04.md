@@ -10,7 +10,7 @@ toc: false
 
 ## SimpleMaze
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 The ```SimpleMaze.java``` file on Canvas under Files->Labs->Recursion->SimpleMaze demonstrates the power of recursion in solving mazes.  Study the code and update the code to have a different maze.  This will require you to create a new maze in the variable
 

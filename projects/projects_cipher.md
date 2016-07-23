@@ -1,6 +1,7 @@
 ---
 title: Cipher
-keywords: project
+keywords: project, cipher, encryption, decryption
+last_updated: July 21, 2016
 summary: "<li>Understand elementary encryption algorithms</li> <li>Think about encryption as it relates to events in life such as the Internet.</li> <li>Understand ASCII and UTF encodings of char.</li> <li>Understand the char type can be used in arithmetic expressions.</li>"
 sidebar: projects_sidebar
 permalink: /projects_cipher/

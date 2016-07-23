@@ -1,7 +1,8 @@
 ---
 title: Grade Determination (Syllabus)
 keywords: sample
-summary: "Grades for CPSC 220"
+last_updated: July 21, 2016
+summary: "Describes Grading Policy for CPSC 220"
 sidebar: product1_sidebar
 permalink: /p1_grade_determination/
 toc: false
@@ -9,24 +10,25 @@ toc: false
 
 ## Grade Determination
 
-Final grades will be based upon the following assignments.
+Final grades are based upon the following assignments.
 
 * Test Component: 50%:      	            
-  * Team – 10%	
+  * Quiz – 10%	
   * Midterm – 20%
   * Final – 20%
 
 * Programming Component: 50%:
-  * Labs – 20%
-  * Programming Projects – 30%
+  * Labs – 25%
+  * Programming Projects – 25%
 
-Missing lab classes and required classes will result in a deduction of points.
+Missing lab classes and required classes result in a deduction of points.
 
 Course policy stipulates that in order to receive a passing grade in CPSC 220, a student must satisfy all of the following:
+
 1. Earn an average of 60 or better on the Tests component of your grade.
 2. Earn an average of 60 or better on the Programming component of your grade.
 
-Final letter grades will be determined according to following grading scale. I reserve the right to lower these standards, but will not raise them.
+Final letter grades are determined according to following grading scale. I reserve the right to lower these standards, but not raise them.
 
 Points | Letter Grade
 ------ | ------------

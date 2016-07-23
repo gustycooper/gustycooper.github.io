@@ -10,7 +10,7 @@ toc: false
 
 ## wordCount() with Map
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 This lab updates the ```Book``` class from the Book Project to include a second method that counts words.  The method ```int wordCount(String word)``` uses a Java Map.  The updated constructor uses some nice code that removes punctuation from your ```bookString`.   The purpose of this lab is to introduce you to alternative ways of solving the same problem.  You should study the code.  
 

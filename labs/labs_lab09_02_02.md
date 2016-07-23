@@ -10,7 +10,7 @@ toc: false
 
 ## Recursive Linear Search
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 Write a recursive linear search method 
 

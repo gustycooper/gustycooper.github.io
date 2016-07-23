@@ -10,7 +10,7 @@ toc: false
 
 ## Recursive Integer to Binary
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 Write a recursive method ```public static void intToBinary(int val)``` that prints the binary equivalent of the ```int``` parameter ```val```.  Recall the converting from decimal to binary is done by using the modulo operator and the division operator.  Consider the integer number 13, which is 0b1101.  The following shows the two operations.
 

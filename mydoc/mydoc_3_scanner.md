@@ -38,7 +38,7 @@ line
 </pre>
 </div>
 
-Line 1 imports the ```Scanner``` class so that we can use it to declare variables of type ```Scanner```.  The ```Scanner``` class is in the ```java.util``` package.  In Java a package collects classes together for easy access.  We study the details of packages in [Packages, Interfaces, ADTs](/gustycooper.github.io/mydoc_8_packages_ADT).
+Line 1 imports the ```Scanner``` class so that we can use it to declare variables of type ```Scanner```.  The ```Scanner``` class is in the ```java.util``` package.  In Java a package collects classes together for easy access.  We study the details of packages in [Packages, ADTs](/gustycooper.github.io/mydoc_8_packages_ADT).
 
 Line 5 accomplishes the following. 
 

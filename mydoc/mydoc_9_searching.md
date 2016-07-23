@@ -2,7 +2,7 @@
 title: Searching
 tags: [searching]
 keywords: searching
-last_updated: July 3, 2016
+last_updated: July 21, 2016
 summary: "<li>Understand searching.</li> <li>Understand linear search and its associated Big O value.</li> <li>Understand binary search and its associated Big O value.</li> <li>Understand hash tables and how they are related to searching.</li> <li>Understand the String.hashCode method.</li> <li>Understand Java's key-value data structures Map and HashMap.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_9_searching/
@@ -406,4 +406,8 @@ System.out.printf("%-12s %s\n", "Player", "Games won");
 for (Map.Entry<String,Integer> m : gamesWon.entrySet())
     System.out.printf("%-12s %7d\n", m.getKey(), m.getValue());
 ```
+
+## Searching Lab
+
+The first of several searching labs is [Searching](/gustycooper.github.io/labs_lab09_02_01).
 

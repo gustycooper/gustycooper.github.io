@@ -10,7 +10,7 @@ toc: false
 
 ## Sort an Arbitrary Number of Strings
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 Canvas Files->Labs->Searching->Sort.java contains the sort methods we developed in class, which sort int[].  Update the sort methods in Sort.java to sort ```ArrayList<String>```.  
 

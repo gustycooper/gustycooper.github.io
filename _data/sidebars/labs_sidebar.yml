@@ -31,6 +31,10 @@ entries:
       url: /labs_lab00_00/
       output: web
 
+    - title: Lab Points
+      url: /labs_lab00_01/
+      output: web
+
   - title: Intro & 1st Programs
     output: web, pdf
 
@@ -215,6 +219,38 @@ entries:
       url: /labs_lab06_04/
       output: web, pdf
       
+  - title: Stack, Heap, Parameters
+    output: web, pdf
+
+    folderitems:
+    - title: Stack, Heap, Parameters Overview
+      url: /labs_passing_parameters_overview/
+      output: web, pdf
+
+    - title: Passing Primitive Types
+      url: /labs_passing_primitive_types/
+      output: web, pdf
+
+    - title: Passing Reference Types
+      url: /labs_passing_reference_types/
+      output: web, pdf
+
+    - title: Passing String Types
+      url: /labs_passing_string_types/
+      output: web, pdf
+
+  - title: Exceptions, Try, File I/O
+    output: web, pdf
+
+    folderitems:
+    - title: Exceptions, Try, File I/O Overview
+      url: /labs_ex_try_fileio_overview/
+      output: web, pdf
+
+    - title: Book
+      url: /labs_ex_try_fileio_book/
+      output: web, pdf
+
   - title: Classes, Objects, ...
     output: web, pdf
 
@@ -239,7 +275,7 @@ entries:
     output: web, pdf
 
     folderitems:
-    - title: Packages, Interfaces, ADTs Overview
+    - title: Packages, ADTs Overview
       url: /labs_lab08_00/
       output: web, pdf
       

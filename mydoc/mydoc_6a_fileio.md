@@ -31,7 +31,11 @@ The following figure of a computer shows three types of input/output (I/O).
 
 ![Computer Figure](../images/computerDiagram2.png "Computer Figure") 
 
-Operating systems (e.g., Mac OS, LINUX, MS-Windows) provide a file system for applications to use.  Files are stored on secondary memory.  Information on secondary memory is persistent, which means the information does not disappear when your computer is turned off.  A file system consistes of directories (folders) and files.  A file is a sequence of bytes that must be interpreted by programs.  From the perspective of the file system, there is no difference between a ```.docx``` file, a ```.xlsx``` file, and a ```.java``` file - they are all a sequence of bytes.  MS-Word understands the format of ```.docx``` files and properly displays the correct font, bolding, headings. etc.  All of these document features are attributes stored in the bytes of the file.  A folder is a special file that contains files, including other folders.  You organize the information on your computer by placing the information in a folder structure that you understand.  For example, you may place a ```CPSC220``` folder in your ```MyDocuments``` folder. Within your ```CPSC220``` folder you may place various subfolders for labs, projects, etc., and those too may contain subfolders.
+Operating systems (e.g., Mac OS, LINUX, MS-Windows) provide a file system for applications to use.  Files are stored on secondary memory.  Information on secondary memory is persistent, which means the information does not disappear when your computer is turned off.  A file system consistes of directories (folders) and files.  A file is a sequence of bytes that must be interpreted by programs.  From the perspective of the file system, there is no difference between a ```.docx``` file, a ```.xlsx``` file, and a ```.java``` file - they are all a sequence of bytes.  MS-Word understands the format of ```.docx``` files and properly displays the correct font, bolding, headings. etc.  All of these document features are attributes stored in the bytes of the file.  A folder is a special file that contains files, including other folders.  You organize the information on your computer by placing the information in a folder structure that you understand.  For example, you may place a ```CPSC220``` folder in your ```MyDocuments``` folder. Within your ```CPSC220``` folder you may place various subfolders for labs, projects, etc., and those too may contain subfolders.  The following notation shows the file ```Book.java``` that is in a folder ```BookProject``` that is in a folder ```MyDocuments```.  Notice the ```/``` separating folders and filename.  Some operating systems use ```\```.
+
+```java
+/MyDocuments/BookeProject/Book.java
+```
 
 ## Text Files
 
@@ -244,4 +248,30 @@ Netbeasn > Stack.java - extends RuntimeException
 
 ## Files in Netbeans, BlueJ
 
-State where files must be placed.
+As described in the File I/O Introduction section, the file structure of operating systems includes folders.   The following notation shows the file ```Book.java``` that is in a folder ```BookProject``` that is in a folder ```MyDocuments```.  Notice the ```/``` separating folders and filename.  Some operating systems use ```\```.
+
+```java
+/MyDocuments/BookProject/Book.java
+```
+ 
+The simplest way to perfrom file I/O in Netbeans and BlueJ is to place the files in the appropriate folder such that they can be opened with the file name only.  For example, I can open the file ```people.txt``` by the following.
+
+```java
+File inputFile = new File("people.txt");
+Scanner in = new Scanner(inputFile);
+```
+
+### BlueJ
+
+You create a folder for a BlueJ project, and BlueJ places all information for that project in that folder.  You simply place any files for file I/O in the BlueJ project folder.  If my BlueJ project is in the folder ```/MyDocuments/BookProject/, you place files there.
+
+### NetBeans
+
+Netbeans places subfolders in the project folder.  If my Netebeans project is in the folder ```/MyDocuments/Netbeans/LoopingPatterns```, the project has the following subfolders.
+
+* src - all of your source code (.java files) is placed in this folder.
+* build - all of the .class files are place in this folder.
+* nbproject - Netbeans places information that helps build your program in this folder.
+
+Any files for for file I/O must be placed in th Netbeans project folder, e.g., ```/MyDocuments/Netbeans/LoopingPatterns```.
+

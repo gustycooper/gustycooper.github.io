@@ -10,7 +10,7 @@ toc: false
 
 ## Create a Java Dice Type
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 15 points.
 
 In this section you will write a Java ```Dice class``` that implements two ```roll``` methods.  One of the ```roll``` methods will use the ```Math.random``` method.  This code will be like that created in [Dice](/gustycooper.github.io/labs_lab02_07).  The other ```roll``` method will use a ```java.util.Random``` object.  Since both ```roll``` methods have the same signature, you will name the methods ```roll1``` (uses ```Math.random```) and ```roll2``` (uses ```java.util.Random```).  The ```Math.random``` method is available without an ```import``` statement, but you will have to include the following line 
 

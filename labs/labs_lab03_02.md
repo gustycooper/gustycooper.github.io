@@ -11,7 +11,7 @@ toc: false
 
 ## Create a Java Car Type
 
-**Points**: Complete this entire section for 20 points.  You must include JavaDoc in your code to receive the 20 points for this section.  If you choose to omit JavaDoc, you can only receive 10 points.
+**Points**: Complete this entire section for 30 points.  You must include JavaDoc in your code to receive the 30 points for this section.  If you choose to omit JavaDoc, you can only receive 20 points.
 
 This lab has been modeled after a similar lab in the [Udacity Java Course](https://www.udacity.com/course/intro-to-java-programming--cs046).
 

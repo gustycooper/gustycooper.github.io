@@ -10,7 +10,7 @@ toc: false
 
 ## Create a MyString Type
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 15 points.
 
 This lab allows you to practice creating a Java class – ```MyString```.  Your ```MyString``` class will be your own simplified version of the Java ```String``` class.  You will use the same ```String``` methods that you used to complete 2.1.  Write a Java public class ```MyString``` that satisfies the requirements listed in this section.  This section also describes steps to test your ```MyString``` class.  You should recall that the general format of a Java class is as follows.
 

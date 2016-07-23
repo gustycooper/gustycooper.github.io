@@ -1,8 +1,8 @@
 ---
-title: MyMath Package
+title: MyMath Package Lab
 keywords: data type, stack
-last_updated: June 15, 2016
-summary: "MyMath Package"
+last_updated: July 20, 2016
+summary: "<li>Practice creating a Java package.</li> <li>Practice importing a package that you create.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab08_04/
 toc: false
@@ -44,7 +44,7 @@ In this lab, you will create a package in which will be a ```MyMath``` class tha
 
 5. Delete the main() code from MyMath.java.
 
-6. Copy the code from Lab 4-5 MyMath.java into the MyMath.java tab.  You will have to update the average and largest methods because I have changed the signature so that the formal parameter is a double[].  Make sure all of the methods are static.  For example the numDigits() method should have the following signature.  We want our functions to be static because they are not dependent upon creating an object of type MyMath.  If you think about the Java Math class, it has methods and constants that you can access without creating objects of type Math.  All you have to do is use the Math.sin() function call.  As you should know by this time, a static method does not require creating an object.  In this way our MyMath class will be mimicking the Java Math class.  We want to be able to accomplish the following.  You should notice how the above import is similar to the imports we have done in order to access various Java classes.  For examples,
+6. Copy the code from [MyMath Take 2](/gustycooper.github.io/labs_lab04_05) into the MyMath.java tab.  You will have to update the average and largest methods because I have changed the signature so that the formal parameter is a double[].  Make sure all of the methods are static.  For example the numDigits() method should have the following signature.  We want our functions to be static because they are not dependent upon creating an object of type MyMath.  If you think about the Java Math class, it has methods and constants that you can access without creating objects of type Math.  All you have to do is use the Math.sin() function call.  As you should know by this time, a static method does not require creating an object.  In this way our MyMath class will be mimicking the Java Math class.  We want to be able to accomplish the following.  You should notice how the above import is similar to the imports we have done in order to access various Java classes.  For examples,
 
    ```java
    public static int numDigits(int x)

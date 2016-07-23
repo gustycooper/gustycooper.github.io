@@ -1,14 +1,14 @@
 ---
-title: Classes, Objects, and More
+title: Classes, Objects, ...
 tags: [class, object]
 keywords: classes, objects
-last_updated: May 1, 2016
+last_updated: July 21, 2016
 summary: "The learning objectives for this entire module. <li>Understand several details about classes and objects that were omitted in the Simple Objects module.</li> <li>Understand classes can be defined without methods.</li> <li>Understand null references.</li> <li>Understand this and its use in classes.</li> <li>Understand public and private.</li> <li>Understand instance and static.</li>  <li>Understand how to put instance and static in the same class.</li> <li>Understand final and its use on declaring variables.</li> <li>Understand how to define an enumeration type.</li> <li>Understand how to use an enumeration type.</li> <li>Understand subclasses.</li> <li>Understand how to create a Student that is a subclass of a Person.</li> <li>Understand class hierarchy.</li> <li>Understand a Java interface.</li> <li>Understand a Java interface contains method signatures, but does not contain code.</li> <li>Understand how to write a class that implements a Java interface.</li> <li>Understand overriding toString and comparable.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_5_classes_objects/
 ---
 
-## Classes, Objects, and More
+## Classes, Objects, ...
 
 In [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) we learned how to create our own types in Java classes.  We 
 skipped a few details in our introduction to objects and classes.  In this section, we re-visit classes and objects to complete out study.  We learn some of the omitted details, which are summarized as follows.
@@ -24,7 +24,7 @@ skipped a few details in our introduction to objects and classes.  In this secti
 * ```interface```
 * ```toString```, ```comparable```
 
-## Classes, Objects, and More and the Wirth Pattern
+## Classes, Objects, ... and the Wirth Pattern
 
 The Wirth pattern from [Primitive Types](/gustycooper.github.io/mydoc_1_primitive_types) defines a prgram to be algorithms and data structures.
 
@@ -49,4 +49,9 @@ CPSC 220 introduces you to creating classes and objects.  Object-oriented progra
 4. Create a tester for you class.  This will construct objects and use the methods to make sure they work how you think they should.
 5. Use your class in the solution of a problem.
 6. If you have a nice class that others can use, provide your class to others so they can solve problems with it.
+
+## Classes, Objects Lab
+
+The overview lab for classes and objects is [Classes, Objects, ...](/gustycooper.github.io/labs_lab05_00).
+
 

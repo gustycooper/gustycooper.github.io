@@ -1,6 +1,7 @@
 ---
 title: Endor Smints
-keywords: project
+keywords: project, endor, smints
+last_updated: July 21, 2016
 summary: "Endor Smints"
 sidebar: projects_sidebar
 permalink: /projects_endorsmints/

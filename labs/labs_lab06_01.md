@@ -9,7 +9,7 @@ permalink: /labs_lab06_01/
 
 ## Looping Patterns with Arrays and ArrayLists
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 25 points.
 
 This section allows you to practice programming looping patterns.  We first studied looping patterns in [Loop Patterns](/gustycooper.github.io/mydoc_5_loop_patterns).  We first practiced writing code for loopint patterns in [Loops, Ifs, Switches Lab](/gustycooper.github.io/labs_lab04_03).  We continue practicing our looping patterns in this lab.  These looping patterns are used over-and-over in programming.  All good programmers know these patterns like the back of their hands.  All of the patterns are variations of the accumulator pattern.  The looping patterns in this section include the following.
 

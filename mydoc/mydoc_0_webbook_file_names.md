@@ -22,6 +22,34 @@ You should study Tom Johnson's [Jekyll Documentation Theme 5.0](http://idratherb
 
 I followed Tom's file naming convention for the mydoc sections.  Each file has a name like **mydoc_1_overview.md**.  Each file begins with **mydoc**.  I had a particular order for teaching the class.  The order is reflected by the **_X** that follows mydoc.  For example **mydoc_1**.  After the number is a name that reflects the section. After getting the content into the WebBook, I decided to rearrange the content of the course.  This messed up some of the numbers.  The following maps the WebBook sections to filenames.
 
+### Start Here Module
+
+Section | File Name
+------- | ---------
+Welcome | index
+How to Use | mydoc_0_how_to_use
+Let's Get Started | mydoc_0_get_started
+Grand Goal of Course | mydoc_0_grand_goal
+Java Downloads | mydoc_0_downloads
+About Gusty | mydoc_0_about_gusty
+FAQs | mydoc_0_faq
+Example Authoring | mydoc_0_examples
+
+### Intro & 1st Programs Module
+
+Section | File Name
+------- | ---------
+Introduction Overview | mydoc_1_overview
+Information, People, Computers | mydoc_1_information_people_computers
+IDEs, Compiling, Interpreting | mydoc_1_ides_compiling_interpreting
+Software Development Process | mydoc_1_software_development_process
+Problem Solving | mydoc_1_problem_solving
+Algorithms | mydoc_1_algorithms
+Numbers as Information | mydoc_1_numbers
+Chars as Information | mydoc_1_characters
+Primitive Types | mydoc_1_primitive_types
+Our First Java Programs | mydoc_1_first_programs
+
 ```java
   Start Here
     Welcome - index
@@ -132,8 +160,25 @@ I followed Tom's file naming convention for the mydoc sections.  Each file has a
 
 Each file has a name like **labs_lab01_01.md**.  Each file begins with **labs_lab**.  I had a particular order for teaching the class.  The order is reflected by the **_X** that follows labs_lab.  For example **labs_lab01**.  After the number is a number that reflects the lab in that lab group. I should have selected a better naming convention for labs, but after getting the content into the WebBook, I retained the convention.  The convention got more hard to associate a file with a lab when decided to rearrange the content of the course.  The following maps the labs to the points achievable and their filenames.
 
+NOTE: Points are now kept in the Google Spreadsheet referenced on [Lab Points](/gustycooper.github.io/labs_lab00_01).
+
+### Intro & 1st Programs Labs
+
+Lab | Points | File Name
+--- | ------ | ---------
+Intro & 1st ProgOver | 0 | labs_lab01_00
+Install BlueJ | 10 | labs_lab01_00
+Questions | 20 | labs_lab01_00
+First Program | 10 | labs_lab01_01
+Second Program | 10 | labs_lab01_02
+Primitive Types | 10 | labs_lab01_03
 
 ```java
+
+   Labs
+     Labs			landing_page
+     Sample Lab Submission	00_00
+     Lab Points			00_01
 
    Intro & 1st Programs
      Intro & 1st ProgOver  	01_00
@@ -192,6 +237,17 @@ Each file has a name like **labs_lab01_01.md**.  Each file begins with **labs_la
      MyIntegers Type – 20	06_02
      Person Type Again – 20	06_03
      My Trip – 10		06_04
+
+   Stack, Heap, Parameters
+     Stack, Heap, Par Over	passing_parameters_overview
+     Questions – 5		passing_parameters_overview
+     Passing Primitive - 10	passing_primitive_types
+     Passing Reference – 10	passing_reference_types
+     Passing String – 10	passing_string_types
+
+   Exceptions, Try, File I/O
+     Exs, Try, FIO Over		ex_try_fileio_book
+     Book			ex_try_fileio_book			
 
    Classes, Objects, ...
      Classes, Objs, .. Over	05_00

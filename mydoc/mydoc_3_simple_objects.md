@@ -123,3 +123,8 @@ In the next two sections, we return to ```String``` and ```Scanner``` - two Java
 ## Reference Type Naming Convention
 
 Reference types, by convention, begin with an uppercase letter, e.g., ```String``` and ```Scanner```.
+
+## Simple Objects Lab
+
+The overview lab for simple objects is [Simple Objects](/gustycooper.github.io/labs_lab03_00).
+

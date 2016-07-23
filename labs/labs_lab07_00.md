@@ -1,7 +1,7 @@
 ---
 title: Graphics
 keywords: graphics
-last_updated: June 22, 2016
+last_updated: July 21, 2016
 summary: "Graphics"
 sidebar: labs_sidebar
 permalink: /labs_lab07_00/
@@ -19,19 +19,11 @@ Canvas Files -> Labs -> graphicsCode -> Lab8 contains .java files that can be us
 
 ## Submission Requirements
 
-On Canvas submit 
-
-* Your lab score
-* The name of your teammate who verified your work.
-* The UMW Honor Pledge with your name serving as an electronic signature.
-* You must also submit the .java files the comprise your solutions to the problems.  
-* You do not have to submit your answers to the questions.
+Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.
 
 ## Sample Lab
 
-### Sample Lab Specification: XXX
-
-### Sample Lab Solution: XXX
+See previous labs for a sample lab specification and solution.
 
 ## Questions
 

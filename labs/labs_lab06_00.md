@@ -1,7 +1,7 @@
 ---
 title: Arrays, ArrayLists Labs
 keywords: array, arraylist
-last_updated: July 18, 2016
+last_updated: July 21, 2016
 summary: "<li>Practice using arrays and ArrayLists in solving problems.</li> <li>Practice looping patterns with arrays and ArrayLists.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab06_00/
@@ -81,7 +81,7 @@ public class AddDouble {
 
 ## Questions
 
-Points: To earn these 5 points, you have to write or type answers to 12 questions; otherwise you receive 0 points.
+**Points**: Answer these questions for 10 points.  You have to handwrite or type the answers to get the points.  For each question that you do not answer, subtract one point.  If you do not answer any questions, you get negative points.
 
 1. True/False: It's easy to insert and delete elements from the middle of an array.
 

@@ -16,11 +16,41 @@
 
 
 {
+"title": "Book Lab",
+"tags": "",
+"keywords": "file I/O, strint methods",
+"url": "/gustycooper.github.io/labs_ex_try_fileio_book/",
+"summary": "<li>Practice writing a class that performs file I/O.</li> <li>Practice using String methods.</li>"
+},
+
+
+
+{
+"title": "Exception, Try, File I/O Overview",
+"tags": "",
+"keywords": "exception, try, file I/O",
+"url": "/gustycooper.github.io/labs_ex_try_fileio_overview/",
+"summary": "<li>Practice writing a class that performs file I/O.</li> <li>Practice using String methods.</li>"
+},
+
+
+
+{
 "title": "Lab Submissions on Canvas",
 "tags": "",
 "keywords": "sample lab",
 "url": "/gustycooper.github.io/labs_lab00_00/",
 "summary": "<li>Understand the labs and their corresponding Canvas assignments.</li> <li>Understand what is expected to be submitted on Canvas for each lab.</li> <li>Understand what is expected to be submitted for the Total Points Lab Assignment.</li> <li>Provide a sample Canvas lab submission so that students know what is expected for Canvas submssions.</li>"
+},
+
+
+
+{
+"title": "Lab Points",
+"tags": "",
+"keywords": "lab points",
+"url": "/gustycooper.github.io/labs_lab00_01/",
+"summary": "<li>View the lab points in a Google spreadsheet.</li>"
 },
 
 
@@ -596,51 +626,51 @@
 
 
 {
-"title": "Data Types, Packages, Interfaces",
+"title": "Packages, ADTs Labs",
 "tags": "",
-"keywords": "data type, package, interface",
+"keywords": "data type, package, ADT",
 "url": "/gustycooper.github.io/labs_lab08_00/",
-"summary": "Data Types, Packages, Interfaces"
+"summary": "<li>Practice creating abstract data types.</li> <li>Practice sovling problems with a stack ADT.</li> <li>Practice creating a Java package.</li>"
 },
 
 
 
 {
-"title": "Stack ADT",
+"title": "Stack ADT Lab",
 "tags": "",
 "keywords": "data type, stack",
 "url": "/gustycooper.github.io/labs_lab08_01/",
-"summary": "Stack ADT"
+"summary": "<li>Practice creating a stack ADT.</li> <li>Practice creating generic types - if desired.</li>"
 },
 
 
 
 {
-"title": "Palindrome Checker",
+"title": "Palindrome Checker Lab",
 "tags": "",
 "keywords": "data type, stack",
 "url": "/gustycooper.github.io/labs_lab08_02/",
-"summary": "Palindrome Checker"
+"summary": "<li>Practice solving the palindrome problem with a stack ADT.</li>"
 },
 
 
 
 {
-"title": "Parentheses Balance Checker",
+"title": "Parentheses Balance Checker Lab",
 "tags": "",
 "keywords": "data type, stack",
 "url": "/gustycooper.github.io/labs_lab08_03/",
-"summary": "Parentheses Balance Checker"
+"summary": "<li>Practice solving the balanced parantheses problem with a stack ADT.</li>"
 },
 
 
 
 {
-"title": "MyMath Package",
+"title": "MyMath Package Lab",
 "tags": "",
 "keywords": "data type, stack",
 "url": "/gustycooper.github.io/labs_lab08_04/",
-"summary": "MyMath Package"
+"summary": "<li>Practice creating a Java package.</li> <li>Practice importing a package that you create.</li>"
 },
 
 
@@ -836,6 +866,46 @@
 
 
 {
+"title": "Passing Parameters Overview",
+"tags": "",
+"keywords": "parameter, passing, formal, actual",
+"url": "/gustycooper.github.io/labs_passing_parameters_overview/",
+"summary": "<li>Practice passing primitive types as parameters to methods.</li> <li>Practice passing reference types as parameters to methods.</li>  <li>Practice passing String types as parameters to methods.</li> <li>Create a better understanding of pass by value with primitive types.</li> <li>Create a better understanding of pass by reference with reference types.</li> <li>Create a better understanding of pass by value with String types.</li>"
+},
+
+
+
+{
+"title": "Passing Primitive Types Labs",
+"tags": "",
+"keywords": "parameter, primitive",
+"url": "/gustycooper.github.io/labs_passing_primitive_types/",
+"summary": "<li>Practice passing primitive types as parameters to methods.</li> <li>Create a better understanding of pass by value with primitive types.</li>"
+},
+
+
+
+{
+"title": "Passing Reference Types Labs",
+"tags": "",
+"keywords": "parameter, reference",
+"url": "/gustycooper.github.io/labs_passing_reference_types/",
+"summary": "<li>Practice passing reference types as parameters to methods.</li> <li>Create a better understanding of pass by reference with reference types.</li>"
+},
+
+
+
+{
+"title": "Passing String Types Labs",
+"tags": "",
+"keywords": "parameter, string",
+"url": "/gustycooper.github.io/labs_passing_string_types/",
+"summary": "<li>Practice passing String types as parameters to methods.</li> <li>Create a better understanding of pass by value with String types.</li>"
+},
+
+
+
+{
 "title": "About Gusty",
 "tags": "getting_started",
 "keywords": "gusty",
@@ -876,7 +946,17 @@
 
 
 {
-"title": "Getting Started in CPSC 220",
+"title": "General Schedule",
+"tags": "getting_started",
+"keywords": "scheudle",
+"url": "/gustycooper.github.io/mydoc_0_general_schedule/",
+"summary": "<li>Understand the general schedule of CPSC 220</li>"
+},
+
+
+
+{
+"title": "Prior Knowledge Needed",
 "tags": "getting_started",
 "keywords": "sample, authoring",
 "url": "/gustycooper.github.io/mydoc_0_get_started/",
@@ -1246,7 +1326,7 @@
 
 
 {
-"title": "Classes, Objects, and More",
+"title": "Classes, Objects, ...",
 "tags": "classobject",
 "keywords": "classes, objects",
 "url": "/gustycooper.github.io/mydoc_5_classes_objects/",
@@ -1626,11 +1706,21 @@
 
 
 {
+"title": "Canvas for Communications",
+"tags": "",
+"keywords": "canvas",
+"url": "/gustycooper.github.io/p1_canvas/",
+"summary": "Describes Canvas as our primary source of communication."
+},
+
+
+
+{
 "title": "Course Agreement (Syllabus)",
 "tags": "",
 "keywords": "course agreement,",
 "url": "/gustycooper.github.io/p1_course_agreement/",
-"summary": "Course Agreement for Students to Sign"
+"summary": "Provides Course Agreement for Students to Sign"
 },
 
 
@@ -1648,9 +1738,9 @@
 {
 "title": "Students with Disabilities (Syllabus)",
 "tags": "",
-"keywords": "sample",
+"keywords": "disability",
 "url": "/gustycooper.github.io/p1_disabilities/",
-"summary": "Students with Disabilities"
+"summary": "Accomodations for Students with Disabilities"
 },
 
 
@@ -1658,9 +1748,9 @@
 {
 "title": "Examinations (Syllabus)",
 "tags": "",
-"keywords": "sample",
+"keywords": "exam, midterm, final",
 "url": "/gustycooper.github.io/p1_exams/",
-"summary": "Exams for CPSC 220"
+"summary": "Description of Exams for CPSC 220"
 },
 
 
@@ -1670,7 +1760,17 @@
 "tags": "",
 "keywords": "sample",
 "url": "/gustycooper.github.io/p1_grade_determination/",
-"summary": "Grades for CPSC 220"
+"summary": "Describes Grading Policy for CPSC 220"
+},
+
+
+
+{
+"title": "Gusty&#39;s Office Hours, Contact, etc. (Syllabus)",
+"tags": "",
+"keywords": "sample",
+"url": "/gustycooper.github.io/p1_gustys_contact/",
+"summary": "Gusty's office hours, contact information, etc."
 },
 
 
@@ -1680,7 +1780,7 @@
 "tags": "",
 "keywords": "sample",
 "url": "/gustycooper.github.io/p1_honor_code/",
-"summary": "Honor Code Applied to CPSC 220"
+"summary": "Describes the UMW Honor Code as Applied to CPSC 220"
 },
 
 
@@ -1690,7 +1790,7 @@
 "tags": "",
 "keywords": "sample",
 "url": "/gustycooper.github.io/p1_labs/",
-"summary": "Labs for CPSC 220"
+"summary": "Describes Labs for CPSC 220"
 },
 
 
@@ -1710,7 +1810,7 @@
 "tags": "",
 "keywords": "sample",
 "url": "/gustycooper.github.io/p1_midsemester_grades/",
-"summary": "Midsemester Grades for CPSC 220"
+"summary": "Describes Midsemester Grading Policy for CPSC 220"
 },
 
 
@@ -1718,9 +1818,19 @@
 {
 "title": "Programming Projects (Syllabus)",
 "tags": "",
-"keywords": "sample",
+"keywords": "project",
 "url": "/gustycooper.github.io/p1_projects/",
-"summary": "Projects for CPSC 220"
+"summary": "Describes Programming Projects for CPSC 220"
+},
+
+
+
+{
+"title": "Quizzes (Syllabus)",
+"tags": "",
+"keywords": "quiz",
+"url": "/gustycooper.github.io/p1_quizzes/",
+"summary": "Describes Quizzes for CPSC 220"
 },
 
 
@@ -1730,7 +1840,7 @@
 "tags": "",
 "keywords": "sample",
 "url": "/gustycooper.github.io/p1_responsibilities/",
-"summary": "Your Responsibilities"
+"summary": "Describes Your Responsibilities"
 },
 
 
@@ -1796,21 +1906,11 @@
 
 
 {
-"title": "Team Assignments (Syllabus)",
-"tags": "",
-"keywords": "sample",
-"url": "/gustycooper.github.io/p1_team_assignments/",
-"summary": "Team Assignments for CPSC 220"
-},
-
-
-
-{
 "title": "Textbook (Syllabus)",
 "tags": "",
 "keywords": "sample",
 "url": "/gustycooper.github.io/p1_textbook/",
-"summary": "Textbook for CPSC 220"
+"summary": "Describes the textbook for CPSC 220"
 },
 
 
@@ -1910,7 +2010,7 @@
 {
 "title": "Your Choice",
 "tags": "",
-"keywords": "project",
+"keywords": "project, choice",
 "url": "/gustycooper.github.io/projects_choice/",
 "summary": "Your Choice"
 },
@@ -1920,7 +2020,7 @@
 {
 "title": "Cipher",
 "tags": "",
-"keywords": "project",
+"keywords": "project, cipher, encryption, decryption",
 "url": "/gustycooper.github.io/projects_cipher/",
 "summary": "<li>Understand elementary encryption algorithms</li> <li>Think about encryption as it relates to events in life such as the Internet.</li> <li>Understand ASCII and UTF encodings of char.</li> <li>Understand the char type can be used in arithmetic expressions.</li>"
 },
@@ -1930,7 +2030,7 @@
 {
 "title": "Endor Smints",
 "tags": "",
-"keywords": "project",
+"keywords": "project, endor, smints",
 "url": "/gustycooper.github.io/projects_endorsmints/",
 "summary": "Endor Smints"
 },

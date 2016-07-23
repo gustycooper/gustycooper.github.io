@@ -10,7 +10,7 @@ toc: false
 
 ## Create a Java Program to Plot My Trip
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 15 points.
 
 This lab has been created from a lab created by Ron Zacharski.  Ron rides a motor bike.  I ride bicycles without motors.
 

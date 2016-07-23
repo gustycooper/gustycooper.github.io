@@ -1,6 +1,7 @@
 ---
 title: Your Choice
-keywords: project
+keywords: project, choice
+last_updated: July 21, 2016
 summary: "Your Choice"
 sidebar: projects_sidebar
 permalink: /projects_choice/

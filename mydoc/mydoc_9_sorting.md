@@ -2,7 +2,7 @@
 title: Sorting
 tags: [sorting]
 keywords: sorting
-last_updated: July 3, 2016
+last_updated: July 21, 2016
 summary: "<li>Understand sorting sequential collections arrays and ArrayLists.</li> <li>Understand bubble sort and its Big O value.</li> <li>Understand selection sort and its Big O value.</li> <li>Understand merge sort and its Big O value.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_9_sorting/
@@ -274,4 +274,8 @@ public static void mergeSort(int[] ia) {
 ## Merge Sort and Big O
 
 The Big O of merge sort is the product of the Big O of ```merge``` and ```mergeSort```.  We know the Big O of ```merge``` is O(N).  From a Big O perspective, ```mergeSort``` is the same as binary search, which is O(log<sub>2</sub>N).  Thus the Big O of ```mergeSort``` is O(N log<sub>2</sub> N).
+
+## Sorting Lab
+
+The first of several sorting labs is [Sorting](/gustycooper.github.io/labs_lab09_03_01).
 

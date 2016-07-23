@@ -39,8 +39,8 @@ entries:
     output: web, pdf
 
     folderitems:
-    - title: Projects - Second Project
-      url: /projects_project02_01/
+    - title: Projects - Cipher
+      url: /projects_cipher/
       output: web, pdf
       
   - title: Project 3

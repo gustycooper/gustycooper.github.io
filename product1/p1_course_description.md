@@ -1,6 +1,7 @@
 ---
 title: Course Description (Syllabus)
 keywords: sample
+last_updated: July 21, 2016
 summary: "CPSC 220 Catalog Description and Objectives."
 sidebar: product1_sidebar
 permalink: /p1_course_description/
@@ -9,13 +10,13 @@ toc: false
 
 ## Catalog Description
 
-CPSC 220 provides continued coverage of disciplined problem-solving and algorithmic development including emphasis on procedural and data abstraction. Topics include elementary data structures such as classes, arrays, array lists, and files. The notions of data modeling and the linking of data type definitions with their associated operations is studied. We will study program design, coding, debugging, testing, and documentation in Java using both object-oriented and procedural paradigms. Intended for students who have had previous programming experience.  Prerequisites: CPSC 110, CPSC 109, CPSC 219, or instructor permission
+CPSC 220 provides continued coverage of disciplined problem-solving and algorithmic development including emphasis on procedural and data abstraction. Topics include elementary data structures such as classes, arrays, array lists, and files. The notions of data modeling and the linking of data type definitions with their associated operations is studied. We study program design, coding, debugging, testing, and documentation in Java using both object-oriented and procedural paradigms. Intended for students who have had previous programming experience.  Prerequisites: CPSC 110, CPSC 109, CPSC 219, or instructor permission
 
 This course fulfills four credits of the Quantitative Reasoning Gen Ed Goal.
 
 ## Course Objectives
 
-CPSC 220 is titled Computer Programming and Problem Solving, which is exactly what we will do.  Our objectives are the following.
+CPSC 220 is titled Computer Programming and Problem Solving, which is exactly what we do.  Our objectives are the following.
 
 * To develop algorithmic thinking skills required for structured problem solving.
 * To understand how digital information is represented, stored, and manipulated.

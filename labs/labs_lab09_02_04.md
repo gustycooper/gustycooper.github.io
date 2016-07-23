@@ -10,7 +10,7 @@ toc: false
 
 ## Searching Through Strings
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 You are to create search algorithm that returns whether a word is a Scrabble word.  There is a file with Scrabble words that you use to initialize a data structure.  Since the words in the file are alphabetized, you can read the words into an array and perform a binary search on the words.  Alternative, you can just perform a linear search through the array.  You can use the Java ```Arrays.binarySearch()``` method if you like.
 

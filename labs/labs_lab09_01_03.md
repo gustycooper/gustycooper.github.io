@@ -10,7 +10,7 @@ toc: false
 
 ## Recursive Thinking
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 Analyze the following code to determine what it computes.  You are welcome to type the code into Netbeans and run it several times to see what it does.
 

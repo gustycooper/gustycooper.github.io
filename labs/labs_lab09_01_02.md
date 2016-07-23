@@ -10,7 +10,7 @@ toc: false
 
 ## Recursive Fibonacci Method
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 Write iterative and recursive methods that computes the n<sup>th</sup> Fibonacci number.  A Fibonacci number is one from the sequence is 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …  The zeroth Fibonacci number is 0, the 1st Fibonacci number is 1, the 2nd is 1, the 3rd is 3, the 4th is 5, the 5th is 5, the 6th is 8, the 7th is 13, and so on.  As you can see, the Fibonacci number f<sub>n</sub> is computed by adding f<sub>n-2</sub> and f<sub>n-1</sub>.   For example the 8th Fibonacci number is 13, which results by adding the 6th and 7th Fibonacci numbers, which are 5 and 8.  It is easy to see that the recursive definition of Fibonacci is given by the following pseudo code.
 

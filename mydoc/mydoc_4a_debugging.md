@@ -15,8 +15,8 @@ When your program does not work like it is supposed to, your program contains bu
 1. **Breakpoint** – You set breakpoints on statements in your code.  When you program runs and hits a breakpoint, your program stops
 
 2. **Single step** – Once you have stopped at a breakpoint, you can step one statement at a time.  There are two ways of stepping.
-   * a. **Step over** – This means to execute the entire statement.  For simple statements – like assignment statements – this is intuitive.  For a method call, a step over executes the entire method.
-   * b. **Step into** – This steps into a method so that you now must single step through the method.  NOTE: You do not want to step into a method like System.out.println().
+   * a. **Step over** – This means to execute the entire statement.  For simple statements – like assignment statements – this is intuitive.  For a method call, a step over executes the entire method.  Everything within the method is executed, including the returning of a value by the method.
+   * b. **Step into** – This steps into a method so that you now must single step through the method.  NOTE: You do not want to step into a method like System.out.println().  If you do, you will be stepping for a while.
 
 3. **Inspect variables**  - Once your program is stopped, you can examine the content of your variables.  You can hit a breakpoint, examine variables, step, examine, step, and so forth.
 

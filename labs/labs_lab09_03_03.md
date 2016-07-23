@@ -10,7 +10,7 @@ toc: false
 
 ## Sort a Few Strings
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 Create two Java method for sorting ```String```s. The first method has 2 parameters and the second method has 3 parameters.
 

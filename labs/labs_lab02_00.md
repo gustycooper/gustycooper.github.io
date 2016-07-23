@@ -60,7 +60,7 @@ public class AddDouble {
 
 ## Questions
 
-**Points**: To earn these 10 points, you have to write or type answers to 20 questions; otherwise you receive 0 points.
+**Points**: Answer these questions for 20 points.  You have to handwrite or type the answers to get the points.  For each question that you do not answer, subtract one point.  If you do not answer any questions, you get negative points.
 
 1. See [Java Expressions in Codepad](/gustycooper.github.io/labs_lab02_01) for questions on evaluating expressions.  You should understand how to evaluate Java expressions so that you can compute in your mind the same answer as Java.
 

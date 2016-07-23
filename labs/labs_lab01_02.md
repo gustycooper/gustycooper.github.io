@@ -9,9 +9,9 @@ toc: false
 
 ## Second Program Lab
 
-## Java Input and Output – 30 Points
+## Java Input and Output
 
-**Points**: Complete Steps 1 and 2 for 10 points, Step 3a for 10 points, and Step 3b 10 points.
+**Points**: Complete this entire section for 10 points.
 
 Use BlueJ to write a Java program that reads numbers from the terminal window, performs some arithmetic operation, and displays the results.
 

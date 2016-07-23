@@ -10,7 +10,7 @@ toc: false
 
 ## Recursive Power Method
 
-**Points**: Complete this entire section for 20 points.
+**Points**: Complete this entire section for 10 points.
 
 Write an iterative and recursive method that computes xn.  The iterative method will use a loop, and (of course) the recursive method will call itself.  You should recognize the following, which should be helpful in designing your algorithms and implementing your Java code.
 

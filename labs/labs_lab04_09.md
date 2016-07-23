@@ -10,7 +10,7 @@ toc: false
 
 ## Create a Java Credit Card Type
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 20 points.
 
 NOTE: The Credit Card lab is a rendition of a project created by Karen Anewalt.
 

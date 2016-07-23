@@ -10,7 +10,7 @@ toc: false
 
 ## Create a Java Twitter Type
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 25 points.
 
 This lab has been created by mashing together a similar lab in the [Udacity Java Course](https://www.udacity.com/course/intro-to-java-programming--cs046) and some methods from a lab created by Ron Zacharski.
 

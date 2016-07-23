@@ -10,7 +10,7 @@ toc: false
 
 ## Create a Java MyMath Type - Take 2
 
-**Points**: Complete this entire section for 10 points.
+**Points**: Complete this entire section for 15 points.
 
 In this lab, you will add two new methods to [MyMath](/gustycooper.github.io/labs_lab03_04).  The new methods are described as follows.
 

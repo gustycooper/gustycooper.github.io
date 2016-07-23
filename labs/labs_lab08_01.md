@@ -1,8 +1,8 @@
 ---
-title: Stack ADT
+title: Stack ADT Lab
 keywords: data type, stack
 last_updated: June 22, 2016
-summary: "Stack ADT"
+summary: "<li>Practice creating a stack ADT.</li> <li>Practice creating generic types - if desired.</li>"
 sidebar: labs_sidebar
 permalink: /labs_lab08_01/
 toc: false

@@ -2,7 +2,7 @@
 title: Recursion
 tags: [recursion]
 keywords: recursion
-last_updated: May 1, 2016
+last_updated: July 21, 2016
 summary: "Recursion"
 sidebar: mydoc_sidebar
 permalink: /mydoc_9_recursion/
@@ -230,6 +230,9 @@ INCLUDE INFO HERE
 INCLUDE INFO HERE
 
 
+## Recursion Lab
+
+The first of several recursion labs is [Recursion](/gustycooper.github.io/labs_lab09_01_01).
 
 
 
