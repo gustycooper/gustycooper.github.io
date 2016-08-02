@@ -12,7 +12,7 @@ toc: false
 
 **NO** makeup exams are given except in the case of an unavoidable absence that can be verified as legitimate through the Office of Academic Services. In the case of a legitimate, verified, planned absence, alternate exam arrangements must be made well in advance.
 
-The Midterm Exam is currently scheduled for Thursday, October 6.  Any changes to this schedule will be announced at least one week before the exam date.
+The Midterm Exam is currently scheduled for Tuesday, October 11.  Any changes to this schedule will be announced at least one week before the exam date.
 
 [UMW Fall 2016 Final Exam Schedule](http://academics.umw.edu/registrar/files/2016/05/final-examination-schedule-fall-2016.pdf)
 

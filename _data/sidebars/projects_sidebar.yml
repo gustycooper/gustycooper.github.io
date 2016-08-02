@@ -31,8 +31,8 @@ entries:
     output: web, pdf
 
     folderitems:
-    - title: Projects - First Project
-      url: /projects_project01_01/
+    - title: Projects - Shared Secret
+      url: /projects_shared_secret/
       output: web, pdf
       
   - title: Project 2

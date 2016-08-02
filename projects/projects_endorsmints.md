@@ -1,14 +1,14 @@
 ---
 title: Endor Smints
 keywords: project, endor, smints
-last_updated: July 21, 2016
-summary: "Endor Smints"
+last_updated: August 2, 2016
+summary: "<li>Practice writing a simulation game.</li> <li>Understand how to maintain state within a class.</li> <li>Understand how to incrementally develop a program.</li> <li>Understand how to develop test cases prior to developiong code.</li> <li>Have fun creating the EndorSmints game.</li>"
 sidebar: projects_sidebar
 permalink: /projects_endorsmints/
 toc: false
 ---
 
-## 3.1 Endor Smĭnts – Description and Requirements
+## Endor Smĭnts – Description and Requirements
 
 The Star Wars gang is flying in the Millennium Falcon toward the Hapsacean Galaxy, many light years away.  The hyperdrive engine, required for such a long journey, is malfunctioning.   Chewbacca is working on the hyperdrive engine when he accidently crosses some wires that eject you from the Millennium Falcon while at the same time engaging the hyperdrive engine.  Fortunately, you have a parachute inside of your clothing so you safely float onto the remote Calduum Island of Endor.  Unfortunately, the Millennium Falcon is in hyperspace on the way to Hapsacean, and will return to Endor in 10 years.  You have to survive on Calduum Island for 10 years.  Calduum Island has industrious Ewoks and fertile farmland.  If you are a wise leader of the Ewoks on Calduum Island, you can survive and joyously reunite with your good friends.
 
@@ -41,13 +41,16 @@ There are several acts of nature and economics that affect the outcomes.
 
 NOTE: all computations should result in integers, not floats.
 
-## 3.2 Endor Smĭnts – Sample Console Run
+## Endor Smĭnts – Sample Console Run
 
 The following is a sample run of the Endor Smĭnts program.   I have inserted explanatory comments in red.  The explanatory comments are not part of the output of the program.  Your output must be in the same order and format as this in order to make my testing easier.
 
 The following prompts the user to be Princess Leia, Han Solo, or Luke Skywalker.
+
+```java
 Select your Star Wars Character.
 Princess Leia, Han Solo, Luke Skywalker: Princess Leia
+```
 
 The following is the introductory message explaining the game.
 
@@ -156,23 +159,23 @@ At the end of the year 1000, Calduum is characterized by
 ...
 ```
 
-## 3.3 Endor Smĭnts – Individual, Team, and Due Dates
+## Endor Smĭnts – Individual, Team 
 
-For the Endor Smĭnts Project, you will complete the following.
+For the Endor Smĭnts Project, you shall complete the following.
 
 1. Read the Endor Smĭnts Project description to make sure you understand the requirements.  This is a team component.
-2. Create collection of test cases that you will use to test your Endor Smĭnts Project.  This is a team component.  Further guidance on developing the test cases in provided in section 3.4.
-3. Create a design of your Endor Smĭnts Projects.  This is a team component and an individual component.  As a team you can discuss a general design, but each student has to create their own detailed design.  Further guidance on developing the design is provided in section 3.5.
-4. Write a program that allows a user to interact via the console to play the game as describe in sections 3.1 and 3.2.  This is an individual component.  Further guidance on developing the program is given in section 3.5.  Your program must be properly documented.  If your program includes Java classes, you must include JavaDoc explaining your classes.  Your program must present information to the user as described in Section 3.2.  You must adhere to the wording and order.  Section 3.5 provides design guidance.  Section 3.6 provides programming guidance.  The programming guidance leads you through one way of developing the code.  If you follow this style, you can use my EndorGui.java to run your program in a GUI.  You do not have to adhere to this design or implementation.  You must adhere to the user interaction described in Section 3.2.
+2. Create collection of test cases that you will use to test your Endor Smĭnts Project.  This is a team component.  Further guidance on developing the test cases in provided in Test Case Guidance Section.
+3. Create a design of your Endor Smĭnts Projects.  This is a team component and an individual component.  As a team you can discuss a general design, but each student has to create their own detailed design.  Further guidance on developing the design is provided in Design Guidance Section.
+4. Write a program that allows a user to interact via the console to play the game as describe in the Description and Requirements sections.  This is an individual component.  Further guidance on developing the program is given in Programming Guidance Section.  Your program must be properly documented.  If your program includes Java classes, you must include JavaDoc explaining your classes.  Your program must present information to the user as described in the previous Section.  You must adhere to the wording and order.  The Design Guidance Section and the Programming Guidance Section provide helpful hints on development.  The Programming Guidance Section leads you through one way of developing the code.  If you follow this style, you can use my EndorGui.java to run your program in a GUI.  You do not have to adhere to this design or implementation.  You must adhere to the user interaction described in show in the previous Section.
 
-There are two due dates for the Endor Smĭnts project.
+There are two due dates for the Endor Smĭnts project, which are as specified in Canvas.
 
-1. March 10 – The Endor Smĭnts test cases and design are due.  These will be submitted as printed documents at the start of class.  Each team should submit their test cases.  Each student should submit his or her design.
-2. March 22 – The Endor Smĭnts program is due.  Each student will submit the .java files.  You must submit all files necessary to run your Endor Smĭnts program.
+1. First Due Date – The Endor Smĭnts test cases and design are due.  These will be submitted as printed documents at the start of class.  Each team should submit their test cases.  Each student should submit his or her design.
+2. Final Due Date – The Endor Smĭnts program is due.  Each student will submit the .java files.  You must submit all files necessary to run your Endor Smĭnts program.
 
-## 3.4 Endor Smĭnts – Test Case Guidance
+## Endor Smĭnts – Test Case Guidance
 
-You can use the Endor Smĭnts requirements in section 3.1 and the sample execution in section 3.2 to create test cases before creating code.  Many software organizations have a testing group that is solely responsible for testing.  The programmers and the testers both use the requirements to develop their products.  Your team should create test cases that will sufficiently test your Endor Smĭnts code.  Your thinking should include error cases and good cases.  The following are a few example test cases.
+You can use the Endor Smĭnts requirements and the sample execution in from the Description and Requirements section to create test cases before creating code.  Many software organizations have a testing group that is solely responsible for testing.  The programmers and the testers both use the requirements to develop their products.  Your team should create test cases that will sufficiently test your Endor Smĭnts code.  Your thinking should include error cases and good cases.  The following are a few example test cases.
 
 ```
 Case 1: Feeding Ewoks and buying farmland consumes more smĭnts than available
@@ -196,7 +199,7 @@ Feed: 2000		Ewoks will not die unless teeny-weeny-meteor shower occurs
 Plant: 0
 ```
 
-## 3.5 Endor Smĭnts  - Design Guidance
+## Endor Smĭnts  - Design Guidance
 
 The Endor Smĭnts Calduum Island game is a simulation.  Input, the simulation attributes, the simulation algorithm that changes the simulation attributes, and output represent a simulation.  This view of a simulation is captured in the following diagram.
 
@@ -204,7 +207,7 @@ A simulation will execute the preceding diagram in a loop.  On each loop iterati
 
 For the Endor Smĭnts Calduum Island simulation, the attributes, inputs, and outputs as follows.
 
-### 3.5.1 Attributes
+### Attributes
 
 The attributes describe the current state of your simulation.  They are persistent.  The must be stored in a variables that persist across each execution of the algorithm.
 
@@ -213,13 +216,13 @@ The attributes describe the current state of your simulation.  They are persiste
 * The number of acres of farmland
 * The number of bushels of smĭnts in storage.  
 
-## 3.5.2 Inputs
+### Inputs
 
 * The number of acres of land to buy or sell
 * The number of acres of land to plant
 * The number of bushels of Smĭnts to feed to the Ewoks.
 
-### 3.5.3 Outputs
+### Outputs
 
 * The number of Ewoks starved to death.
 * The number of Ewoks swam to Calduum. 
@@ -228,55 +231,50 @@ The attributes describe the current state of your simulation.  They are persiste
 * The number of bushels of smĭnts womp rats destroyed
 * The number of bushels harvested.  
 
-## 3.6 Endor Smĭnts – Programming Guidance
+## Endor Smĭnts – Programming Guidance
 
 This section describes one way to write the program.  There are many ways to write this program.  You are free to write the program that adheres to your design.  This program structure consists of two components – (1) a class that can be used to construct a Calduum Island simulation object and (2) a main program class that constructs a Calduum Island simulation object and interacts with the user to display/collect information.  The Calduum Island simulation class has a method that simulates one year on Calduum Island. This section names the Calduum Island simulation class EndorSmints.  An alternative name would be something like CalduumSimulation class. 
 
-### 3.6.1 Instance Variables
+### Instance Variables
 
-All of the attributes described in section 3.5 are instance variables.  
+All of the attributes described in Design Guidance Section are instance variables.  
 
-### 3.6.2 Constructors
+### Constructors
 
-```java
-public EndorSmints(int year, int population, int acresOfLand,   
-                   int landValue, int smintsInStorage, String leader) – Allows the user to construct an EndorSmints object with selected values.  Note the leader parameter will be “Princess Leia”, “Han Solo”, or “Luke Skywalker”.
+```public EndorSmints(int year, int population, int acresOfLand, int landValue, int smintsInStorage, String leader)``` – Allows the user to construct an EndorSmints object with selected values.  Note the leader parameter will be “Princess Leia”, “Han Solo”, or “Luke Skywalker”.
 
-public EndorSmits() – calls the previous constructor with the initial values defined in section 3.1.
-```
+```public EndorSmits()``` – calls the previous constructor with the initial values defined in Description and Requirements Section.
 
-### 3.6.3 Methods
+### Methods
 
-```java
-public String introMessage() – computes the introductory message, which is shown in section 3.2
+* ```public String introMessage()``` – computes the introductory message, which is shown in Description and Requirements Section.
 
-public String simulateYear(int acresToBuy, int acresToSell, 
-                           int acresToPlant, int smintsToFeed) ``` – Simulates one year on Calduum Island using an algorithm that satisfies the requirements specified in section 3.1.  This method returns a String that provides the status of Calduum Island at the end of the simulated year.  An example of this String is shown in section 3.2.
+* ```public String simulateYear(int acresToBuy, int acresToSell, int acresToPlant, int smintsToFeed)``` – Simulates one year on Calduum Island using an algorithm that satisfies the requirements specified in Description and Requirements Section.  This method returns a String that provides the status of Calduum Island at the end of the simulated year.  An example of this String is shown in Description and Requirements Section.
 
-Depending upon the design of your program, you may need to create getter/setter methods such as the following.
+Depending upon the design of your program, you may need to create getter/setter and various helper methods such as the following.
 
 ```java
 public int getPopulation()
 public int getAcres()
 ```
 
-### 3.6.4 Program Benefits
+### Program Benefits
 
 This style of program separates the user interaction and the simulation.  You can use the simulation with console-based I/O (as shown in this specification) or with GUI-based I/O.
 
-### 3.6.4 Stepwise Approach to Creating Code
+### Stepwise Approach to Creating Code
 
 When creating a complex class such as EndorSmits, it is beneficial to take a stepwise approach.  This means you create a little bit of the code, test it, add some code, test it, and continue until you have completed the entire program.   The following is an example of stepwise development.
 
 * Step 1a: Create the class EndorSmits, the constructors, and a few getter/setter methods.  You will have the following instance variables.
 
-```java
-    private int year;
-    private int population;
-    private int acresOfLand;
-    private int landValue;  // in bushels per acre
-    private int smitsInStorage;
-```
+  ```java
+  private int year;
+  private int population;
+  private int acresOfLand;
+  private int landValue;  // in bushels per acre
+  private int smitsInStorage;
+  ```
 
 * Step 1b: Write a separate class for your main program that will create an EndorSmits object and interact with the user.  Use this main program test your skeleton EndorSmits class.
 
@@ -284,10 +282,10 @@ When creating a complex class such as EndorSmits, it is beneficial to take a ste
 
 * Step 2b: Update your main program class to test your introMessage() method. 
 
-* Step 3a: Add a capability described in the section 3.1 to your EndorSmits class.
+* Step 3a: Add a capability described in the Description and Requirements section to your EndorSmits class.
 * Step 3b: Update your main program class to test the capability you just added.  This will involve playing a game to see if what you implemented is correct.  You will have to think hard to determine if you have implemented the capability correctly.  You will have to play a year, examine the results, maybe compute the correct answer by hand, and compare to your program’s results. 
 
-You will iterate on Steps 3a and 3b until you have completed implementing the method simulateYear().  Step 3a adds capabilities to simulateYear() and step 3b tests what you have added.  You should study section 3.1 to determine the order you want to add capabilities.  For example, on your first iteration of step 3, you may implement the teeny-weeny-meteor shower attribute.  After adding the teeny-weeny-meteor shower, you may add the harvest attribute.
+You will iterate on Steps 3a and 3b until you have completed implementing the method simulateYear().  Step 3a adds capabilities to simulateYear() and step 3b tests what you have added.  You should study the Description and Requirements section to determine the order you want to add capabilities.  For example, on your first iteration of step 3, you may implement the teeny-weeny-meteor shower attribute.  After adding the teeny-weeny-meteor shower, you may add the harvest attribute.
 
 * Step 4: After you have implemented console-based I/O program, you may want to implement a GUI-base I/O program.  If you have simulation class that is not dependent upon a particular I/O, replacing the console-base I/O program with a GUI-based I/O program is not too difficult.  
 

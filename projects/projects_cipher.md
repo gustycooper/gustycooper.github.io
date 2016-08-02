@@ -2,7 +2,7 @@
 title: Cipher
 keywords: project, cipher, encryption, decryption
 last_updated: July 21, 2016
-summary: "<li>Understand elementary encryption algorithms</li> <li>Think about encryption as it relates to events in life such as the Internet.</li> <li>Understand ASCII and UTF encodings of char.</li> <li>Understand the char type can be used in arithmetic expressions.</li>"
+summary: "<li>Understand elementary encryption algorithms</li> <li>Think about encryption as it relates to events in life such as the Internet.</li> <li>Understand ASCII and UTF encodings of char.</li> <li>Understand the char type can be used in arithmetic expressions.</li> <li>Practice writing Java classes and creating objects.</li> <li>Practice writing a Java tester class.</li> <li>Practice writing JavaDoc.</li> <li>Begin to think about Project 5 - Your Choice.</li>"
 sidebar: projects_sidebar
 permalink: /projects_cipher/
 toc: false
@@ -16,7 +16,7 @@ The Cipher Project continues your journey on learning to write Java programs.  F
 
    * a. The Cipher class shall be in a Cipher.java file that is submitted on Canvas.
    * b. The Cipher class shall contain code for a Caesar cipher and an Augustus cipher.
-   * c. The Caesar cipher requirements, design, discussion, and code are provided in this paper.  You have to copy the Caesar cipher code into your Cipher.java file.
+   * c. The Caesar cipher requirements, design, discussion, and code are provided in this paper.  The code to implement the Caesar cipher is provided in this specifiction.  You begin with code and add your implementation of the Augustus cipher.
    * d. The Augustus cipher requirements and discussion are provided in this paper.  You shall design the Augustus cipher algorithm and implement the code.  The Augustus cipher code shall be placed in your Cipher.java file. 
    * e. You shall create JavaDoc that properly documents your Cipher class. The JavaDoc shall be placed in your Cipher.java file. 
    * f. Creating the Cipher.java file is an individual assignment.  You shall not use your team members.
@@ -25,6 +25,7 @@ The Cipher Project continues your journey on learning to write Java programs.  F
 
    * a. The Cipher Tester class shall be in a CipherTester.java file that submitted on Canvas.  
    * b. This is a team component.  Team members shall work together to create the same CipherTester.java file.
+
 3. Decode messages that I email to you.
 
    * a. I will email to you several encrypted messages and their corresponding keys.  You will reply to the email with the decrypted versions of these messages.
@@ -43,11 +44,12 @@ The Cipher Project continues your journey on learning to write Java programs.  F
    * a. The goal of this is for you to begin thinking about your choice project.  You can change your mind as the class continues.
    * b. This is an individual component; however, you can discuss ideas with anyone.
 
-6. Extra Credit: Select from the following – one or more.
+6. Extra Credit: In order to receive extra credit, you must negotiate with me what you plan to do prior to submitting your project.  We will agree on your task and how many points you will be awarded.
    * a. How do you know that your credit card information is not compromised when purchasing on the Internet?
    * b. New encryption apps allow people to exchange encrypted messages.  The US Government wants a backdoor to view encrypted messages of suspected criminals.  Discuss whether or not you think the US Government should have this backdoor to bypass the encryption. 
    * c. Select a modern encryption technique and describe how it works.
    * d. How does the encryption algorithm of WWII German messages compare to modern encryption algorithms?  The movie, Immitation Game shows Alan Turing leading a team that broke the German encryption by creating the Enigma “Computer”.
+   * e. Determine a way to include the SecretKey as part of this cipher.
 
 ## Cipher Class Interface Requirements
 
@@ -176,7 +178,7 @@ class ExampleCode {
           if (Character.isUpperCase(c)) {
              c = (char)(‘A’ + (c – ‘A’ + key) % 26);
           } else {
-             c = …;
+             c = ...; // code missing
           }
        }
        word = replaceCharAt(word, 0, c);
@@ -190,11 +192,61 @@ The above code uses a [```StringBuffer```](https://docs.oracle.com/javase/8/docs
 
 ## Decrypting
 
-If we rotate Dog by 1 we get Eph.  What do we have to rotate Eph by in order to get Dog?  Can you use caesarEncrypt() with a general form of the initial key to implement caesarDecrypt()?
+If we rotate Dog by 1 we get Eph.  What do we have to rotate Eph by in order to get Dog?  Can you use caesarEncrypt() with a general form of the initial key to implement caesarDecrypt()?  You should be able to answer these questions by studying the code in the next section.
 
 ## Cipher Class with Caesar Code
 
-The following code is the Cipher.java file with Caesar cipher code.  You shall use this as the starting point for you Cipher.java file.  You shall add your implementation of the Augustus cipher.
+The following code is the Cipher.java file with Caesar cipher code.  You shall use this as the starting point for you Cipher.java file.  You shall add your implementation of the Augustus cipher.  You shall place JavaDoc in your Cipher.java for both the Caesar cipher and the Augustus cipher.
+
+```java
+public class Cipher {
+    int key;
+    // You may need additional instance variables
+    
+    public Cipher(int secretKey) {
+        key = secretKey % 26;
+        // You may need additional code
+    }
+    
+    private String replaceCharAt(String s, int i, char c) {
+        StringBuffer buf = new StringBuffer(s);
+        buf.setCharAt(i, c);
+        return buf.toString();
+    }
+    
+    private String encryptLocal(String s, int key) {
+     // for (char c : s.toCharArray()) {  // alternative for each loop
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isLetter(c)) {
+                if (Character.isUpperCase(c)) {
+                    c = (char)('A' + (c - 'A' + key) % 26);
+                } else {
+                    c = (char)('a' + (c - 'a' + key) % 26);
+                }
+                s = replaceCharAt(s, i, c);
+            }
+        }
+        return s;
+    }
+    
+    public String caesarEncrypt(String s) {
+        return encryptLocal(s, key);
+    }
+    
+    public String caesarDecrypt(String s) {
+        return encryptLocal(s, 26-key);
+    }
+    
+    public String augustusEncrypt(String s) {
+        // add code
+    }
+    
+    public String augustusDecrypt(String s) {
+        // add code
+    }
+}
+```
 
 # Augustus Cipher 
 

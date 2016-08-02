@@ -48,11 +48,11 @@ For the Battleship Project, you will complete the following.
    * b. A method that shoot at the opponent when called to do so. 
    * c. A method that resets your object at the start of a new game.
 
-2. Test your jsmith_BattleshipPlayer against yourself and some of your team members.  Section 4.6 provides guidance on how to create a tester.   This is a team component.
+2. Test your jsmith_BattleshipPlayer against yourself and some of your team members.  The Testing Section provides guidance on how to create a tester.   This is a team component.
 
 Your Java class for Battleship will be stateful. This means that your Battleship class will declare instance variables that retain the state of your game.  This allows you to have memory between moves.  You must remember what you've shot at, and what was revealed on each square, so that you can intelligently decide where to shoot next.  The details of this are explained in the next section.
 
-The due date for submitting your Battleship Project is April 7.
+The due date for submitting your Battleship Project is as specified on Canvas.
 
 ## Battleship – Implementation Details
 
@@ -163,6 +163,8 @@ The criteria for judging whether you attempted to implement an intelligent strat
 Note that your program cannot be entered into the tournament if it does not meet the "for a B..." criteria above. This is for the simple reason that it will crash my program. Only programs that return correct answers will be eligible for the tournament, which will be tested prior to our tournament.
 
 ## Testing
+
+This section describes how to begin testing your project.  As you gain experience with Battleship, we can discuss a GUI Tester developed by previous students.
 
 To test your Battleship player, you're going to have to write some code in main method. You initial tester will probably be short.  The strategy for your tester is to create two BattleshipPlayers using your BattleshipPlayer, and then play them against each other.  The following shows how to create two BattleshipPlayers that use my userid.
 

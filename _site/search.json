@@ -2022,7 +2022,7 @@
 "tags": "",
 "keywords": "project, cipher, encryption, decryption",
 "url": "/gustycooper.github.io/projects_cipher/",
-"summary": "<li>Understand elementary encryption algorithms</li> <li>Think about encryption as it relates to events in life such as the Internet.</li> <li>Understand ASCII and UTF encodings of char.</li> <li>Understand the char type can be used in arithmetic expressions.</li>"
+"summary": "<li>Understand elementary encryption algorithms</li> <li>Think about encryption as it relates to events in life such as the Internet.</li> <li>Understand ASCII and UTF encodings of char.</li> <li>Understand the char type can be used in arithmetic expressions.</li> <li>Practice writing Java classes and creating objects.</li> <li>Practice writing a Java tester class.</li> <li>Practice writing JavaDoc.</li> <li>Begin to think about Project 5 - Your Choice.</li>"
 },
 
 
@@ -2032,7 +2032,7 @@
 "tags": "",
 "keywords": "project, endor, smints",
 "url": "/gustycooper.github.io/projects_endorsmints/",
-"summary": "Endor Smints"
+"summary": "<li>Practice writing a simulation game.</li> <li>Understand how to maintain state within a class.</li> <li>Understand how to incrementally develop a program.</li> <li>Understand how to develop test cases prior to developiong code.</li> <li>Have fun creating the EndorSmints game.</li>"
 },
 
 
@@ -2048,21 +2048,11 @@
 
 
 {
-"title": "Project 1",
+"title": "Shared Secret",
 "tags": "",
 "keywords": "project",
-"url": "/gustycooper.github.io/projects_project01_01/",
-"summary": "Project 1"
-},
-
-
-
-{
-"title": "Second Project",
-"tags": "",
-"keywords": "project",
-"url": "/gustycooper.github.io/projects_project02_01/",
-"summary": "Project 2"
+"url": "/gustycooper.github.io/projects_shared_secret/",
+"summary": "<li>Understand modulo arithmetic.</li> <li>Understand the basics of public-private keys.</li>"
 },
 
 

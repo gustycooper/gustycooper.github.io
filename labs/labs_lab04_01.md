@@ -14,12 +14,14 @@ toc: false
 
 Create a Java class MyFirstLoop that has a public static void main(String[] args) method that contains a while loop, a for loop, and a do-while loop.  Each of your loops will print Study to the console on 6 separate lines.  The following is example output (the numbers are part of your output).
 
-1.Study
-2.Study
-3.Study
-4.Study
-5.Study
-6.Study
+```java
+1. Study
+2. Study
+3. Study
+4. Study
+5. Study
+6. Study
+```
 
 The following for loop accomplishes the above.
 
@@ -32,12 +34,14 @@ You have to write the equivalent while and do-while loops.
 
 Update the code in your MyFirstLoop class so that it writes Study on the odd lines and Video Game on the even lines.  The following is an example output (the numbers are part of your output).
 
-1.Study
-2.Video Game
-3.Study
-4.Video Game
-5.Study
-6.Video Game
+```java
+1. Study
+2. Video Game
+3. Study
+4. Video Game
+5. Study
+6. Video Game
+```
 
 You can choose to put the conditional code in one of the three loops.  The following code demonstrates determining whether an int number is even or odd.
 
