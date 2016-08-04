@@ -10,5 +10,5 @@ toc: false
 
 ## Canvas – Communication and Course Materials
 
-Canvas is our primary source for communication.  You are responsible for keeping abreast of information posted on Canvas.  I post announcements, handouts, assignments, and schedule updates.  Students may start discussion groups.  Canvas uses your campus email address by default, but you may change it within “your profile”.  You should check Canvas **DAILY** for information.  
+Canvas is our primary source for communication.  You are responsible for keeping abreast of information posted on Canvas.  I post announcements, handouts, assignments, and schedule updates.  Students may start discussion groups.  Canvas uses your campus email address by default, but you may change it within “your profile”.  You are responsible for checking Canvas **DAILY** for information.  
 

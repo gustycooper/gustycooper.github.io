@@ -51,6 +51,10 @@ entries:
       url: /p1_responsibilities/
       output: web, pdf
       
+    - title: Programming Teams
+      url: /p1_programming_teams/
+      output: web, pdf
+      
     - title: Students with Disabilities
       url: /p1_disabilities/
       output: web, pdf

@@ -1,6 +1,7 @@
 ---
 title: Midsemester Grades (Syllabus)
 keywords: sample
+last_updated: August 2, 2016
 summary: "Describes Midsemester Grading Policy for CPSC 220"
 sidebar: product1_sidebar
 permalink: /p1_midsemester_grades/
