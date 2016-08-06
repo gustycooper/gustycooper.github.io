@@ -12,6 +12,10 @@ toc: false
 
 In this lab, we return to looping patterns, but this time we use them on arrays and array lists.  For examples, we implement a ```MyIntegers class``` with an array that has to be extended when it becomes full and we update our ```Person``` class so that friends is an array list of ```Person```.
 
+## Programming Contest
+
+To receive maximum points on this lab, submit a solution to [Programming Contest](/gustycooper.github.io/programmingContest) Problem E - Shopping Spree.
+
 ## Netbeans Installation
 
 We use Netbeans to complete this lab.  See [Java Downloads](/gustycooper.github.io/mydoc_0_downloads) for instuctions on installing Netbeans.  Installing Netbeans provides you with 10 lab points.

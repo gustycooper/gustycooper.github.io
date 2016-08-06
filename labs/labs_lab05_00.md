@@ -12,6 +12,10 @@ toc: false
 
 In Second Classes and Object Lab, we return to creating types.  We update some of the types we created in [First Classes and Objects Lab](/gustycooper.github.io/labs_lab3_00).  We begin use the Netbean IDE in Lab 5.  Section 5.0 installs Netbeans.  Sections 5.1 and 5.2 uses Netbeans to re-implement the Student class and Car class from Lab 2.  Section 5.3 adds a couple of methods to the Twitter class we implemented in Lab 4.  This means the sections 5.1, 5.2, and 5.3 copy information from previous .java files. Section 5.4 uses some new material (subclass and interfaces).
 
+## Programming Contest
+
+To receive maximum points on this lab, submit a solution to [Programming Contest](/gustycooper.github.io/programmingContest) Problem F - Three N Plus One.
+
 ##  Submission Requirements
 
 Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.

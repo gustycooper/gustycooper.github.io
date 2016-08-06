@@ -12,6 +12,10 @@ toc: false
 
 First Classes and Objects Labs is your first opportunity to create your own classes that are types, declare variables of your types, and construct objects of your types.  This concept may appear difficult at first, but before long you will be an expert.  All of the problems can be solved using ```main``, ```Scanner``` for input, ``System.out``` for output, helper methods with parameters that you write, and expressions.  A few of the problems require a conditional expression.
 
+## Programming Contest
+
+There is not a programming contest problem associated with this lab.
+
 ##  Submission Requirements
 
 Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.

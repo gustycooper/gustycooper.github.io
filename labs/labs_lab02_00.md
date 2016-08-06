@@ -12,6 +12,10 @@ toc: false
 
 All of the problems in Java Expression Labs can be solved in a Java class that has ```main``, ```Scanner``` for input, ``System.out``` for output, helper methods with parameters that you write, and expressions.  A few of the problems require a conditional expression.
 
+## Programming Contest
+
+To receive maximum points on this lab, submit a solution to [Programming Contest](/gustycooper.github.io/programmingContest) Problem B - Who is Closer.
+
 ##  Submission Requirements
 
 Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.

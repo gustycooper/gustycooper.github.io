@@ -12,6 +12,10 @@ toc: false
 
 In this lab we create three simple programs to emphasize the passing of parameters in Java.  
 
+## Programming Contest
+
+To receive maximum points on this lab, submit a solution to [Programming Contest](/gustycooper.github.io/programmingContest) Problem D - Palindromes.
+
 ##  Submission Requirements
 
 Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.

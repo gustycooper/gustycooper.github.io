@@ -10,19 +10,15 @@ toc: false
 
 ## Abstract Data Types, Packages, Interfaces Overview
 
-Use Netbeans to complete this lab.
+In this lab we create a Stack ADT, use the Stack to solve a couple of problems, and create a Java package.
 
-In Abstract Data Types, Packages, and Iterfaces, we ...
+## Programming Contest
+
+To receive maximum points on this lab, submit a solution to [Programming Contest](/gustycooper.github.io/programmingContest) Problem G - Paired Isograms.
 
 ## Submission Requirements
 
-On Canvas submit 
-
-* Your lab score
-* The name of your teammate who verified your work.
-* The UMW Honor Pledge with your name serving as an electronic signature.
-* You must also submit the .java files the comprise your solutions to the problems.  
-* You do not have to submit your answers to the questions.
+Follow guidance in [Sample Lab Submission](/gustycooper.github.io/labs_lab00_00) for submitting your lab points.
 
 ## Sample Lab
 

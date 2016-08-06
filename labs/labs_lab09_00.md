@@ -1,7 +1,7 @@
 ---
 title: Recursion, Searching, Sorting Overview
 keywords: recursion, search, sort
-last_updated: July 21, 2016
+last_updated: August 6, 2016
 summary: "Recursion, Searching, Sorting"
 sidebar: labs_sidebar
 permalink: /labs_lab09_00/
@@ -11,6 +11,10 @@ toc: false
 ## Recursion, Searching, Sorting
 
 This lab has three separate topics - recursion, searching, and sorting.
+
+## Programming Contest
+
+To receive maximum points on this lab, submit a solution to [Programming Contest](/gustycooper.github.io/programmingContest) Problem I - Stack Machine.
 
 ## Submission Requirements
 

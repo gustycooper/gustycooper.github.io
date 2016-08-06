@@ -35,6 +35,10 @@ entries:
       url: /labs_lab00_01/
       output: web
 
+    - title: Programming Contest
+      url: /programmingContest/
+      output: web
+
   - title: Intro & 1st Programs
     output: web, pdf
 

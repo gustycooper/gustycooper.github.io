@@ -1,7 +1,7 @@
 ---
 title: First Java Programs Labs
 keywords: loop
-last_updated: July 21, 2016
+last_updated: August 6, 2016
 summary: "First Java Programs Lab Overview"
 sidebar: labs_sidebar
 permalink: /labs_lab01_00/
@@ -11,6 +11,10 @@ toc: false
 ## First Java Programming Lab
 
 The First Java Programming Lab is your first chance to solve problems with Java.  The problems in this lab are not too difficult
+
+## Programming Contest
+
+To receive maximum points on this lab, submit a solution to [Programming Contest](/gustycooper.github.io/programmingContest) Problem A - Adding Doubles.
 
 ##  Submission Requirements
 

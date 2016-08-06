@@ -771,6 +771,13 @@ labs_lab00_01:
   link: <a href="/gustycooper.github.io/labs_lab00_01/">Lab Points</a>
 
 
+ 
+programmingContest:
+  title: "Programming Contest"
+  url: /gustycooper.github.io/programmingContest/
+  link: <a href="/gustycooper.github.io/programmingContest/">Programming Contest</a>
+
+
 
 
  

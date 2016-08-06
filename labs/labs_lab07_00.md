@@ -1,7 +1,7 @@
 ---
 title: Graphics
 keywords: graphics
-last_updated: July 21, 2016
+last_updated: August 6, 2016
 summary: "Graphics"
 sidebar: labs_sidebar
 permalink: /labs_lab07_00/
@@ -10,12 +10,15 @@ toc: false
 
 ## Graphics
 
-Graphics is divided into two parts - Simple Graphics and Graphics Events.
-## Simple Graphics
+Graphics is divided into two parts - Simple Graphics and Graphics Events.  Files (.java) for each part are provided on Canvas.
 
-Canvas Files -> Labs -> graphicsCode -> Lab7 contains .java source files that can be used when completing Simple Graphics lab.  You may download the files, incorporate them into your JDK, study them, run them, and modify them.  You should study the code so that you understand the basic workings of graphics.  If you simply download and run them without study, you will not learn.
+Files > Handouts > 10Graphcs > GraphicsCode > SimpleGraphics contains .java source files that can be used when completing Simple Graphics lab.  You may download the files, incorporate them into your JDK, study them, run them, and modify them.  You should study the code so that you understand the basic workings of graphics.  If you simply download and run them without study, you will not learn.
 
-Canvas Files -> Labs -> graphicsCode -> Lab8 contains .java files that can be used when completing Graphics Events lab.  You may download the files, incorporate them into your JDK, study them, run them, and modify them.  You should study the code so that you understand the basic workings of graphics.  If you simply download and run them without study, you will not learn.
+Files > Handouts > 10Graphics > GraphicsCode > GraphicsEvents contains .java files that can be used when completing Graphics Events lab.  You may download the files, incorporate them into your JDK, study them, run them, and modify them.  You should study the code so that you understand the basic workings of graphics.  If you simply download and run them without study, you will not learn.
+
+## Programming Contest
+
+To receive maximum points on this lab, submit a solution to [Programming Contest](/gustycooper.github.io/programmingContest) Problem H - Permutation Array.
 
 ## Submission Requirements
 
