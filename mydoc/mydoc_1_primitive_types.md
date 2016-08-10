@@ -2,7 +2,7 @@
 title: Primitive Types
 tags: [type]
 keywords: data type, variable, camel case, primitive type, literal, declaration
-last_updated: May 1, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand the attributes of a program.</li> <li>Understand the concept of variables.</li> <li>Understand Java identifiers</li> <li>Understand camelCase</li> <li>Understand the definition of a data type</li> <li>Understand Java primitive types.</li> <li>Understand Java literals</li> <li>Understand how Java primitive types are mapped to memory</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_primitive_types/
@@ -28,12 +28,11 @@ The primary goal of CPSC 220 is for everyone to learn how to solve problems in J
 
 To demonstrate how writing a program is primarily creating algorithms and data structures, [Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth) (a famous computer scientist, who (among other things) created the programming language Pascal) wrote a book titled, Algorithms + Data Structures = Programs.  We have a general idea of algorithms,  which we will tighten into designing and implemeting Java programs, but first we have to begin our journey into data structure.  We begin with Java primitive data types.
 
-We introduct our first Programming Pattern, which is our definition of programs - the title of Niklaus Wirth's book.  We return to this definition throughout the course.  For example, when studying [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) focus on the Data Structures component and studying [Control Flow](/gustycooper.github.io/mydoc_4_control_flow) focuses on the Algorithms component.
+We introduce a Programming Pattern, which is an a collection of important definitions.  We title this Wirth Pattern in honor of Niklaus Wirth's book.  We return to this pattern throughout the course, which helps you to remember these important definitions.  For example, when studying [Simple Objects](/gustycooper.github.io/mydoc_3_simple_objects) focus on the Data Structures component and studying [Control Flow](/gustycooper.github.io/mydoc_4_control_flow) focuses on the Algorithms component.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-0. Wirth Pattern
+Programming Pattern: Wirth Pattern
 </b>
 <br>
 <img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />

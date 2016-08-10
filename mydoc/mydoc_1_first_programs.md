@@ -2,7 +2,7 @@
 title: Our First Java Programs
 tags: [object, algorithm]
 keywords: java, algorithms, design, programming
-last_updated: May 1, 2016
+last_updated: August 10, 2016
 summary: "This describes algorithms and programming"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_first_programs/
@@ -49,8 +49,7 @@ Recall from [Problem Solving](/gustycooper.github.io/mydoc_1_problem_solving) we
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-1. Main Pattern
+Programming Pattern: Main Program Pattern
 </b>
 <br>
 <pre>
@@ -287,13 +286,17 @@ Our initial Java programs write output to the Java standard output stream, which
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-2. Output Pattern
+Programming Pattern: Output Pattern
 </b>
 <br>
 <pre>
-System.out.print(data);   // prints to current line, leaving terminal on that line
-System.out.println(data); // prints to current line, advancing terminal to the next line
+public class OutputPattern {
+   public static void main(String[] args) {
+      System.out.print(data);   // prints to current line, leaving terminal on that line
+      System.out.println(data); // prints to current line, advancing terminal to the next line
+      System.out.println("Hello World");
+   }
+}
 </pre>
 </div>
 
@@ -313,14 +316,13 @@ Our initial Java programs read input from the Java standard input stream, which 
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-3. Input Pattern (and Output Pattern)
+Programming Pattern: Input Pattern
 </b>
 <br>
 <pre>
 import java.util.Scanner;
 
-public class Main {
+public class InputPattern {
    public static void main(String[] args) {
       Scanner in = new Scanner(System.in);
       System.out.print("Enter Your Name: ");

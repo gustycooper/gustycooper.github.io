@@ -2,7 +2,7 @@
 title: Software Development Process
 tags: [algorithm]
 keywords: java, software development
-last_updated: May 11, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand the steps of the software development process.</li> <li>Understand the steps that our course will focus upon.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_software_development_process/
@@ -36,8 +36,7 @@ The software development process pattern figure allows you to easily visualize t
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-0. Software Development Process Pattern
+Programming Pattern: Software Development Process Pattern
 </b>
 <br>
 <img title="SW Dev Process" src="{{ "/images/processFigure.png" | prepend: site.baseurl }}" />

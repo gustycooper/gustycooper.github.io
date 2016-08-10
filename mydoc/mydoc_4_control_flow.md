@@ -2,7 +2,7 @@
 title: Control Flow
 tags: [sequential, conditional, loop]
 keywords: control flow, conditional, if, if-then, loop, for loop, while loop, do-while loop
-last_updated: June 7, 2016
+last_updated: August 10, 2016
 summary: "Control Flow"
 sidebar: mydoc_sidebar
 permalink: /mydoc_4_control_flow/
@@ -14,8 +14,7 @@ We are solving problems in the form of programs.  The Wirth pattern from [Primit
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-0. Wirth Pattern
+Programming Pattern: Wirth Pattern
 </b>
 <br>
 <img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />

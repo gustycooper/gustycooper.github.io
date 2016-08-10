@@ -2,7 +2,7 @@
 title: Methods
 tags: [algorithm]
 keywords: method, java, algorithms, design
-last_updated: May 17, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand how to define Java methods.</li> <li>Understand how to call Java methods.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1a_methods/
@@ -14,8 +14,7 @@ We are solving problems in the form of programs.  The Wirth pattern from [Primit
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-0. Wirth Pattern
+Programming Pattern: Wirth Pattern
 </b>
 <br>
 <img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />

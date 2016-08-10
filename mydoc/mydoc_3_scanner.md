@@ -2,7 +2,7 @@
 title: Java Scanner
 tags: [object, class]
 keywords: objects, simple objects
-last_updated: May 21, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand Java Scanner</li> <li>Understand the differences between Scanner and String.</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type Scanner.</li> <Understand Java Scanner has a set of values and a set of operations.</li> <li>Understand how to call Scanner instance methods</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_3_scanner/
@@ -14,15 +14,14 @@ We have already used a Scanner to read input from the terminal window.  In our e
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-3. Input Pattern (and Output Pattern)
+Programming Pattern: Input Pattern
 </b>
 <br>
 <pre>
 line
   1  import java.util.Scanner;
   2  
-  3  public class Main {
+  3  public class InputPattern {
   4     public static void main(String[] args) {
   5        Scanner in = new Scanner(System.in);
   6        System.out.print("Enter Your Name: ");

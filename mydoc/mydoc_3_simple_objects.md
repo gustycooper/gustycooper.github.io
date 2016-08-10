@@ -2,7 +2,7 @@
 title: Simple Objects
 tags: [object, class]
 keywords: objects, simple objects
-last_updated: May 1, 2016
+last_updated: August 10, 2016
 summary: "The learning objectives for this entire module. <li>Understance objects in the real-world.</li> <li>Understand software objects have state and behavior.</li> <li>Understand that Java String, Scanner, and Random are reference types - not primitive types.</li> <li>Understand the details of declaring variables, allocating objects, and using objects of type String, Scanner, and Random. <li>Understand an object's state and behavior are like a data type's set of values and set of operations.</li> <li>Understand how to define a reference type in a Java class.</li> <li>Understand a Java class/type consists of instance variables, constructors, and instance methods.</li> <li>Understand how to create a tester class to test our type.</li> <li>Understand how to declare variables of reference types.</li> <li>Understand how to allocate objects by using new and constructors.</li> <li>Understand how to manipulate objects by calling instance methods.</li> <li>Understand that objects are allocated in heap memory.</li> <li>Undertand that a reference variable has enough memory (4-bytes) allocated to hold the refence to the object allocated in heap memory.</li> <li>Understand the naming convention for Java types.</li> <li>Understand JavaDoc.</li> <li>Understand how to include JavaDoc in your classes.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_3_simple_objects/
@@ -26,8 +26,7 @@ The Wirth pattern (defined earlier) defines a prgram to be algorithms and data s
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-0. Wirth Pattern
+Programming Pattern: Wirth Pattern
 </b>
 <br>
 <img title="computer" src="{{ "/images/wirthFigure.png" | prepend: site.baseurl }}" />

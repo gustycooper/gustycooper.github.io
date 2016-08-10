@@ -527,6 +527,13 @@ mydoc_9_sorting:
 
 
  
+mydoc_A_programming_patterns:
+  title: "Programming Patterns"
+  url: /gustycooper.github.io/mydoc_A_programming_patterns/
+  link: <a href="/gustycooper.github.io/mydoc_A_programming_patterns/">Programming Patterns</a>
+
+
+ 
 mydoc_A_programming_style:
   title: "Programming Style"
   url: /gustycooper.github.io/mydoc_A_programming_style/

@@ -2,7 +2,7 @@
 title: Problem Solving
 tags: [algorithm, getting_started, board]
 keywords: java, algorithms, design, main program
-last_updated: May 1, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand problem solving.</li> <li>Understand knowledge that and how.</li> <li>Understand that programming is problem solving.</li> <li>Undestand that becoming a good programmer (problem solver) requires practice.</li> <li>Understand patterns are important in problem solving.</li> <li>Understand that we will learn many programming patterns.</li> <li>Understand that our programming patterns will be marked with programming chessboard.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_problem_solving/
@@ -43,7 +43,7 @@ One important aspect in problem solving is the ability to identify solution patt
 
 A good problem solver has many of these patterns stored away in their memory mansions.  When the person encounters a problem, the person mentally arranges the various patterns into a potential solutions.  After some thought, the potential solution may be transcribed onto paper (or some other media).  Then the person follows the steps of their potential solution to solve the problem.  When the solution is not entirely correct, the person attemps other steps.
 
-## Programming Chess Boards
+## Programming Chess Boards - Programming Patterns
 
 Consider a chess player, who has played chess for many years, achieving a level of grandmaster.  In achieving this level of success, the person played millions of games, many against top players (or computer algorithms).  When watching a chess game, you often think the player is thinking many moves ahdead, but this is not as true as you expect.  The grandmaster has played so many games and seen so many boards, that their memory mansion is full of patterns - weak kingside, weak squares, open lines, bishop pair.  Often the best move is dictated by the pattern of the board.  This is what happens when a grandmaster plays a number of chess games at the same time.  The grandmaster performs the following sequence of steps.
 
@@ -52,12 +52,11 @@ Consider a chess player, who has played chess for many years, achieving a level 
 3. Make a move based on the **pattern** of pieces on the board.
 4. Go to step 1.
 
-We want to fill our memory mansions with programming patterns so that when presented a problem, we can select the next move.  During this course, we will clearly mark programming patterns.  The following is our first programming pattern.
+We want to fill our memory mansions with programming patterns so that when presented a problem, we can select the next move.  [Programming Patterns](/gustycooper.github.io/mydoc_A_programming_patterns) collects all of the patterns in one place.  They are developed in various modules of the course.  The course material clearly denotes programming patterns.   The following is the Main Program programming pattern.  As we progress, our programs will become more complex, but each will have a ```main``` method.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-1. Main Pattern
+Programming Pattern: Main Program Pattern
 </b>
 <br>
 <pre>

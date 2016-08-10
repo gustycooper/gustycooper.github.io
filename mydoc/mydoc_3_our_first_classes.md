@@ -2,7 +2,7 @@
 title: Our First Classes
 tags: [object, class]
 keywords: objects, simple objects
-last_updated: May 21, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand how to define a reference type in a Java class.</li> <li>Understand a Java class/type consists of instance variables, constructors, and instance methods.</li> <li>Understand how to create a tester class to test our type.</li> <li>Understand how to declare variables of reference types.</li> <li>Understand how to allocate objects by using new and constructors.</li> <li>Understand how to manipulate objects by calling instance methods.</li> <li>Understand that objects are allocated in heap memory.</li> <li>Undertand that a reference variable has enough memory (4-bytes) allocated to hold the refence to the object allocated in heap memory.</li> <li>Understand the naming convention for Java types.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_3_our_first_classes/
@@ -48,14 +48,13 @@ In this section we learn how to create Java ```class```es that can be used decla
 
 As we venture into creating types, we initially create two classes, each in its own ```.java``` file.  One file contains the ```class``` that defines our type.  The other file contains the ```class``` that uses (or tests) our type.
 
-## Pattern Class for Defining Type
+## Defining Type Pattern 
 
 The following is our pattern for creating a ```class``` that defines a type.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-X. Class for Defining Our Types
+Programming Pattern: Class for Defining Our Types
 </b>
 <br>
 <pre>
@@ -70,14 +69,15 @@ public class OurType {
 </pre>
 </div>
 
-## Pattern Class for Testing Our Types
+## Defining Tester Pattern
+
+The following is our pattern for creating a ```class``` that is used to test our types.  We place our type class and tester class in the same project, which allows them to reference each other.
 
 The following is our pattern for creating a ```class``` that defines a type.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-X. Class for Testing Our Types
+Programming Pattern: Class for Testing Our Types
 </b>
 <br>
 <pre>

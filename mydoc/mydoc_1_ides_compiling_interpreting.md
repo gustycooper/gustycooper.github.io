@@ -2,7 +2,7 @@
 title: IDEs, Compiling, Interpreting
 tags: [compile]
 keywords: java, introduction, computer, high-level, low-level, interpreting, compiling, portable
-last_updated: May 7, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand how IDEs and editors are used to create programs.</li> <li>Understand JVM, JDK, and JRE.</li> <li>Understand high-level, low-level, and portable code.</li> <li>Understand compiling hig-level code to assembly code.</li> <li>Understand interpreting low-level code.</li> <li>Understand interpreting Java byte code.</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_1_ides_compiling_interpreting/
@@ -74,8 +74,7 @@ The JVM, JDK, and JRE pattern figure allows you to easily visualize the software
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-0. JVM, JDK, and JRE Pattern </b>
+Programming Pattern: JVM, JDK, and JRE Pattern </b>
 <br>
 <img title="JVMJDKJRE" src="{{ "/images/jvmJdkJreFigure.png" | prepend: site.baseurl }}" />
 </div>

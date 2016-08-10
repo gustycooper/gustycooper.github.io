@@ -356,9 +356,13 @@ entries:
       url: /mydoc_9_sorting/
       output: web, pdf
 
-  - title: Reference Information
+  - title: Additional Information
     output: web, pdf
     folderitems:
+
+    - title: Programming Patterns
+      url: /mydoc_A_programming_patterns/
+      output: web, pdf
 
     - title: Programming Style
       url: /mydoc_A_programming_style/

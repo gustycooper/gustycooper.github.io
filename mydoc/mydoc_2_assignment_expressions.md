@@ -2,7 +2,7 @@
 title: Assignment Expressions
 tags: [expression]
 keywords: assignment, expression, expressions, numeric expressions, relation expressions, boolean expressions
-last_updated: May 1, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand assignment expressions.</li> <li>Understand side effects in expressions</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_2_assignment_expressions/
@@ -148,16 +148,19 @@ The pattern for swapping the contents of two variables is given as follows.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-1. Swapping Variables
+Programming Pattern: Swap Variables Pattern
 </b>
 <br>
 <pre>
-int x = 1;
-int y = 2;
-int t = x; // t is 1
-x = y;     // x is 2
-y = t;     // y is 1
+public class SwappingVariablesPattern {
+   public static void main(String[] args) {
+      int x = 1;
+      int y = 2;
+      int t = x; // t is 1
+      x = y;     // x is 2
+      y = t;     // y is 1
+   }
+}
 </pre>
 </div>
 

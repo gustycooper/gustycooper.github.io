@@ -2,7 +2,7 @@
 title: Loops
 tags: [loop]
 keywords: control flow, loop, for loop, while loop, do-while loop
-last_updated: June 7, 2016
+last_updated: August 10, 2016
 summary: <li>Understand Java loops.</li> <li>Understand loops iterate.</li> <li>Understand the body of loops can be a single statement or a block</li> <li>Understand while loops</li> <li>Understand that all problems can be solved with the while loop - the for and do-while can be done with while</li> <li>Understand while loops may iterate zero times.</li> <li>Understand while loops may interate infinitely.</li> <li>Understand for loops</li> <li>Understand a for loop can be accomplished with a while.</li> <li>Understand a counting for loop.</li> <li>Understand a for loop iteration variable</li> <li>Understand how to use a counting for loop to iterate through Strings.</li> <li>Understand for loop expressions do not have to be counting expressions.</li> <li>Understande do-while loops.</li> <li>Understand a do-while loop iterates at least one time.</li>
 sidebar: mydoc_sidebar
 permalink: /mydoc_4_loops/
@@ -121,8 +121,7 @@ The for loop pattern for counting is given by the following.
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
 <b>
-Programming Pattern
-0. Counting Loop Pattern
+Programming Pattern: Counting Loop Pattern
 </b>
 <br>
 <pre>

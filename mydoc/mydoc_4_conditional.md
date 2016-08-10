@@ -2,7 +2,7 @@
 title: Conditional Statements
 tags: [conditional]
 keywords: control flow, conditional, if, if-then
-last_updated: June 7, 2016
+last_updated: August 10, 2016
 summary: "<li>Understand Java's conditional statements</li> <li>Understand control flow associated with if and switch</li> <li>Understand one-way, two-way, and multi-way ifs.</li> <li>Understand ifs require a boolean expression.</li> <li>Understand a dangling else.</li> <li>Understand switches require expressions that evaluate to int, short, byte, char, String, or an enum type.</li> <li>Understand the use of break within a switch</li> <li>Understand how to create equivalent if and switch statements</li>"
 sidebar: mydoc_sidebar
 permalink: /mydoc_4_conditional/
@@ -218,7 +218,13 @@ System.out.println(“Done”);
 
 In Java, you can declare a variable wherever you need one, but you must be aware of the scope of the variable.  The scope of a variable is the block in which it is enclosed.  Consider the following code that swaps the contents of x and y when x is greater than y.  The code introduces a temp variable that is only available within the if statement’s scope.
 
-```java
+<div class="alert alert-danger" role="alert"><i class="fa fa-delicious fa-lg"></i>
+<b>
+Programming Pattern:
+ Swap Variable Pattern
+</b>
+<br>
+<pre>
 if ( x > y ) {
    int temp;  // A temporary variable for use in this block.
    temp = x;  // Save a copy of the value of x in temp.
@@ -226,7 +232,8 @@ if ( x > y ) {
    y = temp;  // Copy the value of temp into y.
 }
 if (temp > 0) {...} // This is illegal because temp is not defined
-```
+</pre>
+</div>
 
 ## ```if``` Statement Style
 
