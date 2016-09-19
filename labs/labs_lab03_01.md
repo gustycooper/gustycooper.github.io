@@ -15,7 +15,7 @@ toc: false
 As we have learned, Java classes contain instance variables, constructors, and methods.  We use the class as a type to declare variables and we use the constructors to create objects that we assign to our variables. A ```Person class``` is a great introduction to defining classes and constructing objects.  For example, I can create a ```Person``` variable ```gusty``` and assign it to a person object by the following.
 
 ```java
-Person gusty = new Person(“Gusty”, “Cooper);
+Person gusty = new Person("Gusty", "Cooper");
 ```
 
 The class definition of Person will look like the following.
@@ -62,8 +62,8 @@ We will create various implementations of a Person class throughout the semester
 
 4. Edit your ```Person class``` to change the two instance variables to be ```private```.  ```Private``` instance variables cannot be directly accessed in a ```Person``` object.  This is the typical technique for developing classes.  We will add ```public``` getter and setter methods that users of the class must use to access the instance variables.
 
-   * a. ```private String firstName;
-   * b. ```private String lastName;
+   * a. ```private String firstName;```
+   * b. ```private String lastName;```
 
 5. Add getter and setter public methods for the ```firstName``` and ```lastName``` instance variables.  The following define the getters and setters.  
 
@@ -110,7 +110,7 @@ We will create various implementations of a Person class throughout the semester
    > person1.addFriend("Tweetie");
    > String f = person1.getFriends();
    > f
-   " Grandma Tweetie"   (String)
+   "Grandma Tweetie"   (String)
    ```
 
 10. Create a Java ```public class personTester``` that has a ```static public void main()``` method that performs the following operations.
