@@ -40,3 +40,11 @@ sidebar configuration for print files
 {% if site.product == "product2" %}
 {% assign sidebar_pdf = site.data.sidebars.product2_sidebar.entries %}
 {% endif %}
+
+{% if site.product == "labs" %}
+{% assign sidebar_pdf = site.data.sidebars.labs_sidebar.entries %}
+{% endif %}
+
+{% if site.product == "projects" %}
+{% assign sidebar_pdf = site.data.sidebars.projects_sidebar.entries %}
+{% endif %}

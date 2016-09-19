@@ -98,6 +98,7 @@ i + 2 * (d * d)
 1 + 2.002f + 3
 i / d
 ```
+
 ## Division (```/```) and Remainder (```%```) Operators
 
 Java does not have a specific operator for integer division because the rules for determining the type of expression evaluation make the normal division ```/``` operator ```int```.  That is, ```int / int``` evaluates to an ```int```, where the fractional part of the result is discarded.  This type of division is sometimes called goes-into because it provides how many times a number goes into another.  Integer division has a counterpart modulo operator that provides the remainder, which in Java is the ```%``` operator.  Consider two ```int```s and two ```double```s as follows.

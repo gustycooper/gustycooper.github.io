@@ -22,7 +22,7 @@ The Shared Secret is your first project.  We know how to develop a basic Java pr
 
 2. Create a ```main``` method in SharedSecret that tests your implementation.  This specification provides a sample run of ```main```.
 
-   * a. This is a team component.  Team members shall work together to create the same SharedSecret.java file.
+   * a. This is a team component. Team members shall work together to create the same main method.
 
 3. Establish a SharedSecret with a team member.
 

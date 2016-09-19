@@ -55,5 +55,3 @@ next = (N % 2 == 0) ? (N/2) : (3*N+1);
 
 will assign the value N/2 to next if N is even (that is, if N % 2 == 0 is true), and it will assign the value (3*N+1) to next if N is odd. (The parentheses in this example are not required, but they do make the expression easier to read.)
 
-TEST.
-

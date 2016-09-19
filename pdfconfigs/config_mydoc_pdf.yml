@@ -1,11 +1,11 @@
 destination: _site/
-url: "http://127.0.0.1:4010"
+url: "http://127.0.0.1:4005"
 baseurl: "/mydoc-pdf"
-port: 4010
+port: 4005
 output: pdf
 product: mydoc
-print_title: Jekyll theme for documentation — mydoc product
-print_subtitle: version 5.0
+print_title: CPSC 220 WebBook
+print_subtitle: version 1.0
 output: pdf
 defaults:
   -

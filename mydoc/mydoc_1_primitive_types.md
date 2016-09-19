@@ -115,7 +115,7 @@ Meta Language - Java's Declarartion Statement
   * numeric variables to 0. 
   * ```char``` variables to the null character, which is ```'\0'``` or 0.
   * ```boolean``` variables to ```false```.
-* We study expressions in [Expressions](/gustycooper.github.io/mydoc_3_expressions). 
+* We study expressions in [Expressions](/gustycooper.github.io/mydoc_2_expressions). 
 * You may declare and initialize multiple variables by using a comma to separate them.
 
 The following are example declarations, some of which use the ```<exp>``` to initialize the variable.
@@ -151,7 +151,7 @@ char c = '5' + '5';    // c contains 108, which is 'j'
 System.out.printnl(c); // prints j to the terminal 
 ```
 
-* There are two ```boolean``` literals: ```true``` and ```false```.  We will study ```boolean``` expressions in [Expressions](/gustycooper.github.io/mydoc_3_expressions).
+* There are two ```boolean``` literals: ```true``` and ```false```.  We will study ```boolean``` expressions in [Expressions](/gustycooper.github.io/mydoc_2_expressions).
 
 ## Determining the Minimum and Maximum of Java Primitive Types
 

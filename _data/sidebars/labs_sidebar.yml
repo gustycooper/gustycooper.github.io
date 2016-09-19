@@ -25,19 +25,19 @@ entries:
     folderitems:
     - title: Labs
       url: /labs_landing_page/
-      output: web
+      output: web, pdf
 
     - title: Sample Lab Submission
       url: /labs_lab00_00/
-      output: web
+      output: web, pdf
 
     - title: Lab Points
       url: /labs_lab00_01/
-      output: web
+      output: web, pdf
 
     - title: Programming Contest
       url: /programmingContest/
-      output: web
+      output: web, pdf
 
   - title: Intro & 1st Programs
     output: web, pdf
