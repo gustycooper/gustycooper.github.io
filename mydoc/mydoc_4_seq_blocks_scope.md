@@ -16,6 +16,7 @@ if (floor > 13)
   actualFloor = floor - 1;  // execute this if floor > 13
 else
   actualFloor = floor;      // execute this if floor <= 13
+```
 
 Either way is equivalent in this case.  I tend to always use a block of statements even when there is only one statement.  This allows me to insert additional statements without having to back fit { and } in the code to create a block – you  already have them.  You must always be aware the multiple statements must be in a block.  The following example may look correct, but it is a syntactical programming error.
 
@@ -29,7 +30,7 @@ else
 ```
 
 ## Statements – assignment, if, loops, blocks
-The preceding section explains statements and blocks of statements using an assignment statement as the example statement.  The same type of thinking applies to any statement, for examples, if-statements and while-statements.  Where ever Java allows a <statement>  you can place any statement.  The following is an example of a two-way if where the else <statement> is another two-way if.  You should notice that we do not need to place the second two-way if in a block because it is a <statement>.
+The preceding section explains statements and blocks of statements using an assignment statement as the example statement.  The same type of thinking applies to any statement, for examples, if-statements and while-statements.  Where ever Java allows a ```<statement>```  you can place any statement.  The following is an example of a two-way if where the else ```<statement>``` is another two-way if.  You should notice that we do not need to place the second two-way if in a block because it is a ```<statement>```.
 
 ```java
 if (floor > 13)

@@ -16,7 +16,7 @@ if statement (Eck 3.5)
 
 ## Two-way ```if``` Statement
 
-A two-way ```if``` statement evaluates a ```boolean``` expression and executes one of two paths.  If the expression is ```true```, the ```then``` path is executed.  If the expression is ```false```, the ```else``` path is executed.   A Java ```if``` statement does not have ```then``` as a keyword.  The following is an example two-way ```if``` statement that computes ounces of water based upon the type of plant.  The ```they``` path follows the ```if```.  The ```else``` path folows the ```else```.
+A two-way ```if``` statement evaluates a ```boolean``` expression and executes one of two paths.  If the expression is ```true```, the ```then``` path is executed.  If the expression is ```false```, the ```else``` path is executed.   A Java ```if``` statement does not have ```then``` as a keyword.  The following is an example two-way ```if``` statement that computes ounces of water based upon the type of plant.  The ```then``` path follows the ```if```.  The ```else``` path folows the ```else```.
 
 ```java
 if (plant.equals("cactus"))
