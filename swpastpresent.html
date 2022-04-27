@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Gusty.Bike</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Gusty.Bike</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="swpastpresent.html" class="active">SW Past Present</a></li>
+						<li><a href="elements.html">Elements</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Software - Past and Present</h1>
+							<span class="image fit"><img src="images/YoungJZEFireplace.jpg" alt="" /></span>
+							<p>Photo from a long time ago.</p>
+								<section>
+									<h2>Computer Science Experiences</h2>
+									<div class="row">
+											<ul>
+												<li>I am a lifelong ball player - basketball, football, soccer, baseball, softball, volleyball, horseshoes, cornhole, high jump, running, bicycling. I mostly ride my bicycles now.</li>
+												<li>I wrote my first program on an IBM 1600 using punched cards in January, 1974. I do not remember the  programming language.</li>
+												<li>I studied math in college. I enjoyed abstract math, and could have gone to UVA graduate school for math, but I did not have enough confidence in my skills / abilities.</li>
+												<li>I took several CS courses in college. One was a computer architecture course where I learned assembly programming. Another was a compiler course, where I do not recall learning much; however, I did write a compiler later.</li>
+												<li>I worked 34 years as a civilian software/systems engineer for the U.S. Navy.</li>
+												<li>My time working for the U.S. Navy, I was primarily a maintenance software / systems engineer. We had large bodies of legacy systems and software. My job was to enhance the legacy systems / software.</li>
+												<li>The maintenance programmer's creed - <b>Read the code, not the comments.</b></li>
+												<li>I have developed most every kind of software on many different computers.</li>
+												<ul>
+													<li>Operating Systems - real time.</li>
+													<li>File Systems</li>
+													<li>Network Stack</li>
+													<li>Compilers</li>
+													<li>Assemblers</li>
+													<li>Linkers</li>
+													<li>Real-time naval weapon control systems</li>
+												</ul>
+											</ul>
+									</div>
+								</section>
+								<section>
+									<h2>Ongoing Computer Science Projects</h2>
+									<div class="row">
+											<ul>
+												<li>I teach computer science at the University of Mary Washington. I have been teaching for 11 years. I have been an adjunct, full-time fill-in, adjunct, full-time, and currently a full-time lecturer.</li>
+												<li>I have taught Introduction to Programming in Python, 2nd Programming Course in Java, Object-oriented Programming in Java, Discrete Math, Computer Architecture, and Operating Systems.</li>
+												<li>I have taught several independent studies. One was a fancy Java program that "controlled" radiation of melanoma in eyes. The program did not really control. A student worked as an intern and had several videos of manually controlled radiation. We used his videos to create a prototype system.</li>
+												<li>When I have extra time in a semester, I take a UWM course. I have taken Object-oriented Programming, Application of Data Bases, Data Mining, Computer Security, IT Infrastructure in the Cloud, and Web Development. This creates a fun dynamic. I am teaching some students while at the same time I am in a class with them.</li>
+												<li>As part of my teaching Computer Architecture and Operating Systems, I am developing Charm, a system to help teach these subjects. Charm has several components.</li>
+												<ul>
+													<li>Charm Instruction Set Architecture - A 32-bit ISA that is a simplified version of the ARM A32.</li>
+													<li>Charm Assembly - The definition of an assembly code for the Charm ISA.</li>
+													<li>Chasm - An assembler that translates Charm assembly code into "binary".</li>
+													<li>Chibicc - A C compiler that that translates C into Charm assembly code. Chibicc is a compiler created by Rui Ueyama. See <a href="https://github.com/rui314/chibicc">Chibicc by Rui Ueyama</a>. I have modified Rui's code generator to generate Charm assembly. The Chibicc code generater is mostly correct; however, it generates code that is a stack machine so the code is not efficient and does not use Charm registers well. I have a goal to improve the code generator.</li>
+													<li>Chemu - A Charm emulator that runs Charm binaries. Chemu allows you to load Charm binaries, inspect/change registers, inspect/change memory, step through code, set break points, and run code. Charm supports simple printf/scanf in Chemu. Chemu exists in two forms - ncurses that has "windows" in a Linux termina and terminal - that scrolls as you enter commands.</li>
+													<li>ChOS - An operating system that runs in Chemu. At this time ChOS is not much of an OS, but I hope to improve it.</li>
+													<li>Chlink - A linker that can combine Charm binaries. I have begun working on Chlink, but it is an infant.</li>
+													<li>Cherver - A localhost web-server that can run Chemu. Cherver is an idea at this time.</li>
+													<li>Chtml - A web frontend that can connect to Chever. Chtml is an idea at this time. The goal of Cherver and Chtml is to create a fancy browser-based GUI front end to Chemu, which will complement the ncurses and terminal user interfaces.</li>
+												</ul>
+											</ul>
+									</div>
+								</section>
+						</div>
+					</section>
+
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Gusty.Bike: All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>License: <a href="http://html5up.net/license">Creative Commons</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
