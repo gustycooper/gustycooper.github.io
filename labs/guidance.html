@@ -1,0 +1,247 @@
+<html>
+<head>
+<title>Lab guidance</title>
+<link rel="stylesheet" href="labs.css" type="text/css" />
+</head>
+<body>
+  
+<h1>Lab guidance</h1>
+
+<h2>Hardness of assignments</h2>
+  
+<p>Each assignment indicates how difficult it is:
+  <ul>
+    <li><p><span class="easy">Easy</span>: less than an
+    hour. These exercise are typically often warm-up exercises for
+    subsequent exercises.</li>
+    <li><p><span class="moderate">Moderate</span>: 1-2 hours.</li>
+    <li><p><span class="hard">Hard</span>: More than 2 hours. Often these
+    exercises don't require much code, but the code is tricky to get
+    right.</li>
+  </ul>
+  These times are rough estimates of our expectations.  For some of
+  the optional assignments we don't have a solution and the hardness
+  is a wild guess.  If you find yourself spending more time on an
+  assignment than we expect, please reach out on piazza or come to
+  office hours.
+  
+<p>The exercises in general require not many lines of code (tens to a
+few hundred lines), but the code is conceptually complicated and often
+details matter a lot.  So, make sure you do the assigned reading for
+the labs, read the relevant files through, consult the documentation
+(the RISC-V manuals etc. are on the <a href="../reference.html">reference page</a>)
+before you write any code. Only when you have a firm grasp of the
+assignment and solution, then start coding.  When you start coding,
+implement your solution in small steps (the assignments often suggest
+how to break the problem down in smaller steps) and test whether each
+steps works before proceeding to the next one.
+
+<div class="warning">
+<p>Warning: don't start a lab the night before a lab is due; it much
+more time efficient to do the labs in several sessions spread over
+multiple days. The manifestation of a bug in operating system kernel
+can be bewildering and may require much thought and careful debugging
+to understand and fix.
+</div>
+
+<h2>Vim tips</h2>
+Working on our labs requires editing code on Linux using the <code>vim</code>. There are some alternatives such as <code>emacs</code> and <code>nano</code>. However, I think using <code>vim</code> is your best alternative. My first code editor was a <a href="https://en.wikipedia.org/wiki/Punched_card">punched card</a>. I wrote code using punched cards from 1974 until 1981. After punched cards, I used a keyboard with scrolling paper to edit code. You could list lines, add lines, and edit lines. In 1983, I wrote code on a VT100 connected to a VAX, using the <code>EDT</code> editor. Sometime in the late 1980's or early 1990's, I began using <code>vim</code>. I initially selected <code>emacs</code>, but it was not available on all computers so I selected <code>vim</code>. Once you get used to <code>vim</code>, you can edit source code efficiently.
+
+<h3><code>.vimrc</code></h3>
+<p><code>.vimrc</code> is read by <code>vim</code> to apply your specific features. The following is my <code>.vimrc</code> thoughts, followed by the contents of my <code>.vimrc</code> file. 
+<ul>
+  <li><p>Viewing line numbers as you edit are sometimes nice. The <code>set number</code> and <code>set nonumber</code> manipulate line numbers.
+  </li>
+  <li><p>I do not like tabs in my code so I map tabs to 4 spaces. 
+  </li>
+  <li><p>Incremental search in text editors displays real-time search results as you type search strings.
+  </li>
+  <li><p>Highlight search highlights text as you type search strings.
+  </li>
+  <li><p>I map Ctl-l to list all of the files in a vertical split window. You can move to a file in the window, hit enter, and the file is opened in a new tab. 
+  </li>
+</ul>
+<p>My <code>.vimrc</code> file.
+<pre>
+" custom vim settings go into this file
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set incsearch
+set hlsearch
+syntax on
+set mouse=a
+let g:netrw_banner = 0
+let g:netrw_liststyle = 0
+" Values for netrw_browse_split
+" 1 open file in new horizontal split
+" 2 open file in new vertical split
+" 3 open file in new tab
+" 4 open in previous window
+let g:netrw_browse_split = 3
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
+let g:netrw_list_hide = '^\.\=/\=$,.DS_Store,.git,*\.o,\.*\.swp,.h'
+let g:netrw_hide = 1
+" Uncomment the following commands to have Vexp called on Vim startup
+"" augroup ProjectDrawer
+""   autocmd!
+""   autocmd VimEnter * :Vexplore
+"" augroup END
+map &lt;c-l&gt; :Vex&lt;CR&gt;
+
+</pre>
+
+<h3>ctags</h3>
+<p>When editing source code for a program that is in multiple <code>.c</code> files, you want to bounce from one <code>.c</code> file to another discovering the definitions of functions and data. The <code>ctags</code> program creates a <code>tags</code> file, which allows you to begin editing in one file and easily jump to another file that contains the definitions of functions and data. There are various ways to create a <code>tags</code> file, but the simplist is to place source code in a directoy and run the <code>ctags</code> program. The Xv6 program has two primary directories of source code. The <code>kernel</code> directory contains to OS kernel source code. The <code>user</code> directory contains the utility program source code. You can create a <code>tags</code> file in both directories. For example, to create a <code>tags</code> file in the <code>kernel</code> directory.
+<p>
+<kbd>$ cd kernel </kbd> <br />
+<kbd>$ tags *.c *.h </kbd> <br />
+<p>
+When you use <code>vim</code> to edit a file in the <code>kernel</code> directory, <code>vim</code> reads the <code>tags</code> file. Now you can use Ctl-] and Ctl-t to bounce from the current file being shown to another file containing the definition of the function or data. Suppose I am editing <code>file.c</code>, and my cursor is on a line calling the function <code>acquire</code> as mimiced below.
+<pre>
+struct file*
+filedup(struct file *f)
+{
+</pre>
+<kbd>  acquire</kbd><code>(&ftable.lock);</code><br />
+
+<p>
+Pressing <kbd>Ctl-]</kbd> opens the file <code>spinlock.c</code> and positions the cursor on the function <code>acquire</code>. When you are finished examining the function <code>acquire</code>, you return to <code>file.c</code> by pressing <kbd>Ctl-t</kbd>. Both <code>file.c</code> and <code>spinlock.c</code> remain a buffers in your vim editing session. 
+<p>
+The <code>tags</code> file many have multiple entries for a tag, and <kbd>Ctl-]</kbd> jumps to the first match. You can view additional matches by pressing <kbd>g]</kbd> or <kbd>g Ctl-]</kbd>, which show all matches and allow you to select a destination. Other options are for you to enter <kbd>:tselect</kbd> or <kbd>:tjump</kbd>, which also show all matches and allow you to select a destination.
+
+<h2>Shell tips</h2>
+
+When using Linux, it is beneficial to use a nice shell. For example, <code>bash</code> has tab completion. The shell <code>/bin/sh</code> does not provide tab completion.
+<ul>
+  
+  <li><p>To see what shell you are using, enter <kbd>$ echo $SHELL</kbd>
+  </li>
+  <li><p>To change your default shell (this example code changes it to <code>bash</code>), enter the following: <br />
+    <kbd> $ chsh -s /bin/bash </kbd> <br />
+    <code> pwd: enter-your-pw </code> <br />
+    After this you will have to logout and log back in to use your new shell.
+  </li>
+  <li><p>Alternatively, you can run bash from your existing shell by entering the following: <br />
+    <kbd> $ /bin/bash </kbd> <br />
+  </li>
+</ul>
+
+<h2>Debugging Tips</h2>
+
+Here are some tips for debugging your solutions:
+<ul>
+  
+  <li><p><b>C Pointers</b> - Make sure you understand C and pointers.  The book "The C
+  programming language (second edition)" by Kernighan and Ritchie is a
+  succinct description of C.  Some useful pointer exercises are
+    <a href="../lec/pointers.c">here</a>.
+Unless you are already thoroughly versed in C, do not skip or skim the
+pointer exercises above.  If you do not really understand pointers in
+C, you will suffer untold pain and misery in the labs, and then
+eventually come to understand them the hard way.  Trust us; you don't
+want to find out what "the hard way" is.
+    
+  <p>A few pointer common idioms are in particular worth remembering:
+<ul>
+<li>If <code>int *p = (int*)100</code>, then 
+    <code>(int)p + 1</code> and <code>(int)(p + 1)</code>
+    are different numbers: the first is <code>101</code> but
+    the second is <code>104</code>.
+    When adding an integer to a pointer, as in the second case,
+    the integer is implicitly multiplied by the size of the object
+    the pointer points to.</li>
+
+<li><code>p[i]</code> is defined to be the same as <code>*(p+i)</code>,
+referring to the i'th object in the memory pointed to by p.
+The above rule for addition helps this definition work
+when the objects are larger than one byte.</li>
+<li> <code>&amp;p[i]</code> is the same as <code>(p+i)</code>, yielding
+the address of the i'th object in the memory pointed to by p.</li>
+</ul>
+
+<p>
+Although most C programs never need to cast between pointers and integers,
+operating systems frequently do.
+Whenever you see an addition involving a memory address,
+ask yourself whether it is an integer addition or pointer addition
+and make sure the value being added is appropriately multiplied
+or not.
+  </li>
+
+  <li><p><b>Git Checkpoints</b> - If you have an exercise partially working, checkpoint your
+  progress by committing your code.  If you break something later, you
+  can then roll back to your checkpoint and go forward in smaller
+  steps.  To learn more about Git, take a look at the
+  <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git
+user's manual</a>, or, you may find this
+<a href="http://eagain.net/articles/git-for-computer-scientists/">CS-oriented
+  overview of Git</a> useful. </li>
+  
+  <li><p><b>Lab Test Failures</b> - If you fail a test, make sure you understand why your code fails
+  the test.  Insert print statements until you understand what is
+    going on.</li>
+
+  <li><p><b>Print Statements</b> - You may find that your print statements may produce much output
+  that you would like to search through; one way to do that is to run
+  <tt>make qemu</tt> inside of <tt>script</tt> (run <kbd>man
+  script</kbd> on your machine), which logs all console output to a
+  file, which you can then search.  Don't forget to
+  exit <tt>script</tt>.
+  </li>
+
+
+  <li><p><b>GDB</b> - In many cases, print statements will be sufficient, but
+  sometimes being able to single step through some assembly code or
+  inspecting the variables on the stack is helpful.  To use gdb with
+  xv6, run make <kbd>make qemu-gdb</kbd> in one window,
+  run <kbd>gdb-multiarch</kbd> (or <kbd>riscv64-linux-gnu-gdb</kbd>) in another
+  window (if you are using Athena, make sure that the two windows are on the same Athena machine), set a break point, followed by followed by 'c' (continue),
+  and xv6 will run until it hits the
+  breakpoint. See <a href="gdb.html">GDB - the GNU Debugger</a> for helpful tips on using GDB with our Xv6 labs.  (If you start gdb and see a warning of the form 'warning: File ".../.gdbinit" auto-loading has been declined', edit ~/.gdbinit to add "add-auto-load-safe-path...", as suggested by the warning.)
+  </li>
+  
+  <li><p><b>Assembly Code</b> - If you want to see what the assembly is that the compiler
+  generates for the kernel or to find out what the instruction is at
+  a particular kernel address, see the file <tt>kernel.asm</tt>, which
+  the Makefile produces when it compiles the kernel.  (The Makefile
+  also produces <tt>.asm</tt> for all user programs.)
+  </li>
+  
+  <li><p><b>Kernel Panics</b> - If the kernel panics, it will print an error message listing the
+  value of the program counter when it crashed; you can
+  search <tt>kernel.asm</tt> to find out in which function the program
+  counter was when it crashed, or you can run <kbd>addr2line -e
+  kernel/kernel <i>pc-value</i></kbd> (run <kbd>man addr2line</kbd>
+  for details).  If you want to get backtrace, restart using gdb: run
+  'make qemu-gdb' in one window, run gdb (or riscv64-linux-gnu-gdb) in
+  another window, set breakpoint in panic ('b panic'), followed by
+  followed by 'c' (continue). When the kernel hits the break point,
+  type 'bt' to get a backtrace.
+  </li>
+
+  <li><p><b>Kernel Hangs</b> - If your kernel hangs (e.g., due to a deadlock) or cannot execute
+  further (e.g., due to a page fault when executing a kernel
+  instruction), you can use gdb to find out where it is hanging. Run
+  run 'make qemu-gdb' in one window, run gdb (riscv64-linux-gnu-gdb)
+  in another window, followed by followed by 'c' (continue). When the
+  kernel appears to hang hit Ctrl-C in the qemu-gdb window and type
+  'bt' to get a backtrace.
+  </li>
+
+  <li><b>qemu Monitor</b> - <tt>qemu</tt> has a "monitor" that lets you query the state
+  of the emulated machine. You can get at it by typing
+  control-a c (the "c" is for console). A particularly useful
+  monitor command is <tt>info mem</tt> to print the page table.
+  You may need to use the <tt>cpu</tt> command to select which
+  core <tt>info mem</tt> looks at, or you could start qemu
+  with <tt>make CPUS=1 qemu</tt> to cause there to be just one core.
+
+</ul>
+
+It is well worth the time learning the above-mentioned tools.
+    
+</body>
+</html>
