@@ -19,6 +19,7 @@ body {
 
 .navbar-default .navbar-nav>li>a {
   color: white;
+  /* color: #8697ad; */
   font-weight: 900;
   font-size: 14px;
 }

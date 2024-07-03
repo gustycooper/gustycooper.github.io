@@ -1,3 +1,4 @@
+
 <HTML>
 <HEAD>
 <TITLE>
@@ -48,7 +49,7 @@ UMW CPSC 405
 		<li><a href="labsubmissions.html">Lab Submissions</a></li>
 		<li><a href="labs/guidance.html">Guidance</a></li>
 		<li><a href="labs/gdb.html">GDB</a></li>
-    <li><a href="labs/util.html">Lab Utilities</a></li>
+                <li><a href="labs/util.html">Lab Utilities</a></li>
 		<li><a href="labs/syscall.html">Lab System calls</a></li>
 		<li><a href="labs/pgtbl.html">Lab Page tables</a></li>
 		<li><a href="labs/traps.html">Lab Traps</a></li>
@@ -85,59 +86,16 @@ UMW CPSC 405
 
 <div class="container">
 
-<h2>CPSC 405 Home Page</h2>
-<ul>
-<li>The CPSC 405 Home Page is rather bland.
-<li>
-<p><b>Fall 2024</b>: CPSC 405 will be taught in Farmer-025, Tuesdays and Thursdays
-from 8:30am to 10:20am, starting on Tuesday Aug 26. CPSC 405 provides an introduction to operating systems.
-CPSC 405 is required for a CPSC major and is an elective for anyone interested in operating systems, which includes a CYBR major.
-</li>
-</ul>
 
-<h2>CPSC 405 Xv6 GitHub Repo</h2>
-<p>The starting source code for our CPSC 405 Xv6 labs is located at a GitHub repository.
-The repo has a branch for each lab. For example the <tt>util</tt> branch contains 
-code for the Lab Utilities.
-<ul>
-<li><a href="https://github.com/gustycooper/xv6-labs.git">CPSC 405 GitHub Repo</a>
-<li><tt>$ git clone https://github.com/gustycooper/xv6-labs.git</tt>
-</ul>
+<div class="required">
+<h2>Thanks to MIT</h2>
+<p>MIT's Parallel and Distributed Operating System (PDOS) Group teaches an opearting sytems course, PDOS 6.1810. PDOS 6.1810 is a learn by doing course that uses their RISC-V Xv6 operating system running in QEMU. I encounted MIT's Xv6 several years ago, when I first taught Operating Systems at UMW. At the time, Xv6 was x86 based.
+Instead of using Xv6 and QEMU, my initial approach was to extract Xv6 code into standalone code that could be compiled and executed on Linux.
+For example, I packaged <tt>proc.c</tt> into a programming module where students implemented two schedulers: round-robin and Linux Completely Fair. I integrated these standalone Xv6 labs with lectures and problems derived from <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">OS Three Easy Pieces</a>.
+At one point, I found a version of Xv6 that booted onto a Raspberry Pi. I thought about integrating it as part of my course. I got it running, but getting it to run was tedious and I did not think using the Pi's Xv6 in class would be beneficial.
 
-<h2>CPSC 405 Discord Server</h2>
-<ul>
-<li><a href="https://discord.gg/c544v67ZUJ">CPSC 405 Discord Server</a>
-</ul>
-
-<h2>CPSC 405 News and Announcements</h2>
-<ul>
-<li>Course news and announcements can be found on our <a href="https://discord.gg/c544v67ZUJ">CPSC 405 Discord Server</a>.
-</ul>
-
-<h2>CPSC 405 Web Pages</h2>
-<ul>
-	  <li><a href="schedule.html">Schedule</a></li>
-    <li><a href="overview.html">Overview</a></li>
-    <li><a href="general.html">Web Syllabus</a></li>
-		<li><a href="tools.html">Tools</a></li>
-		<li><a href="labsubmissions.html">Lab Submissions</a></li>
-		<li><a href="labs/guidance.html">Guidance</a></li>
-		<li><a href="labs/gdb.html">GDB</a></li>
-    <li><a href="labs/util.html">Lab Utilities</a></li>
-		<li><a href="labs/syscall.html">Lab System calls</a></li>
-		<li><a href="labs/pgtbl.html">Lab Page tables</a></li>
-		<li><a href="labs/traps.html">Lab Traps</a></li>
-		<li><a href="labs/scheduling.html">Lab Scheduling</a></li>
-		<li><a href="labs/fs.html">Lab File system</a></li>
-		<li><a href="labs/thread.html">Lab Multithreading</a></li>
-		<li><a href="labs/shell.html">Lab Shell</a></li>
-		<li><a href="xv6.html">xv6</a></li>
-		<li><a href="xv6/book-riscv-rev3.pdf">xv6 book</a></li>
-	  <li><a href="reference.html">References</a></li>  
-	  <li><a href="https://discord.com/login">Discord</a></li>
-	  <li><a href="thanksmit.html">ThanksMIT</a></li>
-</ul>
-
+<p>For the Fall 2024, I have decided to use the MIT RISC-V Xv6 that runs in QEMU as part of my course content. I am using the MIT PDOS 6.1810 web structure. I have modified the course content to better suit the UMW OS class and our students.
+</div>
 
 <!-- End Page Content -->
 

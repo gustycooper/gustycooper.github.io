@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<TITLE>
+UMW CPSC 405
+</TITLE>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="labs/labs.css" type="text/css" />
+
+</HEAD>
+
+<BODY BGCOLOR=#ffffff TEXT=#000000>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">UMW CPSC 405 - OS</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+	    <li><a href="schedule.html">Schedule</a></li>
+	    <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class<span class="caret"></span></a>
+	      <ul class="dropdown-menu" role="menu">
+                <li><a href="overview.html">Overview</a></li>
+                <li><a href="general.html">Web Syllabus</a></li>
+<!-- A way to link to courses of multiple years
+		<li><a href="https://pdos.csail.mit.edu/6.1810/2022/">CPSC 405 2024</a></li>
+		<li><a href="https://gusty.bike/405xv6">CPSC 405</a></li>
+  -->
+		<li><a href="index.html">CPSC 405 2024</a></li>
+	      </ul>
+	    </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labs<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+		<li><a href="tools.html">Tools</a></li>
+		<li><a href="labsubmissions.html">Lab Submissions</a></li>
+		<li><a href="labs/guidance.html">Guidance</a></li>
+		<li><a href="labs/gdb.html">GDB</a></li>
+                <li><a href="labs/util.html">Lab Utilities</a></li>
+		<li><a href="labs/syscall.html">Lab System calls</a></li>
+		<li><a href="labs/pgtbl.html">Lab Page tables</a></li>
+		<li><a href="labs/traps.html">Lab Traps</a></li>
+		<li><a href="labs/scheduling.html">Lab Scheduling</a></li>
+		<li><a href="labs/fs.html">Lab File system</a></li>
+		<li><a href="labs/thread.html">Lab Multithreading</a></li>
+<!--
+		<li><a href="labs/cow.html">Lab Copy on-write</a></li>
+		<li><a href="labs/net.html">Lab network driver</a></li>
+		<li><a href="labs/lock.html">Lab Lock</a></li>
+		<li><a href="labs/mmap.html">Lab mmap</a></li>
+-->
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">xv6<span class="caret"></span></a>
+	      <ul class="dropdown-menu" role="menu">
+		<li><a href="xv6.html">xv6</a></li>
+		<li><a href="xv6/book-riscv-rev3.pdf">xv6 book</a></li>
+	      </ul>
+	    </li>
+	    <li><a href="reference.html">References</a></li>  
+	    <li><a href="https://discord.com/login">Discord</a></li>
+	    <li><a href="thanksmit.html">ThanksMIT</a></li>
+          </ul>
+	  <ul class="nav navbar-nav navbar-right">
+	    <p class="navbar-text">2024</p>
+	  </ul>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
+
+
+
+
+
+<h1>Xv6, a simple Unix-like teaching operating system</h1>
+
+<h2>Introduction</h2>
+
+Xv6 is a teaching operating system developed by MIT in the summer of 2006,
+which MIT ported xv6 to RISC-V for a new undergraduate class 6.1810.
+
+<h2>CPSC 405 Xv6 Lab Sources</h2>
+<p>The starting source code for our CPSC 405 Xv6 labs is located at a GitHub repository.
+The repo has a branch for each lab. For example the <tt>util</tt> branch contains 
+code for the Lab Utilities.
+<pre>git clone https://github.com/gustycooper/xv6-labs.git</pre>
+
+<h2>CPSC 405 Xv6 Textbooks</h2>
+<p>CPSC 405 Xv6 Textbook and other references are part of our website.
+<ul>
+  <li><a href="xv6/book-riscv-rev3.pdf">xv6: A simple, Unix-like teaching operating
+      system</a> by R. Cox, F. Kaashoek, and R. Morris.
+  <li> <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">OS Three Easy Pieces</a>
+       by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau.
+  <li><a href=https://ia903407.us.archive.org/35/items/the-ansi-c-programming-language-by-brian-w.-kernighan-dennis-m.-ritchie.org/The%20ANSI%20C%20Programming%20Language%20by%20Brian%20W.%20Kernighan%2C%20Dennis%20M.%20Ritchie.pdf>The C Programming Language (second edition)</a> Brian W. Kernighan
+and Dennis M. Ritchie. Prentice Hall, Inc., 1988. ISBN 0-13-110362-8, 1998.
+
+</ul>
+
+<h2>MIT's Xv6 sources and text</h2>
+
+The latest xv6 source and text are available; however, you do not need to clone these repos. 
+The <tt>gustycooper</tt> repo shown above is all you need.
+Also, note that cloning the textbook is not a PDF. You have to build the textbook.
+<ul>
+<li>
+<pre>git clone https://github.com/mit-pdos/xv6-riscv.git</pre>
+</li>
+<li>
+<pre>git clone https://github.com/mit-pdos/xv6-riscv-book.git</pre>
+</li>
+</ul>
+
+<a name="v6"></a>
+<h2>Unix Version 6</h2>
+
+<p>Ken Thompson and Dennis Ritchie developed Unix at Bell Labs beginning in 1969.
+The Sixth Edition Unix (May 1975), also called Version 6 Unix or just V6, 
+was the first version of the Unix operating system to see wide release outside Bell Labs.
+Bell Labs distributed V6 with the source code. Universities received V6 for free, and
+incorporated it into their courses, with students making modifications. 
+UC Berkeley created their own release with the Berkeley sockets for network programming.
+John Lions of the University of New South Wales created a famous, detailed commentary that
+described V6. You can read more about Unix and Xv6 at
+<ul>
+<li><a href= "https://en.wikipedia.org/wiki/Version_6_Unix">Unix V6 (Wikipedia)</a>
+<li><a href= "https://www.historyofinformation.com/detail.php?id=872">Thompson and Ritchie (History of Information)</a>
+</ul>
+MIT's Xv6 is inspired by Unix V6 and John Lions' commentary.
+<ul>
+<li>Lions' <i>Commentary on UNIX' 6th Edition</i>, John Lions, Peer to
+Peer Communications; ISBN: 1-57398-013-7; 1st edition (June 14, 2000).
+	<ul>
+
+	<li>An on-line version of the <a
+	href="http://www.lemis.com/grog/Documentation/Lions/">Lions
+	commentary</a>, and <a href="http://v6.cuzuco.com/">the source code</a>.
+
+
+	<li>The v6 source code is also available 
+	  <a href="http://minnie.tuhs.org/cgi-bin/utree.pl?file=V6">online</a>
+	  through <a href="http://www.tuhs.org/">The Unix Heritage Society</a>.
+
+	</ul>
+
+</ul>
+
+The following are useful to read the original code:
+<ul>
+<li><i>
+The PDP11/40 Processor Handbook</i>, Digital Equipment Corporation, 1972.
+<ul>
+<li>A <a href="http://pdos.csail.mit.edu/6.828/2005/readings/pdp11-40.pdf">PDF</a> (made from scanned images, 
+and not text-searchable)
+<li>A <a href="http://pdos.csail.mit.edu/6.828/2005/pdp11/">web-based
+version</a> that is indexed by instruction name.
+</ul>
+
+</ul>
+
+<h2>Gusty's Use of Xv6</h2>
+I have used Xv6 code in teaching CPSC 405.
+My first approach was to extract code into standalone code that can be compiled and executed on Linux.
+For example, I packaged <tt>proc.c</tt> into a programming module where students implemented two schedulers: round-robin and Linux Completely Fair.
+I have decided to use the MIT RISC-V Xv6 that runs in QEMU as part of my course content. I have modified the course content to better suit UMW OS and students.
+
+<h2>Feedback</h2>
+<h3>MIT Feedback</h3>
+If you are interested in using xv6 or have used xv6 in a course,
+MIT personnel would love to hear from you.
+If there's anything that MIT can do to make xv6 easier
+to adopt, they'd like to hear about it.
+They'd also be interested to hear what worked well and what didn't.
+<p>
+Russ Cox (rsc@swtch.com)<br>
+Frans Kaashoek (kaashoek@mit.edu)<br>
+Robert Morris (rtm@mit.edu)
+<p>
+You can reach all of the MIT Xv6 personnel at 61810-staff@lists.csail.mit.edu.
+
+<h3>UMW Feedback</h3>
+If you have feedback on UMW's use of Xv6, please email Gusty Cooper at 
+<A HREF="mailto:ecooper@umw.edu"><I>ecooper@umw.edu</I></A>.
+
+<!-- End Page Content -->
+
+<hr>
+
+<font style="font-size: 12px;">
+<p>Questions or comments regarding CPSC 405?  Send e-mail to Gusty at
+<A HREF="mailto:ecooper@umw.edu"><I>ecooper@umw.edu</I></A>.
+
+<p><a rel="license" href="https://creativecommons.org/licenses/by/3.0/us/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by/3.0/us/88x31.png" ></a> <B><A HREF="#top">Top</A></B> //
+<B><A HREF="index.html">CPSC 405 home</A></B> // 
+<i>Last updated Saturday, 2-Mar-2024 13:39:24 EST</i>
+</font>
+
+</div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</BODY>
+</HTML>

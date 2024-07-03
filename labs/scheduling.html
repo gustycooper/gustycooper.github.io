@@ -1,0 +1,645 @@
+<html>
+<head>
+<title>Lab: schedulng</title>
+<link rel="stylesheet" href="labs.css" type="text/css" />
+<script src="guidance.js"></script>
+</head>
+<body>
+
+<h1>Lab: Scheduling</h1>
+
+<p>In this lab you will implement a priority scheduler for xv6. 
+<div class="prereq">
+<p>Before you begin lab scheduling, 
+<ul>
+<li>Read "Chapter 7: Scheduling" in the <a href="../xv6/book-riscv-rev3.pdf">xv6 book</a>.
+<li>Read Chapters 7, 8, 9, and 10 in 
+  <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">OS Three Easy Pieces</a>
+</ul>
+</div>
+   
+<div class="question">
+<p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
+Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+Additionally, in the directory of your xv6-labs, create the file: <b>answers-scheduling.txt</b>. You do not need to put answers in 
+this file, but the grading script checks to see if this file exists. If it exists, I assume you have answered the questions
+in your notebook.
+</div>
+
+<p>Fetch the xv6 source for the lab and check out the <tt>scheduling</tt> branch:
+
+<pre>
+  $ <kbd>git fetch</kbd>
+  $ <kbd>git checkout scheduling</kbd>
+  $ <kbd>make clean</kbd>
+</pre>
+
+<h2>Background</h2>
+
+<h3>Xv6's <tt>proc.h</tt> and <tt>proc.c</tt></h3>
+<p>The files <tt>proc.h</tt> and <tt>proc.c</tt> contain the data structures and algorithms
+used to implement Xv6's process model. The data structure <tt>struct proc</tt> defines process information
+that Xv6 uses. When performing Lab syscall, you added members to <tt>struct proc</tt>.
+For Lab Scheduling, I have added members to <tt>struct proc</tt> and code to <tt>proc.c</tt>.
+<ul>
+<li><tt>struct proc</tt> has a member <tt>int priority</tt> that you will use.
+<li><tt>proc.h</tt> has a <tt>struct prochist</tt> for maintaining a cirucular buffer of
+procs that are scheduled.
+<li><tt>proc.c</tt> has a function <tt>proc_hist()</tt> that when called adds information to
+the <tt>prochist[]</tt> circular buffer.
+<li><tt>param.h</tt> has two macros used for selecting a scheduling policy.
+<pre>
+#define SCHED_RR      0  // Round-Robin Scheduler
+#define SCHED_PRIOR   1  // Priority-Based Scheduler
+</pre>
+<li><tt>proc.c</tt> has a static variable <tt>int schedular_policy</tt> that can be set to
+either <tt>SCHED_RR</tt> for a round-robin scheduler or <tt>SCHED_PRIOR</tt> for a 
+priority scheduler.
+<li><tt>proc.c</tt> has an updated <tt>scheduler()</tt> function that includes a conditional
+statement to select a scheduling policy based on the value of the variable <tt>schedular_policy</tt>.
+As provided the conditional executes the original Xv6 round-robin scheduler for both conditions.
+You will update the <tt>SCHED_PRIOR</tt> condition to be a priority scheduler.
+<li>The updated <tt>scheduler()</tt> in <tt>proc.c</tt> calls <tt>proc_hist()</tt> to add information
+to <tt>prochist[]</tt>.
+</ul>
+<h3>Xv6 Process States</h3>
+<p>The file <tt>proc.h</tt> defines the enumerated type <tt>procstate</tt> as follows.
+
+<pre>
+enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
+</pre>
+
+<p>Processes have a state diagram that is summarized as follows. 
+<p>
+
+<img src="procstates_1.png" alt="Process States" >
+
+<p>The scheduling algorithm
+searches a list of <i>Runnable</i> processes, selects the next process to run, and <i>runs</i> it.
+Running a process involves a context switch, which is described in the next section. 
+The scheduling algorithm performs both the <i>Scheduled</i> arrow and the <i>Descheduled</i> arrows.
+The arrow labeled <i>Scheduled</i> moves a process from <i>Runnable</i> to <i>Running</i>, while at 
+the same time the arrow labeled <i>Descheduled</i> moves the <i>Running</i> process back to 
+the list of <i>Runnable</i> processes.
+
+<p>You will notice that <tt>procstate</tt> defines three additional states <tt>UNUSED</tt>, <tt>USED</tt>,
+and <tt>ZOMBIE</tt>. An <tt>UNUSED</tt> proc is available to be allocated. A proc is temporarily in
+the <tt>USED</tt> state until it is finally aloocated when it becomes <tt>RUNNABLE</tt>. 
+
+<div class="question">
+<p><b>1.</b> Provide two examples of something a process can do that causes it to transition from
+<tt>RUNNING</tt> to <tt>SLEEPING</tt>.
+</div>
+
+<div class="question">
+<p><b>2.</b> Provide two example events that cause a process to transition from
+<tt>SLEEPING</tt> to <tt>RUNNABLE</tt>.
+</div>
+
+<div class="question">
+<p><b>3.</b> Look up what it means a Linux process to be in a <tt>ZOMBIE</tt> state. Write the answer 
+and create a program that results in a process in a <tt>ZOMBIE</tt> state. Use the Xv6 <tt>ctrl-p</tt>
+command to demonstrate your program results in a process that is in the <tt>ZOMBIE</tt> state.
+Since the program is such a few line, hand write the code in your notebook.
+</div>
+
+<p>Another terminology for process states is <i>Running</i>, <i>Ready</i>, and <i>Blocked</i>.
+<a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">OS Three Easy Pieces</a> uses this terminology.
+The following is a process state transition diagram using these terms.
+<p>
+
+<img src="procstates_2.png" alt="Process States" >
+
+<h3>Xv6 Scheduler and Context Switches</h3>
+
+<p>Xv6 supports a maximum 64 concurrent processes, and they are defined in the array <tt>struct proc proc[NPROC];</tt>
+where <tt>param.h</tt> contains <tt>#define NPROC 64</tt>, and
+<tt>proc.h</tt> contains the definition of a <tt>struct proc</tt>. <tt>struc proc</tt> has many members, one of 
+which is <tt>enum procstate state;</tt>. The function <tt>procinit()</tt> in <tt>proc.c</tt> initializes all
+of the <tt>struct proc</tt> elements in the array <tt>proc[]</tt> to <tt>UNUSED</tt>. 
+An allocated process (<tt>allocproc()</tt> is briefly in the <tt>USED</tt> state   
+until it is made <tt>RUNNABLE</tt>.
+
+<div class="question">
+<p><b>4.</b> Why do you think <tt>allocproc()</tt> used the intermediate state <tt>USED</tt>? You will have to 
+examine the code to answer this.
+</div>
+
+<p>The Xv6 <tt>scheduler()</tt> iterates through the <tt>struct proc proc[]</tt> array searching
+for a <tt>RUNNABLE</tt> process. Once the scheduling algorithm selects a <tt>RUNNABLE</tt> process, Xv6
+performs a context switch from the <tt>scheduler</tt> to the selected process. Context switches are
+a key component in operating systems. A timer interrupt causes the scheduling algorithm to run.
+Consider that the OS is currenting executing process <i>Coletta</i> when a timer interrupt occurs.
+First a context switch from <i>Coletta</i> to the <tt>scheduler</tt> must occur. Then, after
+the <tt>scheduler</tt> has selected <i>Opal</i> to run, a context switch from the <tt>scheduler</tt>
+to <i>Opal</i> must occur. Once Xv6 has booted, the <tt>scheduler</tt> enters an endless loop
+searching for <tt>RUNNABLE</tt> processes and performing context switches to them. 
+The <tt>scheduler</tt> runs in kernel mode.
+Xv6 creates the <tt>initproc</tt>, and the <tt>scheduler</tt> runs it (i.e., performs a context swithc). 
+The <tt>initproc</tt> creates the <tt>sh</tt> (shell) process, and the <tt>scheduler</tt> runs it.
+The shell allows you to enter commands. The shell <tt>fork</tt>s these commands as processes. 
+Each command is a program. The shell performs a two step seqence for each command.
+<ul>
+<li>Call <tt>fork()</tt> to create a duplicate shell process.
+<li>Call <tt>exec()</tt> to replace the duplicate shell with the command's program.
+</ul>
+  
+<p> The following diagrams displays a context switch from a process <i>Coletta</i> to a process <i>Opal</i>.
+<p>
+<img src="contextswitch.png" alt="Context Switch" >
+
+<p>
+There is a lot to digest in the above simple-looking context switch diagram. The process <i>Coletta</i> is running
+in user mode, when a timer interrupt occurs, which is the OS interrupt used for a context switch.
+On the RISCV architecture, the timer interrupt is immediately processed in machine mode by <tt>timervec()</tt> 
+(in <tt>kernelvec.S</tt>), which
+issues a software interrupt that is processed by <tt>uservec()</tt> (in <tt>trampoline.S</tt>). 
+The RISCV CPU is now in supervisor 
+mode, but the CPU is still using the page table of <i>Coletta</i> - not the OS page table. 
+The code for <tt>uservec()</tt> is on the <i>trampoline</i> page, which is mapped 
+in each user proc's page table. 
+<i>Coletta</i>'s <i>trampoline</i> page is marked to allow execution in supervisor mode.
+To refresh your memory on memory layout, you can examine <tt>memlayout.h</tt> and Figure 3.3 
+of <a href="../xv6/book-riscv-rev3.pdf">our xv6 text book</a>, which was part of our page table studies.
+Having the <i>trampoline</i> page mapped to <i>Coletta</i>'s page table allows <tt>uservec()</tt> 
+to begin executing in supervisor mode prior to changin to the 
+OS page table, which also maps the <i>trampoline</i> page to the same address. 
+Thus <tt>uservec()</tt> can switch to the OS page table and continue executing the <i>trampoline</i> code. 
+Before switching to the OS page table, <tt>uservec</tt>
+saves all registers in <i>Coletta</i>'s TRAPFRAME. Each process has a unique physical page allocated as its
+TRAPFRAME. Each process's TRAPFRAME mapped to the same virtual address, which allows <tt>uservec()</tt> to
+save the registers. The process's <tt>struc proc</tt> member <tt>p->trapframe</tt> 
+points to the trapframe with its physical address, which allows the kernel to access the process's
+TRAPFRAME using the kernel page table.
+
+<div class="question">
+<p><b>5.</b> Explain the processing of a timer interrupt in your own words.
+</div>
+
+<div class="question">
+<p><b>6.</b> <tt>uservec()</tt> in <tt>trampoline.S</tt> begins execution using a process page table
+and transitions to the OS page table.
+<ul>
+<li>How is is possible to use a process page table when the interrupt is in kernel mode?
+<li>What register is changed to transition from the process page table to the kernel page table?
+</ul>
+</div>
+
+<div class="question">
+<p><b>7.</b> Draw Figure 3-4 from  <a href="../xv6/book-riscv-rev3.pdf">our xv6 text book</a> in your notebook.
+<ul>
+<li>Is this a mapping of a process's virtual address space or physical address space?
+<li>Where are the TRAMPOLINE and TRAPEFRAME pages located?
+</ul>
+</div>
+
+<h3>Xv6's Round Robin Scheduler</h3>
+<p>The Xv6 function <tt>scheduler()</tt> in the file <tt>proc.c</tt> implements a round robin scheduler.
+
+<div class="question">
+<p><b>8.</b> Explain how the algorithm in <tt>scheduler()</tt> implements a round robin scheduler.
+NOTE: The answer is a little trickier than you may think.
+</div>
+
+<h3>Xv6's Priority Scheduler</h3>
+<p>You will implement a priority scheduler.
+
+<div class="question">
+<p><b>9.</b> Create a design for your priority scheduler. You must complete this before you begin
+implementing the code for your priority scheduler.
+</div>
+
+<h3>Scheduler Tester - <tt>testschd.c</tt></h3>
+I have provided <tt>testschd.c</tt> to test scheduler algorithms. The program creates three processes
+with varying priorities. The processes have names <i>Coletta</i>, <i>Opal</i>, and <i>Florence</i>.
+Their default priorites are 
+<ul>
+<li><i>Coletta</i> - 50
+<li><i>Opal</i> - 51
+<li><i>Florence</i> - 52
+</ul>
+The priorities can be changed by invoking 
+<pre>
+<kbd> $ testschd 20 3 31</kbd>
+</pre>
+
+<p>The <tt>testschd.c</tt> program calls the system call function <tt>spoon()</tt>, which is exactly like <tt>fork()</tt>, 
+but <tt>spoon()</tt> allows you to name the function. The function name is copied into the 
+<tt>struct proc</tt> member <tt>name</tt>. Without <tt>spoon()</tt> all of the processes of <tt>testsched</tt> 
+would have the name of their parent - e.g., they would be named <tt>testschd</tt>.
+
+<p>You must implement <tt>spoon()</tt> before <tt>testschd.c</tt> will run. Or you can change the calls to
+<tt>spoon</tt> to be calls to <tt>fork</tt>.
+
+<p><a name="controlp"></>
+<h3>Scheduler Tester - <tt>ctrl-p</tt> </h3>
+<p>Xv6 provides a <tt>ctrl-p</tt> that shows processes and their states. <tt>ctrl-p</tt> is similar to 
+Linux <tt>ps</tt> command.
+<p>You can enter <tt>ctrl-p</tt> at any time and it displays
+<pre>
+proc_id priority state name
+</pre>
+
+<p>The following shows entering <tt>ctrl-p</tt> while <tt>testschd</tt> is running. The display shows the
+processes pid, priority, state, and name. Notice the various states of <tt>sleep</tt>, <tt>runble</tt>,
+and <tt>run</tt>. This was done on a Xv6 build with <tt>CPUS=1</tt> so there is only one process in
+the state <tt>run</tt>. Also notice how <i>Coletta</i> and <i>Opal</i> alternated between states
+<tt>run</tt> and <tt>runble</tt>.
+<pre>
+<kbd>$ testschd</kbd>
+<kbd>ctrl-p</kbd>
+1 0 sleep  init
+2 0 sleep  sh
+3 100 sleep  testschd
+4 50 runble Coletta
+5 51 run    Opal
+6 52 runble Florence
+<kbd>ctrl-p</kbd>
+1 0 sleep  init
+2 0 sleep  sh
+3 100 sleep  testschd
+4 50 run    Coletta
+5 51 runble Opal
+6 52 runble Florence
+</pre>
+
+<div class="question">
+<p><b>10.</b> Given the above two instanced of <tt>ctrl-p</tt>, what scheduler (round-robin or priority)
+is running and why?
+</div>
+
+<h3>Scheduler Tester - <tt>ctrl-g</tt></h3>
+<p>The version of the kernel provided with this lab has a system call <tt>prochist()</tt> that displays
+the process history captured in the <tt>prochist[]</tt> circular buffer. You should examine the
+implementation of <tt>prochist()</tt> to determine it calls the function <tt>prochistory()</tt>, which
+is in <tt>proc.c</tt>. User programs can make the <tt>prochist()</tt> system call. Additionally,
+you can connect <tt>ctrl-g</tt> to <tt>prochistory()</tt>. I have done this in my demonstration
+version of Xv6. For this lab, you must do the same. Once you have implemented <tt>ctrl-g</tt>, you can enter it
+at any time to view the process history, which shows the first line as
+
+<pre>
+Tmr Rupts: 250, Sch Loops: 212295, Swtch Run: 210, Swtch New: 13, Switch Old: 182, Swtch sh: 15
+</pre>
+
+Followed by a sequence of lines, each of which contains
+
+<pre>
+index: cpu proc_id priority name priority
+</pre>
+
+<div class="question">
+<p><b>Q11.</b> Explain in your own words how the circular buffer of process history is implemented.
+</div>
+
+<h3>Sample <tt>testschd.c</tt> Output for Round-Robin Scheduler</h3>
+The following shows running <tt>testschd</tt> using the Xv6 round-robin scheduler.
+If you examine the <tt>testschd.c</tt> code, you will see the parent calls the system
+call - <tt>prochist()</tt> after the children are finished.
+Items to notice in the printout.
+<ul>
+<li>The children are started in order child 4, child 5, and child 6.
+<li>The call to <tt>prochist()</tt> shows continuous alternation of execution between
+<i>Coletta</i>, <i>Opal</i>, and <i>Florence</i>, which is what you expect from 
+a round-robin scheduler.
+<li>The number of timer interrupts is around 200. The exact number will vary per run.
+<li>The number of new context switches is large - approximately 170. The exact number
+will vary per run.
+<li>The finishing order of the children is not predictable.
+<li>Even though <tt>prochist()</tt> shows priorities for the processes, the priorities
+are not used by the round-robin scheduler.
+</ul>
+<pre>
+$ <kb>testschd</kbd>
+Parent Sleeping - let children get priorities set.
+Child Coletta:4, priority 0!
+Child Coletta:4, priority 50!
+Child Opal:5, priority 0!
+Child Opal:5, priority 51!
+Child Florence:6, priority 0!
+Child Florence:6, priority 52!
+Starting child Coletta:4
+Starting child Opal:5
+Starting child Florence:6
+Child Coletta:4 with priority 50 has finished!
+Child Opal:5 with priority 51 has finished!
+Child Florence:6 with priority 52 has finished!
+All children have finished!
+Tmr Rupts: 206, Sch Loops: 108822, Swtch Run: 235, Swtch New: 167, Switch Old: 54, Swtch sh: 14
+0: 0 4 Coletta 50
+1: 0 5 Opal 51
+2: 0 6 Florence 52
+3: 0 4 Coletta 50
+4: 0 5 Opal 51
+5: 0 6 Florence 52
+6: 0 4 Coletta 50
+7: 0 5 Opal 51
+8: 0 6 Florence 52
+... 51 entries of Coletta, Opal, Florence ...
+60: 0 4 Coletta 50
+61: 0 5 Opal 51
+62: 0 6 Florence 52
+63: 0 3 testschd 100
+</pre>
+
+<div class="question">
+<p><b>Q12.</b> The first line printed by the system call <tt>prochist()</tt> shows
+various statistics. 
+<ul>
+<li>What is Tmr Rupts?
+<li>What is Sch Loops?
+<li>What is Swtch Run?
+<li>What is Swtch New?
+<li>What is Switch Old?
+<li>What is Swtch sh?
+</ul>
+</div>
+
+<p><a name="priorschdhist"></>
+<h3>Sample <tt>testschd.c</tt> Output for Priority Scheduler</h3>
+<p>You must implement the <tt>spoon()</tt> system call function. 
+<p>The following shows running <tt>testschd</tt> using my priority scheduler.
+If you examine the <tt>testschd.c</tt> code, you will see the parent calls the system
+call - <tt>prochist()</tt> after the children are finished.
+Items to notice in the printout.
+<ul>
+<li>The children are started in order child Coletta:4, child Opal:5, and child Florence:6.
+<li>The call to <tt>prochist()</tt> shows that once a higher priority process begins to
+run, it runs until completion. <i>Florence</i> has the highest priority and it runs 
+<i>Coletta</i>, <i>Opal</i>, and <i>Florence</i>, which is what you expect from 
+a round-robin scheduler.
+<li>The number of timer interrupts is around 200. The exact number will vary per run.
+This is similar to the round-robin. If a timer interrupt occurs when <i>Florence</i> 
+is running, <i>Florence</i> continues running.
+<li>The number of new context switches is small - approximately 15. The exact number
+will vary per run.
+<li>The finishing order of the children matches the priorities of the processes, with
+the highest priority finishing first and the lowest priority finishing last.
+<li>The priorities shown by <tt>prochist()</tt> are used by the round robin scheduler.
+</ul>
+<pre>
+$ <kbd>testschd</kbd>
+Parent Sleeping - let children get priorities set.
+Child Coletta:4, priority 0!
+Child Coletta:4, priority 50!
+Child Opal:5, priority 0!
+Child Opal:5, priority 51!
+Child Florence:6, priority 0!
+Child Florence:6, priority 52!
+Starting child Coletta:4
+Starting child Opal:5
+Starting child Florence:6
+Child Florence:6 with priority 52 has finished!
+Child Opal:5 with priority 51 has finished!
+Child Coletta:4 with priority 50 has finished!
+All children have finished!
+Tmr Rupts: 224, Sch Loops: 121268, Swtch Run: 238, Swtch New: 15, Switch Old: 209, Swtch sh: 14
+0: 0 1 initcode 0
+1: 0 2 init 0
+2: 0 3 testschd 0
+3: 0 4 Coletta 0
+4: 0 5 Opal 0
+5: 0 6 Florence 0
+6: 0 3 testschd 100
+7: 0 6 Florence 52
+8: 0 3 testschd 100
+9: 0 6 Florence 52
+10: 0 3 testschd 100
+11: 0 5 Opal 51
+12: 0 3 testschd 100
+13: 0 4 Coletta 50
+14: 0 3 testschd 100
+</pre>
+
+<div class="question">
+<p><b>Q13.</b> Describe what would happen in a priority scheduler in the following scenario.
+<ul>
+<li>Processes <i>Coletta</i> (priority 55), <i>Opal</i> (priority 20), and <i>Florence</i> (priority 13) are
+all <tt>RUNNABLE</tt>.
+<li><i>Coletta</i> is running and performs some file I/O.
+</ul>
+</div>
+
+<h3>How to Make - <tt>make CPUS=1 qemu</tt></h3>
+To properly test your priority scheduler, you want to run it on one CPU. To do this,
+
+<pre>
+$ <kbd>make CPUS=1 qemu</kbd>
+</pre>
+
+<div class="question">
+<p><b>Q14.</b> What happens when you run your priority scheduler on the normal build, which has four CPUs?
+The normal build is created by
+<pre>
+$ <kbd>make qemu</kbd>
+</pre>
+</div>
+
+<h2>Implement <tt>ctrl-g </tt><script>g("easy")</script></h2>
+
+<div class="required">
+<p> Update Xv6 such that entering <tt>ctrl-g</tt> from the keyboard displays the process history.
+Once you have completed this, you can enter <tt>ctrl-g</tt> to see the process history at anytime just like you can
+enter <tt>ctrl-p</tt> at anytime to the processes and their states.
+</div>
+
+<h3>Some Hints</h3>
+
+<ul>
+<li> Find the Xv6 code that implements <tt>ctrl-p</tt>. Use this code as a pattern for 
+your <tt>ctrl-g</tt> code.
+</ul>
+
+<div class="question">
+<p><b>Q15.</b> What <tt>kernel</tt> <tt>.c</tt> file contains the code for processing
+<tt>ctrl-p</tt> and <tt>ctrl-g</tt>?
+</div>
+
+<h2>Implement the <tt>setpriority/getpriority</tt> System Calls <script>g("easy")</script></h2>
+
+<div class="required">
+<p> Update Xv6 to include two systems calls: <tt>setpriority</tt> and <tt>getpriority</tt>.
+From the user program perspective, the function protypes are
+<pre>
+int setpriority(int);
+int getpriority(void);
+</pre>
+<p>When a process calls <tt>setpriority</tt>, the argument passed is placed in the member
+<tt>priority</tt> of its <tt>struct proc</tt>.
+<p>When a process calls <tt>getpriority</tt>, the value in the the member
+<tt>priority</tt> of its <tt>struct proc</tt> is returned.
+</div>
+
+<h3>Some Hints</h3>
+
+<ul>
+<li>Since <tt>setpriority</tt> and <tt>getpriority</tt> are system calls,
+you can review the steps for adding system calls at  
+<a href="syscall.html#refsystemcalls" >Reference: Xv6 System Calls</a>.
+<li> Add <tt>setpriority</tt> and <tt>getpriority</tt> to <tt>sysproc.c</tt>.
+<li> You can examine <tt>testschd.c</tt> for sample calls to <tt>setpriority</tt>
+and <tt>getpriority</tt>.
+<li> Create test code to ensure your <tt>setpriority</tt> and <tt>getpriority</tt> work.
+</ul>
+
+<h2>Implement the <tt>spoon()</tt> System Call <script>g("easy")</script></h2>
+
+<div class="required">
+<p> Update Xv6 to include a <tt>int spoon(char*)</tt> system call.
+</div>
+
+<h3>Some Hints</h3>
+
+<ul>
+<li>Since <tt>spoon()</tt> is a system call,
+you can review the steps for adding system calls at  
+<a href="syscall.html#refsystemcalls" >Reference: Xv6 System Calls</a>.
+<li>Add <tt>spoon()</tt> to <tt>proc.c</tt>.
+<li><tt>spoon()</tt> will be just like <tt>fork()</tt> except it will have a 
+<tt>char*</tt> argument that is copied to the <tt>name</tt> member of its <tt>struct proc</tt>
+for the allocated process.
+<li>Create test code to ensure your spoon() works.
+</ul>
+
+<h2>Implement a  Priority Scheduler <script>g("moderate")</script></h2>
+
+<div class="required">
+<p> Update Xv6 to include a priority scheduler with the follwoing attributes. 
+<ul>
+<li>The priority scheduler will be added to the function <tt>scheduler</tt> in the file <tt>proc.c</tt>
+in the block corresponding to the code 
+<pre>
+else if (scheduler_policy == SCHED_PRIOR) {
+
+<b>YOUR CODE HERE</b>
+
+}
+</pre>
+Currently this block contains a duplication of the round-robin scheduler.
+<li>Each process is assigned a priority that is placed in 
+the member <tt>priority</tt> of its <tt>struct proc</tt>.
+<li>The higher the number in the member <tt>priority</tt>, the better the priority. 
+That is a process <i>Coletta</i> with a priority of 10 is better than 
+a process <i>Opal</i> with a priority of 9, and if both are <tt>RUNNABLE</tt>, 
+your algorithm must select <i>Coletta</i> to <tt>RUN</tt>.
+<li>Processes will assign themselves a priority using the <tt>setpriority</tt> system call.
+<li>Processes may retrieve their priority using the <tt>getpriority</tt> system call.
+<li>Your implementation must appropriately call <tt>proc_hist()</tt> to add the selected
+process to this process history. Examine 
+<a href="#priorschdhist" >Sample <tt>tescschd.c</tt> Output for Priority Scheduler</a> for the output format.
+<li>When multiple processes have the same highest priority, your scheduler shall 
+execute them in a round-robin order.
+</ul>
+</div>
+<p>
+
+<h3>Some Hints</h3>
+
+<ul>
+<li>Use your design created in your notebook for Question <b>Q9</b>. 
+Do not attempt to implement your priority scheduler until you have 
+completed a design and discussed it with me.
+<li>A good design makes writing the code much easier.
+<li>There is a requirement for performing round robin scheduling when procs have equal priority.
+I found it easier to first implemented my priority scheduler without this implementation.
+This meant that one of the equal priority procs would run to completion before the next.
+</ul>
+
+<div class="question">
+<p><b>Q16.</b> After you have finished your priority scheduler, run 
+<pre>
+$ <kbd>testschd</kbd>
+</pre>
+and enter <tt>ctrl-p</tt> several times to demonstrate processes and their states.
+<p>Examine 
+<a href="#controlp" >Scheduler Tester - <tt>ctrl-p</tt></a> for a sample of what you should see.
+</div>
+
+<p>The following diagram shows various scheduling algorithms. You will select a Timeline in your answers to questions below.
+<p>
+<img src="schedulertimelines.png" alt="Scheduler Timelines" >
+
+<div class="question">
+<p><b>Q17.</b> Describe a FIFO scheduler. Use a Timeline from the above diagram as part of your description.
+</div>
+
+<div class="question">
+<p><b>Q18.</b> Describe a shortest job first scheduler. Use a Timeline from the above diagram as part of your description.
+</div>
+
+<div class="question">
+<p><b>Q19.</b> Describe a shortest time to completion scheduler. Use a Timeline from the above diagram as part of your description.
+</div>
+
+<div class="question">
+<p><b>Q20.</b> Describe a multi-level feedback queue scheduler.
+</div>
+
+<div class="question">
+<p><b>Q21.</b> Describe a Linux completely fair scheduler.
+</div>
+
+
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<p><b>This completes the lab.</b> 
+Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
+to submit your lab; however, you do not copy/paste the output of <tt>make grade</tt>
+into your <tt>lab-scheduling-handin.txt</tt> file because Lab Scheduling does not have the <tt>make
+grade</tt> tests because the output of <tt>testsched</tt> varies slightly.
+
+<!--
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<h3>Time spent</h3>
+
+<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
+number of hours you spent on the lab.
+<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
+
+<h3>Answers</h3>
+
+<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
+<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
+
+<h3>Submit</h3>
+
+<p>Assignment submissions are handled by Gradescope.
+You will need an MIT gradescope account.
+See Piazza for the entry code to join the class.
+Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
+if you need more help joining.
+
+<p>When you're ready to submit, run <kbd>make zipball</kbd>,
+which will generate <tt>lab.zip</tt>.
+Upload this zip file to the corresponding Gradescope assignment.
+
+<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
+untracked files, you will see output similar to the following:
+<pre>
+ M hello.c
+?? bar.c
+?? foo.pyc
+Untracked files will not be handed in.  Continue? [y/N]
+</pre>
+Inspect the above lines and make sure all files that your lab solution needs
+are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
+You can cause <tt>git</tt> to track a new file that you create using
+<kbd>git add {filename}</kbd>.
+</p>
+
+<p>
+<div class="warning">
+<ul>
+  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.
+    The Gradescope autograder will use the same grading program to assign your submission a grade.</li>
+  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
+  <li>You can inspect the status of your submission and download the submitted
+    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
+</ul>
+</div>
+-->
+
+</body>
+</html>

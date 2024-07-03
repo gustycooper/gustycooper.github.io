@@ -1,0 +1,337 @@
+<html>
+<head>
+<title>Lab: page tables</title>
+<link rel="stylesheet" href="labs.css" type="text/css" />
+<script src="guidance.js"></script>
+</head>
+<body>
+
+<h1>Lab: page tables</h1>
+
+<p> In this lab you will explore page tables and modify them to
+  speed up certain system calls and to detect which pages have been accessed.
+
+<div class="prereq">
+<p>Before you start coding, read Chapter 3 of
+  the <a href="../xv6/book-riscv-rev3.pdf">xv6 book</a>, and related files:
+
+  <ul>
+   <li> <tt>kernel/memlayout.h</tt>, which captures the layout of memory.
+	  
+    <li> <tt>kernel/vm.c</tt>, which contains most virtual memory (VM) code.
+
+    <li> <tt>kernel/kalloc.c</tt>, which contains code for allocating and
+    freeing physical memory.
+  
+  </ul>
+
+It may also help to consult the <a href="https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMFDQC-and-Priv-v1.11/riscv-privileged-20190608.pdf">RISC-V privileged architecture manual</a>.
+
+</div>
+
+<div class="question">
+<p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
+Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+Additionally, in the directory of your xv6-labs, create the file: <b>answers-pgtbl.txt</b>. You do not need to put answers in 
+this file, but the grading script checks to see if this file exists. If it exists, I assume you have answered the questions
+in your notebook.
+</div>
+
+<p>To start the lab, switch to the pgtbl branch:
+  <pre>
+  $ <kbd>git fetch</kbd>
+  $ <kbd>git checkout pgtbl</kbd>
+  $ <kbd>make clean</kbd>
+  </pre>
+
+<h2>Speed up system calls <script>g("easy")</script></h2>
+
+<p>
+Some operating systems (e.g., Linux) speed up certain system calls by sharing
+data in a read-only region between userspace and the kernel. This eliminates the
+need for kernel crossings when performing these system calls.  To help you learn
+how to insert mappings into a page table, your first task is to implement this
+optimization for the <tt>getpid()</tt> system call in xv6.
+
+<div class="required">
+<p>When each process is created, map one read-only page at USYSCALL (a
+virtual address defined
+in <tt>memlayout.h</tt>). At the start of this page, store a <tt>struct
+usyscall</tt> (also defined in <tt>memlayout.h</tt>), and initialize it to store
+the PID of the current process. 
+This initial mapping is done in the kernel, which creates processes.
+You must also map this page in the proc's pagetable.
+For this lab, <tt>ugetpid()</tt> has been
+provided on the userspace side and will automatically use the USYSCALL mapping.
+You will receive full credit for this part of the lab if the <tt>ugetpid</tt> test
+case passes when running <tt>pgtbltest</tt>.
+</div>
+
+<p>Some hints:
+<ul>
+  <li>The file <tt>proc.c</tt> contains functions that manipulate processes - 
+      fork or create procs, allocate the procs' pagetables, exit procs,
+      schedule procs, wait for a child, sleep, wakeup, etc.
+      The system call <tt>fork</tt> calls the <tt>fork</tt> function in <tt>proc.c</tt>.
+      The function <tt>fork</tt> calls the function <tt>allocproc</tt> to allocate a process.
+      When Xv6 boots, the <tt>init</tt> process is allocated. The <tt>init</tt> 
+      process <tt>fork</tt>s itself and <tt>exec</tt>s the <tt>sh</tt> program,
+      which is the Xv6 shell you use in your terminal. 
+      Whenever <tt>fork</tt> is called, it allocates a process, which must do such 
+      things as allocate a trapframe page and establish the process's pagetable. For 
+      this assignment you must update <tt>allocproc</tt> to allocate a page for the 
+      process at virtual address <tt>USYSCALL</tt>, place a <tt>struct usyscall</tt> in the
+      page, and assign the <tt>pid</tt> to the <tt>usyscall</tt> member <tt>int pid</tt>.
+      You must also update <tt>proc_pagetable</tt> to properly map the <tt>USYSCALL</tt> address
+      to the process's page table.
+    <p>You should study how <tt>allocproc</tt> allocates the <tt>TRAPFRAME</tt> page to get
+      ideas for how to allocate the <tt>USYSCALL</tt> page.
+  </li>	
+  <li><p>
+      The file <tt>memlayout.h</tt> defines the virtual
+      memory layout of the kernel with various macros such as <tt>KERNBASE</tt>,
+      <tt>PHYSTOP</tt>, <tt>MAXVA</tt>, <tt>TRAMPOLINE</tt>, and <tt>TRAPFRAME</tt>. 
+      The <tt>TRAMPOLINE</tt> page is mapped to the top of the virtual address space,
+      and <tt>TRAPFRAME</tt> is the page immediately below <tt>TRAMPOLINE</tt>.
+      You can study <tt>memlayout.h</tt> as you examine Figure 3.3 of 
+		  <a href="../xv6/book-riscv-rev3.pdf">our xv6 text book</a>.
+  </li>	
+  <li><p>As mentioned above, the file <tt>memlayout.h</tt> contains two pieces of 
+      information that you will use - <tt>USYSCALL</tt> and <tt>struct usyscall</tt>. 
+      <ul>
+        <li>The macro <tt>USYSCALL</tt> is defined to be a virtual memory address that
+            is one page below <tt>TRAPFRAME</tt>.
+             <p><tt>#define USYSCALL (TRAPFRAME - PGSIZE)</tt>
+        </li>
+        <li><p>The <tt>struct usyscall</tt> is defined specifically for this assignment.
+            <tt>usyscall</tt> has one member, <tt>int pid</tt>.
+        </li>
+      </ul>
+  <li><p>The file <tt>user/ulib.c</tt> contains a user library function <tt>ugetpid</tt>,
+      which is called from the function <tt>ugetpid_test</tt> in <tt>user/pgtbltest.c</tt>.
+  </li>
+  <li><p>Choose permission bits that allow userspace to only read the page.
+      The file <tt>riscv.h</tt> defines page protection attributes.
+  <li><p>There are several things that need to be done over the lifecycle of a new page, 
+      which must be deallocated as well as allocated..
+      For inspiration, understand the trapframe handling in <tt>kernel/proc.c</tt>.
+      Search for <tt>trapframe</tt> to get yourself going.
+</ul>
+ 
+<div class="question">
+<p><b>1.</b> Which other xv6 system call(s) could be made faster using this shared page?
+Explain how.
+</div>
+
+<h2>Print a page table <script>g("easy")</script></h2>
+
+<p>
+To help you visualize RISC-V page tables, and perhaps
+to aid future debugging, your second task is to write a function
+that prints the contents of a page table.
+
+<div class="required">
+<p>Define a function called <tt>vmprint()</tt>.
+It should take
+a <tt>pagetable_t</tt> argument, and print that pagetable
+in the format described below.
+Insert <tt>if(p->pid==1) vmprint(p->pagetable)</tt> in
+  exec.c just before the <tt>return argc</tt>,
+to print the first process's page table.
+  You receive full credit for this part of the lab
+  if you pass the <tt>pte printout</tt> test of <tt>make grade</tt>.
+  
+</div>
+
+<div class="question">
+<p><b>2.</b> Draw the diagram of kalloc's data structure of free pages.
+</div>
+
+
+<p>
+Now when you start xv6 it should print output like this, describing
+the page table of the first process at the point when it has just
+finished <tt>exec()</tt>ing <tt>init</tt>:
+
+  <pre>
+page table 0x0000000087f6b000
+ ..0: pte 0x0000000021fd9c01 pa 0x0000000087f67000
+ .. ..0: pte 0x0000000021fd9801 pa 0x0000000087f66000
+ .. .. ..0: pte 0x0000000021fda01b pa 0x0000000087f68000
+ .. .. ..1: pte 0x0000000021fd9417 pa 0x0000000087f65000
+ .. .. ..2: pte 0x0000000021fd9007 pa 0x0000000087f64000
+ .. .. ..3: pte 0x0000000021fd8c17 pa 0x0000000087f63000
+ ..255: pte 0x0000000021fda801 pa 0x0000000087f6a000
+ .. ..511: pte 0x0000000021fda401 pa 0x0000000087f69000
+ .. .. ..509: pte 0x0000000021fdcc13 pa 0x0000000087f73000
+ .. .. ..510: pte 0x0000000021fdd007 pa 0x0000000087f74000
+ .. .. ..511: pte 0x0000000020001c0b pa 0x0000000080007000
+init: starting sh
+  </pre>
+
+The first line displays the argument to <tt>vmprint</tt>.
+After that there is a line for each PTE, including PTEs that
+refer to page-table pages deeper in the tree.
+Each PTE line is indented by a number of <tt>" .."</tt> that indicates its
+depth in the tree.
+Each PTE line shows the PTE index in its page-table page, the pte bits, and the
+physical address extracted from the PTE.
+Don't print PTEs that are not valid.  In the above example, the
+top-level page-table page has mappings for entries 0 and 255.  The next
+level down for entry 0 has only index 0 mapped, and the bottom-level
+for that index 0 has entries 0, 1, and 2 mapped.
+
+<p>
+Your code might emit different physical addresses than those shown above.
+The number of entries and the virtual addresses should be the same.
+</p>
+
+<p>Some hints:
+<ul>
+  <li>You can put <tt>vmprint()</tt> in <tt>kernel/vm.c</tt>.
+  <li>Use the macros at the end of the file <tt>kernel/riscv.h</tt>.
+  <li>The function <tt>freewalk</tt> in <tt>kernel/vm.c</tt> should be inspirational. <tt>freewalk</tt> recursively walks through a pagetable, freeing the pages. You do not want to free pages, however, you can use the recursive algorithm for this printing.
+  <li>Define the prototype for <tt>vmprint</tt> in <tt>kernel/defs.h</tt> so
+    that you can call it from exec.c.
+  <li>Use <tt>%p</tt> in your printf calls to print out full 64-bit hex PTEs and addresses as shown in the example print output above.</li>
+  <li><tt>printf("%d: pte %p pa %p\n", i, pagetable[i], pa);</tt> - sample <tt>printf</tt> statement with <tt>%p</tt>.
+</ul>
+
+<div class="question">
+<p><b>3.</b> For every leaf page in the <tt>vmprint</tt> output, explain what it logically
+contains and what its permission bits are.
+Figure 3.4 in the xv6 book might be helpful, although note that the figure might
+have a slightly different set of pages than the <tt>init</tt>
+process that's being inspected here.
+</div>
+
+<div class="question">
+<p><b>4.</b> What is address space layout randomization and why is it important?
+</div>
+
+<div class="question">
+<p><b>5.</b> Unix implementations of <tt>exec</tt> traditionally include special handling for shell scripts. If the file to execute begins with the text <tt>#!</tt>, then the first line is taken to be a program to run to interpret the file. For example, if <tt>exec</tt> is called to run <tt>myprog arg1</tt> and <tt>myprog</tt>'s first line is <tt>#!/interp</tt>, then <tt>exec</tt> runs <tt>/interp</tt> with command line <tt>/interp myprog arg1</tt>. Discuss how you would Implement support for this convention in xv6.
+</div>
+
+<div class="question">
+<p><b>6.</b>The file <tt>trampoline.S</tt> has the instruction <tt>li a0, TRAPFRAME</tt>, which loads the virtual address of <tt>TRAPFRAME</tt> into register <tt>a0</tt>. The RISC-V CPU that we are using has a 64-bit virtual address space, yet RISC-V has 32-bit instructions. This means it is impossible to include the virtual address of <tt>TRAPFRAME</tt> in an instruction. What is happening with the <tt>li a0, TRAPFRAME</tt> instruction?
+</div>
+
+<h2>Detect which pages have been accessed <script>g("hard")</script></h2>
+
+<p>
+Some garbage collectors (a form of automatic memory management) can benefit
+from information about which pages have been accessed (read or write). In this
+part of the lab, you will add a new feature to xv6 that detects and reports this
+information to userspace by inspecting the access bits in the RISC-V page table.
+The RISC-V hardware page walker marks these bits in the PTE whenever it resolves
+a TLB miss.
+
+ <div class="required">
+<p>Your job is to implement <tt>pgaccess()</tt>, a system call that reports which
+pages have been accessed. The system call takes three arguments. First, it takes
+the starting virtual address of the first user page to check. Second, it takes the
+number of pages to check. Finally, it takes a user address to a buffer to store
+the results into a bitmask (a datastructure that uses one bit per page and where
+the first page corresponds to the least significant bit). You will receive full
+credit for this part of the lab if the <tt>pgaccess</tt> test case passes when
+running <tt>pgtbltest</tt>.
+</div>
+
+<p>Some hints:
+  <ul>
+  <li>Read <tt>pgaccess_test()</tt> in <tt>user/pgtbltest.c</tt> to
+    see how <tt>pgaccess</tt> is used.
+  <li>Start by implementing <tt>sys_pgaccess()</tt> in <tt>kernel/sysproc.c</tt>.
+  <li>You'll need to parse arguments using <tt>argaddr()</tt> and <tt>argint()</tt>.
+  <li>For the output bitmask, it's easier to store a temporary buffer in the kernel and copy it to the user (via <tt>copyout()</tt>) after filling it with the right bits.
+  <li>It's okay to set an upper limit on the number of pages that can be scanned.
+  <li><tt>walk()</tt> in <tt>kernel/vm.c</tt> is very useful for finding the right PTEs.
+  <li>You'll need to define <tt>PTE_A</tt>, the access bit,
+    in <tt>kernel/riscv.h</tt>. Consult
+    the <a href="https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMFDQC-and-Priv-v1.11/riscv-privileged-20190608.pdf">RISC-V
+    privileged architecture manual</a> to determine its value.
+  <li>Be sure to clear <tt>PTE_A</tt> after checking if it is set. Otherwise, it won't be possible to determine if the page was accessed since the last time <tt>pgaccess()</tt> was called (i.e., the bit will be set forever).
+  <li><tt>vmprint()</tt> may come in handy to debug page tables.
+</ul>
+
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<p><b>This completes the lab.</b> Make sure you pass all of the <tt>make
+grade</tt> tests. 
+
+Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
+to submit your lab.
+
+<!--
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<h3>Time spent</h3>
+
+<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
+number of hours you spent on the lab.
+<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
+
+<h3>Answers</h3>
+
+<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
+<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
+
+<h3>Submit</h3>
+
+<p>Assignment submissions are handled by Gradescope.
+You will need an MIT gradescope account.
+See Piazza for the entry code to join the class.
+Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
+if you need more help joining.
+
+<p>When you're ready to submit, run <kbd>make zipball</kbd>,
+which will generate <tt>lab.zip</tt>.
+Upload this zip file to the corresponding Gradescope assignment.
+
+<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
+untracked files, you will see output similar to the following:
+<pre>
+ M hello.c
+?? bar.c
+?? foo.pyc
+Untracked files will not be handed in.  Continue? [y/N]
+</pre>
+Inspect the above lines and make sure all files that your lab solution needs
+are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
+You can cause <tt>git</tt> to track a new file that you create using
+<kbd>git add {filename}</kbd>.
+</p>
+
+<p>
+<div class="warning">
+<ul>
+  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.
+    The Gradescope autograder will use the same grading program to assign your submission a grade.</li>
+  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
+  <li>You can inspect the status of your submission and download the submitted
+    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
+</ul>
+</div>
+
+
+
+<h2>Optional challenge exercises</h2>
+
+<ul>
+
+  <li>Use super-pages to reduce the number of PTEs in page tables.
+
+  <li>Unmap the first page of a user process so that dereferencing a
+  null pointer will result in a fault.  You will have to
+  change <tt>user.ld</tt> to start the user text segment at, for
+  example, 4096, instead of 0.
+
+  <li>Add a system call that reports dirty pages (modified pages) using <tt>PTE_D</tt>.
+
+</ul>
+-->
+</body>
+</html>

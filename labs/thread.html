@@ -1,0 +1,866 @@
+<html>
+<head>
+<title>Lab: Multithreading</title>
+<link rel="stylesheet" href="labs.css" type="text/css" />
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="guidance.js"></script>
+</head>
+<body>
+
+<h1>Lab: Multithreading</h1>
+
+<p>This lab will familiarize you with multithreading.  You will
+solve three problems.
+<ol>
+<li> parallel hash problem
+<li> barrier problem
+<li> thread-safe message queue (bounded buffer) problem
+</ol>
+
+<div class="prereq">
+<p>Before writing code, you should make sure you have read 
+<ul>
+<li>Chapters 26, 27, 28, 30, and 31 of 
+  <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">OS Three Easy Pieces</a>.
+<li>Section 3.6 - Barrier of <a href="https://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf">The Little Book of Semaphores</a>.
+</ul>
+</div>
+
+<div class="question">
+<p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
+Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+Additionally, in the directory of your xv6-labs, create the file: <b>answers-thread.txt</b>. You do not need to put answers in 
+this file, but the grading script checks to see if this file exists. If it exists, I assume you have answered the questions
+in your notebook.
+</div>
+
+
+<p>To start the lab, switch to the thread branch:
+  <pre>
+  $ <kbd>git fetch</kbd>
+  $ <kbd>git checkout thread</kbd>
+  $ <kbd>make clean</kbd>
+  </pre>
+
+<h2><tt>gcc</tt> Compiler Systems - host and target</h2>
+We have two compiler systems for this class. 
+Both run on our Linux host machine.
+The host C compiler toolchain generates code the executes on the host.
+Our CPSC server is an Intel machine so its C compiler toolchain generates
+code for Intel.
+The target RISC-V compiler toolchain runs on the host, but generates
+code for our RISC-V QEMU emulator. 
+Most of our lab code is built with the target RISC-V compiler toolchain.
+<p>For this lab, you build your code with the host C compiler toolchain.
+The starting code is given to you in folder <tt>notxv6</tt> to indicate
+this code is not part of Xv6.
+You do not use the RISC-V <tt>gcc</tt> compiler system for these labs.
+See <a href="../tools.html" >CPSC 405 Tools</a> for a discussion on
+the host and target compiler systems.
+
+<h2>Parallel and Multiple Cores</h2>
+Today's computers have CPU chips with multiple cores. A core is like a CPU.
+A core executes instructions, has registers, processes interrupts, and has kernel and user mode.
+The OS schedules processes and threads on all of the available cores. 
+Our Xv6 runs on a QEMU emulator that has 4 cores.
+Executing threads on multiple cores allows them to run concurrently.
+Lab thread runs the threads on multiple cores. When runnong Linux, you
+can see the CPU information (including the number of cores) using the <tt>lscpu</tt> command. There
+are various other ways to determine the number of cores on Linux. For example, on Windows, you 
+can use the Task Manager, and on MacOS you can use the Activity Manager.
+The following shows the <tt>lscpu</tt> command on our CPSC Server.
+
+<pre>
+$ <kbd>lscpu</kbd>
+Architecture:            x86_64
+  CPU op-mode(s):        32-bit, 64-bit
+  Address sizes:         46 bits physical, 48 bits virtual
+  Byte Order:            Little Endian
+CPU(s):                  2
+  On-line CPU(s) list:   0,1
+Vendor ID:               GenuineIntel
+  Model name:            Intel(R) Xeon(R) CPU @ 2.80GHz
+    CPU family:          6
+    Model:               85
+    Thread(s) per core:  2
+    Core(s) per socket:  1
+    Socket(s):           1
+    Stepping:            7
+    BogoMIPS:            5600.44
+    Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx f
+                         xsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology 
+                         nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2ap
+                         ic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpci
+                         d_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bm
+                         i2 erms invpcid rtm avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512b
+                         w avx512vl xsaveopt xsavec xgetbv1 xsaves arat avx512_vnni md_clear arch_capabilities
+Virtualization features: 
+  Hypervisor vendor:     KVM
+  Virtualization type:   full
+Caches (sum of all):     
+  L1d:                   32 KiB (1 instance)
+  L1i:                   32 KiB (1 instance)
+  L2:                    1 MiB (1 instance)
+  L3:                    33 MiB (1 instance)
+NUMA:                    
+  NUMA node(s):          1
+  NUMA node0 CPU(s):     0,1
+Vulnerabilities:         
+  Gather data sampling:  Not affected
+  Itlb multihit:         Not affected
+  L1tf:                  Not affected
+  Mds:                   Mitigation; Clear CPU buffers; SMT Host state unknown
+  Meltdown:              Not affected
+  Mmio stale data:       Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown
+  Retbleed:              Mitigation; Enhanced IBRS
+  Spec rstack overflow:  Not affected
+  Spec store bypass:     Mitigation; Speculative Store Bypass disabled via prctl
+  Spectre v1:            Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+  Spectre v2:            Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW 
+                         sequence; BHI Syscall hardening, KVM SW loop
+  Srbds:                 Not affected
+  Tsx async abort:       Mitigation; Clear CPU buffers; SMT Host state unknown
+</pre>
+using the "Task Manager" on Windows or "Activity Monitor" on macOS.
+<h2>Parallel Hash Problem <script>g("easy")</script></h2>
+
+<p>In this assignment you will explore parallel programming with
+threads and locks using a hash table. You should do this assignment on
+a real Linux or MacOS computer (not xv6, not qemu) that has multiple
+cores. Most recent laptops have multicore processors.
+
+<p>
+This assignment uses the UNIX <tt>pthread</tt> threading library.
+We have explored <tt>pthread</tt> in class.
+You can find information about it from the manual page, with
+<tt>man pthreads</tt>, and you can look on the web, for example
+<a href="https://pubs.opengroup.org/onlinepubs/007908799/xsh/pthread_create.html">Pthread Create</a>,
+<a href="https://pubs.opengroup.org/onlinepubs/007908799/xsh/pthread_mutex_init.html">Mutex Init</a>,
+and
+<a href="https://pubs.opengroup.org/onlinepubs/007908799/xsh/pthread_mutex_lock.html">Mutex Lock</a>.
+
+<p>The <tt>notxv6</tt> folder means this code is not part of our Xv6 build.
+Instead, you use your native Linux environment and the host <tt>gcc</tt> compiler toolchain.
+
+<p>The files <tt>notxv6/hash_bad.c</tt> and <tt>notxv6/hash_good.c</tt> contain a simple hash table.
+<tt>hash_bad.c</tt>
+is correct if used from a single thread, but incorrect when used from
+multiple threads. 
+<tt>hash_good.c</tt>
+is correct for both single and m multiple threads. 
+Both of the hash programs are the same except <tt>hash_good</tt> synchronizes
+the two treads. Both programs run two benchmarks. First it adds lots of keys to the
+hash table by calling <tt>put()</tt>, and prints the achieved rate in
+puts per second. The it fetches keys from the hash table
+with <tt>get()</tt>. It prints the number keys that should have been
+in the hash table as a result of the puts but are missing (zero is
+the correct value), and it prints the number of gets per second it achieved.
+
+
+<p>In your main xv6 directory (perhaps <tt>~/xv6-labs</tt>),
+type this:
+<pre>
+$ <kbd>make hash_bad</kbd>
+$ <kbd>make hash_good</kbd>
+$ <kbd>./hash_bad 1</kbd>
+100000 puts, 9.582 seconds, 10436 puts/second
+0: 0 keys missing
+100000 gets, 9.588 seconds, 10430 gets/second
+$ <kbd>./hash_bad 2</kbd>
+100000 puts, 3.218 seconds, 31079 puts/second
+1: 15582 keys missing
+0: 15582 keys missing
+200000 gets, 8.774 seconds, 22795 gets/second
+$ <kbd>./hash_good 2</kbd>
+100000 puts, 3.591 seconds, 27849 puts/second
+0: 0 keys missing
+1: 0 keys missing
+200000 gets, 7.026 seconds, 28466 gets/second
+$ <kbd>./hash_good 8</kbd>
+100000 puts, 3.733 seconds, 26785 puts/second
+3: 0 keys missing
+2: 0 keys missing
+0: 0 keys missing
+7: 0 keys missing
+6: 0 keys missing
+1: 0 keys missing
+5: 0 keys missing
+4: 0 keys missing
+800000 gets, 28.734 seconds, 27842 gets/second
+
+</pre>
+Note that to build the hash programs the Makefile uses your OS's gcc, not
+the RISC-V tools.
+Also note the numbers you see may differ from this sample output 
+depending on how fast your computer is, whether it has
+multiple cores, and whether it's busy doing other things.
+<p>
+The argument to <tt>hash_bad</tt> specifies the number of threads that
+execute put and get operations on the the hash table.
+After running for a little while, <tt>hash_bad 1</tt> produces output 
+that shows one thread (which is 0:) and 
+that it has 0 keys missing. <tt>hash_bad 2</tt> produces output
+that shows two threads (0: and 1:) and each thread is missing keys.
+
+<p>
+The first and last lines of the hash programs' output indicates the 
+number of puts per second and the number of gets per second.
+Notice how two threads achieve has higher rate of puts and gets per second.
+This is because each thread runs on its own core, resulting ia a parallel speedup.
+If you examine the output of <tt>./hash_good 8</tt> (which uses 8 threads), you will see the
+rate of puts/gets per second is about the same as 2 threads.
+This is because the CPSC Server has two cores. Thus the 8 threads had to be multiplexed
+between the two cores.
+
+<p>
+For <tt>hash_bad 2</tt>, there are two lines saying <tt>15582 keys missing</tt>.
+That means the puts were supposed to add those keys to the hash
+table, but something went wrong.
+Have a look at <tt>notxv6/hash_bad.c</tt>, particularly at <tt>put()</tt>
+and <tt>insert()</tt>.
+
+<div class="question">
+<b>1.</b> Why are there missing keys with 2 threads, but not with 1 thread?
+</div>
+
+<div class="question">
+<b>2.</b> Identify a sequence of
+events that is an unguarded critical region. 
+Recall a critical region is where 2 threads are accessing a shared data structure,
+which can lead to a key being missing.
+</div>
+
+<div class="required">
+
+<p>To avoid this sequence of events, we must insert lock and unlock statements
+in
+<tt>put</tt> and <tt>get</tt> in <tt>notxv6/ph.c</tt> so that the
+number of keys missing is always 0 with two threads. The relevant
+pthread calls are:
+
+<pre>
+pthread_mutex_t lock;            // declare a lock
+pthread_mutex_init(&lock, NULL); // initialize the lock
+pthread_mutex_lock(&lock);       // acquire lock
+pthread_mutex_unlock(&lock);     // release lock
+</pre>
+
+This has been done for you in <tt>hash_good.c</tt>
+<p>
+The <tt>make grade</tt> will say that your code passes the <tt>hash_safe</tt> test,
+which requires zero missing keys with two threads, and the <tt>hash_fast</tt> test.
+<p>
+Alternatively, you can enter <tt>./grade-lab-thread hash_safe</tt> and
+<tt>./grade-lab-thread hash_fast</tt>.
+</div>
+
+<p>
+The solution in <tt>hash_good.c</tt> uses a mutux lock. When using
+the pthreads mutex locks, 
+don't forget to first define your mutex and then call <tt>pthread_mutex_init()</tt> to initialize your 
+mutex before using it. Notice how the functions init, lock, and unlock have an address
+of the mutex as their argument.
+to the single-threaded version?
+
+<p>
+There are situations where concurrent <tt>put()</tt>s
+have no overlap in the memory they read or write in the
+hash table, and thus don't need a lock to protect against
+each other.
+The solution in <tt>hash_good.c</tt> uses a mutex lock lock per hash bucket.
+
+<div class="required">
+<p>The solution in <tt>hash_good.c</tt> executes the <tt>put</tt> operations in parallel
+  while maintaining correctness.
+The <tt>ph_fast</tt> test requires that two threads yield at least 1.25 times as
+many puts/second as one thread.
+</div>
+
+<div class="question">
+<b>3.</b> Describe the hash algorithm used in <tt>hash_good.c</tt>.
+</div>
+
+<div class="question">
+<b>4.</b> What are Moore's Law and Ahmdal's Law? Discuss them in context with the parallel hash solution.
+</div>
+
+
+<h2>Barrier <script>g("easy")</script></h2>
+
+<p>In this assignment you'll examine two solutions to a <a
+href="http://en.wikipedia.org/wiki/Barrier_(computer_science)">barrier</a> problem.
+A barrier is a point in an
+application at which all participating threads must wait until all other participating threads reach
+that point too. The first solution uses pthread condition variables, which are a sequence
+coordination technique similar to xv6's sleep and wakeup.
+
+<p>The solutions are provided in the files <tt>notxv6/barrier_cv.c</tt> and 
+<tt>not xv6/barrier_sem.c</tt> Notice these programs execute on a real computer - not xv6, not qemu.
+
+<pre>
+$ <kbd>make barrier_cv</kbd>
+gcc -o barrier_cv -g -O2 -DSOL_THREAD -DLAB_THREAD notxv6/barrier_cv.c -pthread
+$ <kbd>make barrier_sem</kbd>
+gcc -o barrier_sem -g -O2 -DSOL_THREAD -DLAB_THREAD notxv6/barrier_sem.c -pthread
+$ <kbd>./barrier_cv 2</kbd>
+OK; passed
+$ <kbd>./barrier_sem 2</kbd>
+OK; passed
+</pre>
+
+The argument 2 for the barrier programs specifies the number of threads that synchronize on the barrier 
+(the variable <tt>nthread</tt> in <tt>barrier_cv.c</tt> and <tt>barrier_sem.c</tt>).  
+Each thread executes a loop. In
+each loop iteration a thread calls <tt>barrier()</tt> and then sleeps for a
+random number of microseconds. The assert statement in the loop will trigger if one thread leaves the
+barrier before the other thread has reached the barrier.  The desired behavior is
+that each thread blocks in <tt>barrier()</tt> until all <tt>nthreads</tt> of them have called
+<tt>barrier()</tt>.
+
+<p>There are two issues that complicate the solution
+
+<ul>
+
+<li> The solution must deal with a succession of barrier calls,
+each of which we'll call a round.
+  <tt>bstate.round</tt> records the current round.  You
+  should increment <tt>bstate.round</tt> each time all
+  threads have reached the barrier.
+
+<li> The solution must handle the case in which one thread races around the loop before
+the others have exited the barrier. In particular, we are re-using
+the <tt>bstate.nthread</tt> variable from one round to the next.  Make sure that a thread that
+leaves the barrier and races around the loop doesn't increase <tt>bstate.nthread</tt>
+while a previous round is still using it.
+
+</ul>
+
+<div class="required">
+<b>Condition Variable Solution</b>
+<p>To achieve the desired barrier behavior using condition variables, the solution uses the 
+ lock primitives that you have seen in the <tt>hash</tt> assignment. The solution also uses
+ the following new condition variable primitives.
+<ul>
+<li><a href="https://pubs.opengroup.org/onlinepubs/007908799/xsh/pthread_cond_wait.html">Condition Wait</a>
+<li><a href="https://pubs.opengroup.org/onlinepubs/007908799/xsh/pthread_cond_broadcast.html">Condition Broadcast</a>
+</ul>
+
+<pre>
+pthread_cond_wait(&cond, &mutex);  // go to sleep on cond, releasing lock mutex, acquiring upon wake up
+pthread_cond_broadcast(&cond);     // wake up every thread sleeping on cond
+</pre>
+
+<p>
+The condition variable solution passes <tt>make grade</tt>'s <tt>barrier_cv</tt> tests.
+
+<p> Condition variables an interesting semantics with the relationship between the <tt>mutex</tt>
+and the <tt>condition variable</tt>. For example, <tt>pthread_cond_wait</tt> releases the <tt>mutex</tt> when called,
+and re-acquires the <tt>mutex</tt> before returning.
+Study <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf">OSTEP Chapter 30 - Condition Variables</a>
+for more details.
+</div>
+
+<div class="required">
+<b>Semaphore Solution</b>
+<p>To achieve the desired barrier behavior using semaphores, the solution uses two turnstiles, which are describe
+ in the Barrier  
+ Section 3.6 of <a href="https://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf">The Little Book of Semaphores</a>.
+ In addition to the lock primitives that you have seen in the <tt>hash</tt> assignment. You will also need
+ the following new semaphore primitives.
+<ul>
+<li><a href="https://pubs.opengroup.org/onlinepubs/9699919799/functions/sem_init.html">Semaphore Init</a>
+<li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/sem_wait.html">Semaphore Wait</a>
+<li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/sem_post.html">Semaphore Post</a>
+</ul>
+
+<pre>
+pthread_cond_wait(&cond, &mutex);  // go to sleep on cond, releasing lock mutex, acquiring upon wake up
+pthread_cond_broadcast(&cond);     // wake up every thread sleeping on cond
+</pre>
+
+<p>
+The semaphore solution passes <tt>make grade</tt>'s <tt>barrier_sem</tt> tests.
+</div>
+
+<div class="question">
+<b>5.</b> I tend to like using semaphores instead of condition variables; however, it these two
+solutions, the condition variable solution seems simpler. Why do you think it is simpler?
+</div>
+
+<div class="question">
+<b>6.</b> CV: The function <tt>barrier()</tt> references the variable <tt>bstate</tt> using <tt>.</tt>
+and not <tt>-></tt>. For example, <tt>bstate.nthread</tt>. Why is a <tt>.</tt> used instead of
+a <tt>-></tt>?
+</div>
+
+<div class="question">
+<b>7.</b> CV: The function <tt>main()</tt> defines an array <tt>tha</tt> to hold <tt>nthread</tt> threads.
+Describe how <tt>main()</tt> defines the array <tt>tha</tt>.
+</div>
+
+<div class="question">
+<b>8.</b> CV: In your own words describe Condition Variables and how they work.
+</div>
+
+<div class="question">
+<b>9.</b> SEM: Why are the members of variable <tt>bstate</tt> names <tt>barrier_turnstile1</tt> and
+<tt>barrier_turnstile2</tt>.
+</div>
+
+<div class="question">
+<b>10.</b> SEM: In function <tt>barrier()</tt> lines 4 and 10 there are calls to <tt>sem_wait</tt> and <tt>sem_post</tt>.
+What are the purposes of these calls.
+</div>
+
+<div class="question">
+<b>11.</b> SEM: In function <tt>barrier()</tt> lines 12 and 13 there are calls to <tt>sem_wait</tt> and <tt>sem_post</tt>.
+What are the purposes of these calls.
+</div>
+
+<h2>Testing Hash and Barrier</h2>
+The hash and barrier programs can be tested individually by (for example)
+<pre>
+$ <kbd>./grade-lab-thread barrier_sem</kbd>
+</pre>
+
+You can test all your hash and barrier programs by
+<pre>
+$ <kbd>make grade</kbd>
+</pre>
+
+
+<h2>Thread-safe Message Queue Problem</h2>
+For this problem, you implement the solution to a "bounded buffer" problem.
+You will create a solution that allows threads to produce and consume messages.
+The messages are put/get in/from a queue - first in first out.
+The bounded buffer will be the number of messages that are allowed to be in the message queue.
+Our OSTEP textbook explains Posix threads, and provides two solutions to the bounded buffer problem.
+Chapter 30 solves the bounded buffer problem with condition variables.
+Chapter 31 solves the bounded buffer problem with semaphores.
+<p>I used semaphores in my solution, which I thought was a simpler solution; however, as
+discussed above condition variables was a simpler solution for the barrier problem.
+
+<h3>Message Queue API and Data Structure</h3>
+<p>For this problem, you will design and implement a thread-safe message queue data structure and an
+API that provides the ability for threads to produce/consume messages in a first-in-first-out order. 
+The following is the API you must design and implement.</p>
+
+<ul>
+<li><tt>struct msgq *msgq_init(int num_msgs);</tt> - initializes a message queue and returns a pointer to a <tt>struct msgq</tt>. 
+The parameter <tt>num_msgs</tt> is the maximum number of messages that may be in the message queue. The message queu
+with <tt>num_msgs</tt> is the bounded buffer.
+<p>
+The returned pointer is used in the other API functions.
+</li>
+<li><tt>int msgq_send(struct msgq *mq, char *msg);</tt> - places <tt>msg</tt> on message queue <tt>mq</tt>. <tt>mq</tt> is returned from <tt>msgq_init</tt>. 
+<tt>msgq_send</tt> must make a copy of <tt>msg</tt> on the heap. If <tt>mq</tt> has <tt>num_msgs</tt> in it; then 
+<tt>msgq_send</tt> blocks until there is room for <tt>msg</tt>. <tt>msgq_send</tt> returns 1 for success and -1 for failure.
+</li>
+<li><tt>char *msgq_recv(struct msgq *mq);</tt> - returns a message from <tt>mq</tt>. <tt>mq</tt> is returned from <tt>msgq_init</tt>. 
+The returned message is on the heap. The function that receives the message can <tt>free</tt> it when it is no longer needed.
+</li>
+<li><tt>int msgq_len(struct msgq *mq);</tt> - returns the number of messages on <tt>mq</tt>. <tt>mq</tt> is returned from <tt>msgq_init</tt>. 
+Due to the nature of threads and interrupts, the length returned may be incorrect by the time it is used. 
+</li>
+<li><tt>void msgq_show(struct msgq *mq);</tt> - displays all of the messages in <tt>mq</tt> to <tt>stdout</tt>. <tt>mq</tt> is returned from <tt>msgq_init</tt>.
+</li>
+</ul>
+<p>You must design and implement <tt>struct msgq</tt>, which must involve dynamically allocated memory. 
+My solution includes a linked list of messages, where <tt>send_msg</tt> mallocs memory for the data structure and places it on the end of the linked list. 
+My <tt>struct msgq</tt> has a linked list of <tt>struct msgs</tt>, which has 
+has a <tt>char *msg</tt> pointer to the message and a <tt>struct msgs *next</tt> to implement the linked list. 
+The heap memory for the message is allocated using <tt>strdup</tt>. <tt>recv_msg</tt> removes the head from the linked list and returns the <tt>char*</tt>
+pointer to the message. My <tt>struct msgq</tt> also has members for the semaphores and number of messages.
+
+<h3>Implementation Guidance</h3>
+<ul>
+<li>First design your solution in your CPSC 405 notebook. During the design phase, you must select your thread primitives that guard your message queue. 
+For example, I decided to use semaphores, but you could solve it with condition variables and mutexes. When you design is complete, discuss it with me.
+<li>Place your data structure definition in <tt>msgq.h</tt>, and place the code in <tt>msgq.c</tt>.
+<li>I have placed <tt>mainmsgq.c</tt>, <tt>msgq.h</tt>, and <tt>msgq.c</tt> in the <tt>notxv6</tt> folder.
+</ul>
+
+<h3>Semaphore Libraries - <tt>semaphore.h and zemaphore.c</tt></h3>
+<p>MacOS does not support unnamed semaphores that are provided by <tt>semaphore.h</tt> and the
+<tt>-pthread</tt> compiler option. 
+If you are developing this program on MacOS, I have provided two files: <tt>zemaphore.h</tt> and <tt>zemaphore.c</tt>
+that you can use. This <tt>zemaphore</tt> libary implements semaphores using condition variables.
+You should examine the code in <tt>zemaphore.c</tt> to see how condition variables can be used to
+implement semaphores. 
+<p>OSTEP Chapter 31 provides the same (or similar) code. 
+The following is how I include <tt>semaphore.h</tt> in my <tt>msgq.c</tt> and <tt>main.c</tt> files on MacOS. 
+
+<pre>
+#include "zemaphore.h";
+#include "msgq.h";
+</pre>
+
+<p>You are welcome to make this fancier by using conditional <tt>#ifdefs</tt> style programming. 
+In this style of programming, you can create code that works on both MacOS and Linux.
+The following demonstrates this concept.
+<pre>
+#ifdef __linux__
+#include <semaphore.h>
+#elif __APPLE__
+#include "zemaphore.h"
+#endif
+</pre>
+
+
+<h3>Testing Thread-Safe Message Queue</h3>
+<p>Testing your thread-safe message queue is not done with Makefile. Instead, you build and run your program using <tt>mainmsgq.c</tt>.
+The code provided in <tt>mainmsgq.c</tt> performs five tests. Once you have finished your implementation, you can run the tests as shown below.
+
+<ol>
+<li>Send up to four messages and send them.
+<li>Pass it on. Messages are sent and resent, creating an endless sending of messages until you enter CTRL-C.
+<li>Send 5 messages on a queue that holds 4 messages. The 5th message must block.
+<li>Receive messages before any are sent showing that receive blocks on an empty queue.
+<li>Two producers and three consumers.
+Two threads are producers generating messages and three threads are consumers consuming messages. 
+The two producers each generate at 50 messages.
+The three consumers save their consumed messages in static arrays - one for each consumer. 
+<tt>main</tt> waits for the two producers to finish and
+then waits an additional five seconds to allow the three 
+consumers to become blocked on <tt>msgq_recv</tt> calls. 
+<tt>main</tt> prints the messages received in each consumer.
+It is interesting to examine which consumers consume which messages.
+</ol>
+The following shows me executing the five test cases. When you get output like this, you have
+successfully implemented your thread-safe message queue.
+
+<pre>
+$ <kbd>./msgq 1</kbd>
+test fill and empty msgq
+Send? y
+sending: msg1
+Send? y
+sending: msg2
+Send? y
+sending: hellomsg
+Send? y
+sending: gustymsg
+msgq_show() after filling for test 1:
+msg1
+msg2
+hellomsg
+gustymsg
+mq msg_count: 4
+recvMsgs: msg1
+recvMsgs: msg2
+recvMsgs: hellomsg
+recvMsgs: gustymsg
+msgq_show() after all consumed by test 1:
+$ <kbd>./msgq 2</kbd>
+test fill msgs and pass it on
+Send? y
+sending: msg1
+Send? y
+sending: msg2
+Send? y
+sending: hellomsg
+Send? y
+sending: gustymsg
+msgq_show() after filling for test 2:
+msg1
+msg2
+hellomsg
+gustymsg
+passiton1 initial msgq_len: 4
+passiton1: 0x77c14f7fee10 0x77c148000fa0 msg1
+passiton1 after recv msgq_len: 3
+passiton2 initial msgq_len: 4
+passiton1 after send msgq_len: 4
+passiton2: 0x77c14effde10 0x77c148000fe0 msg2
+passiton2 after recv msgq_len: 3
+passiton2 after send msgq_len: 4
+passiton1 initial msgq_len: 4
+passiton1: 0x77c14f7fee10 0x77c148001020 hellomsg
+passiton1 after recv msgq_len: 3
+passiton1 after send msgq_len: 4
+passiton2 initial msgq_len: 4
+passiton2: 0x77c14effde10 0x77c148001060 gustymsg
+passiton2 after recv msgq_len: 3
+passiton2 after send msgq_len: 4
+passiton1 initial msgq_len: 4
+passiton1: 0x77c14f7fee10 0x77c148000f80 msg1
+passiton1 after recv msgq_len: 3
+passiton1 after send msgq_len: 4
+passiton2 initial msgq_len: 4
+passiton2: 0x77c14effde10 0x77c148000fc0 msg2
+passiton2 after recv msgq_len: 3
+passiton2 after send msgq_len: 4
+passiton1 initial msgq_len: 4
+passiton1: 0x77c14f7fee10 0x77c148001000 hellomsg
+passiton1 after recv msgq_len: 3
+passiton1 after send msgq_len: 4
+passiton2 initial msgq_len: 4
+passiton2: 0x77c14effde10 0x77c148001040 gustymsg
+passiton2 after recv msgq_len: 3
+passiton2 after send msgq_len: 4
+passiton1 initial msgq_len: 4
+passiton1: 0x77c14f7fee10 0x77c148001080 msg1
+passiton1 after recv msgq_len: 3
+passiton1 after send msgq_len: 4
+passiton2 initial msgq_len: 4
+passiton2: 0x77c14effde10 0x77c140000b70 msg2
+passiton2 after recv msgq_len: 3
+passiton2 after send msgq_len: 4
+passiton1 initial msgq_len: 4
+passiton1: 0x77c14f7fee10 0x77c1480010a0 hellomsg
+passiton1 after recv msgq_len: 3
+passiton1 after send msgq_len: 4
+passiton2 initial msgq_len: 4
+passiton2: 0x77c14effde10 0x77c140000b90 gustymsg
+passiton2 after recv msgq_len: 3
+passiton2 after send msgq_len: 4
+passiton1 initial msgq_len: 4
+passiton1: 0x77c14f7fee10 0x77c1480010c0 msg1
+passiton1 after recv msgq_len: 3
+passiton1 after send msgq_len: 4
+passiton2 initial msgq_len: 4
+passiton2: 0x77c14effde10 0x77c140000bb0 msg2
+passiton2 after recv msgq_len: 3
+passiton2 after send msgq_len: 4
+passiton1 initial msgq_len: 4
+passiton1: 0x77c14f7fee10 0x77c1480010e0 hellomsg
+passiton1 after recv msgq_len: 3
+passiton1 after send msgq_len: 4
+passiton2 initial msgq_len: 4
+passiton2: 0x77c14effde10 0x77c140000bd0 gustymsg
+passiton2 after recv msgq_len: 3
+passiton2 after send msgq_len: 4
+^C
+$ <kbd>./msgq 3</kbd>
+test send blocks on full msgq
+final message will block and be sent last
+sending Message 1
+sending Message 2
+sending Message 3
+sending Message 4
+sending Message 5 with queue of 4 - blocks
+received Message 1
+received Message 2
+received Message 3
+received Message 3
+received Message 5 with queue of 4
+sent Message 5 with queue of 4
+ecooper@cpsc:~/gustyx$ ./msgq 4
+test recv blocks on empty msgq
+Starting recv...
+waiting 10 seconds for msgs
+sending Message 1
+sending Message 2
+sending Message 3
+sending Message 4
+sending Message 5 with queue of 4 - blocks
+received Message 1
+received Message 2
+received Message 3
+received Message 3
+received Message 5 with queue of 4
+sent Message 5 with queue of 4
+$ <kbd>./msgq 5</kbd>
+test 2 producers 3 consumers
+5 finished sending
+4 finished sending
+wait for consumers to finish
+consumer 1
+	msg tid:4, mnum:0
+	msg tid:5, mnum:3
+	msg tid:5, mnum:10
+	msg tid:5, mnum:11
+	msg tid:5, mnum:14
+	msg tid:4, mnum:5
+	msg tid:5, mnum:15
+	msg tid:4, mnum:7
+	msg tid:5, mnum:19
+	msg tid:4, mnum:9
+	msg tid:4, mnum:10
+	msg tid:4, mnum:11
+	msg tid:5, mnum:22
+	msg tid:5, mnum:25
+	msg tid:4, mnum:14
+	msg tid:4, mnum:15
+	msg tid:4, mnum:16
+	msg tid:5, mnum:30
+	msg tid:4, mnum:18
+	msg tid:5, mnum:31
+	msg tid:4, mnum:20
+	msg tid:4, mnum:21
+	msg tid:5, mnum:35
+	msg tid:4, mnum:23
+	msg tid:4, mnum:24
+	msg tid:4, mnum:25
+	msg tid:5, mnum:40
+	msg tid:4, mnum:27
+	msg tid:5, mnum:41
+	msg tid:4, mnum:31
+	msg tid:4, mnum:32
+	msg tid:5, mnum:44
+	msg tid:5, mnum:45
+	msg tid:4, mnum:36
+	msg tid:5, mnum:47
+	msg tid:5, mnum:49
+	msg tid:4, mnum:40
+	msg tid:4, mnum:41
+	msg tid:4, mnum:42
+	msg tid:4, mnum:44
+	msg tid:4, mnum:45
+	msg tid:4, mnum:46
+	msg tid:4, mnum:47
+	msg tid:4, mnum:48
+	msg tid:4, mnum:49
+consumer 2
+	msg tid:5, mnum:0
+	msg tid:5, mnum:1
+	msg tid:5, mnum:2
+	msg tid:5, mnum:4
+	msg tid:5, mnum:6
+	msg tid:5, mnum:7
+	msg tid:4, mnum:3
+	msg tid:4, mnum:6
+	msg tid:4, mnum:8
+	msg tid:5, mnum:17
+	msg tid:5, mnum:18
+	msg tid:5, mnum:21
+	msg tid:4, mnum:13
+	msg tid:5, mnum:23
+	msg tid:5, mnum:24
+	msg tid:5, mnum:27
+	msg tid:4, mnum:19
+	msg tid:5, mnum:32
+	msg tid:5, mnum:36
+	msg tid:4, mnum:26
+	msg tid:5, mnum:38
+	msg tid:5, mnum:39
+	msg tid:4, mnum:30
+	msg tid:5, mnum:46
+	msg tid:4, mnum:34
+	msg tid:4, mnum:35
+	msg tid:4, mnum:43
+consumer 3
+	msg tid:5, mnum:5
+	msg tid:4, mnum:1
+	msg tid:5, mnum:8
+	msg tid:5, mnum:9
+	msg tid:4, mnum:2
+	msg tid:5, mnum:12
+	msg tid:4, mnum:4
+	msg tid:5, mnum:13
+	msg tid:5, mnum:16
+	msg tid:5, mnum:20
+	msg tid:4, mnum:12
+	msg tid:5, mnum:26
+	msg tid:4, mnum:17
+	msg tid:5, mnum:28
+	msg tid:5, mnum:29
+	msg tid:4, mnum:22
+	msg tid:5, mnum:33
+	msg tid:5, mnum:34
+	msg tid:5, mnum:37
+	msg tid:4, mnum:28
+	msg tid:5, mnum:42
+	msg tid:4, mnum:29
+	msg tid:5, mnum:43
+	msg tid:4, mnum:33
+	msg tid:5, mnum:48
+	msg tid:4, mnum:37
+	msg tid:4, mnum:38
+	msg tid:4, mnum:39
+
+</pre>
+
+
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<p><b>This completes the lab.</b> Make sure you pass all of the <tt>make
+grade</tt> tests. 
+
+Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
+to submit your lab.
+
+In addition to placing <tt>make grade</tt> in your <tt>answer-thread.txt</tt> file, copy/paste the
+output from running the five test cases in <tt>msgq</tt>
+<!--
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<h3>Time spent</h3>
+
+<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
+number of hours you spent on the lab.
+<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
+
+<h3>Answers</h3>
+
+<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
+<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
+
+<h3>Submit</h3>
+
+<p>Assignment submissions are handled by Gradescope.
+You will need an MIT gradescope account.
+See Piazza for the entry code to join the class.
+Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
+if you need more help joining.
+
+<p>When you're ready to submit, run <kbd>make zipball</kbd>,
+which will generate <tt>lab.zip</tt>.
+Upload this zip file to the corresponding Gradescope assignment.
+
+<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
+untracked files, you will see output similar to the following:
+<pre>
+ M hello.c
+?? bar.c
+?? foo.pyc
+Untracked files will not be handed in.  Continue? [y/N]
+</pre>
+Inspect the above lines and make sure all files that your lab solution needs
+are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
+You can cause <tt>git</tt> to track a new file that you create using
+<kbd>git add {filename}</kbd>.
+</p>
+
+<p>
+<div class="warning">
+<ul>
+  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.
+    The Gradescope autograder will use the same grading program to assign your submission a grade.</li>
+  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
+  <li>You can inspect the status of your submission and download the submitted
+    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
+</ul>
+</div>
+
+
+
+<h2>Optional challenges for uthread</h2>
+
+<p>The user-level thread package interacts badly with the operating system in
+several ways.  For example, if one user-level thread blocks in a system call,
+another user-level thread won't run, because the user-level threads scheduler
+doesn't know that one of its threads has been descheduled by the xv6 scheduler.  As
+another example, two user-level threads will not run concurrently on different
+cores, because the xv6 scheduler isn't aware that there are multiple
+threads that could run in parallel.  Note that if two user-level threads were to
+run truly in parallel, this implementation won't work because of several races
+(e.g., two threads on different processors could call <tt>thread_schedule</tt>
+concurrently, select the same runnable thread, and both run it on different
+processors.)
+
+<p>There are several ways of addressing these problems.  One is
+ using <a href="http://en.wikipedia.org/wiki/Scheduler_activations">scheduler
+ activations</a> and another is to use one kernel thread per
+ user-level thread (as Linux kernels do).  Implement one of these ways
+ in xv6.  This is not easy to get right; for example, you will need to
+ implement TLB shootdown when updating a page table for a
+ multithreaded user process.
+
+<p>Add locks, condition variables, barriers,
+etc. to your thread package.
+-->
+</body>
+</html>

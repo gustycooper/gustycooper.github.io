@@ -1,7 +1,7 @@
 <HTML>
 <HEAD>
 <TITLE>
-UMW CPSC 405
+CPSC 405
 </TITLE>
 <META HTTP-EQUIV="pragma" CONTENT="no-cache">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,7 +48,7 @@ UMW CPSC 405
 		<li><a href="labsubmissions.html">Lab Submissions</a></li>
 		<li><a href="labs/guidance.html">Guidance</a></li>
 		<li><a href="labs/gdb.html">GDB</a></li>
-    <li><a href="labs/util.html">Lab Utilities</a></li>
+                <li><a href="labs/util.html">Lab Utilities</a></li>
 		<li><a href="labs/syscall.html">Lab System calls</a></li>
 		<li><a href="labs/pgtbl.html">Lab Page tables</a></li>
 		<li><a href="labs/traps.html">Lab Traps</a></li>
@@ -85,59 +85,91 @@ UMW CPSC 405
 
 <div class="container">
 
-<h2>CPSC 405 Home Page</h2>
+
+
+ 
+
+<center><h2>Reading materials</h2></center>
+
+<h3>Operating Systems Textbooks</h3>
 <ul>
-<li>The CPSC 405 Home Page is rather bland.
-<li>
-<p><b>Fall 2024</b>: CPSC 405 will be taught in Farmer-025, Tuesdays and Thursdays
-from 8:30am to 10:20am, starting on Tuesday Aug 26. CPSC 405 provides an introduction to operating systems.
-CPSC 405 is required for a CPSC major and is an elective for anyone interested in operating systems, which includes a CYBR major.
-</li>
+  <li><a href="xv6/book-riscv-rev3.pdf">xv6: A simple, Unix-like teaching operating
+      system</a> by R. Cox, F. Kaashoek, and R. Morris.
+    <ul>
+    <li>Our primary textbook. Used for hands-on learning about operating systems.
+    </ul>
+  <li> <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">OS Three Easy Pieces</a>
+       by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau.
+    <ul>
+    <li>Our supplemental textbook. Used for various operating system concepts such as virtual memory, schedulers, and threads.
+    </ul>
+  <li><a href="https://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf">The Little Book of Semaphores</a>
+       by Allen B. Downey.
+    <ul>
+    <li>Used to understand semaphores in the barrier problem
+    </ul>
+
 </ul>
 
-<h2>CPSC 405 Xv6 GitHub Repo</h2>
-<p>The starting source code for our CPSC 405 Xv6 labs is located at a GitHub repository.
-The repo has a branch for each lab. For example the <tt>util</tt> branch contains 
-code for the Lab Utilities.
+<h3>UNIX</h3>
 <ul>
-<li><a href="https://github.com/gustycooper/xv6-labs.git">CPSC 405 GitHub Repo</a>
-<li><tt>$ git clone https://github.com/gustycooper/xv6-labs.git</tt>
+
+<li>    <a href="https://www.youtube.com/watch?v=tc4ROCJYbm0">Youtube Unix intro</a>
+
+<li>	<a href="readings/ritchie78unix.pdf">
+	The UNIX Time-Sharing System</a>,
+	<a href="http://cm.bell-labs.com/who/dmr/">Dennis
+	M. Ritchie</a>
+	and <a href="http://cm.bell-labs.com/who/ken/">Ken
+	L.Thompson</a>,
+	Bell System Technical Journal 57, number 6, part 2
+	(July-August 1978) pages 1905-1930.
+
+<li>	<a href="readings/ritchie84evolution.pdf">
+	The Evolution of the Unix Time-sharing System</a>,
+	Dennis M. Ritchie, 1979.
+
 </ul>
 
-<h2>CPSC 405 Discord Server</h2>
+<h3>C Programming Language</h3>
 <ul>
-<li><a href="https://discord.gg/c544v67ZUJ">CPSC 405 Discord Server</a>
+
+  <li><a href=https://ia903407.us.archive.org/35/items/the-ansi-c-programming-language-by-brian-w.-kernighan-dennis-m.-ritchie.org/The%20ANSI%20C%20Programming%20Language%20by%20Brian%20W.%20Kernighan%2C%20Dennis%20M.%20Ritchie.pdf>The C Programming Language (second edition)</a> Brian W. Kernighan
+and Dennis M. Ritchie. Prentice Hall, Inc., 1988. ISBN 0-13-110362-8, 1998.
+
 </ul>
 
-<h2>CPSC 405 News and Announcements</h2>
+
+<h3>RISC-V Emulation</h3>
 <ul>
-<li>Course news and announcements can be found on our <a href="https://discord.gg/c544v67ZUJ">CPSC 405 Discord Server</a>.
+<li>	<a href="http://www.qemu.org/">QEMU</a> - A fast and
+popular RISC-V platform and CPU emulator.
+	<ul>
+        <li><a href="http://wiki.qemu.org/Qemu-doc.html">User manual</a>
+	</ul>
+
+<li> <a href="readings/FU540-C000-v1.0.pdf">SiFive FU540-C000
+    Manual</a>
+
+<li> <a href="readings/virtio-v1.1-csprd01.pdf">Virtual I/O Device (VIRTIO)</a>
+
 </ul>
 
-<h2>CPSC 405 Web Pages</h2>
-<ul>
-	  <li><a href="schedule.html">Schedule</a></li>
-    <li><a href="overview.html">Overview</a></li>
-    <li><a href="general.html">Web Syllabus</a></li>
-		<li><a href="tools.html">Tools</a></li>
-		<li><a href="labsubmissions.html">Lab Submissions</a></li>
-		<li><a href="labs/guidance.html">Guidance</a></li>
-		<li><a href="labs/gdb.html">GDB</a></li>
-    <li><a href="labs/util.html">Lab Utilities</a></li>
-		<li><a href="labs/syscall.html">Lab System calls</a></li>
-		<li><a href="labs/pgtbl.html">Lab Page tables</a></li>
-		<li><a href="labs/traps.html">Lab Traps</a></li>
-		<li><a href="labs/scheduling.html">Lab Scheduling</a></li>
-		<li><a href="labs/fs.html">Lab File system</a></li>
-		<li><a href="labs/thread.html">Lab Multithreading</a></li>
-		<li><a href="labs/shell.html">Lab Shell</a></li>
-		<li><a href="xv6.html">xv6</a></li>
-		<li><a href="xv6/book-riscv-rev3.pdf">xv6 book</a></li>
-	  <li><a href="reference.html">References</a></li>  
-	  <li><a href="https://discord.com/login">Discord</a></li>
-	  <li><a href="thanksmit.html">ThanksMIT</a></li>
-</ul>
 
+<h3>RISC-V</h3>
+
+<ul>
+
+  <li><i>The RISC-V Reader: An open architecture atlas</i> by
+    D. Patterson and A. Waterman, Strawberry Canyon, 2017.
+
+  <li><a href="https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMAFDQC/riscv-spec-20191213.pdf">RISC-V unprivileged instructions</a>
+    
+  <li><a href="https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf">RISC-V privileged instructions</a>
+
+  <li><a href="readings/riscv-calling.pdf">Calling conventions</a>
+
+</ul>
 
 <!-- End Page Content -->
 
