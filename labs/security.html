@@ -1,0 +1,214 @@
+<html>
+<head>
+<title>Lab: Security</title>
+<link rel="stylesheet" href="labs.css" type="text/css" />
+<script src="js/jquery-1.10.2.min.js"></script> 
+<script src="guidance.js"></script>
+</head>
+<body>
+
+<h1>Lab: security</h1>
+
+<p>The Security Lab is different than our other labs.
+
+<div class="prereq">
+<p>For this lab, you answer questions in your notebook and we discuss your answers during our Security Lab class.
+Students must answer the questions such that they can lead a discussion on these topics. Students should study all topics. 
+The class may organize itself where specific students have been assigned topics to lead. 
+I may use my random student selector to select students to lead discussion topics.
+Use the Internet and OSTEP Security Section to collect information about these basic security concepts. 
+When studying the concepts consider their relationships to operating systems and the material we have learned.
+Students must be in class and active participants. Students are not allowed to fiddle with their laptops or with their phones or any other electronic devices.
+</div>
+
+<div class="question">
+<p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
+Write each question and its answer in your notebook. Use your notebook answers to participate during our class discussion.
+</div>
+
+
+<h2>Security Attributes and Vulnerabilites <script>g("easy")</script></h2>
+
+<p>Discover answers to these terms and write them in your notebook. OSTEP Chapter 53 will be helpful for these terms.
+
+  <div class="question">
+    <b>1.</b> Social engineering, phishing
+  </div>
+  
+  <div class="question">
+    <b>2.</b> Buffer Overflows, NOP Sled, Address Space Randomization, Stack Guard
+  </div>
+  
+  <div class="question">
+    <b>3.</b> Network Attacks, Unauthorized Access, DDoS, Man in Middle, Code/SQL Injection
+  </div>
+
+  <div class="question">
+    <b>4.</b> Confidentiality, Integrity, Availability, Non-repudiation
+  </div>
+
+  <div class="question">
+    <b>5.</b> Security Policies, Policy, Implementation, Enforcement
+  </div>
+
+  <div class="question">
+    <b>6.</b> SELinux, Multi-Level Security, Multi-category Security
+  </div>
+
+  <div class="question">
+<b>7.</b> Access control, subject, object, access, discretionary access control, mandatory access control, Role-based access control
+  </div>
+  <div class="question">
+<b>8.</b> Authentication, multi-factor authentication, what you know, what you have, dongle, CAC, what you are
+  </div>
+  <div class="question">
+<b>9.</b> Hash, Cryptographic Hash, SHA-3, Dictionary Attack, Salt
+  </div>
+  <div class="question">
+<b>10.</b> Public-private keys, ~/.ssh/authorized_keys, RSA, id_rsa, id_rsa.pub, ssh-keygen
+  </div>
+  <div class="question">
+<b>11.</b> Cryptography, cipher, key, plain text, cipher text
+  </div>
+  <div class="question">
+<b>12.</b> E(plain text, key) > cipher text, D(cipher text, key) > plain text
+  </div>
+  <div class="question">
+<b>13.</b> Public-private keys, HTTP, HTTPS, TLS, session key, certificate authority
+  </div>
+  <div class="question">
+<b>14.</b> Symmetric encryption (AES 256-bit), asymmetric encryption (RSA 2048-bit), AES, WEP, WPA, WPA2, WPA3
+  </div>
+  <div class="question">
+<b>15.</b> Block cipher, digital signature, Kerckhoffs’ Principle, defense in depth
+  </div>
+
+  <h2>Secure Design <script>g("easy")</script></h2>
+<p>Most existing software was designed well, but often did not consider vulnerabilities. As a result, a lot of cybersecurity is (1) “patching” existing code after a vulnerability is discovered and (2) building (selling) tools to guard existing systems. Tools are things like Norton, McAfee, port blockers, etc. We are playing whack-a-mole. Hackers discover a vulnerability. We discover that a hacker has intruded. We create a patch/tool to fix the vulnerability. As new systems are created, it is important to use a secure design. I think the definition of a secure design is evolving. The following topics are part of the evolving definition of secure design. Discover answers to these terms and write them in your notebook. OSTEP Chapter 53 will be helpful for these terms.
+  <div class="question">
+<b>16.</b> Economy of mechanism
+  </div>
+  <div class="question">
+<b>17.</b> Fail-safe defaults
+  </div>
+  <div class="question">
+<b>18.</b> Complete mediation
+  </div>
+  <div class="question">
+<b>19.</b> Open design
+  </div>
+  <div class="question">
+<b>20.</b> Separation of privilege
+  </div>
+  <div class="question">
+<b>21.</b> Least privilege 
+  </div>
+  <div class="question">
+<b>22.</b> Least common mechanism
+  </div>
+  <div class="question">
+<b>23.</b> Acceptability
+  </div>
+
+  <h2>Security News <script>g("easy")</script></h2>
+<p>Discover answers to these questions and write them in your notebook. OSTEP Chapter 53 will be helpful for these terms.
+  <div class="question">
+<b>24.</b> What is a recent zero-day vulnerability?
+  </div>
+  <div class="question">
+<b>25.</b> What is a recent ransomware attack?
+  </div>
+  <div class="question">
+<b>26.</b> What is some other security news?
+  </div>
+  <div class="question">
+<b>27.</b> What is the stuxnet worm and how did it work?
+  </div>
+  <div class="question">
+<b>28.</b> What is a side channel attack?
+  </div>
+  <div class="question">
+<b>29.</b> Do you think the US power grid is vulnerable to a cyber attack? 
+  </div>
+  <div class="question">
+<b>30.</b> Do you think the US military is vulnerable to a cyber attack?
+  </div>
+  <div class="question">
+<b>31.</b> What is the most vulnerable security hole?
+  </div>
+  <div class="question">
+<b>32.</b> Have you ever experienced a security hack? If so, describe the hack and how you recovered.
+  </div>
+  <div class="question">
+<b>32.</b> If you had to choose, which of these would you choose. (a) a massive cyber attack or (b) a nuclear missile attack.
+  </div>
+
+
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<p><b>This completes the lab.</b> You do not have to submit this lab. Please come to class prepared to discuss your answers.
+
+<!--
+<h3>Time spent</h3>
+
+<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
+number of hours you spent on the lab.
+<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
+
+<h3>Answers</h3>
+
+<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
+<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
+
+<h3>Submit</h3>
+
+<p>Assignment submissions are handled by Gradescope.
+You will need an MIT gradescope account.
+See Piazza for the entry code to join the class.
+Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
+if you need more help joining.
+
+<p>When you're ready to submit, run <kbd>make zipball</kbd>,
+which will generate <tt>lab.zip</tt>.
+Upload this zip file to the corresponding Gradescope assignment.
+
+<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
+untracked files, you will see output similar to the following:
+<pre>
+ M hello.c
+?? bar.c
+?? foo.pyc
+Untracked files will not be handed in.  Continue? [y/N]
+</pre>
+Inspect the above lines and make sure all files that your lab solution needs
+are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
+You can cause <tt>git</tt> to track a new file that you create using
+<kbd>git add {filename}</kbd>.
+</p>
+
+<p>
+<div class="warning">
+<ul>
+  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.</li>
+  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
+  <li>You can inspect the status of your submission and download the submitted
+    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
+</ul>
+</div>
+
+
+
+<h2>Optional challenge exercises</h2>
+
+<ul>
+
+  <li>Print the names of the functions and line numbers
+  in <tt>backtrace()</tt> instead of numerical
+  addresses <script>g("hard")</script>.</li>
+
+</ul>
+-->
+
+</body>
+</html>
