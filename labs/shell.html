@@ -1,0 +1,580 @@
+<html>
+<head>
+<title>Lab: Linux Shell</title>
+<link rel="stylesheet" href="labs.css" type="text/css" />
+<script src="js/jquery-1.10.2.min.js"></script> 
+<script src="guidance.js"></script>
+</head>
+<body>
+
+<h1>Lab: Linux Shell <script>g("easy")</script></h1>
+
+<p>A Linux shell is a command line interpreter. 
+A shell is a utility program that allows a user to enter commands such as <tt>cd</tt>, <tt>ls</tt>, <tt>cat</tt>, <tt>more</tt>, and <tt>gcc</tt>. 
+The beauty of Unix/Linux is that a shell is a regular user program. It it not part of the OS.
+Some popular shells are bash, Z, and cshell.
+A shell uses the Unix/Linux API of <tt>fork</tt>, <tt>exec</tt>, <tt>pipes</tt>, and redirecting I/O.
+Most of the commands executed by a shell are simply programs that the shell runs via <tt>fork</tt> and <tt>exec</tt> system calls. 
+Some of the commands are executed by the shell are internal code that is part of the shell.
+<p>All of the sections are <script>g("easy")</script> so the label is not included on each section.
+
+<div class="prereq">
+<p>The purpose of Lab shell is to reemphasize the Linix API that is used to create a shell. All Linux programmers should know how to create a shell. You can begin this lab anytime after the second week of class; however, there are some questions that require knowledge from other portions of our class. There is very little programming in Lab shell. The code provided compiles and runs on a Linux system - not our Xv6 system. You have to study the provided code, build/run the code, and answer questions. The code is provided as a collection of single <tt>.c</tt> file programs. For example, <tt>redirect.c</tt> is a program that redirects standard output to a file. To build an executable, you can enter the following (or something similar) Linux commands. The exact commands depend on the program you are building.
+<pre>
+$ <kbd>gcc -o redirect redirect.c</kbd>
+$ <kbd>echo "hello redirect" > input.txt</kbd>
+$ <kbd>./redirect input.txt output.txt</kbd>
+$ <kbd>cat output.txt</kbd>
+hello redirect
+</pre>
+</div>
+
+<div class="question">
+<p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
+Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+That is all that you have to submit for this lab.
+</div>
+
+<h2>Starting the Lab</h2>
+<p>To start the lab, switch to the riscv branch:
+  <pre>
+  $ <kbd>git fetch</kbd>
+  $ <kbd>git checkout riscv</kbd>
+  $ <kbd>cd shell</kbd>
+  </pre>
+All of the code for Lab shell is in the folder <tt>shell</tt>.
+
+
+<h2>OS I/O API</h2>
+<p>The are various APIs for performing I/O. The I/O API provided by programming languages (e.g., C's <tt>fopen</tt>, <tt>fread</tt>, <tt>fwrite</tt>) are built on top of the OS I/O API. The OS I/O API consists of a few well defined interface functions. The Xv6 I/O API is the following. Linux has a few more (e.g. <tt>dup2</tt>), but for the most part the API is the same as it was 50 years ago.
+
+<pre>
+int pipe(int*);
+int write(int, const void*, int);
+int read(int, void*, int);
+int close(int);
+int open(const char*, int);
+int mknod(const char*, short, short);
+int unlink(const char*);
+int fstat(int fd, struct stat*);
+int link(const char*, const char*);
+int mkdir(const char*);
+int chdir(const char*);
+int dup(int);
+</pre>
+
+<p><tt>open</tt> and <tt>pipe</tt> return integer file descriptors. <tt>read</tt>, <tt>write</tt>, and <tt>close</tt> use the file descriptors to manipulate the files/pipes.
+
+<div class="question">
+<p><b>1.</b> What is the difference between the OS I/O API and the C runtime I/O API?
+</div>
+
+<h2>File Descriptors and <tt>ofile</tt> Array</h2>
+<p>Xv6 creates a <tt>struct proc</tt> for each process. Xv6 uses the <tt>struct proc</tt> to manage the creation, execution, and termination of processes. Processes (or user programs) have an array, <tt>ofile</tt>, of pointers to open files in their <tt>struct proc</tt>. Whenever a process opens a file, the OS creates file information data structures, places a pointer to the file information in an element of the <tt>ofile</tt> array, and the index is returned to the user program as a file descriptor.
+See <a href="https://github.com/mit-pdos/xv6-riscv/blob/riscv/kernel/proc.h">kernel/proc.h</a> to examine the <tt>ofile</tt> array in <tt>struct proc</tt>.
+
+<p>This means that file descriptors are little integers like 0, 1, 2, up to the number of elements in the array. Processes use file descriptors to perform operations like <tt>read</tt>, <tt>write</tt> and <tt>close</tt>. 
+<p>When a process opens a file, the OS sequentially searches for a free entry in the <tt>ofile</tt> array beginning at <tt>ofile[0]</tt>
+ The following shows an open-read-close scenario of using file descriptors.
+<pre>
+int fd1 = open("Gusty","r");       // file descriptor
+char buf[25];
+int numread = read(fd1, buf, 25);  // read using fd
+int fd2 = open("Coletta", "r");
+close(fd1);
+int fd3 = open("Opal", "r");
+</pre>
+<p>In this scenario, 
+<ul>
+<li>The variable <tt>fd1</tt> will have the value 3 because <tt>ofile[3]</tt> is the first free entry in <tt>ofile</tt>.
+<li>The variable <tt>fd2</tt> will have the value 4 because <tt>ofile[4]</tt> is the first free entry in <tt>ofile</tt>.
+<li>The variable <tt>fd3</tt> will have the value 3 because closing <tt>fd1</tt> frees up <tt>ofile[3]</tt> to be reused.
+</ul>
+
+
+
+<p>When a process is created, three files are automatically opened - standard input, standard output, and standard error - and their file information pointers are placed in the <tt>ofile</tt> array in index positions 0, 1, and 2. This means  
+file descriptors 0, 1, and 2 are allocated to STDIN, STDOUT, and STDERR. 
+By default standard input is the user's typed commands, standard output consists of prints to the terminal window, and standard error consists of errors to the terminal window.
+This means when a process is created it can used file descriptors 0, 1, and 2 to read/write to the terminal's keyboard/window.
+The following simple program demonstrates reading from standard input and writing to standard output.
+Notice how <tt>printf</tt> and <tt>fgets</tt> calls do not require the user program to open standard input and standard output. They are already open. The code is provided in <tt>shell0.c</tt>.
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_BUF 100
+char buf[MAX_BUF];
+
+int main(int argc, char **argv) {
+    while (1) {
+        printf("$ ");                      // write to standard output
+        memset(buf, 0, MAX_BUF);
+        if (!(fgets(buf, MAX_BUF, stdin))) // read from standard input
+            return -1;
+        printf("You typed: %s\n", buf);
+    }
+}
+</pre>
+You can use the Linux OS I/O API to create the same program. The file <tt>shell0readwrite.c</tt> uses the Linux OS I/O API instead of the C I/O API. Notice how <tt>read</tt> and <tt>write</tt> use the file descriptors 0 (STDIN) and 1 (STDOUT).
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX_BUF 100
+char buf[MAX_BUF];
+
+int main(int argc, char **argv) {
+    while (1) {
+        write(1, "$ ", 2);
+        memset(buf, 0, MAX_BUF);
+        int numread = read(1, buf, MAX_BUF);
+        if (numread == -1)
+            return -1;
+        else if (numread == 0)
+            return 0;
+        write(1, "You typed: ", 11);
+        write(1, buf, numread);
+    }
+}
+</pre>
+
+<div class="question">
+<p><b>2.</b> What is the difference in the values returned from the OS <tt>open</tt> call the the C runtime <tt>fopen</tt> call?
+</div>
+
+<h2>File Descriptors and <tt>fork</tt></h2>
+The <tt>fork</tt> system call creates an exact copy of the calling process. The process that calls <tt>fork</tt> is called the parent and the newly created process is called the child.  <tt>fork</tt> returns a 0 in the child process and the process ID of the child in the parent process. The child inherits all of the open files from the parent. At a minimum, the child has STDIN, STDOUT, and STDERR open, but if the parent has opened other files, the child has those files open also. If the parent has redirected (for example) STDOUT to another file, the child's STDOUT is also redirected. When a child process calls <tt>exec</tt> to execute another program, the newly executed program still has the same file descriptors as the child. 
+<h2>Shell and I/O Redirection</h2>
+<p>A shell (such as <tt>bash</tt>) runs user programs such as <tt>cat</tt>, <tt>grep</tt>, and <tt>ls</tt> as child processes. These user programs typically read from standard input and write to standard output. For example, <tt>cat file.c</tt> displays the contents of <tt>file.c</tt> in the terminal window, which is STDOUT. 
+With user programs writing to STDOUT (file descriptor 1), the shell can redirect the output of the user program to another file by closing file descriptor 1 (STDOUT) and opening another file, which will be allocated file descriptor 1. Likewise a shell can redirect the input to a user program by closing file descriptor 0 (STDIN) and opening another file, which will be allocated file descriptor 0. The same user program that normall reads/writes from/to STDIN/STDOUT now reads/writes to files. The following code demonstrates this concept, where the program is run with argument 1 as an input filename and argument 2 as an output filename. The code is provided in <tt>redirect.c</tt>.
+
+<pre>
+int main(int argc, char **argv) {
+    close(0);
+    open(argv[1], O_RDONLY, 0644);
+    close(1);
+    open(argv[2], O_CREAT|O_TRUNC|O_WRONLY, 0644);
+    char line[100];
+    fgets(line, 100, stdin);
+    printf("%s\n", line);
+}
+</pre>
+<div class="prereq">
+Study, build, and run the <tt>redirect.c</tt> program.
+</div>
+Notice that the <tt>redirect.c</tt> code does not perform any error checking. The code for <tt>redirect_dup.c</tt> performs error checking.
+When running the executable for <tt>redirect.c</tt>, you must be carefull to pass correct arguments. The following shows building and running the <tt>redirect.c</tt> program.
+<pre>
+$ <kbd>gcc -o redirect redirect.c</kbd>
+$ <kbd>echo "hello redirect" > input.txt</kbd>
+$ <kbd>./redirect input.txt output.txt</kbd>
+$ <kbd>cat output.txt</kbd>
+hello redirect
+</pre>
+
+
+<div class="question">
+<p><b>3.</b> How does the OS implementation of file descriptors allow STDOUT to be redirected to a file?
+</div>
+
+
+<h2><tt>dup</tt> and <tt>dup2</tt> System Calls</h2>
+<p>The <tt>dup</tt> and <tt>dup2</tt> system calls can be used to redirect STDIN and STDOUT to other files.
+<pre>
+int dup(int oldfd);
+int dup2(int oldfd, int newfd);
+</pre>
+<p>Let's first understand the <tt>dup</tt> function. The <tt>dup</tt> system call creates a copy of the file descriptor <tt>oldfd</tt>, using the lowest-numbered unused file descriptor for the new descriptor. After a successful return, the old and new file descriptors may be used interchangeably.  They refer to the same open file description (see open) and thus share file offset and file status flags; for example, if the file offset is modified by using lseek on one of the file descriptors, the offset is also changed for the other.
+
+<p>The <tt>dup2</tt> system call performs the same task as <tt>dup</tt>, but instead of using the lowest-numbered unused file descriptor, it uses the file descriptor number specified in <tt>newfd</tt>.  If the file descriptor <tt>newfd</tt> was previously open, it is silently closed before being reused. The steps of closing and reusing the file descriptor <tt>newfd</tt> are performed atomically.  This is important, because trying to implement equivalent functionality using <tt>close</tt> and <tt>dup</tt> could be subject to race conditions when used in threaded processes, whereby <tt>newfd</tt> might be reused between the two steps. Such reuse could happen because the main program is interrupted by a signal handler that allocates a file descriptor, or because a parallel thread allocates a file descriptor.
+
+<p>The following code shows how to use <tt>dup2</tt> to redirect STDIN and STDOUT from/to files. The code is provided in <tt>redirect_dup.c</tt>.
+
+<pre>
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+
+int main(int argc, char **argv) {
+    int pid, status;
+    int infd, outfd;
+
+    infd = open(argv[1], O_RDONLY, 0644);
+    outfd = open(argv[2], O_CREAT|O_TRUNC|O_WRONLY, 0644);
+    dup2(infd,  0);
+    dup2(outfd, 1);
+    char line[100];
+    fgets(line, 100, stdin);
+    printf("%s\n", line);
+}
+</pre>
+
+<div class="prereq">
+Study, build, and run the <tt>redirect_dup.c</tt> program.
+</div>
+
+<p>Note this sample uses <tt>argc</tt> and <tt>argv</tt> to get the redirection files. It does not use the redirect arrows like a shell. The following is an example of redirection of output using the shell.
+<pre>
+$ cat test.txt > cat.txt
+</pre>
+
+<div class="question">
+<p><b>4.</b> Both <tt>redirect.c</tt> and <tt>redirect_dup.c</tt> change the file descriptors for STDIN and STDOUT to be file descriptors for files. How does <tt>redirect.c</tt> change the file descriptors? How does <tt>redirect_dup.c</tt> change the file descriptors?
+</div>
+
+<h2>Linux Pipes and Shell's Use of Them</h2>
+<p>A shell supports piping the output of one program to the input of another. You can pipe the output of <tt>ls</tt> to <tt>grep</tt> as follows.
+<pre>
+$ ls | grep redirect
+redirect_input.txt
+redirect_output.txt
+redirect_stdout
+redirect_stdout.c
+</pre>
+
+<p>In the above example, my directory had several files with redirect as part of their names. A shell achieves piping by using the system call <tt>pipe</tt> along with <tt>fork</tt> and <tt>exec</tt>. 
+
+<p>A Linux pipe is a buffer that allows processes to exchange information. The pipe has two ends - processes can write to one end and can read from the other end. The <tt>pipe</tt> system call creates a pipe and returns two file descriptors in a two-element integer array.
+<pre>
+int p[2];
+int status = pipe(p); // p has pipe FDs
+</pre>
+
+<p>The input file descriptor is in <tt>p[0]</tt> and the output file descriptor is in <tt>p[1]</tt>. 
+Notice that STDIN is file descriptor <b>0</b> and <tt>p[<b>0</b>]</tt> is the input end of the pipe. Likewise, STDOUT is file descriptor <b>1</b> and <tt>p[<b>1</b>]</tt> is the output end of the pipe.
+
+<p>The following code shows creating a pipe, writing to the output file descriptor, and reading from the input file descriptor. The code is provided in file <tt>simple_pipe.c</tt>.
+<pre>
+// Code from https://www.geeksforgeeks.org/pipe-system-call/
+#include &lt;stdio.h&gt; 
+#include &lt;unistd.h&gt; 
+#include &lt;stdlib.h&gt;
+#define MSGSIZE 16 
+char* msg1 = "hello, world #1"; 
+char* msg2 = "hello, world #2"; 
+char* msg3 = "hello, world #3"; 
+  
+int main() { 
+    char inbuf[MSGSIZE]; 
+    int p[2], i; 
+    if (pipe(p) < 0) 
+        exit(1); 
+    write(p[1], msg1, MSGSIZE); 
+    write(p[1], msg2, MSGSIZE); 
+    write(p[1], msg3, MSGSIZE); 
+    for (i = 0; i < 3; i++) { 
+        read(p[0], inbuf, MSGSIZE); 
+        printf("%s\n", inbuf); 
+    } 
+    return 0; 
+} 
+</pre>
+
+<div class="prereq">
+Study, build, and run the <tt>simple_pipe.c</tt> program.
+</div>
+
+<div class="question">
+<p><b>5.</b> Which element of the array of pipe file descriptors returned by the <tt>pipe</tt> system function is the output end of the pipe?
+</div>
+
+<p>The following code connects two processes (parent and child) with two pipes. The code is provided in file <tt>parent_child_pipe.c</tt>. The parent writes to the first pipe and the child reads from the first pipe. The child writes to the second pipe and the parent reads from the second pipe. Notice how a process closes the ends of pipes that are not used.
+
+<pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt; 
+#include &lt;unistd.h&gt; 
+#include &lt;sys/types.h&gt; 
+#include &lt;string.h&gt; 
+#include &lt;sys/wait.h&gt; 
+
+int main() { 
+    // First pipe to send input string from parent to child
+    // Second pipe to send concatenated string from child to parent
+    int fd1[2]; // Used to store two ends of first pipe 
+    int fd2[2]; // Used to store two ends of second pipe 
+    char fixed_str[] = " CPSC 405";
+    char input_str[100]; 
+    pid_t p; 
+    if (pipe(fd1)==-1) { 
+        fprintf(stderr, "Pipe Failed" ); 
+        return 1; 
+    } 
+    if (pipe(fd2)==-1) { 
+        fprintf(stderr, "Pipe Failed" ); 
+        return 1; 
+    } 
+    scanf("%s", input_str); 
+    p = fork(); 
+    if (p < 0) { 
+        fprintf(stderr, "fork Failed" ); 
+        return 1; 
+    } else if (p > 0) { // Parent process 
+        char concat_str[100]; 
+        close(fd1[0]); // Close read end of first pipe 
+        write(fd1[1], input_str, strlen(input_str)+1); // write input string
+        close(fd1[1]); // close write end of first pipe
+        wait(NULL);    // Wait for child to send a string 
+        close(fd2[1]); // Close write end of second pipe 
+
+        read(fd2[0], concat_str, 100); // Read from child
+        printf("Concatenated string: %s \n", concat_str); 
+        close(fd2[0]);  // close reading end
+    } else { // child process 
+        close(fd1[1]); // Close write end of first pipe 
+        char concat_str[100]; 
+        read(fd1[0], concat_str, 100); // Read string using first pipe 
+
+        int k = strlen(concat_str); // Concatenate a fixed string with it 
+        for (int i=0; i < strlen(fixed_str); i++) 
+            concat_str[k++] = fixed_str[i]; 
+        concat_str[k] = '\0'; // string ends with '\0' 
+
+        close(fd1[0]); // Close both reading ends 
+        close(fd2[0]); 
+        write(fd2[1], concat_str, strlen(concat_str)+1); // write concatenated string 
+        close(fd2[1]); // Close write end of second pipe
+        exit(0); 
+    } 
+} 
+</pre>
+
+<p>It it important to close the ends of the pipe that a process is not using. You can see this in the above code and also in the codes <tt>shell2.c</tt>, <tt>shell3.c</tt>, and <tt>shell4.c</tt>. Suppose you have two processes where one is writing to the pipe and the other is reading. The pipe reader will read until there is no more data in the pipe, which is equivalent to an end of file in a regular file. Note that when two processes are connected via a pipe, both processes have both ends of the pipe open. If the pipe writer does not close the read end of the pipe, the pipe reader will never get the end of file.
+<p>Consider a shell that executes <tt>cat file | grep hello</tt>. The shell created two processes connected by a pipe. The <tt>cat file</tt> process dups STDOUT onto the write end of the pipe and closes both ends of the pipe. The <tt>grep hello</tt> process dups STDIN onto the read end of the pipe and cloasses both ends of the pipe. <tt>grep</tt> will read from STDIN until an end of file is encountered, which occurs when <tt>cat</tt> has finished copying <tt>file</tt> to STDOUT. 
+
+<div class="prereq">
+Study, build, and run the <tt>parent_child_pipe.c</tt> program.
+</div>
+
+<p>The following shows running <tt>parent_child_pipe</tt>. I typed <tt>Hello</tt>, which is read by the parent, which writes it to a pipe, which is read by the child, which concatenates it to <tt>CPSC 405</tt>, which writes it to a pipe, which is read by the parent, which prints the final string to STDOUT.
+<pre>
+$ ./parent_child_pipe
+Hello
+Concatenated string: Hello CPSC 405
+</pre>
+
+<div class="question">
+<p><b>6.</b> How do Linux pipes relate to our study of threads and sychronization?
+</div>
+
+<h2>Shell Commands - Native and Local</h2>
+<p>NOTE: I use the generic <tt>exec</tt> in the following paragraphs. Linux has a family of <tt>exec</tt> functions.
+<p>When you type a command in a Linux shell, the shell performs a <tt>fork</tt> followed by and <tt>exec</tt> of the command. For example, if you entered the <tt>ls</tt> command, the shell would do an <tt>exec(ls)</tt>. The <tt>exec</tt> uses the environment variables established by the shell. One of the environment variables is <tt>PATH</tt>, which contains a comma separated list of directories to search for programs. The <tt>PATH</tt> variable contains directories such as <tt>/bin</tt> and <tt>/usr/bin</tt>. This means <tt>exec(ls)</tt> executes the <tt>ls</tt> program located in the <tt>/bin</tt> directory. The <tt>ls</tt> program is a C program whose executable has been placed in the <tt>/bin</tt> directory. We have a simple version of <tt>ls</tt> in our Xv6 <tt>user</tt> directory.
+<p>Many Linux utility programs have been created and placed in <tt>/bin</tt> and <tt>/usr/bin</tt> for you. I refer to these programs as native. When you want to run a local program in the current directory, you enter <tt>./program</tt>. The nomenclature <tt>./</tt> selects the current directory, which is the dot directory.
+<p> You can add your own programs to a directory such as <tt>~/bin</tt> and then add <tt>~/bin</tt> to your <tt>PATH</tt> variable. Then you can add your own programs. If you add a program named <tt>ls</tt> to your <tt>~/bin</tt>, the search order of your <tt>PATH</tt> variable determines which one runs. If <tt>/bin</tt> is first in your <tt>PATH</tt>, then the native <tt>ls</tt> runs.
+<p>The following shows running a native <tt>ls</tt> and a local <tt>ls</tt>.
+<pre>
+$ <kbd>ls -slag</kbd>
+ls -slag
+total 160
+ 0 drwxr-xr-x   9 staff    288 Dec 17 21:11 .
+ 0 drwxr-xr-x  18 staff    576 Dec 20 17:11 ..
+16 -rw-r--r--@  1 staff   6148 Dec 17 20:42 .DS_Store
+32 -rwxr-xr-x   1 staff  13948 Dec 17 20:41 cat
+16 -rw-r--r--   1 staff   4754 Dec 10 20:30 cat.c
+40 -rwxr-xr-x   1 staff  18860 Dec 17 20:41 ls
+24 -rw-r--r--@  1 staff  10767 Dec  9 21:46 ls.c
+32 -rwxr-xr-x   1 staff  14572 Dec 17 21:10 mainshell
+ 0 drwxr-xr-x@  9 staff    288 Dec 17 21:11 simple-shell-master
+$ <kbd>./ls -l</kbd>
+-rwxr-xr-x 1      gusty      staff     13948 Dec 17 20:41 cat
+-rw-r--r-- 1      gusty      staff      4754 Dec 10 20:30 cat.c
+-rwxr-xr-x 1      gusty      staff     18860 Dec 17 20:41 ls
+-rw-r--r-- 1      gusty      staff     10767 Dec  9 21:46 ls.c
+-rwxr-xr-x 1      gusty      staff     14572 Dec 17 21:10 mainshell
+drwxr-xr-x 9      gusty      staff       288 Dec 17 21:11 simple-shell-master
+</pre>
+
+<p>You could place the dot directory in your path. Then you can run local programs without the <tt>./</tt> prefix. I do not do this because I want to explicitly select my current directory and not accidently run a local program when I meant to run a native program.
+<h2>Pipes and Redirection</h2>
+<p>The following shows piping a local <tt>ls</tt> program into the Linux <tt>grep</tt> command.
+<pre>
+$ ./ls | grep sim
+simple-shell-master
+simple_pipe
+simple_pipe.c
+</pre>
+
+<p>The following shows piping a local <tt>ls</tt> program into the Linux <tt>grep</tt> command and redirecting the output to a file.
+<pre>
+$ ./ls | grep sim > localls_grep.txt
+ grep sim > localls_grep.txt
+$ cat localls_grep.txt
+cat localls_grep.txt
+simple-shell-master
+simple_pipe
+simple_pipe.c
+</pre>
+
+<div class="question">
+<p><b>7.</b> How does a shell implement the <tt>|</tt> character on its commands?
+</div>
+
+<h2>Background Processes</h2>
+<p>Shells allow users to run a program as a background process. When doing this, the program is run as a process in the background and the shell continues.
+To run programs in the foreground, the shell performs a <tt>fork</tt> followed by <tt>exec</tt> followed by <tt>wait</tt> to wait for the command to finish before continugin. In the case of a background process, the shell does not call <tt>wait</tt>, which means the <tt>exec</tt>ed process runs in the backgroud.
+In this case, the shell starts the program as a process in the background and returns a prompt for more user input. The following shows running <tt>parent_child_pipe</tt> as a background process.
+<pre>
+$ ./parent_child_pipe &
+[1] 15725
+Gustys-iMac:ShellProject gusty$ ps
+  PID TTY           TIME CMD
+15717 ttys000    0:00.03 -bash
+15725 ttys000    0:00.00 ./parent_child_pipe
+  438 ttys001    0:00.01 -bash
+  459 ttys002    0:00.02 -bash
+ 5271 ttys002    0:00.12 python
+ 3451 ttys003    0:00.21 -bash
+</pre>
+
+<h2>Reading Commands</h2>
+<p>A shell program is in an endless loop that terminates when the user enters Ctl-D or exit. On each iteration of the loop, the shell reads a line that has several strings separated by whitespace. For example, the user may enter 
+<pre>
+$ <kbd>ls     > out.txt.</kbd> 
+</pre>
+The shell extracts the strings <tt>ls</tt>, <tt>></tt>, and <tt>out.txt</tt> from the input. There are many ways to accomplish this. For example, the shell may use the C function <tt>strtok</tt> or the shell may have its own algorithm. The following is an example of an algorithm. The code creates an array of pointers to the words on the line. Each word is a string that is located in the <tt>buf</tt> into which is read the line. The code is provided in <tt>skipwhitespace.c</tt>.
+<pre>
+#include &lt;stdio.h&gt; 
+#include &lt;string.h&gt; 
+
+char buf[100]; // buffer for line
+char whitespace[] = " \t\r\n\v";
+char *words_on_line[10]; // 10 words on a line
+
+int main(int argc, char **argv) {
+    int stop = 0;
+    while (1) {
+        fgets(buf, 100, stdin);
+        char *s = buf;
+        char *end_buf = buf + strlen(buf);
+        int eol = 0, i = 0;
+        while (1) {
+            while (s < end_buf && strchr(whitespace, *s))
+                s++;
+            if (*s == 0) // eol - done
+                break;
+            words_on_line[i++] = s;
+            while (s < end_buf && !strchr(whitespace, *s))
+                s++;
+            *s = 0;
+        }
+        for (int j = 0; j < i; j++)
+            printf("words_on_line[%d]: %s\n", j, words_on_line[j]);
+        if (strcmp(words_on_line[0],"stop") == 0)
+            break;
+    }
+}
+</pre>
+
+<div class="prereq">
+Study, build, and run the <tt>skipwhitespace.c</tt> program.
+</div>
+
+<h2>Stepwise Development of Shells</h2>
+<p>You have been provided with five iterations of developing a shell. <tt>shell0.c</tt> is the simplest and <tt>shell4.c</tt> is the most complete. Note that <tt>shell4.c</tt> is still a long ways from being a real shell, which has environment variables, shell scripts, tab completion, the ability to string multiple pipes on a line, and more.
+<p>By the time you study <tt>shell4.c</tt>, you will encouter a shell that has the following features.
+<ul>
+<li>The shell runs programs (both native and local) via fork and exec. 
+<li>The shell implements I/O redirection with <tt><</tt> and <tt>></tt>. The shell only supports either output redirection or input redirection on a line - not both on the same line.
+<li>The shell allows connecting two commands with a pipe (<tt>|</tt>) charactoer. A typical Linux shell allows stringing pipes together - for example, <tt>ls | grep toy | grep cup</tt>. Processing an arbitrary number of pipes complicates the design. Our shell supports one pipe. 
+<li>The shell allows running a command in the background - for example <tt>$ ls &</tt>.
+<li>The shell has a signal handler for Ctl-C. Ctl-C terminates a foreground process, but it does not terminate the shell.
+<li>Ctl-D is equivalent to an exit command. The shell exits when a Ctl-D is entered. Note that <tt>fgets</tt> returns 0 when a Ctl-D is entered.
+</ul>
+
+<div class="prereq">
+Study, build, and run the <tt>shell0.c</tt> program.
+</div>
+
+<div class="prereq">
+Study, build, and run the <tt>shell0readwrite.c</tt> program.
+</div>
+
+<div class="question">
+<p><b>8.</b> In <tt>shell0.c</tt> and <tt>shell0readwrite.c</tt>, what functions are used to read a line from STDIN?
+</div>
+
+<div class="question">
+<p><b>9.</b> In <tt>shell0readwrite.c</tt>, what are the file descriptors used for STDIN and STDOUT?
+</div>
+
+<div class="question">
+<p><b>10.</b> In <tt>shell0.c</tt>, what would happen if you typed a line that was longer than 100 characters?
+</div>
+
+<div class="prereq">
+Study, build, and run the <tt>shell1.c</tt> program. Change the prompt to have your name.
+</div>
+
+<div class="question">
+<p><b>11.</b> How does <tt>shell1.c</tt> incorporate the code provided in <tt>skipwhitespace.c</tt>?
+</div>
+
+<div class="question">
+<p><b>12.</b> How does <tt>shell1.c</tt> execute commands such as <tt>ls</tt>?
+</div>
+
+<div class="question">
+<p><b>13.</b> Can <tt>shell1.c</tt> execute commands with options such as <tt>ls -slag</tt>? If so, how is this accomplished?
+</div>
+
+<div class="prereq">
+Study, build, and run the <tt>shell2.c</tt> program. Change the prompt to have your name.
+</div>
+
+<div class="question">
+<p><b>14.</b> What new shell feature(s) does <tt>shell2.c</tt> include that <tt>shell1.c</tt> does not have?
+</div>
+
+<div class="question">
+<p><b>15.</b> <tt>shell2.c</tt> uses the system call <tt>dup2(p[1],1);</tt>. Why is this call used and what does it do?
+</div>
+
+<div class="question">
+<p><b>16.</b> What two new functions does <tt>shell2.c</tt> include in its code and what are the purposes of the functions?
+</div>
+
+<div class="prereq">
+Study, build, and run the <tt>shell3.c</tt> program. Change the prompt to have your name.
+</div>
+
+<div class="question">
+<p><b>17.</b> What happens when you enter <tt>control-C</tt> in <tt>shell3.c</tt> and why does that happen?
+</div>
+
+<div class="question">
+<p><b>18.</b> What new shell feature(s) does <tt>shell3.c</tt> include that <tt>shell2.c</tt> does not have?
+</div>
+
+<div class="question">
+<p><b>19.</b> What two new functions does <tt>shell3.c</tt> include in its code and what are the purposes of the functions?
+</div>
+
+<div class="prereq">
+Study, build, and run the <tt>shell4.c</tt> program. Change the prompt to have your name.
+</div>
+
+<div class="question">
+<p><b>20.</b> What happens when you enter <tt>control-C</tt> in <tt>shell4.c</tt> and why does that happen?
+</div>
+
+<div class="question">
+<p><b>21.</b> What new shell feature(s) does <tt>shell4.c</tt> include that <tt>shell3.c</tt> does not have?
+</div>
+
+<div class="question">
+<p><b>22.</b> What new functions does <tt>shell4.c</tt> include in its code and what are the purposes of the functions?
+</div>
+
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<p><b>This completes the lab.</b> For this lab, you must submit the answers to your questions.
+
+</body>
+</html>
