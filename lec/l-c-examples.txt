@@ -1,0 +1,97 @@
+Examples of C Code. Files are on Canvas Files/website/lec/l-c
+
+---------- array.c ---------------------------------------
+#include "kernel/types.h"
+#include "user/user.h"
+
+int a[3] = {1, 2, 3};    // an array of 3 int's
+char b[3] = {'a', 'b', 'c'};  // an array of 3 char's
+	
+int
+main(int ac, char **av)
+{
+
+  // first element is at index 0
+  printf("%d\n", a[0]);
+  
+  a[1] += 1;  // use index access
+  *(a+2) = 5; // pointer access
+  
+  printf("%d %d\n", a[1], a[2]);
+
+  // pointers to array elements
+  printf("a %p a1 %p a2 %p a2 %p\n", a, a+1, a+2, &a[2]);
+
+  // pointer arithmetic uses type
+  printf("%p %p\n", b, b+1);
+  
+  return 0;
+}
+---------- ptr.c ---------------------------------------
+#include "kernel/types.h"
+#include "user/user.h"
+
+int g = 3;
+	
+int
+main(int ac, char **av)
+{
+  int l = 5;   // local variables don't have a default value
+  int *p, *q;
+  
+  // take address of variable
+  p = &g;
+  q = &l;
+  printf("p %p q %p\n", p, q);
+
+  // assign using pointer
+  *p = 11;
+  *q = 13;
+  printf("g %d l %d\n", g, l);
+
+  // struct
+  struct two {
+    int a;
+    int b;
+  } s;
+  s.a = 10;
+  struct two *ptr = &s;
+  printf("%d %d\n", s.a, ptr->a);
+
+  // can take address of any variable
+  int **pp;
+  pp = &p;    // take address of a pointer variable
+  printf("pp %p %p %d\n", pp, *pp, **pp);
+
+  int (*f)(int, char **);
+  f = &main;  // take address of a function<
+  printf("main: %p\n", f);
+
+  return 0;
+}
+---------- str.c ---------------------------------------
+#include "kernel/types.h"
+#include "user/user.h"
+
+char *s = "123";
+	
+int
+main(int ac, char **av)
+{
+  char s1[4] = {'1', '2', '3', '\0'}; 
+
+  // s and s1 are strings
+  printf("s %s s1 %s\n", s, s1);
+
+  // can use index or pointer access
+  printf("%c %c\n", s[0], *s);
+  printf("%c %c\n", s[2], *(s+2));
+
+  // read beyond str end; DON'T DO THIS
+  printf("%x %p %p\n", s1[4], s1, &s1[4]);
+
+  // write beyond str end; DON'T DO THIS
+  s1[4] = 'D';
+  
+  return 0;
+}
