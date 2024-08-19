@@ -104,11 +104,11 @@ main()
   exit(0);
 }
 
-#include "kernel/types.h"
-#include "user/user.h"
-
 ---------- ex5.c ---------------------------------------
 // ex5.c: fork then exec
+
+#include "kernel/types.h"
+#include "user/user.h"
 
 int
 main()
@@ -130,12 +130,12 @@ main()
   exit(0);
 }
 
+---------- ex6.c ---------------------------------------
+// ex6.c: run a command with output redirected
+
 #include "kernel/types.h"
 #include "user/user.h"
 #include "kernel/fcntl.h"
-
----------- ex6.c ---------------------------------------
-// ex6.c: run a command with output redirected
 
 int
 main()
@@ -187,11 +187,11 @@ main()
 }
 
 
-#include "kernel/types.h"
-#include "user/user.h"
-
 ---------- ex8.c ---------------------------------------
 // ex8.c: communication between two processes
+
+#include "kernel/types.h"
+#include "user/user.h"
 
 int
 main()
@@ -216,11 +216,11 @@ main()
   exit(0);
 }
 
-#include "kernel/types.h"
-#include "user/user.h"
-
 ---------- ex9.c ---------------------------------------
 // ex9.c: list file names in the current directory
+
+#include "kernel/types.h"
+#include "user/user.h"
 
 struct dirent {
   ushort inum;

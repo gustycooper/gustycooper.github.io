@@ -57,13 +57,14 @@ Class structure
     Ask+answer questions on Discord
     Attend office hours
   Do Not miss our Lab Days - classes devoted to working on the labs.
-  Discussion is great, but please do not look at others' solutions!
+  Discussion is great, but you are not allowed to use other teams' solutions!
 
 * Grading:
   50% labs, based on tests (the same tests you run).
-  20% lab check-off meetings: we'll ask you about randomly-selected labs.
-  20% Final exam - oral presenation where your team describes what you have learned.
+  15% lab check-off meetings: we'll ask you about randomly-selected labs.
+  10% class notebook
   10% class participation and home-work and class/discord discussion.
+  15% Final exam - oral presenation where your team describes what you have learned.
   No quizzes.
   Most of the course grade is from labs. Start them early!
 
@@ -265,4 +266,3 @@ Introduction to UNIX system calls
 
 * Next week
   - more about what happens when programs like this execute
-  - first lab due next friday, you'll use these system calls
