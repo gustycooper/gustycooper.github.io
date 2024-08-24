@@ -1,4 +1,4 @@
-CPSC 405 Lecture 16: Crash Recovery, Logging
+CPSC 405 Lecture: Crash Recovery, Logging
 
 Plan
   problem: crash recovery

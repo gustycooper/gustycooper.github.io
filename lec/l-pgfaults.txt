@@ -1,4 +1,4 @@
-CPSC 405 Lecture 8: Page faults
+CPSC 405 Lecture: Page faults
 ==
 
 * plan: cool things you can do with vm

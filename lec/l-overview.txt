@@ -1,4 +1,4 @@
-CPSC 405 Lecture 1: O/S overview
+CPSC 405 Lecture: O/S overview
 
 Overview
 

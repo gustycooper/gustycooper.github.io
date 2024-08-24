@@ -1,4 +1,4 @@
-CPSC 405 Lecture 5: System Call Entry/Exit
+CPSC 405 Lecture: System Call Entry/Exit
 
 Today: user -> kernel transition
   system calls, exceptions, device interrupts enter the kernel in the same way

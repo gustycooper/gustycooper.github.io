@@ -1,4 +1,4 @@
-CPSC 405 Lecture 17: Linux ext3 crash recovery
+CPSC 405 Lecture: Linux ext3 crash recovery
 
 This lecture: a case study of logging in Linux's ext3 file system
   with an eye to performance and real-world design details

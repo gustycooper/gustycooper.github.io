@@ -1,4 +1,4 @@
-6.1810 2023 L17: Operating System Organization, Microkernels
+CPSC 405 Lecture: Operating System Organization, Microkernels
 
 Topic:
   What should a kernel do?

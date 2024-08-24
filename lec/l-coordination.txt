@@ -1,4 +1,4 @@
-CPSC 405 Lecture 14: Coordination (sleep&wakeup)
+CPSC 405 Lecture: Coordination (sleep&wakeup)
 
 # plan
   re-emphasize a few points about xv6 thread switching

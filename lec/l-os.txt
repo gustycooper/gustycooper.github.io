@@ -1,4 +1,4 @@
-6.1810 2023 Lecture 3: OS design
+CPSC 405 Lecture: OS design
 
 Lecture Topic:
   OS design -- high level

@@ -1,4 +1,4 @@
-CPSC 405 Lecture 2: programming xv6 in C
+CPSC 405 Lecture: programming xv6 in C
 
 why C?
   good for low-level programming

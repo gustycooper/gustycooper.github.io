@@ -1,4 +1,4 @@
-CPSC 405 Lecture 7: Virtual Memory/Page tables
+CPSC 405 Lecture: Virtual Memory/Page tables
 
 * plan:
   address spaces

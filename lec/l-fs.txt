@@ -1,4 +1,4 @@
-CPSC 405 Lecture 15: File System
+CPSC 405 Lecture: File System
 
 why are file systems useful?
   durability across restarts

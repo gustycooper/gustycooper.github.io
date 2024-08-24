@@ -1,4 +1,4 @@
-CPSC 405 Lecture 9: Device drivers
+CPSC 405 Lecture: Device drivers
 
 Topic: device drivers
   a CPU needs external devices: storage, communication, &c

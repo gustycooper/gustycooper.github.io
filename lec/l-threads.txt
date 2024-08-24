@@ -1,4 +1,4 @@
-CPSC 405 Lecture 13: Thread switching
+CPSC 405 Lecture: Thread switching
 
 Topic: more "under the hood" with xv6
   Previously: system calls, interrupts, page tables, locks
