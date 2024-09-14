@@ -262,11 +262,17 @@ kernel, but sometimes being able to single step through some assembly
 code or inspecting the variables on the stack is helpful.
 
 <p>To learn more about how to run GDB and the common issues that can
-arise when using GDB, check out <a href="gdb.html">this page</a>.
+arise when using GDB, check out the following.
+<ul>
+<li><a href="gdb.html">GDB Sample Sessions</a> - definitely read this before starting the lab.
+<li><A HREF="../gdb/gdb-refcard.pdf">GDB Reference Card</A></li>
+<li><a href="../gdb/gdb_toc.html#SEC1">GDB Webpages TOC</a></li>
+<li><a href="../gdb/gdb_25.html">GDB Webpages Index</a></li> 
+</ul>
 
 <p> To help you become familiar with gdb, run <kbd>make qemu-gdb</kbd> and
 then fire up gdb in another window
-(see the gdb bullet on the <a href="guidance.html">guidance page</a>). Once you have two windows open, type in the gdb window:
+(see <a href="gdb.html">GDB Sample Sessions</a>). Once you have two windows open, type in the gdb window:
 <pre>
 (gdb) <kbd>b syscall</kbd>
 Breakpoint 1 at 0x80002142: file kernel/syscall.c, line 243.
@@ -282,9 +288,7 @@ Thread 2 hit Breakpoint 1, syscall () at kernel/syscall.c:243
 
 <p>The <tt>layout</tt> command splits the window in two, showing where
   gdb is in the source code. The <tt>backtrace</tt> prints out the
-  stack
-  backtrace</tt>. See <a href="https://pdos.csail.mit.edu/6.828/2019/lec/gdb_slides.pdf">Using
-  the GNU Debugger</a> for helpful GDB commands.</li>
+  stack backtrace</tt>.
 
 
   <div class="question">
@@ -537,7 +541,7 @@ $ randomtest 43
           the kernel trap vector, which is the function <tt>kernelvec</tt>.</li>
       <li>The function <tt>kernelvec</tt> is an assembly function in <tt>kernelvec.S</tt> that saves registers
           on the trapframe and calls the fuction <tt>kerneltrap</tt></li>
-      <li><tt>kerneltrap</tt> is a function in <tt>trap.c</tt> <b>I need to study this some more.</b></li>
+      <li><tt>kerneltrap</tt> is a function in <tt>trap.c</tt></li>
       <li>The trap is processed by the kernel, and the value in register <tt>a7</tt> is used
           to determine which system call has been made. In this case, it results in a call to <tt>sys_rseed()</tt>.</li>
       <li>Notice the <tt>sys_rseed()</tt> does not have arguments, but <tt>rseed(555)</tt> has arguments.</li>
