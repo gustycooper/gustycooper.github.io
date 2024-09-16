@@ -544,7 +544,9 @@ $ randomtest 43
       <li>Notice the <tt>sys_rseed()</tt> does not have arguments, but <tt>rseed(555)</tt> has arguments.</li>
       <li><tt>sys_rseed()</tt> retrieves its argument from register <tt>a0</tt> by calling <tt>argint</tt>, which is 
           located in <tt>syscall.c</tt></li>
-      <li>More information here ... </li> 
+      <li><tt>argint</tt> is called in many of the <tt>sys_</tt> functions. One of the easiest to examine is 
+          <tt>sys_exit</tt>. The <tt>exit(1)</tt> system call has one argument, which is an integer. 
+          Study how <tt>sys_exit</tt> calls <tt>argint</tt>.</li> 
      
       </ul>
     </li>
