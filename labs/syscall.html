@@ -171,10 +171,10 @@ table.syscalls thead tr {
 </tr>
 <tr>
   <td id="fork" class="important"><span class="date"> <code>int rseed(int seed)</code> </span><br /> </td>
-  <td id="forkdescr" class="special"><span class="date">Seeds the random integer generator <code>rint</code>.</span><br /> </td>
+  <td id="forkdescr" class="special"><span class="date">Seeds the random integer generator <code>rinter</code>.</span><br /> </td>
 </tr>
 <tr>
-  <td id="fork" class="important"><span class="date"> <code>int rint(int max)</code> </span><br /> </td>
+  <td id="fork" class="important"><span class="date"> <code>int rinter(int max)</code> </span><br /> </td>
   <td id="forkdescr" class="special"><span class="date">Returns a random integer between 0 and max.</span><br /> </td>
 </tr>
 <tr>
@@ -409,23 +409,23 @@ Thread 3 hit Breakpoint 1, syscall () at kernel/syscall.c:247
 
 <p>
 <div class="required">
-  <p>In this assignment you will add system calls <code>rseed</code> and <code>rint</code> that
+  <p>In this assignment you will add system calls <code>rseed</code> and <code>rinter</code> that
   seed a random integer generator and generate random integers. 
   This assignment introduces you to the Xv6 system call mechanism.
   You'll create a
   new <tt>rseed</tt> system call that will seed the random integer generator. It shall
   take one argument, an integer "seed", that establishes the starting seed
   for the Pseudo Random Number Generator (PRNG).
-  You'll create a new <tt>rint</tt> system call that will return an pseudo random integer.
+  You'll create a new <tt>rinter</tt> system call that will return an pseudo random integer.
   It shall take one argument, an integer <tt>max</tt> such that the random number returned is 
-  between 0 and <tt>max</tt> minus one. Both <tt>rseed</tt> and <tt>rint</tt> shall return -1 on an error.
+  between 0 and <tt>max</tt> minus one. Both <tt>rseed</tt> and <tt>rinter</tt> shall return -1 on an error.
 </div>
 
-<p>The following are your requirements for <tt>rseed</tt> and <tt>rint</tt>
+<p>The following are your requirements for <tt>rseed</tt> and <tt>rinter</tt>
 
 <ul>
 
-<li><p>Your implementation of <tt>rint</tt> shall use a 
+<li><p>Your implementation of <tt>rinter</tt> shall use a 
 <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">Linear Congruential Generator </a>.
 </li>
 
@@ -550,7 +550,7 @@ $ randomtest 43
      
       </ul>
     </li>
-    <li><p>Add a <tt>sys_rint()</tt> function
+    <li><p>Add a <tt>sys_rinter()</tt> function
 	in <tt>kernel/sysproc.c</tt> that implements the new system
 	call by using the Linear Congruential General algorithm defined above.
     </li>
