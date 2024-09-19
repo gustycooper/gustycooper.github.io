@@ -217,7 +217,7 @@ process that's being inspected here.
 <p><b>6.</b>The file <tt>trampoline.S</tt> has the instruction <tt>li a0, TRAPFRAME</tt>, which loads the virtual address of <tt>TRAPFRAME</tt> into register <tt>a0</tt>. The RISC-V CPU that we are using has a 64-bit virtual address space, yet RISC-V has 32-bit instructions. This means it is impossible to include the virtual address of <tt>TRAPFRAME</tt> in an instruction. What is happening with the <tt>li a0, TRAPFRAME</tt> instruction?
 </div>
 
-<h2>Detect which pages have been accessed <script>g("hard")</script></h2>
+<h2>Detect which pages have been accessed <script>g("moderate")</script></h2>
 
 <p>
 Some garbage collectors (a form of automatic memory management) can benefit
