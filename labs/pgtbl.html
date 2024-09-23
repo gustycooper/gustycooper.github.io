@@ -9,7 +9,8 @@
 <h1>Lab: page tables</h1>
 
 <div class="warning">
-<p><b>I am updating this lab to have more questions to help you better learn about paging. I will have the updates completed by September 23. If you start before, September 23, you will have to re-read the lab to discover any additional questions.</b>
+<p><b>I am updating this lab to have more questions to help you better learn about paging. I will have the updates completed by end of day September 23. If you start before end of day September 23, you will have to re-read the lab to discover any additional questions.</b>
+<p><b>As of 9:00PM on Septermber 22, I still have to add a few questions about <tt>walk</tt>.</b>
 </div>
 
 
@@ -188,8 +189,12 @@ case passes when running <tt>pgtbltest</tt>.
 </ul>
  
 <div class="question">
-<p><b>11.</b> Which other xv6 system call(s) could be made faster using this shared page?
+<p><b>11.</b> The above blue box with this problem's specification states that <tt>ugetpid()</tt> has been provided on the userspace side. Where is <tt>ugetpid()</tt> located and how is is included in the executable test program <tt>pgtbltest</tt>?
 Explain how.
+</div>
+
+<div class="question">
+<p><b>12.</b> Draw a diagram of kalloc's data structure of free pages.
 </div>
 
 <h2>Print a page table <script>g("easy")</script></h2>
@@ -205,15 +210,11 @@ It should take
 a <tt>pagetable_t</tt> argument, and print that pagetable
 in the format described below.
 Insert <tt>if(p->pid==1) vmprint(p->pagetable)</tt> in
-  exec.c just before the <tt>return argc</tt>,
+  <tt>exec.c</tt> just before the <tt>return argc</tt>,
 to print the first process's page table.
   You receive full credit for this part of the lab
   if you pass the <tt>pte printout</tt> test of <tt>make grade</tt>.
   
-</div>
-
-<div class="question">
-<p><b>12.</b> Draw a diagram of kalloc's data structure of free pages.
 </div>
 
 
@@ -238,6 +239,10 @@ page table 0x0000000087f6b000
 init: starting sh
   </pre>
 
+<div class="question">
+<p><b>13.</b> Why do all of the physical addresses end with three hexadecimal zeros?
+</div>
+
 The first line displays the argument to <tt>vmprint</tt>.
 After that there is a line for each PTE, including PTEs that
 refer to page-table pages deeper in the tree.
@@ -259,7 +264,21 @@ The number of entries and the virtual addresses should be the same.
 <ul>
   <li>You can put <tt>vmprint()</tt> in <tt>kernel/vm.c</tt>.
   <li>Use the macros at the end of the file <tt>kernel/riscv.h</tt>.
-  <li>The function <tt>freewalk</tt> in <tt>kernel/vm.c</tt> should be inspirational. <tt>freewalk</tt> recursively walks through a pagetable, freeing the pages. You do not want to free pages, however, you can use the recursive algorithm for this printing.
+  <li>The function <tt>freewalk</tt> in <tt>kernel/vm.c</tt> should be inspirational. <tt>freewalk</tt> recursively walks through a pagetable, freeing the pages. You do not want to free pages, however, you can use the recursive algorithm for this printing. In <tt>freewalk</tt> you will see the following statement.
+<pre>
+uint64 child = PTE2PA(pte);
+</pre>
+The macro <tt>PTE2PA</tt> is defined in <tt>riscv.h</tt>, and it converts a page table entry to a physical address. <tt>PTE2PA</tt> is given by the following.
+<pre>
+#define PTE2PA(pte) (((pte) >> 10) << 12)
+</pre>
+</ul>
+
+<div class="question">
+<p><b>14.</b> Explain how the macro <tt>PTE2PA</tt> converts a PTE into a PA.
+</div>
+
+<ul>
   <li>Define the prototype for <tt>vmprint</tt> in <tt>kernel/defs.h</tt> so
     that you can call it from exec.c.
   <li>Use <tt>%p</tt> in your printf calls to print out full 64-bit hex PTEs and addresses as shown in the example print output above.</li>
@@ -267,7 +286,7 @@ The number of entries and the virtual addresses should be the same.
 </ul>
 
 <div class="question">
-<p><b>13.</b> For every leaf page in the <tt>vmprint</tt> output, explain what it logically
+<p><b>15.</b> For every leaf page in the <tt>vmprint</tt> output, explain what it logically
 contains and what its permission bits are.
 Figure 3.4 in the xv6 book might be helpful, although note that the figure might
 have a slightly different set of pages than the <tt>init</tt>
@@ -275,16 +294,18 @@ process that's being inspected here.
 </div>
 
 <div class="question">
-<p><b>14.</b> What is address space layout randomization and why is it important?
+<p><b>16.</b> Xv6 does not have address space randomization. Search for this concept of address space randomization, explain it, and why is it important in today's systems?
 </div>
 
 <div class="question">
-<p><b>15.</b> Unix implementations of <tt>exec</tt> traditionally include special handling for shell scripts. If the file to execute begins with the text <tt>#!</tt>, then the first line is taken to be a program to run to interpret the file. For example, if <tt>exec</tt> is called to run <tt>myprog arg1</tt> and <tt>myprog</tt>'s first line is <tt>#!/interp</tt>, then <tt>exec</tt> runs <tt>/interp</tt> with command line <tt>/interp myprog arg1</tt>. Discuss how you would Implement support for this convention in xv6.
+<p><b>17.</b> Unix implementations of <tt>exec</tt> traditionally include special handling for shell scripts. If the file to execute begins with the text <tt>#!</tt>, then the first line is taken to be a program to run to interpret the file. For example, if <tt>exec</tt> is called to run <tt>myprog arg1</tt> and <tt>myprog</tt>'s first line is <tt>#!/interp</tt>, then <tt>exec</tt> runs <tt>/interp</tt> with command line <tt>/interp myprog arg1</tt>. Discuss how you would Implement support for this convention in xv6.
 </div>
 
+<!--
 <div class="question">
 <p><b>16. </b>The file <tt>trampoline.S</tt> has the instruction <tt>li a0, TRAPFRAME</tt>, which loads the virtual address of <tt>TRAPFRAME</tt> into register <tt>a0</tt>. The RISC-V CPU that we are using has a 64-bit virtual address space, yet RISC-V has 32-bit instructions. This means it is impossible to include the virtual address of <tt>TRAPFRAME</tt> in an instruction. What is happening with the <tt>li a0, TRAPFRAME</tt> instruction?
 </div>
+-->
 
 <h2>Detect which pages have been accessed <script>g("moderate")</script></h2>
 
@@ -297,10 +318,10 @@ The RISC-V hardware page walker marks these bits in the PTE whenever it resolves
 a TLB miss.
 
  <div class="required">
-<p>Your job is to implement <tt>pgaccess()</tt>, a system call that reports which
-pages have been accessed. The system call takes three arguments. First, it takes
-the starting virtual address of the first user page to check. Second, it takes the
-number of pages to check. Finally, it takes a user address to a buffer to store
+<p>Your job is to implement a system call, <tt>pgaccess()</tt>, that reports which
+pages have been accessed. The system call takes three arguments. The first argument is
+the starting virtual address of the first user page to check. The second argument is 
+number of pages to check. The third argument is a user address to a buffer to store
 the results into a bitmask (a datastructure that uses one bit per page and where
 the first page corresponds to the least significant bit). You will receive full
 credit for this part of the lab if the <tt>pgaccess</tt> test case passes when
@@ -309,20 +330,76 @@ running <tt>pgtbltest</tt>.
 
 <p>Some hints:
   <ul>
+  <li>Read <a href="syscall.html" >Lab Syscall</a> for a review on how to add a system call.
   <li>Read <tt>pgaccess_test()</tt> in <tt>user/pgtbltest.c</tt> to
-    see how <tt>pgaccess</tt> is used.
+    see how the function <tt>pgaccess()</tt> is used.
+  <li>You should set 32 as the maximum number of pages that can be scanned.
+This allows you to pass the address of an <tt>unsigned int</tt> as the third argument.
+You will see this is what <tt>user/pgtbltest.c</tt> does.
+  <li>Suppose I have a <tt>char a[3*PGSIZE]</tt> that consumes three pages. 
+I can call the new system call as follows.
+<pre>
+char a[3*PGSIZE];
+unsigend int x;
+... some code here that may access a ...
+pgaccess(a, 3, &x);
+</pre>
+If <tt>a[0]</tt> has changed, bit 0 of <tt>x</tt> will be set. 
+If <tt>a[4096]</tt> has changed, bit 1 of <tt>x</tt> will be set.
+If <tt>a[8192]</tt> has changed, bit 2 of <tt>x</tt> will be set.
+</ul>
+<div class="question">
+<p><b>18.</b> The above code snippet will not work in Xv6, because it defines the 
+variable a as a local variable that would be allocated on the stack. 
+Why will this <b>NOT</b> work on Xv6?
+</div>
+
+<div class="question">
+<p><b>19.</b> How does the function <tt>pgaccess_test()</tt> in <tt>pgtbltest.c</tt> define its variable that corresponds to <tt>a</tt>?
+</div>
+
+
+<ul>
+
   <li>Start by implementing <tt>sys_pgaccess()</tt> in <tt>kernel/sysproc.c</tt>.
   <li>You'll need to parse arguments using <tt>argaddr()</tt> and <tt>argint()</tt>.
   <li>For the output bitmask, it's easier to store a temporary buffer in the kernel and copy it to the user (via <tt>copyout()</tt>) after filling it with the right bits.
-  <li>It's okay to set an upper limit on the number of pages that can be scanned.
   <li><tt>walk()</tt> in <tt>kernel/vm.c</tt> is very useful for finding the right PTEs.
   <li>You'll need to define <tt>PTE_A</tt>, the access bit,
     in <tt>kernel/riscv.h</tt>. Consult
     the <a href="https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMFDQC-and-Priv-v1.11/riscv-privileged-20190608.pdf">RISC-V
     privileged architecture manual</a> to determine its value.
   <li>Be sure to clear <tt>PTE_A</tt> after checking if it is set. Otherwise, it won't be possible to determine if the page was accessed since the last time <tt>pgaccess()</tt> was called (i.e., the bit will be set forever).
-  <li><tt>vmprint()</tt> may come in handy to debug page tables.
+  <li>You can use the following code in the module <tt>proc.c</tt> as part of your solution.
+<pre>
+int
+pgaccess(uint64 va_start, int npage, uint64 res_addr)
+{
+  if(va_start > MAXVA) {
+    panic("pgaccess: too large VA");
+  }
+  if(npage > 32){
+    panic("pgaccess: too many pages");
+  }
+
+  uint res = 0;
+  struct proc *p = myproc();
+  for(int i=0; i&lt;npage; i++){
+    uint64 va = va_start + i * PGSIZE;
+    pte_t *pte = walk(p->pagetable, va, 0);
+    if((*pte & PTE_V) && (*pte & PTE_A)) {
+      res |= (1 &lt;&lt; i);
+      *pte ^= PTE_A;
+    }
+  }
+  return copyout(p->pagetable, res_addr, (char*)&res, sizeof(res));
+}
+</pre>
 </ul>
+
+<div class="question">
+<p><b>20.</b> I still need to add a few questions about walk, etc.
+</div>
 
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
