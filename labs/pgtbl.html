@@ -8,12 +8,6 @@
 
 <h1>Lab: page tables</h1>
 
-<div class="warning">
-<p><b>I am updating this lab to have more questions to help you better learn about paging. I will have the updates completed by end of day September 23. If you start before end of day September 23, you will have to re-read the lab to discover any additional questions.</b>
-<p><b>As of 9:00PM on Septermber 22, I still have to add a few questions about <tt>walk</tt>.</b>
-</div>
-
-
 <p> In this lab you will explore page tables and modify them to
   speed up certain system calls and to detect which pages have been accessed.
 
@@ -223,7 +217,7 @@ Now when you start xv6 it should print output like this, describing
 the page table of the first process at the point when it has just
 finished <tt>exec()</tt>ing <tt>init</tt>:
 
-  <pre>
+<pre>
 page table 0x0000000087f6b000
  ..0: pte 0x0000000021fd9c01 pa 0x0000000087f67000
  .. ..0: pte 0x0000000021fd9801 pa 0x0000000087f66000
@@ -237,7 +231,7 @@ page table 0x0000000087f6b000
  .. .. ..510: pte 0x0000000021fdd007 pa 0x0000000087f74000
  .. .. ..511: pte 0x0000000020001c0b pa 0x0000000080007000
 init: starting sh
-  </pre>
+</pre>
 
 <div class="question">
 <p><b>13.</b> Why do all of the physical addresses end with three hexadecimal zeros?
@@ -251,8 +245,9 @@ depth in the tree.
 Each PTE line shows the PTE index in its page-table page, the pte bits, and the
 physical address extracted from the PTE.
 Don't print PTEs that are not valid.  In the above example, the
-top-level page-table page has mappings for entries 0 and 255.  The next
-level down for entry 0 has only index 0 mapped, and the bottom-level
+top-level page-table page (L2 in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) has mappings for entries 0 and 255.  The next
+level down (L1 in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) for entry 0 has only index 0 mapped, and the bottom-level
+(L0 in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) 
 for that index 0 has entries 0, 1, and 2 mapped.
 
 <p>
@@ -398,7 +393,47 @@ pgaccess(uint64 va_start, int npage, uint64 res_addr)
 </ul>
 
 <div class="question">
-<p><b>20.</b> I still need to add a few questions about walk, etc.
+<p><b>20.</b> Suppose you have the following page table information, which is formatted like the <b>Print a page table</b> problem.
+Explain how you convert the PTE value (e.g., 0x021fd9c01) to its PA (e.g., 0x87f67000).
+<pre>
+page table 0x0000000087f6b000
+ ..0: pte 0x0000000021fd9c01 pa 0x0000000087f67000
+ .. ..0: pte 0x0000000021fd9801 pa 0x0000000087f66000
+ .. .. ..0: pte 0x0000000021fda01b pa 0x0000000087f68000
+</pre>
+</div>
+
+<div class="question">
+<p><b>21.</b> The function <tt>walk()</tt> in <tt>vm.c</tt> "walks" a RISC-V Sv39 page table. The Sv39 indicates a 39 bit VA
+as shown in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>. The succinct code for <tt>walk()</tt> is given as follows.
+<pre>
+pte_t * walk(pagetable_t pagetable, uint64 va, int alloc) {
+  if(va >= MAXVA)
+    panic("walk");
+
+  for(int level = 2; level > 0; level--) {
+    pte_t *pte = &pagetable[PX(level, va)];
+    if(*pte & PTE_V) {
+      pagetable = (pagetable_t)PTE2PA(*pte);
+    } else {
+      if(!alloc || (pagetable = (pde_t*)kalloc()) == 0)
+        return 0;
+      memset(pagetable, 0, PGSIZE);
+      *pte = PA2PTE(pagetable) | PTE_V;
+    }
+  }
+  return &pagetable[PX(0, va)];
+}
+
+</pre>
+<p><b>A.</b> Explain the <tt>PX</tt> macro. Give an example.
+<p><b>B.</b> Explain the <tt>PTE2PA</tt> macro.
+<p><b>C.</b> Pick a level and explain the assignment statement.
+<pre>
+pte_t *pte = &pagetable[PX(level, va)];
+</pre>
+<p><b>D.</b> Explain the <tt>PA2PTE</tt> macro.
+<p><b>E.</b> Explain how walk adds a PTE to a pagetable when the argument alloc is not 0.
 </div>
 
 <p><a name="submit"></>
