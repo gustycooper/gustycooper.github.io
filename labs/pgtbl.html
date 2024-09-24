@@ -393,12 +393,12 @@ Why will this <b>NOT</b> work on Xv6?
 </ul>
 
 <div class="question">
-<p><b>19.</b> Explain the <tt>if</tt> statement on lines 16 through 19 of the function <tt>pgaccess()</tt>
+<p><b>20.</b> Explain the <tt>if</tt> statement on lines 16 through 19 of the function <tt>pgaccess()</tt>
 given above.
 </div>
 
 <div class="question">
-<p><b>20.</b> Suppose you have the following page table information, which is formatted like the <b>Print a page table</b> problem.
+<p><b>21.</b> Suppose you have the following page table information, which is formatted like the <b>Print a page table</b> problem.
 Explain how you convert the PTE value (e.g., 0x021fd9c01) to its PA (e.g., 0x87f67000).
 <pre>
 page table 0x0000000087f6b000
@@ -409,7 +409,7 @@ page table 0x0000000087f6b000
 </div>
 
 <div class="question">
-<p><b>21.</b> The function <tt>walk()</tt> in <tt>vm.c</tt> "walks" a RISC-V Sv39 page table. The Sv39 indicates a 39 bit VA
+<p><b>22.</b> The function <tt>walk()</tt> in <tt>vm.c</tt> "walks" a RISC-V Sv39 page table. The Sv39 indicates a 39 bit VA
 as shown in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>. The succinct code for <tt>walk()</tt> is given as follows.
 <pre>
 pte_t * walk(pagetable_t pagetable, uint64 va, int alloc) {
