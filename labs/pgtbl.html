@@ -367,30 +367,35 @@ Why will this <b>NOT</b> work on Xv6?
   <li>Be sure to clear <tt>PTE_A</tt> after checking if it is set. Otherwise, it won't be possible to determine if the page was accessed since the last time <tt>pgaccess()</tt> was called (i.e., the bit will be set forever).
   <li>You can use the following code in the module <tt>proc.c</tt> as part of your solution.
 <pre>
-int
-pgaccess(uint64 va_start, int npage, uint64 res_addr)
-{
-  if(va_start > MAXVA) {
-    panic("pgaccess: too large VA");
-  }
-  if(npage > 32){
-    panic("pgaccess: too many pages");
-  }
-
-  uint res = 0;
-  struct proc *p = myproc();
-  for(int i=0; i&lt;npage; i++){
-    uint64 va = va_start + i * PGSIZE;
-    pte_t *pte = walk(p->pagetable, va, 0);
-    if((*pte & PTE_V) && (*pte & PTE_A)) {
-      res |= (1 &lt;&lt; i);
-      *pte ^= PTE_A;
-    }
-  }
-  return copyout(p->pagetable, res_addr, (char*)&res, sizeof(res));
-}
+ 1 int
+ 2 pgaccess(uint64 va_start, int npage, uint64 res_addr)
+ 3 {
+ 4   if(va_start > MAXVA) {
+ 5     panic("pgaccess: too large VA");
+ 6   }
+ 7   if(npage > 32){
+ 8     panic("pgaccess: too many pages");
+ 9   }
+10 
+11   uint res = 0;
+12   struct proc *p = myproc();
+13   for(int i=0; i&lt;npage; i++){
+14     uint64 va = va_start + i * PGSIZE;
+15     pte_t *pte = walk(p->pagetable, va, 0);
+16     if((*pte & PTE_V) && (*pte & PTE_A)) {
+17       res |= (1 &lt;&lt; i);
+18       *pte ^= PTE_A;
+19     }
+20   }
+21   return copyout(p->pagetable, res_addr, (char*)&res, sizeof(res));
+22 }
 </pre>
 </ul>
+
+<div class="question">
+<p><b>19.</b> Explain the <tt>if</tt> statement on lines 16 through 19 of the function <tt>pgaccess()</tt>
+given above.
+</div>
 
 <div class="question">
 <p><b>20.</b> Suppose you have the following page table information, which is formatted like the <b>Print a page table</b> problem.
