@@ -184,7 +184,7 @@ case passes when running <tt>pgtbltest</tt>.
  
 <div class="question">
 <p><b>11.</b> The above blue box with this problem's specification states that <tt>ugetpid()</tt> has been provided on the userspace side. Where is <tt>ugetpid()</tt> located and how is is included in the executable test program <tt>pgtbltest</tt>?
-Explain how.
+Explain how it works.
 </div>
 
 <div class="question">
@@ -441,6 +441,16 @@ pte_t *pte = &pagetable[PX(level, va)];
 <p><b>E.</b> Explain how walk adds a PTE to a pagetable when the argument alloc is not 0.
 </div>
 
+<div class="question">
+<p><b>23.</b> Given the diagram below for a Translation Lookaside Buffer, search the Internet to help your answer the following.
+<p><b>A.</b> Explain how a TLB makes paging more efficient. This one you should know without searching, but search if you must.
+<p><b>B.</b> What does Xv6 do when it must change to a new page table? This one will require you to examine Xv6.
+<p><b>C.</b> Explain how an OS would use the ASID field in the TLB to make paging more efficient. 
+Search for ASID and how it is used. ASID is Address Space Identifier.
+<p>
+<img src="tlb.png" alt="Translation Lookaside Buffer" >
+
+</div>
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
 
