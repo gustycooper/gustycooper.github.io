@@ -81,11 +81,26 @@ to become expert assembly programmers for the course.
   <tt>user/call.c</tt> in your xv6 repo.  <kbd>make fs.img</kbd> compiles it
   and also produces a readable assembly version of the program in
   <tt>user/call.asm</tt>.
+<p>The C code for <tt>user/call.c</tt> is the following.
+<pre>
+int g(int x) {
+  return x+3;
+}
+
+int f(int x) {
+  return g(x);
+}
+
+void main(void) {
+  printf("%d %d\n", f(8)+1, 13);
+  exit(0);
+}
+</pre>
 
 <p>Read the code in <tt>call.asm</tt> for the functions <tt>g</tt>, <tt>f</tt>, and <tt>main</tt>.
   The instruction
-  manual for RISC-V is on the <a href="../reference.html">reference page</a>.
-  Answer the following questions in <tt>answers-traps.txt</tt>:
+  manual for RISC-V is on the <a href="../reference.html">reference page</a>, if you need it.
+  Answer the following questions in notebook.
 
   <div class="question">
     <b>1.</b> Which registers contain arguments to functions?  For example, which
@@ -137,21 +152,11 @@ You will have to create a user program and add it to UPROGS in the Makefile.
   </div>
 
   <div class="question">
-    <b>6.</b> In the following code, what is going to be printed after
-      <code>'y='</code>?  (note: the answer is not a specific value.)  Why
-      does this happen?
-
-      <pre>
-	printf("x=%d y=%d", 3);
-      </pre>
+    <b>6.</b> What are the attributes of a RISC architecture?
   </div>
 
   <div class="question">
-    <b>7.</b> What are the attributes of a RISC architecture?
-  </div>
-
-  <div class="question">
-    <b>8.</b> Compare a RISC architecture to a CISC architecture?
+    <b>7.</b> Compare a RISC architecture to a CISC architecture?
   </div>
 
 
@@ -236,7 +241,7 @@ Or you can copy/paste all three like this:
 <tt>int add(int a, int b)</tt>.
 <pre>
 add:
-                  # <b>entry sequence</b>
+                  # <b>prologue or entry sequence</b>
   addi sp,sp,-32  # allocate 32 byte stack
   sd   ra,24(sp)  # put ra on stack
   sd   s0,16(sp)  # put previous fp on stack
@@ -253,7 +258,7 @@ add:
   lw   a5,-24(s0)
 ... more code ...
 -----------------------------------------
-                  # <b>exit sequence</b>
+                  # <b>epilogue or exit sequence</b>
   mv   a0,a5      # put return value in a0
   ld   ra,24(sp)  # get ra from stack
   ld   s0,16(sp)  # reset previous fp
@@ -262,20 +267,20 @@ add:
 </pre>
 
   <div class="question">
-    <b>9.</b> Which of the instructions allocates the stack?
+    <b>8.</b> Which of the instructions allocates the stack?
   </div>
   <div class="question">
-    <b>10.</b> What is the size (in bytes) of the allocated stack?
+    <b>9.</b> What is the size (in bytes) of the allocated stack?
   </div>
   <div class="question">
-    <b>11.</b> Why must the return address be saved on the stack?
+    <b>10.</b> Why must the return address be saved on the stack?
     To answer this question, think of a scenario where you cannot use the <tt>ra</tt> register without saving and restoring it.
   </div>
   <div class="question">
-    <b>12.</b> Which of the instructions deallocates the stack?
+    <b>11.</b> Which of the instructions deallocates the stack?
   </div>
   <div class="question">
-    <b>13.</b> The parameters <tt>a</tt> and <tt>b</tt> for the above function <tt>add</tt> are stored on the stack.
+    <b>12.</b> The parameters <tt>a</tt> and <tt>b</tt> for the above function <tt>add</tt> are stored on the stack.
     What is the offset of <tt>a</tt> relative to the frame pointer?
     What is the offset of <tt>a</tt> relative to the stack pointer?
   </div>
@@ -297,12 +302,12 @@ r_fp()
  assembly</a> to read <tt>s0</tt>.
 After reading <tt>s0</tt>, <tt>r_fp()</tt> returns its value.
   <div class="question">
-    <b>14.</b> The function <tt>r_fp()</tt> is a C function, but it contains assembly code. How does the C programming
-    language all this?
+    <b>13.</b> The function <tt>r_fp()</tt> is a C function, but it contains assembly code. How does the C programming
+    language allow this?
   </div>
   
   <div class="question">
-    <b>15.</b> What is the purpose of the <tt>volatile</tt> keyword?
+    <b>14.</b> What is the purpose of the <tt>volatile</tt> keyword?
   </div>
   
  <li>Your <tt>backtrace</tt> function can call <tt>r_fp()</tt> as follows.<br>
@@ -440,7 +445,7 @@ sys_sigreturn(void){
 </pre>
 
   <div class="question">
-    <b>16.</b> Describe the three members added to the <tt>struct proc</tt> that are used by
+    <b>15.</b> Describe the three members added to the <tt>struct proc</tt> that are used by
     this implementation of the <tt>sigalarm</tt> and <tt>sigreturn</tt> system calls.
   </div>
   
@@ -488,7 +493,7 @@ $
 </pre>
 
   <div class="question">
-    <b>17.</b> The <tt>test0()</tt> in <tt>alarmtest.c</tt> is given by the following with line numbers.
+    <b>16.</b> The <tt>test0()</tt> in <tt>alarmtest.c</tt> is given by the following with line numbers.
 
 <pre>
  1 void periodic() {
@@ -551,7 +556,7 @@ $
   </ul>
 
   <div class="question">
-    <b>18.</b> The current code in <tt>usertrap()</tt> for a timer interrupt is the following.
+    <b>17.</b> The current code in <tt>usertrap()</tt> for a timer interrupt is the following.
 <pre>
   // give up the CPU if this is a timer interrupt.
   if(which_dev == 2)
@@ -685,7 +690,7 @@ p->trapframe->epc = r_sepc() + 4;
 <tt>riskv.h</tt> to read the frame pointer. 
 
   <div class="question">
-    <b>19.</b> The actual code in <tt>usertrap()</tt> is different than the above line that adds 4 to
+    <b>18.</b> The actual code in <tt>usertrap()</tt> is different than the above line that adds 4 to
     <tt>r_sepc()</tt>.
     How does the <tt>usertrap()</tt> code accomplish adding 4 to the <tt>sepc</tt> register?
   </div>
@@ -703,6 +708,10 @@ if (this is a timer interrupt) {
   }
 </pre>
 
+  <div class="question">
+    <b>19.</b> How does <tt>usertrap()</tt> determine if the trap is a syscall?
+  </div>
+
 <li>It will be easier to look at traps with gdb if you tell qemu to
 use only one CPU, which you can do by running
 <pre>
@@ -712,6 +721,15 @@ use only one CPU, which you can do by running
 <li>You've succeeded if alarmtest prints "alarm!".
 
 </ul>
+  <div class="question">
+    <b>20.</b> Several parts to this question.
+<p><b>A. </b> What code executes initially when a trap/interrupt occurs?
+<p><b>B. </b> What mode is the CPU in when it executes the trap handling code?
+<p><b>C. </b> What page table is used when a trap/interrupt initially occurs?
+<p><b>D. </b> What does the sfence RISC-V instruction do, and where is it used in the trap processing?
+
+  </div>
+
 
 <h4>test1/test2()/test3(): resume interrupted code</h4>
 
