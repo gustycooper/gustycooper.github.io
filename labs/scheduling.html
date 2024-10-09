@@ -18,13 +18,48 @@
 </ul>
 </div>
    
+<div class="warning">
+<p>
+<b>For this lab, be sure to invoke make as <kbd>$ make CPUS=1 qemu</kbd>.</b>
+<p>This allows your priority scheduler to demonstrate scheduling with priorities without the complications of multiple CPUS.
+</div>
+
 <div class="question">
 <p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
 Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
-Additionally, in the directory of your xv6-labs, create the file: <b>answers-scheduling.txt</b>. You do not need to put answers in 
-this file, but the grading script checks to see if this file exists. If it exists, I assume you have answered the questions
-in your notebook.
+<p>The Linux <tt>grep</tt> command can be helpful on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
+<pre>
+$ <kbd>grep "struct proc" *.h</kbd>
+defs.h:struct proc;
+defs.h:pagetable_t     proc_pagetable(struct proc *);
+defs.h:int             killed(struct proc*);
+defs.h:void            setkilled(struct proc*);
+defs.h:struct proc*    myproc();
+proc.h:  struct proc *proc;          // The process running on this cpu, or null.
+proc.h:struct proc {
+proc.h:  struct proc *parent;         // Parent process
+proc.h:struct prochist {
+% <kbd>grep "struct proc" *.c</kbd>
+exec.c:  struct proc *p = myproc();
+file.c:  struct proc *p = myproc();
+pipe.c:  struct proc *pr = myproc();
+... lots of matches
+sysproc.c:  struct proc* p = myproc();
+trap.c:  struct proc *p = myproc();
+trap.c:  struct proc *p = myproc();
+</pre>
 </div>
+<div class="required">
+<p>In the directory of your xv6-labs, create two files: <b>answers-scheduling.txt</b> and <b>time.txt</b> that the 
+grading script looks for. You can create these files by the following:
+<pre>
+$ echo > answers-scheduling.txt
+$ echo 10 > time.txt
+</pre>
+I use the information in your photo files and your <b>lab-syscall-handin.txt</b> file that you submit on Canvas.
+I have retained these files and this grading script approach in case I want to use it in the future.
+</div>
+
 
 <p>Fetch the xv6 source for the lab and check out the <tt>scheduling</tt> branch:
 
@@ -74,6 +109,33 @@ enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 <img src="procstates_1.png" alt="Process States" >
 
+<div class="question">
+<p><b>1.</b> Draw the above diagram in your notebook.
+</div>
+
+<div class="question">
+<p><b>2.</b> Provide two examples of something a process can do that causes it to transition from
+<tt>RUNNING</tt> to <tt>SLEEPING</tt>.
+</div>
+
+<div class="question">
+<p><b>3.</b> Provide two example events that cause a process to transition from
+<tt>SLEEPING</tt> to <tt>RUNNABLE</tt>.
+</div>
+
+<div class="question">
+<p><b>4.</b> There is an arrow in the state diagram labeled with Scheduled and Descheduled.
+What function in Xv6 performs this arrow?
+</div>
+
+<div class="question">
+<p><b>5.</b> What function in Xv6 performs the transition from Sleeping to Runnable?
+</div>
+
+<div class="question">
+<p><b>6.</b> Why do you think a process cannot transition from Sleeping to Running?
+</div>
+
 <p>The scheduling algorithm
 searches a list of <i>Runnable</i> processes, selects the next process to run, and <i>runs</i> it.
 Running a process involves a context switch, which is described in the next section. 
@@ -87,20 +149,10 @@ and <tt>ZOMBIE</tt>. An <tt>UNUSED</tt> proc is available to be allocated. A pro
 the <tt>USED</tt> state until it is finally aloocated when it becomes <tt>RUNNABLE</tt>. 
 
 <div class="question">
-<p><b>1.</b> Provide two examples of something a process can do that causes it to transition from
-<tt>RUNNING</tt> to <tt>SLEEPING</tt>.
-</div>
-
-<div class="question">
-<p><b>2.</b> Provide two example events that cause a process to transition from
-<tt>SLEEPING</tt> to <tt>RUNNABLE</tt>.
-</div>
-
-<div class="question">
-<p><b>3.</b> Look up what it means a Linux process to be in a <tt>ZOMBIE</tt> state. Write the answer 
+<p><b>7.</b> Look up what it means a Linux process to be in a <tt>ZOMBIE</tt> state. Write the answer 
 and create a program that results in a process in a <tt>ZOMBIE</tt> state. Use the Xv6 <tt>ctrl-p</tt>
 command to demonstrate your program results in a process that is in the <tt>ZOMBIE</tt> state.
-Since the program is such a few line, hand write the code in your notebook.
+Since the program is such a few lines, hand write the code in your notebook.
 </div>
 
 <p>Another terminology for process states is <i>Running</i>, <i>Ready</i>, and <i>Blocked</i>.
@@ -110,7 +162,7 @@ The following is a process state transition diagram using these terms.
 
 <img src="procstates_2.png" alt="Process States" >
 
-<h3>Xv6 Scheduler and Context Switches</h3>
+<h3>Xv6 Scheduler</h3>
 
 <p>Xv6 supports a maximum 64 concurrent processes, and they are defined in the array <tt>struct proc proc[NPROC];</tt>
 where <tt>param.h</tt> contains <tt>#define NPROC 64</tt>, and
@@ -121,7 +173,13 @@ An allocated process (<tt>allocproc()</tt> is briefly in the <tt>USED</tt> state
 until it is made <tt>RUNNABLE</tt>.
 
 <div class="question">
-<p><b>4.</b> Why do you think <tt>allocproc()</tt> used the intermediate state <tt>USED</tt>? You will have to 
+<p><b>8.</b>  As stated above the scheduler has a list of Runnable procs. 
+The sheduler uses it scheduling algorithm to select the next proc to run from the list of Runnable procs.
+Describe the ready list used by Xv6.
+</div>
+
+<div class="question">
+<p><b>9.</b> Why do you think <tt>allocproc()</tt> used the intermediate state <tt>USED</tt>? You will have to 
 examine the code to answer this.
 </div>
 
@@ -135,15 +193,45 @@ the <tt>scheduler</tt> has selected <i>Opal</i> to run, a context switch from th
 to <i>Opal</i> must occur. Once Xv6 has booted, the <tt>scheduler</tt> enters an endless loop
 searching for <tt>RUNNABLE</tt> processes and performing context switches to them. 
 The <tt>scheduler</tt> runs in kernel mode.
-Xv6 creates the <tt>initproc</tt>, and the <tt>scheduler</tt> runs it (i.e., performs a context swithc). 
+Xv6 creates the <tt>initproc</tt>, and the <tt>scheduler</tt> runs it (i.e., performs a context switch). 
 The <tt>initproc</tt> creates the <tt>sh</tt> (shell) process, and the <tt>scheduler</tt> runs it.
-The shell allows you to enter commands. The shell <tt>fork</tt>s these commands as processes. 
-Each command is a program. The shell performs a two step seqence for each command.
+
+<h3>Xv6 Shell and User Programs</h3>
+
+The shell is our user interface to Xv6. The shell allows you to enter commands. 
+The shell <tt>fork</tt>s these commands as children processes, and like a good parent, waits for its children to finish. 
+Each command is a program located on the Xv6 disk. 
+The programs are created by the <tt>Makefile</tt> from the <tt>.c</tt> files in the <tt>user</tt> directory.
+Each program is created by linking together several object files. Consider the <tt>ls</tt> program.
+<ul>
+<li><tt>ls.c</tt> creates <tt>ls.o</tt>
+<li><tt>ulib.c</tt> creates <tt>ulib.o</tt>
+<li><tt>usys.pl</tt> creates <tt>usys.S</tt> creates <tt>usys.o</tt>
+<li><tt>ls.o</tt>, <tt>ulib.o</tt>, <tt>usys.o</tt> are linked together into the <tt>ls</tt> program.
+</ul>
+
+<div class="question">
+<p><b>10.</b> When you want to add a new user program to Xv6, what must you do the the Makefile?
+</div>
+
+<div class="question">
+<p><b>11.</b> What code is located in <tt>ulib</tt>?
+</div>
+
+<div class="question">
+<p><b>12.</b> What code is located in <tt>usys</tt>?
+</div>
+
+The shell performs a two step sequence to run each command.
 <ul>
 <li>Call <tt>fork()</tt> to create a duplicate shell process.
 <li>Call <tt>exec()</tt> to replace the duplicate shell with the command's program.
+The call to <tt>exec()</tt> is performed in the child's portion of the <tt>fork</tt>'s if statement.
+The parent calls <tt>wait()</tt> in its portion of the <tt>fork</tt>'s if statement.
 </ul>
   
+<h3>Xv6 Context Switches</h3>
+
 <p> The following diagrams displays a context switch from a process <i>Coletta</i> to a process <i>Opal</i>.
 <p>
 <img src="contextswitch.png" alt="Context Switch" >
@@ -156,28 +244,38 @@ On the RISCV architecture, the timer interrupt is immediately processed in machi
 issues a software interrupt that is processed by <tt>uservec()</tt> (in <tt>trampoline.S</tt>). 
 The RISCV CPU is now in supervisor 
 mode, but the CPU is still using the page table of <i>Coletta</i> - not the OS page table. 
-The code for <tt>uservec()</tt> is on the <i>trampoline</i> page, which is mapped 
+The code for <tt>uservec()</tt> is on the <i>trampoline</i> page, the virtual address of which is mapped 
 in each user proc's page table. 
 <i>Coletta</i>'s <i>trampoline</i> page is marked to allow execution in supervisor mode.
 To refresh your memory on memory layout, you can examine <tt>memlayout.h</tt> and Figure 3.3 
 of <a href="../xv6/book-riscv-rev3.pdf">our xv6 text book</a>, which was part of our page table studies.
 Having the <i>trampoline</i> page mapped to <i>Coletta</i>'s page table allows <tt>uservec()</tt> 
 to begin executing in supervisor mode prior to changin to the 
-OS page table, which also maps the <i>trampoline</i> page to the same address. 
+OS page table, which also maps the virtual address <i>trampoline</i> page to the same address. 
 Thus <tt>uservec()</tt> can switch to the OS page table and continue executing the <i>trampoline</i> code. 
 Before switching to the OS page table, <tt>uservec</tt>
 saves all registers in <i>Coletta</i>'s TRAPFRAME. Each process has a unique physical page allocated as its
-TRAPFRAME. Each process's TRAPFRAME mapped to the same virtual address, which allows <tt>uservec()</tt> to
+TRAPFRAME. Each process's TRAPFRAME is mapped to the same virtual address, which allows <tt>uservec()</tt> to
 save the registers. The process's <tt>struc proc</tt> member <tt>p->trapframe</tt> 
 points to the trapframe with its physical address, which allows the kernel to access the process's
-TRAPFRAME using the kernel page table.
+TRAPFRAME using the kernel page table because the kernel's page table maps a virtual address to its corresponding
+physical address. For example, the kernel's page table maps the virtual page number <tt>0x80000</tt> to the
+physical page number <tt>0x80000</tt>.
 
 <div class="question">
-<p><b>5.</b> Explain the processing of a timer interrupt in your own words.
+<p><b>13.</b> Given kernel virtual address of <tt>0x80000b0b</tt>, what is its corresponding physical address?
 </div>
 
 <div class="question">
-<p><b>6.</b> <tt>uservec()</tt> in <tt>trampoline.S</tt> begins execution using a process page table
+<p><b>14.</b> What is the virtual address of the TRAMPOLINE page?
+</div>
+
+<div class="question">
+<p><b>15.</b> Explain the processing of a timer interrupt in your own words.
+</div>
+
+<div class="question">
+<p><b>16.</b> <tt>uservec()</tt> in <tt>trampoline.S</tt> begins execution using a process page table
 and transitions to the OS page table.
 <ul>
 <li>How is is possible to use a process page table when the interrupt is in kernel mode?
@@ -186,7 +284,7 @@ and transitions to the OS page table.
 </div>
 
 <div class="question">
-<p><b>7.</b> Draw Figure 3-4 from  <a href="../xv6/book-riscv-rev3.pdf">our xv6 text book</a> in your notebook.
+<p><b>17.</b> Draw Figure 3-4 from  <a href="../xv6/book-riscv-rev3.pdf">our xv6 text book</a> in your notebook.
 <ul>
 <li>Is this a mapping of a process's virtual address space or physical address space?
 <li>Where are the TRAMPOLINE and TRAPEFRAME pages located?
@@ -197,7 +295,7 @@ and transitions to the OS page table.
 <p>The Xv6 function <tt>scheduler()</tt> in the file <tt>proc.c</tt> implements a round robin scheduler.
 
 <div class="question">
-<p><b>8.</b> Explain how the algorithm in <tt>scheduler()</tt> implements a round robin scheduler.
+<p><b>18.</b> Explain how the algorithm in <tt>scheduler()</tt> implements a round robin scheduler.
 NOTE: The answer is a little trickier than you may think.
 </div>
 
@@ -205,7 +303,7 @@ NOTE: The answer is a little trickier than you may think.
 <p>You will implement a priority scheduler.
 
 <div class="question">
-<p><b>9.</b> Create a design for your priority scheduler. You must complete this before you begin
+<p><b>19.</b> Create a design for your priority scheduler. You must complete this before you begin
 implementing the code for your priority scheduler.
 </div>
 
@@ -229,7 +327,8 @@ but <tt>spoon()</tt> allows you to name the function. The function name is copie
 would have the name of their parent - e.g., they would be named <tt>testschd</tt>.
 
 <p>You must implement <tt>spoon()</tt> before <tt>testschd.c</tt> will run. Or you can change the calls to
-<tt>spoon</tt> to be calls to <tt>fork</tt>.
+<tt>spoon</tt> to be calls to <tt>fork</tt> to temporarily run the program, but you must implement <tt>spoon()</tt>
+before completing the lab.
 
 <p><a name="controlp"></>
 <h3>Scheduler Tester - <tt>ctrl-p</tt> </h3>
@@ -264,7 +363,7 @@ the state <tt>run</tt>. Also notice how <i>Coletta</i> and <i>Opal</i> alternate
 </pre>
 
 <div class="question">
-<p><b>10.</b> Given the above two instanced of <tt>ctrl-p</tt>, what scheduler (round-robin or priority)
+<p><b>20.</b> Given the above two instances of <tt>ctrl-p</tt>, what scheduler (round-robin or priority)
 is running and why?
 </div>
 
@@ -288,7 +387,7 @@ index: cpu proc_id priority name priority
 </pre>
 
 <div class="question">
-<p><b>Q11.</b> Explain in your own words how the circular buffer of process history is implemented.
+<p><b>21.</b> Explain in your own words how the circular buffer of process history is implemented.
 </div>
 
 <h3>Sample <tt>testschd.c</tt> Output for Round-Robin Scheduler</h3>
@@ -342,8 +441,8 @@ Tmr Rupts: 206, Sch Loops: 108822, Swtch Run: 235, Swtch New: 167, Switch Old: 5
 </pre>
 
 <div class="question">
-<p><b>Q12.</b> The first line printed by the system call <tt>prochist()</tt> shows
-various statistics. 
+<p><b>22.</b> The first line printed by the system call <tt>prochist()</tt> shows
+various statistics. You will have to study the code to answer these questions.
 <ul>
 <li>What is Tmr Rupts?
 <li>What is Sch Loops?
@@ -365,10 +464,11 @@ Items to notice in the printout.
 <li>The children are started in order child Coletta:4, child Opal:5, and child Florence:6.
 <li>The call to <tt>prochist()</tt> shows that once a higher priority process begins to
 run, it runs until completion. <i>Florence</i> has the highest priority and it runs 
-<i>Coletta</i>, <i>Opal</i>, and <i>Florence</i>, which is what you expect from 
-a round-robin scheduler.
+until completion, followed by <i>Opal</i>, followed by <i>Coletta</i>. 
+This is what you expect from a priority scheduler.
 <li>The number of timer interrupts is around 200. The exact number will vary per run.
-This is similar to the round-robin. If a timer interrupt occurs when <i>Florence</i> 
+This is similar to the number of timer interrupts in the round-robin. 
+<li>If a timer interrupt occurs when <i>Florence</i> 
 is running, <i>Florence</i> continues running.
 <li>The number of new context switches is small - approximately 15. The exact number
 will vary per run.
@@ -411,7 +511,7 @@ Tmr Rupts: 224, Sch Loops: 121268, Swtch Run: 238, Swtch New: 15, Switch Old: 20
 </pre>
 
 <div class="question">
-<p><b>Q13.</b> Describe what would happen in a priority scheduler in the following scenario.
+<p><b>23.</b> Describe what would happen in a priority scheduler in the following scenario.
 <ul>
 <li>Processes <i>Coletta</i> (priority 55), <i>Opal</i> (priority 20), and <i>Florence</i> (priority 13) are
 all <tt>RUNNABLE</tt>.
@@ -419,7 +519,7 @@ all <tt>RUNNABLE</tt>.
 </ul>
 </div>
 
-<h3>How to Make - <tt>make CPUS=1 qemu</tt></h3>
+<h2>How to Make - <tt>make CPUS=1 qemu</tt></h2>
 To properly test your priority scheduler, you want to run it on one CPU. To do this,
 
 <pre>
@@ -427,7 +527,7 @@ $ <kbd>make CPUS=1 qemu</kbd>
 </pre>
 
 <div class="question">
-<p><b>Q14.</b> What happens when you run your priority scheduler on the normal build, which has four CPUs?
+<p><b>24.</b> What happens when you run your priority scheduler on the normal build, which has four CPUs?
 The normal build is created by
 <pre>
 $ <kbd>make qemu</kbd>
@@ -450,7 +550,7 @@ your <tt>ctrl-g</tt> code.
 </ul>
 
 <div class="question">
-<p><b>Q15.</b> What <tt>kernel</tt> <tt>.c</tt> file contains the code for processing
+<p><b>25.</b> What <tt>kernel</tt> <tt>.c</tt> file contains the code for processing
 <tt>ctrl-p</tt> and <tt>ctrl-g</tt>?
 </div>
 
@@ -544,8 +644,8 @@ I found it easier to first implemented my priority scheduler without this implem
 This meant that one of the equal priority procs would run to completion before the next.
 </ul>
 
-<div class="question">
-<p><b>Q16.</b> After you have finished your priority scheduler, run 
+<div class="required">
+<p>After you have finished your priority scheduler, run 
 <pre>
 $ <kbd>testschd</kbd>
 </pre>
@@ -554,28 +654,29 @@ and enter <tt>ctrl-p</tt> several times to demonstrate processes and their state
 <a href="#controlp" >Scheduler Tester - <tt>ctrl-p</tt></a> for a sample of what you should see.
 </div>
 
+<h2>Diagrams of Various Schedulers</h2>
 <p>The following diagram shows various scheduling algorithms. You will select a Timeline in your answers to questions below.
 <p>
 <img src="schedulertimelines.png" alt="Scheduler Timelines" >
 
 <div class="question">
-<p><b>Q17.</b> Describe a FIFO scheduler. Use a Timeline from the above diagram as part of your description.
+<p><b>26.</b> Describe a FIFO scheduler. Use a Timeline from the above diagram as part of your description.
 </div>
 
 <div class="question">
-<p><b>Q18.</b> Describe a shortest job first scheduler. Use a Timeline from the above diagram as part of your description.
+<p><b>27.</b> Describe a shortest job first scheduler. Use a Timeline from the above diagram as part of your description.
 </div>
 
 <div class="question">
-<p><b>Q19.</b> Describe a shortest time to completion scheduler. Use a Timeline from the above diagram as part of your description.
+<p><b>28.</b> Describe a shortest time to completion scheduler. Use a Timeline from the above diagram as part of your description.
 </div>
 
 <div class="question">
-<p><b>Q20.</b> Describe a multi-level feedback queue scheduler.
+<p><b>29.</b> Describe a multi-level feedback queue scheduler.
 </div>
 
 <div class="question">
-<p><b>Q21.</b> Describe a Linux completely fair scheduler.
+<p><b>30.</b> Describe a Linux completely fair scheduler.
 </div>
 
 
