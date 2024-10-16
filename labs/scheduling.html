@@ -679,8 +679,167 @@ and enter <tt>ctrl-p</tt> several times to demonstrate processes and their state
 <p><b>30.</b> Describe a Linux completely fair scheduler.
 </div>
 
+<h2>Fair Schedulers</h2>
+<div class="warning">
+<p>
+<p>This section does not have any questions, but I will include a question about the Linux Completely Fair Scheduler on the lab checkoff. The question will probably involve comparing LCFS to the lottery or stride scheduler.
+</div>
 
+<div class="required">
+<p>This section provides a cursory treatment of the schedulers. You will have to be sure to read
+<a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf">OSTEP Ch 8: MLFQ</a> and
+<a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-lottery.pdf">OSTEP Ch 9: Lottery</a> 
+and/or ask questions in class about these schedulers.
+</div>
+
+
+<p>A fair scheduler attempts to be <i>fair</i> to processes. <i>Fair</i> means that processes get to run their <i>fair</i> amount based upon some priority.
+The priorities can be assigned by individuals (people) or computed based upon the history of the process's execution. The MLFQ uses execution history to assign priorities. Lottery, Stride, and Linux Completely Fair schedulers rely on individual to assign process priorities.
+
+<p>A scheduler runs a process for a <i>timeslice</i> (also called a <i>quantum</i>). A <i>timeslice</i> is a specific number of miliseconds. 
+For example, <i>timeslice</i> may be 45, 50, or 100 miliseconds.
+<h3>Multilevel Feedback Queue Scheduler</h3>
+
+<p>The Multilevel Feedback Queue scheduler uses execution history to establish processes' priorities. All processes begin with the highest priority. If a process consumes its entire timeslice, its priority is lowered. This is done with multiple levels of priority queues.
+<a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf">OS Three Easy Pieces, Ch 8: MLFQ</a> describes the Multilevel Feedback Queue scheduler.
+The following the MLFQ rules are from Chapter 8, page 10.
+
+<ul>
+<li>Rule 1: If Priority(A) > Priority(B), A runs (B doesn't).
+<li>Rule 2: If Priority(A) = Priority(B), A and B run in round-robin fashion using the time slice (quantum length) of the given queue.
+<li>Rule 3: When a job enters the system, it is placed at the highest priority (the topmost queue).
+<li>Rule 4: Once a job uses up its time allotment at a given level (regardless of how many times it has given up the CPU), its priority is
+reduced (i.e., it moves down one queue).
+<li>Rule 5: After some time period of time, move all the jobs in the system to the topmost queue.
+</ul>
+
+<h3>Lottery Scheduler</h3>
+
+<p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-lottery.pdf">OSTEP, Ch 9: Lottery</a> describes the lottery scheduler.
+Processes are assigned tickets that allocate the process's share of the CPU. 
+For example, if there are two RUNNABLE processes - P1 and P2, where P1 has 100 tickets and P2 has 200 tickets, the P2 runs twice as much as P1.
+The algorithm is really simple, and it is given by the following.
+<pre>
+int winner = getrandom(0, totaltickets);
+node_t *current = head;
+while (current) {
+    counter = counter + current->tickets;
+    if (counter > winner)
+        break; // found the winner
+    current = current->next;
+}
+</pre>
+Over time, the processes with more tickets will win the lottery more times that processes with less tickets. 
+This means the processes with more tickets will run more timeslices the the processes with less tickets.
+However, in a short sampling period, the lottery scheduler may not exhibit the desired fairness. 
+Since it relies on a random number, the lottery scheduler may run a ticket with less tickets more than it should.
+<h3>Stride Scheduler</h3>
+<p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-lottery.pdf">OSTEP, Ch 9: Lottery</a> describes the stride scheduler.
+The stride scheduler is a deterministic fair scheduler.
+<h3>Linux Completely Fair Scheduler</h3>
+<p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-lottery.pdf">OSTEP, Ch 9: Lottery</a> describes the Linux Completely Fair scheduler.
+LCFS is unique in that it assigns longer time slices to processes with higher priorities, whereas, 
+the lottery and stride fair schedulers run processes with higher priorities more time slices.
+<p>The priority in LCFS is its <i>nice</i> value. Linux has a <tt>nice</tt> command and a <tt>nice()</tt> system call that can
+be used to adjust the <i>nice</i> values of processes.
+The <i>nice</i> values range from -20 to 20, which -20 having the highest priority and 20 having the lowest.
+The <i>nice</i> value is used to select a <i>weight</i> that is used in a forumla to compute the process's timeslice.
+
+<pre>
+static const int nice_to_weight[40] = {
+/* -20 */ 88761, 71755, 56483, 46273, 36291, 
+/* -15 */ 29154, 23254, 18705, 14949, 11916,
+/* -10 */  9548,  7620,  6100,  4904,  3906,
+/*  -5 */  3121,  2501,  1991,  1586,  1277,
+/*   0 */  1024,   820,   655,   526,   423,
+/*   5 */   335,   272,   215,   172,   137, 
+/*  10 */   110,    87,    70,    56,    45, 
+/*  15 */    36,    29,    23,    18,    15,
+};
+</pre>
+
+<p>The value schedule latency (<i>schedlatency</i>) is the number of miliseconds that divvied among the processes that are <i>RUNNABLE</i>.
+For example, if <i>schedlatency</i> is 100 milliseconds and four processes, each with the same <i>nice</i> value of 0, are <i>RUNNABLE</i>, 
+each would be allocated a 25 millisecond timeslice.
+<p>Suppose there are <b>N</b> <i>RUNNABLE</i> processes, The formula to compute the <i>timeslice<sub>k</sub></i> for <var>process<sub>k</sub></var> is given by the following.
+
+<p><var>timeslice<sub>k</sub></var> = 
+<var>weight<sub>k</sub></var> / <tt>sum</tt>(<var>weight<sub>i</sub></var> <sub>for i</i><tt>=1..N</tt></sub>) * <var>schedlatency</var>
+
+<p>The formula may seem intimidating, but an example exposes the simplicity of the formula.
+
+<p>Consider there are two <i>RUNNABLE</i> processes, P1 and P2 and the <i>schedlatency</i> is 100 milliseconds. 
+P1 has a <i>nice</i> value of -5, which is a weight of 3121.
+P2 has a <i>nice</i> value of 0, which is a weight of 1024.
+<p>You should observe that P1 has a weight (priority) that is approximately 3 times that of P2.
+<p>The formula will assign a timeslice to P1 that is approximately 75 millisecond and a timeslice to P2 that is 25 milliseconds.
+<p>The exact values computed by the formula are the following.
+<ul>
+<li>The summatioan of the two weights is 3121 + 1024, which is 4145
+<li>P1 time slice 3121/4145 * 100ms = 75.3ms
+<li>P2 time slice 1024/4145 * 100ms = 24.7ms
+</ul>
+
+<p>Virtual Runtime is the last piece of this puzzle. When it is time to select the process to move from <i>RUNNABLE</i> to <i>RUNNING</i>,
+LCFS selects the process with the smallest <i>virtual runtime</i>, which is defined by the following formula.
+
+<p><var>vruntime<sub>i</sub></var> = <var>vruntime<sub>i</sub></var> + <var>weight<sub>0</sub></var>/<var>weight<sub>i</sub></var> * 
+<var>runtime<sub>i</sub></var>
+
+<p>It is important to observe the the vruntime of the two processes P1 and P2 increase exactly the same, which is 24.7. This means that the algorithm is selecting the one with the smallest vruntime, will be a round-robin between the two. This means that P1 runs for 75ms, P2 runs for 25ms, P1 runs for 75ms and so on. Thus achieving the desired fairness when P1 runs 3 times as much as P2.
+<ul>
+<li>
+P1 vruntime = vruntime + 1024/3121*runtime
+<br>0 + 24.7
+<li>
+P1 vruntime = vruntime + 1024/1024*runtime
+<br>0 + 24.7
+</ul>
+
+<p><b>LCFS Practice Problem</b>
+<p>This problem considers a Linux Completely Fair Scheduler that has the following table of nice values.
+
+<pre>
+static const int nice_to_weight[40] = { // negative – higher prior
+ /* -20 */     88761,     71755,     56483,     46273,     36291,
+ /* -15 */     29154,     23254,     18705,     14949,     11916,
+ /* -10 */      9548,      7620,      6100,      4904,      3906,
+ /*  -5 */      3121,      2501,      1991,      1586,      1277,
+ /*   0 */      1024,       820,       655,       526,       423,
+ /*   5 */       335,       272,       215,       172,       137,
+ /*  10 */       110,        87,        70,        56,        45,
+ /*  15 */        36,        29,        23,        18,        15,
+};
+</pre>
+
+Your system has three computational processes with process ids 2021, 2022, and 2023 that are executing with nice values of 0. They are running for a long time. You can change the nice value of a process using the renice command. The following changes process id 2021 to have a nice of -1.
+
+<pre>
+$ sudo renice -n -1 -p 2021
+</pre>
+
+<p>Use the renice command with appropriate nice values to change the nice value of processes 2021, 2022, and 2023 such that process id 2021 runs twice as much as process id 2022, and process id 2022 runs twice as much as process id 2023. The nice values may not exactly translate to twice as much, but they can be close. Add commentary to your answer that explains what you are doing and why.
+
+
+<!-- My attempt at math formulas
+<div class="eq-c">
+  <var>S</var> =
+  <span class="intsuma">
+    <span class="lim">5</span>
+    <span class="sum-frac">&sum;</span>
+    <span class="lim"><var>n</var>=0</span>
+  </span>
+  <div class="fraction">
+     <span class="fup">(<var>x</var> + 1)
+       <sup><var>n</var></sup>
+     </span>
+    <span class="bar">/</span>
+    <span class="fdn"><var>n</var></span>
+  </div>
+</div>
 <p><a name="submit"></>
+-->
+
 <h2>Submit the lab</h2>
 
 <p><b>This completes the lab.</b> 
