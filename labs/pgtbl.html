@@ -64,7 +64,7 @@ I have retained these files and this grading script approach in case I want to u
   </pre>
 
 <h2>Speed up system calls <script>g("easy")</script></h2>
-<p>The first six questions are warmup. Refer to Figure 3-2 of our <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook</a>.
+<p>The first six questions are warmup. Refer to Figure 3-2 of our <a href="../xv6/book-riscv-rev3.pdf">Xv6 Textbook</a>.
 
 <div class="question">
 <p><b>1.</b> Draw a diagram of a RISC-V virtual address (VA).
@@ -245,9 +245,9 @@ depth in the tree.
 Each PTE line shows the PTE index in its page-table page, the pte bits, and the
 physical address extracted from the PTE.
 Don't print PTEs that are not valid.  In the above example, the
-top-level page-table page (L2 in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) has mappings for entries 0 and 255.  The next
-level down (L1 in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) for entry 0 has only index 0 mapped, and the bottom-level
-(L0 in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) 
+top-level page-table page (L2 in <a href="../xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) has mappings for entries 0 and 255.  The next
+level down (L1 in <a href="../xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) for entry 0 has only index 0 mapped, and the bottom-level
+(L0 in <a href="../xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>) 
 for that index 0 has entries 0, 1, and 2 mapped.
 
 <p>
@@ -410,7 +410,7 @@ page table 0x0000000087f6b000
 
 <div class="question">
 <p><b>22.</b> The function <tt>walk()</tt> in <tt>vm.c</tt> "walks" a RISC-V Sv39 page table. The Sv39 indicates a 39 bit VA
-as shown in <a href="xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>. The succinct code for <tt>walk()</tt> is given as follows.
+as shown in <a href="../xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>. The succinct code for <tt>walk()</tt> is given as follows.
 <pre>
 pte_t * walk(pagetable_t pagetable, uint64 va, int alloc) {
   if(va >= MAXVA)
