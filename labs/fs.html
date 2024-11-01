@@ -20,9 +20,33 @@
 <div class="question">
 <p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
 Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
-Additionally, in the directory of your xv6-labs, create the file: <b>answers-fs.txt</b>. You do not need to put answers in 
-this file, but the grading script checks to see if this file exists. If it exists, I assume you have answered the questions
-in your notebook.
+<p>The Linux <tt>grep</tt> command can be helpful on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
+<pre>
+$ <kbd>grep inode *.h</kbd>
+defs.h:struct inode;
+defs.h:int             dirlink(struct inode*, char*, uint);
+defs.h:struct inode*   dirlookup(struct inode*, char*, uint*);
+... lots of matches
+fs.h:#define IBLOCK(i, sb)     ((i) / IPB + sb.inodestart)
+proc.h:  struct inode *cwd;           // Current directory
+% <kbd>grep inode *.c</kbd>
+exec.c:static int loadseg(pde_t *, uint64, struct inode *, uint, uint);
+exec.c:  struct inode *ip;
+exec.c:loadseg(pagetable_t pagetable, uint64 va, struct inode *ip, uint offset, uint sz)
+... lots of matches
+sysfile.c:  struct inode *ip;
+sysfile.c:  struct inode *ip;
+</pre>
+</div>
+<div class="required">
+<p>In the directory of your xv6-labs, create two files: <b>answers-fs.txt</b> and <b>time.txt</b> that the 
+grading script looks for. You can create these files by the following:
+<pre>
+$ echo > answers-scheduling.txt
+$ echo 10 > time.txt
+</pre>
+I use the information in your photo files and your <b>lab-fs-handin.txt</b> file that you submit on Canvas.
+I have retained these files and this grading script approach in case I want to use it in the future.
 </div>
 
 <p>Fetch the xv6 source for the lab and check out the <tt>util</tt> branch:
@@ -33,6 +57,207 @@ in your notebook.
   $ <kbd>make clean</kbd>
 </pre>
 
+<h2>Introduction</h2>
+
+<div class="question">
+<p><b>1.</b> We know there are disk inodes and in-memory inodes. This question is more general. Describe an inode in your own words.
+</div>
+
+<div class="question">
+<p><b>2.</b> Why do we have disk inodes and in-memory inodes?
+</div>
+
+<div class="question">
+<p><b>3.</b> Inodes (both disk and in-memory) do not contain filenames. Where are filenames and how are they related to inodes?
+</div>
+
+<div class="question">
+<p><b>4.</b> We know the RAM is a sequence of bytes, where each byte has a physical address. Compare RAM and disks.
+</div>
+
+<div class="question">
+<p><b>5.</b> Suppose that our file system has disk blocks that are 1024 bytes and a disk inode is 64 bytes.
+Our file system has allocated blocks 7, 8, and 9 to store disk inodes.
+<ol type="A">
+<li> How many files does our filesystem support?</li>
+<li> Given we need to read the file associated with inode number 70, how do we get the inode from the disk?</li>
+</ol>
+</div>
+
+<div class="question">
+<p><b>6.</b> Suppose that our file system has disk blocks that are 1024 bytes and the following is the format of our disk inode,
+which does not have any indirect blocks is the following.
+<pre>
+struct dinode {
+  short type;           // File type
+  short major;          // Major device number (T_DEVICE only)
+  short minor;          // Minor device number (T_DEVICE only)
+  short nlink;          // Number of links to inode in file system
+  uint size;            // Size of file (bytes)
+  uint addrs[8];        // Data block addresses
+};
+</pre>
+What is the maximum number of bytes a file can be?
+</div>
+
+<div class="question">
+<p><b>7.</b> Suppose that our file system has disk blocks that are 1024 bytes and the following is the format of our disk inode,
+where addrs[8] is an indirect block.
+<pre>
+struct dinode {
+  short type;           // File type
+  short major;          // Major device number (T_DEVICE only)
+  short minor;          // Minor device number (T_DEVICE only)
+  short nlink;          // Number of links to inode in file system
+  uint size;            // Size of file (bytes)
+  uint addrs[9];        // Data block addresses
+};
+</pre>
+What is the maximum number of bytes a file can be?
+</div>
+
+
+<div class="question">
+<p><b>8.</b> How does a filesystem support multiple filenames referencing the same data?
+</div>
+
+<div class="question">
+<p><b>9.</b> How does the <tt>open</tt> system call reference a file?
+</div>
+
+<div class="question">
+<p><b>10.</b> How does the <tt>read</tt> system call reference a file?
+</div>
+
+<div class="question">
+<p><b>11.</b> How does a directory entry reference file?
+</div>
+
+<div class="question">
+<p><b>12.</b> What are three ways to reference a file?
+</div>
+
+<div class="question">
+<p><b>13.</b> Consider the following C code snippet.
+<pre>
+int main(int argc, char **argv) {
+   int fd = open("file", O_RDONLY);
+    ...
+}
+</pre>
+What is the value of <tt>fd</tt> and why?
+</div>
+
+<div class="question">
+<p><b>14.</b> Consider the following <tt>ls</tt> command, which I entered on our CPSC server. The command displays information about a file that is stored in the file's inode.
+<pre>
+$ ls -l file.c
+-rw-r--r--  1 gusty faculty 3609 Apr 22  2024 file.c
+</pre>
+<ul>
+<li>The first dash (-) signifies it is a regular file.
+<li>A file has three access permissions: read (r), write (w), and execute (x). The <tt>rw-r--r--</tt> signifies the owner has read-write, the group has read, and other has read access to the file.
+<li>The 1 signifies there is one link to the file.
+<li>The <tt>gusty</tt> signifies that <tt>gusty</tt> owns the file.
+<li>The <tt>faculty</tt> signifies that <tt>gusty</tt> is in the <tt>faculty</tt> group.
+<li>The 3609 signfies that <tt>file.c</tt> is 3609 bytes.
+<li>The Apr 22 2024 is the date the file was last modified.
+<li>The <tt>file.c</tt> is the file name.
+</ul>
+<ol type="A">
+<li>Which of these items can Xv6 display?
+<li>What is the system call that can change the number of links to the file?
+</ol>
+</div>
+
+<div class="question">
+<p><b>15.</b> Consider the following <tt>echo</tt> and <tt>pwd</tt> commands, which I entered on our CPSC server.
+The commands and output have line numbers so I can reference them for questions.
+The <tt>echo</tt> command shows I am using the <tt>bash</tt> (or Bourne Again) Shell. 
+Ken Thompson ahd Dennis Ritchie (both at Bell Labs) were the original developers of Unix.
+Unix Version 6 (released in 1975) was the first version widely distributed, and it is the basis of our Xv6 OS.
+Ken Thompson wrote the first shell, which was in the file <tt>sh.c</tt>.
+Our Xv6 <tt>user/sh.c</tt> is similar to the original Thompson shell.
+Stephen Bourne (of Bell labs) wrote the Bourne shell, which was included in the 1979 release Unix Version 7 in the file <tt>sh.c</tt>.
+Brian Fox of the GNU project wrote the Bourne Again shell as a completely open version of the Bourne shell.
+The <tt>bash</tt> shell was released in 1989. <tt>bash</tt> is the default shell for most Linux and Unix distriubtions.
+
+<pre>
+ 1 $ echo $SHELL
+ 2 /bin/bash
+ 3 $ pwd
+ 4 /home/faculty/gusty/xv6-labs/kernel
+ 5 $ cd ..
+ 6 $ pwd
+ 7 /home/faculty/gusty/xv6-labs
+</pre>
+<ol type="A">
+<li>Notice how the <tt>pwd</tt> commands on lines 3 and 6 show different current working directories.
+In which OS data strcuture is the current working directory stored?
+<li>Notice the <tt>..</tt> on the <tt>cd</tt> command on line 5.
+What is <tt>..</tt> and where is it stored?
+</ol>
+</div>
+
+<div class="question">
+<p><b>16.</b> When a process starts, what are file descriptors 0, 1, and 2?
+</div>
+
+
+<div class="question">
+<p><b>17.</b> Consider the following <tt>ls</tt> command, which I entered on our Xv6 system.
+
+<pre>
+$ ls README
+README         2 2 2305
+</pre>
+If you examine the code in <tt>ls.c</tt>, you will discover the following line of code displays the <tt>ls</tt> results.
+<pre>
+  printf("%s %d %d %l\n", fmtname(path), st.type, st.ino, st.size);
+</pre>
+If you examine the code in <tt>printf.c</tt>, you will discover the following line of code is used to display each character.
+<pre>
+  write(1, &c, 1);
+</pre>
+Explain how the following <tt>ls</tt> shell command places the <ls> output into a file, even though it uses the exact same <tt>printf</tt> and <tt>write</tt> statements as shown above.
+<pre>
+$ ls README > file
+$ cat file
+README         2 2 2305
+</pre>
+<ol type="A">
+</div>
+
+<div class="question">
+<p><b>18.</b> What is a file?
+</div>
+
+<div class="question">
+<p><b>19.</b> What is a pipe?
+</div>
+
+<div class="question">
+<p><b>20.</b> Both <tt>open</tt> and <tt>pipe</tt> system call return file descriptors. Compare files and pipes.
+</div>
+
+<div class="question">
+<p><b>21.</b> Xv6 does not have a <tt>rename</tt> system call. Describe what you would have to do to implement rename. I am not looking for the details of how to add a system call to Xv6. I just want you to describe what has to happen for a file to be renamed. 
+</div>
+
+<div class="question">
+<p><b>22.</b> Suppose that our file system has disk blocks that are 1024 bytes and the filesystem has 32,768 total blocks. We allocate block 1 to the super block, block 2 to the log head, blocks 3 to 31 to log blocks, and blocks 32 to 44 to inodes. How many blocks must we allocate to the bitmap in order to use the remaining blocks as data blocks.
+</div>
+
+<div class="question">
+<p><b>23.</b> Consider the following diagram of a tiny filesystem. The <tt>dinode</tt>s are on block 1. The <tt>ROOT</tt> directory is allocated to <tt>dinode</tt> 1. Data blocks begin at block 10. Redraw the diagram in your notebook, and complete it for the file <tt>/file</tt>, which has your name as its content. Assume that block 11 is allcated as the data block for <tt>file</tt>. <br>
+<img src="tinyfs.png" alt="Tiny FS" >
+</div>
+
+<div class="question">
+<p><b>24.</b> Consider the following diagram of a <tt>struct proc</tt> and its corresponding file data structures.<br> 
+<img src="filestructs.png" alt="struct proc and file structs" >
+<p>Explain the diagram in your own words.
+</div>
 
 <h2>Large files <script>g("moderate")</script></h2>
 
