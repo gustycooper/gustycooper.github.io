@@ -42,7 +42,7 @@ sysfile.c:  struct inode *ip;
 <p>In the directory of your xv6-labs, create two files: <b>answers-fs.txt</b> and <b>time.txt</b> that the 
 grading script looks for. You can create these files by the following:
 <pre>
-$ echo > answers-scheduling.txt
+$ echo > answers-fs.txt
 $ echo 10 > time.txt
 </pre>
 I use the information in your photo files and your <b>lab-fs-handin.txt</b> file that you submit on Canvas.
@@ -451,12 +451,37 @@ understand how pathname lookup works.
 <h3>Your job</h3>
 
 <div class="required">
-<p>You will implement the <tt>symlink(char *target, char *path)</tt>
+<p>Originally, you were to implement the <tt>symlink(char *target, char *path)</tt>
 system call, which creates a new symbolic link at path that refers
-to file named by target. For further information, see the man page
-symlink.  To test, add symlinktest to the Makefile and run it. Your
-solution is complete when the tests produce the following output
-(including usertests succeeding).
+to file named by target. Implementing this is rather difficult.
+Thus, I have modified this portion of the lab.
+<ol>
+<li>Explain soft and hard links. How are they different? How are hard links implementd?
+<p>
+For further information about links (both symbolic/soft and hard links), you can search the Internet or refer to 
+the man pages for <tt>link</tt> and <tt>symlink</tt>.  
+When performing your background study be sure to study the differences between soft and hard links.
+<li>This lab has a symbolic link test program - <tt>user/syblinktest.c</tt>, which was intended to test your implemenation of symbolic links. 
+Instead, you will study <tt>user/symlinktest.c</tt> and document your understanding. 
+<p>In the file <tt>user/symlinktest.c</tt>, explain the functions <tt>testsymlink()</tt> and <tt>stat_slink()</tt>.
+<li>Create a design for symbolic links. Design the <tt>symlink()</tt> system call that creates a symbolic link and <tt>open()</tt> that opens a symbolic link.  Your <tt>open()</tt> design has to traverse two symlinks. 
+<p> In your design, you can create/use functions such as the following:
+<ul>
+<li><tt>ialloc()</tt> - allocate and return an inode.
+<li><tt>nameiparent()</tt> - return the inode of a parent. For example, nameiparent("dir/file") returns the inode of dir.
+<li><tt>dirlookup(inode, name)</tt> - return the inode of file "name" in the directory "inode"
+<li><tt>iupdate(ip)</tt> - update the inode.
+</ul>
+<p>For example, <tt>$ echo gusty > file</tt> can be designed as follows. You can create other functions.
+<ol type="A">
+<li><tt>ialloc()</tt> an inode for <tt>file</tt>.
+<li><tt>balloc()</tt> a data block for <tt>file</tt>.
+<li>Add the data block to <tt>file</tt>'s inode.
+<li>Write the string <tt>gusty</tt> to the data block.
+<li>Update the size in <tt>file</tt>'s inode.
+<li>Add the directory entry <tt>file</tt> and inode to the current working directory.
+</ol>
+</ol>
 </div>
 
 <pre>
