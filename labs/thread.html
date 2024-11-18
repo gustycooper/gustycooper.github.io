@@ -29,9 +29,30 @@ solve three problems.
 <div class="question">
 <p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
 Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
-Additionally, in the directory of your xv6-labs, create the file: <b>answers-thread.txt</b>. You do not need to put answers in 
-this file, but the grading script checks to see if this file exists. If it exists, I assume you have answered the questions
-in your notebook.
+<p>The Linux <tt>grep</tt> command can be helpful on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
+<pre>
+% <kbd>grep sem_post *.c</kbd>
+barrier_sem.c:/*  8 */       sem_post(&bstate.barrier_turnstile1); // wakeup one thread
+barrier_sem.c:/* 10 */   sem_post(&bstate.barrier_mutex);
+barrier_sem.c:/* 13 */   sem_post(&bstate.barrier_turnstile1); // Wakeup next thread
+barrier_sem.c:/* 21 */       sem_post(&bstate.barrier_turnstile2);
+barrier_sem.c:/* 24 */   sem_post(&bstate.barrier_mutex);
+barrier_sem.c:/* 27 */   sem_post(&bstate.barrier_turnstile2);
+% <kbd>grep pthread_cond_wait *.c</kbd>
+barrier.c:    pthread_cond_wait(&bstate.barrier_cond, &bstate.barrier_mutex);
+barrier_cv.c:/*  7 */    pthread_cond_wait(&bstate.barrier_cond, &bstate.barrier_mutex);
+zemaphore.c:	pthread_cond_wait(&z->cond, &z->lock);
+</pre>
+</div>
+<div class="required">
+<p>In the directory of your xv6-labs, create two files: <b>answers-thread.txt</b> and <b>time.txt</b> that the 
+grading script looks for. You can create these files by the following:
+<pre>
+$ echo > answers-fs.txt
+$ echo 10 > time.txt
+</pre>
+I use the information in your photo files and your <b>lab-thread-handin.txt</b> file that you submit on Canvas.
+I have retained these files and this grading script approach in case I want to use it in the future.
 </div>
 
 
@@ -42,6 +63,50 @@ in your notebook.
   $ <kbd>make clean</kbd>
   </pre>
 
+<h2>Introduction</h2>
+
+<div class="question">
+<p><b>1.</b> Compare processes and threads.
+</div>
+
+<div class="question">
+<p><b>2.</b> When I have a process with two threads, the OS creates three page tables - one for the process and one for each of the threads. Is this a true statement? Justify your answer.
+</div>
+
+<div class="question">
+<p><b>3.</b> When I have a program with two processes, both of them can share access to a static variable <tt>int X;</tt>. I this a true statement? Justify your answer.
+</div>
+
+<div class="question">
+<p><b>4.</b> What is a lock?
+</div>
+
+<div class="question">
+<p><b>5.</b> Xv6 often uses locks such as the following. Why does it need to use locks?
+<pre>
+  acquire(&kmem.lock);
+  r = kmem.freelist;
+  if(r)
+    kmem.freelist = r->next;
+  release(&kmem.lock);
+</pre>
+</div>
+<div class="question">
+<p><b>6.</b> The <tt>acquire()</tt> in the previous is a spinning lock. Create the C code for <tt>acquire()</tt>. Your code may include a race condition. What hardware fixes the race condition?
+</div>
+<div class="question">
+<p><b>7.</b> Explain why two threads cannot concurrently increment a static variable successfully without using locks. Use assembly code in your explanation.
+</div>
+
+<div class="question">
+<p><b>8.</b> What is a sleeping lock?
+</div>
+
+<div class="question">
+<p><b>9.</b> What is a scenario where a spinning lock is better than a sleeping lock?
+</div>
+
+
 <h2><tt>gcc</tt> Compiler Systems - host and target</h2>
 We have two compiler systems for this class. 
 Both run on our Linux host machine.
@@ -51,7 +116,8 @@ code for Intel.
 The target RISC-V compiler toolchain runs on the host, but generates
 code for our RISC-V QEMU emulator. 
 Most of our lab code is built with the target RISC-V compiler toolchain.
-<p>For this lab, you build your code with the host C compiler toolchain.
+<p>For this lab, you build your code with the Linux (or host) C compiler toolchain.
+You can also build and run the code with the MacOS operating system.
 The starting code is given to you in folder <tt>notxv6</tt> to indicate
 this code is not part of Xv6.
 You do not use the RISC-V <tt>gcc</tt> compiler system for these labs.
@@ -122,6 +188,11 @@ Vulnerabilities:
   Tsx async abort:       Mitigation; Clear CPU buffers; SMT Host state unknown
 </pre>
 using the "Task Manager" on Windows or "Activity Monitor" on macOS.
+
+<div class="question">
+<p><b>10.</b> What is a core? How many cores on your computer?
+</div>
+
 <h2>Parallel Hash Problem <script>g("easy")</script></h2>
 
 <p>In this assignment you will explore parallel programming with
@@ -140,7 +211,7 @@ and
 <a href="https://pubs.opengroup.org/onlinepubs/007908799/xsh/pthread_mutex_lock.html">Mutex Lock</a>.
 
 <p>The <tt>notxv6</tt> folder means this code is not part of our Xv6 build.
-Instead, you use your native Linux environment and the host <tt>gcc</tt> compiler toolchain.
+Instead, you use your native Linux environment (or MacOS environment) and the host <tt>gcc</tt> compiler toolchain.
 
 <p>The files <tt>notxv6/hash_bad.c</tt> and <tt>notxv6/hash_good.c</tt> contain a simple hash table.
 <tt>hash_bad.c</tt>
@@ -156,12 +227,38 @@ with <tt>get()</tt>. It prints the number keys that should have been
 in the hash table as a result of the puts but are missing (zero is
 the correct value), and it prints the number of gets per second it achieved.
 
+<p>You should <tt>cd</tt> into the directory <tt>notxv6</tt> for running the hash problem programs.
+You will use the <tt>gcc</tt> compiler toolchain for building these programs.
+There are many ways to generate the executable. The following show several options.
+<pre>
+$ <kbd>gcc hash_bad.c</kbd>
+$ <kbd>./a.out 1</kbd>
+100000 puts, 4.982 seconds, 20074 puts/second
+0: 0 keys missing
+100000 gets, 4.947 seconds, 20216 gets/second
+</pre>
+This uses <tt>gcc</tt> to create the executable <tt>a.out</tt>, and then executes it with 1 thread.
+<pre>
+$ <kbd>gcc -o hash_bad hash_bad.c</kbd>
+$ <kbd>./hash_bad 2</kbd>
+100000 puts, 2.597 seconds, 38513 puts/second
+1: 155 keys missing
+0: 155 keys missing
+200000 gets, 5.196 seconds, 38490 gets/second
+</pre>
+This uses <tt>gcc</tt> to create the executable <tt>hash_bad</tt>, and then executes it with 2 threads.
+<pre>
+$ <kbd>gcc -o hash_bad hash_bad.c -pthreads</kbd>
+</pre>
+This uses <tt>gcc</tt> to create the executable <tt>hash_bad</tt>. 
+When building <tt>hash_bad</tt> the <tt>-pthreads</tt> option informs the <tt>gcc</tt> linker to use the <tt>pthreads</tt> library.
+Some systems require you to explicitly state when you are using the <tt>pthreads</tt> library.
 
-<p>In your main xv6 directory (perhaps <tt>~/xv6-labs</tt>),
+<p>In the <tt>notxv6</tt> directory (perhaps <tt>~/xv6-labs/notxv6</tt>),
 type this:
 <pre>
-$ <kbd>make hash_bad</kbd>
-$ <kbd>make hash_good</kbd>
+$ <kbd>gcc -o hash_bad hash_bad</kbd>
+$ <kbd>gcc -o hash_good hash_bad</kbd>
 $ <kbd>./hash_bad 1</kbd>
 100000 puts, 9.582 seconds, 10436 puts/second
 0: 0 keys missing
@@ -189,7 +286,7 @@ $ <kbd>./hash_good 8</kbd>
 800000 gets, 28.734 seconds, 27842 gets/second
 
 </pre>
-Note that to build the hash programs the Makefile uses your OS's gcc, not
+Note that to build the hash programs, you are using your OS's gcc, not
 the RISC-V tools.
 Also note the numbers you see may differ from this sample output 
 depending on how fast your computer is, whether it has
@@ -220,11 +317,22 @@ Have a look at <tt>notxv6/hash_bad.c</tt>, particularly at <tt>put()</tt>
 and <tt>insert()</tt>.
 
 <div class="question">
-<b>1.</b> Why are there missing keys with 2 threads, but not with 1 thread?
+<b>11.</b> Describe the hashing algorithm used by the hash programs. 
+In your description, 
+<ol>
+<li> Describe the purpose of the array <tt>keys[]</tt>.
+<li> Do you think there are many collisions when inserting elements into the array <tt>table[]</tt>?
+<li> How is the thread id passed to <tt>put_thread()</tt> and <tt>get_thread()</tt>?
+<li> Suppose the program is invoked as <tt>$ <kbd>hash_bad 2</kbd></tt>, what <tt>keys[]</tt> are used by the thread with id 1.
+</ol>
 </div>
 
 <div class="question">
-<b>2.</b> Identify a sequence of
+<b>12.</b> Why are there missing keys with 2 threads, but not with 1 thread?
+</div>
+
+<div class="question">
+<b>13.</b> Identify a sequence of
 events that is an unguarded critical region. 
 Recall a critical region is where 2 threads are accessing a shared data structure,
 which can lead to a key being missing.
@@ -246,12 +354,8 @@ pthread_mutex_unlock(&lock);     // release lock
 </pre>
 
 This has been done for you in <tt>hash_good.c</tt>
-<p>
-The <tt>make grade</tt> will say that your code passes the <tt>hash_safe</tt> test,
-which requires zero missing keys with two threads, and the <tt>hash_fast</tt> test.
-<p>
-Alternatively, you can enter <tt>./grade-lab-thread hash_safe</tt> and
-<tt>./grade-lab-thread hash_fast</tt>.
+<p>The solution in <tt>hash_good.c</tt> executes the <tt>put</tt> operations in parallel
+  while maintaining correctness.
 </div>
 
 <p>
@@ -269,19 +373,17 @@ hash table, and thus don't need a lock to protect against
 each other.
 The solution in <tt>hash_good.c</tt> uses a mutex lock lock per hash bucket.
 
-<div class="required">
-<p>The solution in <tt>hash_good.c</tt> executes the <tt>put</tt> operations in parallel
-  while maintaining correctness.
-The <tt>ph_fast</tt> test requires that two threads yield at least 1.25 times as
-many puts/second as one thread.
+
+<div class="question">
+<b>14.</b> Show the code sequences that make <tt>hash_good.c</tt> a correct solution for a multithreaded application.
 </div>
 
 <div class="question">
-<b>3.</b> Describe the hash algorithm used in <tt>hash_good.c</tt>.
+<b>15.</b> What are Moore's Law and Ahmdal's Law? Discuss them in context with the parallel hash solution.
 </div>
 
 <div class="question">
-<b>4.</b> What are Moore's Law and Ahmdal's Law? Discuss them in context with the parallel hash solution.
+<b>16.</b> What are the Xv6 equivalent calls for <tt>pthread_mutex_lock()</tt> and <tt>pthread_mutex_unlock()</tt>?
 </div>
 
 
@@ -297,11 +399,13 @@ coordination technique similar to xv6's sleep and wakeup.
 <p>The solutions are provided in the files <tt>notxv6/barrier_cv.c</tt> and 
 <tt>not xv6/barrier_sem.c</tt> Notice these programs execute on a real computer - not xv6, not qemu.
 
+<p>You should <tt>cd</tt> into the directory <tt>notxv6</tt> for running the hash problem programs.
+You will use the <tt>gcc</tt> compiler toolchain for building these programs.
+There are many ways to generate the executable. The following show several options.
+See the Parallel Hash Problem section for ways to build executable programs.
 <pre>
-$ <kbd>make barrier_cv</kbd>
-gcc -o barrier_cv -g -O2 -DSOL_THREAD -DLAB_THREAD notxv6/barrier_cv.c -pthread
-$ <kbd>make barrier_sem</kbd>
-gcc -o barrier_sem -g -O2 -DSOL_THREAD -DLAB_THREAD notxv6/barrier_sem.c -pthread
+$ <kbd>gcc -o barrier_cv barrier_cv.c -pthread</kbd>
+$ <kbd>gcc -o barrier_sem barrier_sem.c -pthread</kbd>
 $ <kbd>./barrier_cv 2</kbd>
 OK; passed
 $ <kbd>./barrier_sem 2</kbd>
@@ -383,51 +487,53 @@ The semaphore solution passes <tt>make grade</tt>'s <tt>barrier_sem</tt> tests.
 </div>
 
 <div class="question">
-<b>5.</b> I tend to like using semaphores instead of condition variables; however, it these two
+<b>17.</b> I tend to like using semaphores instead of condition variables; however, it these two
 solutions, the condition variable solution seems simpler. Why do you think it is simpler?
 </div>
 
 <div class="question">
-<b>6.</b> CV: The function <tt>barrier()</tt> references the variable <tt>bstate</tt> using <tt>.</tt>
+<b>18.</b> CV: The function <tt>barrier()</tt> references the variable <tt>bstate</tt> using <tt>.</tt>
 and not <tt>-></tt>. For example, <tt>bstate.nthread</tt>. Why is a <tt>.</tt> used instead of
 a <tt>-></tt>?
 </div>
 
 <div class="question">
-<b>7.</b> CV: The function <tt>main()</tt> defines an array <tt>tha</tt> to hold <tt>nthread</tt> threads.
+<b>19.</b> CV: What does the variable <tt>bstate.nthread</tt> count? Describe your answer for the following.
+<pre>
+$ <kbd>barrier_cv 5</kbd>
+</pre>
+</div>
+
+<div class="question">
+<b>20.</b> CV: What does the following statement in barrier_cv.c accomplish?
+<pre>
+/* 11 */    pthread_cond_broadcast(&bstate.barrier_cond);
+</pre>
+</div>
+
+<div class="question">
+<b>21.</b> CV: The function <tt>main()</tt> defines an array <tt>tha</tt> to hold <tt>nthread</tt> threads.
 Describe how <tt>main()</tt> defines the array <tt>tha</tt>.
 </div>
 
 <div class="question">
-<b>8.</b> CV: In your own words describe Condition Variables and how they work.
+<b>22.</b> CV: In your own words describe Condition Variables and how they work.
 </div>
 
 <div class="question">
-<b>9.</b> SEM: Why are the members of variable <tt>bstate</tt> names <tt>barrier_turnstile1</tt> and
+<b>23.</b> SEM: Why are the members of variable <tt>bstate</tt> names <tt>barrier_turnstile1</tt> and
 <tt>barrier_turnstile2</tt>.
 </div>
 
 <div class="question">
-<b>10.</b> SEM: In function <tt>barrier()</tt> lines 4 and 10 there are calls to <tt>sem_wait</tt> and <tt>sem_post</tt>.
+<b>24.</b> SEM: In function <tt>barrier()</tt> lines 4 and 10 there are calls to <tt>sem_wait</tt> and <tt>sem_post</tt>.
 What are the purposes of these calls.
 </div>
 
 <div class="question">
-<b>11.</b> SEM: In function <tt>barrier()</tt> lines 12 and 13 there are calls to <tt>sem_wait</tt> and <tt>sem_post</tt>.
+<b>25.</b> SEM: In function <tt>barrier()</tt> lines 12 and 13 there are calls to <tt>sem_wait</tt> and <tt>sem_post</tt>.
 What are the purposes of these calls.
 </div>
-
-<h2>Testing Hash and Barrier</h2>
-The hash and barrier programs can be tested individually by (for example)
-<pre>
-$ <kbd>./grade-lab-thread barrier_sem</kbd>
-</pre>
-
-You can test all your hash and barrier programs by
-<pre>
-$ <kbd>make grade</kbd>
-</pre>
-
 
 <h2>Thread-safe Message Queue Problem</h2>
 For this problem, you implement the solution to a "bounded buffer" problem.
@@ -775,14 +881,14 @@ consumer 3
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
 
-<p><b>This completes the lab.</b> Make sure you pass all of the <tt>make
-grade</tt> tests. 
-
-Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
-to submit your lab.
-
-In addition to placing <tt>make grade</tt> in your <tt>answer-thread.txt</tt> file, copy/paste the
-output from running the five test cases in <tt>msgq</tt>
+<p><b>This completes the lab.</b> This lab does not have <tt>make grade</tt>. For this lab, you submit the following.
+<ul>
+<li><tt>lab-thread-handin.txt</tt> - this has the normal assessment information. Instead of the output from <tt>make grade</tt>,
+copy/paste your running/testing of the hash programs, the barrier programs, and your solution to the bounded buffer program.
+The output from your bounded buffer program must show all 5 test cases.
+<li>A zip file that contains the source code to your solution to the bounded buffer program. Be sure to include all of the source code. For example, if you solution has multiple <tt>.c</tt> and <tt>.h</tt> files, be sure to include them all.
+<li>A photo file with the answers to your questions.
+</ul>
 <!--
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
