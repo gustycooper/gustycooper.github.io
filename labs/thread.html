@@ -342,7 +342,7 @@ which can lead to a key being missing.
 
 <p>To avoid this sequence of events, we must insert lock and unlock statements
 in
-<tt>put</tt> and <tt>get</tt> in <tt>notxv6/ph.c</tt> so that the
+<tt>put</tt> and <tt>get</tt> in <tt>notxv6/hash_bad.c</tt> so that the
 number of keys missing is always 0 with two threads. The relevant
 pthread calls are:
 
