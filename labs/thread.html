@@ -248,17 +248,17 @@ $ <kbd>./hash_bad 2</kbd>
 </pre>
 This uses <tt>gcc</tt> to create the executable <tt>hash_bad</tt>, and then executes it with 2 threads.
 <pre>
-$ <kbd>gcc -o hash_bad hash_bad.c -pthreads</kbd>
+$ <kbd>gcc -o hash_bad hash_bad.c -pthread</kbd>
 </pre>
 This uses <tt>gcc</tt> to create the executable <tt>hash_bad</tt>. 
-When building <tt>hash_bad</tt> the <tt>-pthreads</tt> option informs the <tt>gcc</tt> linker to use the <tt>pthreads</tt> library.
+When building <tt>hash_bad</tt> the <tt>-pthread</tt> option informs the <tt>gcc</tt> linker to use the <tt>pthreads</tt> library.
 Some systems require you to explicitly state when you are using the <tt>pthreads</tt> library.
 
 <p>In the <tt>notxv6</tt> directory (perhaps <tt>~/xv6-labs/notxv6</tt>),
 type this:
 <pre>
-$ <kbd>gcc -o hash_bad hash_bad</kbd>
-$ <kbd>gcc -o hash_good hash_bad</kbd>
+$ <kbd>gcc -o hash_bad hash_bad.c</kbd>
+$ <kbd>gcc -o hash_good hash_good.c</kbd>
 $ <kbd>./hash_bad 1</kbd>
 100000 puts, 9.582 seconds, 10436 puts/second
 0: 0 keys missing
@@ -323,7 +323,7 @@ In your description,
 <li> Describe the purpose of the array <tt>keys[]</tt>.
 <li> Do you think there are many collisions when inserting elements into the array <tt>table[]</tt>?
 <li> How is the thread id passed to <tt>put_thread()</tt> and <tt>get_thread()</tt>?
-<li> Suppose the program is invoked as <tt>$ <kbd>hash_bad 2</kbd></tt>, what <tt>keys[]</tt> are used by the thread with id 1.
+<li> Suppose the program is invoked as <tt>$ <kbd>./hash_bad 2</kbd></tt>, what <tt>keys[]</tt> are used by the thread with id 1.
 </ol>
 </div>
 
@@ -486,6 +486,15 @@ pthread_cond_broadcast(&cond);     // wake up every thread sleeping on cond
 The semaphore solution passes <tt>make grade</tt>'s <tt>barrier_sem</tt> tests.
 </div>
 
+<div class="warning">
+<p>Explanation of 
+<b><tt>$ <kbd>./barrier_sem 2</kbd></tt></b>
+terminating with an error where for loop in the function <tt>thread()</tt> stops with an assertion error with <tt>i</tt> not equal to <tt>bstate.round</tt>.
+<p>Suppose we have three threads - TA, TB, and TC. After line 15 (labeled Critical point) of the function <tt>barrier()</tt>, 
+TA and TB go through the critical region (lines 17 to 24), and sleep on <tt>trunstile2</tt> at the <tt>sem_wait</tt> on line 26.
+TC wakes up either TA or TB with <tt>sem_post</tt> on line 21. We'll say TA wakes up. At this point we have TA and TC running (or runnable). TC will sleep on <tt>turnstile2</tt> at the sem_wait</tt> on line 26. The goal is for TA to wake up TB with the <tt>sem_post</tt> on line 27 and then for TB to wake up TC with the <tt>sem_post</tt> on line 27. A call to <tt>sem_post</tt>, increments the semaphore and wakes up a thread, if one is sleeping. The problem is TA can awake TB, which can call <tt>sem_post</tt> before TC has called <tt>sem_wait</tt> on line 26. In this scenario, we get the error.
+</div>
+
 <div class="question">
 <b>17.</b> I tend to like using semaphores instead of condition variables; however, it these two
 solutions, the condition variable solution seems simpler. Why do you think it is simpler?
@@ -500,7 +509,7 @@ a <tt>-></tt>?
 <div class="question">
 <b>19.</b> CV: What does the variable <tt>bstate.nthread</tt> count? Describe your answer for the following.
 <pre>
-$ <kbd>barrier_cv 5</kbd>
+$ <kbd>./barrier_cv 5</kbd>
 </pre>
 </div>
 
