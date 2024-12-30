@@ -15,9 +15,12 @@
 For example, the Xv6 API has a single <code>exec</code> function call to execute a new program within a process, whereas, Linux has a family of exec calls (ie., <code>execp</code>, <code>execl</code>, <code>execvp</code>, <code>execlp</code>).
 
 <p>You will create several Unix/Linux utility programs. All of the programs
-   have a starting <tt>.c</tt> program that you must edit. For example, there
+   have a starting <tt>.c</tt> program that you may have to edit. For example, there
    is a <tt>kittycat.c</tt> program. You must design the code, edit the program,
-   and test that it satisfies the requirements. 
+   and test that it satisfies the requirements. However, I have provided the solution code
+   to many of the problems. For those problems, you should study the provided solution code
+   so that you understand it. Then your editing will consist of placing the solution code 
+   into the appropriate <tt>.c</tt> file.
 
 <div class="prereq">
 <p>Before you begin lab system calls, read Chapter 1 of
@@ -27,10 +30,46 @@ For example, the Xv6 API has a single <code>exec</code> function call to execute
 <div class="question">
 <p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
 Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
-Additionally, in the directory of your xv6-labs, create the file: <b>answers-util.txt</b>. You do not need to put answers in 
-this file, but the grading script checks to see if this file exists. If it exists, I assume you have answered the questions
-in your notebook.
+<p>The Linux <tt>grep</tt> command can be helpful on C programming using Linux with a terminal and on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
+<pre>
+$ <kbd>grep "struct proc" *.h</kbd>
+proc.h:struct proc {
+... lots of matches
+proc.h:struct proc *find_proc(int pid);
+proc.h:bool enqueue_proc(struct proc *p);
+% <kbd>grep "struct proc" *.c</kbd>
+main.c:        struct proc *p = NULL;
+... lots of matches
+proc.c:    struct proc *p = kernel_proc;
+proc.c:    struct proc *p = new_proc(name, priority, ppid);
+</pre>
 </div>
+<div class="required">
+<p>In the directory of your xv6-labs, create two files: <b>answers-util.txt</b> and <b>time.txt</b> that I may use 
+if I run your code using your zip file submission. The answers-util.txt is a blank file. The time.txt file contains
+the number of hours you spent on the lab.
+<pre>
+$ echo > answers-util.txt
+$ echo 8 > time.txt
+</pre>
+</div>
+<h2>Xv6 Utility Programs</h2>
+<p>When you <tt>make</tt> Xv6, you are building a system that includes the Xv6 kernel and its utility programs.
+The utility programs are placed on a disk image such that when Xv6 bootstraps, the files are available to 
+the Xv6 kernel, the Xv6 shell, and the Xv6 utility programs.
+The Xv6 system bootstraps into the <tt>qemu</tt> emulator, emulating a RISC-V CPU, a timeer interrupt, a
+terminal device, and a disk/SSD device. 
+<p>Utility programs are added to the Xv6 system by creating a <tt>.c</tt> program in the <tt>user</tt>
+directory and adding the name of the program to the <tt>UPROGS</tt> variable in the <tt>Makefile</tt>.
+For example, when adding the <tt>kittycat</tt> utility program, you place the program's file (<tt>kittycat.c</tt>)
+in the <tt>user</tt> directory and add <tt>$U/_kittycat\</tt> to the <tt>UPROGS</tt> variable in the <tt>Makefile</tt>.
+When you have done this, <tt>make qemu</tt> will compile your program, include it in the resulting system, and you
+will be able to run your program from the Xv6 shell.
+<p>For this lab, I have provided a <tt>Makefile</tt> where the variable <tt>UPROGS</tt> has all of the lab's utility programs.
+In future labs, if you add a new utility program, you will have to remember to update the variable <tt>UPROGS</tt>
+<p>You will notice that the hints have words such as 
+"Ensure your <tt>kittycat</tt> program has been added <tt>UPROGS</tt> in <tt>Makefile</tt>." 
+This has already been done, but you should examine the <tt>Makefile</tt> to see how it has been done. 
 
 <h2>Boot xv6 <script>g("easy")</script></h2>
 
@@ -198,21 +237,7 @@ and one for <tt>sh</tt>.
 
 <p>To quit qemu type: <kbd>Ctrl-a x</kbd> (press <kbd>Ctrl</kbd> and <kbd>a</kbd> at the same time, followed by <kbd>x</kbd>).
 
-<h2>Grading and hand-in procedure</h2>
-
-<p>
-You can run <kbd>make grade</kbd>
-to test your solutions with the grading program. I will use the same
-grading program to assign your lab submission a
-grade. Separately, we will also have check-off meetings for labs (see
-<a href="../general.html#grading">Grading policy</a>).
-</p>
-
-<p>The lab code comes with GNU Make rules to make submission easier. After
-committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to submit
-  your lab.  For detailed instructions on how to submit see <a href="#submit">below</a>.
-
-<h2>kittycat <script>g("easy")</script></h2>
+<h2>kittycat <script>g("easy - starting code provided")</script></h2>
 
 <div class="required">
 <p>Implement the UNIX program <tt>kittycat</tt> for xv6; your <tt>kittycat</tt> mimics
@@ -242,10 +267,12 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
 
     <li>If the user passes an argument, kittycat should print the error message: 
     <tt>kittycat: No args allowed</tt>.
-    <li>Ensure your <tt>kittycat</tt> program has been added <tt>UPROGS</tt> in Makefile; once you've
-    done that, <tt>make qemu</tt> will compile your program and you'll
+    <li>Ensure your <tt>kittycat</tt> program has been added <tt>UPROGS</tt> in <tt>Makefile</tt>. 
+    The <tt>Makefile</tt> variable <tt>UPROGS</tt> defines all of the utility (or user) programs that
+    are included in the Xv6 system that the <tt>Makefile</tt> builds.
+    Once you have updated <tt>UPROGS</tt> to include <tt>kittycat</tt>, 
+    <tt>make qemu</tt> will compile your <tt>kittycat</tt> program and you'll
     be able to run it from the xv6 shell.
-
 
   </ul>
 
@@ -284,7 +311,14 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
   </div>
 
 <h3>Testing</h3>
-  <p>Your solution is correct if your program generates the output shown above.
+<p>After you have implemented your <tt>kittycat.c</tt>, you must test it, which in this case is rather easy.
+Here is what I would do to test <tt>kittycat.c</tt>
+<ul>
+<li><tt>$ <kbd>cat kittycat.txt</kbd></tt> - use <tt>cat</tt> to show what is in the <tt>kittycat.txt</tt> file.
+<li><tt>$ <kbd>kittycat</kbd></tt> - run <tt>kittycat</tt> and verify that it displays the same information as the previous <tt>cat</tt> command.
+<li><tt>$ <kbd>kittycat argument</kbd></tt> - run <tt>kittycat</tt> with an argument and verify that it displays the no args allowed message.
+</ul>
+<!--  <p>Your solution is correct if your program generates the output shown above.
   Run <kbd>make grade</kbd> to see if you indeed pass the
     <tt>kittycat</tt> tests.
 
@@ -298,16 +332,22 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
      $ <kbd>make GRADEFLAGS=kittycat grade</kbd>
    </pre>
    which does the same.
+-->
 
-
-<h2>sleep <script>g("easy")</script></h2>
+<h2>sleep <script>g("easy - solution code provided")</script></h2>
 
 <div class="required">
 <p>Implement the UNIX program <tt>sleep</tt> for xv6; your <tt>sleep</tt> should pause
   for a user-specified number of ticks.  A tick is a notion of time
   defined by the xv6 kernel, namely the time between two interrupts
   from the timer chip.  Your solution should be in the file
-  <tt>user/sleep.c</tt>.
+  <tt>user/sleep.c</tt>. When running <tt>sleep</tt>, you must pass an integer argument
+  that is the number of ticks to sleep. If an argument is not pass, your <tt>sleep</tt>
+  must print an error message.
+<pre>
+$ <kbd>sleep 10</kbd>
+$ <kbd>sleep</kbd>
+Usage: sleep &lt;ticks>
 </div>
 
 <p>
@@ -347,8 +387,29 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
 
     <li>Look at Kernighan and Ritchie's book <i>The C programming language
         (second edition)</i> (K&R) to learn about C.
+    <li><tt>sleep.c</tt> solution code.
+<pre>
+#include "kernel/types.h"
+#include "kernel/stat.h"
+#include "user/user.h"
+
+int
+main(int argc, char *argv[])
+{
+  if(argc < 2){
+    fprintf(2, "Usage: sleep <ticks>\n");
+    exit(1);
+  }
+  sleep(atoi(argv[1]));
+  exit(0);
+}
+</pre>
 
   </ul>
+
+  <div class="question">
+    <p><b>4.</b> What is the type of <tt>argv[1]</tt> and why is it an appropriate argument for <tt>atoi()</tt>?
+  </div>
 
 <h3>Testing</h3>
   <p>Run the program from the xv6 shell:
@@ -360,43 +421,193 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
       (nothing happens for a little while)
       $
     </pre>
-  <p>Your solution is correct if your program pauses when
-  run as shown above.
-  Run <kbd>make grade</kbd> to see if you indeed pass the
-    sleep tests.
-
- <p>Note that <kbd>make grade</kbd> runs all tests, including the ones for the assignments
- below. If you want to run the grade tests for one assignment, type:
-   <pre>
-     $ <kbd>./grade-lab-util sleep</kbd>
-   </pre>
-   This will run the grade tests that match "sleep".  Or, you can type:
-   <pre>
-     $ <kbd>make GRADEFLAGS=sleep grade</kbd>
-   </pre>
-   which does the same.
 
   <div class="question">
-    <p><b>4.</b> Use the process state diagram to explain how you think the OS implements a sleeping process.
+    <p><b>5.</b> Use the process state diagram to explain how you think the OS implements a sleeping process.
   </div>
 
 
-<h2>pingpong <script>g("easy")</script></h2>
+<h2>forkexec (fork and exec) <script>g("easy - sample code provided")</script></h2>
 
 <div class="required">
-<p> Write a program that uses UNIX system calls to ''ping-pong'' a
-  byte between two processes over a pair of pipes, one for each
+Write a program that calls <tt>fork</tt> and <tt>exec</tt> to execute the <tt>ls</tt> program as a child process.
+<ul>
+<li><tt>$ <kbd>forkexec</kbd></tt> - when your program is run without an argument, it calls <tt>ls</tt> to display all files.
+<li><tt>$ <kbd>forkexec kittycat</kbd></tt> - when your program is run with an argument, it calls <tt>ls</tt>, passing the argument to <tt>ls</tt>. In this example, <tt>ls</tt> will display the file <tt>kittycat</tt>.
+</ul>
+</div>
+
+When a process calls <tt>fork()</tt>, it results in a duplicate of the calling process. You now have two processes. 
+The return value from fork is used to determine if you are the parent or child process. A return value of 0 indicates you are the child process. A return value of nonzero indicates you are the parent process.
+
+<h3>Some Hints</h3>
+<ul>
+<li>The following code demonstrates a child process calling <tt>fork</tt> and <tt>exec</tt> to run the <tt>echo</tt> program.
+<pre>
+#include "kernel/types.h"
+#include "user/user.h"
+int main() {
+  int status;
+  int pid = fork();
+  if(pid == 0){
+    char *argv[] = { "echo", "THIS", "IS", "ECHO", 0 };
+    exec("echo", argv);
+    printf("exec failed!\n");
+    exit(1);
+  } else {
+    printf("parent waiting\n");
+    wait(&status);
+    printf("the child exited with status %d\n", status);
+  }
+  exit(0);
+}
+</pre>
+<li>Notice that the first argument passed to <tt>exec()</tt> is the name of the program to execute.
+<li>Notice that the second argument passed to <tt>exec()</tt> is an array of pointers to strings. 
+By convention the first element of the array points to the name of the program to execute. The remaining elements are pointers to the arguments passed to the program.
+<li>Notice how when calling <tt>exec()</tt>, it never returns if it is successful. The program that is executed overwrites the child process.
+<li>Notice how the parent <tt>wait()</tt>'s for the child to terminate.
+<li>Your <tt>main</tt> must have parameters as shown below.
+<pre>
+int main(int argv, char **argv)
+</pre>
+If the <tt>argv</tt> parameter is 2, then you will pass <tt>argv[1]</tt> as the second element in the second argument passed to <tt>exec()</tt>
+
+</ul>
+
+<h2>File Reading <script>g("easy - solution code provided")</script></h2>
+
+<div class="required">
+Write a program, <tt>numbers</tt>, that uses the system call <tt>read</tt> to read a file with numbers and computes the sum of those numbers.
+<ul>
+<li>
+To simplify the problem, the input file <tt>nums.txt</tt> has a sequence of lines. Each line contains a two-digit number.
+<pre>
+10
+20
+30
+</pre>
+</ul>
+</div>
+
+<h3>Some Hints</h3>
+<ul>
+<li><tt>numbers.c</tt> solution code.
+<pre>
+#include "kernel/types.h"
+#include "kernel/fcntl.h"
+#include "user/user.h"
+
+int
+main(int argc, char **argv)
+{
+  char buf[3];
+  int fd;
+  if (argc == 2)
+    fd = open(argv[1], O_RDONLY);
+  else
+    fd = open("nums.txt", O_RDONLY);
+  if (fd < 0) {
+    printf("file not found\n");
+    exit(1);
+  }
+  printf("Compute sum of 2 digit numbers in a file.\n");
+  int n, sum = 0, count = 1;
+  while ((n = read(fd, buf, 3)) == 3) {
+    printf("----------\nNumber%d: ", count);
+    write(1, buf, n);
+    printf("buf[0]: 0x%x, buf[1]: 0x%x, buf[2]: 0x%x\n", buf[0], buf[1], buf[2]);
+    printf("buf[0]: %c, buf[1]: %c, buf[2]: %c", buf[0], buf[1], buf[2]);
+    buf[2] = 0;
+    int num = atoi(buf);
+    printf("num: %d\n", num);
+    sum += num;
+    count++;
+  }
+  printf("----------\nsum: %d\n", sum);
+  exit(0);
+}
+</pre>
+<li>The Unix I/O system calls include <tt>open</tt>, <tt>close</tt>, <tt>read</tt>, and <tt>write</tt>.
+These are different from the C runtime I/O calls such as <tt>scanf</tt>, <tt>printf</tt>, <tt>fopen</tt>, etc.
+The C runtime I/O functions eventually call the Unix I/O system calls because those are the only functions that access the devices to perform I/O. You can see this by reading the file <tt>kernel/printf.c</tt>, which contains C runtime I/O functions.
+<li>A file is a sequence of bytes stored on a disk/SSD. In a text file, each byte is a 7-bit ASCII character, which allows it to be a readable file.
+<li>If you examined the details of the <tt>num.txt</tt> file shown above in the blue box, you would discover that it is a sequence of 9 bytes that are the following.
+<pre>
+0x31 0x30 0xA 0x32 0x30 0xA 0x33 0x30 0xA
+</pre>
+0x30, 0x31, 0x32, and 0x33 are the hex values for ASCII 0, 1, 2, and 3. And 0xA is the hex value for an ASCII Carriage Return (CR).
+The first three bytes of the file are ASCII 1, ASCII 0, and ASCII CR, which is <tt>10\n</tt>.
+<li>The <tt>while</tt> loop reads 3 bytes at a time. Each read of 3 bytes consumes a "line", which is a 2-digit number and a CR.
+<li>The 3 bytes are read into the character buffer <tt>buf</tt>.
+<li>Once in <tt>buf</tt>, the data is printed in various ways.
+<ul>
+<li><tt>write(1, buf, n);</tt> - this writes 3 bytes to standard out, which is file descriptor 1.
+<li>The elements of <tt>buf</tt> are printed as hex values using <tt>%x</tt>.
+<li>The elemenst of <tt>buf</tt> are printed as <tt>char</tt> values using <tt>%c</tt>.
+<li>The ASCII in <tt>buf</tt> is converted to an integer using the <tt>atoi</tt> function.
+<li>The converted integer is printed as an integer using <tt>%d</tt>.
+</ul>
+
+<li>Notice how <tt>open</tt> returns an integer file descriptor, which is used by <tt>read</tt> as its first parameter. The other parameters to read are the buffer in which to read data, and the number of bytes to read. The <tt>write</tt> function is similar to <tt>read</tt>.
+
+</ul>
+<h3>Testing</h3>
+<p>You can test your <tt>numbers</tt> program by running it as follows.
+<pre>
+$ <kbd>numbers</kbd>
+Compute sum of 2 digit numbers in a file.
+----------
+Number1: 10
+buf[0]: 0x31, buf[1]: 0x30, buf[2]: 0xA
+buf[0]: 1, buf[1]: 0, buf[2]: 
+num: 10
+----------
+Number2: 20
+buf[0]: 0x32, buf[1]: 0x30, buf[2]: 0xA
+buf[0]: 2, buf[1]: 0, buf[2]: 
+num: 20
+----------
+Number3: 30
+buf[0]: 0x33, buf[1]: 0x30, buf[2]: 0xA
+buf[0]: 3, buf[1]: 0, buf[2]: 
+num: 30
+----------
+sum: 60
+$ <kbd>numbers not</kbd>
+file not found
+$ <kbd>numbers kittycat.txt</kbd>
+Compute sum of 2 digit numbers in a file.
+----------
+Number1: Thibuf[0]: 0x54, buf[1]: 0x68, buf[2]: 0x69
+buf[0]: T, buf[1]: h, buf[2]: inum: 0
+... lots printed to display ...
+----------
+Number199: ah
+buf[0]: 0x61, buf[1]: 0x68, buf[2]: 0xA
+buf[0]: a, buf[1]: h, buf[2]: 
+num: 0
+----------
+sum: 6
+</pre>
+<h2>pingpong <script>g("easy - starting code provided")</script></h2>
+<div class="required">
+<p> Write a program, <tt>pingpoing</tt> that uses UNIX system calls to ''ping-pong'' the arguments passed to <tt>main()</tt>
+  between a parent and child process over a pair of pipes, one for each
   direction.
-  The parent should send a byte to the child;
-  the child should print "&lt;pid&gt;: received ping",
-  where &lt;pid&gt; is its process ID,
-  write the byte on the pipe to the parent,
-  and exit;
-  the parent should read the byte from the child,
-  print "&lt;pid&gt;: received pong",
-  and exit.
-  Your
-  solution should be in the file <tt>user/pingpong.c</tt>.
+<ul>
+<li>
+  The parent shall send the first argument to the child;
+<li>
+  The child shall print "&lt;pid&gt;: received "&lt;arg1&gt;",
+  where &lt;pid&gt; is its process ID and &lt;arg&gt; is the argument received.
+<li>
+  After printing, the child shall write the second argument on the pipe to the parent, and exit;
+<li>
+  The parent shall read the argument from the child,
+  print "&lt;pid&gt;: received "&lt;arg&gt;", and exit.
+<li>
+  Your solution shall be in the file <tt>user/pingpong.c</tt>.
 </div>
 
 <h3>Some Hints</h3>
@@ -412,10 +623,49 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
     <tt>user/user.h</tt>; the source (other than for system calls)
     is in <tt>user/ulib.c</tt>, <tt>user/printf.c</tt>,
     and <tt>user/umalloc.c</tt>.
+    <li>The following is a version of <tt>pingpong.c</tt> that sends and received a single byte.
+You can modify this to send and receive arguments.
+<pre>
+// Sample program: send/receive a byte
+#include "kernel/types.h"
+#include "kernel/stat.h"
+#include "user/user.h"
+int main(int argc, char *argv[]) {
+  int p1[2], p2[2];
+  pipe(p1); // create pipe p1
+  pipe(p2); // create pipe p2
+  int pid = fork();
+  if(pid == 0){
+    close(p1[1]);
+    char buf[1];
+    read(p1[0], buf, sizeof(buf));
+    printf("%d: received ping\n", getpid());
+    close(p1[0]);
+    close(p2[0]);
+    write(p2[1], "o", 1);
+    close(p2[1]);
+  } else if(pid > 0){
+    close(p1[0]);
+    write(p1[1], "i", 1);
+    close(p1[1]);
+    wait((int*) 0);
+    char buff[1];
+    read(p2[0], buff, sizeof(buff));
+    printf("%d: received pong\n", getpid());
+    close(p2[0]);
+  } else{
+    fprintf(2, "fork error!\n");
+    exit(1);
+  }
+  exit(0);
+}
+</pre>
+    <li>I think you will find it helpful to create a drawing of the two pipes connecting the parent and child.
+    <li>Notice how the parent and child close the input and output ends of the pipes.
   </ul>
 
 <h3>Testing</h3>
-  <p>Run the program from the xv6 shell and it should produce the
+  <p>If you first run the sample program, it should produce the
   following output:
   <pre>
     $ <kbd>make qemu</kbd>
@@ -426,15 +676,29 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
     3: received pong
     $
   </pre>
-    <p>Your solution is correct if your program exchanges a byte
-    between two processes and produces output as shown above.
+    <p>Your solution is correct if you can get it to produce output like the following.
 
+  <pre>
+    $ <kbd>make qemu</kbd>
+    ...
+    init: starting sh
+    $ <kbd>pingpong gusty cooper</kbd>
+    4: received gusty
+    3: received cooper
+    $
+  </pre>
 
   <div class="question">
-    <p><b>5.</b> Explain in your own words what a Xv6/Linux pipe is - not a pipe used for smoking.
+    <p><b>6.</b> Explain in your own words what a Xv6/Linux pipe is - not a pipe used for smoking.
   </div>
 
-<h2>primes <script>g("moderate")</script></h2>
+  <div class="question">
+    <p><b>7.</b> Notice how the I/O functions <tt>read()</tt> and <tt>write()</tt> are used for reading/writing both files
+and pipes. The <tt>open()</tt> function and the <tt>pipe()</tt> function both return a file descriptor.
+Explain in your own words what is the differenct between reading/writing pipes and files.
+  </div>
+
+<h2>primes <script>g("moderate - solution code provided")</script></h2>
 
 <div class="required">
   <p>Write a concurrent version of prime sieve using pipes.  This idea
@@ -454,6 +718,55 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
 
 <h3>Some Hints</h3>
   <ul>
+    <li><tt>primes.c</tt> solution code.
+<pre>
+#include "kernel/types.h"
+#include "kernel/stat.h"
+#include "user/user.h"
+
+void
+primes(int lpipe[2])
+{
+  close(lpipe[1]);
+  int first, num;
+  int n = read(lpipe[0], &first, sizeof(int));
+  if(n != sizeof(int)) exit(0);
+  printf("prime %d\n", first);
+  int rpipe[2];
+  pipe(rpipe);
+  while(read(lpipe[0], &num, sizeof(int))){
+    if(num % first != 0)
+      write(rpipe[1], &num, sizeof(int));
+  }
+  close(lpipe[0]);
+  close(rpipe[1]);
+  if(fork() == 0){
+    primes(rpipe);
+  } else {
+    close(rpipe[0]);
+    wait(0);
+  }
+  exit(0);
+}
+
+int
+main(int argc, char *argv[])
+{
+  int p[2];
+  pipe(p);
+  for (int i=2; i<=35; i++) {
+    write(p[1], &i, sizeof(int));
+  }
+  if(fork()==0){
+    primes(p);
+  } else {
+    close(p[0]);
+    close(p[1]);
+    wait(0);
+  }
+  exit(0);
+}
+</pre>
     <li>Be careful to close file descriptors that a process doesn't
     need, because otherwise your program will run xv6 out of resources
     before the first process reaches 35.
@@ -475,6 +788,16 @@ committing your final changes to the lab, type <kbd>HERE::make handin</kbd> to s
 
     <li>Ensure your <tt>primes</tt> program has been added <tt>UPROGS</tt> in Makefile; once you've
     done that, <tt>make qemu</tt> will compile your program and you'll
+
+  <div class="question">
+    <p><b>8.</b> There is a lot going on in this solution code. One way to better understand it is to
+compare the picture halfway down <a href="http://swtch.com/~rsc/thread/">this page</a>
+to the solution code. Each box in the picture corresponds to process (created with <tt>fork()</tt>)
+in the solution code. The process is reading numbers from the left <tt>pipe</tt> and writing numbers
+to the right <tt>pipe</tt>. For example, the first <tt>primes()</tt> process reads the numbers
+2 through 35. It prints the number two. Removes numbers even divisible by two and writes the 
+remaining numbers to the right <tt>pipe</tt>. How many processes are created for this solution?
+  </div>
 
   </ul>
 
@@ -501,10 +824,10 @@ sieve and produces the following output:
   </pre>
 
   <div class="question">
-    <p><b>6.</b> Do you think there is a largest prime number such that it is the last prime number? What are the number of digits in the largest prime number discovers so far? When was it discovered?
+    <p><b>9.</b> Do you think there is a largest prime number such that it is the last prime number? What are the number of digits in the largest prime number discovers so far? When was it discovered?
   </div>
 
-<h2>find <script>g("moderate")</script></h2>
+<h2>find <script>g("moderate - solution code provided")</script></h2>
 
 <div class="required">
 <p>Write a simple version of the UNIX find program: find all the files
@@ -518,9 +841,85 @@ sieve and produces the following output:
 
 <h3>Some Hints</h3>
   <ul>
-    <li>Look at <tt>user/ls.c</tt> to see how to read directories.
-    <li>Use recursion to allow find to descend into sub-directories.
-    <li>Don't recurse into "." and "..".
+    <li><tt>find.c</tt> solution code.
+<pre>
+#include "kernel/types.h"
+#include "kernel/stat.h"
+#include "user/user.h"
+#include "kernel/fs.h"
+#include "kernel/fcntl.h"
+
+void
+find(char *path, char *name)
+{
+  char buf[512], *p;
+  int fd;
+  struct dirent de;
+  struct stat st;
+
+  if((fd = open(path, O_RDONLY)) < 0){
+    fprintf(2, "find: cannot open %s\n", path);
+    return;
+  }
+  if(fstat(fd, &st) < 0){
+    fprintf(2, "find: cannot stat %s\n", path);
+    close(fd);
+    return;
+  }
+  if(st.type != T_DIR){
+    fprintf(2, "find: first param must be directory\n");
+    close(fd);
+    return;
+  }
+
+  strcpy(buf, path);
+  p = buf + strlen(buf);
+  *p++ = '/';
+  while(read(fd, &de, sizeof(de)) == sizeof(de)){
+    if(de.inum == 0) continue;
+    memmove(p, de.name, DIRSIZ);
+    p[DIRSIZ] = 0;
+    if(stat(buf, &st) < 0){
+      printf("find: cannot stat %s\n", buf);
+      continue;
+    }
+    // core code
+    if(st.type==T_DIR && strcmp(p, ".")!=0 && strcmp(p, "..")!=0){
+      find(buf, name);
+    }else if(st.type==T_FILE && strcmp(p, name)==0){
+      printf("%s\n", buf);
+    }
+  }
+  close(fd);
+}
+
+int
+main(int argc, char *argv[])
+{
+  if(argc != 3){
+    fprintf(2, "Usage: find &lt;dir&gt; &lt;file&gt;\n");
+    exit(1);
+  }
+  find(argv[1], argv[2]);
+  exit(0);
+}
+</pre>
+    <li>Notice how the function <tt>find()</tt> calls itself.
+
+  <div class="question">
+    <p><b>10.</b> What is the condition that causes <tt>find()</tt> to make its recursive call?
+  </div>
+    <li>In a Linux terminal enter the following commands.
+<pre>
+$ <kbd>ls .</kbd>   # list the files in the current working directory
+$ <kbd>ls ..</kbd>  # list the files in the parent directory
+</pre>
+Notice how <tt>.</tt> and <tt>..</tt> are files in the current working directory that have type <tt>T_DIR</tt> (type directory).
+Notice how the algorithm does not recurse into the <tt>.</tt> and <tt>..</tt> files.
+  <div class="question">
+    <p><b>11.</b> What would happen if the algorithm recursed into the <tt>.</tt> file?
+  </div>
+
     <li>Changes to the file system persist across runs of qemu; to get
     a clean file system run <kbd>make clean</kbd> and then <kbd>make qemu</kbd>.
     <li>You'll need to use C strings. Have a look at K&R (the C book),
@@ -532,7 +931,7 @@ sieve and produces the following output:
 
 <h3>Testing</h3>
 <p>Your solution is correct if produces the following output (when the
-  file system contains the files <tt>b</tt>, <tt>a/b</tt> and <tt>a/aa/b</tt>):
+  file system contains the files <tt>b</tt>, <tt>a/b</tt> and <tt>a/aa/b</tt>).
   <pre>
     $ <kbd>make qemu</kbd>
     ...
@@ -550,10 +949,10 @@ sieve and produces the following output:
   </pre>
 
   <div class="question">
-    <p><b>7.</b> What does the Linux command <tt>$ </tt><kbd> echo > b</kbd> do?
+    <p><b>12.</b> What does the Linux command <tt>$ </tt><kbd> echo > b</kbd> do?
   </div>
 
-<h2>xargs <script>g("moderate")</script></h2>
+<h2>xargs <script>g("moderate - solution code provided")</script></h2>
 
 <div class="required">
 <p>Write a simple version of the UNIX xargs program: its arguments
@@ -735,6 +1134,66 @@ else
   concatenate character onto string to put into xargv
 GOTO READLOOP
 </pre>
+<h3>xargs Solution Code</h3>
+<pre>
+#include "kernel/types.h"
+#include "kernel/param.h"
+#include "user/user.h"
+
+void
+clear(char *xargv[MAXARG], int start){
+  for(int i=start; i<MAXARG; i++){
+    xargv[i] = 0;
+  }
+}
+
+int
+main(int argc, char *argv[])
+{
+  if(argc < 2){
+    fprintf(2, "Usage: xarg <cmd>\n");
+    exit(1);
+  }
+  if(argc > MAXARG){
+    fprintf(2, "xargs: too many arguments\n");
+    exit(1);
+  }
+  char *xargv[MAXARG] = {0};
+  int xargc = 0;
+  for(; xargc+1 < argc; xargc++){
+    xargv[xargc] = argv[xargc+1];
+  }
+  char buf[1024], c;
+  int p = 0, start = 0;
+  while(read(0, &c, 1)){
+    switch (c){
+    case ' ':
+      buf[p] = 0;
+      xargv[xargc++] = &buf[start];
+      start = p;
+      break;
+    case '\n':
+      buf[p] = 0;
+      xargv[xargc++] = &buf[start];
+      if(fork() == 0){
+        exec(argv[1], xargv);
+      } else {
+        wait(0);
+      }
+      xargc = argc - 1;
+      clear(xargv, xargc);
+      p = 0;
+      start = 0;
+      break;
+    default:
+      buf[p++] = c;
+      break;
+    }
+  }
+  exit(0);
+}
+
+</pre>
 <h3>Testing</h3>
 <p>To test your solution for xargs, run the seqence of commands provided in the hints section.
 The shell script <tt>xargstest.sh</tt> has been provided. Its contents are the following.
@@ -765,123 +1224,37 @@ it is processing commands from a file instead of from the console, and
 prints a <tt>$</tt> for each command in the file.
 
   <div class="question">
-    <p><b>8.</b> What I find amazing is that the basic Unix/Linux API has not changed in 60 years.
+    <p><b>13.</b> The testing has a command <tt>$ <kbd>sh < xargstest.sh</kbd></tt>. What does this command do? What is the <tt>sh</tt> program?
+  </div>
+
+  <div class="question">
+    <p><b>14.</b> Perform the following.
+<ul>
+<li>In a Linux shell enter the command <tt>$ <kbd>echo $SHELL</kbd></tt>. This displays the program that is your currently running shell. On my Mac, it displays <tt>/bin/zsh</tt>, which is the Z shell. On the CPSC server, it displays <tt>/bin/bash</tt>, whish is the Bash (or Bourne Again) shell. 
+<li>Enter the command <tt>$ <kbd>ls /bin</kbd></tt> to see all of the Linux commands in the <tt>/bin</tt> directroy. These commands are simply C programs that have been compiled and placed in the <tt>/bin</tt> directory.
+<li>Enter the command <tt>$ <kbd>echo $PATH</kbd></tt>. This shows a list of directories that the shell program searches for a matching program when you type in a command. One of the directories in your <tt>PATH</tt> variable is <tt>/bin</tt>. The shell will find various Linux commands in the <tt>/bin</tt> directory. 
+<li>Enter the command <tt>$ <kbd>which ls</kbd></tt>. This shows the location of the <tt>ls</tt> program, which is what the shell runs when you enter the <tt>ls</tt> command.
+</ul>
+  </div>
+
+  <div class="question">
+    <p><b>15.</b> What I find amazing is that the basic Unix/Linux API has not changed in 60 years.
     Now that you have written programs with pipes, forks, execs, and I/O redirection, what do you think about the Linux API.
+  </div>
+
+  <div class="question">
+    <p><b>16.</b> Without looking up functions, list as many Linux API functions that you can think of.
   </div>
 
 
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
 
-<p><b>This completes the lab.</b> Make sure you pass all of the <tt>make
-grade</tt> tests. 
+<p><b>This completes the lab.</b> 
 
 Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
 to submit your lab.
 
-<!--
-<div class="required">
-<p>I have to study how I want to submit labs. One option is to <kbd>make tarball</kbd> 
-  and place the tarball on Canvas. Another option is to simple look at teams' GitHub accounts.
-</div>
-
-
-You will turn in your assignments using
-the <a href="https://6828.scripts.mit.edu/2022/handin.py/">submission
-website</a>.  You need to request once an API key from the submission
-website before you can turn in any assignments or labs.
-</p>
-
-<p>After committing your final changes to the lab, type <kbd>make
-handin</kbd> to submit your lab.
-<pre>
-$ <kbd>git commit -am "ready to submit my lab"</kbd>
-[util c2e3c8b] ready to submit my lab
- 2 files changed, 18 insertions(+), 2 deletions(-)
-
-$ <kbd>make handin</kbd>
-tar: Removing leading `/' from member names
-Get an API key for yourself by visiting https://6828.scripts.mit.edu/2022/handin.py/
-Please enter your API key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 79258  100   239  100 79019    853   275k --:--:-- --:--:-- --:--:--  276k
-$
-</pre>
-<kbd>make handin</kbd> will store your API key in <i>myapi.key</i>. If you need
-to change your API key, just remove this file and let <kbd>make handin</kbd>
-generate it again (<i>myapi.key</i> must not include newline characters).
-</p>
-
-<p>
-If you run <kbd>make handin</kbd> and you have either uncomitted changes or
-untracked files, you will see output similar to the following:
-<pre>
- M hello.c
-?? bar.c
-?? foo.pyc
-Untracked files will not be handed in.  Continue? [y/N]
-</pre>
-Inspect the above lines and make sure all files that your lab solution needs
-are tracked i.e. not listed in a line that begins with <kbd>??</kbd>.
-You can cause <tt>git</tt> to track a new file that you create using
-<tt>git add filename</tt>.
-</p>
-
-<p>
-If <kbd>make handin</kbd> does not work properly, 
-try fixing the problem with the curl or Git commands.
-Or you can run <kbd>make tarball</kbd>.
-This will make a tar file for you, which you can
-then upload via our 
-<a href="https://6828.scripts.mit.edu/2022/handin.py/">web interface</a>.
-</p>
-
-<p>
-<div class="warning">
-<ul>
-  <li>Please run <tt>make grade</tt> to ensure that your code passes all of the tests</li>
-  <li>Commit any modified source code before running `make handin`</li>
-  <li>You can inspect the status of your submission and download the submitted
-code at <a
-href="https://6828.scripts.mit.edu/2022/handin.py/">https://6828.scripts.mit.edu/2022/handin.py/</a> </li>
-</ul>
-</div>
-
-
-
-<h2>Optional challenge exercises</h2>
-
-<ul>
-
-  <li><p>Write an uptime program that prints the uptime in terms of
-      ticks using the <tt>uptime</tt> system call. <script>g("easy")</script>
-      </li>
-
-  <li><p>Support regular expressions in name matching
-  for <tt>find</tt>.  <tt>grep.c</tt> has some primitive support for
-  regular expressions.  <script>g("easy")</script>
-      </li>
-
-  <li><p>The xv6 shell (<tt>user/sh.c</tt>) is just another user
-      program and you can improve it. It is a minimal shell and lacks
-      many features found in real shell. For example, modify the shell
-      to not print a <tt>$</tt> when processing shell commands from a
-      file <script>g("moderate")</script>, modify the shell to
-      support wait <script>g("easy")</script>, modify the shell to
-      support lists of commands, separated by ";"
-      <script>g("moderate")</script>, modify the shell to support
-      sub-shells by implementing "(" and ")"
-      <script>g("moderate")</script>, modify the shell to support
-      tab completion <script>g("easy")</script>, modify the shell to
-      keep a history of passed shell commands
-      <script>g("moderate")</script>, or anything else you would
-      like your shell to do. (If you are very ambitious, you may have
-      to modify the kernel to support the kernel features you need;
-      xv6 doesn't support much.)
-
-</ul>
--->
 
 </body>
 </html>

@@ -38,7 +38,7 @@ UMW CPSC 405
 <!-- A way to link to courses of multiple years
 		<li><a href="https://pdos.csail.mit.edu/6.1810/2022/">CPSC 405 2024</a></li>
   -->
-		<li><a href="xv6index.html">CPSC 405 2024</a></li>
+		<li><a href="xv6index.html">CPSC 405</a></li>
 	      </ul>
 	    </li>
             <li class="dropdown">
@@ -48,7 +48,8 @@ UMW CPSC 405
 		<li><a href="labsubmissions.html">Lab Submissions</a></li>
 		<li><a href="labs/guidance.html">Guidance</a></li>
 		<li><a href="labs/gdb.html">GDB</a></li>
-                <li><a href="labs/util.html">Lab Utilities</a></li>
+    <li><a href="labs/firstlab.html">Lab Firstlab</a></li>
+    <li><a href="labs/util.html">Lab Utilities</a></li>
 		<li><a href="labs/syscall.html">Lab System calls</a></li>
 		<li><a href="labs/pgtbl.html">Lab Page tables</a></li>
 		<li><a href="labs/traps.html">Lab Traps</a></li>
@@ -76,7 +77,7 @@ UMW CPSC 405
 	    <li><a href="thanksmit.html">ThanksMIT</a></li>
           </ul>
 	  <ul class="nav navbar-nav navbar-right">
-	    <p class="navbar-text">2024</p>
+	    <p class="navbar-text">2025</p>
 	  </ul>
         </div>
       </div>
@@ -91,296 +92,206 @@ UMW CPSC 405
 
 
 <H1>
-CPSC 405 Syllabus Information
+CPSC 405 Syllabus
 </H1>
 <p>
-<b><a href="#staff">Staff</a></b>, 
-<b><a href="#meetings">Meetings</a></b>, 
-<b><a href="#officehours">Office Hours</a></b>
-<b><a href="#audience">Audience</a></b>, 
-<b><a href="#notebook">Notebook</a></b>, 
-<b><a href="#communication">Communication</a></b>, 
-<b><a href="#grading">Grading</a></b>, 
+<b><a href="#staff">Teacher</a></b>, 
+<b><a href="#goals">Goals</a></b>, 
+<b><a href="#materials">Required Materials</a></b>, 
 <b><a href="#labsubmission">Labs</a></b>, 
-<b><a href="#lablaterules">Late Labs</a></b>,
-<b><a href="#labteams">Teams</a></b>, 
-<b><a href="#labdays">Lab Days</a></b>, 
+<b><a href="#grading">Grade Determination</a></b>, 
+<b><a href="#responsibilities">Student Responsibilities</a></b>, 
+<b><a href="#honor">Honor Code</a></b> 
+<b><a href="#communication">Communication</a></b>, 
 <b><a href="#homework">HW Questions</a></b>, 
-<b><a href="#textbook">Textbooks</a></b>, 
-<b><a href="#collaboration">Honor Code</a></b> 
 </p>
 
 <p><a name="staff"></a>
-<h2>Class Staff</h2>
+<h2>CPSC 405, Operating Systems and Programming</h2>
 
-<p><b>Lecturer/Teacher/Professor</b><br>
 <ul>
-  <li><a href="https://gusty.bike/">Gusty Cooper</a><br>
-</ul>
+<li><b>Instructor:</b><a href="https://gusty.bike/"> Gusty Cooper</a><br>
 
-<p><b>Contacting Gusty</b><br>
-<ul>
 <li><b>Email:</b> <A HREF="mailto:ecooper@umw.edu"><I>ecooper@umw.edu</I></A>.
-<li><b>Discord:</b> <a href="https://discord.gg/c544v67ZUJ">CPSC 405 Discord Server</a>
-<li><b>Zoom Meeting:</b> <a href="https://umw-sso.zoom.us/j/9197627727?pwd=VURwak5UWmdrZEdySHp0eXVxQ1MrUT09">Gusty's Zoom Room</a>
-<ul>
-<li>Must prearrange meeting.
-<li><b>Link:</b> https://umw-sso.zoom.us/j/9197627727?pwd=VURwak5UWmdrZEdySHp0eXVxQ1MrUT09 
-</ul>
-</ul>
-
-<p><a name="meetings"></a>
-<h2>Class Meetings</h2>
-
-<ul>
-<li>Lectures will held in <b>James Farmer Hall, Room 025</b>:
-    <ul>
-    <li><b>Tuesday's</b>: 8:30 to 10:30
-    <li><b>Thursday's</b>: 8:30 to 10:30
-    </ul>
-<li>Lectures will be in person and allow you to interact with me and other students.
-<li>Attending lectures and participating in class is the best way to learn our material.
-<li>You are expected to attend class, and class participation is part of your grade. 
-  You cannot participate if you miss class.
-<li>We have dedicated <a href="#labdays">Lab Days</a>. You are expected to be in class on Lab Days.
-<li>Often the lecture time will include time for working on problems, where I can
-  provide guidance.
-</ul>
-
-<!-- RULE: officehours -->
-<p><a name="officehours"></a>
-<h2>Office Hours and Zoom</h2>
-<p>I am on campus every Tuesday and Thursday, from approximately 8 to noon.
+<li><b>Discord:</b> <a href="https://discord.gg/HWDMGMN7gw">CPSC 405 Discord Server</a> - 
+you may also message me on Discord.
+<li><b>Zoom Meeting:</b> <a href="https://umw-sso.zoom.us/j/9197627727?pwd=VURwak5UWmdrZEdySHp0eXVxQ1MrUT09">Gusty's Zoom Room</a> - must prearrange meeting.
+<b>Link:</b> https://umw-sso.zoom.us/j/9197627727?pwd=VURwak5UWmdrZEdySHp0eXVxQ1MrUT09 
+<li><b>Lectures:</b> - in person and held in <b>James Farmer Hall, Room 022</b> on Tuesday and Thursday from 8:30 to 10:20.
+<li><b>Office</b>: Farmer 047 - 
+I am on campus every Tuesday and Thursday, from approximately 7:30 to noon.
 If I am not in our classroom, I will be in my office or roaming the halls of Farmer.
 If you cannot visit during regular office hours, we can arrange a meeting at a
 mutually acceptable day and time.
-<p><b>Office</b>: Farmer 047
-<p><b>Hours</b>:
-<ul>
-<li><b>Sunday</b>: via prearranged appointment<br>
-<li><b>Monday</b>: via prearranged appointment<br>
-<li><b>Tuesday</b>: 10:20-noon<br>
-<li><b>Wednesday</b>: via prearranged appointment<br>
-<li><b>Thursday</b>: 10:20-noon<br>
-<li><b>Friday</b>: via prearranged appointment<br>
-<li><b>Saturday</b>: via prearranged appointment<br><br>
+<li><b>Office Hours</b>: Tuesday and Thursday - 10:20-noon; Other days: via prearranged appointment.
+<li><b>Catalog Description</b>: <a href="https://catalog.umw.edu/undergraduate/course-descriptions/cpsc/">CPSC 405 Catalog Description</a> 
+<li><b>Prerequisites</b>: CPSC 305 and CPSC 340.
 </ul>
 
-<p><b>Zoom</b>: 
-<a href="https://umw-sso.zoom.us/j/9197627727?pwd=VURwak5UWmdrZEdySHp0eXVxQ1MrUT09">Gusty's Meeting Room</a>
-<br>
-
-<p><a name="audience"></a>
-<h2>Class Audience</h2>
-
+<p><a name="goals"></a>
+<h2>Course Goals, Objectives, and Outcomes</h2>
+After completing this course, students will be able to:
 <ul>
-<li> CPSC 405 is intended for UMW undergraduates who want to
-  learn about design and implementation of operating systems, and
-  their use as a foundation for systems programming.
-<li> CPSC 405 is required for CPSC majors.
-<li> CPSC 405 has two prerequisites: CPSC 305 and CPSC 340.
-<li> <a href="https://catalog.umw.edu/undergraduate/course-descriptions/cpsc/">CPSC 405 Catalog Description</a> 
-
+<li>Implement systems programs using a Unix/Linux API.
+<li>Recognize, recall, and explain CPU and memory virtualization.
+<li>Analyze and implement various OS scheduling algorithms.
+<li>Implement OS data structures for processes and memory management.
+<li>Recognize, recall, and explain relationships between computer hardware and OS.
+<li>Implement threaded programs using locks, condition variables, and semaphores.
+<li>Recognize, recall, and explain the differences between processes and threads.
+<li>Analyze and implement a simple persistent file system.
+<li>Analyze the relationship between computer security and operating systems.
 </ul>
 
-<p><a name="notebook"></a>
-<h2>Class Notebook</h2>
-<p>We will use pencil and paper as part of our learning process.
+<p><a name="materials"></a>
+<h2>Required Materials and Computing Capability</h2>
 <ul>
-<li>Each student much purchase a pencil or a pen.
-<li>Each student must purchase a notebook.
-<li>The notebook can be a spiral notebook, a fixed binded notebook, or a loose-leaf, ring notebook.
-<li>You cannot use a collection of loose papers. You need something to keep your notes collected.
-<li>Each student must bring their notebook and pencil/pen to all class meetings.
-<li>During class, you will use your notebooks for class activies, design activities, and taking notes.
-<li>You will use your notebooks to answer lab questions.
-<li>I will periodically examine your notebooks as part of my evaluation of your class participation
-and lab work.
-</ul>
+<li>
+Laptop/Desktop - You need a computer with Linux, C, and Xv6 that has Internet  to access our CPSC 405 website, Canvas, GitHub, Discord, and the CPSC Linux Server.
+<li>Notebook and Pencil/Pen - You need a notebook and pencil/pen to take notes, complete in class work, and answer lab questions.
+<li><a href="https://gusty.bike/xv6index.html">CPSC 405 Website</a> - contains all of the material required for our class.
+<li><a href="https://gusty.bike/schedule.html">CPSC 405 Schedule Page</a> - the PDF syllabus contains a schedule, but the website schedule is more comprehensive.
+<li>Canvas - where you observe due dates, submit labs/assignments, and view grades. 
+<li><a href="https://github.com/gustycooper/xv6-labs">CPSC 405 Github</a> - contains source code for labs.
+<li><a href="https://discord.gg/HWDMGMN7gw">CPSC 405 Discord</a> - our course discussion board. All course announcements are delivered via Discord. Students can post questions and answers.
+<li>Linux, Xv6, and C - You need Linux with an Xv6 C programming environment. Your CPSC server account satisfies this.
+<li>Textbooks
+<ul>
+<li><a href="https://gusty.bike/xv6/book-riscv-rev3.pdf">Xv6 Textbook</a> Russ Cox, Frans Kaashoek, and Robert Morris
+<li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">OSTEP Textbook</a> Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau (University of Wisconsin-Madison)
+<li><a href=https://ia903407.us.archive.org/35/items/the-ansi-c-programming-language-by-brian-w.-kernighan-dennis-m.-ritchie.org/The%20ANSI%20C%20Programming%20Language%20by%20Brian%20W.%20Kernighan%2C%20Dennis%20M.%20Ritchie.pdf>The C Programming Language (second edition)</a> Brian W. Kernighan
+and Dennis M. Ritchie. Prentice Hall, Inc., 1988. ISBN 0-13-110362-8, 1998.
 
-<p><a name="communication"></a>
-<h2>Class Communication</h2>
-<ul>
-<li>Our <a href="https://gusty.bike/xv6index.html">CPSC 405 course website</a> is the primary place for our course.
-<li>Our schedule can be found on our website at <a href="https://gusty.bike/schedule.html">CPSC 405 schedule page</a>.
-<li>All of our labs are on our  <a href="https://gusty.bike/xv6index.html">CPSC 405 course website</a>.
-<li>Lab solutions must be submitted on Canvas. See <a href="labsubmissions.html">Lab Submissions</a> for the details of submitting labs.
-<li>I will make all announcements through our course Discord server.
-<li>You can post messages for classmates and me on our Discord server.
-<li>You can email me at <A HREF="mailto:ecooper@umw.edu"><I>ecooper@umw.edu</I></A>.
 </ul>
+<li>Xv6 - A small, Linux-like, teaching OS created by MIT. We use the RISC-V version of Xv6. The Xv6 source code for our labs is on our GitHub site.
+<li>Zoom - You can contact me to schedule <a href="https://umw-sso.zoom.us/j/9197627727?pwd=VURwak5UWmdrZEdySHp0eXVxQ1MrUT09">Zoom meetings</a> if needed.
 
-<p><a name="grading"></a>
-<h2>Class Grading Policy</h2>
-
-<p>Grades in CPSC 405 will be based on:
-  <ul>
-
-   <li> <b>Labs: (50%)</b>
-<ul>
-<li>For the most part, your grade will be what you assign yourself.
-<li>I reserve the right to adjust your grade based upon comments/grades in your
-teammates submissions, your <tt>make grade</tt>, how well you answered the lab's 
-questions in your notebook, and how you perform during Check-off Meetings.
-<li>See <a href="labsubmissions.html">Lab Submissions</a> for more information.
-<li><b>You must submit all labs in order to pass the class.</b>
 </ul>
-
-   <li> <b>Lab Check-off Meetings: (15%)</b>  
-<ul>
-<li>During the lab check-off meetings I
-   will ask you a few questions about your lab solution.  
-<li>I plan to hold 3 or 4 lab check-off meetings per team for randomly-selected labs. 
-<li> The lab check-off meetings will be conducted during Lab Days.
-<li> A successful Check-off meeting will result in the same score your assigned
-   yourself on the lab, or we could agree to a better score.
-<li> An unsuccessful Check-off Meeting will result in a lower score than your
-   lab, and it could result in lowering your lab score.
-<li> Missing a Check-off Meeting without a legitimate excuse is considered
-   an unsuccessful Check-off Meeting. 
-</ul>
-   <li> <b>Class notebook: (10%)</b> 
-<ul>
-<li>Everyone is responsible for maintaining a handwritten class notebook.
-<li>Your notebook should be of a form that supports retention of the sheets of paper.
-For example, a spiral notebook or a ring binder.
-<li>In your notebook, you will take notes, perform inclass exercises, and answer lab questions.
-<li>I will examine your class notebook during Lab Check-off Meetings and during inclass exercises.
-</ul>
-   <li> <b>Class participation: (10%)</b> 
-<ul>
-<li>Our classes allow you to participate, ask questions,
-     and work on labs. 
-<li>I expect you to be in class. 
-<li>I will take roll.
-<li>Homework questions are included in Class Participation
-</ul>
-   <li><b>Quizzes: (0%)</b>
-<ul>
-<li>There will be no quizzes.
-</ul>
-   <li> <b>Final Exam: (15%)</b> 
-<ul>
-<li> The final exam will be an oral presentation where you and
-   your teammates describe what you have learned in CPSC 405. 
-<li> I will provide guidance
-   to help you prepare your presentation.
-</ul>
-
-  </ul>
-
 
 <p><a name="labsubmission"></a>
-<h2>Class Labs</h2>
+<h2>Labs, Teams, and Lab Days</h2>
 <ul>
-<li>Labs are the most important component of our class.
-<li>The labs are a <i><b>learn by doing</b></i> component of our course and involve significant programming.
-<li>Labs are designed to improve your computer science skills and knowledge.
+<li>The labs are a <i><b>learn by doing</b></i> component of our course and involve significant programming. Labs are designed to improve your OS knowledge and C programming skills.
 <li>We have two types of labs. The majority of our labs are Xv6-based Labs. 
 These labs are completed by adding code to Xv6, building, running, and testing
 your Xv6 code.
 We have a few Linux-based Labs. These labs are completed by creating standalone
 C programs that run on Linux.
 <li>See <a href="labsubmissions.html">Lab Submissions</a> for the details of submitting labs.
-</ul>
-
-<p><a name="lablaterules"></a>
-<h2>Labs Submitted Late Rules</h2>
-<ul>
-<li>The submission deadline is 11:59:59pm on the day that the
-  lab is due. You can turn in as many times as you like before the
-  deadline. 
-
-<li>For Xv6-based labs, your lab score will be a combination of the value computed by <tt>make grade</tt>,
-  and how well you answered the lab's questions in your notebook.
-
-<li> You have a total of 48 late hours for the semester. Each hour late in excess
-  of 48 hours will penalize your total lab grade by 1&#37;, up to a maximum of
-  50%. Suppose your lab average is a 90, and you have 50 late hours. Your lab 
-  average is reduced to 88.
-
-<li>Late hours must be used before Thanksgiving.
-
-<li> For predictable situations (athletic events, deadlines in
-  other classes, job interviews, etc.), I expect you to manage your time
-  so as to finish assignments by the due date; however, you can use your late hours. 
-  If you have exhausted your late hours and encounter an emergency that causes
-  you to need an extension, please talk with me.
-</ul>
-
-<!-- That is, the lab component of the overall grade drops by
-       ceil((cumulative late - 72 hours)/1 day)
-     letter grades. -->
-
-
-<p><a name="labteams"></a>
-<h2>Class Lab Teams</h2>
-<ul>
-<li>You will be placed in a Lab Team of 2 or 3 students. 
-<ul>
-<li>Teams will work together to complete labs. 
-<li>Teams will divvy the work among teammates as they see fit; however,
+<li>You will be placed in a Lab Team of 1 or 2 students. 
+<li>Teammates will work together to complete labs. 
+<li>Teams will divide the work among teammates as they see fit; however,
 the division must be equal.
-<li>Each team member must submit labs on Canvas.
-</ul>
+<li>Each team member must submit labs on Canvas, and the submission must show the lab solution running on their own computing device.
+<li>A class lab day is when we spend the first half of a class on a lecture and the second half of a class starting a lab. You have dedicated time to collaborate with your teammate, ask me for help, and work on the lab. Most class lab days are on Thursdays.
+<li>Labs are due at 8:00AM one week after we start them in class. For example, when starting Lab util on Thursday Jan 23, it is due at 8:00AM on Thursday Jan 30.
 </ul>
 
-<p><a name="labdays"></a>
-<h2>Class Lab Days</h2>
+<p><a name="grading"></a>
+<h2>Grade Determination</h2>
+
+<p>Your CPSC 405 grade is based on the following.
+  <ul>
+
+   <li> <b>Labs: (50%)</b>
 <ul>
-<li>The Tuesdays before labs are due are Class Lab Days.
-<li>You collaborate with your teammates, ask me for help, and work on the lab.
-<li>You are expected to be in class on Class Lab Days.
-<li>Missing a Class Lab Day results in a deduction from your grade for that lab. 
-The deduction is the number of missed Lab Days times 10. 
-For example, your second missed lab day will result in 20 points deducted. 
-<li>If you have completed your lab and submitted it on Canvas prior to Lab Day, you must check with me before not attending class because you may have a Lab Check-off Meeting.
+<li>In each lab you can earn 100 points.
+<li>Labs have questions and programming problems.
+<li>Questions are worth 25 points. Handwritten questions and answers can earn the entire 25 points. Typed (electronic) questions and answers can earn 15 points.
+<li>Programming solutions are worth 75 points.
+<li>See <a href="labsubmissions.html">Lab Submissions</a> for more information.
+<li><b>You must submit all labs in order to pass the class.</b>
 </ul>
 
-<h2 id="homework">Class Lecture Questions</h2>
+   <li> <b>Midterm Exam: (25%)</b>  
 <ul>
-<li>The purpose of lecture questions is to make you study and think
-about the lecture topic prior to the lecture. 
-<li>For each lecture class, you must read the material and submit a quesiton on Canvas.
-<li>Submit your lecture questions on Canvas before our class begins at 8:30.
-<li>We can address questions during the lecture.
-<li>You must submit at least 13 questions to get full credit.
-<li>The lecture questions are part of your class participation grade.
+<li> A written exam given in person and in class during our regular class time.
+<li><b>You must take the Midterm Exam in order to pass the class.</b>
 </ul>
-
-<h2 id="textbook">Class Textbooks</h2>
-
-<p>CPSC 405 relies on the following books:
+   <li> <b>Final Exam: (25%)</b> 
 <ul>
+<li> A written exam given in person and during the exam time assigned for our class.
+<li><b>You must take the Final Exam in order to pass the class.</b>
+</ul>
+  </ul>
 
-  <li><a href="xv6/book-riscv-rev3.pdf">xv6: A simple, Unix-like teaching operating
-      system</a> by R. Cox, F. Kaashoek, and R. Morris.
-  <li> <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">OS Three Easy Pieces</a>
-       by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau.
+Final letter grades are determined according to the following scale. 
+<p>
+<p>
+<table border="1">
+<tr>
+ <th>grade</th> <th>points</th>
+ <th>grade</th> <th>points</th>
+ <th>grade</th> <th>points</th>
+ <th>grade</th> <th>points</th>
+</tr>
+<tr>
+ <td>A</td> <td>93-100%</td> <td>B+</td> <td>87-89%</td> <td>C+</td> <td>77-79%</td> <td>D+</td> <td>67-69%</td>
+</tr>
+<tr>
+ <td>A-</td> <td>90-92%</td> <td>B</td> <td>83-86%</td> <td>C</td> <td>73-76%</td> <td>D</td> <td>60-66%</td>
+</tr>
+<tr>
+  <td> </td> <td> </td> <td>B-</td> <td>80-82%</td> <td>C-</td> <td>70-72%</td>	<td>F</td>  <td>below 60%</td>
+</tr>
+</table>
+<p>
+UMW provides mid-semester grading feedback. A student will receive a mid-semester unsatisfactory (U) grade if he/she has an average that is less than 70.  Any student receiving a U mid-semester grade should meet with me to develop a performance improvement plan. 
 
-  <li><a href=https://ia903407.us.archive.org/35/items/the-ansi-c-programming-language-by-brian-w.-kernighan-dennis-m.-ritchie.org/The%20ANSI%20C%20Programming%20Language%20by%20Brian%20W.%20Kernighan%2C%20Dennis%20M.%20Ritchie.pdf>The C Programming Language (second edition)</a> Brian W. Kernighan
-and Dennis M. Ritchie. Prentice Hall, Inc., 1988. ISBN 0-13-110362-8, 1998.
-
+<p><a name="responsibilities"></a>
+<h2>Student Responsibilities and Late Policies</h2>
+<ul>
+<li><b>Attendance</b> - You are responsible for attending class. Attendance is not part of your class grade; however, my observations of past students is that those who attended class regularly usually learned the material better and earned better grades. The students with 100% attendance regularly earned an A.
+<li><b>Class Participation</b> - The most important component for learning in a class where subsequent material relies upon previous material is DO NOT FALL BEHIND. Our course has online textbooks for studying. You are responsible for studying the material, attending class, completing assignments on time, and taking the exam. You can maximize your learning by reading the material prior to class. Prior to class, you may submit a question about the lecture material. You do not have to fully understand your pre-reading to benefit. I find that learning is iterative. When I first encounter new material, I learn a little bit. When someone explains the material to me, I learn a little bit more. When I review what I have learned, I learn a little bit more. When I practice solving problems, developing code, creating tests, applying tests to my code, and debugging, I learn a little bit more. Often, I reread the material. Eventually, all of my little bits of learning coalesce into my overall understanding, knowledge, and skills.
+<li><b>Asking Questions</b> - When you need help understanding the material, you must ask questions. Do not remain silent. Often, others have the same questions. You can ask questions during class, you can post questions on Discord, you can ask your classmates questions, and you can visit during office hours for detailed discussions. 
+<li><b>Class Notebook</b> - I recommend that you use an old fashion class notebook for CPSC 405. I find that I learn better when I take notes on paper with a pen or pencil. There is some connection between writing and the brain that improves my learning. All of our labs contain questions that you must answer, and you can earn more points when your answers are handwritten on paper.
+<li><b>Discord and Canvas</b> - You are responsible for checking Discord DAILY for updates to our class activities/assignments. Make sure Discord sends notifications to your preferred contact. Sometimes I adjust due dates on Canvas assignments.
+<li><b>Midterm and Final Exams</b> - You are responsible for taking exams on the scheduled date. NO​ makeup exams are given except in the case of an unavoidable absence that is verified through the Office of Academic Services. If you have a legitimate, planned absence, you must arrange with me an alternative date well in advance. 
+<li><b>Labs Late Policy</b> - The submission deadline is 8am on the day that the lab is due. A typical lab sequence is we begin working on it during class on Thursday and it is due the following Thursday at 8AM. Most labs will require about 8 hours of work so if you begin an assignment the night before it is due, you will not finish! You can submit a lab as many times as you like before the deadline. A lab is considered late when it is submitted after the deadline. This includes submitting a lab at 8:01AM, which is one minute after the deadline.
+<ul>
+<li>When you submit a lab that is between 1 and 2 days late, the highest grade you can earn is a 90. One minute past the deadline is one day late.
+<li>When you submit a lab that is between 3 and 5 days late, the highest grade you can earn is an 80.
+<li>When you submit a lab that is between 6 and 7 days late, the highest garage you can earn is a 70.
+Any labs submitted more than 7 days late receive a 0.
+</ul>
+I realize that sometimes legitimate life events cause you to submit a lab late. In these cases, I accept late submissions without deductions; however, you must keep me informed. Waiting until the last minute to start is not a legitimate life event. Attending a preplanned wedding is a legitimate life event. Getting sick is a legitimate life event, but if you get sick on the night before an assignment is due, I expect to see some progress.
+<li><b>In Class Lab Policy</b> - We begin all of our labs in class. On lab days, we may have approximately half of our class as a lecture and the remaining time is provided for you to work on the lab. I will help you get started. If you want to leave during lab time, you may. Realize that students who stay in class, get help, and make progress on their labs usually complete labs with high grades.
 </ul>
 
-<p><a name="collaboration"></a>
-<h2>Class Honor Code</h2>
+<p><a name="honor"></a>
+<h2>Honor Code and AI in CPSC 405</h2>
 <ul>
 <li>All assignments are under the UMW Honor Code and the <a href="https://cas.umw.edu/computerscience/cpsc-department-honor-code-policy/">CPSC department honor code policy</a>. Plagiarizing code in a program is an honor code violation just like plagiarizing words in a paper. Be prepared to explain any submission. Contact me if you have questions about the Honor Code and this course.
 <li>All Canvas submissions are assumed to include the UMW honor code pledge even if you do not place it on your submission.
-<li>Labs must be done individually or as a team of two or three.
-<li>Teammates work together on labs and thus may help each other however they desire.
+<li>Labs have programming problems and questions. The lab programming problems must be done individually or as a team of two. Teammates work together and thus may help each other as desired. You may consult with anyone including AI to answer the questions.
 <li><b>When solving labs, code obtained from any source other than me is an honor code violation.</b> Code is provided for most of the labs. You modify the code and/or create new code. 
-<li>Searching the Internet and using online AI (such as ChatGPT) for certain types of help is acceptable. For example, you can search the Internet or ask AI for samples of how to call <tt>fork</tt>, samples of creating and joining <tt>Pthreads</tt>, and documentation of concepts in our materials and lectures. However, (1) you <b>cannot</b> search the Internet or use AI for solutions to our labs that you include in your lab submissions and (2) you <b>cannot</b> seek code from students who previously took the course - doing so is an honor code violation.
-<li>If you discover a code sample (<b>a sample - not the solution</b>) on the Internet that is useful in your lab; you must study the code sample, understand it, and then render your own version. You must attribute the source of your rendition.
-<li>When working on our labs, you can study class material, lab descriptions, and sample codes with others - including those not on your team. You can ask anyone questions about the lab descriptions and sample code, but you cannot ask others that are not on your team to share answers to lab questions, to share design, to share code, and/or to share test cases. Ask others questions to help you learn, but you and your teammates create your own lab answers, design, code, and test cases. 
-<li>You are welcome to discuss the labs (and homeworks) with other
-teams/students, but the discussion must focus on understanding the lab.
-<li>You can ask and answer questions on Discord, about labs (for understanding), homework, readings,
-and lectures.
-<li> <b>Do not post your lab or homework solutions on publicly accessible web
-sites (such as GitHub).</b> I would like for this rule to apply after you have completed
-the class so future students are not tempted to copy solutions.
+<li>Searching the Internet and using online AI (such as ChatGPT) for certain types of programming help is acceptable. For example, you can search the Internet or ask AI for samples of how to call <tt>fork</tt>, samples of creating and joining <tt>Pthreads</tt>, and documentation of concepts in our materials and lectures. However, (1) you <b>cannot</b> search the Internet or use AI for solutions to our labs that you include in your lab submissions and (2) you <b>cannot</b> seek code from students who previously took the course - <b>doing so is an honor code violation</b>.
+<li>If you discover a code sample (<b>a sample - not the solution</b>) on the Internet that is useful in a lab programming problem; you must study the code sample, understand it, and then render your own version. You must attribute the source of your rendition.
+<li>When working on our lab programming problems, you can study class material, lab descriptions, and sample codes with others - including those not on your team. You can ask anyone questions about the lab programming problem descriptions and sample code, but you cannot ask others that are not on your team to share to share design, to share code, and/or to share test cases. Ask others questions to help you learn, but you and your teammate must create your own design, code, and test cases. You can use our class Discord server to ask these questions.
+<li>Do not post your lab solutions on publicly accessible websites (such as GitHub)</b>.
+</ul>
+
+<p><a name="communication"></a>
+<h2>Class Communication</h2>
+<ul>
+<li>Our <a href="https://gusty.bike/xv6index.html">CPSC 405 course website</a> is the primary place for our course.
+<li>Our PDF Syllabus has a schedule, but a more detailed schedule can be found on our website at <a href="https://gusty.bike/schedule.html">CPSC 405 schedule page</a>.
+<li>All of our labs are on our  <a href="https://gusty.bike/xv6index.html">CPSC 405 course website</a>.
+<li>Lab solutions must be submitted on Canvas. See <a href="labsubmissions.html">Lab Submissions</a> for the details of submitting labs.
+<li>I will make all announcements through our course Discord server.
+<li>You can post messages for classmates and me on our Discord server.
+<li>You can email me at <A HREF="mailto:ecooper@umw.edu"><I>ecooper@umw.edu</I></A> or 
+alternatively, you can message me on Discord.
+</ul>
+
+
+<h2 id="homework">Lecture Questions</h2>
+<ul>
+<li>Lecture questions are a tool that allows you to study and think
+about the lecture topic prior to the lecture. If you read the material prior to a lecture,
+you will be better prepared to understand the lecture.
+You do not have to understand all of the material in the readings to think of questions.
+<li>In addition to simply writing your questions on a piece of paper, you you can post them on the lecture-questions channel of our Discord server. I will plan to read this channel between 7:30 and 8:00 on the days of our lecture.
 </ul>
 
 <!-- End Page Content -->

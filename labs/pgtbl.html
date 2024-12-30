@@ -45,14 +45,13 @@ proc.c:  uvmunmap(pagetable, TRAPFRAME, 1, 0);
 </pre>
 </div>
 <div class="required">
-<p>In the directory of your xv6-labs, create two files: <b>answers-syscall.txt</b> and <b>time.txt</b> that the 
-grading script looks for. You can create these files by the following:
+<p>In the directory of your xv6-labs, create two files: <b>answers-pgtbl.txt</b> and <b>time.txt</b> that I may use 
+if I run your code using your zip file submission. The answers-pgtbl.txt is a blank file. The time.txt file contains
+the number of hours you spent on the lab.
 <pre>
-$ echo > answers-syscall.txt
-$ echo 10 > time.txt
+$ echo > answers-pgtbl.txt
+$ echo 8 > time.txt
 </pre>
-I use the information in your photo files and your <b>lab-syscall-handin.txt</b> file that you submit on Canvas.
-I have retained these files and this grading script approach in case I want to use it in the future.
 </div>
 
 
@@ -111,7 +110,7 @@ You will receive full credit for this part of the lab if the <tt>ugetpid</tt> te
 case passes when running <tt>pgtbltest</tt>.
 </div>
 
-<p>Some hints:
+<h3>Some Hints</h3>
 <ul>
   <li>The file <tt>proc.c</tt> contains functions that manipulate processes - 
       fork or create procs, allocate the procs' pagetables, exit procs,
@@ -123,7 +122,7 @@ case passes when running <tt>pgtbltest</tt>.
       which is the Xv6 shell you use in your terminal. 
       Whenever <tt>fork</tt> is called, it allocates a process, which must do such 
       things as allocate a trapframe page and establish the process's pagetable. For 
-      this assignment you must update <tt>allocproc</tt> to allocate a page for the 
+      this problem you must update <tt>allocproc</tt> to allocate a page for the 
       process at virtual address <tt>USYSCALL</tt>, place a <tt>struct usyscall</tt> in the
       page, and assign the <tt>pid</tt> to the <tt>usyscall</tt> member <tt>int pid</tt>.
       You must also update <tt>proc_pagetable</tt> to properly map the <tt>USYSCALL</tt> address
@@ -154,10 +153,18 @@ case passes when running <tt>pgtbltest</tt>.
       <ul>
         <li>The macro <tt>USYSCALL</tt> is defined to be a virtual memory address that
             is one page below <tt>TRAPFRAME</tt>.
-             <p><tt>#define USYSCALL (TRAPFRAME - PGSIZE)</tt>
+             <p><tt><kbd>#define USYSCALL (TRAPFRAME - PGSIZE)</kbd></tt>
         </li>
-        <li><p>The <tt>struct usyscall</tt> is defined specifically for this assignment.
+        <li><p>The <tt>struct usyscall</tt> is defined specifically for this problem.
             <tt>usyscall</tt> has one member, <tt>int pid</tt>.
+<pre>
+<kbd>
+struct usyscall {
+  int pid;  // Process ID
+};
+</kbd>
+</pre>
+
         </li>
       </ul>
 </ul>
@@ -177,9 +184,16 @@ case passes when running <tt>pgtbltest</tt>.
   <li><p>Choose permission bits that allow userspace to only read the page.
       The file <tt>riscv.h</tt> defines page protection attributes.
   <li><p>There are several things that need to be done over the lifecycle of a new page, 
-      which must be deallocated as well as allocated..
+      which must be deallocated as well as allocated.
       For inspiration, understand the trapframe handling in <tt>kernel/proc.c</tt>.
       Search for <tt>trapframe</tt> to get yourself going.
+You will discover that the <tt>struct proc</tt> has a member <tt>trapframe</tt>. 
+<ul>
+<li>You must add member <tt><kbd>struct usyscall* usyscall;</kbd></tt> to the <tt>struc proc</tt> structure in <tt>proc.h</tt>
+<li>You must update the functions <tt>proc_pagetable()</tt> and <tt>proc_freepagetable()</tt> in <tt>proc.c</tt>.
+<li>You must call <tt><kbd>mappages()</kbd></tt> in the function <tt>proc_pagetable()</tt> to map the <tt>USYSCALL</tt> page.
+<li>You must call <tt><kbd>uvmunpa()</kbd></tt> in the function <tt>proc_freepagetable()</tt> to unmap the <tt>USYSCALL</tt> page.
+</ul>
 </ul>
  
 <div class="question">
@@ -191,6 +205,21 @@ Explain how it works.
 <p><b>12.</b> Draw a diagram of kalloc's data structure of free pages.
 </div>
 
+<h3>Testing</h3>
+<p>We provide the user program <tt>pgtbltest.c</tt>. It tests the <tt>USYSCALL</tt> page with the <tt>pid</tt> defined in the problem and the <tt>pgaccess()</tt> system call defined in the third problem of this lab. <tt>pgtbltest</tt> has two testing functions.
+<ul>
+<li><tt>ugetpid_test()</tt> - This calls <tt>ugetpid()</tt> to retrieve the <tt>pid</tt> from the <tt>USYSCALL</tt> and compares it to the <tt>pid</tt> returned from the system call <tt>getpid()</tt>. The user function <tt>ugetpid()</tt> has been added to <tt>ulib.c</tt>. The code for <tt>ugetpid</tt> is the following.
+<pre>
+int
+ugetpid(void)
+{
+  struct usyscall *u = (struct usyscall *)USYSCALL;
+  return u->pid;
+}
+</pre>
+<li><tt>pgaccess_test()</tt> - This uses <tt>malloc()</tt> to allocate 32 pages, and it modifies (or accesses) pages 1, 2, and 30.
+The returned bits from <tt>pgaccess(buf, 32 &abits)</tt> should have bits 1, 2, and 30 set.
+</ul>
 <h2>Print a page table <script>g("easy")</script></h2>
 
 <p>
@@ -206,8 +235,6 @@ in the format described below.
 Insert <tt>if(p->pid==1) vmprint(p->pagetable)</tt> in
   <tt>exec.c</tt> just before the <tt>return argc</tt>,
 to print the first process's page table.
-  You receive full credit for this part of the lab
-  if you pass the <tt>pte printout</tt> test of <tt>make grade</tt>.
   
 </div>
 
@@ -255,7 +282,7 @@ Your code might emit different physical addresses than those shown above.
 The number of entries and the virtual addresses should be the same.
 </p>
 
-<p>Some hints:
+<h3>Some Hints</h3>
 <ul>
   <li>You can put <tt>vmprint()</tt> in <tt>kernel/vm.c</tt>.
   <li>Use the macros at the end of the file <tt>kernel/riscv.h</tt>.
@@ -278,6 +305,33 @@ The macro <tt>PTE2PA</tt> is defined in <tt>riscv.h</tt>, and it converts a page
     that you can call it from exec.c.
   <li>Use <tt>%p</tt> in your printf calls to print out full 64-bit hex PTEs and addresses as shown in the example print output above.</li>
   <li><tt>printf("%d: pte %p pa %p\n", i, pagetable[i], pa);</tt> - sample <tt>printf</tt> statement with <tt>%p</tt>.
+  <li>The following is my implementation of <tt>vmprint()</tt>.
+<pre>
+<kbd>
+void
+_vmprint(pagetable_t pagetable, int depth)
+{
+  for(int i=0; i&lt;512; i++){
+    if((pagetable[i] & PTE_V) == 0) continue;
+    uint64 pa = PTE2PA(pagetable[i]);
+    for(int j=0; j&lt;depth; j++){
+      printf(" ..");
+    }
+    printf("%d: pte %p pa %p\n", i, pagetable[i], pa);
+    if((pagetable[i] & (PTE_R|PTE_W|PTE_X)) == 0){
+      _vmprint((pagetable_t)pa, depth+1);
+    }
+  }
+}
+
+void
+vmprint(pagetable_t pagetable)
+{
+  printf("page table %p\n", pagetable);
+  _vmprint(pagetable, 1);
+}
+</kbd>
+</pre>
 </ul>
 
 <div class="question">
@@ -318,12 +372,12 @@ pages have been accessed. The system call takes three arguments. The first argum
 the starting virtual address of the first user page to check. The second argument is 
 number of pages to check. The third argument is a user address to a buffer to store
 the results into a bitmask (a datastructure that uses one bit per page and where
-the first page corresponds to the least significant bit). You will receive full
-credit for this part of the lab if the <tt>pgaccess</tt> test case passes when
-running <tt>pgtbltest</tt>.
+the first page corresponds to the least significant bit).
+<p>See <a href="syscall.html#refsystemcalls" >Reference: Xv6 System Calls</a> for a reminder on how to 
+	implement a system call.
 </div>
 
-<p>Some hints:
+<h3>Some Hints</h3>
   <ul>
   <li>Read <a href="syscall.html" >Lab Syscall</a> for a review on how to add a system call.
   <li>Read <tt>pgaccess_test()</tt> in <tt>user/pgtbltest.c</tt> to
@@ -365,8 +419,10 @@ Why will this <b>NOT</b> work on Xv6?
     the <a href="https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMFDQC-and-Priv-v1.11/riscv-privileged-20190608.pdf">RISC-V
     privileged architecture manual</a> to determine its value.
   <li>Be sure to clear <tt>PTE_A</tt> after checking if it is set. Otherwise, it won't be possible to determine if the page was accessed since the last time <tt>pgaccess()</tt> was called (i.e., the bit will be set forever).
-  <li>You can use the following code in the module <tt>proc.c</tt> as part of your solution.
+  <li>You can use the following code in the module <tt>proc.c</tt> as part of your solution. This code
+implements the page access functionality. You have to create the system call portion to call this function.
 <pre>
+<kbd>
  1 int
  2 pgaccess(uint64 va_start, int npage, uint64 res_addr)
  3 {
@@ -390,6 +446,7 @@ Why will this <b>NOT</b> work on Xv6?
 21   return copyout(p->pagetable, res_addr, (char*)&res, sizeof(res));
 22 }
 </pre>
+</kbd>
 </ul>
 
 <div class="question">
@@ -451,83 +508,28 @@ Search for ASID and how it is used. ASID is Address Space Identifier.
 <img src="tlb.png" alt="Translation Lookaside Buffer" >
 
 </div>
+<h3>Testing</h3>
+<p>We provide the user program <tt>pgtbltest.c</tt>. It tests the <tt>USYSCALL</tt> page with the <tt>pid</tt> defined in the problem and the <tt>pgaccess()</tt> system call defined in the third problem of this lab. <tt>pgtbltest</tt> has two testing functions.
+<ul>
+<li><tt>ugetpid_test()</tt> - This calls <tt>ugetpid()</tt> to retrieve the <tt>pid</tt> from the <tt>USYSCALL</tt> and compares it to the <tt>pid</tt> returned from the system call <tt>getpid()</tt>. The user function <tt>ugetpid()</tt> has been added to <tt>ulib.c</tt>. The code for <tt>ugetpid</tt> is the following.
+<pre>
+int
+ugetpid(void)
+{
+  struct usyscall *u = (struct usyscall *)USYSCALL;
+  return u->pid;
+}
+</pre>
+<li><tt>pgaccess_test()</tt> - This uses <tt>malloc()</tt> to allocate 32 pages, and it modifies (or accesses) pages 1, 2, and 30.
+The returned bits from <tt>pgaccess(buf, 32 &abits)</tt> should have bits 1, 2, and 30 set.
+</ul>
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
 
-<p><b>This completes the lab.</b> Make sure you pass all of the <tt>make
-grade</tt> tests. 
+<p><b>This completes the lab.</b>
 
 Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
 to submit your lab.
 
-<!--
-<p><a name="submit"></>
-<h2>Submit the lab</h2>
-
-<h3>Time spent</h3>
-
-<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
-number of hours you spent on the lab.
-<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
-
-<h3>Answers</h3>
-
-<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
-<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
-
-<h3>Submit</h3>
-
-<p>Assignment submissions are handled by Gradescope.
-You will need an MIT gradescope account.
-See Piazza for the entry code to join the class.
-Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
-if you need more help joining.
-
-<p>When you're ready to submit, run <kbd>make zipball</kbd>,
-which will generate <tt>lab.zip</tt>.
-Upload this zip file to the corresponding Gradescope assignment.
-
-<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
-untracked files, you will see output similar to the following:
-<pre>
- M hello.c
-?? bar.c
-?? foo.pyc
-Untracked files will not be handed in.  Continue? [y/N]
-</pre>
-Inspect the above lines and make sure all files that your lab solution needs
-are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
-You can cause <tt>git</tt> to track a new file that you create using
-<kbd>git add {filename}</kbd>.
-</p>
-
-<p>
-<div class="warning">
-<ul>
-  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.
-    The Gradescope autograder will use the same grading program to assign your submission a grade.</li>
-  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
-  <li>You can inspect the status of your submission and download the submitted
-    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
-</ul>
-</div>
-
-
-
-<h2>Optional challenge exercises</h2>
-
-<ul>
-
-  <li>Use super-pages to reduce the number of PTEs in page tables.
-
-  <li>Unmap the first page of a user process so that dereferencing a
-  null pointer will result in a fault.  You will have to
-  change <tt>user.ld</tt> to start the user text segment at, for
-  example, 4096, instead of 0.
-
-  <li>Add a system call that reports dirty pages (modified pages) using <tt>PTE_D</tt>.
-
-</ul>
--->
 </body>
 </html>

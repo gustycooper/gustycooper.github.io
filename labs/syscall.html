@@ -39,16 +39,30 @@ labs.
 <div class="question">
 <p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
 Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+<p>The Linux <tt>grep</tt> command can be helpful on C programming using Linux with a terminal and on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
+<pre>
+$ <kbd>grep syscall *.c</kbd>
+syscall.c:#include "syscall.h"
+syscall.c:// An array mapping syscall numbers from syscall.h
+syscall.c:static uint64 (*syscalls[])(void) = {
+syscall.c:syscall(void)
+syscall.c:  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+syscall.c:    p->trapframe->a0 = syscalls[num]();
+trap.c:    syscall();
+trap.c:  // send syscalls, interrupts, and exceptions to uservec in trampoline.S
+% <kbd>grep syscall *.h</kbd>
+defs.h:// syscall.c
+defs.h:void            syscall();
+</pre>
 </div>
 <div class="required">
-<p>In the directory of your xv6-labs, create two files: <b>answers-syscall.txt</b> and <b>time.txt</b> that the 
-grading script looks for. You can create these files by the following:
+<p>In the directory of your xv6-labs, create two files: <b>answers-syscall.txt</b> and <b>time.txt</b> that I may use 
+if I run your code using your zip file submission. The answers-syscall.txt is a blank file. The time.txt file contains
+the number of hours you spent on the lab.
 <pre>
 $ echo > answers-syscall.txt
-$ echo 10 > time.txt
+$ echo 8 > time.txt
 </pre>
-I use the information in your photo files and your <b>lab-syscall-handin.txt</b> file that you submit on Canvas.
-I have retained these files and this grading script approach in case I want to use it in the future.
 </div>
 
 <style>
@@ -135,7 +149,9 @@ table.syscalls thead tr {
   <td id="forkdescr" class="reading"><span class="date"> Load a file and execute it with arguments; only returns if error.  </tr>
 <tr>
   <td id="fork" class="lecture"><span class="date"> <code>char *sbrk(int n)</code> </span><br /> </td>
-  <td id="forkdescr" class="reading"><span class="date"> Grow process's memory by n bytes. Returns start of new memory.  </tr>
+  <td id="forkdescr" class="reading"><span class="date"> Grow process's memory by n bytes. Returns start of new memory. 
+The C runtime function <tt>malloc()</tt> calls <tt>sbrk()</tt> to get space for the heap. 
+</tr>
 <tr>
   <td id="fork" class="lecture"><span class="date"> <code>int open(char *file, int flags)</code> </span><br /> </td>
   <td id="forkdescr" class="reading"><span class="date"> Open a file; flags indicate read/write; returns an fd (file descriptor). </tr>
@@ -248,6 +264,65 @@ p->trapframe->a0 = syscalls[num](); // call function, save ret val in reg a0
      </li>
   </ul>
 
+<p><a name="systemcallseq"></>
+<h2>System Call - Sequence of Events</h2>
+<p>A system call is different from a regular function call. A system call must transfer control from the user mode process
+to the kernel mode OS. On the RISC-V architecture, this is accomplished with the <tt>ecall</tt> assembly instruction.
+The <tt>ecall</tt> instruction generates a trap that must be handled by the OS. The following describes the sequence of events for the
+<tt>rseed()</tt> system call. The sequence is the same for all system calls. Some system calls have more or less arguments.
+<p>There are some ideas in this explanation of events that will require you to study virtual addresses and page tables, which is immediately after our system call study.
+<ul>
+<li>A user program is running as a process in user mode. The process calls <tt>rseed(555)</tt>.
+<li>The function calling conventions of RISC-V places up to 8 arguments in 
+registers <tt>a0</tt>, <tt>a1</tt>, <tt>a2</tt>, <tt>a3</tt>, <tt>a4</tt>, <tt>a5</tt>, <tt>a6</tt>, and <tt>a7</tt>. </li> 
+<li>In calling <tt>rseed(555)</tt> places 555 in register <tt>a0</tt>, and generates a regular function call to <tt>rseed</tt>. 
+<pre>
+jalr rseed
+</pre>
+<li>When you add the stub <tt>entry("rseed");</tt> to <tt>user/usys.pl</tt> and the macro <tt>#define SYS_rseed 24</tt> to 
+<tt>kernel/syscall.h</tt> you are adding the user level function <tt>rseed()</tt> and the system call number to Xv6.
+<li>The stubs in <tt>user/usys.pl</tt> are processed by Perl to generate the file <tt>usys.S</tt>, which is a collection of assembly functions, one for each system call. In this example, the assembly function for <tt>rseed()</tt> looks like the following.
+<pre>
+rseed:
+ li a7, SYS_rseed
+ ecall
+ ret
+</pre>
+<li>The code in <tt>usys.S</tt> is linked into every user program, which allows each user program to call system calls. 
+<li>Notice that the assembly functions in <tt>usys.S</tt> are called in user mode. The <tt>ecall</tt> instruction transitions
+to kernel mode.
+<li>At the point of the <tt>ecall</tt> instruction in this example, the value 555 is in register <tt>r0</tt> and the value 
+<tt>SYS_rseed</tt> is in register <tt>r7</tt>, which as defined for this example is 24.
+<li>The <tt>ecall</tt> instruction generates a trap that changes the CPU mode from user to kernel. 
+This trap must be handled by an OS trap handler.</li>
+<li>During initialization, the function <tt>main</tt> in <tt>main.c</tt> calls functions in <tt>trap.c</tt> to install
+the kernel trap vector (or address) in the <tt>stvec</tt> register. The function <tt>kernelvec</tt>.</li> handles interrupts when 
+the CPU is in kernel mode. 
+<li>When the CPU is in user mode, the <tt>stvec</tt> register contains the address of the <tt>Trampoline</tt>, which
+is the user mode interrupt handler. The <tt>Trampoline</tt> code is in the file <tt>kernel/trampoline.S</tt>.
+<li>The <tt>Trampoline</tt> code fits on one page, and there is only one copy of the <tt>Trampoline</tt> code in memory.
+<li>Each process has the <tt>Trampoline</tt> mapped to the exact same address, which is placed in the <tt>stvec</tt> register.
+<li>In addition to the <tt>Trampoline</tt> page, each process is allocated a trapframe page, which is used to store is registers when a trap occurs. Each process has the trapframe mapped to the same page.</li>
+<li>When the <tt>ecall</tt> instruction generates the trap, it is processed by the kernel on the <tt>Trampoline</tt> page. 
+At this point, the user pagetable is being used, but we are running in kernel mode. The user's <tt>Trampoline</tt> page is
+marked such that it can execute in kernel mode. The <tt>Trampoline</tt> code saves the user's registers on the user's trapframe,
+switches to the kernel's page table, and calls <tt>usertrap()</tt> located in <tt>trap.c</tt>.
+<li><tt>usertrap()</tt> recoginizes this is a system call and calls the function <tt>syscall()</tt>
+located in the file <tt>syscall.c</tt>.</li>
+<li>If you examine <tt>syscall</tt>, you will see it retrieves the value of <tt>a7</tt> from the trapframe.
+The user mode function <tt>rseed</tt> places the system call number in <tt>a7</tt>, which was saved on the trapframe by the
+<tt>Trampoline</tt>
+</li>
+<li>The register <tt>a7</tt> has the system call number, which <tt>syscall</tt> uses to call the correct system call function.
+In this case, it results in a call to <tt>sys_rseed()</tt>.</li>
+<li>Notice the <tt>sys_rseed()</tt> does not have arguments, but <tt>rseed(555)</tt> has arguments.</li>
+<li><tt>sys_rseed()</tt> retrieves its argument from register <tt>a0</tt> by calling <tt>argint</tt>, which is 
+located in <tt>syscall.c</tt>. <tt>argint</tt> retrieves the register's value from the trapframe, which is
+where the process's registers were saved when the trap occurred.</li>
+<li>The CPU is now executing the kernel's code corresponding the system call.
+<li>When the system call is complete, the code unwinds, eventually doing a return from trap which goes to the <tt>reg</tt> instruction shown above the the <tt>rseed()</tt> assembly function.
+</ul>
+
 <h2>Starting the Lab <script>g("easy")</script></h2>
 
 <p>To start the lab, switch to the syscall branch:
@@ -256,11 +331,6 @@ p->trapframe->a0 = syscalls[num](); // call function, save ret val in reg a0
   $ <kbd>git checkout syscall</kbd>
   $ <kbd>make clean</kbd>
   </pre>
-
-<p>If you run <tt>make grade</tt> you will see that the grading script cannot
-exec
-  <tt>trace</tt> and <tt>sysinfotest</tt>.  Your job is to add the
-  necessary system calls and stubs to make them work.
 
 <h2>Using gdb <script>g("easy")</script></h2>
 
@@ -416,9 +486,9 @@ Thread 3 hit Breakpoint 1, syscall () at kernel/syscall.c:247
 
 <p>
 <div class="required">
-  <p>In this assignment you will add system calls <code>rseed</code> and <code>rinter</code> that
+  <p>In this problem you will add system calls <code>rseed</code> and <code>rinter</code> that
   seed a random integer generator and generate random integers. 
-  This assignment introduces you to the Xv6 system call mechanism.
+  This problem introduces you to the Xv6 system call mechanism.
   You'll create a
   new <tt>rseed</tt> system call that will seed the random integer generator. It shall
   take one argument, an integer "seed", that establishes the starting seed
@@ -436,19 +506,19 @@ Thread 3 hit Breakpoint 1, syscall () at kernel/syscall.c:247
 <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">Linear Congruential Generator </a>.
 </li>
 
-<li><p>You shall create a static variable to contain the <tt>rseedvalue</tt>, which shall be 0 by default.
+<li><p>You shall create a static variable to contain the <tt>rseedv</tt>, which shall be 0 by default.
 </li>
 
-<li><p>Calls to <tt>rseed(int seedvalue)</tt> shall update the value of <tt>rseedvalue</tt> to be <tt>seedvalue</tt>.
+<li><p>Calls to <tt>rseed(int seedvalue)</tt> shall update the value of <tt>rseedv</tt> to be <tt>seedvalue</tt>.
 </li>
 
 <li><p>One definition of a Linear Congruential Generator is defined by the algorithm 
 <pre>
-X<sub>n+1</sub> = (a * X<sub>n</sub> + c) bitwiseAnd m
+X<sub>n+1</sub> = (a * X<sub>n</sub> + b) bitwiseAnd m
 </pre>
 </li>
 
-<li><p>The static variable <tt>rseedvalue</tt> shall be used for <tt>X</tt>.
+<li><p>The static variable <tt>rseedv</tt> shall be used for <tt>X</tt>.
 </li>
 
 <li><p>The number 1103515245 shall be used for <tt>a</tt>.
@@ -461,14 +531,84 @@ X<sub>n+1</sub> = (a * X<sub>n</sub> + c) bitwiseAnd m
 <pre>
 #define MY_RAND_MAX ((1U << 31) - 1)
 </pre>
-Notice the expression for <tt>MY_RAND_MAX</tt> results in <tt>0x7fffffff</tt>, which is the largest positive 32-bit number. When you use a bitwise and in the expression
+Notice the expression for <tt>MY_RAND_MAX</tt> results in <tt>0x7fffffff</tt>, which is the largest positive 32-bit number. 
+The C bitwise and operator is a single </tt>&</t>.
+When you use a bitwise and in the expression
 <pre>
 (1103515245 * rseedv + 12345) & MY_RAND_MAX
 </pre>
 you are creating a positive number.
 </li>
 
-<li><p>We provide a <tt>randomtest</tt> user-level program that calls your
+</ul>
+
+<h3>Some Hints</h3>
+  <ul>
+
+    <li><p>Add <tt>$U/_randomtest</tt> to <tt>UPROGS</tt> in <tt>Makefile</tt></li>
+    <li><p>Run <kbd>make qemu</kbd> and you will see that the
+	compiler cannot compile <tt>user/randomtest.c</tt>, because the
+	user-space stubs for the system calls don't exist yet:</li> 
+    <li><p>Add prototypes for the system calls to <tt>user/user.h</tt>, </li>
+    <li><p>Add stubs to <tt>user/usys.pl</tt>, and </li>
+    <li><p>Add syscall numbers to <tt>kernel/syscall.h</tt>. </li> 
+		<li><p>The <tt>Makefile</tt> invokes the perl
+	script <tt>user/usys.pl</tt>, which produces <tt>user/usys.S</tt>,
+	the actual system call stubs, which use the
+	RISC-V <tt>ecall</tt> instruction to transition to the
+	kernel. </li>
+    <li><p>Once you fix the compilation issues such that <kbd>make qemu</kbd> successfully makes,
+	you can run <kbd>randomtest 555</kbd>; but it will fail
+	because you haven't implemented the system calls in the kernel
+	yet.</li>
+
+    <li><p>Add a <tt>sys_rseed()</tt> function
+	in <tt>kernel/sysproc.c</tt> that implements the new system
+	call by assigning its argument to the static variable <tt>rseedv</tt>.
+      <ul>
+      <li><tt>sys_rseed()</tt> is called when a user program calls <tt>rseed(555)</tt>.</li>
+      <li>When calling functions with arguments, up to 6 arguments are placed into
+          registers <tt>a0</tt>, <tt>a1</tt>, <tt>a2</tt>, <tt>a3</tt>, <tt>a4</tt>, and <tt>a5</tt>. </li> 
+      <li>Calling <tt>rseed(555)</tt> places 555 in register <tt>a0</tt>, 
+          places the system number associated with <tt>rseed</tt> in register <tt>a7</tt>,
+          and executes the assembly instruction <tt>ecall</tt>.</li>
+      <li>The <tt>ecall</tt> instruction generates a trap that changes the CPU mode from user to supervisor.</li>
+      <li>During initialization, the function <tt>main</tt> in <tt>main.c</tt> calls <tt>trapinithart</tt> to install
+          the kernel trap vector, which is the function <tt>kernelvec</tt>.</li>
+      <li>The function <tt>kernelvec</tt> is an assembly function in <tt>kernelvec.S</tt> that saves registers
+          on the trapframe and calls the fuction <tt>kerneltrap</tt>.</li>
+      <li>Each process is allocated a trapframe, which is used to store is registers when a trap occurs.</li>
+      <li><tt>kerneltrap</tt> is a function in <tt>trap.c</tt></li>
+      <li>The trap is processed by the kernel and <tt>kerneltrap</tt> calls the function <tt>syscall</tt>
+          located in the file <tt>syscall.c</tt>.</li>
+      <li>If you examine <tt>syscall</tt>, you will see it retrieves the value of <tt>a7</tt> from the trapframe.</li>
+      <li>The register <tt>a7</tt> has the system call number, which <tt>syscall</tt> uses to call the correct system call function.
+          In this case, it results in a call to <tt>sys_rseed()</tt>.</li>
+      <li>Notice the <tt>sys_rseed()</tt> does not have arguments, but <tt>rseed(555)</tt> has arguments.</li>
+      <li><tt>sys_rseed()</tt> retrieves its argument from register <tt>a0</tt> by calling <tt>argint</tt>, which is 
+          located in <tt>syscall.c</tt>. <tt>argint</tt> retrieves the register's value from the trapframe, which is
+          where the process's registers were saved when the trap occurred.</li>
+      <li><tt>argint</tt> is called in many of the <tt>sys_</tt> functions. One of the easiest to examine is 
+          <tt>sys_exit</tt>. The <tt>exit(1)</tt> system call has one argument, which is an integer. 
+          Study how <tt>sys_exit</tt> calls <tt>argint</tt>.</li> 
+     
+      </ul>
+    </li>
+    <li><p>Add a <tt>sys_rinter()</tt> function
+	in <tt>kernel/sysproc.c</tt> that implements the new system
+	call by using the Linear Congruential General algorithm defined above.
+    </li>
+    <li><p>Modify the <tt>syscall()</tt> function
+	in <tt>kernel/syscall.c</tt> to include the information needed to make the system calls. 
+    Follow the pattern of exising system calls.</li>
+
+    <li><p>Once you updated <tt>kernel/sysproc.c</tt> and <tt>kernel/syscall.c</tt>, perform a <kbd>make qemu</kbd>, and run <kbd>$ randomtest 555</kbd> as a utility program in Xv6 to see if you have implemented it correctly.
+    Use the sample outputs provided above for comparisons.
+    </li>
+
+  </ul>
+<h3>Testing</h3>
+<p>We provide a <tt>randomtest</tt> user-level program that calls your
   <tt>rseed</tt> and <tt>rinter</tt> system calls (see <tt>user/randomtest.c</tt>).
   When you're done, you should see output like this:
 
@@ -508,75 +648,6 @@ $ randomtest 43
 89
 </pre>
 </li>
-</ul>
-
-<h3>Some Hints</h3>
-  <ul>
-
-    <li><p>Add <tt>$U/_randomtest</tt> to <tt>UPROGS</tt> in <tt>Makefile</tt></li>
-    <li><p>Run <kbd>make qemu</kbd> and you will see that the
-	compiler cannot compile <tt>user/randomtest.c</tt>, because the
-	user-space stubs for the system calls don't exist yet:</li> 
-    <li><p>Add prototypes for the system calls to <tt>user/user.h</tt>, </li>
-    <li><p>Add stubs to <tt>user/usys.pl</tt>, and </li>
-    <li><p>Add syscall numbers to <tt>kernel/syscall.h</tt>. </li> 
-		<li><p>The <tt>Makefile</tt> invokes the perl
-	script <tt>user/usys.pl</tt>, which produces <tt>user/usys.S</tt>,
-	the actual system call stubs, which use the
-	RISC-V <tt>ecall</tt> instruction to transition to the
-	kernel. </li>
-    <li><p>Once you fix the compilation issues such that <kbd>make qemu</kbd> successfully makes,
-	you can run <kbd>randomtest 555</kbd>; but it will fail
-	because you haven't implemented the system calls in the kernel
-	yet.</li>
-
-    <li><p>Add a <tt>sys_rseed()</tt> function
-	in <tt>kernel/sysproc.c</tt> that implements the new system
-	call by assigning its argument to the static variable <tt>rseedvalue</tt>.
-      <ul>
-      <li><tt>sys_rseed()</tt> is called when a user program calls <tt>rseed(555)</tt>.</li>
-      <li>When calling functions with arguments, up to 6 arguments are placed into
-          registers <tt>a0</tt>, <tt>a1</tt>, <tt>a2</tt>, <tt>a3</tt>, <tt>a4</tt>, and <tt>a5</tt>. </li> 
-      <li>Calling <tt>rseed(555)</tt> places 555 in register <tt>a0</tt>, 
-          places the system number associated with <tt>rseed</tt> in register <tt>a7</tt>,
-          and executes the assembly instruction <tt>ecall</tt>.</li>
-      <li>The <tt>ecall</tt> instruction generates a trap that changes the CPU mode from user to supervisor.</li>
-      <li>During initialization, the function <tt>main</tt> in <tt>main.c</tt> calls <tt>trapinithart</tt> to install
-          the kernel trap vector, which is the function <tt>kernelvec</tt>.</li>
-      <li>The function <tt>kernelvec</tt> is an assembly function in <tt>kernelvec.S</tt> that saves registers
-          on the trapframe and calls the fuction <tt>kerneltrap</tt></li>
-      <li><tt>kerneltrap</tt> is a function in <tt>trap.c</tt></li>
-      <li>The trap is processed by the kernel, and the value in register <tt>a7</tt> is used
-          to determine which system call has been made. In this case, it results in a call to <tt>sys_rseed()</tt>.</li>
-      <li>Notice the <tt>sys_rseed()</tt> does not have arguments, but <tt>rseed(555)</tt> has arguments.</li>
-      <li><tt>sys_rseed()</tt> retrieves its argument from register <tt>a0</tt> by calling <tt>argint</tt>, which is 
-          located in <tt>syscall.c</tt></li>
-      <li><tt>argint</tt> is called in many of the <tt>sys_</tt> functions. One of the easiest to examine is 
-          <tt>sys_exit</tt>. The <tt>exit(1)</tt> system call has one argument, which is an integer. 
-          Study how <tt>sys_exit</tt> calls <tt>argint</tt>.</li> 
-     
-      </ul>
-    </li>
-    <li><p>Add a <tt>sys_rinter()</tt> function
-	in <tt>kernel/sysproc.c</tt> that implements the new system
-	call by using the Linear Congruential General algorithm defined above.
-    </li>
-    <li><p>Modify the <tt>syscall()</tt> function
-	in <tt>kernel/syscall.c</tt> to include the information needed to make the system calls. 
-    Follow the pattern of exising system calls.</li>
-
-    <li><p>Once you updated <tt>kernel/sysproc.c</tt> and <tt>kernel/syscall.c</tt>, perform a <kbd>make qemu</kbd>, and run <kbd>$ randomtest 555</kbd> as a utility program in Xv6 to see if you have implemented it correctly.
-    Use the sample outputs provided above for comparisons.
-    </li>
-
-    <li><p>After you have tested your implemenation, you can use the grading tests. 
-     Recall from the util lab, that you can use the grading tests by either of the following.
-<pre>
-$ <kbd>./grade-lab-syscall random</kbd> 
-$ <kbd>make GRADEFLAGS=random grade</kbd>.
-</pre>
-     </li>
-  </ul>
 
     <div class="question">
       <p><b>8.</b> The system calls for random numbers were a nice introduction to system calls.
@@ -585,11 +656,11 @@ $ <kbd>make GRADEFLAGS=random grade</kbd>.
       how they fit into Xv6 before answering this question. 
   </div>
 
-<h2>System call tracing <script>g("moderate")</script></h2>
+<h2>System call tracing <script>g("moderate - solution code provided")</script></h2>
 
 <p>
 <div class="required">
-  <p>In this assignment you will add a system call tracing feature that
+  <p>In this problem you will add a system call tracing feature that
   may help you when debugging later labs.  You'll create a
   new <tt>trace</tt> system call that will control tracing. It should
   take one argument, an integer "mask", whose bits specify which
@@ -623,10 +694,258 @@ $ <kbd>make GRADEFLAGS=random grade</kbd>.
 
 <p>When calling the <tt>trace</tt> user program from the command line, the
   examples show the first parameter as in decimal integer. The samples provided
+  in the Testing section 
   discuss translating this decimal integar parameter to specific system calls.
 
+<h3>Some Hints</h3>
+
+<p>Many of these hints are similar (but maybe briefer) to the hints for the system calls for random numbers.
+
+  <ul>
+
+    <li><p>Add <tt>$U/_trace</tt> to <tt>UPROGS</tt> in <tt>Makefile</tt>. The file <tt>user/trace.c</tt> contains the test cases for the <tt>trace</tt> system call.
+
+    <li><p>You could run <kbd>make qemu</kbd> and you will see that the
+	compiler cannot compile <tt>user/trace.c</tt>, because the
+	user-space stubs for the system call don't exist yet.
+    <li><p>Add a prototype for the system call to <tt>user/user.h</tt>. 
+<p>
+<tt>
+<kbd>
+int trace(int);
+</kbd>
+</tt>
+
+    <li><p>Add a stub
+	to <tt>user/usys.pl</tt>, and a syscall number
+	to <tt>kernel/syscall.h</tt>.  The Makefile invokes the perl
+	script <tt>user/usys.pl</tt>, which produces <tt>user/usys.S</tt>,
+	the actual system call stubs, which use the
+	RISC-V <tt>ecall</tt> instruction to transition to the
+	kernel. 
+<p>
+<tt>
+<kbd> entry("trace"); </kbd> &larr; ADDED TO user/usys.pl<br>
+<kbd> #define SYS_trace 22 </kbd> &larr; ADDED TO kernel/syscall.h
+</tt>
+
+    <li><p>Once you fix the compilation issues, you could 
+	run <kbd>trace 32 grep hello README</kbd>; but it will fail
+	because you haven't implemented the system call in the kernel
+	yet.
+
+<li><p>Update the <tt>kernel/proc.h</tt> file by adding a new member <tt>int mask</tt> 
+to the <tt>struct proc</tt> structure.</li>
+<p>The following is the code for the updated <tt>struct proc</tt> structure in <tt>kernel/proc.h</tt>.
+You are only adding one line.
+<pre>
+struct proc {
+  struct spinlock lock;
+
+  // p->lock must be held when using these:
+  enum procstate state;        // Process state
+  void *chan;                  // If non-zero, sleeping on chan
+  int killed;                  // If non-zero, have been killed
+  int xstate;                  // Exit status to be returned to parent's wait
+  int pid;                     // Process ID
+</pre>
+<tt><kbd>&nbsp;&nbsp;int mask; // for syscall trace</kbd><b> // THIS IS ADDED</b></tt><br>
+<pre>
+  // wait_lock must be held when using this:
+  struct proc *parent;         // Parent process
+
+  // these are private to the process, so p->lock need not be held.
+  uint64 kstack;               // Virtual address of kernel stack
+  uint64 sz;                   // Size of process memory (bytes)
+  pagetable_t pagetable;       // User page table
+  struct trapframe *trapframe; // data page for trampoline.S
+  struct context context;      // swtch() here to run process
+  struct file *ofile[NOFILE];  // Open files
+  struct inode *cwd;           // Current directory
+  char name[16];               // Process name (debugging)
+};
+</pre>
+</li>
+    <li><p>Add a <tt>sys_trace()</tt> function
+	in <tt>kernel/sysproc.c</tt> that implements the new system
+	call by remembering its argument in a new variable in
+	the <tt>proc</tt> structure (see <tt>kernel/proc.h</tt>). The
+	functions to retrieve system call arguments from user space are
+	in <tt>kernel/syscall.c</tt>, and you can see examples
+        of their use in <tt>kernel/sysproc.c</tt>.
+  This programming is just like the random number system calls,
+  which contain additional information on this step.
+   </li>
+
+   <p>The following is the code for <tt>sys_trace()</tt>, which is added to <tt>kernel/sysproc.c</tt>.
+<pre>
+<kbd>
+uint64
+sys_trace(void)
+{
+  int n;
+  argint(0, &n);
+  myproc()->mask = n;
+  return 0;
+}
+</kbd>
+</pre>
+   </li>
+
+    <li><p>Modify <tt>fork()</tt> (see <tt>kernel/proc.c</tt>) to copy
+    the trace mask from the parent to the child process. 
+    <tt>fork()</tt> creates a child process, which is identical to its
+    parent. Both the parent and child have <tt>struc proc</tt> that define
+    the process attributes. The parent has a trace mask stored in its
+    <tt>struct proc</tt>, which is what you added in the previous step.
+    You must copy this trace mask to the child.
+    </li>
+    <p>The following is the code of a modified <tt>fork()</tt>, which is in <tt>kerenl/proc.c</tt>. You are only adding one line.
+<pre>
+int
+fork(void)
+{
+  int i, pid;
+  struct proc *np;
+  struct proc *p = myproc();
+
+  // Allocate process.
+  if((np = allocproc()) == 0){
+    return -1;
+  }
+
+</pre>
+<tt><kbd>&nbsp;&nbsp;// Copy mask for syscall trace</kbd></tt><br>
+<tt><kbd>&nbsp;&nbsp;np->mask = p->mask;</kbd> <b>// THIS IS ADDED</b></tt>
+<pre>
+  // Copy user memory from parent to child.
+  if(uvmcopy(p->pagetable, np->pagetable, p->sz) < 0){
+    freeproc(np);
+    release(&np->lock);
+    return -1;
+  }
+  np->sz = p->sz;
+
+  // copy saved user registers.
+  *(np->trapframe) = *(p->trapframe);
+
+  // Cause fork to return 0 in the child.
+  np->trapframe->a0 = 0;
+
+  // increment reference counts on open file descriptors.
+  for(i = 0; i < NOFILE; i++)
+    if(p->ofile[i])
+      np->ofile[i] = filedup(p->ofile[i]);
+  np->cwd = idup(p->cwd);
+
+  safestrcpy(np->name, p->name, sizeof(p->name));
+
+  pid = np->pid;
+
+  release(&np->lock);
+
+  acquire(&wait_lock);
+  np->parent = p;
+  release(&wait_lock);
+
+  acquire(&np->lock);
+  np->state = RUNNABLE;
+  release(&np->lock);
+
+  return pid;
+}
+</pre>
+    </li>
+
+
+    <li><p>Modify the <tt>syscall()</tt> function
+	in <tt>kernel/syscall.c</tt> to print the trace output. You will need to add an array of syscall names to index into.
+    Make sure that the indices of the array use the <tt>SYS_fork</tt> names defined in <tt>syscall.h</tt>. For example
+<pre>
+static char *syscall_name[] = {
+[SYS_fork]    "fork",
+[SYS_exit]    "exit",
+...
+</pre>
+
+    </li><p>The format for each line printed by your trace in <tt>syscall()</tt> is
+<pre>
+"%d: syscall %s -> %d\n" pid, syscallName, syscallReturnValue"
+</pre>
+If you study the code in <tt>syscall()</tt>, I am sure you can find the variables that 
+correspond to <tt>pid</tt>, <tt>syscallName</tt>, and <tt>syscallReturnValue</tt>.
+These variables may be members of structures.<br><br>
+<li>The following is the code for the <tt>syscall()</tt> modifications.
+This does not show the entire code for <tt>syscall.c</tt>. Just enough to show the modifications, which are in green font.
+Be sure that the order of your <tt>syscall_name[]</tt> matches the order of your system call numbers.
+<br><br>
+<tt><kbd>static char *syscall_name[] = {</kbd></tt><br>
+<tt><kbd>[SYS_fork]    "fork",</kbd></tt><br>
+<tt><kbd>[SYS_exit]    "exit",</kbd></tt><br>
+<tt><kbd>[SYS_wait]    "wait",</kbd></tt><br>
+<tt><kbd>[SYS_pipe]    "pipe",</kbd></tt><br>
+<tt><kbd>[SYS_read]    "read",</kbd></tt><br>
+<tt><kbd>[SYS_kill]    "kill",</kbd></tt><br>
+<tt><kbd>[SYS_exec]    "exec",</kbd></tt><br>
+<tt><kbd>[SYS_fstat]   "fstat",</kbd></tt><br>
+<tt><kbd>[SYS_chdir]   "chdir",</kbd></tt><br>
+<tt><kbd>[SYS_dup]     "dup",</kbd></tt><br>
+<tt><kbd>[SYS_getpid]  "getpid",</kbd></tt><br>
+<tt><kbd>[SYS_sbrk]    "sbrk",</kbd></tt><br>
+<tt><kbd>[SYS_sleep]   "sleep",</kbd></tt><br>
+<tt><kbd>[SYS_uptime]  "uptime",</kbd></tt><br>
+<tt><kbd>[SYS_open]    "open",</kbd></tt><br>
+<tt><kbd>[SYS_write]   "write",</kbd></tt><br>
+<tt><kbd>[SYS_mknod]   "mknod",</kbd></tt><br>
+<tt><kbd>[SYS_unlink]  "unlink",</kbd></tt><br>
+<tt><kbd>[SYS_link]    "link",</kbd></tt><br>
+<tt><kbd>[SYS_mkdir]   "mkdir",</kbd></tt><br>
+<tt><kbd>[SYS_close]   "close",</kbd></tt><br>
+<tt><kbd>[SYS_trace]   "trace",</kbd></tt><br>
+<tt><kbd>[SYS_sysinfo] "sysinfo",</kbd></tt><br>
+<tt><kbd>[SYS_rseed]   "rseed",</kbd></tt><br>
+<tt><kbd>[SYS_rinter]  "rinter",</kbd></tt><br>
+<tt><kbd>};</kbd></tt><br>
+<pre>
+void
+syscall(void)
+{
+  int num;
+  struct proc *p = myproc();
+
+  //num = * (int *) 0;
+  num = p->trapframe->a7;
+  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+    // Use num to lookup the system call function for num, call it,
+    // and store its return value in p->trapframe->a0
+    p->trapframe->a0 = syscalls[num]();
+</pre>
+<tt><kbd>&nbsp;&nbsp;&nbsp;&nbsp;// core code for syscall trace</kbd></tt><br>
+<tt><kbd>&nbsp;&nbsp;&nbsp;&nbsp;if((1&lt;&lt;num) & p->mask){</kbd></tt><br>
+<tt><kbd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d: syscall %s -> %d\n", p->pid, syscall_name[num], p->trapframe->a0);</kbd></tt><br>
+<tt><kbd>&nbsp;&nbsp;&nbsp;&nbsp;}</kbd></tt><br>
+  } else {
+    printf("%d %s: unknown sys call %d\n",
+            p->pid, p->name, num);
+    p->trapframe->a0 = -1;
+  }
+}
+</pre>
+
+  </ul>
+
+<h3>Testing</h3>
 <p>We provide a <tt>trace</tt> user-level program that runs another
-  program with tracing enabled (see <tt>user/trace.c</tt>). When you're
+  program with tracing enabled (see <tt>user/trace.c</tt>). 
+Do not simply run the <tt>trace</tt> program. Study the code in <tt>user/trace.c</tt>.
+When the <tt>trace</tt> program is run, it is a child process of the shell.
+You will see that the <tt>trace</tt> user program calls the <tt>trace()</tt> system call with the mask provided.
+This sets the <tt>mask</tt> member of the <tt>struct proc</tt> to be the mask. This is for the <tt>trace</tt> process.
+The <tt>trace</tt> process then calls <tt>exec()</tt> to execute the the program and arguments.
+This program is a child of the <tt>trace</tt> process, but the <tt>fork()</tt> function copies its parents mask 
+to the child. When the program argument executes it has its trace <tt>mask</tt> set which prints the trace results.
+<p>
+When you're
   done, you should see output like this:
 
 <ul>
@@ -680,81 +999,11 @@ $
 </pre>
 </ul>
 
-
-<h3>Some Hints</h3>
-
-<p>Many of these hints are similar (but maybe briefer) to the hints for the system calls for random numbers.
-
-  <ul>
-
-    <li><p>Add <tt>$U/_trace</tt> to <tt>UPROGS</tt> in <tt>Makefile</tt>
-
-    <li><p>Run <kbd>make qemu</kbd> and you will see that the
-	compiler cannot compile <tt>user/trace.c</tt>, because the
-	user-space stubs for the system call don't exist yet: add a
-	prototype for the system call to <tt>user/user.h</tt>, a stub
-	to <tt>user/usys.pl</tt>, and a syscall number
-	to <tt>kernel/syscall.h</tt>.  The Makefile invokes the perl
-	script <tt>user/usys.pl</tt>, which produces <tt>user/usys.S</tt>,
-	the actual system call stubs, which use the
-	RISC-V <tt>ecall</tt> instruction to transition to the
-	kernel. Once you fix the compilation issues,
-	run <kbd>trace 32 grep hello README</kbd>; it will fail
-	because you haven't implemented the system call in the kernel
-	yet.
-
-    <li><p>Add a <tt>sys_trace()</tt> function
-	in <tt>kernel/sysproc.c</tt> that implements the new system
-	call by remembering its argument in a new variable in
-	the <tt>proc</tt> structure (see <tt>kernel/proc.h</tt>). The
-	functions to retrieve system call arguments from user space are
-	in <tt>kernel/syscall.c</tt>, and you can see examples
-        of their use in <tt>kernel/sysproc.c</tt>.
-  This programming is just like the random number system calls,
-  which contain additional information on this step.
-   </li>
-
-    <li><p>Modify <tt>fork()</tt> (see <tt>kernel/proc.c</tt>) to copy
-    the trace mask from the parent to the child process. 
-    <tt>fork()</tt> creates a child process, which is identical to its
-    parent. Both the parent and child have <tt>struc proc</tt> that define
-    the process attributes. The parent has a trace mask stored in its
-    <tt>struct proc</tt>, which is what you added in the previous step.
-    You must copy this trace mask to the child.
-    </li>
-
-
-    <li><p>Modify the <tt>syscall()</tt> function
-	in <tt>kernel/syscall.c</tt> to print the trace output. You will need to add an array of syscall names to index into.
-    Make sure that the indices of the array use the <tt>SYS_fork</tt> names defined in <tt>syscall.h</tt>. For example
-<pre>
-static char *syscall_name[] = {
-[SYS_fork]    "fork",
-[SYS_exit]    "exit",
-...
-</pre>
-
-    </li><p>The format for each line printed by your trace in <tt>syscall()</tt> is
-<pre>
-"%d: syscall %s -> %d\n" pid, syscallName, syscallReturnValue"
-</pre>
-If you study the code in <tt>syscall()</tt>, I am sure you can find the variables that 
-correspond to <tt>pid</tt>, <tt>syscallName</tt>, and <tt>syscallReturnValue</tt>.
-These variables may be members of structures.
-
-    <li><p>If a test case passes when you run it inside qemu directly but
-  you get a timeout when running the tests using <tt>make grade</tt>, try
-  testing your implementation on the CPSC server. Some of tests in this lab can be a bit
-  too computationally intensive for your local machine (especially if you use
-  WSL).</li>
-
-  </ul>
-
-<h2>Sysinfo <script>g("moderate")</script></h2>
+<h2>Sysinfo <script>g("moderate - solution code provided")</script></h2>
 
 <p>
 <div class="required">
-  <p>In this assignment you will add a system call, <tt>sysinfo</tt>,
+  <p>In this problem you will add a system call, <tt>sysinfo</tt>,
   that collects information about the running system.  The system call
   takes one argument: a pointer to a <tt>struct sysinfo</tt>
   (see <tt>kernel/sysinfo.h</tt>). The kernel should fill out the
@@ -762,51 +1011,122 @@ These variables may be members of structures.
   to the number of bytes of free memory, and the <tt>nproc</tt>
   field should be set to the number of processes whose <tt>state</tt>
   is not <tt>UNUSED</tt>.
-  We provide a test program <tt>sysinfotest</tt>; you pass this
-  assignment if it prints "sysinfotest: OK".
+  We provide a test program <tt>sysinfotest</tt> that you can use to test your implementation
 </div>
 
 <h3>Some Hints</h3>
 <ul>
 
-<li><p>Add <tt>$U/_sysinfotest</tt> to UPROGS in Makefile
+<li><p>Add <tt>$U/_sysinfotest</tt> to UPROGS in Makefile. The file <tt>sysinfotest.c</tt> contains test cases for this problem.
 
-<li><p>Run <kbd>make qemu</kbd>; <tt>user/sysinfotest.c</tt> will
-  fail to compile. 
+<li><p>You could run <kbd>make qemu</kbd>; but <tt>user/sysinfotest.c</tt> will
+  fail to compile because it calls the <tt>sysinfo</tt> system call which is not available yet. 
 </li>
-<li>Add the system call sysinfo, following the same
-  steps as in the previous assignments of this lab. You can refer 
+<li>Add the system call <tt>sysinfo</tt>, following the same
+  steps as in the previous problems of this lab. You can refer 
   to  <a href="#refsystemcalls" >Reference: Xv6 System Calls</a> for the steps.
-  To declare the prototype for
-  sysinfo() <tt>in user/user.h</tt> you need predeclare the existence
-  of <tt>struct sysinfo</tt>:
-  <pre>
+  For one of the steps, you must declare the prototype for
+  <tt>sysinfo(struct sysinfo *)</tt> in <tt>user/user.h</tt>, but since <tt>sysinfo</tt>
+  has a <tt>struct sysinfo *</tt> argument, you need predeclare the existence
+  of <tt>struct sysinfo</tt> in order for the prototype to compile correclty. 
+  Place the following as the second line in the file <tt>user/user.h</tt>.
+  <p>
+  <tt>
+  <kbd>
     struct sysinfo;
+  </kbd>
+  </tt>
+  <p>Now you can place the following <tt>sysinfo</tt> function prototype in the list of system calls in the file <tt>user/user.h</tt>.
+  <p>
+  <tt>
+  <kbd>
     int sysinfo(struct sysinfo *);
-  </pre>
+  </kbd>
+  </tt>
 </li>
-<li>Once you fix the compilation issues, run
-  <kbd>sysinfotest</kbd>; it will fail because you haven't
-  implemented the system call in the kernel yet.
+
+<li><p>Add a stub
+	to <tt>user/usys.pl</tt>, and a syscall number
+	to <tt>kernel/syscall.h</tt>.  The Makefile invokes the perl
+	script <tt>user/usys.pl</tt>, which produces <tt>user/usys.S</tt>,
+	the actual system call stubs, which use the
+	RISC-V <tt>ecall</tt> instruction to transition to the
+	kernel. 
+</li>
+<p>
+<tt>
+<kbd> entry("sysinfo"); </kbd> &larr; ADDED TO user/usys.pl<br>
+<kbd> #define SYS_sysinfo 23 </kbd> &larr; ADDED TO kernel/syscall.h
+</tt>
+
+    <li><p>Once you fix the compilation issues, you could 
+	run <kbd>trace 32 grep hello README</kbd>; but it will fail
+	because you haven't implemented the system call in the kernel
+	yet.
+
+<li>Once you fix the compilation issues, <kbd>make qemu</kbd> will create a system with <tt>sysinfotest</tt>, but it will not run
+  because you haven't implemented the system call in the kernel yet.
 </li>
 
 <li><p>Your <tt>sysinfo</tt> will need some helper functions in the kernel.
 These functions are not system calls because only the kernel (namely <tt>sysinfo</tt>) calls them; however,
 you must put their function prototypes in <tt>defs.h</tt>.
 <ul>
+<li><tt>kernel/defs.h</tt> - place this function prototypes for <tt>get_freemen()</tt> and <tt>get_nproc()</tt> in <tt>kernel/defs.h</tt>.
+You will notice <tt>kernel/defs.h</tt> is organized by the <tt>.c</tt> files in the kernel. 
+<p>Locate the <tt>kalloc.c</tt> section and add the following prototype. Follow the formatting of the file.
+<p>
+  <tt>
+  <kbd>
+int             get_freemem(void);
+  </kbd>
+  </tt>
+<p>Locate the <tt>proc.c</tt> section and add the following prototype. Follow the formatting of the file.
+<p>
+  <tt>
+  <kbd>
+int             get_nproc(void);
+  </kbd>
+  </tt>
+
 <li><tt>get_freemem()</tt> - place this function in <tt>kernel/kalloc.c</tt>.
 Implementing this function requires you to walk the free memory list
 counting the free bytes. It returns the number of bytes of free memory.
 <ul>
 <li>The free memory is pointed to by the variable <tt>kmem.freelist</tt>, which 
-is type <tt>struct run *</tt>, which is defined in <tt>kalloc.c</tt>.
-<li>You must traverse the free list and compute the number of free bytes.
+is type <tt>struct run *</tt>, which is defined in <tt>kalloc.c</tt>  as follows.
+<pre>
+struct run {
+  struct run *next;
+};
+</pre>
+<li>You must traverse the singly linked-list to compute the number of free bytes.
 <li>The free list is a list of free pages, where each page is <tt>PGSIZE</tt> bytes.
 <li>The macro <tt>PGSIZE</tt> is defined to be 4096 in the file <tt>riscv.h</tt>.
 <li>Notice that the free list has a lock <tt>kmem.lock</tt> that you must
 <tt>acquire</tt> before traversing the free list and <tt>release</tt> after
 traversing the free list.
+We will study locks in detail shortly.
 </ul>
+<p>The following is the code for <tt>get_freemem()</tt>. It is a basic linked-list traversal algorithm that accumulates the total number of free bytes. You can place this at the bottom of the file <tt>kalloc.c</tt>.
+<pre>
+<kbd>
+// get the number of bytes of free memory
+int
+get_freemem()
+{
+  int bytes = 0;
+  struct run *p = kmem.freelist;
+  acquire(&kmem.lock);
+  while(p){
+    bytes += PGSIZE;
+    p = p->next;
+  }
+  release(&kmem.lock);
+  return bytes;
+}
+</kbd>
+</pre>
 <li><tt>get_nproc()</tt> - place this function in <tt>kernel/proc.c</tt>.
 Implementing this function requires you to iterate through the procs
 counting those that are not <tt>UNUSED</tt>. It returns the number of
@@ -816,6 +1136,24 @@ procs that are not <tt>UNUSED</tt>.
 <li>You must itterate through the array <tt>struct proc proc</tt> 
 counting the procs that are not <tt>UNUSED</tt>.
 </ul>
+<p>The following is the code for <tt>get_nproc()</tt>. You can place this at the bottom of the file <tt>proc.c</tt>.
+
+<pre>
+<kbd>
+// get the number of processes whose state is not UNUSED
+int
+get_nproc()
+{
+  int n = 0;
+  for(int i=0; i&lt;NPROC; i++){
+    if(proc[i].state != UNUSED){
+      n++;
+    }
+  }
+  return n;
+}
+</kbd>
+</pre>
 </ul>
 </li>
 
@@ -825,115 +1163,57 @@ counting the procs that are not <tt>UNUSED</tt>.
   to do that using <tt>copyout()</tt>.
 </li>
 
+<li>The following is the code for <tt>sys_sysinfo()</tt>.
+<pre>
+uint64
+sys_sysinfo(void)
+{
+  struct sysinfo info;
+  info.freemem = get_freemem();
+  info.nproc = get_nproc();
+
+  uint64 addr;
+  argaddr(0, &addr);
+  // kernel cannot directly access user space. use copyout()
+  return copyout(myproc()->pagetable, addr, (char*)&info, sizeof(info));
+}
+</pre>
+
 </ul>
 
     <div class="question">
       <p><b>9.</b> Why must the kernel call <tt>copyout</tt>?
   </div>
 
+<h3>Testing</h3>
+<p>We have provided <tt>user/sysinfotest.c</tt> to test the <tt>sysinfo</tt> implementationa, 
+and it is an execellent example of how to test. 
+The code in <tt>user/sysinfotest.c</tt> requires some thought to understand.
+<ul>
+<li>The function <tt>testcall()</tt> makes sure that <tt>sysinfo()</tt> succeeds with a valid address and fails with a bad addres..
+<li>The function <tt>testmem()</tt> first counts all of the free pages of memory. It does this by calling <tt>countfree()</tt>, which repeatedly consumes all of the free pages by calling the <tt>sbrk()</tt> function, counting the pages as they are aquired. After <tt>countfree()</tt> has consumed all of the free memory, it calls <tt>sysinfo()</tt>, which should return 0 bytes of free memory. Then <tt>countfree()</tt> returns all of the pages it has acquired and calls <tt>sysinfo()</tt> again. This time <tt>sysinfo()</tt> should return the number of pages counted.
+<li>The function <tt>testproc()</tt> calls <tt>sysinfo()</tt> to determine how many process are not <tt>UNUSED</tt>. Then <tt>testproc()</tt> calls <tt>fork()</tt> to create a child process. Then <tt>testproc()</tt> calls <tt>sysinfo()</tt> again, which should return one more process than before. After the child process finishes, <tt>testproc()</tt> calls <tt>sysinfo()</tt> again, which should return the original number of processes.
+</ul>
+Running <tt>sysinfotest</tt> is rather boring. You should be patient for it to terminate.
+<pre>
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$ <kbd>sysinfotest</kbd>
+sysinfotest: start
+sysinfotest: OK
+$ 
+</pre>
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
 
-<p><b>This completes the lab.</b> Make sure you pass all of the <tt>make
-grade</tt> tests. 
+<p><b>This completes the lab.</b> 
 
 Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
 to submit your lab.
 
-<!--
-<p><a name="submit"></>
-<h2>Submit the lab</h2>
-
-<p><b>This completes the lab.</b> Make sure you pass all of the make
-grade tests. If this lab had questions, don't forget to write up your
-answers to the questions in answers-<i>lab-name</i>.txt. Commit your changes
-(including adding answers-<i>lab-name</i>.txt) and type make handin in the lab
-  directory to hand in your lab.
-
-<h3>Time spent</h3>
-
-<p>Create a new file, <tt>time.txt</tt>, and put in it a single integer, the
-number of hours you spent on the lab. Don't forget to <tt>git add</tt> and
-<tt>git commit</tt> the file.
-
-<h3>Submit</h3>
-
-You will turn in your assignments using
-the <a href="https://6828.scripts.mit.edu/2022/handin.py/">submission
-website</a>.  You need to request once an API key from the submission
-website before you can turn in any assignments or labs.
-</p>
-
-<p>After committing your final changes to the lab, type <kbd>make
-handin</kbd> to submit your lab.
-<pre>
-$ <kbd>git commit -am "ready to submit my lab"</kbd>
-[util c2e3c8b] ready to submit my lab
- 2 files changed, 18 insertions(+), 2 deletions(-)
-
-$ <kbd>make handin</kbd>
-tar: Removing leading `/' from member names
-Get an API key for yourself by visiting https://6828.scripts.mit.edu/2022/handin.py/
-Please enter your API key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 79258  100   239  100 79019    853   275k --:--:-- --:--:-- --:--:--  276k
-$
-</pre>
-<kbd>make handin</kbd> will store your API key in <i>myapi.key</i>. If you need
-to change your API key, just remove this file and let <kbd>make handin</kbd>
-generate it again (<i>myapi.key</i> must not include newline characters).
-</p>
-
-<p>
-If you run <kbd>make handin</kbd> and you have either uncomitted changes or
-untracked files, you will see output similar to the following:
-<pre>
- M hello.c
-?? bar.c
-?? foo.pyc
-Untracked files will not be handed in.  Continue? [y/N]
-</pre>
-Inspect the above lines and make sure all files that your lab solution needs
-are tracked i.e. not listed in a line that begins with <kbd>??</kbd>.
-You can cause <tt>git</tt> to track a new file that you create using
-<tt>git add filename</tt>.
-</p>
-
-<p>
-If <kbd>make handin</kbd> does not work properly, 
-try fixing the problem with the curl or Git commands.
-Or you can run <kbd>make tarball</kbd>.
-This will make a tar file for you, which you can
-then upload via our 
-<a href="https://6828.scripts.mit.edu/2022/handin.py/">web interface</a>.
-</p>
-
-<p>
-<div class="warning">
-<ul>
-  <li>Please run `make grade` to ensure that your code passes all of the tests</li>
-  <li>Commit any modified source code before running `make handin`</li>
-  <li>You can inspect the status of your submission and download the submitted
-code at <a
-href="https://6828.scripts.mit.edu/2022/handin.py/">https://6828.scripts.mit.edu/2022/handin.py/</a> </li>
-</ul>
-</div>
-
-
-
-<h2>Optional challenge exercises</h2>
-
-<ul>
-
-  <li>Print the system call arguments for traced system
-  calls <script>g("easy")</script>.</li>
-
-  <li>Compute the load average and export it through
-  sysinfo<script>g("moderate")</script>.</li>
-
-</ul>
--->
 
 </body>
 </html>

@@ -39,17 +39,16 @@ sysfile.c:  struct inode *ip;
 </pre>
 </div>
 <div class="required">
-<p>In the directory of your xv6-labs, create two files: <b>answers-fs.txt</b> and <b>time.txt</b> that the 
-grading script looks for. You can create these files by the following:
+<p>In the directory of your xv6-labs, create two files: <b>answers-fs.txt</b> and <b>time.txt</b> that I may use 
+if I run your code using your zip file submission. The answers-fs.txt is a blank file. The time.txt file contains
+the number of hours you spent on the lab.
 <pre>
 $ echo > answers-fs.txt
-$ echo 10 > time.txt
+$ echo 8 > time.txt
 </pre>
-I use the information in your photo files and your <b>lab-fs-handin.txt</b> file that you submit on Canvas.
-I have retained these files and this grading script approach in case I want to use it in the future.
 </div>
 
-<p>Fetch the xv6 source for the lab and check out the <tt>util</tt> branch:
+<p>Fetch the xv6 source for the lab and check out the <tt>fs</tt> branch:
 
 <pre>
   $ <kbd>git fetch</kbd>

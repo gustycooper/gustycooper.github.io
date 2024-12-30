@@ -1,0 +1,682 @@
+<html>
+<head>
+<title>Lab: first lab</title>
+<link rel="stylesheet" href="labs.css" type="text/css" />
+<script src="guidance.js"></script>
+</head>
+<body>
+
+<h1>Lab: first lab</h1>
+
+<p>In this lab you will practice your C programming.
+
+<div class="prereq">
+<p>Before designing and writing code, you may want to read 
+  <a href=https://ia903407.us.archive.org/35/items/the-ansi-c-programming-language-by-brian-w.-kernighan-dennis-m.-ritchie.org/The%20ANSI%20C%20Programming%20Language%20by%20Brian%20W.%20Kernighan%2C%20Dennis%20M.%20Ritchie.pdf>The C Programming Language (second edition)</a> 
+by Brian W. Kernighan and Dennis M. Ritchie or whatever C book you have used in your studies.
+</div>
+
+<div class="question">
+<p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
+Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+<p>The Linux <tt>grep</tt> command can be helpful on C programming using Linux with a terminal and on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
+<pre>
+$ <kbd>grep "struct proc" *.h</kbd>
+proc.h:struct proc {
+... lots of matches
+proc.h:struct proc *find_proc(int pid);
+proc.h:bool enqueue_proc(struct proc *p);
+% <kbd>grep "struct proc" *.c</kbd>
+main.c:        struct proc *p = NULL;
+... lots of matches
+proc.c:    struct proc *p = init_proc;
+proc.c:    struct proc *p = new_proc(name, priority, ppid);
+</pre>
+</div>
+<div class="required">
+<p>In the directory of your xv6-labs, create two files: <b>answers-firstlab.txt</b> and <b>time.txt</b> that I may use 
+if I run your code using your zip file submission. The answers-firstlab.txt is a blank file. The time.txt file contains
+the number of hours you spent on the lab.
+<pre>
+$ echo > answers-firstlab.txt
+$ echo 8 > time.txt
+</pre>
+</div>
+
+A<p>Fetch the xv6 source for the lab and check out the <tt>firstlab</tt> branch:
+
+<pre>
+  $ <kbd>git fetch</kbd>
+  $ <kbd>git checkout firstlab</kbd>
+  $ <kbd>make clean</kbd>
+</pre>
+
+<h2>Introduction</h2>
+<p>Xv6 is a relatively small system. It has a little over 6,000 lines of C code - approximately 5K lines of .c files and 1K lines of .h files. Even though 6,000 lines of C code is small in the big scheme of software, it is probably large considering your experience of software development. We tend to teach point-specific algorithms like how to write a recursive function, how to find the largest number in an array, how to implement a linked-list. Most likely your largest program/system was in CPSC 240. All imperative programs are collections of data structures and algorithms. When you have a large system that is many lines of code, you need a way to organize the data structures and algorithms into a collection of files that makes sense and allows you to visualize the organization so that you can easily edit the pieces to add new capabilities and fix bugs. This compartmentalization allows you to think about the program in chunks.
+<p>The CPSC 240 project in my class was about 1,300 lines of Java code. Java is an object-oriented language. In Java (and other OO languages), you organize large programs by creating classes, where the code for each class is placed in <tt>.java</tt> files. Classes implement abstract data types that have private and public data and methods (or functions). Sometimes you create a base class and extend it. For example, in my CPSC 240 class we created a bicycle database program that had an inventory of bicycle parts. There was a basic <tt>Part</tt> class that was extended to become the <tt>BikePart</tt> class. Other classes included a <tt>BikeDB</tt> class, a <tt>WareHouseFactory</tt> class, a <tt>WareHouseManager</tt> class, a <tt>SalesAssociate</tt> class, and an <tt>OfficeManager</tt> class. Some of these classes used design patterns that were pictorially represented with UML diagrams (perhaps you recall design patterns and UML). All of the various classes are brought together by a <tt>Main.java</tt> class that created the program. Not all classes are used to create objects. For example, the <tt>Main.java</tt> class has static functions that are not members of a class.
+
+<p>C is not an object-oriented language so you cannot create classes, but you can create abstract data types and organize your program as a collectin of files.  I will use the term <i>module</i> to describe C's organizing technique. 
+In C, you package together data structures and algorithms in a <tt>.h</tt> and <tt>.c</tt> files.
+
+<h3>Hash Table Files</h3>
+<p>The source code files and Makefile for the hash table program are in the <tt>xv6-labs/notxv6</tt> directory.
+Be sure you have entered the <tt>$ <kbd>git checkout firstlab</kbd></tt> command before looking for the files.
+<ul>
+<li><tt>hash.h</tt>
+<li><tt>hash.c</tt>
+<li><tt>main.c</tt>
+<li><tt>Makefile</tt>
+</ul>
+
+<h3>Hash Table API</h3>
+<p>Suppose you wanted to create a hash table abstract data type in C. In our example, a hash table is a fixed size array of entries. Each entry has a name, age, and a pointer to an entry. A hash function hashes the name to select the index into the array. If that index is occupied and the name is not in the linked list, you place the name and age at the front of the linked list. For our example, we have three functions
+<ul>
+<li><tt>void put(char *name, int age)</tt> - puts the entry <tt>name</tt> and <tt>age</tt> into the hash table.
+<li><tt>int get(char *name)</tt> - returns the <tt>age</tt> of <tt>name</tt>. Returns 0 if <tt>name</tt> is not in the hash table.
+<li><tt>void printhash()</tt> - prints the entries in the hash table.
+</ul>
+<div class="question">
+<p><b>1.</b> What is a C string?
+</div>
+<h3><tt>hash.h</tt> and <tt>hash.c</tt></h3>
+<p>For this example, we will insert a string into the hash table. To create this hash table module in C, you would create two files, <tt>hash.h</tt> and <tt>hash.c</tt>. 
+<ul>
+<li> The <tt>hash.h</tt> file contains 
+
+<ul>
+<li><tt>#define</tt> statements
+<li>data structure definitions that are used to implement the hash table 
+<li>function prototypes of the functions users need manipulate the data structure. 
+</ul>
+<li> The <tt>hash.c</tt> file contains the implementation of the functions to manipulate the data structures. 
+</ul>
+<h3><tt>hash.h</tt> file</h3>
+<p>The <tt>hash.h</tt> file could look like the following.
+<pre>
+#define NBUCKET 5
+#define NKEYS 100000
+
+struct entry {
+  char *name;
+  int age;
+  struct entry *next;
+};
+void put(char *name, int age);
+int get(char *name);
+void printhash();
+</pre>
+
+<div class="question">
+<p><b>2.</b> Suppose <tt>struct entry</tt>'s member <tt>name</tt> was defined as <tt>char name[16]</tt>. 
+Describe how this definition is different than <tt>char *name</tt>.
+</div>
+
+<p>Note that this <tt>hash.h</tt> exposes the internal <tt>struct entry</tt> data structure, which the user does not need to know. We could work around this, but for now we leave this as is, because we want the <tt>hash.c</tt> file to <tt>#include hash.h</tt> to use <tt>struct entry</tt>.
+<h3>The Function  <tt>get_entry()</tt> in <tt>hash.c</tt></h3>
+<p>The <tt>hash.c</tt> file contains the three global (or public) functions - <tt>put()</tt>, <tt>get()</tt>, and <tt>printhash()</tt> and several helper functions. We begin by examining the helper function <tt>get_entry()</tt>, which has the following attributes.
+<ul>
+<li>Function prototype is <tt>static struct entry *get_entry(char *name)</tt>;
+<li>If <tt>name</tt> is in the hashtable, <tt>get_entry</tt> returns a pointer to its entry; otherwise, <tt>get_entry()</tt> returns a 0, which is the <tt>NULL</tt> pointer.
+<li>Making <tt>get_entry()</tt> a <tt>static</tt> function means it is only callable from within the <tt>hash.c</tt> file. 
+<li>The functions <tt>get()</tt>, <tt>put()</tt>, and <tt>printhash</tt> are not <tt>static</tt>, which means they are global and can be called by other <tt>.c</tt> files.
+</ul>
+<p>Good programmers first understand the data structures, which make understanding the algorithms easier. I like to visualize the data structures. The array <tt>table[]</tt> is an array of pointers to <tt>struct entry</tt>. This results in an array where each entry is a linked list of <tt>struct entry</tt>. The definition includes the keyword <tt>static</tt>, which means that the variable <tt>table</tt> can only be accessed by function defined in the file <tt>hash.c</tt>.
+<pre>
+statuc struct entry *table[NBUCKET];
+</pre>
+
+<p>A visual representation of the <tt>table[]</tt> array data structure can be seen in the following figure. You should notice that the <tt>name</tt> member of the structure is type <tt>char*</tt>, which points to a C string. 
+<br>
+
+<img src="hashtable.png" alt="Firstlab Data Structures" >
+
+<p>If you examine the figure while studying the code for <tt>get_entry()</tt>, the code is easy to understand.
+<pre>
+static struct entry *
+get_entry(char *name)
+{
+  struct entry *e = 0;
+  for (e = table[hash(name) % NBUCKET]; e != 0; e = e->next) {
+    if (strcmp(name, e->name) == 0)
+      break;
+  }
+  return e;
+}
+</pre>
+<div class="question">
+<p><b>3.</b> Explain the <tt>for</tt> loop in the above code.
+</div>
+
+The following are attributes about the above code.
+<ul>
+<li>The <tt>hash(name)</tt> converts the string <tt>name</tt> into a number 
+<li>The modulo by <tt>NBUCKET</tt> puts the number in the range of elements in <tt>table</tt>.
+<li>Since <tt>table[]</tt> is an array of pointers to <tt>struct entry</tt>, the <tt>for</tt> iterates through the linked list until it encounters the end of the list with is when the pointer is 0. 
+<li>The array <tt>table[]</tt> begins with each element assigned to 0 (a <tt>NULL</tt> pointer).
+</ul>
+
+<div class="question">
+<p><b>4.</b> Explain (in your own words) the difference between a function that is defined with the <tt>static</tt> keyword and one that does not have the <tt>static</tt> keyword.
+</div>
+
+<h3>The Function  <tt>hash()</tt> in <tt>hash.c</tt></h3>
+<p>You notice the function <tt>hash(name)</tt> is called by <tt>get_entry()</tt>. 
+The argument to <tt>hash</tt> is a <tt>char*</tt>, which is an address of type <tt>char</tt>.
+In C, a <tt>char</tt> is an 8-bit quantity that typically contains ASCII characters, but it 
+simply contains 8-bit integers, and the 7-bit encoding fits nicely in an 8-bit integer.
+For example, the following demonstrate various uses of <tt>char</tt>, along with valid calls to the funtion <tt>hash()</tt>.
+<pre>
+char a = 'G';        // The ASCII character for G, which is 71
+char b = 71;         // The number 71
+char c = 0x47;       // The number 71 in hex
+char d = 0b01000111; // The number 71 in binary
+char e[] = "Gusty";  // An array with 'G','u','s','t','y',0
+char f[] = {71, 117, 115, 116, 121, 0}; // same contents as e
+char *g = "Gusty";   // a pointer to the string Gusty\0
+char *h = malloc(6);
+strcpy(h, "Gusty");  // h points to the string Gusty\0
+
+int v = hash(e); // e is type char*
+v = hash(f);     // f is type char*
+v = hash(g);     // g is type char*
+v = hash(h);     // h is type char*
+</pre>
+The key concept is to recognize that the <tt>char *name</tt> argument passed to <tt>hash()</tt> is the address of a C string, 
+which is an array with the following attributes.
+<ul>
+<li>Each element of the array is type <tt>char</tt>, which is an 8-bit integer.
+<li>The last element in the array is a 0 because C strings are null terminated.
+</ul>
+<p>The hash algorithm in <tt>hash()</tt> is not a very good hashing algorithm (consider that <tt>"gus"</tt> and <tt>"sug"</tt> hash to the same value), but it works for this example.
+<pre>
+static int hash(char *name) {
+  char *initname = name;
+  int hashval = 0;
+  while (*name)
+    hashval += *name++;
+  return hashval;
+}
+</pre>
+
+<div class="question">
+<p><b>5.</b> What is printed by the following code?<br>
+<pre>
+char x = 0x49;
+printf("%c\n", x);
+</pre>
+</div>
+<h3>The Functions  <tt>put()</tt> and <tt>insert()</tt> in <tt>hash.c</tt></h3>
+<p>Now that you understand <tt>get_entry()</tt>, you can easily understand the function
+<tt>put()</tt>. Understanding the function <tt>insert()</tt> requires you to understand and visualize C pointers.
+
+<pre>
+void
+put(char *name, int age)
+{
+  struct entry *e = get_entry(name);
+  if(e){
+    e->age = age; // update the existing key.
+  } else {
+    // don't use address passed in case it is reused or local
+    char *uniquename = malloc(strlen(name)+1);
+    strcpy(uniquename, name);
+    int i = hash(uniquename) % NBUCKET;
+    insert(uniquename, age, &table[i], table[i]);
+  }
+}
+</pre>
+<tt>put()</tt> calls <tt>get_entry()</tt>. If an entry is found, <tt>put()</tt> updates the age;
+otherwise, <tt>put()</tt> calls <tt>insert()</tt> to insert the <tt>name</tt> and <tt>age</tt>
+into the hash table. When creating a new <tt>entry</tt>, <tt>put()</tt> creates a copy of the 
+<tt>name</tt> passed to it. This is important because the <tt>name</tt> passed may change. 
+Consider a <tt>char[] name</tt> that contains <tt>"emily"</tt> when passed to <tt>put()</tt>, but later is
+changed to be <tt>"mandy"</tt>. If <tt>put()</tt> inserts the address passed (instead of making a copy), the 
+entry will be changes to <tt>"mandy"</tt>. This is not what is desired.
+
+<p>The tricky part of this code is the call to <tt>insert()</tt> with actual aguments
+<tt>&table[i]</tt> and <tt>table[i]</tt>. You must examine the figure above and  the code in <tt>insert()</tt>
+to understand these arguments. Consider we are attempting to insert an entry with <tt>"Gusty"</tt> and age 5, where <tt>table[]</tt>
+already has entries for <tt>"ytsug"</tt> and <tt>"tysug"</tt> as shown in the diagram. The <tt>"gusty"</tt> entry will be
+inserted at the front of the list of entries pointed to by <tt>table[3]</tt>. The address in <tt>table[3]</tt> is the address of the entry for <tt>"ytsug"</tt>. The expression <tt>&table[3]</tt> is the address of <tt>table[3]</tt>. This allows <tt>insert()</tt> to perform the desired insertion.
+
+<pre>
+static void
+insert(char *name, int age, struct entry **p, struct entry *n)
+{
+  struct entry *e = malloc(sizeof(struct entry));
+  e->name = name;
+  e->age = age;
+  e->next = n;
+  *p = e;
+}
+</pre>
+
+<div class="question">
+<p><b>6.</b> Describe a scenario where if <tt>put()</tt> would mess up if it did not make a copy of the string by calling <tt>malloc()</tt> and <tt>strcpy()</tt>.
+</div>
+
+</pre><h3><tt>#include</tt> Files</h3>
+In C, you use <tt>#include</tt> files to access libraries and modules. 
+Filenames enclosed in <tt>&lt;</tt> and <tt>&gt;</tt> are system include files.
+Filenames enclosed in <tt>" and "</tt> are user defined include files. 
+The include files for <tt>hash.c</tt> are standard input/output, string library, standard library, and the user defined <tt>hash.h</tt>.
+<ul>
+<li><tt>#include &lt;stdio.h&gt;</tt> - standard input/output, which allows you to read and write files.
+<li><tt>#include &lt;string.h&gt;</tt> - string library, which allows you to manipulate strings.
+<li><tt>#include &lt;stdlib.h&gt;</tt> - standard library, which has functions such as <tt>malloc</tt>.
+<li><tt>#include "hash.h"</tt> - <tt>hash.c</tt> includes its own definitions of structures and function prototypes. The function prototypes in <tt>hash.h</tt> must match the function definitions in <tt>hash.c</tt>.
+
+</ul>
+
+<div class="question">
+<p><b>7.</b> What is difference between the following two <tt>#include</tt> statements?
+<pre>
+#include &lt;stdlib.h&gt;
+#include "hash.h"
+</pre>
+</div>
+
+<h3><tt>gcc</tt></h3>
+<p>The <tt>gcc</tt> program invokes the Gnu C compiler system. 
+I use the word system because <tt>gcc</tt> is a wrapper for various "programs".
+<ul>
+<li>C preprocessor - preprocesses all lines that begin with </tt>#</tt>. For example, </tt>#include</tt> and <tt>#define</tt> statements. The contents of these includes and macros are passed on to the  C compiler.
+<li>C compiler - translates the C source code files into object files.
+<li>C assembler - translates assembly code (which may be embedded in the C source code) into object files.
+<li>C compiler - translates the C source code files into object files.
+</ul>
+<p>Invoking <tt>gcc</tt> on a single <tt>.c</tt> file runs the preprocessor, compiler, and linker creating the <tt>a.out</tt> executable file. You never see the output from the preprocessor or the object file generated by the compiler.
+You can change the name of the executable with the <tt>-o</tt> option.
+You can generate the object file with the <tt>-c</tt> option.
+You can list multiple <tt>.c</tt> files on the input line to <tt>gcc</tt>
+The <tt>.h</tt> files are not placed on the input line to <tt>gcc</tt>. <tt>.h</tt> files are included by the <tt>.c</tt> files.
+
+<pre>
+$ <kbd>gcc myprog.c</kbd> &rightarrow; a.out
+$ <kbd>gcc -o myprog myprog.c</kbd> &rightarrow; myprog
+$ <kbd>gcc -c myprog.c</kbd> &rightarrow; myprog.o
+$ <kbd>gcc -o myprog file1.c file2.c</kbd> &rightarrow; myprog
+
+</pre>
+
+<h3><tt>make</tt></h3>
+<p>The <tt>make</tt> utility allows you to define the relationships between the various files that compose your program in a <tt>Makefile</tt>.
+When you invoke <tt>make</tt>, it reads the <tt>Makefile</tt> and "makes" your program.
+You can alternatively name your <tt>Makefile</tt> as <tt>makefile</tt>.
+The <tt>Makefile</tt> for our hash program is simple, shown as follows.
+
+<pre>
+# makes hashprog and hashprogDebug
+# $ make
+# $ make all
+# $ make hashprog
+# $ make hashprogDebug
+# $ make clean
+all: hashprog hashprogDebug
+
+FLAGS = -Wall
+hashprog: main.c hash.h hash.c
+	@echo 'building hashprog.'
+	gcc -o hashprog main.c hash.c $(FLAGS)
+
+hashprogDebug: main.c hash.h hash.c
+	@echo 'building hashprogDebug.'
+	gcc -o hashprogDebug -DDEBUG main.c hash.c $(FLAGS)
+
+clean:
+	rm -f hashprog hashprogDebug *.o
+</pre>
+<p>We first focus the <tt>hashprog</tt> target.
+<tt>hashprog</tt> is the program we want to build, which is dependent upon three files:
+<tt>main.c</tt>, <tt>hash.h</tt>, and <tt>hash.c</tt>. If the dates on any of the 
+three dependent files are newer than the date of the file <tt>hashprog</tt>, then the 
+commands under the dependency are executed, which in this case is <tt>gcc</tt>
+to create the program <tt>hashprog</tt>. To make <tt>hashprog</tt>, you invoke <tt>make</tt>
+with the target <tt>hashprog</tt>
+<pre>
+$ <kbd>make hashprog</kbd>
+</pre>
+<p>Notice how the variable <tt>FLAGS</tt> is defined and used on the <tt>gcc</tt> command.
+<p>Most <tt>Makefile</tt>s have a <tt>clean</tt> target which is used to clean up 
+various files so we can start fresh. Notice that we do <b>NOT</b> clean up our <tt>.c</tt>
+and <tt>.h</tt> files.
+<p>If you invoke <tt>make</tt> without a target - simply <tt>$ <kbd>make</kbd></tt>,
+it will make the first target, which is <tt>all</tt>, which means it
+makes both <tt>hashprog</tt> and <tt>hashprogDebug</tt>.
+When making <tt>hashprogDebug</tt>, the define variable <tt>DEBUG</tt> is
+passed to the compiler. The file <tt>hash.c</tt> has some conditional code
+that is bracketed, which is compiled with the <tt>DEBUG</tt> is defined.
+<pre>
+static int hash(char *name) {
+#ifdef DEBUG
+  char *initname = name;
+#endif
+  int hashval = 0;
+  while (*name)
+    hashval += *name++;
+#ifdef DEBUG
+  printf("name: %s, hashval: %d, index: %d\n", initname, hashval, hashval % NBUCKET);
+#endif
+  return hashval;
+}
+</pre>
+
+<div class="question">
+<p><b>8.</b> What is the <tt>gcc</tt> command that is executed if I invoke <tt>$ <kbd>make hashprog</kbd></tt>?
+</div>
+
+<h3><tt>main.c</tt>, arguments (<tt>argc</tt> and <tt>argv</tt>), and <tt>printf()</tt></h3>
+<p>The <tt>main.c</tt> file uses the hash module to create a program. 
+The function <tt>main()</tt> is the entry point for C programs.
+The function <tt>main()</tt> has two arguments - <tt>int argc</tt> and <tt>char **argv</tt>.
+The <tt>argc</tt> argument has the number of arguments passed to main.
+For example, if we invoke <tt>hashprog</tt> as
+<pre>
+$ <kbd>hashprog gusty cooper</kbd>
+</pre>
+the value of <tt>argc</tt> will be three because there are three arguments passed to <tt>main()</tt>.
+The three arguments are <tt>hashprog</tt>, <tt> gusty</tt>, and <tt>cooper</tt>.
+By convention, the name of the program as it was invoked in the shell is the first argument.
+The values in <tt>char *argv[]</tt> will be.
+<pre>
+argv[0] &rightarrow; "hashprog"
+argv[1] &rightarrow; "gusty"
+argv[2] &rightarrow; "cooper"
+</pre>
+<p>The <tt>main()</tt> program for hash program uses arguments 1 and 2, if they are present,
+to create an entry in the hash table.
+<tt>argv[1]</tt> is the name and <tt>argv[2]</tt> is an age.
+The values of <tt>argv[]</tt> are pointers to C strings.
+In the case where <tt>argv[2]</tt> is an age, the string must be converted to an 
+integer using the <tt>atoi()</tt> function.
+<p>The file <tt>main.c</tt> demonstrates various ways to define C strings and pass them to
+the <tt>put()</tt> function in the hash module.
+You should study the code to see these various C strings.
+<h2>Getting Started with Xv6 - Boot xv6 <script>g("easy")</script></h2>
+
+<p>
+You can do these labs on our CPSC server or on your own computer.
+If you use your own computer, have a look at the
+<a href="../tools.html">lab tools page</a> for setup tips.
+
+  <div class="question">
+    <p><b>9.</b> What does it mean to boot (which is short for bootstrap) a computer?
+  </div>
+
+<p>Fetch the git repository for the xv6 source for the lab:
+<pre>
+$ <kbd>git clone https://github.com/gustycooper/xv6-labs.git</kbd>
+Cloning into 'xv6-labs'...
+...
+$ <kbd>cd xv6-labs</kbd>
+</pre>
+
+<p>The repo is setup so that git checkouts the <tt>riscv</tt> branch when
+  cloning the repo. You must switch to the <tt>firstlab</tt> branch to conduct this lab.
+<pre>
+$ <kbd>git status</kbd>
+On branch riscv
+Your branch is up to date with 'origin/riscv'.
+
+nothing to commit, working tree clean
+$ <kbd>git checkout firstlab</kbd>
+</pre>
+
+
+<p>The xv6-labs repository differs slightly from the book's
+  xv6-riscv; it mostly adds some files. If you are curious look
+  at the git log:
+<pre>
+$ <kbd>git log</kbd>
+</pre>
+
+<p>The files you will need for this and subsequent lab assignments
+are distributed using
+the <a href="http://www.git-scm.com/">Git</a> version control system.
+For each of the labs you will checkout (<kbd>git checkout firstlab</kbd>)
+a version of xv6 tailored for that lab.
+To learn more about Git, take a look at the
+<a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git
+user's manual</a>, or, you may find this
+<a href="http://eagain.net/articles/git-for-computer-scientists/">CS-oriented
+overview of Git</a> useful.
+Git allows you to keep track of the changes you make to the code.
+For example, if you are finished with one of the exercises, and want
+to checkpoint your progress, you can <i>commit</i> your changes
+by running:
+</p>
+<pre>
+$ <kbd>git commit -am 'my solution for firstlab lab exercise 1'</kbd>
+Created commit 60d2135: my solution for firstlab lab exercise 1
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+$
+</pre>
+
+<p>
+You can keep track of your changes by using the <kbd>git diff</kbd>
+command.  Running <kbd>git diff</kbd> will display the changes to your
+code since your last commit, and <kbd>git diff
+origin/firstlab</kbd> will display the changes relative to the
+initial <tt>firstlab</tt> code.  Here, <tt>origin/firstlab</tt> is the
+name of the git branch with the initial code you downloaded for the
+class.
+</p>
+
+<p>Build and run xv6:
+
+  <div class="question">
+    <p><b>10.</b> The Xv6 <tt>Makefile</tt> has many targets. Locate the target <tt>qemu</tt> for the command <tt>make qemu</tt> and explain what it does.
+  </div>
+
+<pre>
+$ <kbd>make qemu</kbd>
+riscv64-unknown-elf-gcc    -c -o kernel/entry.o kernel/entry.S
+riscv64-unknown-elf-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -DSOL_UTIL -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/start.o kernel/start.c
+...
+riscv64-unknown-elf-ld -z max-page-size=4096 -N -e main -Ttext 0 -o user/_zombie user/zombie.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-unknown-elf-objdump -S user/_zombie > user/zombie.asm
+riscv64-unknown-elf-objdump -t user/_zombie | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/zombie.sym
+mkfs/mkfs fs.img README  user/xargstest.sh user/_cat user/_echo user/_forktest user/_grep user/_init user/_kill user/_ln user/_ls user/_mkdir user/_rm user/_sh user/_stressfs user/_usertests user/_grind user/_wc user/_zombie
+nmeta 46 (boot, super, log blocks 30 inode blocks 13, bitmap blocks 1) blocks 954 total 1000
+balloc: first 591 blocks have been allocated
+balloc: write bitmap block at sector 45
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$
+</pre>
+
+<p>
+If you type <tt>ls</tt> at the prompt, you should see output similar to the following:
+<pre>
+$ <kbd>ls</kbd>
+.              1 1 1024
+..             1 1 1024
+README         2 2 508
+kittycat.txt   2 3 597
+xargstest.sh   2 4 93
+cat            2 5 32848
+echo           2 6 31696
+forktest       2 7 15832
+grep           2 8 36224
+init           2 9 32200
+kill           2 10 31664
+ln             2 11 31480
+ls             2 12 34792
+mkdir          2 13 31712
+rm             2 14 31704
+sh             2 15 54144
+stressfs       2 16 32592
+usertests      2 17 180488
+grind          2 18 47536
+wc             2 19 33800
+zombie         2 20 31064
+kittycat       2 21 32864
+sleep          2 22 31208
+pingpong       2 23 31224
+primes         2 24 31208
+find           2 25 31208
+xargs          2 26 31208
+console        3 27 0
+</pre>
+These are the files that <tt>mkfs</tt> includes in the
+initial file system; most are programs you can run.  You just ran one of them: <tt>ls</tt>.
+Several of the files are templates that you must design, edit, and test as part of this lab.
+Here are a couple more commands for you to enter.
+<pre>
+$ <kbd>echo kittycat</kbd>
+kittycat
+$ <kbd>cat kittycat.txt</kbd>
+This is the text in the file kittycat.
+
+Soft kitty, warm kitty, 
+little ball of fur! 
+Happy kitty, sleepy kitty, 
+purr purr purr!
+Xv6 kitty, Xv6 kitty,
+grrr, grrr, grrr!
+
+And the cat's in the cradle and the silver spoon
+Little boy blue and the man in the moon
+"When you coming home, dad?" "I don't know when"
+But we'll get together then
+You know we'll have a good time then
+
+A long tailed cat sitting by the old rocking chair
+Now he don't realize that there's a danger there
+But he don't care no rock 'n' roll chair is gonna boogie on his day
+'Cause when his tail took a low down, syncopate, yeah
+</pre>
+<p>xv6 has no <tt>ps</tt> command, but, if you type <kbd>Ctrl-p</kbd>,
+the kernel will print information about each process.
+If you try it now, you'll see two lines: one for <tt>init</tt>,
+and one for <tt>sh</tt>.
+
+<p>To quit qemu type: <kbd>Ctrl-a x</kbd> (press <kbd>Ctrl</kbd> and <kbd>a</kbd> at the same time, followed by <kbd>x</kbd>).
+
+<h2>Port the Hash Program to Xv6 <script>g("easy")</script></h2>
+<p>You will see that I have included <tt>hashprog</tt> as a utility program in Xv6.
+I have combined <tt>hash.h</tt>, <tt>hash.c</tt>, and <tt>main.c</tt> into one file <tt>hashprog.c</tt>
+which is located in the <tt>user</tt> directory.
+Xv6 allows programs to be in multiple files; however, it is simpler when they are in one.
+<p>You will also see that the <tt>#include</tt> files have been changed to support Xv6 style programming for utility programs. 
+When you <tt>make</tt> Xv6, you are building an entire system - the OS, device drivers, and utility programs.
+You must select Xv6 include files - not those installed on the Linux system.
+The Xv6 include files are in the directories <tt>kernel</tt> and <tt>user</tt>.
+From the Xv6 terminal, you must run the hash program as follows.
+<pre>
+$ <kbd>hashprog</kbd>
+$ <kbd>hashprog name 222</kbd>
+</pre>
+
+<h2>Firstlab Programming <script>g("easy")</script></h2>
+
+<p>Firstlab is a review and practice of C programming to get you warmed up to perform Xv6 programming. 
+You also get an introduction to <tt>struct proc</tt>, which is the kernel's data structure for manageing processes.
+You have to implement a doubly linked list of process structures (or process control blocks).
+You are provided several files to start your program. 
+The files are located in the <tt>notxv6/firstlab</tt> directory.
+<ul>
+<li>The <b>proc</b> module - consists of <tt>proc.h</tt> and a skeleton <tt>proc.c</tt> - this C module maintains a doubly linked list of process structures. <tt>proc.h</tt> is fully coded. 
+<tt>proc.c</tt> has several pre-coded functions, but there are others you must design and implement to get the program running. 
+
+<li>The <b>split</b> module - consists of 
+<tt>split.h</tt> and <tt>split.c</tt> - this C module defines a split function that splits a C string into an array of <tt>char</tt> pointers (<tt>char[]*</tt> or <tt>char**</tt>). 
+<tt>split</tt> is similar to the Java <tt>String.split</tt> function. You must study this code to answer questions. <tt>split</tt> is used in <tt>main()</tt> to process commands and arguments.
+<li>
+<tt>main.c</tt> - is fully coded, but it will not work until you have designed and implemented <tt>proc.c</tt>. <tt>main()</tt> is a simple command interpreter that calls functions in the <tt>proc</tt> and <tt>split</tt> modules. <tt>main()</tt>'s command interpreter does not print a prompt. It simply reads from <tt>stdin</tt>, which makes it nice for redirecting input. <tt>main()</tt> has the following commands.
+<ul>
+<li><tt>fork</tt> - calls the <tt>fork</tt> function in <tt>proc.c</tt> to create a new process.
+<li><tt>kill</tt> - calls the <tt>kill</tt> function in <tt>proc.c</tt> to delete an existing process.
+<li><tt>printpid</tt> - prints information about a specific process id. Calls <tt>findproc</tt> in <tt>proc.c</tt>.
+<li><tt>printppid</tt> - prints information about the parent of a specific process id. Calls <tt>findproc</tt> in <tt>proc.c</tt>.
+<li><tt>printprocs</tt> - calls the <tt>printprocs</tt> function in <tt>proc.c</tt> to print all of the processes in the priority queue.
+</ul>
+<li>
+<tt>makefile</tt> - a simple <tt>makefile</tt> that can be used to make the program <tt>firstLab</tt> from the <tt>proc</tt> module, <tt>split</tt> module, and <tt>main.c</tt>. I suggest you review the <tt>makefile</tt> to reinforce your understanding of makefiles.
+<li>
+<tt>testX_in.txt</tt> and <tt>testX_out.txt</tt> - test cases with inputs and expected output.
+</ul>
+
+<div class="question">
+<p><b>11.</b> Describe the differences between the <tt>Makefile</tt> for the hash program and the <tt>Makefile</tt> for the firstlab probram.
+</div>
+
+<h3>Your job</h3>
+<div class="required">
+<p>
+<ul>
+<li>You must complete the <tt>proc.c</tt> file such that the <tt>main.c</tt> file executes correctly. 
+There are several functions in proc.c that you must design and implement. 
+The best place to start is the function fork, which is implemented, but it calls two primary functions that you must design and implement.
+<ul>
+<li><tt>new_proc</tt> - <tt>malloc</tt>s memory for a <tt>struct proc</tt> and for a <tt>context</tt> (a member of the <tt>struct proc</tt>). After <tt>malloc</tt>ing memory, <tt>new_proc</tt> initializes the <tt>state</tt>, <tt>name</tt>, <tt>priority</tt>, <tt>pid</tt>, and the parent members. <tt>new_proc</tt> uses the static variable <tt>pid</tt> to initialize <tt>struc proc</tt>'s <tt>pid</tt> member. Each time <tt>new_proc</tt> is called, it increments the variable <tt>pid</tt>. Initialize the <tt>state</tt> member to be <tt>EMBRYO</tt>.
+<li><tt>enqueue_proc</tt> - places the proc created by <tt>new_proc</tt> into the priority queue.
+</ol>
+<li>The other functions you must design and implement are <tt>find_proc</tt>, <tt>kill</tt>, and <tt>get_pid</tt>. 
+</ol>
+</div>
+<h3>Hints</h3>
+
+
+<ul>
+<li><b>Diagrams</b> -  
+This problem is like software maintenance. You have code, which has a problem and your job is to fix the problem. A program is algorithms + data structures that transform inputs to outputs. When performing software maintenance, you have to understand the data structures and algorithms of the existing code. Understanding the data structures is most important. If you understand the data structures, understanding the algorithms is easy. A diagram of the data structure can be most helpful. Your program must maintain a priority queue in a double linked list of <tt>struct proc</tt> data structures. The variable <tt>struct proc *init_proc</tt> is initialized by the function <tt>bootstrap</tt>. <tt>init_proc</tt> points to an OS kernel process that is priority 0. You can think that the process described by <tt>*init_proc</tt> runs when no other process is running. Since a CPU never stops the fetch-decode-execute cycle, it always needs a process to execute. Thus your linked list always has the <tt>struct proc</tt> that is the kernel process (<tt>*init_proc</tt>), and it is the first <tt>struct proc</tt> in the list. As other procs are created they are inserted after the <tt>struct proc</tt> pointed to by <tt>init_proc</tt>. The following diagram shows a doubly linked list of struct procs ordered in priority order. Suppose the process "Emily" forks a new process named "Coletta" with a priority of 4. The "Coletta" process would be placed between "Emily" and "Gusty". If the "Coletta" process had a priority of 10, it would be placed after "Gusty." Notice how a smaller number is a higher priority.
+<p>
+<img src="firstlab.png" alt="Firstlab Data Structures" >
+
+<li><b>Processes and Priorities</b> - A Xv6/Linux process has context information (like registers) and transitions through various states. For example, a Xv6/Linux process can be running, waiting to run, waiting on I/O to complete, and terminated. In this lab, you see Xv6/Linux process information maintained in a <tt>struct proc;</tt> however, we do not manipulate this process information. Instead we create mechanisms that allow us to maintain a queue of processes, where the queue is ordered in priority. The idea of a priority queue is that the highest priority process is at the head of the queue. You enqueue a process with its priority. Your algorithm determines where the enqueed process is placed in the queue. A normal queue is a first-in-first-out (FIFO) data structure. A priority queue allows a higher priority element to be placed in front of lower priority elements. Consider a process queue that has four processes: A, B, C, and D with priorities 4, 10, 6, and 32. This process queue is ordered as follows.
+<ol>
+<li>Process A has priority 4 and is the first process in the queue.
+<li>Process C has priority 6 and is the second process in the queue.
+<li>Process B has priority 10 and is the third process in the queue.
+<li>Process D has priority 32 and is the fourth process in the queue.
+</ol>
+<br>
+A dequeue operation on this queue removes Process A, which is the process with priority 4. If you enqueue a Process X with priority 8, it is placed between Process C and Process B.
+<li><b>Commands in <tt>main.c</tt></b> -
+The file <tt>main.c</tt> provides several commands. The commands fork fork and kill are representative of their Linux counterparts. You will learn how to use the Linux fork and kill functions. You should study the input test cases and the main.c algorithms to see how the commands are processed. The following are brief descriptions of sample commands.
+<ul>
+<li><tt>fork Gusty 5 kernel_process</tt> - This command creates a new process named Gusty. Gusty has priority 5. Gusty’s parent process is the kernel_process.
+<li><tt>fork Emily 3 Gusty</tt> - This command creates a new process named Emily. Emily has priority 3. Emily’s parent process is Gusty.
+<li><tt>printprocs</tt> - This command prints all procs in the list. Sample output is.
+procs in queue:
+<pre>
+pname: kernel_process, pid: 1024, ppid: 1024, priority: 0, state: RUNNABLE
+pname: Emily, pid: 1026, ppid: 1025, priority: 3, state: EMBRYO
+pname: Gusty, pid: 1025, ppid: 1024, priority: 5, state: EMBRYO
+</pre>
+<li><tt>kill Emily</tt> - This command removes the process named Emily from the list.
+<li><tt>printpid Emily</tt> - This command prints the process id of the process named Emily.
+<li><tt>printppid Emily</tt> - The command prints the process id of the parent process of Emily.
+</ul>
+<li><b>Running Test Cases</b> - I have provided several test cases for you. Each test case is a command input file and its expected output in another file. A command input file is a script composes of commands available in <tt>main.c</tt>.
+You can use I/O redirection to run the test case and capture your program's actual ouput. Then you can use the Linux <tt>diff</tt>
+command to compare your actual output to the expected output. A example test case script is <tt>test1_in.txt</tt>
+and its corresponding expected output is in the file <tt>test1_out.txt</tt>. The following shows ways to run the test script and compare it to the expected output.
+<pre>
+$ <kbd>make</kbd>
+$ <kbd>./firstLab < test1_in.txt  </kbd>                  # displays output in terminal
+$ <kbd>./firstLab < test1_in.txt > test1_actual.txt </kbd># places output in file.txt
+$ <kbd>diff test1_actual.txt test1_out.txt</kbd>          # compares actual output to expected
+</pre>
+
+
+</ul>
+
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
+
+<p><b>This completes the lab.</b> 
+Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
+to submit your lab. In addition to the normal submission requirements, please include your answer to the following question in your <b>answers-firstlab.txt</b> file.
+
+<div class="question">
+<p><b>12.</b> Discuss your C programming skills.
+</div>
+</body>
+</html>
