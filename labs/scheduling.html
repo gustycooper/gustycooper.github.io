@@ -533,7 +533,7 @@ $ <kbd>make qemu</kbd>
 </pre>
 </div>
 
-<h2>Implement <tt>ctrl-g </tt><script>g("easy")</script></h2>
+<h2>Problem 1: Implement <tt>ctrl-g </tt><script>g("easy")</script></h2>
 
 <div class="required">
 <p> Update Xv6 such that entering <tt>ctrl-g</tt> from the keyboard displays the process history.
@@ -553,7 +553,7 @@ your <tt>ctrl-g</tt> code.
 <tt>ctrl-p</tt> and <tt>ctrl-g</tt>?
 </div>
 
-<h2>Implement the <tt>setpriority/getpriority</tt> System Calls <script>g("easy")</script></h2>
+<h2>Problem 2: Implement the <tt>setpriority/getpriority</tt> System Calls <script>g("easy")</script></h2>
 
 <div class="required">
 <p> Update Xv6 to include two systems calls: <tt>setpriority</tt> and <tt>getpriority</tt>.
@@ -580,7 +580,7 @@ and <tt>getpriority</tt>.
 <li> Create test code to ensure your <tt>setpriority</tt> and <tt>getpriority</tt> work.
 </ul>
 
-<h2>Implement the <tt>spoon()</tt> System Call <script>g("easy")</script></h2>
+<h2>Problem 3: Implement the <tt>spoon()</tt> System Call <script>g("easy")</script></h2>
 
 <div class="required">
 <p> Update Xv6 to include a <tt>int spoon(char*)</tt> system call.
@@ -599,7 +599,7 @@ for the allocated process.
 <li>Create test code to ensure your spoon() works.
 </ul>
 
-<h2>Implement a  Priority Scheduler <script>g("moderate")</script></h2>
+<h2>Problem 4: Implement a  Priority Scheduler <script>g("moderate")</script></h2>
 
 <div class="required">
 <p> Update Xv6 to include a priority scheduler with the follwoing attributes. 
@@ -843,62 +843,8 @@ $ sudo renice -n -1 -p 2021
 
 <p><b>This completes the lab.</b> 
 Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
-to submit your lab; however, you do not copy/paste the output of <tt>make grade</tt>
-into your <tt>lab-scheduling-handin.txt</tt> file because Lab Scheduling does not have the <tt>make
-grade</tt> tests because the output of <tt>testsched</tt> varies slightly.
+to submit your lab.
 
-<!--
-<p><a name="submit"></>
-<h2>Submit the lab</h2>
-
-<h3>Time spent</h3>
-
-<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
-number of hours you spent on the lab.
-<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
-
-<h3>Answers</h3>
-
-<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
-<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
-
-<h3>Submit</h3>
-
-<p>Assignment submissions are handled by Gradescope.
-You will need an MIT gradescope account.
-See Piazza for the entry code to join the class.
-Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
-if you need more help joining.
-
-<p>When you're ready to submit, run <kbd>make zipball</kbd>,
-which will generate <tt>lab.zip</tt>.
-Upload this zip file to the corresponding Gradescope assignment.
-
-<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
-untracked files, you will see output similar to the following:
-<pre>
- M hello.c
-?? bar.c
-?? foo.pyc
-Untracked files will not be handed in.  Continue? [y/N]
-</pre>
-Inspect the above lines and make sure all files that your lab solution needs
-are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
-You can cause <tt>git</tt> to track a new file that you create using
-<kbd>git add {filename}</kbd>.
-</p>
-
-<p>
-<div class="warning">
-<ul>
-  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.
-    The Gradescope autograder will use the same grading program to assign your submission a grade.</li>
-  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
-  <li>You can inspect the status of your submission and download the submitted
-    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
-</ul>
-</div>
--->
 
 </body>
 </html>

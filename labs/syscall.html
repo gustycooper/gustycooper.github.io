@@ -332,7 +332,7 @@ where the process's registers were saved when the trap occurred.</li>
   $ <kbd>make clean</kbd>
   </pre>
 
-<h2>Using gdb <script>g("easy")</script></h2>
+<h2>Problem 1: Using gdb <script>g("easy")</script></h2>
 
 <p>In many cases, print statements will be sufficient to debug your
 kernel, but sometimes being able to single step through some assembly
@@ -482,7 +482,7 @@ Thread 3 hit Breakpoint 1, syscall () at kernel/syscall.c:247
 
 <p>This section and the links at the top of this section contain helpful information on gdb.
 
-<h2>System calls for Random Integers  <script>g("moderate")</script></h2>
+<h2>Problem 2: System calls for Random Integers  <script>g("moderate")</script></h2>
 
 <p>
 <div class="required">
@@ -656,7 +656,7 @@ $ randomtest 43
       how they fit into Xv6 before answering this question. 
   </div>
 
-<h2>System call tracing <script>g("moderate - solution code provided")</script></h2>
+<h2>Problem 3: System call tracing <script>g("moderate - solution code provided")</script></h2>
 
 <p>
 <div class="required">
@@ -748,9 +748,9 @@ struct proc {
   int killed;                  // If non-zero, have been killed
   int xstate;                  // Exit status to be returned to parent's wait
   int pid;                     // Process ID
-</pre>
-<tt><kbd>&nbsp;&nbsp;int mask; // for syscall trace</kbd><b> // THIS IS ADDED</b></tt><br>
-<pre>
+
+<kbd>&nbsp;&nbsp;int mask; // for syscall trace</kbd><b> &leftarrow; add this line </b>
+
   // wait_lock must be held when using this:
   struct proc *parent;         // Parent process
 
@@ -814,12 +814,11 @@ fork(void)
     return -1;
   }
 
-</pre>
-<tt><kbd>&nbsp;&nbsp;// Copy mask for syscall trace</kbd></tt><br>
-<tt><kbd>&nbsp;&nbsp;np->mask = p->mask;</kbd> <b>// THIS IS ADDED</b></tt>
-<pre>
+<kbd>&nbsp;&nbsp;// Copy mask for syscall trace</kbd> <b> &leftarrow; add this line</b></tt>
+<kbd>&nbsp;&nbsp;np->mask = p->mask;</kbd> <b> &leftarrow; add this line</b></tt>
+
   // Copy user memory from parent to child.
-  if(uvmcopy(p->pagetable, np->pagetable, p->sz) < 0){
+  if(uvmcopy(p->pagetable, np->pagetable, p->sz) &lt; 0){
     freeproc(np);
     release(&np->lock);
     return -1;
@@ -915,7 +914,7 @@ syscall(void)
 
   //num = * (int *) 0;
   num = p->trapframe->a7;
-  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+  if(num > 0 && num &lt; NELEM(syscalls) && syscalls[num]) {
     // Use num to lookup the system call function for num, call it,
     // and store its return value in p->trapframe->a0
     p->trapframe->a0 = syscalls[num]();
@@ -999,7 +998,7 @@ $
 </pre>
 </ul>
 
-<h2>Sysinfo <script>g("moderate - solution code provided")</script></h2>
+<h2>Problem 4: Sysinfo <script>g("moderate - solution code provided")</script></h2>
 
 <p>
 <div class="required">
@@ -1165,6 +1164,7 @@ get_nproc()
 
 <li>The following is the code for <tt>sys_sysinfo()</tt>.
 <pre>
+<kbd>
 uint64
 sys_sysinfo(void)
 {
@@ -1177,6 +1177,7 @@ sys_sysinfo(void)
   // kernel cannot directly access user space. use copyout()
   return copyout(myproc()->pagetable, addr, (char*)&info, sizeof(info));
 }
+</kbd>
 </pre>
 
 </ul>

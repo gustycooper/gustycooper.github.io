@@ -60,7 +60,7 @@ $ echo 8 > time.txt
   $ <kbd>make clean</kbd>
   </pre>
 
-<h2>RISC-V assembly <script>g("easy")</script></h2>
+<h2>Problem 1: RISC-V assembly <script>g("easy")</script></h2>
 
 <p>It will be important to understand a bit of
   RISC-V assembly. You were exposed to ARM assembly in CPSC 305. 
@@ -159,7 +159,7 @@ You will have to create a user program and add it to UPROGS in the Makefile.
   </div>
 
 
-  <h2>Backtrace <script>g("moderate")</script></h2>
+  <h2>Problem 2: Backtrace <script>g("moderate")</script></h2>
 
  <p>For debugging it is often useful to have a backtrace: a list
     of the function calls on the stack above the point
@@ -289,6 +289,7 @@ add:
  register <tt>s0</tt>. Add the following function
  to <tt>kernel/riscv.h</tt>:
  <pre>
+ <kbd>
 static inline uint64
 r_fp()
 {
@@ -296,6 +297,7 @@ r_fp()
   asm volatile("mv %0, s0" : "=r" (x) );
   return x;
 }
+ </kbd>
 </pre>
  and call this function in <tt>backtrace</tt> to read the current frame pointer.  <tt>r_fp()</tt> uses <a href="https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html">in-line
  assembly</a> to read <tt>s0</tt>.
@@ -339,17 +341,105 @@ uint64 pfp = *(uint64*)(fp - 16);
 
  <li>Add the prototype for your <tt>backtrace()</tt> to <tt>kernel/defs.h</tt> so that
   you can call <tt>backtrace</tt> in <tt>sys_sleep</tt>.
+  Add this prototype in the section of the file for <tt>printf.c</tt>.
+<pre>
+// printf.c
+<kbd>void            backtrace(void);</kbd> <b>&leftarrow; Add this line</b>
+void            printf(char*, ...);
+void            panic(char*) __attribute__((noreturn));
+void            printfinit(void);
+</pre>
  <li>Implement your <tt>backtrace()</tt> function
   in <tt>kernel/printf.c</tt>.  
+ <p>The following is my implementation of the <tt>backtrace()</tt> function,
+which you place in <tt>kernel/printf.c</tt>.
+You will notice that I print more than the return address as described in the
+required specification blue box.
+<pre>
+<kbd>
+void
+backtrace()
+{
+  uint64 fp = r_fp();
+  while(fp != PGROUNDDOWN(fp)){
+    printf("ra: %p\n", *(uint64*)(fp - 8));
+    printf("fp: %p\n", fp);
+    printf("PGR(fp): %p\n", PGROUNDDOWN(fp));
+    fp = *(uint64*)(fp - 16);
+    printf("pfp: %p\n", fp);
+    printf("PGR(pfp): %p\n", PGROUNDDOWN(fp));
+  }
+}
+</kbd>
+</pre>
  <li>Insert a call to your <tt>backtrace()</tt> 
-  in <tt>sys_sleep</tt>.
- <li>After implementing your <tt>backtrace()</tt>, run <kbd>bttest</kbd>, which
-  calls <tt>sys_sleep</tt>.
- </ul>
+  in <tt>sys_sleep</tt>, which is in the file <tt>sys_proc.c</tt>.
+<pre>
+uint64
+sys_sleep(void)
+{
+  int n;
+  uint ticks0;
 
-<p>Once your backtrace is working, call it from <tt>panic</tt>
+  argint(0, &n);
+  if(n &lt; 0)
+    n = 0;
+  acquire(&tickslock);
+  ticks0 = ticks;
+  while(ticks - ticks0 &lt; n){
+    if(killed(myproc())){
+      release(&tickslock);
+      return -1;
+    }
+    sleep(&ticks, &tickslock);
+  }
+  release(&tickslock);
+  <kbd>backtrace();</kbd> <b>&leftarrow; Add this line</b>
+  return 0;
+}
+</pre>
+ </ul>
+<h3>Testing</h3>
+<p>We have provide the user program <tt>bttest.c</tt> that you may run to test your implementation of <tt>backtrace()</tt>. The test is really simple, shown as follows.
+<pre>int
+main(int argc, char *argv[])
+{
+  sleep(1);
+  exit(0);
+}
+</pre>
+<p>Since you have inserted a call to <tt>backtrace()</tt> in <tt>sys_sleep()</tt>, this
+test will show you the results of a backtrace.
+The following a sample output.
+<pre>
+xv6 kernel is booting
+
+hart 1 starting
+hart 2 starting
+init: starting sh
+$ bttest
+0x0000000080003324
+0x0000000080003162
+0x0000000080002e22
+$ 
+ecooper@cpsc:~/xv6demo$ <kbd>riscv64-linux-gnu-addr2line -e kernel/kernel</kbd>
+0x0000000080003324
+/home/faculty/ecooper/xv6demo/kernel/sysproc.c:72
+0x0000000080003162
+/home/faculty/ecooper/xv6demo/kernel/syscall.c:200
+0x0000000080002e22
+/home/faculty/ecooper/xv6demo/kernel/trap.c:76
+ecooper@cpsc:~/xv6demo$ 
+</pre>
+Note that we placed the call to <tt>trace()</tt> in <tt>sys_sleep()</tt>, which is a system call. The function trace goes from <tt>usertrap()</tt> to <tt>syscall()</tt> to <tt>sys_sleep()</tt> to <tt>backtrace()</tt>.
+<ul>
+<li>The <tt>trap.c:76</tt> line above is where <tt>usertrap()</tt> calls <tt>syscall()</tt>.
+<li>The <tt>syscall.c:200</tt> line above is where <tt>syscall()</tt> actually calls <tt>sys_sleep()</tt>
+<li>The <tt>sysproc.c:72</tt> line above is where <tt>sys_sleep()</tt> calls <tt>backtrace()</tt>. 
+</ul>
+<p>Once your backtrace is working, you can call it from <tt>panic</tt>
   in <tt>kernel/printf.c</tt> so that you see the kernel's backtrace
-  when it panics.
+  when it panics. This is a new programming tool.
 
 <!--
 <p>Gusty's Analysis
@@ -389,7 +479,7 @@ $
 </pre>
 -->
 
-<h2>Alarm <script>g("hard")</script></h2>
+<h2>Problem 3: Alarm <script>g("hard")</script></h2>
 
 <div class="warning">
 <p>
@@ -424,6 +514,7 @@ stop generating periodic alarm calls.
 
 <p>The following shows my implementation of the two system calls.
 <pre>
+<kbd>
 uint64
 sys_sigalarm(void)
 {
@@ -441,6 +532,7 @@ sys_sigreturn(void){
   p->ticks = 0;
   return p->trapframe->a0;
 }
+</kbd>
 </pre>
 
   <div class="question">
@@ -768,72 +860,10 @@ process to resume properly after it has handled the alarm.
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
 
-<p><b>This completes the lab.</b> Make sure you pass all of the <tt>make
-grade</tt> tests. 
-
+<p><b>This completes the lab.</b> 
 Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
 to submit your lab.
 
-<!--
-<h3>Time spent</h3>
-
-<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
-number of hours you spent on the lab.
-<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
-
-<h3>Answers</h3>
-
-<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
-<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
-
-<h3>Submit</h3>
-
-<p>Assignment submissions are handled by Gradescope.
-You will need an MIT gradescope account.
-See Piazza for the entry code to join the class.
-Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
-if you need more help joining.
-
-<p>When you're ready to submit, run <kbd>make zipball</kbd>,
-which will generate <tt>lab.zip</tt>.
-Upload this zip file to the corresponding Gradescope assignment.
-
-<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
-untracked files, you will see output similar to the following:
-<pre>
- M hello.c
-?? bar.c
-?? foo.pyc
-Untracked files will not be handed in.  Continue? [y/N]
-</pre>
-Inspect the above lines and make sure all files that your lab solution needs
-are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
-You can cause <tt>git</tt> to track a new file that you create using
-<kbd>git add {filename}</kbd>.
-</p>
-
-<p>
-<div class="warning">
-<ul>
-  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.</li>
-  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
-  <li>You can inspect the status of your submission and download the submitted
-    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
-</ul>
-</div>
-
-
-
-<h2>Optional challenge exercises</h2>
-
-<ul>
-
-  <li>Print the names of the functions and line numbers
-  in <tt>backtrace()</tt> instead of numerical
-  addresses <script>g("hard")</script>.</li>
-
-</ul>
--->
 
 </body>
 </html>

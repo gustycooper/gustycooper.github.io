@@ -192,7 +192,7 @@ using the "Task Manager" on Windows or "Activity Monitor" on macOS.
 <p><b>10.</b> What is a core? How many cores on your computer?
 </div>
 
-<h2>Parallel Hash Problem <script>g("easy")</script></h2>
+<h2>Problem 1: Parallel Hash <script> g("easy - solution code provided")</script></h2>
 
 <p>In this assignment you will explore parallel programming with
 threads and locks using a hash table. You should do this assignment on
@@ -386,7 +386,7 @@ The solution in <tt>hash_good.c</tt> uses a mutex lock lock per hash bucket.
 </div>
 
 
-<h2>Barrier <script>g("easy")</script></h2>
+<h2>Problem 2: Barrier <script>g("easy - solution code provided")</script></h2>
 
 <p>In this assignment you'll examine two solutions to a <a
 href="http://en.wikipedia.org/wiki/Barrier_(computer_science)">barrier</a> problem.
@@ -453,9 +453,6 @@ pthread_cond_wait(&cond, &mutex);  // go to sleep on cond, releasing lock mutex,
 pthread_cond_broadcast(&cond);     // wake up every thread sleeping on cond
 </pre>
 
-<p>
-The condition variable solution passes <tt>make grade</tt>'s <tt>barrier_cv</tt> tests.
-
 <p> Condition variables an interesting semantics with the relationship between the <tt>mutex</tt>
 and the <tt>condition variable</tt>. For example, <tt>pthread_cond_wait</tt> releases the <tt>mutex</tt> when called,
 and re-acquires the <tt>mutex</tt> before returning.
@@ -481,8 +478,6 @@ pthread_cond_wait(&cond, &mutex);  // go to sleep on cond, releasing lock mutex,
 pthread_cond_broadcast(&cond);     // wake up every thread sleeping on cond
 </pre>
 
-<p>
-The semaphore solution passes <tt>make grade</tt>'s <tt>barrier_sem</tt> tests.
 </div>
 
 <div class="warning">
@@ -543,7 +538,7 @@ What are the purposes of these calls.
 What are the purposes of these calls.
 </div>
 
-<h2>Thread-safe Message Queue Problem</h2>
+<h2>Problem 3: Thread-safe Message Queue <script>g("moderate")</script></h2>
 For this problem, you implement the solution to a "bounded buffer" problem.
 You will create a solution that allows threads to produce and consume messages.
 The messages are put/get in/from a queue - first in first out.
@@ -889,92 +884,12 @@ consumer 3
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
 
-<p><b>This completes the lab.</b> This lab does not have <tt>make grade</tt>. For this lab, you submit the following.
+<p><b>This completes the lab.</b> For this lab, you submit the following.
 <ul>
-<li><tt>lab-thread-handin.txt</tt> - this has the normal assessment information. Instead of the output from <tt>make grade</tt>,
-copy/paste your running/testing of the hash programs, the barrier programs, and your solution to the bounded buffer program.
+<li><tt>lab-thread-handin.txt</tt> - this has the normal assessment information - copy/paste your running/testing of the hash programs, the barrier programs, and your solution to the bounded buffer program.
 The output from your bounded buffer program must show all 5 test cases.
 <li>A zip file that contains the source code to your solution to the bounded buffer program. Be sure to include all of the source code. For example, if you solution has multiple <tt>.c</tt> and <tt>.h</tt> files, be sure to include them all.
-<li>A photo file with the answers to your questions.
 </ul>
-<!--
-<p><a name="submit"></>
-<h2>Submit the lab</h2>
 
-<h3>Time spent</h3>
-
-<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
-number of hours you spent on the lab.
-<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
-
-<h3>Answers</h3>
-
-<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
-<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
-
-<h3>Submit</h3>
-
-<p>Assignment submissions are handled by Gradescope.
-You will need an MIT gradescope account.
-See Piazza for the entry code to join the class.
-Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
-if you need more help joining.
-
-<p>When you're ready to submit, run <kbd>make zipball</kbd>,
-which will generate <tt>lab.zip</tt>.
-Upload this zip file to the corresponding Gradescope assignment.
-
-<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
-untracked files, you will see output similar to the following:
-<pre>
- M hello.c
-?? bar.c
-?? foo.pyc
-Untracked files will not be handed in.  Continue? [y/N]
-</pre>
-Inspect the above lines and make sure all files that your lab solution needs
-are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
-You can cause <tt>git</tt> to track a new file that you create using
-<kbd>git add {filename}</kbd>.
-</p>
-
-<p>
-<div class="warning">
-<ul>
-  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.
-    The Gradescope autograder will use the same grading program to assign your submission a grade.</li>
-  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
-  <li>You can inspect the status of your submission and download the submitted
-    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
-</ul>
-</div>
-
-
-
-<h2>Optional challenges for uthread</h2>
-
-<p>The user-level thread package interacts badly with the operating system in
-several ways.  For example, if one user-level thread blocks in a system call,
-another user-level thread won't run, because the user-level threads scheduler
-doesn't know that one of its threads has been descheduled by the xv6 scheduler.  As
-another example, two user-level threads will not run concurrently on different
-cores, because the xv6 scheduler isn't aware that there are multiple
-threads that could run in parallel.  Note that if two user-level threads were to
-run truly in parallel, this implementation won't work because of several races
-(e.g., two threads on different processors could call <tt>thread_schedule</tt>
-concurrently, select the same runnable thread, and both run it on different
-processors.)
-
-<p>There are several ways of addressing these problems.  One is
- using <a href="http://en.wikipedia.org/wiki/Scheduler_activations">scheduler
- activations</a> and another is to use one kernel thread per
- user-level thread (as Linux kernels do).  Implement one of these ways
- in xv6.  This is not easy to get right; for example, you will need to
- implement TLB shootdown when updating a page table for a
- multithreaded user process.
-
-<p>Add locks, condition variables, barriers,
-etc. to your thread package.
--->
 </body>
 </html>

@@ -62,7 +62,7 @@ $ echo 8 > time.txt
   $ <kbd>make clean</kbd>
   </pre>
 
-<h2>Speed up system calls <script>g("easy")</script></h2>
+<h2>Problem 1: Mapping USYSCALL page <script>g("easy - partial solution code provided")</script></h2>
 <p>The first six questions are warmup. Refer to Figure 3-2 of our <a href="../xv6/book-riscv-rev3.pdf">Xv6 Textbook</a>.
 
 <div class="question">
@@ -115,28 +115,34 @@ case passes when running <tt>pgtbltest</tt>.
   <li>The file <tt>proc.c</tt> contains functions that manipulate processes - 
       fork or create procs, allocate the procs' pagetables, exit procs,
       schedule procs, wait for a child, sleep, wakeup, etc.
-      The system call <tt>fork</tt> calls the <tt>fork</tt> function in <tt>proc.c</tt>.
-      The function <tt>fork</tt> calls the function <tt>allocproc</tt> to allocate a process.
+      The system call <tt>fork</tt> calls the <tt>fork()</tt> function in <tt>proc.c</tt>.
+      The function <tt>fork()</tt> calls the function <tt>allocproc()</tt> to allocate a process.
       When Xv6 boots, the <tt>init</tt> process is allocated. The <tt>init</tt> 
-      process <tt>fork</tt>s itself and <tt>exec</tt>s the <tt>sh</tt> program,
+The <tt>init</tt> process has PID 1. When the system is bootstrapping, 
+<tt>kernel/main.c</tt> calls <tt>userinit()</tt>, which is located in <tt>kernel/proc.c</tt>.
+<tt>userinit()</tt> creates the first user process, which is assembly code located 
+in <tt>user/initcode.S</tt>. This initial process calls <tt>exec()</tt> to execute the program
+<tt>user/init.c</tt>, which is the <tt>init</tt> process that has PID 1. 
+      The init process <tt>fork</tt>s itself and <tt>exec</tt>s the <tt>sh</tt> program,
       which is the Xv6 shell you use in your terminal. 
-      Whenever <tt>fork</tt> is called, it allocates a process, which must do such 
+      Whenever <tt>fork()</tt> is called, it allocates a process, which must do such 
       things as allocate a trapframe page and establish the process's pagetable. For 
-      this problem you must update <tt>allocproc</tt> to allocate a page for the 
+      this problem you must update <tt>allocproc()</tt> to allocate a page for the 
       process at virtual address <tt>USYSCALL</tt>, place a <tt>struct usyscall</tt> in the
       page, and assign the <tt>pid</tt> to the <tt>usyscall</tt> member <tt>int pid</tt>.
-      You must also update <tt>proc_pagetable</tt> to properly map the <tt>USYSCALL</tt> address
+      You must also update <tt>proc_pagetable()</tt> to properly map the <tt>USYSCALL</tt> address
       to the process's page table.
-    <p>You should study how <tt>allocproc</tt> allocates the <tt>TRAPFRAME</tt> page to get
+    <p>You should study how <tt>allocproc()</tt> allocates the <tt>TRAPFRAME</tt> page to get
       ideas for how to allocate the <tt>USYSCALL</tt> page.
   </li>	
 </ul>
 <div class="question">
-<p><b>7.</b> How does <tt>allocproc</tt> allocate the <tt>TRAPFRAME</tt> page?
+<p><b>7.</b> How does <tt>allocproc()</tt> allocate the <tt>TRAPFRAME</tt> page?
 </div>
 
 <div class="question">
-<p><b>8.</b> How does <tt>kalloc</tt> allocate a page?
+<p><b>8.</b> How does <tt>kalloc()</tt> allocate a page? What is the data structure
+that contains the free pages?
 </div>
 <ul>
   <li><p>
@@ -148,8 +154,9 @@ case passes when running <tt>pgtbltest</tt>.
       You can study <tt>memlayout.h</tt> as you examine Figure 3.3 of 
 		  <a href="../xv6/book-riscv-rev3.pdf">our xv6 text book</a>.
   </li>	
-  <li><p>As mentioned above, the file <tt>memlayout.h</tt> contains two pieces of 
+  <li><p>As mentioned above, the file <tt>kernel/memlayout.h</tt> contains two pieces of 
       information that you will use - <tt>USYSCALL</tt> and <tt>struct usyscall</tt>. 
+      You must define these in <tt>kernel/memlayout.h</tt>.
       <ul>
         <li>The macro <tt>USYSCALL</tt> is defined to be a virtual memory address that
             is one page below <tt>TRAPFRAME</tt>.
@@ -166,6 +173,9 @@ struct usyscall {
 </pre>
 
         </li>
+        <li>When you have implemented the solution to the problem, you will have the
+            process's PID stored at virtual address <tt>USYSCALL</tt>
+        </li>
       </ul>
 </ul>
 
@@ -178,21 +188,46 @@ struct usyscall {
 </div>
 
 <ul>
-  <li><p>The file <tt>user/ulib.c</tt> contains a user library function <tt>ugetpid</tt>,
+  <li><p>The file <tt>user/ulib.c</tt> contains a user library function <tt>ugetpid()</tt>,
       which is called from the function <tt>ugetpid_test</tt> in <tt>user/pgtbltest.c</tt>.
+      The function is already present in <tt>user/ulib.c</tt>. The code is shown here 
+      for easy study.
+<pre>
+<kbd>
+int
+ugetpid(void)
+{
+  struct usyscall *u = (struct usyscall *)USYSCALL;
+  return u->pid;
+}
+</kbd>
+</pre>
   </li>
   <li><p>Choose permission bits that allow userspace to only read the page.
-      The file <tt>riscv.h</tt> defines page protection attributes.
+      The file <tt>riscv.h</tt> defines page protection attributes. The PTE
+      access bit are shown as follows. The <tt>USYSCALL</tt> page should have
+      <tt>PTE_U</tt> and <tt>PTE_R</tt> set.
+<pre>
+#define PTE_V (1L &lt;&lt; 0) // valid
+#define PTE_R (1L &lt;&lt; 1)
+#define PTE_W (1L &lt;&lt; 2)
+#define PTE_X (1L &lt;&lt; 3)
+#define PTE_U (1L &lt;&lt; 4) // user can access
+</pre>
   <li><p>There are several things that need to be done over the lifecycle of a new page, 
       which must be deallocated as well as allocated.
       For inspiration, understand the trapframe handling in <tt>kernel/proc.c</tt>.
       Search for <tt>trapframe</tt> to get yourself going.
 You will discover that the <tt>struct proc</tt> has a member <tt>trapframe</tt>. 
 <ul>
-<li>You must add member <tt><kbd>struct usyscall* usyscall;</kbd></tt> to the <tt>struc proc</tt> structure in <tt>proc.h</tt>
+<li>You must add member <tt><kbd>struct usyscall* usyscall;</kbd></tt> to the <tt>struc proc</tt> structure in <tt>proc.h</tt>. This member will contain the address of the <tt>USYSCALL</tt> page.
 <li>You must update the functions <tt>proc_pagetable()</tt> and <tt>proc_freepagetable()</tt> in <tt>proc.c</tt>.
+<ul>
 <li>You must call <tt><kbd>mappages()</kbd></tt> in the function <tt>proc_pagetable()</tt> to map the <tt>USYSCALL</tt> page.
-<li>You must call <tt><kbd>uvmunpa()</kbd></tt> in the function <tt>proc_freepagetable()</tt> to unmap the <tt>USYSCALL</tt> page.
+<li>You must call <tt><kbd>uvmunmap()</kbd></tt> in the function <tt>proc_freepagetable()</tt> to unmap the <tt>USYSCALL</tt> page.
+<li>Study how these two functions are called for the <tt>TRAMPOLINE</tt> and
+<tt>TRAPFRAME</tt> pages. The mimic those calls to properly call them for the <tt>USYSCALL</tt> page.
+</ul>
 </ul>
 </ul>
  
@@ -220,7 +255,7 @@ ugetpid(void)
 <li><tt>pgaccess_test()</tt> - This uses <tt>malloc()</tt> to allocate 32 pages, and it modifies (or accesses) pages 1, 2, and 30.
 The returned bits from <tt>pgaccess(buf, 32 &abits)</tt> should have bits 1, 2, and 30 set.
 </ul>
-<h2>Print a page table <script>g("easy")</script></h2>
+<h2>Problem 2: Print a page table <script>g("easy - solution code provided")</script></h2>
 
 <p>
 To help you visualize RISC-V page tables, and perhaps
@@ -232,7 +267,10 @@ that prints the contents of a page table.
 It should take
 a <tt>pagetable_t</tt> argument, and print that pagetable
 in the format described below.
-Insert <tt>if(p->pid==1) vmprint(p->pagetable)</tt> in
+Insert 
+<p>
+<tt>if(p->pid==1) vmprint(p->pagetable)</tt>
+<p> in
   <tt>exec.c</tt> just before the <tt>return argc</tt>,
 to print the first process's page table.
   
@@ -286,7 +324,7 @@ The number of entries and the virtual addresses should be the same.
 <ul>
   <li>You can put <tt>vmprint()</tt> in <tt>kernel/vm.c</tt>.
   <li>Use the macros at the end of the file <tt>kernel/riscv.h</tt>.
-  <li>The function <tt>freewalk</tt> in <tt>kernel/vm.c</tt> should be inspirational. <tt>freewalk</tt> recursively walks through a pagetable, freeing the pages. You do not want to free pages, however, you can use the recursive algorithm for this printing. In <tt>freewalk</tt> you will see the following statement.
+  <li>The function <tt>freewalk()</tt> in <tt>kernel/vm.c</tt> should be inspirational. <tt>freewalk</tt> recursively walks through a pagetable, freeing the pages. You do not want to free pages, however, you can use the recursive algorithm for this printing. In <tt>freewalk</tt> you will see the following statement.
 <pre>
 uint64 child = PTE2PA(pte);
 </pre>
@@ -302,10 +340,23 @@ The macro <tt>PTE2PA</tt> is defined in <tt>riscv.h</tt>, and it converts a page
 
 <ul>
   <li>Define the prototype for <tt>vmprint</tt> in <tt>kernel/defs.h</tt> so
-    that you can call it from exec.c.
+    that you can call it from <tt>kernel/exec.c</tt>.
+The following shows this defintion.
+<pre>
+... MORE from file not shown ...
+// vm.c
+<kbd>void            vmprint(pagetable_t);</kbd> &leftarrow; Add this line
+void            kvminit(void);
+void            kvminithart(void);
+... MORE from file not shown ...
+</pre>
   <li>Use <tt>%p</tt> in your printf calls to print out full 64-bit hex PTEs and addresses as shown in the example print output above.</li>
   <li><tt>printf("%d: pte %p pa %p\n", i, pagetable[i], pa);</tt> - sample <tt>printf</tt> statement with <tt>%p</tt>.
-  <li>The following is my implementation of <tt>vmprint()</tt>.
+  <li>The following is my implementation of <tt>vmprint()</tt>. It is a recursive
+implementation based on the function <tt>freewalk()</tt> in <tt>kernel/vm.c</tt>. 
+It uses the macros from <tt>kernel/riscv.h</tt>, the <tt>%p</tt> format, and the properly
+formated <tt>printf()</tt> function call.
+You should place this function in <tt>kernel/vm.c</tt>.
 <pre>
 <kbd>
 void
@@ -332,6 +383,34 @@ vmprint(pagetable_t pagetable)
 }
 </kbd>
 </pre>
+<li>We want to call our <tt>vmprint()</tt> function from the function
+<tt>exec()</tt> located in <tt>kernel/exec.c</tt>. The pair of functions <tt>fork()</tt>
+and <tt>exec()</tt> are used to run a program as a new process. The <tt>fork()</tt> function
+call create a child process this is a duplicate of the parent process that called <tt>fork()</tt>.
+The <tt>exec()</tt> function call overwrites the calling process with the program that is
+an argument to <tt>exec()</tt>. When creating a new process, <tt>fork()</tt> assigns the process a unique process id (PID). The <tt>init</tt> process has PID 1. When the system is bootstrapping, 
+<tt>kernel/main.c</tt> calls <tt>userinit()</tt>, which is located in <tt>kernel/proc.c</tt>.
+<tt>userinit()</tt> creates the first user process, which is assembly code located 
+in <tt>user/initcode.S</tt>. This initial process calls <tt>exec()</tt> to execute the program
+<tt>user/init.c</tt>, which is the <tt>init</tt> process that has PID 1. We modified <tt>exec.c</tt> to call <tt>vmprint()</tt> with PID is 1.
+
+<pre>
+  ... MORE code that is not shown ...
+  proc_freepagetable(oldpagetable, oldsz);
+
+  <kbd>if(p->pid==1) vmprint(p->pagetable);</kbd> &leftarrow; Add this line 
+  return argc; // this ends up in a0, the first argument to main(argc, argv)
+
+ bad:
+  if(pagetable)
+    proc_freepagetable(pagetable, sz);
+  if(ip){
+    iunlockput(ip);
+    end_op();
+  }
+  return -1;
+}
+</pre>
 </ul>
 
 <div class="question">
@@ -350,13 +429,45 @@ process that's being inspected here.
 <p><b>17.</b> Unix implementations of <tt>exec</tt> traditionally include special handling for shell scripts. If the file to execute begins with the text <tt>#!</tt>, then the first line is taken to be a program to run to interpret the file. For example, if <tt>exec</tt> is called to run <tt>myprog arg1</tt> and <tt>myprog</tt>'s first line is <tt>#!/interp</tt>, then <tt>exec</tt> runs <tt>/interp</tt> with command line <tt>/interp myprog arg1</tt>. Discuss how you would Implement support for this convention in xv6.
 </div>
 
+<div class="question">
+<p><b>18.</b> Examine the code in <tt>user/init.c</tt>. What process does the init process create? What does the init process do for standard input, output, and error?
+</div>
+
 <!--
 <div class="question">
 <p><b>16. </b>The file <tt>trampoline.S</tt> has the instruction <tt>li a0, TRAPFRAME</tt>, which loads the virtual address of <tt>TRAPFRAME</tt> into register <tt>a0</tt>. The RISC-V CPU that we are using has a 64-bit virtual address space, yet RISC-V has 32-bit instructions. This means it is impossible to include the virtual address of <tt>TRAPFRAME</tt> in an instruction. What is happening with the <tt>li a0, TRAPFRAME</tt> instruction?
 </div>
 -->
 
-<h2>Detect which pages have been accessed <script>g("moderate")</script></h2>
+<h3>Testing</h3>
+<p>
+If you have completed all of the above changes, when you start xv6 it should print output like this, describing
+the page table of the first process at the point when it has just
+finished <tt>exec()</tt>ing <tt>init</tt>:
+
+<pre>
+page table 0x0000000087f6b000
+ ..0: pte 0x0000000021fd9c01 pa 0x0000000087f67000
+ .. ..0: pte 0x0000000021fd9801 pa 0x0000000087f66000
+ .. .. ..0: pte 0x0000000021fda01b pa 0x0000000087f68000
+ .. .. ..1: pte 0x0000000021fd9417 pa 0x0000000087f65000
+ .. .. ..2: pte 0x0000000021fd9007 pa 0x0000000087f64000
+ .. .. ..3: pte 0x0000000021fd8c17 pa 0x0000000087f63000
+ ..255: pte 0x0000000021fda801 pa 0x0000000087f6a000
+ .. ..511: pte 0x0000000021fda401 pa 0x0000000087f69000
+ .. .. ..509: pte 0x0000000021fdcc13 pa 0x0000000087f73000
+ .. .. ..510: pte 0x0000000021fdd007 pa 0x0000000087f74000
+ .. .. ..511: pte 0x0000000020001c0b pa 0x0000000080007000
+init: starting sh
+</pre>
+
+<h3>Reflection</h3>
+<p>Do not get yourself caught in the details of implementation so that you
+do not understand what you have done. Think about virtual addresses, physical addresses,
+page tables, page table entries, and how this 
+code walks the three-level page table to print the PTEs and physical addresses.
+
+<h2>Problem 3: Detect which pages have been accessed <script>g("moderate - partial solution code provided")</script></h2>
 
 <p>
 Some garbage collectors (a form of automatic memory management) can benefit
@@ -370,7 +481,7 @@ a TLB miss.
 <p>Your job is to implement a system call, <tt>pgaccess()</tt>, that reports which
 pages have been accessed. The system call takes three arguments. The first argument is
 the starting virtual address of the first user page to check. The second argument is 
-number of pages to check. The third argument is a user address to a buffer to store
+number of pages to check. The third argument is a user address of a 32-bit variable to store
 the results into a bitmask (a datastructure that uses one bit per page and where
 the first page corresponds to the least significant bit).
 <p>See <a href="syscall.html#refsystemcalls" >Reference: Xv6 System Calls</a> for a reminder on how to 
@@ -398,13 +509,13 @@ If <tt>a[4096]</tt> has changed, bit 1 of <tt>x</tt> will be set.
 If <tt>a[8192]</tt> has changed, bit 2 of <tt>x</tt> will be set.
 </ul>
 <div class="question">
-<p><b>18.</b> The above code snippet will not work in Xv6, because it defines the 
+<p><b>19.</b> The above code snippet will not work in Xv6, because it defines the 
 variable a as a local variable that would be allocated on the stack. 
 Why will this <b>NOT</b> work on Xv6?
 </div>
 
 <div class="question">
-<p><b>19.</b> How does the function <tt>pgaccess_test()</tt> in <tt>pgtbltest.c</tt> define its variable that corresponds to <tt>a</tt>?
+<p><b>20.</b> How does the function <tt>pgaccess_test()</tt> in <tt>pgtbltest.c</tt> define its variable that corresponds to <tt>a</tt>?
 </div>
 
 
@@ -418,9 +529,66 @@ Why will this <b>NOT</b> work on Xv6?
     in <tt>kernel/riscv.h</tt>. Consult
     the <a href="https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMFDQC-and-Priv-v1.11/riscv-privileged-20190608.pdf">RISC-V
     privileged architecture manual</a> to determine its value.
+<p>The following shows the page table entry bits as defined in <tt>kernel/riscv.h</tt>, 
+along with some other lines in the file. The macro defines include how to define <tt>PTE_A</tt>.
+Notice these macro definitions make use of C shifts and masks. 
+These low-level C features allow us to manipulate the page table entries and virtual addresses
+as defined by the RISC-V architecture.
+<pre>
+#define PTE_V (1L &lt;&lt; 0) // valid
+#define PTE_R (1L &lt;&lt; 1)
+#define PTE_W (1L &lt;&lt; 2)
+#define PTE_X (1L &lt;&lt; 3)
+#define PTE_U (1L &lt;&lt; 4) // user can access
+
+<kbd>#define PTE_A (1L &lt;&lt; 6)</kbd> &leftarrow; Add this line
+
+// shift a physical address to the right place for a PTE.
+#define PA2PTE(pa) ((((uint64)pa) &gt;&gt; 12) &lt;&lt; 10)
+#define PTE2PA(pte) (((pte) &gt;&gt; 10) &lt;&lt; 12)
+#define PTE_FLAGS(pte) ((pte) & 0x3FF)
+// extract the three 9-bit page table indices from a virtual address.
+#define PXMASK          0x1FF // 9 bits
+#define PXSHIFT(level)  (PGSHIFT+(9*(level)))
+#define PX(level, va) ((((uint64) (va)) &gt;&gt; PXSHIFT(level)) & PXMASK)
+// one beyond the highest possible virtual address.
+// MAXVA is actually one bit less than the max allowed by
+// Sv39, to avoid having to sign-extend virtual addresses
+// that have the high bit set.
+#define MAXVA (1L &lt;&lt; (9 + 9 + 9 + 12 - 1))
+</pre>
   <li>Be sure to clear <tt>PTE_A</tt> after checking if it is set. Otherwise, it won't be possible to determine if the page was accessed since the last time <tt>pgaccess()</tt> was called (i.e., the bit will be set forever).
-  <li>You can use the following code in the module <tt>proc.c</tt> as part of your solution. This code
+  <li>You can add the following code in the module <tt>proc.c</tt> as part of your solution. This code
 implements the page access functionality. You have to create the system call portion to call this function.
+There are two versions of the same code. One without line numbers that you can copy/paste. One with line numbers so I can ask questions.
+<p>Version 1 - does not have line numbers.
+<pre>
+<kbd>
+int
+pgaccess(uint64 va_start, int npage, uint64 res_addr)
+{
+  if(va_start > MAXVA) {
+    panic("pgaccess: too large VA");
+  }
+  if(npage > 32){
+    panic("pgaccess: too many pages");
+  }
+
+  uint res = 0;
+  struct proc *p = myproc();
+  for(int i=0; i&lt;npage; i++){
+    uint64 va = va_start + i * PGSIZE;
+    pte_t *pte = walk(p->pagetable, va, 0);
+    if((*pte & PTE_V) && (*pte & PTE_A)) {
+      res |= (1 &lt;&lt; i);
+      *pte ^= PTE_A;
+    }
+  }
+  return copyout(p->pagetable, res_addr, (char*)&res, sizeof(res));
+}
+</kbd>
+</pre>
+<p>Version 2 - has line numbers.
 <pre>
 <kbd>
  1 int
@@ -445,17 +613,17 @@ implements the page access functionality. You have to create the system call por
 20   }
 21   return copyout(p->pagetable, res_addr, (char*)&res, sizeof(res));
 22 }
-</pre>
 </kbd>
+</pre>
 </ul>
 
 <div class="question">
-<p><b>20.</b> Explain the <tt>if</tt> statement on lines 16 through 19 of the function <tt>pgaccess()</tt>
+<p><b>21.</b> Explain the <tt>if</tt> statement on lines 16 through 19 of the function <tt>pgaccess()</tt>
 given above.
 </div>
 
 <div class="question">
-<p><b>21.</b> Suppose you have the following page table information, which is formatted like the <b>Print a page table</b> problem.
+<p><b>22.</b> Suppose you have the following page table information, which is formatted like the <b>Print a page table</b> problem.
 Explain how you convert the PTE value (e.g., 0x021fd9c01) to its PA (e.g., 0x87f67000).
 <pre>
 page table 0x0000000087f6b000
@@ -466,7 +634,7 @@ page table 0x0000000087f6b000
 </div>
 
 <div class="question">
-<p><b>22.</b> The function <tt>walk()</tt> in <tt>vm.c</tt> "walks" a RISC-V Sv39 page table. The Sv39 indicates a 39 bit VA
+<p><b>23.</b> The function <tt>walk()</tt> in <tt>vm.c</tt> "walks" a RISC-V Sv39 page table. The Sv39 indicates a 39 bit VA
 as shown in <a href="../xv6/book-riscv-rev3.pdf">Xv6 Textbook, Figure 3.2</a>. The succinct code for <tt>walk()</tt> is given as follows.
 <pre>
 pte_t * walk(pagetable_t pagetable, uint64 va, int alloc) {
@@ -499,7 +667,7 @@ pte_t *pte = &pagetable[PX(level, va)];
 </div>
 
 <div class="question">
-<p><b>23.</b> Given the diagram below for a Translation Lookaside Buffer, search the Internet to help your answer the following.
+<p><b>24.</b> Given the diagram below for a Translation Lookaside Buffer, search the Internet to help your answer the following.
 <p><b>A.</b> Explain how a TLB makes paging more efficient. This one you should know without searching, but search if you must.
 <p><b>B.</b> What does Xv6 do when it must change to a new page table? This one will require you to examine Xv6.
 <p><b>C.</b> Explain how an OS would use the ASID field in the TLB to make paging more efficient. 

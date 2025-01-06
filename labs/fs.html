@@ -258,7 +258,7 @@ README         2 2 2305
 <p>Explain the diagram in your own words.
 </div>
 
-<h2>Large files <script>g("moderate")</script></h2>
+<h2>Problem 1: Large files <script>g("moderate")</script></h2>
 
 <p>In this assignment you'll increase the maximum size of an xv6
 file. Currently xv6 files are limited to 268 blocks, or 268*BSIZE
@@ -266,19 +266,6 @@ bytes (BSIZE is 1024 in xv6). This limit comes from the fact that an
 xv6 inode contains 12 "direct" block numbers and one "singly-indirect"
 block number, which refers to a block that holds up to 256 more block
   numbers, for a total of 12+256=268 blocks.
-
-<p>The <tt>bigfile</tt> command creates the longest file it can,
-and reports that size:
-<pre>
-$ bigfile
-..
-wrote 268 blocks
-bigfile: file is too small
-$
-</pre>
-The test fails because <tt>bigfile</tt> expects to be able
-to create a file with 65803 blocks, but unmodified xv6 limits
-files to 268 blocks.
 
 <p>You'll change the xv6 file system code to support a
 "doubly-indirect" block in each inode, containing 256 addresses of
@@ -374,7 +361,7 @@ $
 <p>
 <tt>bigfile</tt> will take at least a minute and a half to run.
 
-<p>Hints:
+<h3>Some Hints</h3>
 
 <ul>
 
@@ -435,8 +422,29 @@ new clean file system image for you.
 
 </ul>
 
+<h3>Testing</h3>
+<p>The file <tt>user/bigfile.c</tt> has been provided. It creates the longest file it can by
+repetitively writing a <tt>buf[BSIZE]</tt> to the file <tt>big.file</tt> until the
+<tt>write()</tt> call returns a negative number. The <tt>bigfile</tt> command
+displays the number of blocks written. After you have implemented the 
+solution, the <tt>bigfile</tt> command should write 65803 blocks.
+<p>If you enter the <tt>bigfile</tt> command on the original Xv6creates the longest file it can
+write is 268 blocks.
+<pre>
+$ bigfile
+..
+wrote 268 blocks
+bigfile: file is too small
+$
+</pre>
+The test fails because <tt>bigfile</tt> expects to be able
+to create a file with 65803 blocks, but unmodified xv6 limits
+files to 268 blocks.
+<p>Study <tt>bigfile.c</tt>. You will see that it writes the block number to each block,
+and after writing blocks, it reopens the file
+and reads the blocks, making sure that each block contains the correct block number.
 
-<h2>Symbolic links <script>g("moderate")</script></h2>
+<h2>Problem 2: Symbolic links <script>g("moderate - just answer the questions")</script></h2>
 
 <p>In this exercise you will add symbolic links to xv6.  Symbolic
 links (or soft links) refer to a linked file by pathname; when a
@@ -447,69 +455,33 @@ can cross disk devices.  Although xv6 doesn't support multiple
 devices, implementing this system call is a good exercise to
 understand how pathname lookup works.
 
-<h3>Your job</h3>
+<h3>Your Job</h3>
 
 <div class="required">
 <p>Originally, you were to implement the <tt>symlink(char *target, char *path)</tt>
 system call, which creates a new symbolic link at path that refers
 to file named by target. Implementing this is rather difficult.
-Thus, I have modified this portion of the lab.
-<ol>
-<li>Explain soft and hard links. How are they different? How are hard links implementd?
-<p>
-For further information about links (both symbolic/soft and hard links), you can search the Internet or refer to 
-the man pages for <tt>link</tt> and <tt>symlink</tt>.  
-When performing your background study be sure to study the differences between soft and hard links.
-<li>This lab has a symbolic link test program - <tt>user/syblinktest.c</tt>, which was intended to test your implemenation of symbolic links. 
-Instead, you will study <tt>user/symlinktest.c</tt> and document your understanding. 
-<p>In the file <tt>user/symlinktest.c</tt>, explain the functions <tt>testsymlink()</tt> and <tt>stat_slink()</tt>.
-<li>Create a design for symbolic links. Design the <tt>symlink()</tt> system call that creates a symbolic link and <tt>open()</tt> that opens a symbolic link.  Your <tt>open()</tt> design has to traverse two symlinks. 
-<p> In your design, you can create/use functions such as the following:
-<ul>
-<li><tt>ialloc()</tt> - allocate and return an inode.
-<li><tt>nameiparent()</tt> - return the inode of a parent. For example, nameiparent("dir/file") returns the inode of dir.
-<li><tt>dirlookup(inode, name)</tt> - return the inode of file "name" in the directory "inode"
-<li><tt>iupdate(ip)</tt> - update the inode.
-</ul>
-<p>For example, <tt>$ echo gusty > file</tt> can be designed as follows. You can create other functions.
-<ol type="A">
-<li><tt>ialloc()</tt> an inode for <tt>file</tt>.
-<li><tt>balloc()</tt> a data block for <tt>file</tt>.
-<li>Add the data block to <tt>file</tt>'s inode.
-<li>Write the string <tt>gusty</tt> to the data block.
-<li>Update the size in <tt>file</tt>'s inode.
-<li>Add the directory entry <tt>file</tt> and inode to the current working directory.
-</ol>
+Thus, I have modified this portion of the lab so that you only have to answer questions.
 </ol>
 </div>
 
-<pre>
-$ <kbd>symlinktest</kbd>
-Start: test symlinks
-test symlinks: ok
-Start: test concurrent symlinks
-test concurrent symlinks: ok
-$ usertests -q
-...
-ALL TESTS PASSED
-$ 
-</pre>
- 
-<p>Hints:
+<h3>Some Hints</h3>
 
 <ul>
 
-<li> First, create a new system call number for symlink, add an entry
-to user/usys.pl, user/user.h, and implement an empty sys_symlink in kernel/sysfile.c.
+<li>If you want to get my solution to this problem, just let me know.
+
+<li> First, create a new system call number for <tt>symlink</tt>, add an entry
+to <tt>user/usys.pl</tt>, <tt>user/user.h</tt>, and implement an empty <tt>sys_symlink</tt> in <tt>kernel/sysfile.c</tt>.
 
 <li>Add a new file type (<tt>T_SYMLINK</tt>) to kernel/stat.h to
 represent a symbolic link.
 
-<li> Add a new flag to kernel/fcntl.h, (<tt>O_NOFOLLOW</tt>), that can
+<li> Add a new flag to <tt>kernel/fcntl.h</tt>, (<tt>O_NOFOLLOW</tt>), that can
 be used with the <tt>open</tt> system call. Note that flags passed to
 <tt>open</tt> are combined using a bitwise OR operator, so your new
 flag should not overlap with any existing flags. This will let you
-compile user/symlinktest.c once you add it to the Makefile.
+compile <tt>user/symlinktest.c</tt> once you add it to the Makefile.
 
 <li>Implement the <tt>symlink(target, path)</tt> system call to create
 a new symbolic link at path that refers to target. Note that target
@@ -537,76 +509,62 @@ an error code if the depth of links reaches some threshold (e.g., 10).
 lab.
 
 </ul>
-
-<p><a name="submit"></>
-<h2>Submit the lab</h2>
-
-<p><b>This completes the lab.</b> Make sure you pass all of the <tt>make
-grade</tt> tests. 
-
-Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
-to submit your lab.
-<!--
-<p><a name="submit"></>
-<h2>Submit the lab</h2>
-
-<h3>Time spent</h3>
-
-<p>Create a new file, <tt>time.txt</tt>, and put in a single integer, the
-number of hours you spent on the lab.
-<kbd>git add</kbd> and <kbd>git commit</kbd> the file.
-
-<h3>Answers</h3>
-
-<p>If this lab had questions, write up your answers in <tt>answers-*.txt</tt>.
-<kbd>git add</kbd> and <kbd>git commit</kbd> these files.
-
-<h3>Submit</h3>
-
-<p>Assignment submissions are handled by Gradescope.
-You will need an MIT gradescope account.
-See Piazza for the entry code to join the class.
-Use <a href="https://help.gradescope.com/article/gi7gm49peg-student-add-course#joining_a_course_using_a_course_code">this link</a>
-if you need more help joining.
-
-<p>When you're ready to submit, run <kbd>make zipball</kbd>,
-which will generate <tt>lab.zip</tt>.
-Upload this zip file to the corresponding Gradescope assignment.
-
-<p> If you run <kbd>make zipball</kbd> and you have either uncomitted changes or
-untracked files, you will see output similar to the following:
-<pre>
- M hello.c
-?? bar.c
-?? foo.pyc
-Untracked files will not be handed in.  Continue? [y/N]
-</pre>
-Inspect the above lines and make sure all files that your lab solution needs
-are tracked, i.e., not listed in a line that begins with <tt>??</tt>.
-You can cause <tt>git</tt> to track a new file that you create using
-<kbd>git add {filename}</kbd>.
-</p>
-
+<ol>
+<div class="question">
+<p><b>24.</b> 
+Explain soft and hard links. How are they different? How are hard links implemented?
 <p>
-<div class="warning">
-<ul>
-  <li>Please run <kbd>make grade</kbd> to ensure that your code passes all of the tests.
-    The Gradescope autograder will use the same grading program to assign your submission a grade.</li>
-  <li>Commit any modified source code before running <kbd>make zipball</kbd>.</li>
-  <li>You can inspect the status of your submission and download the submitted
-    code at Gradescope. The Gradescope lab grade is your final lab grade.</li>
-</ul>
+For further information about links (both symbolic/soft and hard links), you can search the Internet or refer to 
+the man pages for <tt>link</tt> and <tt>symlink</tt>.  
+When performing your background study be sure to study the differences between soft and hard links.
 </div>
 
+<div class="question">
+<p><b>25.</b> 
+This lab has a symbolic link test program - <tt>user/syblinktest.c</tt>, which was intended to test your implemenation of symbolic links. 
+Instead, you will study <tt>user/symlinktest.c</tt> and document your understanding. 
+<p>In the file <tt>user/symlinktest.c</tt>, explain the functions <tt>testsymlink()</tt> and <tt>stat_slink()</tt>.
+</div>
 
+<div class="question">
+<p><b>26.</b> 
+Create a design for symbolic links. Design the <tt>symlink()</tt> system call that creates a symbolic link and <tt>open()</tt> that opens a symbolic link.  Your <tt>open()</tt> design has to traverse two symlinks. 
+<p> In your design, you can create/use functions such as the following:
+<ul>
+<li><tt>ialloc()</tt> - allocate and return an inode.
+<li><tt>nameiparent()</tt> - return the inode of a parent. For example, nameiparent("dir/file") returns the inode of dir.
+<li><tt>dirlookup(inode, name)</tt> - return the inode of file "name" in the directory "inode"
+<li><tt>iupdate(ip)</tt> - update the inode.
+</ul>
+<p>For example, <tt>$ echo gusty > file</tt> can be designed as follows. You can create other functions.
+<ol type="A">
+<li><tt>ialloc()</tt> an inode for <tt>file</tt>.
+<li><tt>balloc()</tt> a data block for <tt>file</tt>.
+<li>Add the data block to <tt>file</tt>'s inode.
+<li>Write the string <tt>gusty</tt> to the data block.
+<li>Update the size in <tt>file</tt>'s inode.
+<li>Add the directory entry <tt>file</tt> and inode to the current working directory.
+</div>
 
-<h2>Optional challenge exercises</h2>
+<h3>Testing</h3>
+<pre>
+$ <kbd>symlinktest</kbd>
+Start: test symlinks
+test symlinks: ok
+Start: test concurrent symlinks
+test concurrent symlinks: ok
+$ usertests -q
+...
+ALL TESTS PASSED
+$ 
+</pre>
+ 
+<p><a name="submit"></>
+<h2>Submit the lab</h2>
 
-<p>Support triple-indirect blocks.
+<p><b>This completes the lab.</b>
+Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
+to submit your lab.
 
-<h3>Acknowledgment</h3>
-  
-<p>Thanks to the staff of UW's CSEP551 (Fall 2019) for the symlink exercise.
--->  
 </body>
 </html>

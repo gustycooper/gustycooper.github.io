@@ -71,7 +71,7 @@ In future labs, if you add a new utility program, you will have to remember to u
 "Ensure your <tt>kittycat</tt> program has been added <tt>UPROGS</tt> in <tt>Makefile</tt>." 
 This has already been done, but you should examine the <tt>Makefile</tt> to see how it has been done. 
 
-<h2>Boot xv6 <script>g("easy")</script></h2>
+<h2>Problem 1: Boot xv6 <script>g("easy")</script></h2>
 
 <p>
 You can do these labs on our CPSC server or on your own computer.
@@ -237,7 +237,7 @@ and one for <tt>sh</tt>.
 
 <p>To quit qemu type: <kbd>Ctrl-a x</kbd> (press <kbd>Ctrl</kbd> and <kbd>a</kbd> at the same time, followed by <kbd>x</kbd>).
 
-<h2>kittycat <script>g("easy - starting code provided")</script></h2>
+<h2>Problem 2: kittycat <script>g("easy - starting code provided")</script></h2>
 
 <div class="required">
 <p>Implement the UNIX program <tt>kittycat</tt> for xv6; your <tt>kittycat</tt> mimics
@@ -318,23 +318,8 @@ Here is what I would do to test <tt>kittycat.c</tt>
 <li><tt>$ <kbd>kittycat</kbd></tt> - run <tt>kittycat</tt> and verify that it displays the same information as the previous <tt>cat</tt> command.
 <li><tt>$ <kbd>kittycat argument</kbd></tt> - run <tt>kittycat</tt> with an argument and verify that it displays the no args allowed message.
 </ul>
-<!--  <p>Your solution is correct if your program generates the output shown above.
-  Run <kbd>make grade</kbd> to see if you indeed pass the
-    <tt>kittycat</tt> tests.
 
- <p>Note that <kbd>make grade</kbd> runs all tests, including the ones for the assignments
- below. If you want to run the grade tests for one assignment, type:
-   <pre>
-     $ <kbd>./grade-lab-util kittycat</kbd>
-   </pre>
-   This will run the grade tests that match "kittycat".  Or, you can type:
-   <pre>
-     $ <kbd>make GRADEFLAGS=kittycat grade</kbd>
-   </pre>
-   which does the same.
--->
-
-<h2>sleep <script>g("easy - solution code provided")</script></h2>
+<h2>Problem 3: sleep <script>g("easy - solution code provided")</script></h2>
 
 <div class="required">
 <p>Implement the UNIX program <tt>sleep</tt> for xv6; your <tt>sleep</tt> should pause
@@ -347,7 +332,7 @@ Here is what I would do to test <tt>kittycat.c</tt>
 <pre>
 $ <kbd>sleep 10</kbd>
 $ <kbd>sleep</kbd>
-Usage: sleep &lt;ticks>
+Usage: sleep &lt;ticks&gt;
 </div>
 
 <p>
@@ -389,6 +374,7 @@ Usage: sleep &lt;ticks>
         (second edition)</i> (K&R) to learn about C.
     <li><tt>sleep.c</tt> solution code.
 <pre>
+<kbd>
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
@@ -396,13 +382,14 @@ Usage: sleep &lt;ticks>
 int
 main(int argc, char *argv[])
 {
-  if(argc < 2){
+  if(argc &lt; 2){
     fprintf(2, "Usage: sleep <ticks>\n");
     exit(1);
   }
   sleep(atoi(argv[1]));
   exit(0);
 }
+</kbd>
 </pre>
 
   </ul>
@@ -427,7 +414,7 @@ main(int argc, char *argv[])
   </div>
 
 
-<h2>forkexec (fork and exec) <script>g("easy - sample code provided")</script></h2>
+<h2>Problem 4: forkexec (fork and exec) <script>g("easy - sample code provided")</script></h2>
 
 <div class="required">
 Write a program that calls <tt>fork</tt> and <tt>exec</tt> to execute the <tt>ls</tt> program as a child process.
@@ -475,7 +462,7 @@ If the <tt>argv</tt> parameter is 2, then you will pass <tt>argv[1]</tt> as the 
 
 </ul>
 
-<h2>File Reading <script>g("easy - solution code provided")</script></h2>
+<h2>Problem 5: File Reading <script>g("easy - solution code provided")</script></h2>
 
 <div class="required">
 Write a program, <tt>numbers</tt>, that uses the system call <tt>read</tt> to read a file with numbers and computes the sum of those numbers.
@@ -494,6 +481,7 @@ To simplify the problem, the input file <tt>nums.txt</tt> has a sequence of line
 <ul>
 <li><tt>numbers.c</tt> solution code.
 <pre>
+<kbd>
 #include "kernel/types.h"
 #include "kernel/fcntl.h"
 #include "user/user.h"
@@ -507,7 +495,7 @@ main(int argc, char **argv)
     fd = open(argv[1], O_RDONLY);
   else
     fd = open("nums.txt", O_RDONLY);
-  if (fd < 0) {
+  if (fd &lt; 0) {
     printf("file not found\n");
     exit(1);
   }
@@ -527,6 +515,7 @@ main(int argc, char **argv)
   printf("----------\nsum: %d\n", sum);
   exit(0);
 }
+</kbd>
 </pre>
 <li>The Unix I/O system calls include <tt>open</tt>, <tt>close</tt>, <tt>read</tt>, and <tt>write</tt>.
 These are different from the C runtime I/O calls such as <tt>scanf</tt>, <tt>printf</tt>, <tt>fopen</tt>, etc.
@@ -590,7 +579,7 @@ num: 0
 ----------
 sum: 6
 </pre>
-<h2>pingpong <script>g("easy - starting code provided")</script></h2>
+<h2>Problem 6: pingpong <script>g("easy - starting code provided")</script></h2>
 <div class="required">
 <p> Write a program, <tt>pingpoing</tt> that uses UNIX system calls to ''ping-pong'' the arguments passed to <tt>main()</tt>
   between a parent and child process over a pair of pipes, one for each
@@ -626,6 +615,7 @@ sum: 6
     <li>The following is a version of <tt>pingpong.c</tt> that sends and received a single byte.
 You can modify this to send and receive arguments.
 <pre>
+<kbd>
 // Sample program: send/receive a byte
 #include "kernel/types.h"
 #include "kernel/stat.h"
@@ -659,6 +649,7 @@ int main(int argc, char *argv[]) {
   }
   exit(0);
 }
+</kbd>
 </pre>
     <li>I think you will find it helpful to create a drawing of the two pipes connecting the parent and child.
     <li>Notice how the parent and child close the input and output ends of the pipes.
@@ -698,7 +689,7 @@ and pipes. The <tt>open()</tt> function and the <tt>pipe()</tt> function both re
 Explain in your own words what is the differenct between reading/writing pipes and files.
   </div>
 
-<h2>primes <script>g("moderate - solution code provided")</script></h2>
+<h2>Problem 7: primes <script>g("moderate - solution code provided")</script></h2>
 
 <div class="required">
   <p>Write a concurrent version of prime sieve using pipes.  This idea
@@ -720,6 +711,7 @@ Explain in your own words what is the differenct between reading/writing pipes a
   <ul>
     <li><tt>primes.c</tt> solution code.
 <pre>
+<kbd>
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
@@ -754,7 +746,7 @@ main(int argc, char *argv[])
 {
   int p[2];
   pipe(p);
-  for (int i=2; i<=35; i++) {
+  for (int i=2; i&lt;=35; i++) {
     write(p[1], &i, sizeof(int));
   }
   if(fork()==0){
@@ -766,6 +758,7 @@ main(int argc, char *argv[])
   }
   exit(0);
 }
+</kbd>
 </pre>
     <li>Be careful to close file descriptors that a process doesn't
     need, because otherwise your program will run xv6 out of resources
@@ -827,7 +820,7 @@ sieve and produces the following output:
     <p><b>9.</b> Do you think there is a largest prime number such that it is the last prime number? What are the number of digits in the largest prime number discovers so far? When was it discovered?
   </div>
 
-<h2>find <script>g("moderate - solution code provided")</script></h2>
+<h2>Problem 8: find <script>g("moderate - solution code provided")</script></h2>
 
 <div class="required">
 <p>Write a simple version of the UNIX find program: find all the files
@@ -843,6 +836,7 @@ sieve and produces the following output:
   <ul>
     <li><tt>find.c</tt> solution code.
 <pre>
+<kbd>
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
@@ -857,11 +851,11 @@ find(char *path, char *name)
   struct dirent de;
   struct stat st;
 
-  if((fd = open(path, O_RDONLY)) < 0){
+  if((fd = open(path, O_RDONLY)) &lt; 0){
     fprintf(2, "find: cannot open %s\n", path);
     return;
   }
-  if(fstat(fd, &st) < 0){
+  if(fstat(fd, &st) &lt; 0){
     fprintf(2, "find: cannot stat %s\n", path);
     close(fd);
     return;
@@ -879,7 +873,7 @@ find(char *path, char *name)
     if(de.inum == 0) continue;
     memmove(p, de.name, DIRSIZ);
     p[DIRSIZ] = 0;
-    if(stat(buf, &st) < 0){
+    if(stat(buf, &st) &lt; 0){
       printf("find: cannot stat %s\n", buf);
       continue;
     }
@@ -903,6 +897,7 @@ main(int argc, char *argv[])
   find(argv[1], argv[2]);
   exit(0);
 }
+</kbd>
 </pre>
     <li>Notice how the function <tt>find()</tt> calls itself.
 
@@ -952,7 +947,7 @@ Notice how the algorithm does not recurse into the <tt>.</tt> and <tt>..</tt> fi
     <p><b>12.</b> What does the Linux command <tt>$ </tt><kbd> echo > b</kbd> do?
   </div>
 
-<h2>xargs <script>g("moderate - solution code provided")</script></h2>
+<h2>Problem 9: xargs <script>g("moderate - solution code provided")</script></h2>
 
 <div class="required">
 <p>Write a simple version of the UNIX xargs program: its arguments
@@ -1136,13 +1131,14 @@ GOTO READLOOP
 </pre>
 <h3>xargs Solution Code</h3>
 <pre>
+<kbd>
 #include "kernel/types.h"
 #include "kernel/param.h"
 #include "user/user.h"
 
 void
 clear(char *xargv[MAXARG], int start){
-  for(int i=start; i<MAXARG; i++){
+  for(int i=start; i&lt;MAXARG; i++){
     xargv[i] = 0;
   }
 }
@@ -1150,8 +1146,8 @@ clear(char *xargv[MAXARG], int start){
 int
 main(int argc, char *argv[])
 {
-  if(argc < 2){
-    fprintf(2, "Usage: xarg <cmd>\n");
+  if(argc &lt; 2){
+    fprintf(2, "Usage: xarg &lt;cmd&gt;\n");
     exit(1);
   }
   if(argc > MAXARG){
@@ -1160,7 +1156,7 @@ main(int argc, char *argv[])
   }
   char *xargv[MAXARG] = {0};
   int xargc = 0;
-  for(; xargc+1 < argc; xargc++){
+  for(; xargc+1 &lt; argc; xargc++){
     xargv[xargc] = argv[xargc+1];
   }
   char buf[1024], c;
@@ -1192,7 +1188,7 @@ main(int argc, char *argv[])
   }
   exit(0);
 }
-
+</kbd>
 </pre>
 <h3>Testing</h3>
 <p>To test your solution for xargs, run the seqence of commands provided in the hints section.

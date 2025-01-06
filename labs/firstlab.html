@@ -392,7 +392,7 @@ integer using the <tt>atoi()</tt> function.
 <p>The file <tt>main.c</tt> demonstrates various ways to define C strings and pass them to
 the <tt>put()</tt> function in the hash module.
 You should study the code to see these various C strings.
-<h2>Getting Started with Xv6 - Boot xv6 <script>g("easy")</script></h2>
+<h2>Problem 1: Getting Started with Xv6 - Boot xv6 <script>g("easy")</script></h2>
 
 <p>
 You can do these labs on our CPSC server or on your own computer.
@@ -558,7 +558,7 @@ and one for <tt>sh</tt>.
 
 <p>To quit qemu type: <kbd>Ctrl-a x</kbd> (press <kbd>Ctrl</kbd> and <kbd>a</kbd> at the same time, followed by <kbd>x</kbd>).
 
-<h2>Port the Hash Program to Xv6 <script>g("easy")</script></h2>
+<h2>Problem 2: Port the Hash Program to Xv6 <script>g("easy")</script></h2>
 <p>You will see that I have included <tt>hashprog</tt> as a utility program in Xv6.
 I have combined <tt>hash.h</tt>, <tt>hash.c</tt>, and <tt>main.c</tt> into one file <tt>hashprog.c</tt>
 which is located in the <tt>user</tt> directory.
@@ -573,7 +573,7 @@ $ <kbd>hashprog</kbd>
 $ <kbd>hashprog name 222</kbd>
 </pre>
 
-<h2>Firstlab Programming <script>g("easy")</script></h2>
+<h2>Problem 3: Firstlab Programming <script>g("easy")</script></h2>
 
 <p>Firstlab is a review and practice of C programming to get you warmed up to perform Xv6 programming. 
 You also get an introduction to <tt>struct proc</tt>, which is the kernel's data structure for manageing processes.
@@ -660,8 +660,8 @@ command to compare your actual output to the expected output. A example test cas
 and its corresponding expected output is in the file <tt>test1_out.txt</tt>. The following shows ways to run the test script and compare it to the expected output.
 <pre>
 $ <kbd>make</kbd>
-$ <kbd>./firstLab < test1_in.txt  </kbd>                  # displays output in terminal
-$ <kbd>./firstLab < test1_in.txt > test1_actual.txt </kbd># places output in file.txt
+$ <kbd>./firstLab &lt; test1_in.txt  </kbd>                  # displays output in terminal
+$ <kbd>./firstLab &lt; test1_in.txt > test1_actual.txt </kbd># places output in file.txt
 $ <kbd>diff test1_actual.txt test1_out.txt</kbd>          # compares actual output to expected
 </pre>
 
