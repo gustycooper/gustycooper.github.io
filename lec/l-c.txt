@@ -43,24 +43,6 @@ example: compile cat.c
   executable has a.out format with sections for:
     text (code), initialized data, symbol table, debug info, and more
 
-HERE
-explore a.out of _cat
-  riscv64-linux-gnu-objdump -S user/_cat
-    same as user/cat.asm
-  0x0: cat
-    what if we run two cat programs at the same time?
-    see pgtbl lecture
-  0x8e: _main
-    user.ld:
-      entry: _main
-  what is _main?
-    defined in ulib.c, which calls main() and exit(0)
-  where is data memory? (e.g., buf)
-    in data/bss segment
-    must be setup by kernel
-  but we know address where buf should be
-    riscv64-linux-gnu-nm -n user/_cat
-
 C pointers and C structs
   a pointer is a memory address
     every variable has a memory address (i.e., p = &i)
