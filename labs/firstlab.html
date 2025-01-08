@@ -43,12 +43,27 @@ $ echo 8 > time.txt
 </pre>
 </div>
 
-A<p>Fetch the xv6 source for the lab and check out the <tt>firstlab</tt> branch:
+<h2>Fetch Xv6 Repo</h2>
+
+<p>Fetch the xv6 source for the lab and check out the <tt>firstlab</tt> branch.
+The <tt>git clone</tt> will create the repo locally in the direcory <tt>xv6-labs</tt>, which will be a subdirectory of the current working directory in which you entered <tt>git clone</tt>
 
 <pre>
-  $ <kbd>git fetch</kbd>
-  $ <kbd>git checkout firstlab</kbd>
-  $ <kbd>make clean</kbd>
+$ <kbd>git clone https://github.com/gustycooper/xv6-labs.git</kbd>
+Cloning into 'xv6-labs'...
+...
+$ <kbd>cd xv6-labs</kbd>
+</pre>
+
+<p>The repo is setup so that git checkouts the <tt>riscv</tt> branch when
+  cloning the repo. You must switch to the <tt>util</tt> branch to conduct this lab.
+<pre>
+$ <kbd>git status</kbd>
+On branch riscv
+Your branch is up to date with 'origin/riscv'.
+
+nothing to commit, working tree clean
+$ <kbd>git checkout firstlab</kbd>
 </pre>
 
 <h2>Introduction</h2>
@@ -59,8 +74,8 @@ A<p>Fetch the xv6 source for the lab and check out the <tt>firstlab</tt> branch:
 In C, you package together data structures and algorithms in a <tt>.h</tt> and <tt>.c</tt> files.
 
 <h3>Hash Table Files</h3>
-<p>The source code files and Makefile for the hash table program are in the <tt>xv6-labs/notxv6</tt> directory.
-Be sure you have entered the <tt>$ <kbd>git checkout firstlab</kbd></tt> command before looking for the files.
+<p>The source code files and <tt>Makefile</tt> for the hash table program are in the <tt>xv6-labs/notxv6</tt> directory.
+Be sure you have fetched our Xv6 repo and entered the <tt>$ <kbd>git checkout firstlab</kbd></tt> command before looking for the files.
 <ul>
 <li><tt>hash.h</tt>
 <li><tt>hash.c</tt>
