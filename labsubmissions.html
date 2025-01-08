@@ -139,11 +139,11 @@ $ echo 8 > time.txt
 
 <p><a name="submittinglabs"></a>
 <h2>Submitting Labs</h2>
-<h3><b>Each team member shall submit lab information on Canvas.</b></h3>
-<p>Each lab has two Canvas assignments in which you submit lab information. Both teammates must submit lab information, and 
-the Text File submission must show that the code is run on each individual's system.
+<h3><b>Each student must submit their lab material on Canvas.</b></h3>
+<p>Each lab has two Canvas assignments in which you submit your lab material. 
 <ul>
 <li>Text File Assignment - you submit your (for example) <tt>lab-util-handin.txt</tt> file, which is described below.
+The Text File submission must show that the code is run on each individual's computer system.
 <li>Zip File Assignment - you submit your (for example) <tt>lab-util-handin.tar.gz</tt> file, which is described below.
 </ul>
 I will primarily use the Text File submission to grade your lab. If necessary, I will run your code using the Zip File submission.
@@ -169,29 +169,28 @@ The orange lines encircle tapes that would have been used to backup code in an a
 <p>
 <img src="labs/thompsonandritchie.png" alt="Magnetic Tapes" width="200" height="300" >
 <h3><b>Text File</b></h3>
-<p>The text file contains your reflections and copy/paste of you building, running, and testing the programming problems associated with the lab. The text file name shall be for example, <tt>lab-<b>util</b>-handin.txt</tt>,
-where <b>util</b> is the name of the lab. The text file is the same for both Xv6 and Linux labs. The text file is submitted in the lab's Test File Assignment on Canvas.
+<p>The text file contains your reflections and a copy/paste of you building, running, and testing the programming problems associated with the lab. The text file name shall be for example, <tt>lab-<b>util</b>-handin.txt</tt>,
+where <b>util</b> is the name of the lab. The text file is the same for both Xv6 and Linux labs. The text file is submitted in the lab's Text File Assignment on Canvas.
 The text file shall be neatly organized items in the following order.
 <ul>
 <li><i>Name</i>: Your name.
 <li><i>Hours Spent</i>: The number of hours you spent on the lab.
 <li><i>Questions</i>: An honor declaration that you have completed the questions in either a handwritten notebook or typewritten file.
-Here are several sample honor declarations. The first two samples earn 25 points for handwritten and 15 points for typed.
+Here are several sample honor declarations.
 <ul>
-<li><i>I hearby declare that I have handwritten the questions and answers in my notebook.</i>
-<li><i>I hearby declare that I have typewritten the questions and answers in a file.</i>
+<li><i>I hearby declare that I have handwritten the questions and answers in my notebook.</i> - this earns 25 points.
+<li><i>I hearby declare that I have typewritten the questions and answers in a file.</i> - this earns 15 points.
 <li><i>I hearby declare that I have handwritten 20 of the 25 the questions and answers in my notebook.</i>
-<li><i>I hearby declare that I have not had time to handwrite or type any of the questions and answers in my notebook.</i>
 </ul>
-<li><i>Assessment</i>: An assessment of your effort on the lab. Your assessment begins with an
-honor declaration, followed by a detailed description of your effort and what your learned.
-For effort, you should indicate the problems that were easy/hard and why they were easy hard. 
-For learning, you cannot say you learned everything. Describe what you learned. The following are sample honor declarations.
-<ul>
-<li><i>I hearby declare that I have successfully completed all of the lab programming problems. For problems without solution code, I have designed, implemented, and tested my solutions to them. For problems with solution code, I understand the design, implementation, and testing.</i>
-<li><i>I hearby declare that I have successfully completed 80% of the lab programming problems. For problems without solution code, I have designed, implemented, and tested my solutions to them. For problems with solution code, I understand the design, implementation, and testing.</i>
-</ul>
-<li><i>Teammates Assessment</i>: An assessment of you teammates' efforts on the lab. This can be briefer than your personal assessment. You should focus on how you divided the work and whether you and your teammate performed equally.
+<li><i>Learning</i>: A list of at least five things you learned on this lab and the lecture material related to this lab.
+<ol>
+<li><i>I learned ...</i>.
+<li><i>I learned ...</i>.
+<li><i>I learned ...</i>.
+<li><i>I learned ...</i>.
+<li><i>I learned ...</i>.
+</ol>
+<li><i>Collaboration</i>: If you helped someone or someone helped you, you can describe the help here. Collaboration is optional.
 <li><i>Build, Run, and Test</i>: A copy/paste of you building, running, and testing your lab problem program solutions. This should show that you are using your account. It should show you running and testing all of the lab problems - even those problems where I have provided the solution code.
 </ul>
 
@@ -204,12 +203,17 @@ Hours Spent: 7
 Questions: I hearby declare that I have handwritten the questions and answers in my notebook.
 
 Assessment: I completed the entire lab. I understand the Xv6 API.
-... more ... more ... more ...
-... more ... more ... more ...
-... more ... more ... more ...
+1. I learned that fork() creates child process that is an identical copy of the parent.
+2. I learned that exec() runs a program located on the disk.
+3. I learned that exec() overwrites the calling process with the program that is executed.
+4. I learned that pipe() returns two file descriptors. 
+5. I learned that a file descriptor is a small integer that can be used with read() and write().
+6. ... more ...
 
-Teammates Assessment:
-We divided the problems in half. Each of us designed and solved half of the problems. Then we got together to discuss and exchange the solutions and test cases. Then we each built, ran, and tested the entire collection of lab problems.
+
+Collaboration:
+I worked with Susan and Bobby to answer the questions. Susan was especially helpful.
+I help Matilda with her programming problems. I easily completed mine and Matilda needed some help.
 
 ecooper@cpsc:~/xv6-labs$ make clean
 rm -f *.tex *.dvi *.idx *.aux *.log *.ind *.ilg xv6.out* \
