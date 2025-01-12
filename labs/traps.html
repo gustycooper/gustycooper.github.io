@@ -493,8 +493,7 @@ processes that want to limit how much CPU time they chew up, or for
 processes that want to compute but also want to take some periodic
 action. More generally, you'll be implementing a primitive form of
 user-level interrupt/fault handlers; you could use something similar
-to handle page faults in the application, for example.  Your solution
-is correct if it passes <tt>alarmtest</tt> and <tt>usertests -q</tt>.
+to handle page faults in the application, for example.  
 </div>
 
 <p>
@@ -512,7 +511,9 @@ interrupts.
 If an application calls <tt>sigalarm(0, 0)</tt>, the kernel should
 stop generating periodic alarm calls.
 
-<p>The following shows my implementation of the two system calls.
+<h3>System Calls Implementation</h3>
+<p>The following shows my implementation of the two system calls, which I placed at the bottom of <tt>sysproc.c</tt>. Of course, you would have to implement them as system calls by following the steps 
+at <a href="syscall.html#refsystemcalls" >Reference: Xv6 System Calls</a>.
 <pre>
 <kbd>
 uint64
@@ -534,12 +535,59 @@ sys_sigreturn(void){
 }
 </kbd>
 </pre>
+<h3><tt>usertrap()</tt> Implementation</h3>
+<p>In addition to the two system calls, you have to update <tt>usertrap()</tt> (located in 
+<tt>kernel/trap.c</tt> to call the function establised to handle the alarm.
+The following shows my updates to <tt>usertrap()</tt>
+<pre>
+void
+usertrap(void)
+{
+  int which_dev = 0;
+
+<kbd>  ... some code is not shown ... </kbd>
+
+  struct proc *p = myproc();     &leftarrow; Line 1
+  // save user program counter.  &leftarrow; Line 2
+  p->trapframe->epc = r_sepc();  &leftarrow; Line 3
+
+<kbd>  ... some code is not shown ... </kbd>
+
+
+  // give up the CPU if this is a timer interrupt.
+  if(which_dev == 2) {
+<kbd>
+    if(p->interval != 0){
+      p->ticks++;
+      if(p->ticks == p->interval){
+        memmove(p->regs, p->trapframe, sizeof(struct trapframe));
+        p->trapframe->epc = p->handler;
+      }
+    }
+</kbd>
+    yield();
+  }
+
+  usertrapret();
+}
+</pre>
+<p>The value <tt>p->trapframe->epc</tt> contains return address when returning from a trap.
+You can observe how it is established by reading code marked with arrows and labeled
+Line 1, Line 2, and Line 3. The <tt>struct proc *p</tt> points the the process that was
+interrupted. When this happens, the register <tt>sepc</tt> receives the address of the 
+instruction when the interrupt occurred. In the normal scenario, you return to this address
+when finished processing the interrupt. However, in this case, we change the return value to be 
+the address of the handler function established by calling <tt>sigalarm()</tt> function.
+Thus, when we return from this timer interrupt, we will return to the handler. The handler will call
+<tt>sigreturn()</tt> when done, which will return to the original function interrupted by the timer interrupt. It accomplishes this because the registers at the time of the interrupt were saved 
+and then restored by <tt>sigreturn()</tt>.
 
   <div class="question">
     <b>15.</b> Describe the three members added to the <tt>struct proc</tt> that are used by
     this implementation of the <tt>sigalarm</tt> and <tt>sigreturn</tt> system calls.
   </div>
   
+<h3><tt>alarmtest.c</tt></h3>
 <p>
 You'll find a file <tt>user/alarmtest.c</tt> in your xv6
 repository. Add it to the Makefile. It won't compile correctly
@@ -550,10 +598,41 @@ system calls (see below).
 <tt>alarmtest</tt> calls <tt>sigalarm(2, periodic)</tt>
 in <tt>test0</tt> to ask the kernel to force a call
 to <tt>periodic()</tt> every 2 ticks, and then spins for a while.  You
-can see the assembly code for alarmtest in user/alarmtest.asm, which
-may be handy for debugging.  Your solution is correct when
-<tt>alarmtest</tt> produces output like this and usertests -q also runs
-correctly:
+can see the assembly code for alarmtest in <tt>user/alarmtest.asm</tt>, which
+may be handy for debugging.  
+<pre>
+void
+periodic()
+{
+  count = count + 1;
+  printf("alarm!\n");
+  sigreturn();
+}
+void
+test0()
+{
+  int i;
+  printf("test0 start\n");
+  count = 0;
+  sigalarm(2, periodic);
+  for(i = 0; i &lt; 1000*500000; i++){
+    if((i % 1000000) == 0)
+      write(2, ".", 1);
+    if(count > 0)
+      break;
+  }
+  sigalarm(0, 0);
+  if(count > 0){
+    printf("test0 passed\n");
+  } else {
+    printf("\ntest0 failed: the kernel never called the alarm handler\n");
+  }
+}
+
+</pre>
+
+<p>Your solution is correct when
+<tt>alarmtest</tt> produces output like this.
 
 <pre>
 $ <kbd>alarmtest</kbd>
@@ -577,9 +656,6 @@ test2 start
 test2 passed
 test3 start
 test3 passed
-$ <kbd>usertest -q</kbd>
-...
-ALL TESTS PASSED
 $
 </pre>
 
