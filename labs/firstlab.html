@@ -656,12 +656,12 @@ A dequeue operation on this queue removes Process A, which is the process with p
 <li><b>Commands in <tt>main.c</tt></b> -
 The file <tt>main.c</tt> provides several commands. The commands fork fork and kill are representative of their Linux counterparts. You will learn how to use the Linux fork and kill functions. You should study the input test cases and the main.c algorithms to see how the commands are processed. The following are brief descriptions of sample commands.
 <ul>
-<li><tt>fork Gusty 5 kernel_process</tt> - This command creates a new process named Gusty. Gusty has priority 5. Gusty’s parent process is the kernel_process.
+<li><tt>fork Gusty 5 init_process</tt> - This command creates a new process named Gusty. Gusty has priority 5. Gusty’s parent process is the init_process.
 <li><tt>fork Emily 3 Gusty</tt> - This command creates a new process named Emily. Emily has priority 3. Emily’s parent process is Gusty.
 <li><tt>printprocs</tt> - This command prints all procs in the list. Sample output is.
 procs in queue:
 <pre>
-pname: kernel_process, pid: 1024, ppid: 1024, priority: 0, state: RUNNABLE
+pname: init_process, pid: 1024, ppid: 1024, priority: 0, state: RUNNABLE
 pname: Emily, pid: 1026, ppid: 1025, priority: 3, state: EMBRYO
 pname: Gusty, pid: 1025, ppid: 1024, priority: 5, state: EMBRYO
 </pre>
