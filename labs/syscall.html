@@ -1056,10 +1056,21 @@ $
 <tt>
 <kbd> entry("sysinfo"); </kbd> &larr; ADDED TO user/usys.pl<br>
 <kbd> #define SYS_sysinfo 23 </kbd> &larr; ADDED TO kernel/syscall.h
+NOTE: The number 23 will depend on what order you have created your system calls.
 </tt>
 
+<li>The definition of <tt>struct sysinfo</tt> is in the file <tt>kernel/sysinfo.h</tt>. When you add the funtion, <tt>sys_sysinfo()</tt> to the file <tt>kernel/sysproc.c</tt>, you must include <tt>sysinfor.h</tt>. The contents of <tt>struct sysinfo</tt> is the fiollowing.
+<pre>
+<kbd>
+struct sysinfo {
+  uint64 freemem;   // amount of free memory (bytes)
+  uint64 nproc;     // number of process
+};
+</kbd>
+</pre>
+
     <li><p>Once you fix the compilation issues, you could 
-	run <kbd>trace 32 grep hello README</kbd>; but it will fail
+	run <kbd>sysinfotest</kbd>; but it will fail
 	because you haven't implemented the system call in the kernel
 	yet.
 
@@ -1069,7 +1080,7 @@ $
 
 <li><p>Your <tt>sysinfo</tt> will need some helper functions in the kernel.
 These functions are not system calls because only the kernel (namely <tt>sysinfo</tt>) calls them; however,
-you must put their function prototypes in <tt>defs.h</tt>.
+you must put their function prototypes in <tt>defs.h</tt>. Functions within the kernel include <tt>defs.h</tt> to get the various kernel function prototypes needed to compile.
 <ul>
 <li><tt>kernel/defs.h</tt> - place this function prototypes for <tt>get_freemen()</tt> and <tt>get_nproc()</tt> in <tt>kernel/defs.h</tt>.
 You will notice <tt>kernel/defs.h</tt> is organized by the <tt>.c</tt> files in the kernel. 
@@ -1191,7 +1202,7 @@ sys_sysinfo(void)
 and it is an execellent example of how to test. 
 The code in <tt>user/sysinfotest.c</tt> requires some thought to understand.
 <ul>
-<li>The function <tt>testcall()</tt> makes sure that <tt>sysinfo()</tt> succeeds with a valid address and fails with a bad addres..
+<li>The function <tt>testcall()</tt> makes sure that <tt>sysinfo()</tt> succeeds with a valid address and fails with a bad address.
 <li>The function <tt>testmem()</tt> first counts all of the free pages of memory. It does this by calling <tt>countfree()</tt>, which repeatedly consumes all of the free pages by calling the <tt>sbrk()</tt> function, counting the pages as they are aquired. After <tt>countfree()</tt> has consumed all of the free memory, it calls <tt>sysinfo()</tt>, which should return 0 bytes of free memory. Then <tt>countfree()</tt> returns all of the pages it has acquired and calls <tt>sysinfo()</tt> again. This time <tt>sysinfo()</tt> should return the number of pages counted.
 <li>The function <tt>testproc()</tt> calls <tt>sysinfo()</tt> to determine how many process are not <tt>UNUSED</tt>. Then <tt>testproc()</tt> calls <tt>fork()</tt> to create a child process. Then <tt>testproc()</tt> calls <tt>sysinfo()</tt> again, which should return one more process than before. After the child process finishes, <tt>testproc()</tt> calls <tt>sysinfo()</tt> again, which should return the original number of processes.
 </ul>
