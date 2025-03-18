@@ -839,12 +839,21 @@ $ sudo renice -n -1 -p 2021
 <p><a name="submit"></>
 -->
 
-<h2>Submit the lab</h2>
+<h2>Submit the lab - Different than past lab submissions</h2>
 
 <p><b>This completes the lab.</b> 
-Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on how
+<p>Please pay attention to this section as you must perform some slightly different steps.
+<ol>
+<li>
+Read <a href="../labsubmissions.html" >Lab Submissions</a> for general instructions on how
 to submit your lab.
-
-
+<li>Submit <tt>lab-<b>scheduling</b>-handin.txt</tt> as the first file in the <b>Scheduling Text</b> Canvas assignment as described in <a href="../labsubmissions.html" >Lab Submissions</a>. This is like a normal submission.
+<li>Submit your <tt>proc.c</tt> as the second file in the <b>Scheduling Text</b> Canvas assignment. This is an additional submission requirement.
+<li>To create the Zip file that you submit in the <b>Scheduling Zip</b> Canvas assignment, enter the following command in your <tt>xv6-labs</tt> directory.
+<pre>
+$ git archive --format=tar HEAD | gzip > lab-<b>scheduling</b>-handin.tar.gz
+</pre>
+In a normal submission, you would enter <tt>$ make tarball</tt>; however, the <tt>Makefile</tt> for this lab does not have that target. You must create the zip file yourself.
+</ol>
 </body>
 </html>
