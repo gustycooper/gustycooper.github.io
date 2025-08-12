@@ -107,7 +107,9 @@ function unfoldinstrux(unfold) {
 CPSC 405 Lab Submissions
 </H1>
 <p>
-<b><a href="#submittinglabs">Submitting Labs</a></b> 
+<b><a href="#submittinglabs">Submitting Labs</a></b>, 
+<b><a href="#textfile">Text File Submission</a></b>,
+<b><a href="#zipfile">Zip File Submission</a></b>
 
 <p>Labs are designed to improve your computer science skills and knowledge. The labs are a learn by doing component of our course and involve significant programming.
 
@@ -118,15 +120,41 @@ We have a few Linux-based Labs. These labs are completed by creating standalone
 C programs that run on Linux.
 
 <div class="question">
-<p><b>Lab Questions</b>
-<p>Most of our labs have questions that you must answer. Questions are in boxes (like this) with a light orange background. 
+<p><b>Lab Questions - 25 points</b>
+<p>Our labs have questions that you must answer. Questions are in boxes (like this) with a light orange background. 
 <ul>
-<li>Questions are worth 25 points on the lab. Solving the programming problems is with 75 points.
-<li>If you handwrite the answers to questions in a notebook or tablet, you can earn the full 25 points.
-<li>If you type the answers to questions is a file, you can earn 15 points.
-<li>Your answers must include both the question and your answer. You can abbreviate some of the question, but you must write enough so that the question is understandable.
-<li>I will not read and correct your answers to questions. If you cannot find the answer, you must ask me or another student.
-<li>Additionally, in the directory of your xv6-labs, create two files: <b>answers-LAB.txt</b> and <b>time.txt</b>. For the <b>answers-LAB.txt</b> file, the string <b>LAB</b> 
+<li>Questions are worth 25 points on the lab. 
+<li>You must handwrite the answers to questions in a notebook or tablet.
+<li>Your notebook must include both the questions and your answers to get full credit. You can abbreviate some of the question, but you must write enough so that the question is understandable.
+<li>If you choose to just write the answers without the questions, you can earn up to 15 points.
+<li>I will not read and correct your answers to the questions. The answers are in our class material. You can consult with anyone and AI when answering questions. If you cannot find the answer, you must ask me or another student.
+<li>As described in <b><a href="#textfile">Text File Submission</a></b>, you will state the percentage of lab questions completed. For the most part, whatever you state is the grade you will receive. For example, if on your submission you state, 
+<i>"I have handwritten 85% of the questions and answers in my notebook."</i>; you will earn 21.25 points.
+</ul>
+</div>
+
+<div class="required">
+<p><b>Lab Programming Problems - 75 points</b>
+<p>Our labs have programming problems that you must create design, implement code, create test cases, and test you implementation to demonstrate it works.
+<ul>
+<li>Programming problems are worth 75 points.
+<li>The 75 points for programming problems are for design, implementation, test case creation, and testing.
+<li>I provide many test cases that you use. For my provided test cases, you use them and I will see you execute them in your .txt file lab submission on Canvas.
+<li>For some problems, I ask you to design, create, and execute test cases. For test cases that you must create, I will see you execute them in your .txt file lab submssion on Canvas, but you must also describe them in your .txt file.
+<li>As described in <b><a href="#textfile">Text File Submission</a></b>, you will state the percentage of programming problems completed. For the most part, whatever you state is the grade you will receive. For example, if on your submission you state,
+<i>"I have successfully designed, implemented, and tested 100% of the problems."</i>; you will earn 75 points. The following are examples of submissions that do not earn the amount of points claimed.
+<ul>
+<li>Failure to include at least five things you learned on the lab.
+<li>Failure to include a copy/paste of you running the programs and test cases.
+<li>Failure to describe the test cases that you must complete.
+</ul>
+
+</ul>
+</div>
+
+<div class="warning">
+<p><b>Lab Nuances</b>
+<p>Additionally, in the directory of your xv6-labs, create two files: <b>answers-LAB.txt</b> and <b>time.txt</b>. For the <b>answers-LAB.txt</b> file, the string <b>LAB</b> 
 corresponds to the lab you are submitting, and  For example, <b>answer-util.txt</b> is the file for the util lab. I may use these files 
 if I run your code using your zip file submission. The answers-firstlab.txt is a blank file. The time.txt file contains
 the number of hours you spent on the lab. Create the files by the following.
@@ -142,11 +170,12 @@ $ echo 8 > time.txt
 <h3><b>Each student must submit their lab material on Canvas.</b></h3>
 <p>Each lab has two Canvas assignments in which you submit your lab material. 
 <ul>
-<li>Text File Assignment - you submit your (for example) <tt>lab-util-handin.txt</tt> file, which is described below.
+<li><b>Text File Assignment</b> - you submit your (for example) <tt>lab-util-handin.txt</tt> file, which is described below.
 The Text File submission must show that the code is run on each individual's computer system.
-<li>Zip File Assignment - you submit your (for example) <tt>lab-util-handin.tar.gz</tt> file, which is described below.
+<li><b>Zip File Assignment</b> - you submit your (for example) <tt>lab-util-handin.tar.gz</tt> file, which is described below.
 </ul>
 I will primarily use the Text File submission to grade your lab. If necessary, I will run your code using the Zip File submission.
+<p><a name="zipfile"></a>
 <h3><b>Zip File</b></h3>
 <p>The Zip file contains the source code, Makefile, etc., of your lab. The Zip file is submitted in the lab's Zip File Assignment on Canvas.
 <ul>
@@ -168,6 +197,7 @@ They began Unix development on a PDP-7, which had 8K, 18-bit words of memory. Af
 The orange lines encircle tapes that would have been used to backup code in an archive.
 <p>
 <img src="labs/thompsonandritchie.png" alt="Magnetic Tapes" width="200" height="300" >
+<p><a name="textfile"></a>
 <h3><b>Text File</b></h3>
 <p>The text file contains your reflections and a copy/paste of you building, running, and testing the programming problems associated with the lab. The text file name shall be for example, <tt>lab-<b>util</b>-handin.txt</tt>,
 where <b>util</b> is the name of the lab. The text file is the same for both Xv6 and Linux labs. The text file is submitted in the lab's Text File Assignment on Canvas.
@@ -176,22 +206,38 @@ The text file shall be neatly organized items in the following order.
 <li><i>Name</i>: Your name.
 <li><i>Hours Spent</i>: The number of hours you spent on the lab.
 <li><i>Questions</i>: An honor declaration that you have completed the questions in either a handwritten notebook or typewritten file.
-Here are several sample honor declarations.
+Here are a couple of sample honor declarations.
 <ul>
 <li><i>I have handwritten 100% of the questions and answers in my notebook.</i> - this earns 25 points.
-<li><i>I have typewritten 100% of the questions and answers in a file.</i> - this earns 15 points.
-<li><i>I have handwritten 85% of the questions and answers in my notebook.</i>
+<li><i>I have handwritten 85% of the questions and answers in my notebook.</i> - this earns 21.25 points.
 </ul>
-<li><i>Learning</i>: An honor declaration of the percent of problems solved, followed by a list of at least five things you learned on this lab and the lecture material related to this lab The following shows a sample.
-<p><p><i>I have completed 100% of the problems.</i>
+<li><i>Overall Assessment</i>: A high-level descriptive honor declaration of how much of the programming problemns you have successfully completed.
+<br>NOTE: This does not have to be the UMW honor pledge, but it is equivalent to a UMW honor pledge.
+<p><p><i>I have successfully designed, implemented, and tested 100% of the problems.</i>
+<li><i>Learning</i>: A list of at least five things you learned on this lab and the lecture material related to this lab The following shows a sample.
+<p><p><i>I have learned the following.</i>
 <ol>
-<li><i>I learned ...</i>.
-<li><i>I learned ...</i>.
-<li><i>I learned ...</i>.
-<li><i>I learned ...</i>.
-<li><i>I learned ...</i>.
+<li><i>I learned ... state something you have learned</i>.
+<li><i>I learned ... state something you have learned</i>.
+<li><i>I learned ... state something you have learned</i>.
+<li><i>I learned ... state something you have learned</i>.
+<li><i>I learned ... state something you have learned</i>.
 </ol>
-<li><i>Collaboration</i>: If you helped someone or someone helped you, you can describe the help here. Collaboration is optional.
+<li><i>Collaboration - Including the use of AI</i>: If you helped someone or someone helped you or your used AI on the lab, you describe the help here. Collaboration and AI can be used freely on the questions. For programming problems, you must first attempt to solve the problem using your brain. Collaboration and AI are to be used only when you get stuck on solving a problem.
+<li><i>Test Cases</i>: A descriptive list of the test cases you created for specific problem solutions. I provide many test cases. You do not have to describe the test cases that I provide. On some programming problems, I ask you to create some test cases. You must describe your test cases here.
+<p><p><i>I have successfully created 100% of the required test cases.</i>
+<ol>
+<li><i>Programming Problem XXX</i>
+<ul>
+<li><i>Test Case 1</i> - describe the test case.
+<li><i>... other test cases as needed</i>
+</ul>
+<li><i>Programming Problem XXX</i>
+<ul>
+<li><i>Test Case 2</i> - describe the test case.
+<li><i>... other test cases as needed</i>
+</ul>
+</ol>
 <li><i>Build, Run, and Test</i>: A copy/paste of you building, running, and testing your lab problem program solutions. This should show that you are using your account. It should show you running and testing all of the lab problems - even those problems where I have provided the solution code.
 </ul>
 
@@ -203,7 +249,9 @@ Hours Spent: 7
 
 Questions: I have handwritten 100% of the questions and answers in my notebook.
 
-Assessment: I have completed 100% of the problems. 
+Overall Assessment: I have successfully designed, implemented, and tested 100% of the problems.
+
+Learning:
 1. I understand the Xv6 API.
 2. I learned that fork() creates child process that is an identical copy of the parent.
 3. I learned that exec() runs a program located on the disk.
@@ -212,12 +260,19 @@ Assessment: I have completed 100% of the problems.
 6. I learned that a file descriptor is a small integer that can be used with read() and write().
 7. ... more if you learned more ...
 
-
 Collaboration:
 I worked with Susan and Bobby to answer the questions. Susan was especially helpful.
-I help Matilda with her programming problems. I easily completed mine and Matilda needed some help.
+I got stuck on programming problem number 4 - forkexec. I consulted with Gusty, who explained the concepts and I now understand it.
+I helped Matilda with her programming problems.
 
-ecooper@cpsc:~/xv6-labs$ make clean
+Test Cases: I have successfully created 100% of the required test cases.
+1. Programming Problem 1:
+   - Test Case 1 - describe it
+   ... more if needed ...
+2. Programming Problem 2:
+   ... more if needed ...
+
+<b>ecooper@cpsc:~/xv6-labs$</b> make clean
 rm -f *.tex *.dvi *.idx *.aux *.log *.ind *.ilg xv6.out* \
 */*.o */*.d */*.asm */*.sym \
 user/initcode user/initcode.out kernel/kernel fs.img \
@@ -226,7 +281,7 @@ mkfs/mkfs .gdbinit \
 user/_cat user/_echo user/_forktest user/_grep user/_init user/_kill user/_ln user/_ls user/_mkdir user/_rm user/_sh user/_stressfs user/_usertests user/_grind user/_wc user/_zombie user/_hashprog  \
 ph barrier
 
-ecooper@cpsc:~/xv6-labs$ make qemu
+<b>ecooper@cpsc:~/xv6-labs$</b> make qemu
 riscv64-linux-gnu-gcc    -c -o kernel/entry.o kernel/entry.S
 riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_RISCV -DLAB_RISCV -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/kalloc.o kernel/kalloc.c
 riscv64-linux-gnu-gcc -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -DSOL_RISCV -DLAB_RISCV -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -mno-relax -I. -fno-stack-protector -fno-pie -no-pie  -c -o kernel/string.o kernel/string.c
