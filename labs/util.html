@@ -29,7 +29,7 @@ For example, the Xv6 API has a single <code>exec</code> function call to execute
 
 <div class="question">
 <p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
-Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+Write each question and its answer in your notebook. You will state the percentage of questions answered on your lab submission.
 <p>The Linux <tt>grep</tt> command can be helpful on C programming using Linux with a terminal and on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
 <pre>
 $ <kbd>grep "struct proc" *.h</kbd>
@@ -82,66 +82,19 @@ If you use your own computer, have a look at the
     <p><b>1.</b> What does it mean to boot (which is short for bootstrap) a computer?
   </div>
 
-<p>Fetch the git repository for the xv6 source for the lab:
+<h3>Xv6 GitHub Repo</h3>
+<p>You should re-read <a href="firstlab.html#githubrepo">Xv6 GitHub Repo</a> from our Firstlab before you continue. Make sure your current working directory is <tt>xv6-labs</tt>. The following shows my <tt>xv6-labs</tt> as the current working directory.
 <pre>
-$ <kbd>git clone https://github.com/gustycooper/xv6-labs.git</kbd>
-Cloning into 'xv6-labs'...
-...
-$ <kbd>cd xv6-labs</kbd>
+$ <kbd>pwd</kbd>
+/Users/gusty/git/xv6-labs
 </pre>
 
-<p>The repo is setup so that git checkouts the <tt>riscv</tt> branch when
-  cloning the repo. You must switch to the <tt>util</tt> branch to conduct this lab.
+<p>You must use the <kbd>git checkout</kbd> command to switch to the <tt>util</tt> branch to conduct this lab.
 <pre>
-$ <kbd>git status</kbd>
-On branch riscv
-Your branch is up to date with 'origin/riscv'.
-
-nothing to commit, working tree clean
 $ <kbd>git checkout util</kbd>
 </pre>
 
-
-<p>The xv6-labs repository differs slightly from the book's
-  xv6-riscv; it mostly adds some files. If you are curious look
-  at the git log:
-<pre>
-$ <kbd>git log</kbd>
-</pre>
-
-<p>The files you will need for this and subsequent lab assignments
-are distributed using
-the <a href="http://www.git-scm.com/">Git</a> version control system.
-For each of the labs you will checkout (<kbd>git checkout util</kbd>)
-a version of xv6 tailored for that lab.
-To learn more about Git, take a look at the
-<a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git
-user's manual</a>, or, you may find this
-<a href="http://eagain.net/articles/git-for-computer-scientists/">CS-oriented
-overview of Git</a> useful.
-Git allows you to keep track of the changes you make to the code.
-For example, if you are finished with one of the exercises, and want
-to checkpoint your progress, you can <i>commit</i> your changes
-by running:
-</p>
-<pre>
-$ <kbd>git commit -am 'my solution for util lab exercise 1'</kbd>
-Created commit 60d2135: my solution for util lab exercise 1
- 1 files changed, 1 insertions(+), 0 deletions(-)
-$
-</pre>
-
-<p>
-You can keep track of your changes by using the <kbd>git diff</kbd>
-command.  Running <kbd>git diff</kbd> will display the changes to your
-code since your last commit, and <kbd>git diff
-origin/util</kbd> will display the changes relative to the
-initial <tt>util</tt> code.  Here, <tt>origin/util</tt> is the
-name of the git branch with the initial code you downloaded for the
-class.
-</p>
-
-<p>Build and run xv6:
+<h3>Build and Run Xv6</h3>
 
   <div class="question">
     <p><b>2.</b> The <tt>Makefile</tt> has many targets. Locate the target <tt>qemu</tt> for the command <tt>make qemu</tt> and explain what it does.
@@ -531,7 +484,14 @@ The first three bytes of the file are ASCII 1, ASCII 0, and ASCII CR, which is <
 <li>The 3 bytes are read into the character buffer <tt>buf</tt>.
 <li>Once in <tt>buf</tt>, the data is printed in various ways.
 <ul>
-<li><tt>write(1, buf, n);</tt> - this writes 3 bytes to standard out, which is file descriptor 1.
+<li><tt>write(1, buf, n);</tt> - There are several interesting items about this function call.
+<ul>
+<li>This writes 3 bytes to standard out, which is file descriptor 1. File descriptor 0 is standard in and file descriptor 2 is standard error.
+<li>The first parameter to <tt>write</tt> is a file descriptor. It can be a file that is opened by calling <tt>open</tt>, which returns a file descriptor, or it can be standard out, as it is in this case.
+<li>The variable <tt>buf</tt> is defined as <tt>char buf[3]</tt>. When you use the name <tt>buf</tt> by itself, it is equivalent to a <tt>char *</tt>.
+<li>The second parameter to <tt>write</tt> is a pointer to the buffer that is written to the file descriptor. Since the name <tt>buf</tt> is a pointer, this is the address of the data that is written to the file descriptor.
+<li>The third parameter is the number of bytes that are written to the file descriptor.
+</ul>
 <li>The elements of <tt>buf</tt> are printed as hex values using <tt>%x</tt>.
 <li>The elemenst of <tt>buf</tt> are printed as <tt>char</tt> values using <tt>%c</tt>.
 <li>The ASCII in <tt>buf</tt> is converted to an integer using the <tt>atoi</tt> function.
@@ -579,6 +539,12 @@ num: 0
 ----------
 sum: 6
 </pre>
+  <div class="question">
+    <p><b>6.</b> When printing the number as three hex digits, the third digit is the hex value <tt>0xA</tt>. What is this?
+  </div>
+  <div class="question">
+    <p><b>7.</b> When entering two letters, <tt>ah</tt> as input instead of numbers, the program displays the number value as <tt>num: 0</tt>. Why does the program convert letters to the number 0?
+  </div>
 <h2>Problem 6: pingpong <script>g("easy - starting code provided")</script></h2>
 <div class="required">
 <p> Write a program, <tt>pingpoing</tt> that uses UNIX system calls to ''ping-pong'' the arguments passed to <tt>main()</tt>
@@ -680,11 +646,11 @@ int main(int argc, char *argv[]) {
   </pre>
 
   <div class="question">
-    <p><b>6.</b> Explain in your own words what a Xv6/Linux pipe is - not a pipe used for smoking.
+    <p><b>8.</b> Explain in your own words what a Xv6/Linux pipe is - not a pipe used for smoking.
   </div>
 
   <div class="question">
-    <p><b>7.</b> Notice how the I/O functions <tt>read()</tt> and <tt>write()</tt> are used for reading/writing both files
+    <p><b>9.</b> Notice how the I/O functions <tt>read()</tt> and <tt>write()</tt> are used for reading/writing both files
 and pipes. The <tt>open()</tt> function and the <tt>pipe()</tt> function both return a file descriptor.
 Explain in your own words what is the differenct between reading/writing pipes and files.
   </div>
@@ -783,7 +749,7 @@ main(int argc, char *argv[])
     done that, <tt>make qemu</tt> will compile your program and you'll
 
   <div class="question">
-    <p><b>8.</b> There is a lot going on in this solution code. One way to better understand it is to
+    <p><b>10.</b> There is a lot going on in this solution code. One way to better understand it is to
 compare the picture halfway down <a href="http://swtch.com/~rsc/thread/">this page</a>
 to the solution code. Each box in the picture corresponds to process (created with <tt>fork()</tt>)
 in the solution code. The process is reading numbers from the left <tt>pipe</tt> and writing numbers
@@ -817,7 +783,7 @@ sieve and produces the following output:
   </pre>
 
   <div class="question">
-    <p><b>9.</b> Do you think there is a largest prime number such that it is the last prime number? What are the number of digits in the largest prime number discovers so far? When was it discovered?
+    <p><b>11.</b> Do you think there is a largest prime number such that it is the last prime number? What are the number of digits in the largest prime number discovers so far? When was it discovered?
   </div>
 
 <h2>Problem 8: find <script>g("moderate - solution code provided")</script></h2>
@@ -902,7 +868,7 @@ main(int argc, char *argv[])
     <li>Notice how the function <tt>find()</tt> calls itself.
 
   <div class="question">
-    <p><b>10.</b> What is the condition that causes <tt>find()</tt> to make its recursive call?
+    <p><b>12.</b> What is the condition that causes <tt>find()</tt> to make its recursive call?
   </div>
     <li>In a Linux terminal enter the following commands.
 <pre>
@@ -912,7 +878,7 @@ $ <kbd>ls ..</kbd>  # list the files in the parent directory
 Notice how <tt>.</tt> and <tt>..</tt> are files in the current working directory that have type <tt>T_DIR</tt> (type directory).
 Notice how the algorithm does not recurse into the <tt>.</tt> and <tt>..</tt> files.
   <div class="question">
-    <p><b>11.</b> What would happen if the algorithm recursed into the <tt>.</tt> file?
+    <p><b>13.</b> What would happen if the algorithm recursed into the <tt>.</tt> file?
   </div>
 
     <li>Changes to the file system persist across runs of qemu; to get
@@ -944,7 +910,7 @@ Notice how the algorithm does not recurse into the <tt>.</tt> and <tt>..</tt> fi
   </pre>
 
   <div class="question">
-    <p><b>12.</b> What does the Linux command <tt>$ </tt><kbd> echo > b</kbd> do?
+    <p><b>14.</b> What does the Linux command <tt>$ </tt><kbd> echo > b</kbd> do?
   </div>
 
 <h2>Problem 9: xargs <script>g("moderate - solution code provided")</script></h2>
@@ -1220,11 +1186,11 @@ it is processing commands from a file instead of from the console, and
 prints a <tt>$</tt> for each command in the file.
 
   <div class="question">
-    <p><b>13.</b> The testing has a command <tt>$ <kbd>sh < xargstest.sh</kbd></tt>. What does this command do? What is the <tt>sh</tt> program?
+    <p><b>15.</b> The testing has a command <tt>$ <kbd>sh < xargstest.sh</kbd></tt>. What does this command do? What is the <tt>sh</tt> program?
   </div>
 
   <div class="question">
-    <p><b>14.</b> Perform the following.
+    <p><b>16.</b> Perform the following.
 <ul>
 <li>In a Linux shell enter the command <tt>$ <kbd>echo $SHELL</kbd></tt>. This displays the program that is your currently running shell. On my Mac, it displays <tt>/bin/zsh</tt>, which is the Z shell. On the CPSC server, it displays <tt>/bin/bash</tt>, whish is the Bash (or Bourne Again) shell. 
 <li>Enter the command <tt>$ <kbd>ls /bin</kbd></tt> to see all of the Linux commands in the <tt>/bin</tt> directroy. These commands are simply C programs that have been compiled and placed in the <tt>/bin</tt> directory.
@@ -1234,12 +1200,12 @@ prints a <tt>$</tt> for each command in the file.
   </div>
 
   <div class="question">
-    <p><b>15.</b> What I find amazing is that the basic Unix/Linux API has not changed in 60 years.
+    <p><b>17.</b> What I find amazing is that the basic Unix/Linux API has not changed in 60 years.
     Now that you have written programs with pipes, forks, execs, and I/O redirection, what do you think about the Linux API.
   </div>
 
   <div class="question">
-    <p><b>16.</b> Without looking up functions, list as many Linux API functions that you can think of.
+    <p><b>18.</b> Without looking up functions, list as many Linux API functions that you can think of.
   </div>
 
 

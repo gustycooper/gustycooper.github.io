@@ -18,7 +18,7 @@ by Brian W. Kernighan and Dennis M. Ritchie or whatever C book you have used in 
 
 <div class="question">
 <p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
-Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+Write each question and its answer in your notebook. You will state the percentage of questions answered on your lab submission.
 <p>The Linux <tt>grep</tt> command can be helpful on C programming using Linux with a terminal and on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
 <pre>
 $ <kbd>grep "struct proc" *.h</kbd>
@@ -43,39 +43,113 @@ $ echo 8 > time.txt
 </pre>
 </div>
 
-<h2>Fetch Xv6 Repo</h2>
+<p><a name="githubrepo"></a>
+<h2>Xv6 GitHub Repo</h2>
+<h3>Xv6 Repo Introduction</h3>
+<p>The files you will need for this and subsequent lab assignments
+are distributed using
+the <a href="http://www.git-scm.com/">Git</a> version control system.
+For each of the labs you will checkout (<kbd>git checkout util</kbd>)
+a version of xv6 tailored for that lab.
+To learn more about Git, take a look at the
+<a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git
+user's manual</a>, or, you may find this
+<a href="http://eagain.net/articles/git-for-computer-scientists/">CS-oriented
+overview of Git</a> useful.
+<p>The starting code for all of the labs is in the GitHub repo <kbd>https://github.com/gustycooper/xv6-labs.git</kbd>. The repo is created with a branch for each lab. The following command shows all of the branches in the repo.
+<pre>
+$ <kbd>git branch -r</kbd>
+  origin/HEAD -> origin/riscv
+  origin/firstlab
+  origin/fs
+  origin/pgtbl
+  origin/riscv
+  origin/scheduling
+  origin/syscall
+  origin/thread
+  origin/traps
+  origin/util
+</pre>
+<p>Git allows you to keep track of the changes you make to the code.
+For example, if you are finished with one of the exercises, and want
+to checkpoint your progress, you can <i>commit</i> your changes
+by running:
+</p>
+<pre>
+$ <kbd>git commit -am 'my solution for util lab exercise 1'</kbd>
+Created commit 60d2135: my solution for util lab exercise 1
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+$
+</pre>
 
-<p>Fetch the xv6 source for the lab and check out the <tt>firstlab</tt> branch.
-The <tt>git clone</tt> will create the repo locally in the direcory <tt>xv6-labs</tt>, which will be a subdirectory of the current working directory in which you entered <tt>git clone</tt>
-
+<p>
+You can keep track of your changes by using the <kbd>git diff</kbd>
+command.  Running <kbd>git diff</kbd> will display the changes to your
+code since your last commit, and <kbd>git diff
+origin/firstlab</kbd> will display the changes relative to the
+initial <tt>firstlab</tt> code.  Here, <tt>origin/firstlab</tt> is the
+name of the git branch with the initial code you cloned for the
+class.
+</p>
+<h3>Clone Xv6 Repo</h3>
+<p>You must first clone the Xv6 repo. Use the Linux <kbd>cd</kbd> command to establish the current working directory to be the parent of our <tt>xv6-labs</tt> directory that is created by the <kbd>git clone</kbd> command. For example, my parent directory is <tt>/Users/gusty/git</tt>, which has the repo directory <tt>xv6-labs</tt>.
+<pre>
+$ <kbd>pwd</kbd>
+/Users/gusty/git
+$ <kbd>ls</kbd>
+xv6-labs
+</pre>
+<p>Now use the <kbd>git clone</kbd> command, which creates the <tt>xv6-labs</tt> directory, which contains the repo.
 <pre>
 $ <kbd>git clone https://github.com/gustycooper/xv6-labs.git</kbd>
 Cloning into 'xv6-labs'...
 ...
+</pre>
+<p>After cloning the repo, you can <kbd>cd</kbd> into the <tt>xv6-labs</tt> directory.
+<pre>
 $ <kbd>cd xv6-labs</kbd>
 </pre>
 
-<p>The repo is setup so that git checkouts the <tt>riscv</tt> branch when
-  cloning the repo. You must switch to the <tt>util</tt> branch to conduct this lab.
+<h3>Checkout firstlab Branch</h3>
+<p>When you first clone the repo, the default branch is <tt>riscv</tt>. You will not use the <tt>riscv</tt> branch for any of the labs. 
 <pre>
 $ <kbd>git status</kbd>
 On branch riscv
 Your branch is up to date with 'origin/riscv'.
 
 nothing to commit, working tree clean
-$ <kbd>git checkout firstlab</kbd>
 </pre>
-
-<h2>Introduction</h2>
+<p>You must select a lab branch with the <kbd>git checkout</kbd> command. For example, the following selects the <tt>firstlab</tt> branch, which is used for the firstlab lab.
+<pre>
+$ <kbd>get checkout firstlab</kbd>
+Switched to branch 'firstlab'
+Your branch is up to date with 'origin/pgtbl'.
+</pre>
+<p>The <kbd>git branch</kbd> command shows all of the branches selected (via <kbd>git checkout</kbd>) so far and marks the active branch with an asterisk. When you enter the <kbd>git branch</kbd> command you will not see all of the branches displayed below because you have not selected them all. I have selected all branches prior to entering the command.
+<pre>
+$ <kbd>git branch</kbd>
+* <kbd>firstlab</kbd>
+  fs
+  pgtbl
+  riscv
+  scheduling
+  syscall
+  thread
+  traps
+  util
+</pre>
+<p>You are now ready to work on <tt>firstlab</tt>.
+<h2>Introduction - Hash Table Problem</h2>
 <p>Xv6 is a relatively small system. It has a little over 6,000 lines of C code - approximately 5K lines of .c files and 1K lines of .h files. Even though 6,000 lines of C code is small in the big scheme of software, it is probably large considering your experience of software development. We tend to teach point-specific algorithms like how to write a recursive function, how to find the largest number in an array, how to implement a linked-list. Most likely your largest program/system was in CPSC 240. All imperative programs are collections of data structures and algorithms. When you have a large system that is many lines of code, you need a way to organize the data structures and algorithms into a collection of files that makes sense and allows you to visualize the organization so that you can easily edit the pieces to add new capabilities and fix bugs. This compartmentalization allows you to think about the program in chunks.
 <p>The CPSC 240 project in my class was about 1,300 lines of Java code. Java is an object-oriented language. In Java (and other OO languages), you organize large programs by creating classes, where the code for each class is placed in <tt>.java</tt> files. Classes implement abstract data types that have private and public data and methods (or functions). Sometimes you create a base class and extend it. For example, in my CPSC 240 class we created a bicycle database program that had an inventory of bicycle parts. There was a basic <tt>Part</tt> class that was extended to become the <tt>BikePart</tt> class. Other classes included a <tt>BikeDB</tt> class, a <tt>WareHouseFactory</tt> class, a <tt>WareHouseManager</tt> class, a <tt>SalesAssociate</tt> class, and an <tt>OfficeManager</tt> class. Some of these classes used design patterns that were pictorially represented with UML diagrams (perhaps you recall design patterns and UML). All of the various classes are brought together by a <tt>Main.java</tt> class that created the program. Not all classes are used to create objects. For example, the <tt>Main.java</tt> class has static functions that are not members of a class.
 
 <p>C is not an object-oriented language so you cannot create classes, but you can create abstract data types and organize your program as a collectin of files.  I will use the term <i>module</i> to describe C's organizing technique. 
 In C, you package together data structures and algorithms in a <tt>.h</tt> and <tt>.c</tt> files.
 
+<h3>C Pointers</h3>
+<p>In many instances, students struggle with C pointers. C pointers are used extensively in Xv6 so one thing you must do in FirstLab is get a strong grasp of C pointers. The Hash Table problem code is provided and it demonstrates the use of pointers so pay attention and understand them. You must use pointers in Problem 3: Firstlab Programming. If you can get a strong basis in using C pointers in Firstlab, you will be set for the remaining labs. 
 <h3>Hash Table Files</h3>
-<p>The source code files and <tt>Makefile</tt> for the hash table program are in the <tt>xv6-labs/notxv6</tt> directory.
-Be sure you have fetched our Xv6 repo and entered the <tt>$ <kbd>git checkout firstlab</kbd></tt> command before looking for the files.
+<p>The source code files and <tt>Makefile</tt> for the hash table program are in our Xv6 GitHub Repo. Be sure to study <a href="#githubrepo">Xv6 GitHub Repo</a> before continuing, which describes how to clone our Xv6 repo and checkout the branch for a lab (e.g., <tt>$ <kbd>git checkout firstlab</kbd></tt>). The source code files and the <tt>Makefile</tt> are in the <tt>xv6-labs/notxv6</tt> directory. 
 <ul>
 <li><tt>hash.h</tt>
 <li><tt>hash.c</tt>
@@ -145,7 +219,7 @@ statuc struct entry *table[NBUCKET];
 
 <img src="hashtable.png" alt="Firstlab Data Structures" >
 
-<p>If you examine the figure while studying the code for <tt>get_entry()</tt>, the code is easy to understand.
+<p>If you examine the figure while studying the code for <tt>get_entry()</tt>, the code is easy to understand. If you do not understand the code, please ask questions.
 <pre>
 static struct entry *
 get_entry(char *name)
@@ -172,6 +246,10 @@ The following are attributes about the above code.
 
 <div class="question">
 <p><b>4.</b> Explain (in your own words) the difference between a function that is defined with the <tt>static</tt> keyword and one that does not have the <tt>static</tt> keyword.
+</div>
+
+<div class="question">
+<p><b>5.</b> Why is the function <tt>get_entry</tt> <tt>static</tt> and why is the function <tt>get</tt> NOT <tt>static</tt>?
 </div>
 
 <h3>The Function  <tt>hash()</tt> in <tt>hash.c</tt></h3>
@@ -214,7 +292,7 @@ static int hash(char *name) {
 </pre>
 
 <div class="question">
-<p><b>5.</b> What is printed by the following code?<br>
+<p><b>6.</b> What is printed by the following code and why is it printed?<br>
 <pre>
 char x = 0x49;
 printf("%c\n", x);
@@ -267,7 +345,7 @@ insert(char *name, int age, struct entry **p, struct entry *n)
 </pre>
 
 <div class="question">
-<p><b>6.</b> Describe a scenario where if <tt>put()</tt> would mess up if it did not make a copy of the string by calling <tt>malloc()</tt> and <tt>strcpy()</tt>.
+<p><b>7.</b> Describe a scenario where if <tt>put()</tt> would mess up if it did not make a copy of the string by calling <tt>malloc()</tt> and <tt>strcpy()</tt>.
 </div>
 
 </pre><h3><tt>#include</tt> Files</h3>
@@ -284,7 +362,7 @@ The include files for <tt>hash.c</tt> are standard input/output, string library,
 </ul>
 
 <div class="question">
-<p><b>7.</b> What is difference between the following two <tt>#include</tt> statements?
+<p><b>8.</b> What is difference between the following two <tt>#include</tt> statements?
 <pre>
 #include &lt;stdlib.h&gt;
 #include "hash.h"
@@ -377,7 +455,7 @@ static int hash(char *name) {
 </pre>
 
 <div class="question">
-<p><b>8.</b> What is the <tt>gcc</tt> command that is executed if I invoke <tt>$ <kbd>make hashprog</kbd></tt>?
+<p><b>9.</b> What is the <tt>gcc</tt> command that is executed if I invoke <tt>$ <kbd>make hashprog</kbd></tt>?
 </div>
 
 <h3><tt>main.c</tt>, arguments (<tt>argc</tt> and <tt>argv</tt>), and <tt>printf()</tt></h3>
@@ -415,7 +493,7 @@ If you use your own computer, have a look at the
 <a href="../tools.html">lab tools page</a> for setup tips.
 
   <div class="question">
-    <p><b>9.</b> What does it mean to boot (which is short for bootstrap) a computer?
+    <p><b>10.</b> What does it mean to boot (which is short for bootstrap) a computer?
   </div>
 
 <p>Fetch the git repository for the xv6 source for the lab:
@@ -480,7 +558,7 @@ class.
 <p>Build and run xv6:
 
   <div class="question">
-    <p><b>10.</b> The Xv6 <tt>Makefile</tt> has many targets. Locate the target <tt>qemu</tt> for the command <tt>make qemu</tt> and explain what it does.
+    <p><b>11.</b> The Xv6 <tt>Makefile</tt> has many targets. Locate the target <tt>qemu</tt> for the command <tt>make qemu</tt> and explain what it does.
   </div>
 
 <pre>
@@ -590,7 +668,7 @@ $ <kbd>hashprog name 222</kbd>
 
 <h2>Problem 3: Firstlab Programming <script>g("easy")</script></h2>
 
-<p>Firstlab is a review and practice of C programming to get you warmed up to perform Xv6 programming. 
+<p>Firstlab is a review and practice of C programming to get you warmed up to perform Xv6 programming.  Firstlab programming is done on a Linux system. It is not Xv6 programming.
 You also get an introduction to <tt>struct proc</tt>, which is the kernel's data structure for manageing processes.
 You have to implement a doubly linked list of process structures (or process control blocks).
 You are provided several files to start your program. 
@@ -618,7 +696,7 @@ The files are located in the <tt>notxv6/firstlab</tt> directory.
 </ul>
 
 <div class="question">
-<p><b>11.</b> Describe the differences between the <tt>Makefile</tt> for the hash program and the <tt>Makefile</tt> for the firstlab probram.
+<p><b>12.</b> Describe the differences between the <tt>Makefile</tt> for the hash program and the <tt>Makefile</tt> for the firstlab probram.
 </div>
 
 <h3>Your job</h3>
@@ -626,8 +704,8 @@ The files are located in the <tt>notxv6/firstlab</tt> directory.
 <p>
 <ul>
 <li>You must complete the <tt>proc.c</tt> file such that the <tt>main.c</tt> file executes correctly. 
-There are several functions in proc.c that you must design and implement. 
-The best place to start is the function fork, which is implemented, but it calls two primary functions that you must design and implement.
+There are several functions in <tt>proc.c</tt> that you must design and implement. 
+The best place to start is the function <tt>fork</tt>, which is implemented, but it calls two primary functions that you must design and implement.
 <ul>
 <li><tt>new_proc</tt> - <tt>malloc</tt>s memory for a <tt>struct proc</tt> and for a <tt>context</tt> (a member of the <tt>struct proc</tt>). After <tt>malloc</tt>ing memory, <tt>new_proc</tt> initializes the <tt>state</tt>, <tt>name</tt>, <tt>priority</tt>, <tt>pid</tt>, and the parent members. <tt>new_proc</tt> uses the static variable <tt>pid</tt> to initialize <tt>struc proc</tt>'s <tt>pid</tt> member. Each time <tt>new_proc</tt> is called, it increments the variable <tt>pid</tt>. Initialize the <tt>state</tt> member to be <tt>EMBRYO</tt>.
 <li><tt>enqueue_proc</tt> - places the proc created by <tt>new_proc</tt> into the priority queue.
@@ -653,11 +731,12 @@ This problem is like software maintenance. You have code, which has a problem an
 </ol>
 <br>
 A dequeue operation on this queue removes Process A, which is the process with priority 4. If you enqueue a Process X with priority 8, it is placed between Process C and Process B.
+<p>
 <li><b>Commands in <tt>main.c</tt></b> -
 The file <tt>main.c</tt> provides several commands. The commands fork fork and kill are representative of their Linux counterparts. You will learn how to use the Linux fork and kill functions. You should study the input test cases and the main.c algorithms to see how the commands are processed. The following are brief descriptions of sample commands.
 <ul>
-<li><tt>fork Gusty 5 init_process</tt> - This command creates a new process named Gusty. Gusty has priority 5. Gusty’s parent process is the init_process.
-<li><tt>fork Emily 3 Gusty</tt> - This command creates a new process named Emily. Emily has priority 3. Emily’s parent process is Gusty.
+<li><tt>fork Gusty 5 init_process</tt> - This command creates a new process named Gusty. Gusty has priority 5. Gusty's parent process is the init_process.
+<li><tt>fork Emily 3 Gusty</tt> - This command creates a new process named Emily. Emily has priority 3. Emily's parent process is Gusty.
 <li><tt>printprocs</tt> - This command prints all procs in the list. Sample output is.
 procs in queue:
 <pre>
@@ -669,7 +748,57 @@ pname: Gusty, pid: 1025, ppid: 1024, priority: 5, state: EMBRYO
 <li><tt>printpid Emily</tt> - This command prints the process id of the process named Emily.
 <li><tt>printppid Emily</tt> - The command prints the process id of the parent process of Emily.
 </ul>
-<li><b>Running Test Cases</b> - I have provided several test cases for you. Each test case is a command input file and its expected output in another file. A command input file is a script composes of commands available in <tt>main.c</tt>.
+<p>
+<li><b>Sample Interactive Session</b> - The following shows running the programming and manually entering commands interactively. Notice the program does not output a prompt. Commands are entered at a blank prompt. Entering commands manually is a nice way to get an initial feel if your program in running correctly; however, you can create a collection of test cases and expected outputs in text files and use Linux command I/O redirection run the test cases and capture the actual output, which can be compared to the expected output. This is explained more fully in the other hints.
+<pre>
+$ <kbd>make</kbd>
+$ <kbd>./firstlab</kbd>
+<kbd>printprocs</kbd>
+procs in queue:
+pname: init_process, pid: 1024, ppid: 1024, priority: 0, state: RUNNABLE
+
+<kbd>fork Gusty 5 init_process</kbd>
+<kbd>printprocs</kbd>
+procs in queue:
+pname: init_process, pid: 1024, ppid: 1024, priority: 0, state: RUNNABLE
+pname: Gusty, pid: 1025, ppid: 1024, priority: 5, state: EMBRYO
+
+<kbd>fork Emily 3 Gusty</kbd>
+<kbd>printprocs</kbd>
+procs in queue:
+pname: init_process, pid: 1024, ppid: 1024, priority: 0, state: RUNNABLE
+pname: Emily, pid: 1026, ppid: 1025, priority: 3, state: EMBRYO
+
+<kbd>printpid Emily</kbd>
+procname: Emily, pid: 1026
+<kbd>printppid Emily</kbd>
+procname: Emily, ppid: 1025
+<kbd>kill Emily</kbd>
+<kbd>printprocs</kbd>
+procs in queue:
+pname: init_process, pid: 1024, ppid: 1024, priority: 0, state: RUNNABLE
+pname: Gusty, pid: 1025, ppid: 1024, priority: 5, state: EMBRYO
+
+<kbd>Control-d</kbd>
+</pre>
+<li><b>Software Development and Testing</b> - Developing software is solving a problem. Solving a program consists of several <b>phases</b>.
+<ul>
+<li><b>Understand the Problem Phase</b> - I must emphasize the importance of this step. Spending ample time thinking about the problem, probing the problem from many aspects, and documenting your ideas are most important to successfully solving the problem. This phase results in a collection of <b>requirements</b> for your problem, which is the <b>specification</b> of the problem. Most of you computer science coursework has provided you with a <b>specification</b>. With a <b>specification</b> you must spend time <b>understanding</b> the problem as specified.
+<li><b>Design Code Phase</b> - In this phase, you use tools such as UML and psuedo code to create a <b>design</b> that is not executable, but is in a higher-level format that allows you to think clearer than with the details of code. 
+<li><b>Design Test Cases Phase</b>
+<ul>
+<li>When creating software, you want a collection of test cases that consist of inputs and <b>expected</b> outputs. Each input has its corresponding <b>expected</b> outputs. 
+<li>You are asking yourself what inputs will I run my software with and when I run the software what output will the code produce. These outputs are the <b>expected</b> outputs.
+<li>As a software developer, it is most helpful to think about (and create) test cases as you are designing your software. 
+<li>The act of creating test cases provides insight to your design.
+<li>You can create test cases before any code exists.
+</ul>
+<li><b>Implementation or Programming Phase</b> - implement the design in some programming language. At the end of this phase, some students submit their solution for grading, but there is more to be done. You must demonstrate that your solution actually solves the problem. This is accomplished with thorough testing.
+<li><b>Testing Phase</b> - The testing phase is where you demonstrate that your problem solution is correct. You test your implementation by applying the test cases you have created. During the testing phase, you can apply the test case inputs to your program which generates the <b>actual</b> output, which is the output your program <b>actually</b> created. Since you created <b>expected</b> outputs earlier in the development process, you can compare the <b>actual</b> output to the <b>expected</b> output. If they match, the most likely your program is behaving correctly. If they do not match, then you have a bug that may be in your code or it may be in your test case.
+<li><b>Repeat Phase</b> - Repeat these steps until you have successfully solved the problem. Software development is often described as a sequence of phases, but the sequence has many repeats. When you are designing code or tests, you may repeat your understanding phase and update your specification. Likewise, when implmenting code, you may repeat your design phase and update you code and test design.
+</ul>
+<p>
+<li><b>Using Linux I/O Redirection to Run Test Cases</b> -  I have provided several test cases for you. Each test case is a command input file and its expected output in another file. A command input file is a script composed of commands available in <tt>main.c</tt>.
 You can use I/O redirection to run the test case and capture your program's actual ouput. Then you can use the Linux <tt>diff</tt>
 command to compare your actual output to the expected output. A example test case script is <tt>test1_in.txt</tt>
 and its corresponding expected output is in the file <tt>test1_out.txt</tt>. The following shows ways to run the test script and compare it to the expected output.
@@ -683,6 +812,13 @@ $ <kbd>diff test1_actual.txt test1_out.txt</kbd>          # compares actual outp
 
 </ul>
 
+<h3>Create Test Cases</h3>
+<p>I provided four test cases, you must create some additional test cases, run them, and describe them in your lab submission.
+<ul>
+<li>Create a test case the kills a proc at the end of the list.
+<li>Create a test case that has two procs with the same priority. Before running your test case, describe your expected outputs.
+<li>Create a test case that has two procs with the same name. Before running your test case, describe your expected outputs.
+</ul>
 <p><a name="submit"></>
 <h2>Submit the lab</h2>
 
@@ -691,7 +827,7 @@ Read <a href="../labsubmissions.html" >Lab Submissions</a> for instructions on h
 to submit your lab. In addition to the normal submission requirements, please include your answer to the following question in your <b>answers-firstlab.txt</b> file.
 
 <div class="question">
-<p><b>12.</b> Discuss your C programming skills.
+<p><b>13.</b> Discuss your C programming skills. Be sure to address the question, are your confident in your ability to use C pointers?
 </div>
 </body>
 </html>

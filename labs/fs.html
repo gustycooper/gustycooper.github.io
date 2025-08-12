@@ -19,7 +19,7 @@
 
 <div class="question">
 <p>In this lab, there are several questions for you to answer. Questions are in boxes with a light orange background. 
-Write each question and its answer in your notebook. Take photo(s) of your questions/answers and submit the photo(s) on Canvas.
+Write each question and its answer in your notebook. You will state the percentage of questions answered on your lab submission.
 <p>The Linux <tt>grep</tt> command can be helpful on some questions. For example, suppose a question asks you about the <tt>struct proc</tt>. You can discover the definition and uses of the <tt>struct proc</tt> by issuing the following Linux <tt>grep</tt> command in the <tt>kernel</tt> directory.
 <pre>
 $ <kbd>grep inode *.h</kbd>
@@ -344,7 +344,7 @@ on-disk inode.  The first 11 elements of <tt>ip->addrs[]</tt> should
 be direct blocks; the 12th should be a singly-indirect block (just
 like the current one); the 13th should be your new doubly-indirect
 block. You are done with this exercise when <tt>bigfile</tt> writes
-65803 blocks and <tt>usertests -q</tt> runs successfully:
+65803 blocks and <tt>usertests -q</tt> runs successfully.
 </div>
 
 <pre>
@@ -360,6 +360,8 @@ $
 
 <p>
 <tt>bigfile</tt> will take at least a minute and a half to run.
+<p><tt>user/usertests.c</tt> performs comprehensive testing of all of the Xv6 provided user programs. When you have created a system that is to be updated, you should create a collection of tests that can be run whenever you update the system. This allows you to make sure that you updates did not break any code in the original system. <tt>user/usertests.c</tt> is the collection of tests for the Xv6 provided user programs, and <tt>usertests.c</tt> provides a quick version of the tests by using the <tt>-q</tt> option. Be aware that the -q option is still rather slow on our CPSC server.
+
 
 <h3>Some Hints</h3>
 
