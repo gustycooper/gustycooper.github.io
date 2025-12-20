@@ -15,80 +15,81 @@ CPSC 405
 
 <BODY BGCOLOR=#ffffff TEXT=#000000>
 
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<!-- Fixed navbar - navigation bar at top of window -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+   <div class="container-fluid">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="xv6index.html">UMW CPSC 405 - OS</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-	    <li><a href="schedule.html">Schedule</a></li>
-	    <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class<span class="caret"></span></a>
-	      <ul class="dropdown-menu" role="menu">
-                <li><a href="overview.html">Overview</a></li>
-                <li><a href="general.html">Web Syllabus</a></li>
-<!-- A way to link to courses of multiple years
-		<li><a href="https://pdos.csail.mit.edu/6.1810/2022/">CPSC 405 2024</a></li>
-  -->
-		<li><a href="xv6index.html">CPSC 405</a></li>
-	      </ul>
-	    </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labs<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-		<li><a href="tools.html">Tools</a></li>
-		<li><a href="labsubmissions.html">Lab Submissions</a></li>
-		<li><a href="labs/guidance.html">Guidance</a></li>
-		<li><a href="labs/gdb.html">GDB</a></li>
-    <li><a href="labs/firstlab.html">Lab Firstlab</a></li>
-                <li><a href="labs/util.html">Lab Utilities</a></li>
-		<li><a href="labs/syscall.html">Lab System calls</a></li>
-		<li><a href="labs/pgtbl.html">Lab Page tables</a></li>
-		<li><a href="labs/traps.html">Lab Traps</a></li>
-		<li><a href="labs/scheduling.html">Lab Scheduling</a></li>
-		<li><a href="labs/fs.html">Lab File system</a></li>
-		<li><a href="labs/thread.html">Lab Multithreading</a></li>
-		<li><a href="labs/shell.html">Lab Shell</a></li>
-<!--
-		<li><a href="labs/cow.html">Lab Copy on-write</a></li>
-		<li><a href="labs/net.html">Lab network driver</a></li>
-		<li><a href="labs/lock.html">Lab Lock</a></li>
-		<li><a href="labs/mmap.html">Lab mmap</a></li>
--->
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">xv6<span class="caret"></span></a>
-	      <ul class="dropdown-menu" role="menu">
-		<li><a href="xv6.html">xv6</a></li>
-		<li><a href="xv6/book-riscv-rev3.pdf">xv6 book</a></li>
-	      </ul>
-	    </li>
-	    <li><a href="reference.html">References</a></li>  
-	    <li><a href="https://discord.com/login">Discord</a></li>
-	    <li><a href="thanksmit.html">ThanksMIT</a></li>
-          </ul>
-	  <ul class="nav navbar-nav navbar-right">
-	    <p class="navbar-text">2025</p>
-	  </ul>
-        </div>
+         </button>
+         <a class="navbar-brand" href="xv6index.html">UMW CPSC 405 - OS</a>
       </div>
-    </div>
 
+      <div class="navbar-collapse collapse">
+         <ul class="nav navbar-nav">
+            <li><a href="schedule.html">Schedule</a></li>
+          
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class<span class="caret"></span></a>
+         		   <ul class="dropdown-menu" role="menu">
+                  <li><a href="overview.html">Overview</a></li>
+                  <li><a href="general.html">Web Syllabus</a></li>
+    	      	    <li><a href="xv6index.html">CPSC 405</a></li>
+               </ul>
+            </li>
+         
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labs<span class="caret"></span></a>
+               <ul class="dropdown-menu" role="menu">
+     	            <li><a href="tools.html">Tools</a></li>
+     	            <li><a href="labsubmissions.html">Lab Submissions</a></li>
+     	            <li><a href="labs/guidance.html">Guidance</a></li>
+       	          <li><a href="labs/gdb.html">GDB</a></li>
+                  <li><a href="labs/firstlab.html">Lab Firstlab</a></li>
+                  <li><a href="labs/util.html">Lab Utilities</a></li>
+     	            <li><a href="labs/syscall.html">Lab System calls</a></li>
+                  <li><a href="labs/pgtbl.html">Lab Page tables</a></li>
+                  <li><a href="labs/traps.html">Lab Traps</a></li>
+                  <li><a href="labs/scheduling.html">Lab Scheduling</a></li>
+                  <li><a href="labs/fs.html">Lab File system</a></li>
+                  <li><a href="labs/thread.html">Lab Multithreading</a></li>
+                  <li><a href="labs/shell.html">Lab Shell</a></li>
+                  <!-- Extra MIT labs - in Xv6/LabNotes 
+                  <li><a href="labs/cow.html">Lab Copy on-write</a></li>
+                  <li><a href="labs/net.html">Lab network driver</a></li>
+                  <li><a href="labs/lock.html">Lab Lock</a></li>
+                  <li><a href="labs/mmap.html">Lab mmap</a></li>
+                  -->   
+               </ul>
+            </li>
+         
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">xv6<span class="caret"></span></a>
+     	         <ul class="dropdown-menu" role="menu">
+     	            <li><a href="xv6.html">xv6</a></li>
+     	            <li><a href="xv6/book-riscv-rev3.pdf">xv6 book</a></li>
+               </ul>
+            </li>
+         
+            <li><a href="reference.html">References</a></li>  
+            <li><a href="https://discord.com/login">Discord</a></li>
+            <li><a href="thanksmit.html">ThanksMIT</a></li>
+         </ul>
+
+         <ul class="nav navbar-nav navbar-right">
+            <p class="navbar-text">2026</p>
+         </ul>
+
+         <a href="https://gusty.bike/index.html" class="pull-right"><img src="xv6images/g_dot_b.jpg" style="height:13%;"></a> 
+
+      </div>
+   </div>
+</div>
 
 <div class="container">
-
-
-
- 
 
 <center><h2>Reading materials</h2></center>
 
