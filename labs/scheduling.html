@@ -601,6 +601,39 @@ for the allocated process.
 <li>Create test code to ensure your spoon() works.
 </ul>
 
+<div class="question">
+<p><b>26.</b> Both <tt>fork()</tt> and <tt>spoon()</tt> have the following code.
+<pre>
+  // copy saved user registers.
+  *(np->trapframe) = *(p->trapframe);
+</pre>
+How does this one-line of code save all of the user registers from one trapframe the new proc's trapframe?
+</div>
+
+<div class="question">
+<p><b>27.</b> Both <tt>fork()</tt> and <tt>spoon()</tt> have the following code.
+<pre>
+  // Cause fork to return 0 in the child.
+  np->trapframe->a0 = 0;
+</pre>
+Recall that <tt>fork()</tt> and <tt>spoon()</tt> create a child proc and returns 0 for the child and the child's PID for the parent.
+<br> a) Explain how this line returns a 0 for the child proc.
+<br> b) What line of code returns the PID for the parent?
+</div>
+
+<div class="question">
+<p><b>28.</b> Both <tt>fork()</tt> and <tt>spoon()</tt> have the following code.
+<pre>
+  // increment reference counts on open file descriptors.
+  for(i = 0; i < NOFILE; i++)
+    if(p->ofile[i])
+      np->ofile[i] = filedup(p->ofile[i]);
+  np->cwd = idup(p->cwd);
+</pre>
+Why are these reference counts for open file descriptors incremented?
+
+</div>
+
 <h2>Problem 4: Implement a  Priority Scheduler <script>g("moderate")</script></h2>
 
 <div class="required">
@@ -661,23 +694,23 @@ and enter <tt>ctrl-p</tt> several times to demonstrate processes and their state
 <img src="schedulertimelines.png" alt="Scheduler Timelines" >
 
 <div class="question">
-<p><b>26.</b> Describe a FIFO scheduler. Use a Timeline from the above diagram as part of your description.
+<p><b>29.</b> Describe a FIFO scheduler. Use a Timeline from the above diagram as part of your description.
 </div>
 
 <div class="question">
-<p><b>27.</b> Describe a shortest job first scheduler. Use a Timeline from the above diagram as part of your description.
+<p><b>30.</b> Describe a shortest job first scheduler. Use a Timeline from the above diagram as part of your description.
 </div>
 
 <div class="question">
-<p><b>28.</b> Describe a shortest time to completion scheduler. Use a Timeline from the above diagram as part of your description.
+<p><b>31.</b> Describe a shortest time to completion scheduler. Use a Timeline from the above diagram as part of your description.
 </div>
 
 <div class="question">
-<p><b>29.</b> Describe a multi-level feedback queue scheduler.
+<p><b>32.</b> Describe a multi-level feedback queue scheduler.
 </div>
 
 <div class="question">
-<p><b>30.</b> Describe a Linux completely fair scheduler.
+<p><b>33.</b> Describe a Linux completely fair scheduler.
 </div>
 
 <h2>Fair Schedulers</h2>
