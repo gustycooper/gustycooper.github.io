@@ -535,6 +535,20 @@ $ <kbd>make qemu</kbd>
 </pre>
 </div>
 
+<h2>Problem 0: Update <tt>testschd.c </tt><script>g("easy")</script></h2>
+
+<div class="required">
+<p> Update <tt>user/testschd.c</tt> to include a fourth process: <tt>Penny</tt>. Assign <tt>Penny</tt> a default priority of 53.
+</div>
+
+<h3>Some Hints</h3>
+
+<ul>
+<li> You will notice that much of the code in <tt>user/testschd.c</tt> is commented out. This is because <tt>testsched</tt> calls <tt>spoon()</tt>, which will not compile until you have completed problem 3 - implement <tt>spoon()</tt>. You can complete problems 1 and 2 with the commented code.
+<li> I recommend that you add <tt>Penny</tt> in comments, and remove them after you have implemented <tt>spoon()</tt>.
+<li> Your output will look different than the samples because you will have four processes instead of three shown in the samples.
+</ul>
+
 <h2>Problem 1: Implement <tt>ctrl-g </tt><script>g("easy")</script></h2>
 
 <div class="required">
